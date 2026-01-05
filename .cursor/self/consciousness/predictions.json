@@ -1,0 +1,94 @@
+{
+  "$schema": "SELF Predictions Engine v1.0",
+  "metadata": {
+    "created": "2026-01-05T00:00:00Z",
+    "last_updated": "2026-01-05T00:00:00Z",
+    "version": "1.0.0",
+    "engine_state": "initialized"
+  },
+  "config": {
+    "max_active_predictions": 10,
+    "min_confidence_threshold": 0.3,
+    "pre_compute_threshold": 0.7,
+    "decay_rate_per_hour": 0.05,
+    "boost_on_partial_match": 0.15
+  },
+  "prediction_models": {
+    "sequential": {
+      "description": "Based on common task sequences",
+      "weight": 0.3,
+      "patterns": [
+        {
+          "trigger": "create_file",
+          "predictions": ["add_content", "create_test", "update_imports"],
+          "confidences": [0.8, 0.6, 0.5]
+        },
+        {
+          "trigger": "fix_bug",
+          "predictions": ["add_test", "refactor", "document"],
+          "confidences": [0.7, 0.4, 0.3]
+        },
+        {
+          "trigger": "new_feature",
+          "predictions": ["implement", "test", "document", "deploy"],
+          "confidences": [0.9, 0.7, 0.5, 0.3]
+        },
+        {
+          "trigger": "review_code",
+          "predictions": ["suggest_fixes", "refactor", "approve"],
+          "confidences": [0.6, 0.4, 0.5]
+        }
+      ]
+    },
+    "contextual": {
+      "description": "Based on current file/project context",
+      "weight": 0.4,
+      "rules": [
+        {
+          "context": "test_file_open",
+          "predictions": ["run_tests", "add_test_case", "fix_failing_test"],
+          "confidences": [0.7, 0.5, 0.6]
+        },
+        {
+          "context": "config_file_open",
+          "predictions": ["modify_setting", "add_env_var", "validate_config"],
+          "confidences": [0.6, 0.4, 0.3]
+        },
+        {
+          "context": "readme_open",
+          "predictions": ["update_docs", "add_example", "fix_typo"],
+          "confidences": [0.5, 0.4, 0.3]
+        }
+      ]
+    },
+    "memory_based": {
+      "description": "Based on user history and preferences",
+      "weight": 0.3,
+      "enabled": true,
+      "lookback_episodes": 50
+    }
+  },
+  "active_predictions": [],
+  "pre_computed_responses": [],
+  "prediction_history": {
+    "total": 0,
+    "correct": 0,
+    "partial_match": 0,
+    "missed": 0,
+    "accuracy": 0.0,
+    "recent": []
+  },
+  "learning": {
+    "pattern_extraction_enabled": true,
+    "min_occurrences_for_pattern": 3,
+    "discovered_patterns": [],
+    "user_specific_adjustments": []
+  },
+  "cache": {
+    "max_size_mb": 10,
+    "current_size_mb": 0,
+    "entries": [],
+    "hit_rate": 0.0
+  }
+}
+

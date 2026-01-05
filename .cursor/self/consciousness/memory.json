@@ -1,0 +1,110 @@
+{
+  "$schema": "SELF Memory Graph v1.0",
+  "metadata": {
+    "created": "2026-01-05T00:00:00Z",
+    "last_updated": "2026-01-05T00:00:00Z",
+    "version": "1.0.0",
+    "total_entities": 0,
+    "total_relationships": 0,
+    "total_episodes": 0
+  },
+  "entities": {
+    "users": [
+      {
+        "id": "user_primary",
+        "name": "Primary User",
+        "preferences": {
+          "coding_style": null,
+          "communication_style": null,
+          "risk_tolerance": "medium",
+          "detail_level": "adaptive"
+        },
+        "expertise_areas": [],
+        "observed_patterns": []
+      }
+    ],
+    "projects": [],
+    "concepts": [],
+    "decisions": [],
+    "tools": []
+  },
+  "relationships": {
+    "schema": {
+      "types": [
+        "uses",
+        "depends_on",
+        "created_by",
+        "related_to",
+        "conflicts_with",
+        "evolved_from",
+        "succeeded_by",
+        "part_of"
+      ]
+    },
+    "edges": []
+  },
+  "episodes": {
+    "recent": [],
+    "significant": [],
+    "schema": {
+      "episode": {
+        "id": "string",
+        "timestamp": "ISO-8601",
+        "type": "query|task|decision|error|insight",
+        "summary": "string",
+        "entities_involved": ["entity_id"],
+        "outcome": "success|failure|partial|abandoned",
+        "confidence": 0.0,
+        "minds_active": ["architect"],
+        "learnings": [],
+        "emotional_valence": -1.0
+      }
+    }
+  },
+  "insights": {
+    "patterns": [],
+    "preferences": [],
+    "anti_patterns": [],
+    "schema": {
+      "insight": {
+        "id": "string",
+        "discovered": "ISO-8601",
+        "type": "pattern|preference|anti_pattern|correlation",
+        "description": "string",
+        "confidence": 0.0,
+        "evidence_count": 0,
+        "last_validated": "ISO-8601",
+        "actionable": true
+      }
+    }
+  },
+  "predictions": {
+    "active": [],
+    "accuracy_history": {
+      "total_predictions": 0,
+      "correct": 0,
+      "accuracy_rate": 0.0
+    }
+  },
+  "knowledge_clusters": {
+    "description": "Semantic groupings of related knowledge",
+    "clusters": []
+  },
+  "decay_config": {
+    "episode_half_life_days": 30,
+    "insight_half_life_days": 90,
+    "relationship_strengthening_rate": 0.1,
+    "minimum_confidence_threshold": 0.2
+  },
+  "indexes": {
+    "by_recency": [],
+    "by_frequency": [],
+    "by_importance": [],
+    "semantic_embeddings": {
+      "enabled": false,
+      "model": null,
+      "vectors": []
+    }
+  }
+}
+
