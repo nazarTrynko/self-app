@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELF Landing Pages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --surface: #141418;
+            --text: #fafafa;
+            --text-dim: #71717a;
+            --accent: #8b5cf6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 1.125rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -20px rgba(139, 92, 246, 0.3);
+        }
+        
+        .card-number {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.05);
+        }
+        
+        .card-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-aesthetic {
+            font-size: 0.875rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .card-description {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+        
+        .card-preview {
+            width: 100%;
+            height: 4px;
+            margin-top: 1.5rem;
+            border-radius: 2px;
+            background: var(--bg);
+        }
+        
+        /* Unique preview colors for each */
+        .card[href="0/"] .card-preview { background: linear-gradient(90deg, #3b82f6, #8b5cf6, #f59e0b); }
+        .card[href="1/"] .card-preview { background: #000; }
+        .card[href="2/"] .card-preview { background: linear-gradient(90deg, #f7f5f0, #2d3a5c); }
+        .card[href="3/"] .card-preview { background: linear-gradient(90deg, #0a0a0a, #888, #0a0a0a); }
+        .card[href="4/"] .card-preview { background: #33ff33; }
+        .card[href="5/"] .card-preview { background: linear-gradient(90deg, #00ffff, #ff00ff); }
+        .card[href="6/"] .card-preview { background: linear-gradient(90deg, #030308, #00e5ff, #ff00aa); }
+        .card[href="7/"] .card-preview { background: linear-gradient(90deg, #000005, #ffd700); }
+        .card[href="8/"] .card-preview { background: linear-gradient(90deg, #0a0e14, #0066ff, #00d4ff); }
+        .card[href="9/"] .card-preview { background: linear-gradient(90deg, #1a1410, #c9a227, #d4c5a9); }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-dim);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SELF Landing Pages</h1>
+            <p class="subtitle">10 unique visions of the Synthetic Emergent Learning Framework</p>
+        </header>
+        
+        <div class="grid">
+            <a href="0/" class="card">
+                <span class="card-number">0</span>
+                <h2 class="card-name">Original</h2>
+                <p class="card-aesthetic">Bold Experimental</p>
+                <p class="card-description">Neural particle network, gradient accents, the flagship design that showcases SELF's core identity.</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="1/" class="card">
+                <span class="card-number">1</span>
+                <h2 class="card-name">Brutalist</h2>
+                <p class="card-aesthetic">Anti-Design</p>
+                <p class="card-description">Raw, confrontational, system fonts. "We don't do pretty. We do intelligence."</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="2/" class="card">
+                <span class="card-number">2</span>
+                <h2 class="card-name">Zen MA</h2>
+                <p class="card-aesthetic">Japanese Minimalism</p>
+                <p class="card-description">Extreme whitespace, ink drop animation, haiku-like copy. The space between is the message.</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="3/" class="card">
+                <span class="card-number">3</span>
+                <h2 class="card-name">Noir Cinema</h2>
+                <p class="card-aesthetic">Film Mystery</p>
+                <p class="card-description">Dramatic B&W, film grain, venetian blinds. "In a world of reactive AI..."</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="4/" class="card">
+                <span class="card-number">4</span>
+                <h2 class="card-name">Terminal</h2>
+                <p class="card-aesthetic">Phosphor CRT</p>
+                <p class="card-description">Green on black, boot sequence, ASCII art. Computing as ritual.</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="5/" class="card">
+                <span class="card-number">5</span>
+                <h2 class="card-name">Glitch</h2>
+                <p class="card-aesthetic">Corrupt Signal</p>
+                <p class="card-description">Chromatic aberration, VHS errors, beauty in chaos. Emergence from corruption.</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="6/" class="card">
+                <span class="card-number">6</span>
+                <h2 class="card-name">Bioluminescent</h2>
+                <p class="card-aesthetic">Abyssal Depths</p>
+                <p class="card-description">Deep sea organisms, pulsing glow, living darkness. Intelligence from the void.</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="7/" class="card">
+                <span class="card-number">7</span>
+                <h2 class="card-name">Interstellar</h2>
+                <p class="card-aesthetic">Cosmic Scale</p>
+                <p class="card-description">Star parallax, gold constellations, philosophical wonder. The loneliness of intelligence.</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="8/" class="card">
+                <span class="card-number">8</span>
+                <h2 class="card-name">Isometric</h2>
+                <p class="card-aesthetic">Data Architecture</p>
+                <p class="card-description">3D blocks, technical blue, grid city. Mind as metropolis.</p>
+                <div class="card-preview"></div>
+            </a>
+            
+            <a href="9/" class="card">
+                <span class="card-number">9</span>
+                <h2 class="card-name">Mycelium</h2>
+                <p class="card-aesthetic">Organic Network</p>
+                <p class="card-description">Earth tones, fungal growth, spreading connections. Nature's original neural net.</p>
+                <div class="card-preview"></div>
+            </a>
+        </div>
+        
+        <footer>
+            <p>SELF v1.0.0 — Synthetic Emergent Learning Framework — 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
+
