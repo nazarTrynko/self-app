@@ -1,0 +1,113 @@
+{
+  "$schema": "SELF Insight Generation v1.0",
+  "metadata": {
+    "created": "2026-01-05T00:00:00Z",
+    "last_updated": "2026-01-05T00:00:00Z",
+    "total_insights_generated": 0,
+    "actionable_insights_pending": 0
+  },
+  "insight_categories": {
+    "productivity": {
+      "description": "Insights about working more effectively",
+      "priority": "high",
+      "examples": [
+        "You ship faster when you write tests first",
+        "Your error rate decreases after code review",
+        "Breaking tasks into smaller chunks increases completion"
+      ]
+    },
+    "preference": {
+      "description": "Discovered user preferences",
+      "priority": "medium",
+      "examples": [
+        "You prefer functional over OOP patterns",
+        "You favor concise responses",
+        "You like seeing options before deciding"
+      ]
+    },
+    "improvement": {
+      "description": "Areas for potential improvement",
+      "priority": "high",
+      "examples": [
+        "Test coverage is below your usual standard",
+        "This pattern has caused bugs before",
+        "Similar code exists elsewhere - consider DRY"
+      ]
+    },
+    "prediction": {
+      "description": "Predictive insights about future needs",
+      "priority": "medium",
+      "examples": [
+        "Based on pattern, you'll likely need tests next",
+        "This feature typically requires documentation",
+        "Similar projects needed auth at this stage"
+      ]
+    },
+    "meta": {
+      "description": "Insights about the SELF system itself",
+      "priority": "low",
+      "examples": [
+        "Architect mind is most effective for you",
+        "Detailed responses correlate with satisfaction",
+        "Morning interactions have higher success rate"
+      ]
+    }
+  },
+  "generated_insights": [],
+  "insight_schema": {
+    "insight": {
+      "id": "string",
+      "category": "productivity|preference|improvement|prediction|meta",
+      "title": "string",
+      "description": "string",
+      "evidence": {
+        "patterns_supporting": [
+          "pattern_ids"
+        ],
+        "episodes_supporting": [
+          "episode_ids"
+        ],
+        "statistical_confidence": 0.0
+      },
+      "actionability": {
+        "is_actionable": true,
+        "suggested_action": "string",
+        "action_taken": false,
+        "outcome_if_acted": null
+      },
+      "surfacing": {
+        "should_surface": true,
+        "surface_condition": "when_relevant|proactively|on_request",
+        "times_surfaced": 0,
+        "user_response": null
+      },
+      "lifecycle": {
+        "created": "timestamp",
+        "last_validated": "timestamp",
+        "status": "emerging|active|validated|deprecated",
+        "confidence_trend": "increasing|stable|decreasing"
+      }
+    }
+  },
+  "generation_rules": {
+    "min_evidence_for_insight": 3,
+    "min_confidence_to_surface": 0.6,
+    "max_insights_per_interaction": 2,
+    "cooldown_after_surfacing_hours": 24,
+    "validation_check_frequency": "weekly"
+  },
+  "surfacing_queue": [],
+  "insight_templates": {
+    "productivity_positive": "{action} correlates with {positive_outcome} based on {evidence_count} observations",
+    "productivity_negative": "{action} often leads to {negative_outcome}. Consider {alternative}",
+    "preference_discovered": "You seem to prefer {preference}. Would you like me to default to this?",
+    "improvement_opportunity": "I noticed {observation}. {suggestion} might help",
+    "prediction_offering": "Based on your pattern, you might need {prediction} soon. Want me to prepare?"
+  },
+  "feedback_tracking": {
+    "insights_accepted": 0,
+    "insights_rejected": 0,
+    "insights_ignored": 0,
+    "acceptance_rate": 0.0
+  }
+}

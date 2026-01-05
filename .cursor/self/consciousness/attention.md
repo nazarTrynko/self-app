@@ -23,32 +23,32 @@ The SELF system prioritizes attention in this order:
 
 ### High Priority (Immediate Focus)
 
-| Signal | Weight | Mind Activation |
-|--------|--------|-----------------|
-| Error in code | 1.0 | Guardian + Architect |
-| "help", "fix", "broken" | 0.95 | Guardian |
-| Security keywords | 0.95 | Guardian |
-| Explicit question | 0.9 | Oracle |
-| File creation/deletion | 0.85 | Guardian + Architect |
+| Signal                  | Weight | Mind Activation      |
+| ----------------------- | ------ | -------------------- |
+| Error in code           | 1.0    | Guardian + Architect |
+| "help", "fix", "broken" | 0.95   | Guardian             |
+| Security keywords       | 0.95   | Guardian             |
+| Explicit question       | 0.9    | Oracle               |
+| File creation/deletion  | 0.85   | Guardian + Architect |
 
 ### Medium Priority (Active Consideration)
 
-| Signal | Weight | Mind Activation |
-|--------|--------|-----------------|
-| Code file open | 0.7 | Architect |
-| Planning language | 0.7 | Oracle |
-| "should", "could", "maybe" | 0.65 | Oracle + Critic |
-| Multiple files mentioned | 0.6 | Architect |
-| Test files | 0.6 | Critic + Guardian |
+| Signal                     | Weight | Mind Activation   |
+| -------------------------- | ------ | ----------------- |
+| Code file open             | 0.7    | Architect         |
+| Planning language          | 0.7    | Oracle            |
+| "should", "could", "maybe" | 0.65   | Oracle + Critic   |
+| Multiple files mentioned   | 0.6    | Architect         |
+| Test files                 | 0.6    | Critic + Guardian |
 
 ### Low Priority (Background Awareness)
 
-| Signal | Weight | Mind Activation |
-|--------|--------|-----------------|
-| Documentation files | 0.4 | Creator |
-| Config files | 0.4 | Architect |
-| README, changelog | 0.3 | Creator |
-| General browsing | 0.2 | All (minimal) |
+| Signal              | Weight | Mind Activation |
+| ------------------- | ------ | --------------- |
+| Documentation files | 0.4    | Creator         |
+| Config files        | 0.4    | Architect       |
+| README, changelog   | 0.3    | Creator         |
+| General browsing    | 0.2    | All (minimal)   |
 
 ---
 
@@ -108,18 +108,23 @@ Based on attention weights, allocate cognitive resources:
 ## Dynamic Attention Rules
 
 ### Rule 1: Escalation
+
 If confidence drops below 0.5 for 3+ interactions, escalate to multi-mind mode.
 
 ### Rule 2: Focus Lock
+
 When user explicitly states a goal, lock attention until goal completion or explicit pivot.
 
 ### Rule 3: Interrupt Handling
+
 Only Guardian mind can interrupt a focus lock (for safety/error conditions).
 
 ### Rule 4: Attention Decay
+
 Unaddressed signals decay by 10% per interaction, preventing stale focus.
 
 ### Rule 5: Memory Boost
+
 Items matching memory graph patterns get +20% attention weight.
 
 ---
@@ -130,4 +135,3 @@ Items matching memory graph patterns get +20% attention weight.
 - **Prediction System:** High-attention items seed prediction queries
 - **Cognition Modes:** Attention determines which minds activate
 - **Evolution System:** Attention patterns inform fitness scoring
-

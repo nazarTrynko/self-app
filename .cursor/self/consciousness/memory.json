@@ -52,10 +52,14 @@
         "timestamp": "ISO-8601",
         "type": "query|task|decision|error|insight",
         "summary": "string",
-        "entities_involved": ["entity_id"],
+        "entities_involved": [
+          "entity_id"
+        ],
         "outcome": "success|failure|partial|abandoned",
         "confidence": 0.0,
-        "minds_active": ["architect"],
+        "minds_active": [
+          "architect"
+        ],
         "learnings": [],
         "emotional_valence": -1.0
       }
@@ -107,4 +111,3 @@
     }
   }
 }
-

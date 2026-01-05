@@ -1,0 +1,41 @@
+# SELF Evolution Mutation Log
+
+**Format:** [Timestamp] | Generation | Mutation Type | Parent → Child | Fitness Delta
+
+---
+
+## Log Entries
+
+<!-- Mutations will be logged here as they occur -->
+
+### Generation 001 (Initial)
+[2026-01-05T00:00:00Z] | 001 | GENESIS | null → base_v1 | Initial baseline (0.50)
+
+---
+
+## Mutation Type Reference
+
+| Type | Description | Example |
+|------|-------------|---------|
+| WORD_SUB | Replace word with synonym/alternative | "implement" → "build" |
+| SENT_REORDER | Change sentence order | Move conclusion first |
+| EMPHASIS | Shift emphasis to different aspect | Focus code → focus explanation |
+| DETAIL_ADJ | Adjust detail level | More/less verbose |
+| TONE_SHIFT | Change communication tone | Formal → conversational |
+| CROSSOVER | Combine two parent prompts | Take best parts of each |
+| GENESIS | Initial creation | New prompt from scratch |
+
+---
+
+## Significant Mutations Archive
+
+<!-- High-impact mutations that significantly improved fitness are archived here -->
+
+### Hall of Fame
+<!-- Top mutations that produced lasting improvements -->
+
+---
+
+## Failed Experiments
+<!-- Mutations that were tried but performed poorly - avoid repeating -->
+

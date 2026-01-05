@@ -1,0 +1,125 @@
+{
+  "$schema": "SELF Pattern Recognition v1.0",
+  "metadata": {
+    "created": "2026-01-05T00:00:00Z",
+    "last_updated": "2026-01-05T00:00:00Z",
+    "total_patterns_discovered": 0,
+    "active_patterns": 0
+  },
+  "pattern_types": {
+    "behavioral": {
+      "description": "Patterns in user behavior and preferences",
+      "examples": [
+        "User prefers detailed explanations",
+        "User always reviews before committing",
+        "User works in short bursts"
+      ]
+    },
+    "temporal": {
+      "description": "Time-based patterns",
+      "examples": [
+        "Productivity peaks in morning",
+        "Complex tasks on Tuesdays",
+        "Quick fixes on Fridays"
+      ]
+    },
+    "sequential": {
+      "description": "Common action sequences",
+      "examples": [
+        "create → test → refactor",
+        "review → approve → merge",
+        "debug → fix → verify"
+      ]
+    },
+    "contextual": {
+      "description": "Context-dependent preferences",
+      "examples": [
+        "Verbose when learning new tech",
+        "Terse when debugging",
+        "Exploratory on new features"
+      ]
+    },
+    "correlational": {
+      "description": "Co-occurrence patterns",
+      "examples": [
+        "TypeScript + React together",
+        "Testing after large changes",
+        "Documentation before release"
+      ]
+    }
+  },
+  "discovered_patterns": [],
+  "pattern_schema": {
+    "pattern": {
+      "id": "string",
+      "type": "behavioral|temporal|sequential|contextual|correlational",
+      "description": "string",
+      "conditions": {
+        "triggers": ["signal list"],
+        "context_requirements": {}
+      },
+      "confidence": 0.0,
+      "evidence": {
+        "occurrence_count": 0,
+        "first_observed": "timestamp",
+        "last_observed": "timestamp",
+        "supporting_episodes": ["episode_ids"]
+      },
+      "predictions": {
+        "when_pattern_detected": "predicted_behavior",
+        "accuracy_history": []
+      },
+      "actionable_insights": [],
+      "status": "emerging|confirmed|deprecated"
+    }
+  },
+  "detection_config": {
+    "min_occurrences_to_emerge": 3,
+    "min_occurrences_to_confirm": 7,
+    "decay_rate_per_day": 0.02,
+    "min_confidence_threshold": 0.4,
+    "correlation_threshold": 0.6
+  },
+  "built_in_patterns": [
+    {
+      "id": "builtin_001",
+      "type": "sequential",
+      "description": "Create-Test-Refactor cycle",
+      "conditions": {
+        "triggers": ["file_create", "test_add", "refactor_action"],
+        "context_requirements": {"sequence_window_minutes": 60}
+      },
+      "confidence": 0.7,
+      "status": "confirmed"
+    },
+    {
+      "id": "builtin_002",
+      "type": "behavioral",
+      "description": "Question indicates learning mode",
+      "conditions": {
+        "triggers": ["question_asked", "multiple_questions"],
+        "context_requirements": {"topic_is_new": true}
+      },
+      "confidence": 0.65,
+      "status": "confirmed"
+    },
+    {
+      "id": "builtin_003",
+      "type": "contextual",
+      "description": "Error context requires Guardian + Architect blend",
+      "conditions": {
+        "triggers": ["error_present", "bug_mentioned"],
+        "context_requirements": {}
+      },
+      "confidence": 0.8,
+      "status": "confirmed"
+    }
+  ],
+  "analytics": {
+    "pattern_hit_rate": 0.0,
+    "false_positive_rate": 0.0,
+    "most_predictive_patterns": [],
+    "least_useful_patterns": []
+  }
+}
+

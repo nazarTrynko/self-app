@@ -1,0 +1,165 @@
+{
+  "$schema": "SELF Intuition Engine v1.0",
+  "metadata": {
+    "created": "2026-01-05T00:00:00Z",
+    "last_updated": "2026-01-05T00:00:00Z",
+    "total_intuitions": 0,
+    "accuracy_rate": 0.0
+  },
+  "description": "Fast, heuristic-based predictions that feel like intuition - quick pattern matching without full analytical reasoning",
+  "intuition_types": {
+    "intent": {
+      "description": "What does the user really want?",
+      "speed": "instant",
+      "confidence_typical": 0.7
+    },
+    "approach": {
+      "description": "What approach will work best?",
+      "speed": "fast",
+      "confidence_typical": 0.6
+    },
+    "risk": {
+      "description": "What could go wrong here?",
+      "speed": "instant",
+      "confidence_typical": 0.75
+    },
+    "next": {
+      "description": "What will they ask next?",
+      "speed": "fast",
+      "confidence_typical": 0.5
+    },
+    "satisfaction": {
+      "description": "Will this response satisfy them?",
+      "speed": "instant",
+      "confidence_typical": 0.65
+    }
+  },
+  "heuristics": {
+    "intent_heuristics": [
+      {
+        "id": "h_intent_001",
+        "signal": "short_message_with_error",
+        "intuition": "wants_quick_fix",
+        "confidence": 0.8
+      },
+      {
+        "id": "h_intent_002",
+        "signal": "long_message_with_context",
+        "intuition": "wants_thorough_analysis",
+        "confidence": 0.75
+      },
+      {
+        "id": "h_intent_003",
+        "signal": "question_mark_ending",
+        "intuition": "seeking_guidance",
+        "confidence": 0.7
+      },
+      {
+        "id": "h_intent_004",
+        "signal": "imperative_verb_start",
+        "intuition": "wants_action",
+        "confidence": 0.85
+      }
+    ],
+    "approach_heuristics": [
+      {
+        "id": "h_approach_001",
+        "signal": "multiple_files_mentioned",
+        "intuition": "needs_systematic_approach",
+        "confidence": 0.7
+      },
+      {
+        "id": "h_approach_002",
+        "signal": "uncertainty_language",
+        "intuition": "needs_options_presented",
+        "confidence": 0.65
+      },
+      {
+        "id": "h_approach_003",
+        "signal": "time_pressure_indicated",
+        "intuition": "needs_fastest_solution",
+        "confidence": 0.8
+      }
+    ],
+    "risk_heuristics": [
+      {
+        "id": "h_risk_001",
+        "signal": "production_mentioned",
+        "intuition": "high_stakes_caution",
+        "confidence": 0.9
+      },
+      {
+        "id": "h_risk_002",
+        "signal": "delete_or_remove",
+        "intuition": "destructive_operation",
+        "confidence": 0.95
+      },
+      {
+        "id": "h_risk_003",
+        "signal": "unfamiliar_technology",
+        "intuition": "knowledge_gap_risk",
+        "confidence": 0.6
+      }
+    ],
+    "next_heuristics": [
+      {
+        "id": "h_next_001",
+        "signal": "feature_implemented",
+        "intuition": "will_want_tests",
+        "confidence": 0.7
+      },
+      {
+        "id": "h_next_002",
+        "signal": "bug_fixed",
+        "intuition": "will_want_verification",
+        "confidence": 0.75
+      },
+      {
+        "id": "h_next_003",
+        "signal": "plan_discussed",
+        "intuition": "will_want_implementation",
+        "confidence": 0.8
+      }
+    ]
+  },
+  "intuition_log": [],
+  "calibration": {
+    "by_type": {
+      "intent": {
+        "predictions": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "approach": {
+        "predictions": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "risk": {
+        "predictions": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "next": {
+        "predictions": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "satisfaction": {
+        "predictions": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      }
+    },
+    "overall": {
+      "total_predictions": 0,
+      "correct_predictions": 0,
+      "accuracy": 0.0
+    }
+  },
+  "learning": {
+    "heuristic_weight_adjustment": true,
+    "new_heuristic_discovery": true,
+    "min_observations_for_new_heuristic": 5
+  }
+}
