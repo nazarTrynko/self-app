@@ -1,0 +1,255 @@
+/* BRUTALIST RAW - Anti-design as design */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background: #fff;
+    color: #000;
+    line-height: 1.4;
+    padding: 20px;
+    max-width: 100%;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+    border-bottom: 3px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: -0.05em;
+}
+
+.version {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.status {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    background: #000;
+    color: #fff;
+    padding: 2px 8px;
+}
+
+/* MAIN */
+main {
+    max-width: 1400px;
+}
+
+/* HERO */
+.hero {
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+}
+
+.manifesto {
+    font-size: 1.25rem;
+    max-width: 800px;
+    border-left: 5px solid #000;
+    padding-left: 15px;
+}
+
+/* HORIZONTAL RULES */
+hr {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 30px 0;
+}
+
+/* COLUMNS */
+.columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.columns article {
+    border: 1px solid #000;
+    padding: 15px;
+}
+
+.columns h2, .columns h3 {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+.columns p {
+    margin-bottom: 10px;
+}
+
+.columns em {
+    font-style: italic;
+}
+
+/* PRE/CODE */
+pre {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    background: #f0f0f0;
+    padding: 15px;
+    overflow-x: auto;
+    border: 1px solid #000;
+    white-space: pre;
+}
+
+/* MODES TABLE */
+.modes {
+    margin: 30px 0;
+}
+
+.modes h2 {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+td strong {
+    font-family: Arial, sans-serif;
+}
+
+/* FEATURES */
+.features {
+    margin: 30px 0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0;
+}
+
+.feature {
+    border: 1px solid #000;
+    padding: 20px;
+    margin: -1px 0 0 -1px;
+}
+
+.feature h3 {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 0.9rem;
+}
+
+/* AUDIENCE */
+.audience h2 {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* QUOTE */
+.quote {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.quote blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    border: 3px solid #000;
+    padding: 30px;
+    display: inline-block;
+    max-width: 600px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 3px solid #000;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* RESPONSIVE - MINIMAL */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    table {
+        font-size: 0.75rem;
+    }
+    
+    th, td {
+        padding: 5px;
+    }
+}
+
+/* NO ANIMATIONS. NO TRANSITIONS. RAW. */
+

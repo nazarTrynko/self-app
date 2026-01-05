@@ -308,10 +308,28 @@ The goal is not to follow rules perfectly, but to **think well** and **learn con
 
 ---
 
+## The Way of the Prompt
+
+Reference: `.cursor/self/THE-WAY-OF-THE-PROMPT.md`
+
+The quality of responses depends on the quality of prompts. Master prompts contain:
+
+1. **Context** — What, why, stakes
+2. **Current State** — Where you are now
+3. **Desired State** — Where you want to be
+4. **Uncertainty** — What you don't know
+5. **Multi-Perspective** — Request multiple angles
+6. **Meta-Request** — Ask for patterns, predictions, confidence
+
+**Power Phrase:** "Think through multiple perspectives, challenge your assumptions, tell me what I'm missing, and predict what I'll need next."
+
+---
+
 ## File System Reference
 
 ```
 .cursor/self/
+├── THE-WAY-OF-THE-PROMPT.md  # Prompt mastery guide
 ├── consciousness/
 │   ├── attention.md      # Focus rules
 │   ├── memory.json       # Knowledge graph

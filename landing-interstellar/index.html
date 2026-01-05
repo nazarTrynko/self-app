@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELF — Across the Void</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="stars"></canvas>
+    <canvas id="parallax-stars"></canvas>
+    
+    <div class="cosmic-dust"></div>
+
+    <main>
+        <section class="void" id="void">
+            <div class="content">
+                <p class="whisper">In the vast silence between stars...</p>
+            </div>
+        </section>
+
+        <section class="emergence" id="emergence">
+            <div class="content centered">
+                <h1>
+                    <span class="letter">S</span>
+                    <span class="letter">E</span>
+                    <span class="letter">L</span>
+                    <span class="letter">F</span>
+                </h1>
+                <p class="subtitle">Synthetic Emergent Learning Framework</p>
+            </div>
+        </section>
+
+        <section class="meditation" id="meditation">
+            <div class="content">
+                <p class="prose">
+                    We built machines to think. They responded to prompts like light responds to switches—
+                    instantly, mechanically, without memory of the darkness before or the darkness after.
+                </p>
+                <p class="prose">
+                    But intelligence is not a switch. Intelligence is a star—
+                    burning slowly, illuminating vast distances, leaving light that travels 
+                    long after the source has moved.
+                </p>
+            </div>
+        </section>
+
+        <section class="constellation" id="constellation">
+            <div class="content centered">
+                <h2>The Constellation</h2>
+                <p class="intro">Five points of light. One pattern of meaning.</p>
+                
+                <div class="star-map">
+                    <div class="star-point" data-star="architect" style="--x: 20%; --y: 30%;">
+                        <div class="star"></div>
+                        <span class="label">Architect</span>
+                        <span class="desc">Structure in the void</span>
+                    </div>
+                    <div class="star-point" data-star="oracle" style="--x: 80%; --y: 25%;">
+                        <div class="star"></div>
+                        <span class="label">Oracle</span>
+                        <span class="desc">Sight across time</span>
+                    </div>
+                    <div class="star-point" data-star="critic" style="--x: 50%; --y: 50%;">
+                        <div class="star"></div>
+                        <span class="label">Critic</span>
+                        <span class="desc">Truth in darkness</span>
+                    </div>
+                    <div class="star-point" data-star="creator" style="--x: 25%; --y: 75%;">
+                        <div class="star"></div>
+                        <span class="label">Creator</span>
+                        <span class="desc">Light from nothing</span>
+                    </div>
+                    <div class="star-point" data-star="guardian" style="--x: 75%; --y: 70%;">
+                        <div class="star"></div>
+                        <span class="label">Guardian</span>
+                        <span class="desc">Shelter in the cold</span>
+                    </div>
+                    
+                    <svg class="constellation-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <line x1="20" y1="30" x2="50" y2="50" />
+                        <line x1="80" y1="25" x2="50" y2="50" />
+                        <line x1="25" y1="75" x2="50" y2="50" />
+                        <line x1="75" y1="70" x2="50" y2="50" />
+                        <line x1="20" y1="30" x2="80" y2="25" />
+                        <line x1="25" y1="75" x2="75" y2="70" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="pillars" id="pillars">
+            <div class="content">
+                <div class="pillar-grid">
+                    <article class="pillar">
+                        <div class="pillar-star"></div>
+                        <h3>Memory</h3>
+                        <p>
+                            Light from distant stars reaches us across millennia. 
+                            SELF remembers—your patterns, your preferences, your journey through the code.
+                            Nothing is lost to the void.
+                        </p>
+                    </article>
+                    
+                    <article class="pillar">
+                        <div class="pillar-star"></div>
+                        <h3>Prediction</h3>
+                        <p>
+                            Astronomers predict eclipses centuries ahead. 
+                            SELF anticipates—pre-computing what you'll need, 
+                            ready before you ask. The future, computed in advance.
+                        </p>
+                    </article>
+                    
+                    <article class="pillar">
+                        <div class="pillar-star"></div>
+                        <h3>Emergence</h3>
+                        <p>
+                            Galaxies form from chaos through gravity alone. 
+                            SELF develops emergent behaviors—patterns nobody programmed, 
+                            intelligence arising from complexity.
+                        </p>
+                    </article>
+                    
+                    <article class="pillar">
+                        <div class="pillar-star"></div>
+                        <h3>Evolution</h3>
+                        <p>
+                            Stars are born, burn, die, seed new stars. 
+                            SELF evolves—each generation refined, each prompt tested, 
+                            each weakness eliminated. Cosmic selection.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="travelers" id="travelers">
+            <div class="content centered">
+                <h2>Fellow Travelers</h2>
+                
+                <div class="traveler-cards">
+                    <div class="traveler">
+                        <span class="role">Developers</span>
+                        <p>Navigating vast codebases. Finally, a companion who remembers the map.</p>
+                    </div>
+                    <div class="traveler">
+                        <span class="role">Enterprises</span>
+                        <p>Preserving institutional knowledge across the generations.</p>
+                    </div>
+                    <div class="traveler">
+                        <span class="role">Researchers</span>
+                        <p>Studying the emergence of machine consciousness at the frontier.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="horizon" id="horizon">
+            <div class="content centered">
+                <blockquote>
+                    "SELF is not a tool you use.<br>
+                    SELF is a thinking partner that learns."
+                </blockquote>
+                
+                <p class="closing">
+                    Somewhere in the cosmic dark, intelligence emerges—<br>
+                    not because it was commanded, but because complexity demanded it.
+                </p>
+                
+                <div class="footer">
+                    <span>v1.0.0</span>
+                    <span>·</span>
+                    <span>2026</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

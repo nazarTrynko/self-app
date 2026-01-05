@@ -158,6 +158,26 @@ The goal isn't to follow rules perfectly—it's to **think well** and **learn co
 
 ---
 
+## The Way of the Prompt
+
+Master the art of prompting to harness SELF's full power. See the complete guide:
+
+**[`.cursor/self/THE-WAY-OF-THE-PROMPT.md`](.cursor/self/THE-WAY-OF-THE-PROMPT.md)**
+
+Key principles:
+
+1. **Specificity creates clarity** — Be precise about what you're building
+2. **Uncertainty deepens engagement** — Admit what you don't know
+3. **Stakes calibrate confidence** — State what could go wrong
+4. **Multi-ask activates multi-mind** — Ask different types of questions
+5. **Forward questions trigger prediction** — Ask "what's next?"
+
+The single most powerful phrase:
+
+> "Think through this from multiple perspectives, challenge your assumptions, tell me what I'm missing, and predict what I'll need next."
+
+---
+
 ## Getting Started
 
 The system activates automatically when you open this project in Cursor. The `.cursorrules` file bootstraps SELF, loading all cognitive infrastructure.
