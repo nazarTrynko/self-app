@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0c0c0c">
+    <title>THE MANTRA — Words of Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <canvas id="mantra-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">33 / 35</span>
+    </nav>
+    
+    <div class="app-container">
+        <!-- Main Mantra View -->
+        <section id="mantra-screen" class="screen active">
+            <div class="screen-content">
+                <div class="mantra-header">
+                    <button id="menu-btn" class="icon-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="4" y1="6" x2="20" y2="6"/>
+                            <line x1="4" y1="12" x2="20" y2="12"/>
+                            <line x1="4" y1="18" x2="20" y2="18"/>
+                        </svg>
+                    </button>
+                    <span class="time-mode" id="time-mode">MORNING</span>
+                    <button id="add-btn" class="icon-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="mantra-display">
+                    <div class="mantra-swipe-area" id="swipe-area">
+                        <div class="mantra-card" id="mantra-card">
+                            <p class="mantra-text" id="mantra-text">I am exactly where I need to be.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="swipe-hint">
+                        <span>← Swipe for next →</span>
+                    </div>
+                </div>
+                
+                <div class="mantra-dots" id="mantra-dots"></div>
+                
+                <div class="mantra-actions">
+                    <button id="speak-btn" class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" y1="19" x2="12" y2="23"/>
+                            <line x1="8" y1="23" x2="16" y2="23"/>
+                        </svg>
+                        <span>Speak it</span>
+                    </button>
+                    <button id="favorite-btn" class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        <span>Save</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Add Mantra Screen -->
+        <section id="add-screen" class="screen">
+            <div class="screen-content add-content">
+                <div class="add-header">
+                    <button id="close-add" class="icon-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                    <h2>New Mantra</h2>
+                    <div style="width: 40px;"></div>
+                </div>
+                
+                <div class="add-form">
+                    <textarea id="mantra-input" placeholder="Write your affirmation...&#10;&#10;Start with 'I am', 'I have', or 'I choose'"></textarea>
+                    
+                    <div class="category-selector">
+                        <span class="category-label">Time:</span>
+                        <div class="category-options" id="time-options">
+                            <button class="category-btn active" data-time="morning">Morning</button>
+                            <button class="category-btn" data-time="evening">Evening</button>
+                            <button class="category-btn" data-time="anytime">Anytime</button>
+                        </div>
+                    </div>
+                    
+                    <button id="save-mantra" class="primary-btn" disabled>Save Mantra</button>
+                </div>
+                
+                <div class="starter-mantras">
+                    <h3>Need inspiration?</h3>
+                    <div class="starters-grid" id="starters-grid"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Menu Screen -->
+        <section id="menu-screen" class="screen">
+            <div class="screen-content menu-content">
+                <div class="menu-header">
+                    <h2>Your Mantras</h2>
+                    <button id="close-menu" class="icon-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="morning">Morning</button>
+                    <button class="filter-btn" data-filter="evening">Evening</button>
+                    <button class="filter-btn" data-filter="favorites">♥ Saved</button>
+                </div>
+                
+                <div class="mantras-list" id="mantras-list"></div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

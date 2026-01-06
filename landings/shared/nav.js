@@ -9,7 +9,7 @@
     // Collection metadata
     const collections = {
         main: { name: 'SELF Landings', count: 10, accent: '#8b5cf6' },
-        masters: { name: 'Masterpieces', count: 10, accent: '#c9a227' },
+        masters: { name: 'Masterpieces', count: 25, accent: '#c9a227' },
         revelations: { name: 'Revelations', count: 10, accent: '#14b8a6' },
         ph: { name: 'Product Ideas', count: 23, accent: '#f472b6' }
     };
@@ -68,22 +68,22 @@
                     <a href="${base}" class="self-nav-link ${collection === 'main' ? 'active' : ''}" data-collection="main">
                         <span class="self-nav-link-indicator"></span>
                         <span>Landings</span>
-                        <span class="self-nav-link-count">10</span>
+                        <span class="self-nav-link-count">${collections.main.count}</span>
                     </a>
                     <a href="${base}masters/" class="self-nav-link ${collection === 'masters' ? 'active' : ''}" data-collection="masters">
                         <span class="self-nav-link-indicator"></span>
                         <span>Masterpieces</span>
-                        <span class="self-nav-link-count">10</span>
+                        <span class="self-nav-link-count">${collections.masters.count}</span>
                     </a>
                     <a href="${base}revelations/" class="self-nav-link ${collection === 'revelations' ? 'active' : ''}" data-collection="revelations">
                         <span class="self-nav-link-indicator"></span>
                         <span>Revelations</span>
-                        <span class="self-nav-link-count">10</span>
+                        <span class="self-nav-link-count">${collections.revelations.count}</span>
                     </a>
                     <a href="${base}ph/" class="self-nav-link ${collection === 'ph' ? 'active' : ''}" data-collection="ph">
                         <span class="self-nav-link-indicator"></span>
                         <span>Product Ideas</span>
-                        <span class="self-nav-link-count">23</span>
+                        <span class="self-nav-link-count">${collections.ph.count}</span>
                     </a>
                 </div>
                 

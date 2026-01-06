@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE WITNESS — You Are Not Your Thoughts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="witness-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Platforms</a>
+        <span class="nav-number">24 / 35</span>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Metacognitive Awareness</p>
+                <h1 class="hero-title">THE WITNESS</h1>
+                <p class="hero-subtitle">
+                    You are not your thoughts.<br>
+                    You are what watches them.
+                </p>
+            </div>
+        </section>
+
+        <section class="revelation">
+            <div class="revelation-content">
+                <blockquote>
+                    "Behind the thinker is the one who observes the thinking.<br>
+                    Behind the emotions is the one who notices them arise.<br>
+                    That observer is who you really are."
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="observer-practice">
+            <h2 class="section-title">Develop The Observer</h2>
+            <p class="section-intro">Label your thoughts as they arise. The act of naming separates you from the thought itself.</p>
+            
+            <div class="practice-container">
+                <div class="thought-stream" id="thought-stream">
+                    <div class="stream-prompt">
+                        <p>What thought just arose? Type it, then categorize it.</p>
+                    </div>
+                    
+                    <div class="thought-input-area">
+                        <textarea id="thought-input" placeholder="The thought I just had was..."></textarea>
+                        
+                        <div class="thought-labels">
+                            <p class="labels-prompt">This thought is:</p>
+                            <div class="label-buttons">
+                                <button class="label-btn" data-label="planning">Planning</button>
+                                <button class="label-btn" data-label="judging">Judging</button>
+                                <button class="label-btn" data-label="worrying">Worrying</button>
+                                <button class="label-btn" data-label="remembering">Remembering</button>
+                                <button class="label-btn" data-label="wanting">Wanting</button>
+                                <button class="label-btn" data-label="resisting">Resisting</button>
+                                <button class="label-btn" data-label="analyzing">Analyzing</button>
+                                <button class="label-btn" data-label="imagining">Imagining</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="labeled-thoughts" id="labeled-thoughts">
+                    <!-- Labeled thoughts appear here -->
+                </div>
+
+                <button class="analyze-btn" id="analyze-btn" style="display: none;">Witness Your Patterns</button>
+            </div>
+        </section>
+
+        <section class="witness-analysis" id="witness-analysis" style="display: none;">
+            <h2 class="section-title">What The Witness Sees</h2>
+            
+            <div class="analysis-visualization">
+                <canvas id="pattern-canvas"></canvas>
+            </div>
+
+            <div class="analysis-cards">
+                <div class="analysis-card pattern-card">
+                    <h3>Your Thought Patterns</h3>
+                    <p id="pattern-description">Analyzing the shape of your thinking...</p>
+                </div>
+                
+                <div class="analysis-card insight-card">
+                    <h3>The Witness Speaks</h3>
+                    <p id="witness-insight" class="insight-text">Loading insight...</p>
+                </div>
+            </div>
+
+            <div class="witness-truth">
+                <p>The fact that you could observe and label these thoughts proves you are not the thoughts themselves. The witness is always present, always stable, always watching. Return to the witness when you're lost in thinking.</p>
+            </div>
+
+            <button class="reset-btn" id="reset-btn">Continue Observing</button>
+        </section>
+
+        <section class="thought-categories">
+            <h2 class="section-title">The Eight Thought Types</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <span class="category-icon">◎</span>
+                    <h3>Planning</h3>
+                    <p>Future-oriented thoughts about what to do, how to prepare, anticipating scenarios. The mind's attempt to control what hasn't happened.</p>
+                </div>
+                
+                <div class="category-card">
+                    <span class="category-icon">◈</span>
+                    <h3>Judging</h3>
+                    <p>Evaluations of yourself, others, situations as good/bad, right/wrong. The mind's sorting mechanism, often harsh.</p>
+                </div>
+                
+                <div class="category-card">
+                    <span class="category-icon">◇</span>
+                    <h3>Worrying</h3>
+                    <p>Anxious projections about what could go wrong. The mind's alarm system, often false-triggering.</p>
+                </div>
+                
+                <div class="category-card">
+                    <span class="category-icon">◆</span>
+                    <h3>Remembering</h3>
+                    <p>Recollections of the past—replays, regrets, nostalgia. The mind's archive, sometimes stuck on repeat.</p>
+                </div>
+                
+                <div class="category-card">
+                    <span class="category-icon">◉</span>
+                    <h3>Wanting</h3>
+                    <p>Desires, cravings, wishes for things to be different. The mind's hunger, never fully satisfied.</p>
+                </div>
+                
+                <div class="category-card">
+                    <span class="category-icon">◌</span>
+                    <h3>Resisting</h3>
+                    <p>Pushing against what is, denial, refusal to accept reality. The mind's friction with the present.</p>
+                </div>
+                
+                <div class="category-card">
+                    <span class="category-icon">◯</span>
+                    <h3>Analyzing</h3>
+                    <p>Breaking things down, seeking to understand, figuring out. The mind's dissection tools.</p>
+                </div>
+                
+                <div class="category-card">
+                    <span class="category-icon">◐</span>
+                    <h3>Imagining</h3>
+                    <p>Creative scenarios, daydreams, what-ifs. The mind's playground, sometimes an escape.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-grid">
+                <article class="philosophy-card">
+                    <h3>The Separation</h3>
+                    <p>
+                        Most people are fused with their thoughts. They believe they ARE the voice in their head. 
+                        But the simple act of noticing a thought proves there's a "you" separate from it. 
+                        Who is doing the noticing?
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Inversion</h3>
+                    <p>
+                        Every other tool helps you think better. 
+                        The Witness helps you see that you don't have to think at all. 
+                        The observer is always there, beneath the noise, 
+                        waiting to be discovered.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Practice</h3>
+                    <p>
+                        For the next hour, label every thought that arises. 
+                        "Planning." "Judging." "Worrying." 
+                        The label creates distance. The distance creates freedom. 
+                        You are not your thoughts.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation">
+            <div class="meditation-content">
+                <p class="meditation-prompt">
+                    Right now, you have a thought. 
+                    Notice it. 
+                    Now notice that you noticed it. 
+                    The one who noticed—that's not the thought. 
+                    That's the witness. 
+                    You've been there all along, watching.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../25/" class="next-platform">
+            <span class="next-label">Next Platform</span>
+            <span class="next-name">THE DEBT →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

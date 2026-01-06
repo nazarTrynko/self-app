@@ -178,6 +178,21 @@ The single most powerful phrase:
 
 ---
 
+## Quick Start
+
+### Run the Project
+
+```bash
+# From project root
+python3 -m http.server 8080
+```
+
+Then open [http://localhost:8000](http://localhost:8000) in your browser.
+
+> **Note:** The `landings/` directory contains the entire web project — all 43+ landing pages, the main showcase, and shared assets.
+
+---
+
 ## Getting Started
 
 The system activates automatically when you open this project in Cursor. The `.cursorrules` file bootstraps SELF, loading all cognitive infrastructure.

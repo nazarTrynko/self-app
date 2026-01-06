@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE PRICE — What Did You Pay For Your Current Life?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="price-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Platforms</a>
+        <span class="nav-number">22 / 35</span>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Decision Cost Accounting</p>
+                <h1 class="hero-title">THE PRICE</h1>
+                <p class="hero-subtitle">
+                    Everything costs something.<br>
+                    What did you pay for your current life?
+                </p>
+            </div>
+        </section>
+
+        <section class="revelation">
+            <div class="revelation-content">
+                <blockquote>
+                    "Every 'yes' is a thousand 'no's.<br>
+                    Every path taken is infinite paths abandoned.<br>
+                    What did you trade to become who you are?"
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="price-calculator">
+            <h2 class="section-title">Calculate The True Cost</h2>
+            <p class="section-intro">Choose a major decision from your life. We'll reveal what you truly paid.</p>
+            
+            <div class="calculator-container">
+                <div class="decision-input">
+                    <label>What decision are you examining?</label>
+                    <input type="text" id="decision-input" placeholder="e.g., Took this job, Ended that relationship, Moved to this city...">
+                </div>
+
+                <div class="cost-categories" id="cost-categories" style="display: none;">
+                    <h3 class="categories-title">What did you trade?</h3>
+                    
+                    <div class="cost-category">
+                        <div class="category-header">
+                            <span class="category-icon">◷</span>
+                            <span class="category-name">Time</span>
+                        </div>
+                        <p class="category-question">How many hours, months, or years did this cost you? What could you have done with that time?</p>
+                        <textarea id="cost-time" placeholder="The time I invested..."></textarea>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="category-header">
+                            <span class="category-icon">◈</span>
+                            <span class="category-name">Relationships</span>
+                        </div>
+                        <p class="category-question">What relationships were sacrificed, strained, or never formed because of this choice?</p>
+                        <textarea id="cost-relationships" placeholder="The connections I lost or never made..."></textarea>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="category-header">
+                            <span class="category-icon">◎</span>
+                            <span class="category-name">Identity</span>
+                        </div>
+                        <p class="category-question">What version of yourself did you have to abandon? What traits did you suppress?</p>
+                        <textarea id="cost-identity" placeholder="The part of myself I gave up..."></textarea>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="category-header">
+                            <span class="category-icon">◇</span>
+                            <span class="category-name">Potential</span>
+                        </div>
+                        <p class="category-question">What paths closed forever? What could-have-beens did you extinguish?</p>
+                        <textarea id="cost-potential" placeholder="The futures I can no longer access..."></textarea>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="category-header">
+                            <span class="category-icon">◉</span>
+                            <span class="category-name">Energy</span>
+                        </div>
+                        <p class="category-question">What emotional, physical, or mental energy was depleted? What stress did you absorb?</p>
+                        <textarea id="cost-energy" placeholder="The energy I spent..."></textarea>
+                    </div>
+
+                    <button class="calculate-btn" id="calculate-btn">Reveal The Price</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="price-ledger" id="price-ledger" style="display: none;">
+            <h2 class="section-title">Your Price Ledger</h2>
+            
+            <div class="ledger-visualization">
+                <canvas id="ledger-canvas"></canvas>
+            </div>
+
+            <div class="ledger-cards">
+                <div class="ledger-card decision-card">
+                    <h3>The Decision</h3>
+                    <p id="ledger-decision">Loading...</p>
+                </div>
+                
+                <div class="ledger-card costs-card">
+                    <h3>The Total Cost</h3>
+                    <div id="ledger-costs">
+                        <!-- Costs will be populated -->
+                    </div>
+                </div>
+                
+                <div class="ledger-card verdict-card">
+                    <h3>The Verdict</h3>
+                    <p id="ledger-verdict" class="verdict-text">Calculating the return on your investment...</p>
+                </div>
+            </div>
+
+            <button class="new-btn" id="new-btn">Examine Another Decision</button>
+        </section>
+
+        <section class="hidden-costs">
+            <h2 class="section-title">The Costs We Never Count</h2>
+            
+            <div class="costs-grid">
+                <div class="hidden-cost-card">
+                    <h3>The Road Not Taken</h3>
+                    <p>Every choice eliminates infinite alternatives. The job you took cost you every other job. The person you married cost you every other partnership. We never mourn the unlived lives.</p>
+                </div>
+                
+                <div class="hidden-cost-card">
+                    <h3>The Compound Cost</h3>
+                    <p>Small decisions compound. The hour spent scrolling today costs you the book you won't write this year. We underestimate how the small trades add up to a life.</p>
+                </div>
+                
+                <div class="hidden-cost-card">
+                    <h3>The Identity Tax</h3>
+                    <p>Every role you adopt costs parts of yourself you must suppress. The professional you costs the playful you. The responsible one costs the wild one. Who did you bury?</p>
+                </div>
+                
+                <div class="hidden-cost-card">
+                    <h3>The Adaptation Fee</h3>
+                    <p>Humans adapt to anything—luxury or deprivation. But adaptation has a price: you forget what you traded. The cost becomes invisible, but it was still paid.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-grid">
+                <article class="philosophy-card">
+                    <h3>True Accounting</h3>
+                    <p>
+                        We track money obsessively but ignore the currencies that matter more: 
+                        time, energy, relationships, identity, potential. 
+                        True wealth accounting includes all the ledgers.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Inversion</h3>
+                    <p>
+                        Every other tool tracks what you gain. 
+                        The Price tracks what you spend—the hidden costs of every decision. 
+                        Because a choice isn't free just because no invoice arrives.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>No Regret</h3>
+                    <p>
+                        This isn't about regret—it's about clarity. 
+                        Understanding what you paid helps you decide what you're willing to pay next. 
+                        Consciousness about cost is consciousness about value.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation">
+            <div class="meditation-content">
+                <p class="meditation-prompt">
+                    Your current life cost everything you didn't become. 
+                    Every comfort was bought with a risk not taken. 
+                    Every certainty was purchased with a wonder unexplored. 
+                    Was it worth it? And what are you willing to pay next?
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../23/" class="next-platform">
+            <span class="next-label">Next Platform</span>
+            <span class="next-name">THE SILENCE →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

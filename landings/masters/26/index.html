@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE LOOP — You Are Trapped In Patterns You Cannot See</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="loop-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Platforms</a>
+        <span class="nav-number">26 / 35</span>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Recursive Life Patterns</p>
+                <h1 class="hero-title">THE LOOP</h1>
+                <p class="hero-subtitle">
+                    You are trapped in patterns you cannot see.<br>
+                    Same situations. Different faces.
+                </p>
+            </div>
+        </section>
+
+        <section class="revelation">
+            <div class="revelation-content">
+                <blockquote>
+                    "The partners change but the dynamic doesn't.<br>
+                    The jobs change but the frustration recurs.<br>
+                    Until you see the loop, you will repeat it."
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="pattern-mapper">
+            <h2 class="section-title">Map Your Loops</h2>
+            <p class="section-intro">Describe situations that keep recurring in your life. Different people, same pattern.</p>
+            
+            <div class="mapper-container">
+                <div class="pattern-category">
+                    <div class="category-header">
+                        <span class="category-icon">◎</span>
+                        <h3>Relationship Patterns</h3>
+                    </div>
+                    <p class="category-hint">Same type of partner? Same conflicts? Same endings?</p>
+                    <textarea id="pattern-relationships" placeholder="I keep finding myself in relationships where... The same thing always happens when..."></textarea>
+                </div>
+
+                <div class="pattern-category">
+                    <div class="category-header">
+                        <span class="category-icon">◇</span>
+                        <h3>Work Patterns</h3>
+                    </div>
+                    <p class="category-hint">Same frustrations? Same conflicts with authority? Same reasons for leaving?</p>
+                    <textarea id="pattern-work" placeholder="In every job, I end up... My bosses always seem to... I always leave because..."></textarea>
+                </div>
+
+                <div class="pattern-category">
+                    <div class="category-header">
+                        <span class="category-icon">◈</span>
+                        <h3>Emotional Patterns</h3>
+                    </div>
+                    <p class="category-hint">Same triggers? Same reactions? Same emotional cycles?</p>
+                    <textarea id="pattern-emotional" placeholder="I always react with... When this happens, I feel... I keep returning to the feeling of..."></textarea>
+                </div>
+
+                <div class="pattern-category">
+                    <div class="category-header">
+                        <span class="category-icon">◉</span>
+                        <h3>Behavior Patterns</h3>
+                    </div>
+                    <p class="category-hint">Self-sabotage? Avoidance? Starting but not finishing?</p>
+                    <textarea id="pattern-behavior" placeholder="I always seem to... Just when things get good, I... I can never seem to..."></textarea>
+                </div>
+
+                <button class="analyze-btn" id="analyze-btn">Reveal The Loops</button>
+            </div>
+        </section>
+
+        <section class="loop-analysis" id="loop-analysis" style="display: none;">
+            <h2 class="section-title">Your Loop Structure</h2>
+            
+            <div class="analysis-visualization">
+                <canvas id="structure-canvas"></canvas>
+            </div>
+
+            <div class="analysis-cards">
+                <div class="analysis-card loop-card">
+                    <h3>The Core Loop</h3>
+                    <p id="core-loop">Analyzing your patterns...</p>
+                </div>
+                
+                <div class="analysis-card trigger-card">
+                    <h3>The Trigger</h3>
+                    <p id="loop-trigger">Identifying what starts the cycle...</p>
+                </div>
+                
+                <div class="analysis-card exit-card">
+                    <h3>The Exit Point</h3>
+                    <p id="exit-point" class="exit-text">Finding where the loop can be broken...</p>
+                </div>
+            </div>
+
+            <div class="break-section">
+                <h3>Breaking The Loop</h3>
+                <p class="break-intro">Every loop has a point where a different choice is possible. This is yours:</p>
+                <p class="break-prompt" id="break-prompt">Loading intervention point...</p>
+            </div>
+
+            <button class="reset-btn" id="reset-btn">Map More Patterns</button>
+        </section>
+
+        <section class="common-loops">
+            <h2 class="section-title">Common Life Loops</h2>
+            
+            <div class="loops-grid">
+                <div class="loop-card">
+                    <h3>The Rescuer Loop</h3>
+                    <p>You find broken people to fix. They never fully heal. You feel needed but drained. You find another broken person.</p>
+                </div>
+                
+                <div class="loop-card">
+                    <h3>The Sabotage Loop</h3>
+                    <p>Things start going well. Success feels close. You do something to undermine it. You start over. Things start going well.</p>
+                </div>
+                
+                <div class="loop-card">
+                    <h3>The Conflict Loop</h3>
+                    <p>You enter a situation. You feel disrespected. You react strongly. The relationship breaks. You enter a new situation.</p>
+                </div>
+                
+                <div class="loop-card">
+                    <h3>The Perfectionism Loop</h3>
+                    <p>You start a project. It must be perfect. It can't be perfect. You abandon it. You start a new project.</p>
+                </div>
+                
+                <div class="loop-card">
+                    <h3>The Distance Loop</h3>
+                    <p>You get close to someone. Intimacy triggers fear. You create distance. They pull away. You want them back.</p>
+                </div>
+                
+                <div class="loop-card">
+                    <h3>The Burnout Loop</h3>
+                    <p>You overcommit. You exhaust yourself. You crash. You recover. You forget the lesson. You overcommit.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-grid">
+                <article class="philosophy-card">
+                    <h3>The Recursion</h3>
+                    <p>
+                        Life doesn't just repeat—it recurses. The same pattern plays out at different scales, 
+                        with different characters, but the same underlying structure. 
+                        You are both the actor and the playwright.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Inversion</h3>
+                    <p>
+                        Every other tool helps you do new things. 
+                        The Loop helps you see you're doing the same things. 
+                        Progress isn't adding more—it's seeing the recursion 
+                        and choosing to exit.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Liberation</h3>
+                    <p>
+                        Seeing the loop is the first step to exiting it. 
+                        You can't break a pattern you don't know you're in. 
+                        Awareness is the interruption. 
+                        Different choices become possible.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation">
+            <div class="meditation-content">
+                <p class="meditation-prompt">
+                    Think of something that keeps happening to you. 
+                    Now remove the other people from the story. 
+                    Remove the circumstances. 
+                    What remains is the pattern you bring to every situation. 
+                    That's the loop. 
+                    That's what you can change.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../27/" class="next-platform">
+            <span class="next-label">Next Platform</span>
+            <span class="next-name">THE HARVEST →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

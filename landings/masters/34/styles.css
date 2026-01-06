@@ -1,0 +1,543 @@
+/* THE PULSE - Emotional Check-in Tracker */
+
+:root {
+    --bg-primary: #0a0a0e;
+    --bg-secondary: #111116;
+    --bg-card: #18181d;
+    --text-primary: #eaeaea;
+    --text-secondary: #7a7a7a;
+    --text-muted: #4a4a4a;
+    
+    /* Emotion colors */
+    --positive: #7cb88c;
+    --negative: #b87c7c;
+    --neutral: #8a8ab8;
+    --accent: #8ab8b8;
+    
+    --border: rgba(255, 255, 255, 0.06);
+    
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Work Sans', -apple-system, sans-serif;
+    
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    touch-action: manipulation;
+}
+
+#pulse-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+/* Navigation */
+.app-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
+}
+
+.nav-back {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.nav-back:hover, .nav-back:active {
+    opacity: 1;
+}
+
+.nav-number {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+}
+
+.app-container {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
+/* Screens */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+    padding-top: calc(16px + var(--safe-top));
+    padding-bottom: calc(20px + var(--safe-bottom));
+    overflow-y: auto;
+}
+
+.screen.active {
+    display: flex;
+    opacity: 1;
+}
+
+.screen-content {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/* Header */
+.pulse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.pulse-time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.icon-btn:active {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-btn.small {
+    width: 36px;
+    height: 36px;
+}
+
+.icon-btn.small svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Prompt */
+.pulse-prompt {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.pulse-prompt h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.pulse-prompt p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Emotion Grid */
+.emotion-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    flex: 1;
+}
+
+.emotion-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emotion-btn:active {
+    transform: scale(0.95);
+    background: var(--bg-card);
+}
+
+.emotion-btn[data-valence="positive"]:active {
+    border-color: var(--positive);
+    box-shadow: 0 0 20px rgba(124, 184, 140, 0.2);
+}
+
+.emotion-btn[data-valence="negative"]:active {
+    border-color: var(--negative);
+    box-shadow: 0 0 20px rgba(184, 124, 124, 0.2);
+}
+
+.emotion-btn[data-valence="neutral"]:active {
+    border-color: var(--neutral);
+    box-shadow: 0 0 20px rgba(138, 138, 184, 0.2);
+}
+
+.emotion-emoji {
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.emotion-label {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Last check-in */
+.last-checkin {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.last-checkin strong {
+    color: var(--text-secondary);
+}
+
+/* Confirmation Screen */
+.confirm-content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.confirm-animation {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 24px;
+}
+
+.confirm-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    animation: ripple-out 1s ease-out;
+}
+
+@keyframes ripple-out {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.confirm-emoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    animation: pop-in 0.4s ease;
+}
+
+@keyframes pop-in {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    70% { transform: translate(-50%, -50%) scale(1.2); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.confirm-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.confirm-message {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+/* Optional note */
+.optional-note {
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.note-toggle {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 8px 16px;
+}
+
+.note-toggle:hover {
+    color: var(--text-secondary);
+}
+
+.note-input-area {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.note-input-area.hidden {
+    display: none;
+}
+
+#note-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    resize: none;
+    outline: none;
+}
+
+#note-input:focus {
+    border-color: var(--accent);
+}
+
+.save-note-btn {
+    align-self: flex-end;
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--accent);
+    border: none;
+    border-radius: 14px;
+    color: var(--bg-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+/* History Screen */
+.history-content {
+    justify-content: flex-start;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.history-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* Pulse Visualization */
+.pulse-visualization {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+#pattern-canvas {
+    width: 100%;
+    height: 100px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.pulse-stats {
+    display: flex;
+    justify-content: space-around;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* History List */
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.empty-history {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 20px;
+    font-size: 0.9rem;
+}
+
+.history-day {
+    margin-bottom: 20px;
+}
+
+.history-day-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+}
+
+.history-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-entry {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--bg-card);
+    border-radius: 10px;
+}
+
+.history-emoji {
+    font-size: 1.25rem;
+}
+
+.history-details {
+    flex: 1;
+}
+
+.history-emotion {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    text-transform: capitalize;
+}
+
+.history-time {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.history-note {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* Desktop */
+@media (min-width: 480px) {
+    .emotion-grid {
+        gap: 12px;
+    }
+    
+    .emotion-btn {
+        padding: 20px 12px;
+    }
+    
+    .emotion-emoji {
+        font-size: 2rem;
+    }
+    
+    .emotion-label {
+        font-size: 0.7rem;
+    }
+}
+
