@@ -16,6 +16,8 @@
       --text: #fafafa;
       --text-muted: #71717a;
       --accent: #a855f7;
+      --accent-pink: #ec4899;
+      --accent-orange: #f97316;
     }
     
     body {
@@ -23,12 +25,32 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Particle Canvas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Main Content */
+    .main-content {
+      position: relative;
+      z-index: 1;
     }
     
     .header {
       text-align: center;
       padding: 4rem 1.5rem 3rem;
       border-bottom: 1px solid var(--border);
+      position: relative;
     }
     
     .header h1 {
@@ -47,6 +69,158 @@
       max-width: 500px;
       margin: 0 auto;
     }
+
+    /* Stats Dashboard */
+    .stats-dashboard {
+      padding: 2rem 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: rgba(24, 24, 27, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-pink), var(--accent-orange));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.2);
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Search & Filter */
+    .search-filter-section {
+      padding: 2rem 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .search-bar {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem;
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .filter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .filter-chip {
+      padding: 0.5rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-chip:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .filter-chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .clear-filters {
+      margin-left: auto;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .clear-filters:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .results-count {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
     
     .gallery {
       display: grid;
@@ -55,6 +229,7 @@
       padding: 3rem 1.5rem;
       max-width: 1400px;
       margin: 0 auto;
+      perspective: 1000px;
     }
     
     .product-card {
@@ -62,13 +237,26 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      position: relative;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
     }
-    
-    .product-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.1);
+
+    .product-card.visible {
+      opacity: 1;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     .card-preview {
@@ -90,6 +278,11 @@
     .card-icon {
       font-size: 3rem;
       z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
     }
     
     .card-content {
@@ -133,16 +326,22 @@
       border-radius: 8px;
       font-size: 0.8125rem;
       font-weight: 600;
-      transition: background 0.2s ease;
+      transition: all 0.2s ease;
     }
     
     .card-link:hover {
       background: #9333ea;
+      transform: translateX(4px);
     }
     
     .card-link svg {
       width: 14px;
       height: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .card-link:hover svg {
+      transform: translateX(2px);
     }
     
     /* Theme colors for preview backgrounds */
@@ -158,11 +357,67 @@
     .theme-gold { background: linear-gradient(135deg, #09090b, #d4a853); }
     .theme-terminal { background: linear-gradient(135deg, #0a0a0a, #22c55e); }
     .theme-deepblue { background: linear-gradient(135deg, #0c1929, #3b82f6); }
+
+    /* Preview Overlay */
+    .preview-overlay {
+      position: fixed;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      max-width: 300px;
+    }
+
+    .preview-overlay.visible {
+      opacity: 1;
+    }
+
+    .preview-card {
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .preview-theme {
+      height: 80px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .preview-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .preview-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 100px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: var(--accent);
+      width: fit-content;
+    }
+
+    .preview-category {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
     
     .footer {
       text-align: center;
       padding: 2rem;
       border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
     }
     
     .footer p {
@@ -174,232 +429,111 @@
       color: var(--accent);
     }
     
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
+      .stats-dashboard {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .filter-chips {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .clear-filters {
+        margin-left: 0;
+        margin-top: 0.5rem;
+      }
+
       .gallery {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-dashboard {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <h1>13 Product Hunt Ideas</h1>
-    <p>A curated collection of micro-SaaS landing pages, ready for your next launch.</p>
-  </header>
+  <canvas id="particle-canvas"></canvas>
 
-  <main class="gallery">
-    <!-- 1. PageDoctor -->
-    <article class="product-card">
-      <div class="card-preview theme-blue">
-        <span class="card-icon">🩺</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">95% Confidence</span>
-        <h2 class="card-title">PageDoctor</h2>
-        <p class="card-tagline">Your website's complete health check. 5 diagnostic modes tell you exactly what to fix.</p>
-        <a href="01-pagedoctor/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
+  <div class="main-content">
+    <header class="header">
+      <h1>13 Product Hunt Ideas</h1>
+      <p>A curated collection of micro-SaaS landing pages, ready for your next launch.</p>
+    </header>
 
-    <!-- 2. ScopeGuard -->
-    <article class="product-card">
-      <div class="card-preview theme-green">
-        <span class="card-icon">🛡️</span>
+    <!-- Stats Dashboard -->
+    <section class="stats-dashboard" id="statsDashboard">
+      <div class="stat-card">
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-label">Total Products</div>
       </div>
-      <div class="card-content">
-        <span class="card-badge">92% Confidence</span>
-        <h2 class="card-title">ScopeGuard</h2>
-        <p class="card-tagline">Track every "small change" clients ask for. Document scope creep as it happens.</p>
-        <a href="02-scopeguard/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
+      <div class="stat-card">
+        <div class="stat-value" id="statAvgConfidence">0%</div>
+        <div class="stat-label">Avg Confidence</div>
       </div>
-    </article>
+      <div class="stat-card">
+        <div class="stat-value" id="statTopCategory">-</div>
+        <div class="stat-label">Top Category</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statCategories">0</div>
+        <div class="stat-label">Categories</div>
+      </div>
+    </section>
 
-    <!-- 3. ConvertFix -->
-    <article class="product-card">
-      <div class="card-preview theme-red">
-        <span class="card-icon">🔍</span>
+    <!-- Search & Filter -->
+    <section class="search-filter-section">
+      <div class="search-bar">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search products by name, tagline, or tags...">
       </div>
-      <div class="card-content">
-        <span class="card-badge">93% Confidence</span>
-        <h2 class="card-title">ConvertFix</h2>
-        <p class="card-tagline">AI analyzes your landing page and tells you exactly what to fix. Stop guessing.</p>
-        <a href="03-convertfix/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
+      <div class="filter-chips">
+        <button class="filter-chip" data-filter="confidence" data-value="95%+">95%+</button>
+        <button class="filter-chip" data-filter="confidence" data-value="90-95%">90-95%</button>
+        <button class="filter-chip" data-filter="confidence" data-value="85-90%">85-90%</button>
+        <button class="filter-chip" data-filter="confidence" data-value="80-85%">80-85%</button>
+        <button class="filter-chip" data-filter="category" data-value="all">All Categories</button>
+        <button class="clear-filters" id="clearFilters">Clear Filters</button>
       </div>
-    </article>
+      <div class="results-count" id="resultsCount"></div>
+    </section>
 
-    <!-- 4. QuoteCalc -->
-    <article class="product-card">
-      <div class="card-preview theme-blue">
-        <span class="card-icon">🧮</span>
+    <!-- Preview Overlay -->
+    <div class="preview-overlay" id="previewOverlay">
+      <div class="preview-card">
+        <div class="preview-theme" id="previewTheme"></div>
+        <div class="preview-info">
+          <span class="preview-badge" id="previewBadge"></span>
+          <div class="preview-category" id="previewCategory"></div>
+        </div>
       </div>
-      <div class="card-content">
-        <span class="card-badge">91% Confidence</span>
-        <h2 class="card-title">QuoteCalc</h2>
-        <p class="card-tagline">Turn client requests into professional quotes in 60 seconds with AI.</p>
-        <a href="04-quotecalc/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
+    </div>
 
-    <!-- 5. ShipCheck -->
-    <article class="product-card">
-      <div class="card-preview theme-orange">
-        <span class="card-icon">🚀</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">90% Confidence</span>
-        <h2 class="card-title">ShipCheck</h2>
-        <p class="card-tagline">The Product Hunt launch checklist. Everything you need to nail launch day.</p>
-        <a href="05-shipcheck/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
+    <main class="gallery" id="gallery">
+      <!-- Cards will be dynamically generated by JavaScript -->
+    </main>
 
-    <!-- 6. ClientSafe -->
-    <article class="product-card">
-      <div class="card-preview theme-teal">
-        <span class="card-icon">🔐</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">92% Confidence</span>
-        <h2 class="card-title">ClientSafe</h2>
-        <p class="card-tagline">Deliverables unlock when payment clears. No more chasing invoices.</p>
-        <a href="06-clientsafe/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
+    <footer class="footer">
+      <p>Built with the <a href="../.cursor/self/prompts/ideation-engine-v3.md">Ideation Engine v3.0</a> — Part of SELF Framework</p>
+    </footer>
+  </div>
 
-    <!-- 7. FeedbackFrame -->
-    <article class="product-card">
-      <div class="card-preview theme-purple">
-        <span class="card-icon">🎨</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">88% Confidence</span>
-        <h2 class="card-title">FeedbackFrame</h2>
-        <p class="card-tagline">Get structured design feedback that actually helps. No more "make it pop".</p>
-        <a href="07-feedbackframe/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- 8. WaitlistKit -->
-    <article class="product-card">
-      <div class="card-preview theme-yellow">
-        <span class="card-icon">📋</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">89% Confidence</span>
-        <h2 class="card-title">WaitlistKit</h2>
-        <p class="card-tagline">Launch-ready waitlist pages with referral mechanics in 5 minutes.</p>
-        <a href="08-waitlistkit/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- 9. ColdOpen -->
-    <article class="product-card">
-      <div class="card-preview theme-coral">
-        <span class="card-icon">💌</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">86% Confidence</span>
-        <h2 class="card-title">ColdOpen</h2>
-        <p class="card-tagline">AI-personalized cold email openers that actually get replies.</p>
-        <a href="09-coldopen/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- 10. PitchPolish -->
-    <article class="product-card">
-      <div class="card-preview theme-gold">
-        <span class="card-icon">🎤</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">85% Confidence</span>
-        <h2 class="card-title">PitchPolish</h2>
-        <p class="card-tagline">AI grills your startup pitch so investors don't have to. Practice with feedback.</p>
-        <a href="10-pitchpolish/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- 11. DevlogAI -->
-    <article class="product-card">
-      <div class="card-preview theme-terminal">
-        <span class="card-icon">{}</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">82% Confidence</span>
-        <h2 class="card-title">DevlogAI</h2>
-        <p class="card-tagline">Turn git commits into beautiful build logs. Build in public effortlessly.</p>
-        <a href="11-devlogai/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- 12. NicheRadar -->
-    <article class="product-card">
-      <div class="card-preview theme-deepblue">
-        <span class="card-icon">📡</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">80% Confidence</span>
-        <h2 class="card-title">NicheRadar</h2>
-        <p class="card-tagline">Find underserved markets before everyone else. AI-powered niche discovery.</p>
-        <a href="12-nicheradar/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- 13. LaunchReady -->
-    <article class="product-card">
-      <div class="card-preview theme-orange">
-        <span class="card-icon">🚀</span>
-      </div>
-      <div class="card-content">
-        <span class="card-badge">94% Confidence</span>
-        <h2 class="card-title">LaunchReady</h2>
-        <p class="card-tagline">Is your product ready to launch? Complete pre-flight check for Product Hunt.</p>
-        <a href="13-launchready/" class="card-link">
-          View Landing
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
-        </a>
-      </div>
-    </article>
-  </main>
-
-  <footer class="footer">
-    <p>Built with the <a href="../.cursor/self/prompts/ideation-engine-v3.md">Ideation Engine v3.0</a> — Part of SELF Framework</p>
-  </footer>
+  <script src="gallery-data.js"></script>
+  <script src="gallery.js"></script>
 </body>
 </html>
-
