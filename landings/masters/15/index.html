@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE ALCHEMY — Forge Emotions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="alchemy-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Platforms</a>
+        <span class="nav-number">15 / 20</span>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Transmutation</p>
+                <h1 class="hero-title">THE ALCHEMY</h1>
+                <p class="hero-subtitle">
+                    Don't feel emotions. Forge them.<br>
+                    Engineer your inner states like a craftsman at the anvil.
+                </p>
+            </div>
+        </section>
+
+        <section class="revelation">
+            <div class="revelation-content">
+                <blockquote>
+                    "What if emotions weren't weather—things that happen to you—
+                    but tools you could craft for specific purposes?"
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="forge">
+            <h2 class="section-title">The Emotional Forge</h2>
+            <p class="section-intro">Select the emotional state you wish to cultivate</p>
+
+            <div class="emotion-selector">
+                <button class="emotion-btn" data-emotion="courage">
+                    <span class="emotion-symbol">⚔</span>
+                    <span class="emotion-name">Courage</span>
+                </button>
+                <button class="emotion-btn" data-emotion="focus">
+                    <span class="emotion-symbol">◎</span>
+                    <span class="emotion-name">Focus</span>
+                </button>
+                <button class="emotion-btn" data-emotion="peace">
+                    <span class="emotion-symbol">☯</span>
+                    <span class="emotion-name">Peace</span>
+                </button>
+                <button class="emotion-btn" data-emotion="creativity">
+                    <span class="emotion-symbol">✧</span>
+                    <span class="emotion-name">Creativity</span>
+                </button>
+                <button class="emotion-btn" data-emotion="confidence">
+                    <span class="emotion-symbol">♛</span>
+                    <span class="emotion-name">Confidence</span>
+                </button>
+                <button class="emotion-btn" data-emotion="gratitude">
+                    <span class="emotion-symbol">❦</span>
+                    <span class="emotion-name">Gratitude</span>
+                </button>
+            </div>
+
+            <div class="forge-display" id="forge-display">
+                <div class="forge-visual">
+                    <div class="forge-flame" id="forge-flame"></div>
+                    <div class="forge-crucible"></div>
+                </div>
+            </div>
+
+            <div class="protocol" id="protocol" style="display: none;">
+                <h3 class="protocol-title" id="protocol-title">Protocol: Courage</h3>
+                <div class="protocol-steps" id="protocol-steps">
+                    <!-- Steps will be injected -->
+                </div>
+                <button class="begin-btn" id="begin-btn">Begin Forging</button>
+            </div>
+        </section>
+
+        <section class="transmutation">
+            <h2 class="section-title">The Art of Transmutation</h2>
+            
+            <div class="transmutation-grid">
+                <div class="transmutation-card">
+                    <div class="transmutation-arrow">
+                        <span class="from">Fear</span>
+                        <span class="arrow">→</span>
+                        <span class="to">Excitement</span>
+                    </div>
+                    <p>Same physiological state, different interpretation. Reframe the narrative.</p>
+                </div>
+                
+                <div class="transmutation-card">
+                    <div class="transmutation-arrow">
+                        <span class="from">Anger</span>
+                        <span class="arrow">→</span>
+                        <span class="to">Determination</span>
+                    </div>
+                    <p>Channel the energy toward a constructive target. Forge the blade, don't break it.</p>
+                </div>
+                
+                <div class="transmutation-card">
+                    <div class="transmutation-arrow">
+                        <span class="from">Anxiety</span>
+                        <span class="arrow">→</span>
+                        <span class="to">Anticipation</span>
+                    </div>
+                    <p>What's coming isn't a threat—it's an opportunity waiting to unfold.</p>
+                </div>
+                
+                <div class="transmutation-card">
+                    <div class="transmutation-arrow">
+                        <span class="from">Sadness</span>
+                        <span class="arrow">→</span>
+                        <span class="to">Depth</span>
+                    </div>
+                    <p>The feeling that something matters. Let it deepen rather than consume.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-grid">
+                <article class="philosophy-card">
+                    <h3>The Craftsman's Way</h3>
+                    <p>
+                        A blacksmith doesn't wait for iron to shape itself. 
+                        An alchemist doesn't hope lead becomes gold. 
+                        They apply heat, pressure, and intention. 
+                        Your emotions can be worked the same way.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Inversion</h3>
+                    <p>
+                        Every other tool helps you track or manage emotions. 
+                        The Alchemy teaches you to create them. 
+                        You are not subject to your inner weather—
+                        you are its architect.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>Not Suppression</h3>
+                    <p>
+                        This isn't about denying what you feel. 
+                        It's about recognizing that you have agency. 
+                        Emotions are signals AND tools. 
+                        Learn to use them intentionally.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../16/" class="next-platform">
+            <span class="next-label">Next Platform</span>
+            <span class="next-name">THE MEMENTO →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+

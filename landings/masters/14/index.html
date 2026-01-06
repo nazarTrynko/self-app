@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE PARADOX — Hold Contradictions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="paradox-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Platforms</a>
+        <span class="nav-number">14 / 20</span>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Koan Technology</p>
+                <h1 class="hero-title">THE PARADOX</h1>
+                <p class="hero-subtitle">
+                    A or not-A? Both.<br>
+                    Train your mind to hold contradictions without resolution.
+                </p>
+            </div>
+        </section>
+
+        <section class="koan-space">
+            <div class="koan-container">
+                <div class="koan-card" id="current-koan">
+                    <p class="koan-text">Loading paradox...</p>
+                </div>
+                <div class="koan-controls">
+                    <button class="koan-btn" id="next-koan">Next Paradox</button>
+                    <button class="koan-btn secondary" id="sit-with">Sit With This</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="impossible-gallery">
+            <h2 class="gallery-title">Impossible Objects</h2>
+            <p class="gallery-subtitle">Your mind sees what cannot exist. This is the paradox in action.</p>
+            
+            <div class="impossible-objects">
+                <div class="impossible-object" data-shape="penrose-triangle">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="50,10 90,80 10,80" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <polygon points="50,25 75,65 25,65" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <line x1="50" y1="10" x2="50" y2="25" stroke="currentColor" stroke-width="2"/>
+                        <line x1="90" y1="80" x2="75" y2="65" stroke="currentColor" stroke-width="2"/>
+                        <line x1="10" y1="80" x2="25" y2="65" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span class="object-label">Penrose Triangle</span>
+                </div>
+                
+                <div class="impossible-object" data-shape="escher-cube">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M30,20 L70,20 L85,50 L70,80 L30,80 L15,50 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <line x1="30" y1="20" x2="30" y2="80" stroke="currentColor" stroke-width="1"/>
+                        <line x1="70" y1="20" x2="70" y2="80" stroke="currentColor" stroke-width="1"/>
+                        <line x1="15" y1="50" x2="85" y2="50" stroke="currentColor" stroke-width="1"/>
+                    </svg>
+                    <span class="object-label">Impossible Cube</span>
+                </div>
+                
+                <div class="impossible-object" data-shape="mobius">
+                    <svg viewBox="0 0 100 100">
+                        <ellipse cx="50" cy="50" rx="35" ry="20" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M15,50 Q50,20 85,50 Q50,80 15,50" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3,3"/>
+                    </svg>
+                    <span class="object-label">One-Sided Surface</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="both-and">
+            <div class="both-and-content">
+                <h2>The Both/And Practice</h2>
+                <p class="intro">Western logic demands: choose one. Eastern wisdom says: hold both. Here, practice the art of contradiction.</p>
+                
+                <div class="duality-container">
+                    <div class="duality-side left">
+                        <span class="duality-label">This is true</span>
+                        <p class="duality-statement" id="statement-a">You are completely free</p>
+                    </div>
+                    
+                    <div class="duality-center">
+                        <span class="ampersand">&</span>
+                    </div>
+                    
+                    <div class="duality-side right">
+                        <span class="duality-label">This is also true</span>
+                        <p class="duality-statement" id="statement-b">You are completely determined</p>
+                    </div>
+                </div>
+                
+                <button class="both-btn" id="new-duality">New Contradiction</button>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <article class="philosophy-item">
+                    <h3>Why Paradox?</h3>
+                    <p>
+                        The deepest truths are paradoxical. Light is both wave and particle. 
+                        You are both the observer and the observed. The universe began from nothing 
+                        and contains everything. Your binary mind was not built for this—but it can learn.
+                    </p>
+                </article>
+                
+                <article class="philosophy-item">
+                    <h3>The Koan Tradition</h3>
+                    <p>
+                        Zen masters gave students koans—paradoxes impossible to solve logically. 
+                        "What is the sound of one hand clapping?" The point isn't to answer. 
+                        The point is to break the mind that demands answers.
+                    </p>
+                </article>
+                
+                <article class="philosophy-item">
+                    <h3>The Inversion</h3>
+                    <p>
+                        Every other tool helps you resolve contradictions. This one asks you to 
+                        hold them. To sit in the discomfort of both/and. To discover that 
+                        reality is larger than your logic.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation">
+            <div class="meditation-content">
+                <p class="meditation-prompt">
+                    Close your eyes. Hold both sides of the contradiction in your mind simultaneously. 
+                    Don't try to resolve. Don't choose. Just... hold. 
+                    Notice what happens when the mind stops demanding resolution.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../15/" class="next-platform">
+            <span class="next-label">Next Platform</span>
+            <span class="next-name">THE ALCHEMY →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+

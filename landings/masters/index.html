@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Masterpieces — Cognitive Technologies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --text: #e8e6e3;
+            --text-dim: #6b6b6b;
+            --accent: #c9a227;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.2s forwards;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.4s forwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.6s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeUp 1s ease 1s forwards, float 2s ease-in-out infinite 1s;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Platforms Grid */
+        .platforms {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem 8rem;
+        }
+
+        .platforms-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .platforms-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .platforms-header p {
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .platform-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+        }
+
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--card-accent, var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .platform-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .platform-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .platform-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.03);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            line-height: 1;
+        }
+
+        .platform-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--card-accent, var(--accent));
+        }
+
+        .platform-tagline {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .platform-insight {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .platform-inverts {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .platform-inverts span {
+            color: var(--card-accent, var(--accent));
+        }
+
+        /* Card accent colors */
+        .platform-card[data-platform="void"] { --card-accent: #1a1a2e; }
+        .platform-card[data-platform="inversion"] { --card-accent: #c0c0c0; }
+        .platform-card[data-platform="dissolution"] { --card-accent: #8b7355; }
+        .platform-card[data-platform="paradox"] { --card-accent: #6b5b95; }
+        .platform-card[data-platform="alchemy"] { --card-accent: #c9a227; }
+        .platform-card[data-platform="memento"] { --card-accent: #a67c52; }
+        .platform-card[data-platform="lineage"] { --card-accent: #8b6914; }
+        .platform-card[data-platform="adversary"] { --card-accent: #8b0000; }
+        .platform-card[data-platform="emergence"] { --card-accent: #00a86b; }
+        .platform-card[data-platform="threshold"] { --card-accent: #9b59b6; }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-meta {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--text-dim);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .platforms {
+                padding: 4rem 1.5rem;
+            }
+
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="bg-canvas" id="bg-canvas"></canvas>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Cognitive Technologies</p>
+            <h1 class="hero-title">10 <em>Masterpieces</em></h1>
+            <p class="hero-subtitle">
+                These are not products. These are interfaces that change how you think by using them. 
+                Each one inverts a fundamental assumption about mind, self, or reality.
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <section class="platforms">
+        <div class="platforms-header">
+            <h2>The Collection</h2>
+            <p>Each platform transforms through use, not information</p>
+        </div>
+
+        <div class="platforms-grid">
+            <a href="11/" class="platform-card" data-platform="void">
+                <span class="platform-number">11</span>
+                <h3 class="platform-name">THE VOID</h3>
+                <p class="platform-tagline">What You Cannot Think</p>
+                <p class="platform-insight">
+                    Your mind has a shape. There are thoughts structurally impossible for your 
+                    cognitive architecture. This generates from the negative space.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Addition</span></p>
+            </a>
+
+            <a href="12/" class="platform-card" data-platform="inversion">
+                <span class="platform-number">12</span>
+                <h3 class="platform-name">THE INVERSION</h3>
+                <p class="platform-tagline">Become Your Opposition</p>
+                <p class="platform-insight">
+                    We argue against what we oppose. We never truly become it. 
+                    This forces complete perspective embodiment until identity shifts.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Argument</span></p>
+            </a>
+
+            <a href="13/" class="platform-card" data-platform="dissolution">
+                <span class="platform-number">13</span>
+                <h3 class="platform-name">THE DISSOLUTION</h3>
+                <p class="platform-tagline">Strategic Forgetting</p>
+                <p class="platform-insight">
+                    Every tool is about remembering. Nothing helps you forget. 
+                    Strategic forgetting releases beliefs and patterns holding you back.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Memory</span></p>
+            </a>
+
+            <a href="14/" class="platform-card" data-platform="paradox">
+                <span class="platform-number">14</span>
+                <h3 class="platform-name">THE PARADOX</h3>
+                <p class="platform-tagline">Hold Contradictions</p>
+                <p class="platform-insight">
+                    Western thought demands: A or not-A. The deepest truths hold both. 
+                    Train your mind to embrace contradiction without resolution.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Either/Or</span></p>
+            </a>
+
+            <a href="15/" class="platform-card" data-platform="alchemy">
+                <span class="platform-number">15</span>
+                <h3 class="platform-name">THE ALCHEMY</h3>
+                <p class="platform-tagline">Forge Emotions</p>
+                <p class="platform-insight">
+                    We track emotions. We manage them. What if we could design them? 
+                    Engineer specific emotional states like a craftsman forges tools.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Feeling</span></p>
+            </a>
+
+            <a href="16/" class="platform-card" data-platform="memento">
+                <span class="platform-number">16</span>
+                <h3 class="platform-name">THE MEMENTO</h3>
+                <p class="platform-tagline">Your Death Visualized</p>
+                <p class="platform-insight">
+                    We avoid mortality. But death is the ultimate clarifier. 
+                    Make your finitude visible to discover what truly matters.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Avoidance</span></p>
+            </a>
+
+            <a href="17/" class="platform-card" data-platform="lineage">
+                <span class="platform-number">17</span>
+                <h3 class="platform-name">THE LINEAGE</h3>
+                <p class="platform-tagline">Your Ancestors Speak</p>
+                <p class="platform-insight">
+                    You are the latest in an unbroken chain stretching back 10,000 years. 
+                    What wisdom lives in that lineage? Their struggles live in you.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Individual Self</span></p>
+            </a>
+
+            <a href="18/" class="platform-card" data-platform="adversary">
+                <span class="platform-number">18</span>
+                <h3 class="platform-name">THE ADVERSARY</h3>
+                <p class="platform-tagline">Your Worthy Enemy</p>
+                <p class="platform-insight">
+                    Every AI is an assistant. What if one was an opponent? 
+                    Not to defeat you—to strengthen you through intelligent opposition.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Assistance</span></p>
+            </a>
+
+            <a href="19/" class="platform-card" data-platform="emergence">
+                <span class="platform-number">19</span>
+                <h3 class="platform-name">THE EMERGENCE</h3>
+                <p class="platform-tagline">Watch Creation Itself</p>
+                <p class="platform-insight">
+                    Emergence is the universe's deepest magic—order from chaos with no director. 
+                    Witness the fundamental process that made everything, including you.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Simulation</span></p>
+            </a>
+
+            <a href="20/" class="platform-card" data-platform="threshold">
+                <span class="platform-number">20</span>
+                <h3 class="platform-name">THE THRESHOLD</h3>
+                <p class="platform-tagline">Recognize The Moments</p>
+                <p class="platform-insight">
+                    Most tools focus on past or future. But choice only exists in the present. 
+                    Identify when you're at a genuine crossroads—the moments that matter.
+                </p>
+                <p class="platform-inverts">Inverts: <span>Past/Future</span></p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-quote">
+            "Each platform would be difficult to explain to someone who hasn't experienced it."
+        </p>
+        <p class="footer-meta">COGNITIVE TECHNOLOGIES · 2026</p>
+    </footer>
+
+    <script>
+        // Subtle particle background
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const particles = [];
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.2,
+                vy: (Math.random() - 0.5) * 0.2,
+                size: Math.random() * 2 + 0.5,
+                opacity: Math.random() * 0.3 + 0.1
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(201, 162, 39, ${p.opacity})`;
+                ctx.fill();
+            });
+
+            // Draw connections
+            particles.forEach((p1, i) => {
+                particles.slice(i + 1).forEach(p2 => {
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(201, 162, 39, ${0.05 * (1 - dist / 150)})`;
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Intersection observer for card animations
+        const cards = document.querySelectorAll('.platform-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+
+

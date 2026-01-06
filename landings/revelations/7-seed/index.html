@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEED — What Can You Create?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="seed"></canvas>
+    
+    <div class="experience">
+        <div class="phase phase-intro active" id="phase-intro">
+            <p class="whisper">Everything you see started as something so simple...</p>
+            <p class="whisper delay-1">you wouldn't recognize it.</p>
+            <div class="seed-prompt delay-2">
+                <p class="prompt-text">Plant one word. Just one.</p>
+                <input type="text" id="seed-input" class="seed-input" placeholder="Your seed..." maxlength="30">
+            </div>
+        </div>
+
+        <div class="phase phase-growing" id="phase-growing">
+            <p class="grow-text">Watch it grow...</p>
+            <p class="grow-sub">Into meanings you never intended.</p>
+        </div>
+
+        <div class="phase phase-forest" id="phase-forest">
+            <p class="wisdom">You don't create.</p>
+            <p class="wisdom-sub">You plant, and let go.</p>
+            <p class="wisdom-sub">What grows isn't yours anymore.</p>
+            <p class="wisdom-sub final">It's bigger than you.</p>
+        </div>
+    </div>
+
+    <div class="seed-display" id="seed-display">
+        <span class="seed-word"></span>
+    </div>
+
+    <a href="../" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Return
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

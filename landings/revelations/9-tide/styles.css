@@ -1,0 +1,228 @@
+:root {
+    --void: #030810;
+    --deep: #051020;
+    --light: #a0c0e0;
+    --wave: #3a6090;
+    --glow: rgba(58, 96, 144, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--void);
+    color: var(--light);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#tide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.experience {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.phase {
+    position: absolute;
+    text-align: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 2s ease;
+    pointer-events: none;
+}
+
+.phase.active {
+    opacity: 1;
+}
+
+.whisper {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(160, 192, 224, 0.5);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+.whisper.delay-1 { animation-delay: 2s; }
+.whisper.delay-2 { animation-delay: 4s; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.emotion-prompt {
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 4s;
+    pointer-events: auto;
+}
+
+.prompt-text {
+    font-size: 1.25rem;
+    color: var(--wave);
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+}
+
+.emotions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.emotion {
+    background: transparent;
+    border: 1px solid rgba(58, 96, 144, 0.3);
+    color: var(--light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.emotion:hover {
+    border-color: var(--wave);
+    background: rgba(58, 96, 144, 0.1);
+}
+
+.wave-text {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--wave);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+.wave-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(160, 192, 224, 0.5);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 1s;
+}
+
+.wave-hint {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    color: var(--wave);
+    opacity: 0;
+    animation: pulse 2s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.wisdom {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: var(--light);
+    opacity: 0;
+    animation: wisdomReveal 2s ease forwards;
+}
+
+.wisdom-sub {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(160, 192, 224, 0.5);
+    margin-bottom: 0.75rem;
+    opacity: 0;
+}
+
+.wisdom-sub:nth-child(2) { animation: wisdomReveal 2s ease forwards; animation-delay: 1s; }
+.wisdom-sub:nth-child(3) { animation: wisdomReveal 2s ease forwards; animation-delay: 2s; }
+.wisdom-sub.final { animation: wisdomReveal 2s ease forwards; animation-delay: 3s; color: var(--wave); }
+
+@keyframes wisdomReveal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.wave-count {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    text-align: right;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.wave-count.visible {
+    opacity: 1;
+}
+
+.wave-count .count {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--wave);
+    text-shadow: 0 0 20px var(--glow);
+}
+
+.wave-count .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: rgba(160, 192, 224, 0.4);
+    text-transform: uppercase;
+}
+
+.back-link {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(160, 192, 224, 0.3);
+    text-decoration: none;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    z-index: 100;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: rgba(160, 192, 224, 0.8);
+}
+
+.back-link svg {
+    width: 20px;
+    height: 20px;
+}
+
