@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FeedbackFrame — Get Design Feedback That Actually Helps</title>
+  <meta name="description" content="Structured design feedback powered by AI. No more 'make it pop'.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/reset.css">
+  <link rel="stylesheet" href="../shared/animations.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+          <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 12h12M10 16h8M10 20h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>FeedbackFrame</span>
+      </div>
+      <a href="#waitlist" class="nav-cta">Get Feedback</a>
+    </nav>
+
+    <div class="hero-content container">
+      <div class="badge animate-fadeInDown">🎨 For UI/UX Designers</div>
+      
+      <h1 class="hero-title animate-fadeInUp delay-100">
+        Get Design Feedback<br>
+        <span class="highlight">That Actually Helps</span>
+      </h1>
+      
+      <p class="hero-subtitle animate-fadeInUp delay-200">
+        Upload your design. Get structured, actionable feedback in seconds.<br>
+        No more "make it pop" or "can you make it more... dynamic?"
+      </p>
+
+      <form id="hero-waitlist" class="hero-form animate-fadeInUp delay-300" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Join Waitlist</button>
+      </form>
+      <p class="hero-note animate-fadeIn delay-400">Free for 3 feedbacks/month</p>
+    </div>
+
+    <div class="hero-visual animate-scaleIn delay-500">
+      <div class="feedback-card">
+        <div class="feedback-header">
+          <span class="feedback-type">First Impression Analysis</span>
+          <span class="feedback-score">Score: 78/100</span>
+        </div>
+        <div class="feedback-items">
+          <div class="feedback-item positive">
+            <span class="item-icon">✓</span>
+            <span>Strong visual hierarchy — CTA button is the clear focus</span>
+          </div>
+          <div class="feedback-item positive">
+            <span class="item-icon">✓</span>
+            <span>Color contrast meets WCAG AA standards</span>
+          </div>
+          <div class="feedback-item negative">
+            <span class="item-icon">✗</span>
+            <span>Headline could be 20% larger for better scannability</span>
+          </div>
+          <div class="feedback-item suggestion">
+            <span class="item-icon">💡</span>
+            <span>Consider adding a subheading to explain the value prop</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Feedback Types</h2>
+      <div class="features-grid">
+        <div class="feature"><div class="feature-icon">👁️</div><h3>First Impression</h3><p>What users notice in the first 3 seconds</p></div>
+        <div class="feature"><div class="feature-icon">🎯</div><h3>Usability Check</h3><p>Can users find what they need?</p></div>
+        <div class="feature"><div class="feature-icon">✨</div><h3>Visual Polish</h3><p>Spacing, alignment, consistency</p></div>
+        <div class="feature"><div class="feature-icon">♿</div><h3>Accessibility</h3><p>Color contrast and readability</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul><li>3 feedbacks/month</li><li>First impression analysis</li></ul>
+          <button class="btn-secondary">Start Free</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Popular</div>
+          <h3>Pro</h3>
+          <div class="price">$12<span>/mo</span></div>
+          <ul><li>Unlimited feedback</li><li>All analysis types</li><li>Export reports</li><li>Priority support</li></ul>
+          <button class="btn-primary btn-shine">Join Waitlist</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="final-cta">
+    <div class="container">
+      <h2>Better Feedback, Better Designs</h2>
+      <p>Join designers who get feedback that moves the needle.</p>
+      <form id="waitlist-form" class="cta-form" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Get Early Access</button>
+        <div class="form-message"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/></svg><span>FeedbackFrame</span></div>
+        <div class="footer-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+      <p class="footer-copy">&copy; 2026 FeedbackFrame</p>
+    </div>
+  </footer>
+
+  <script src="../shared/waitlist-form.js"></script>
+  <script src="../shared/analytics.js"></script>
+  <script>
+    document.querySelectorAll('[data-waitlist-form]').forEach(form => {
+      if (!form.id) form.id = 'waitlist-' + Math.random().toString(36).substr(2, 9);
+      new WaitlistForm('#' + form.id, { successMessage: "You're in! We'll notify you when we launch." });
+    });
+  </script>
+</body>
+</html>
+

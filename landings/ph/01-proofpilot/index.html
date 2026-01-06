@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProofPilot — Never Argue About Approvals Again</title>
+  <meta name="description" content="Create timestamped proof of every client approval. End disputes before they start.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/reset.css">
+  <link rel="stylesheet" href="../shared/animations.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 16L14 20L22 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>ProofPilot</span>
+      </div>
+      <a href="#waitlist" class="nav-cta">Get Early Access</a>
+    </nav>
+
+    <div class="hero-content container">
+      <div class="badge animate-fadeInDown">
+        <span class="badge-dot"></span>
+        Launching Q1 2026
+      </div>
+      
+      <h1 class="hero-title animate-fadeInUp delay-100">
+        Never Argue About<br>
+        <span class="highlight">Approvals</span> Again
+      </h1>
+      
+      <p class="hero-subtitle animate-fadeInUp delay-200">
+        Create timestamped, legally-sound proof of every client approval.<br>
+        End revision disputes before they start.
+      </p>
+
+      <form id="hero-waitlist" class="hero-form animate-fadeInUp delay-300" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">
+          Join Waitlist
+        </button>
+      </form>
+      
+      <p class="hero-note animate-fadeIn delay-400">
+        Free for first 100 users • No credit card required
+      </p>
+    </div>
+
+    <div class="hero-visual animate-scaleIn delay-500">
+      <div class="proof-card">
+        <div class="proof-header">
+          <div class="proof-status approved">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Approved
+          </div>
+          <span class="proof-timestamp">Jan 6, 2026 at 2:34 PM</span>
+        </div>
+        <div class="proof-preview">
+          <div class="proof-image"></div>
+        </div>
+        <div class="proof-footer">
+          <div class="proof-client">
+            <div class="avatar">AC</div>
+            <div>
+              <strong>Acme Corp</strong>
+              <span>sarah@acmecorp.com</span>
+            </div>
+          </div>
+          <div class="proof-seal">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem Section -->
+  <section class="problem">
+    <div class="container">
+      <h2 class="section-title">The Problem Every Freelancer Knows</h2>
+      
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+          </div>
+          <h3>"I never approved that"</h3>
+          <p>Clients claim they never signed off on designs. Your word against theirs.</p>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3>Hours Lost to Disputes</h3>
+          <p>Digging through email threads and Slack messages to prove what was agreed.</p>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3>Unpaid Revisions</h3>
+          <p>Without proof, you end up doing free work to keep the relationship.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution">
+    <div class="container">
+      <h2 class="section-title">How ProofPilot Works</h2>
+      <p class="section-subtitle">Three simple steps to bulletproof approvals</p>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Upload Your Design</h3>
+            <p>Drop in a screenshot, mockup, or any visual of the work you need approved.</p>
+          </div>
+          <div class="step-visual">
+            <div class="upload-zone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              <span>Drop design here</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Client Clicks Approve</h3>
+            <p>They review and hit one button. No accounts, no downloads, no friction.</p>
+          </div>
+          <div class="step-visual">
+            <button class="demo-approve-btn">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+              </svg>
+              Approve Design
+            </button>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Get Timestamped Proof</h3>
+            <p>Receive a PDF with the design, approval timestamp, and client identifier.</p>
+          </div>
+          <div class="step-visual">
+            <div class="proof-doc">
+              <div class="proof-doc-header">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/>
+                </svg>
+                approval_proof.pdf
+              </div>
+              <div class="proof-doc-stamp">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                </svg>
+                Verified
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="testimonials">
+        <div class="testimonial">
+          <p class="testimonial-quote">"Saved me from a $3,000 dispute. The client tried to claim they never approved the homepage design. I pulled up the ProofPilot record and the conversation was over."</p>
+          <div class="testimonial-author">
+            <div class="avatar">MK</div>
+            <div>
+              <strong>Marcus K.</strong>
+              <span>Freelance Web Designer</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-quote">"I used to screenshot Slack messages and pray. Now I have actual legal-grade proof. My clients actually respect the process more too."</p>
+          <div class="testimonial-author">
+            <div class="avatar">SL</div>
+            <div>
+              <strong>Sarah L.</strong>
+              <span>Brand Designer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing">
+    <div class="container">
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Free</h3>
+            <div class="price">$0<span>/forever</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              5 approval proofs/month
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              PDF export
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              Email notifications
+            </li>
+          </ul>
+          <button class="btn-secondary">Get Started Free</button>
+        </div>
+        
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-header">
+            <h3>Pro</h3>
+            <div class="price">$12<span>/month</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              Unlimited proofs
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              Custom branding
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              Approval history vault
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              Priority support
+            </li>
+          </ul>
+          <button class="btn-primary btn-shine">Join Waitlist</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="waitlist" class="final-cta">
+    <div class="container">
+      <h2>Protect Your Work.<br>Protect Your Income.</h2>
+      <p>Join 500+ freelancers on the waitlist. Be first to know when we launch.</p>
+      
+      <form id="waitlist-form" class="cta-form" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Get Early Access</button>
+        <div class="form-message"></div>
+      </form>
+      
+      <p class="cta-note">Free for first 100 users • Cancel anytime</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+              <path d="M10 16L14 20L22 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>ProofPilot</span>
+          </div>
+          <p>Approval proof for freelancers who value their time and income.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ProofPilot. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared/waitlist-form.js"></script>
+  <script src="../shared/analytics.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+

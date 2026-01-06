@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12 Product Hunt Ideas — Landing Page Gallery</title>
+  <meta name="description" content="A collection of 12 landing pages for Product Hunt-ready micro-SaaS ideas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/reset.css">
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: #18181b;
+      --border: #27272a;
+      --text: #fafafa;
+      --text-muted: #71717a;
+      --accent: #a855f7;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    
+    .header {
+      text-align: center;
+      padding: 4rem 1.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .header p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      padding: 3rem 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.1);
+    }
+    
+    .card-preview {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-preview::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, var(--card-bg) 100%);
+    }
+    
+    .card-icon {
+      font-size: 3rem;
+      z-index: 1;
+    }
+    
+    .card-content {
+      padding: 1.25rem;
+    }
+    
+    .card-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 100px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.75rem;
+    }
+    
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.375rem;
+    }
+    
+    .card-tagline {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.625rem 1rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    
+    .card-link:hover {
+      background: #9333ea;
+    }
+    
+    .card-link svg {
+      width: 14px;
+      height: 14px;
+    }
+    
+    /* Theme colors for preview backgrounds */
+    .theme-navy { background: linear-gradient(135deg, #0a1628, #1a3a5c); }
+    .theme-green { background: linear-gradient(135deg, #14532d, #22c55e); }
+    .theme-red { background: linear-gradient(135deg, #450a0a, #ef4444); }
+    .theme-blue { background: linear-gradient(135deg, #09090b, #3b82f6); }
+    .theme-orange { background: linear-gradient(135deg, #0f0f12, #f97316); }
+    .theme-teal { background: linear-gradient(135deg, #1a1a2e, #14b8a6); }
+    .theme-purple { background: linear-gradient(135deg, #1e1b4b, #8b5cf6); }
+    .theme-yellow { background: linear-gradient(135deg, #0a0a0a, #eab308); }
+    .theme-coral { background: linear-gradient(135deg, #fffbf5, #f97171); }
+    .theme-gold { background: linear-gradient(135deg, #09090b, #d4a853); }
+    .theme-terminal { background: linear-gradient(135deg, #0a0a0a, #22c55e); }
+    .theme-deepblue { background: linear-gradient(135deg, #0c1929, #3b82f6); }
+    
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    
+    .footer a {
+      color: var(--accent);
+    }
+    
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>12 Product Hunt Ideas</h1>
+    <p>A curated collection of micro-SaaS landing pages, ready for your next launch.</p>
+  </header>
+
+  <main class="gallery">
+    <!-- 1. ProofPilot -->
+    <article class="product-card">
+      <div class="card-preview theme-navy">
+        <span class="card-icon">✓</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">94% Confidence</span>
+        <h2 class="card-title">ProofPilot</h2>
+        <p class="card-tagline">Create timestamped proof of client approvals. Never argue about sign-offs again.</p>
+        <a href="01-proofpilot/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 2. ScopeGuard -->
+    <article class="product-card">
+      <div class="card-preview theme-green">
+        <span class="card-icon">🛡️</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">92% Confidence</span>
+        <h2 class="card-title">ScopeGuard</h2>
+        <p class="card-tagline">Track every "small change" clients ask for. Document scope creep as it happens.</p>
+        <a href="02-scopeguard/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 3. ConvertFix -->
+    <article class="product-card">
+      <div class="card-preview theme-red">
+        <span class="card-icon">🔍</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">93% Confidence</span>
+        <h2 class="card-title">ConvertFix</h2>
+        <p class="card-tagline">AI analyzes your landing page and tells you exactly what to fix. Stop guessing.</p>
+        <a href="03-convertfix/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 4. QuoteCalc -->
+    <article class="product-card">
+      <div class="card-preview theme-blue">
+        <span class="card-icon">🧮</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">91% Confidence</span>
+        <h2 class="card-title">QuoteCalc</h2>
+        <p class="card-tagline">Turn client requests into professional quotes in 60 seconds with AI.</p>
+        <a href="04-quotecalc/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 5. ShipCheck -->
+    <article class="product-card">
+      <div class="card-preview theme-orange">
+        <span class="card-icon">🚀</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">90% Confidence</span>
+        <h2 class="card-title">ShipCheck</h2>
+        <p class="card-tagline">The Product Hunt launch checklist. Everything you need to nail launch day.</p>
+        <a href="05-shipcheck/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 6. ClientSafe -->
+    <article class="product-card">
+      <div class="card-preview theme-teal">
+        <span class="card-icon">🔐</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">92% Confidence</span>
+        <h2 class="card-title">ClientSafe</h2>
+        <p class="card-tagline">Deliverables unlock when payment clears. No more chasing invoices.</p>
+        <a href="06-clientsafe/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 7. FeedbackFrame -->
+    <article class="product-card">
+      <div class="card-preview theme-purple">
+        <span class="card-icon">🎨</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">88% Confidence</span>
+        <h2 class="card-title">FeedbackFrame</h2>
+        <p class="card-tagline">Get structured design feedback that actually helps. No more "make it pop".</p>
+        <a href="07-feedbackframe/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 8. WaitlistKit -->
+    <article class="product-card">
+      <div class="card-preview theme-yellow">
+        <span class="card-icon">📋</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">89% Confidence</span>
+        <h2 class="card-title">WaitlistKit</h2>
+        <p class="card-tagline">Launch-ready waitlist pages with referral mechanics in 5 minutes.</p>
+        <a href="08-waitlistkit/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 9. ColdOpen -->
+    <article class="product-card">
+      <div class="card-preview theme-coral">
+        <span class="card-icon">💌</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">86% Confidence</span>
+        <h2 class="card-title">ColdOpen</h2>
+        <p class="card-tagline">AI-personalized cold email openers that actually get replies.</p>
+        <a href="09-coldopen/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 10. PitchPolish -->
+    <article class="product-card">
+      <div class="card-preview theme-gold">
+        <span class="card-icon">🎤</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">85% Confidence</span>
+        <h2 class="card-title">PitchPolish</h2>
+        <p class="card-tagline">AI grills your startup pitch so investors don't have to. Practice with feedback.</p>
+        <a href="10-pitchpolish/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 11. DevlogAI -->
+    <article class="product-card">
+      <div class="card-preview theme-terminal">
+        <span class="card-icon">{}</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">82% Confidence</span>
+        <h2 class="card-title">DevlogAI</h2>
+        <p class="card-tagline">Turn git commits into beautiful build logs. Build in public effortlessly.</p>
+        <a href="11-devlogai/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 12. NicheRadar -->
+    <article class="product-card">
+      <div class="card-preview theme-deepblue">
+        <span class="card-icon">📡</span>
+      </div>
+      <div class="card-content">
+        <span class="card-badge">80% Confidence</span>
+        <h2 class="card-title">NicheRadar</h2>
+        <p class="card-tagline">Find underserved markets before everyone else. AI-powered niche discovery.</p>
+        <a href="12-nicheradar/" class="card-link">
+          View Landing
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>Built with the <a href="../.cursor/self/prompts/ideation-engine-v3.md">Ideation Engine v3.0</a> — Part of SELF Framework</p>
+  </footer>
+</body>
+</html>
+

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClientSafe — Deliverables Unlock When Payment Clears</title>
+  <meta name="description" content="Stop sending files and hoping for payment. Gate your deliverables behind secure payment links.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/reset.css">
+  <link rel="stylesheet" href="../shared/animations.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+          <rect x="6" y="10" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 10V8a6 6 0 1112 0v2" stroke="currentColor" stroke-width="2"/>
+          <circle cx="16" cy="18" r="2" fill="currentColor"/>
+          <path d="M16 20v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>ClientSafe</span>
+      </div>
+      <a href="#waitlist" class="nav-cta">Start Free</a>
+    </nav>
+
+    <div class="hero-content container">
+      <div class="badge animate-fadeInDown">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
+        Secure File Delivery
+      </div>
+      
+      <h1 class="hero-title animate-fadeInUp delay-100">
+        Deliverables Unlock<br>
+        <span class="highlight">When Payment Clears</span>
+      </h1>
+      
+      <p class="hero-subtitle animate-fadeInUp delay-200">
+        No more sending files and waiting 60 days for payment.<br>
+        Gate your work behind secure, instant payment links.
+      </p>
+
+      <form id="hero-waitlist" class="hero-form animate-fadeInUp delay-300" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Get Early Access</button>
+      </form>
+      
+      <p class="hero-note animate-fadeIn delay-400">2.9% per transaction • No monthly fees</p>
+    </div>
+
+    <div class="hero-visual animate-scaleIn delay-500">
+      <div class="vault-card">
+        <div class="vault-header">
+          <div class="vault-status locked">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
+            Locked Until Payment
+          </div>
+        </div>
+        <div class="vault-files">
+          <div class="file-item">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+            <span>Final_Logo_Package.zip</span>
+            <span class="file-size">24.3 MB</span>
+          </div>
+          <div class="file-item">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+            <span>Brand_Guidelines.pdf</span>
+            <span class="file-size">8.1 MB</span>
+          </div>
+        </div>
+        <div class="vault-payment">
+          <div class="payment-amount">
+            <span class="amount-label">Amount Due</span>
+            <span class="amount-value">$2,500.00</span>
+          </div>
+          <button class="pay-btn">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
+            Pay & Unlock Files
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="problem">
+    <div class="container">
+      <h2 class="section-title">The Freelancer's Dilemma</h2>
+      
+      <div class="problem-flow">
+        <div class="flow-step">
+          <div class="step-icon">📤</div>
+          <p>You send final files</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="step-icon">⏳</div>
+          <p>Client gets busy</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="step-icon">😰</div>
+          <p>You wait 60+ days</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="step-icon">💸</div>
+          <p>Chase awkwardly</p>
+        </div>
+      </div>
+      
+      <p class="problem-stat">
+        <strong>$4,200</strong> — Average amount freelancers are owed at any time
+      </p>
+    </div>
+  </section>
+
+  <section class="solution">
+    <div class="container">
+      <h2 class="section-title">Flip the Script</h2>
+      
+      <div class="solution-steps">
+        <div class="solution-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Upload Your Files</h3>
+            <p>Drag and drop your final deliverables. We encrypt and store them securely.</p>
+          </div>
+        </div>
+        
+        <div class="solution-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Set Your Price</h3>
+            <p>Enter the amount. We generate a secure payment link powered by Stripe.</p>
+          </div>
+        </div>
+        
+        <div class="solution-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Share the Link</h3>
+            <p>Send to client. They pay, files unlock instantly. No chasing required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          <h3>Bank-Grade Security</h3>
+          <p>256-bit encryption. Files only accessible after payment confirms.</p>
+        </div>
+        
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <h3>Instant Unlock</h3>
+          <p>Payment clears, files download. No delays, no manual steps.</p>
+        </div>
+        
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <h3>Receipt & Proof</h3>
+          <p>Automatic receipts for both parties. Clear delivery confirmation.</p>
+        </div>
+        
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1"/></svg>
+          <h3>Simple Pricing</h3>
+          <p>2.9% per transaction. Same as Stripe, no hidden fees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="testimonial-card">
+        <blockquote>
+          "Used to wait months for some clients. Now they pay within 24 hours because they actually want their files. Game changer."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">LM</div>
+          <div>
+            <strong>Lisa Martinez</strong>
+            <span>Logo & Brand Designer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="final-cta">
+    <div class="container">
+      <div class="vault-icon">
+        <svg viewBox="0 0 64 64" fill="none">
+          <rect x="12" y="24" width="40" height="32" rx="4" stroke="currentColor" stroke-width="3"/>
+          <path d="M20 24v-6a12 12 0 1124 0v6" stroke="currentColor" stroke-width="3"/>
+          <circle cx="32" cy="40" r="4" fill="currentColor"/>
+          <path d="M32 44v6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2>Get Paid Before You Deliver</h2>
+      <p>Join 600+ freelancers who stopped chasing invoices.</p>
+      
+      <form id="waitlist-form" class="cta-form" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Start Free</button>
+        <div class="form-message"></div>
+      </form>
+      
+      <p class="cta-note">No monthly fees • 2.9% per transaction</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo">
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+            <rect x="6" y="10" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 10V8a6 6 0 1112 0v2" stroke="currentColor" stroke-width="2"/>
+            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+          </svg>
+          <span>ClientSafe</span>
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2026 ClientSafe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../shared/waitlist-form.js"></script>
+  <script src="../shared/analytics.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+

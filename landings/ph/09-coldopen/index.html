@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColdOpen — First Lines That Actually Get Replies</title>
+  <meta name="description" content="AI-powered personalized cold email openers that break through the noise.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/reset.css">
+  <link rel="stylesheet" href="../shared/animations.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">
+        <span class="logo-emoji">💌</span>
+        <span>ColdOpen</span>
+      </div>
+      <a href="#waitlist" class="nav-cta">Try Free</a>
+    </nav>
+
+    <div class="hero-content container">
+      <div class="badge animate-fadeInDown">✨ AI-Personalized</div>
+      
+      <h1 class="hero-title animate-fadeInUp delay-100">
+        First Lines That<br>
+        <span class="highlight">Actually Get Replies</span>
+      </h1>
+      
+      <p class="hero-subtitle animate-fadeInUp delay-200">
+        Paste a LinkedIn URL. Get 3 personalized opening lines<br>
+        that show you actually did your research.
+      </p>
+
+      <form id="hero-waitlist" class="hero-form animate-fadeInUp delay-300" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Get Early Access</button>
+      </form>
+      <p class="hero-note animate-fadeIn delay-400">10 free opens/month</p>
+    </div>
+
+    <div class="hero-visual animate-scaleIn delay-500">
+      <div class="demo-card">
+        <div class="demo-input-section">
+          <span class="demo-label">LinkedIn URL</span>
+          <div class="demo-input">linkedin.com/in/sarah-chen-product</div>
+        </div>
+        <div class="demo-results">
+          <div class="result-item">
+            <span class="result-num">1</span>
+            <p>"Saw your post about PLG metrics last week — your point about activation rate being overrated really stuck with me."</p>
+          </div>
+          <div class="result-item">
+            <span class="result-num">2</span>
+            <p>"Your journey from eng to product at Stripe is fascinating. I'm navigating a similar transition."</p>
+          </div>
+          <div class="result-item">
+            <span class="result-num">3</span>
+            <p>"The dashboard redesign you mentioned in your talk at ProductCon was exactly the problem we're solving."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="comparison">
+    <div class="container">
+      <h2 class="section-title">Why Generic Opens Fail</h2>
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <span class="compare-label">❌ Generic (2% reply rate)</span>
+          <p>"I hope this email finds you well. I wanted to reach out because..."</p>
+        </div>
+        <div class="compare-card good">
+          <span class="compare-label">✅ ColdOpen (23% reply rate)</span>
+          <p>"Your thread on pricing psychology was spot-on — especially the anchoring bit."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul><li>10 opens/month</li><li>3 variations each</li></ul>
+          <button class="btn-secondary">Start Free</button>
+        </div>
+        <div class="pricing-card featured">
+          <h3>Pro</h3>
+          <div class="price">$19<span>/mo</span></div>
+          <ul><li>Unlimited opens</li><li>Bulk processing</li><li>CRM export</li></ul>
+          <button class="btn-primary btn-shine">Join Waitlist</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="final-cta">
+    <div class="container">
+      <h2>Stop Getting Ignored</h2>
+      <p>Join founders who actually get replies to their cold emails.</p>
+      <form id="waitlist-form" class="cta-form" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Get Early Access</button>
+        <div class="form-message"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">&copy; 2026 ColdOpen</p>
+    </div>
+  </footer>
+
+  <script src="../shared/waitlist-form.js"></script>
+  <script>document.querySelectorAll('[data-waitlist-form]').forEach(f=>{if(!f.id)f.id='wl-'+Math.random().toString(36).substr(2,9);new WaitlistForm('#'+f.id)});</script>
+</body>
+</html>
+
