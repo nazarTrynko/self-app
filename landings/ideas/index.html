@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Ideas — SELF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #08080c;
+            --surface: #101014;
+            --surface-2: #18181c;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --text: #fafafa;
+            --text-muted: #71717a;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.15);
+        }
+
+        body {
+            font-family: 'Instrument Sans', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 8, 12, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent), #c084fc);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .header-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .header-back {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .header-back:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        /* Main Container */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 100px;
+        }
+
+        /* Navigation Section - First Thing */
+        .nav-section {
+            margin-bottom: 48px;
+        }
+
+        .nav-label {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Category Grid - 4 Balanced Groups */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .category-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .category-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        .category-card.active {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .category-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .category-count {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .category-subs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .category-sub {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+        }
+
+        /* Summary Section */
+        .summary-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .summary-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .summary-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 16px;
+        }
+
+        .summary-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .summary-stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .summary-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .summary-desc {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content Section */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .content-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-back {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.8125rem;
+            transition: all 0.2s ease;
+        }
+
+        .content-back:hover {
+            border-color: var(--text-muted);
+            color: var(--text);
+        }
+
+        /* Subcategory Pills */
+        .subcategory-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .subcategory-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .subcategory-pill:hover {
+            border-color: var(--border-hover);
+            color: var(--text);
+        }
+
+        .subcategory-pill.active {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .subcategory-pill-icon {
+            font-size: 1rem;
+        }
+
+        .subcategory-pill-count {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Ideas Grid */
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .idea-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .idea-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.3);
+        }
+
+        .idea-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .idea-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .idea-tier {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 6px;
+            font-size: 0.6875rem;
+            color: var(--accent);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 24px;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            max-height: calc(100vh - 80px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: var(--surface);
+        }
+
+        .modal-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Markdown Styles */
+        .markdown-content {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        .markdown-content h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .markdown-content h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 32px 0 16px;
+            color: var(--text);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .markdown-content h3 {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: var(--text);
+        }
+
+        .markdown-content p {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+
+        .markdown-content strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .markdown-content ul, .markdown-content ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .markdown-content li {
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .markdown-content hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 24px 0;
+        }
+
+        .markdown-content pre {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .markdown-content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8125rem;
+            color: var(--accent);
+        }
+
+        .markdown-content pre code {
+            color: var(--text-muted);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 64px 24px;
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="./" class="header-brand">
+                <div class="header-logo">S</div>
+                <span class="header-title">App Ideas</span>
+            </a>
+            <a href="../" class="header-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to SELF
+            </a>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Navigation Section -->
+        <section class="nav-section" id="navSection">
+            <p class="nav-label">Browse by Category</p>
+            <div class="category-grid" id="categoryGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="summary-section" id="summarySection">
+            <div class="summary-stats">
+                <div class="summary-stat">
+                    <span class="summary-stat-value" id="totalIdeas">0</span>
+                    <span class="summary-stat-label">App Ideas</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="summary-stat-value" id="totalCategories">0</span>
+                    <span class="summary-stat-label">Categories</span>
+                </div>
+            </div>
+            <p class="summary-desc">
+                Comprehensive app specifications with technical details, monetization strategies, and UI concepts. 
+                Select a category above to explore.
+            </p>
+        </section>
+
+        <!-- Content Section (hidden until category selected) -->
+        <section class="content-section" id="contentSection">
+            <div class="content-header">
+                <h2 class="content-title" id="contentTitle">
+                    <span id="contentIcon"></span>
+                    <span id="contentName"></span>
+                </h2>
+                <button class="content-back" id="contentBack">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    All Categories
+                </button>
+            </div>
+
+            <!-- Subcategory Pills -->
+            <div class="subcategory-pills" id="subcategoryPills">
+                <!-- Dynamically populated -->
+            </div>
+
+            <!-- Ideas Grid -->
+            <div class="ideas-grid" id="ideasGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Loading...</h2>
+                <button class="modal-close" id="modalClose">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="markdown-content" id="modalContent">
+                    <div class="loading">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ideas-data.js"></script>
+    <script>
+        // Group categories into 4 balanced groups
+        const CATEGORY_GROUPS = [
+            {
+                id: 'tools',
+                name: 'Tools & Sensors',
+                icon: '🛠️',
+                subcategories: ['01-sensor-tools', '02-camera-vision', '03-audio-sound']
+            },
+            {
+                id: 'intelligence',
+                name: 'AI & Privacy',
+                icon: '🧠',
+                subcategories: ['04-offline-ai', '05-data-vaults']
+            },
+            {
+                id: 'life',
+                name: 'Life & Wellness',
+                icon: '💚',
+                subcategories: ['06-health-body', '07-productivity', '13-finance', '14-travel']
+            },
+            {
+                id: 'creative',
+                name: 'Creative & Pro',
+                icon: '✨',
+                subcategories: ['08-creative', '09-professional', '10-education', '11-gaming', '12-communication']
+            }
+        ];
+
+        // Elements
+        const categoryGrid = document.getElementById('categoryGrid');
+        const summarySection = document.getElementById('summarySection');
+        const navSection = document.getElementById('navSection');
+        const contentSection = document.getElementById('contentSection');
+        const contentTitle = document.getElementById('contentTitle');
+        const contentIcon = document.getElementById('contentIcon');
+        const contentName = document.getElementById('contentName');
+        const contentBack = document.getElementById('contentBack');
+        const subcategoryPills = document.getElementById('subcategoryPills');
+        const ideasGrid = document.getElementById('ideasGrid');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const modalClose = document.getElementById('modalClose');
+        const totalIdeasEl = document.getElementById('totalIdeas');
+        const totalCategoriesEl = document.getElementById('totalCategories');
+
+        // State
+        let currentGroup = null;
+        let currentSubcategory = null;
+
+        // Initialize
+        function init() {
+            // Calculate totals
+            totalIdeasEl.textContent = IDEAS_DATA.totalIdeas;
+            totalCategoriesEl.textContent = IDEAS_DATA.categories.length;
+
+            // Build grouped navigation
+            renderCategoryGroups();
+
+            // Event listeners
+            contentBack.addEventListener('click', showNav);
+            modalClose.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+        }
+
+        function renderCategoryGroups() {
+            categoryGrid.innerHTML = CATEGORY_GROUPS.map(group => {
+                // Get all subcategories and count ideas
+                const subcats = group.subcategories
+                    .map(id => IDEAS_DATA.categories.find(c => c.id === id))
+                    .filter(Boolean);
+                
+                const totalIdeas = subcats.reduce((sum, cat) => sum + cat.ideas.length, 0);
+                const subNames = subcats.slice(0, 3).map(c => c.name.split(' ')[0]);
+
+                return `
+                    <div class="category-card" data-group="${group.id}">
+                        <span class="category-icon">${group.icon}</span>
+                        <div class="category-name">${group.name}</div>
+                        <div class="category-count">${totalIdeas} ideas</div>
+                        <div class="category-subs">
+                            ${subNames.map(n => `<span class="category-sub">${n}</span>`).join('')}
+                            ${subcats.length > 3 ? `<span class="category-sub">+${subcats.length - 3}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Add click handlers
+            categoryGrid.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const groupId = card.dataset.group;
+                    selectGroup(groupId);
+                });
+            });
+        }
+
+        function selectGroup(groupId) {
+            const group = CATEGORY_GROUPS.find(g => g.id === groupId);
+            if (!group) return;
+
+            currentGroup = group;
+            
+            // Update UI
+            categoryGrid.querySelectorAll('.category-card').forEach(card => {
+                card.classList.toggle('active', card.dataset.group === groupId);
+            });
+
+            // Show content section
+            navSection.style.display = 'none';
+            summarySection.style.display = 'none';
+            contentSection.classList.add('active');
+
+            // Update header
+            contentIcon.textContent = group.icon;
+            contentName.textContent = group.name;
+
+            // Render subcategory pills
+            renderSubcategoryPills(group);
+        }
+
+        function renderSubcategoryPills(group) {
+            const subcats = group.subcategories
+                .map(id => IDEAS_DATA.categories.find(c => c.id === id))
+                .filter(Boolean);
+
+            // Add "All" pill
+            let html = `
+                <button class="subcategory-pill active" data-subcat="all">
+                    <span class="subcategory-pill-icon">✦</span>
+                    <span>All</span>
+                    <span class="subcategory-pill-count">${subcats.reduce((s, c) => s + c.ideas.length, 0)}</span>
+                </button>
+            `;
+
+            // Add each subcategory
+            html += subcats.map(cat => `
+                <button class="subcategory-pill" data-subcat="${cat.id}">
+                    <span class="subcategory-pill-icon">${cat.icon}</span>
+                    <span>${cat.name}</span>
+                    <span class="subcategory-pill-count">${cat.ideas.length}</span>
+                </button>
+            `).join('');
+
+            subcategoryPills.innerHTML = html;
+
+            // Add click handlers
+            subcategoryPills.querySelectorAll('.subcategory-pill').forEach(pill => {
+                pill.addEventListener('click', () => {
+                    const subcatId = pill.dataset.subcat;
+                    selectSubcategory(subcatId);
+                });
+            });
+
+            // Default to showing all
+            currentSubcategory = 'all';
+            renderIdeas(subcats.flatMap(c => c.ideas.map(i => ({ ...i, categoryId: c.id }))));
+        }
+
+        function selectSubcategory(subcatId) {
+            currentSubcategory = subcatId;
+
+            // Update active state
+            subcategoryPills.querySelectorAll('.subcategory-pill').forEach(pill => {
+                pill.classList.toggle('active', pill.dataset.subcat === subcatId);
+            });
+
+            // Get ideas to show
+            const subcats = currentGroup.subcategories
+                .map(id => IDEAS_DATA.categories.find(c => c.id === id))
+                .filter(Boolean);
+
+            let ideas;
+            if (subcatId === 'all') {
+                ideas = subcats.flatMap(c => c.ideas.map(i => ({ ...i, categoryId: c.id })));
+            } else {
+                const cat = subcats.find(c => c.id === subcatId);
+                ideas = cat ? cat.ideas.map(i => ({ ...i, categoryId: cat.id })) : [];
+            }
+
+            renderIdeas(ideas);
+        }
+
+        function renderIdeas(ideas) {
+            if (ideas.length === 0) {
+                ideasGrid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <p>No ideas in this category yet</p>
+                    </div>
+                `;
+                return;
+            }
+
+            ideasGrid.innerHTML = ideas.map(idea => `
+                <div class="idea-card" data-file="${idea.categoryId}/${idea.file}" data-name="${idea.name}">
+                    <div class="idea-id">#${idea.id}</div>
+                    <div class="idea-name">${idea.name}</div>
+                    <span class="idea-tier">${idea.tier}</span>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            ideasGrid.querySelectorAll('.idea-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    openModal(card.dataset.file, card.dataset.name);
+                });
+            });
+        }
+
+        function showNav() {
+            navSection.style.display = 'block';
+            summarySection.style.display = 'block';
+            contentSection.classList.remove('active');
+            currentGroup = null;
+            currentSubcategory = null;
+
+            // Clear active state
+            categoryGrid.querySelectorAll('.category-card').forEach(card => {
+                card.classList.remove('active');
+            });
+        }
+
+        async function openModal(file, name) {
+            modalTitle.textContent = name;
+            modalContent.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 24px;">Loading...</div>';
+            modalOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            try {
+                const response = await fetch(file);
+                if (!response.ok) throw new Error('File not found');
+                const markdown = await response.text();
+                modalContent.innerHTML = marked.parse(markdown);
+            } catch (err) {
+                modalContent.innerHTML = `<p style="color: #ef4444;">Error loading file: ${err.message}</p>`;
+            }
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Initialize
+        init();
+    </script>
+</body>
+</html>

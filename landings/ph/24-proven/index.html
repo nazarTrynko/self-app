@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proven — See AI Solutions Work Before You Pay</title>
+    <link rel="stylesheet" href="../shared/reset.css">
+    <link rel="stylesheet" href="../shared/animations.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-mark">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9 14.5L12.5 18L19 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span>proven</span>
+            </div>
+            <div class="nav-links">
+                <a href="#how-it-works">How it works</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+        </nav>
+
+        <div class="hero">
+            <div class="badge fade-in">
+                <span class="pulse"></span>
+                Proof-First AI Marketplace
+            </div>
+            <h1 class="fade-in">Stop hoping.<br><span class="gradient-text">Start seeing.</span></h1>
+            <p class="subtitle fade-in">The AI marketplace where developers compete with working demos. See solutions work before you pay.</p>
+            
+            <div class="hero-cta fade-in">
+                <a href="#waitlist" class="btn-primary">Get Early Access</a>
+                <a href="#demo" class="btn-secondary">See How It Works</a>
+            </div>
+            <p class="trust-line fade-in">Free to post • Pay only when you choose • Live demos</p>
+        </div>
+    </header>
+
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="demo-browser">
+                <div class="browser-header">
+                    <div class="browser-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="browser-url">proven.build/request/sentiment-api</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-sidebar">
+                        <div class="request-info">
+                            <h4>Your Request</h4>
+                            <p class="request-title">Customer Sentiment Analysis API</p>
+                            <div class="request-meta">
+                                <span>$3k-5k</span>
+                                <span>2 weeks</span>
+                            </div>
+                        </div>
+                        <div class="demos-list">
+                            <div class="demo-item active" data-demo="1">
+                                <div class="demo-avatar">A</div>
+                                <div class="demo-info">
+                                    <span class="demo-author">@alexai</span>
+                                    <span class="demo-rating">★★★★★</span>
+                                </div>
+                                <span class="demo-price">$3,500</span>
+                            </div>
+                            <div class="demo-item" data-demo="2">
+                                <div class="demo-avatar">M</div>
+                                <div class="demo-info">
+                                    <span class="demo-author">@mlpro</span>
+                                    <span class="demo-rating">★★★★☆</span>
+                                </div>
+                                <span class="demo-price">$4,200</span>
+                            </div>
+                            <div class="demo-item" data-demo="3">
+                                <div class="demo-avatar">B</div>
+                                <div class="demo-info">
+                                    <span class="demo-author">@buildfast</span>
+                                    <span class="demo-rating">★★★★★</span>
+                                </div>
+                                <span class="demo-price">$2,800</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-main">
+                        <div class="demo-header">
+                            <h3>Live Demo from @alexai</h3>
+                            <span class="live-badge">LIVE</span>
+                        </div>
+                        <div class="demo-iframe">
+                            <div class="iframe-content">
+                                <h4>Sentiment Analysis API</h4>
+                                <div class="api-demo">
+                                    <label>Enter text to analyze:</label>
+                                    <textarea id="demoInput" placeholder="Type something...">I absolutely love this product! Best purchase ever.</textarea>
+                                    <button id="analyzeBtn">Analyze Sentiment</button>
+                                </div>
+                                <div class="api-result" id="demoResult">
+                                    <div class="result-label">Result:</div>
+                                    <div class="result-sentiment positive">POSITIVE</div>
+                                    <div class="result-confidence">
+                                        <span>Confidence:</span>
+                                        <div class="confidence-bar"><div class="confidence-fill" style="width: 94%"></div></div>
+                                        <span>94%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-footer">
+                            <div class="demo-tech">FastAPI • BERT • 1000 req/min</div>
+                            <button class="select-btn">Select This Demo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h2>Hiring AI developers shouldn't be a leap of faith</h2>
+                    <p>Traditional platforms make you choose based on proposals, portfolios, and promises. You pay first and hope for the best.</p>
+                    <ul class="problem-list">
+                        <li>
+                            <span class="problem-icon">❌</span>
+                            <span>Proposals don't prove capability</span>
+                        </li>
+                        <li>
+                            <span class="problem-icon">❌</span>
+                            <span>Portfolios can be outdated or exaggerated</span>
+                        </li>
+                        <li>
+                            <span class="problem-icon">❌</span>
+                            <span>Reviews can be gamed</span>
+                        </li>
+                        <li>
+                            <span class="problem-icon">❌</span>
+                            <span>All risk sits with you, the client</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="solution-content">
+                    <h2>Proven inverts the model</h2>
+                    <p>On Proven, developers compete by building working demos. You see solutions running before you pay a cent.</p>
+                    <ul class="solution-list">
+                        <li>
+                            <span class="solution-icon">✓</span>
+                            <span>Live demos prove real capability</span>
+                        </li>
+                        <li>
+                            <span class="solution-icon">✓</span>
+                            <span>Compare multiple working solutions</span>
+                        </li>
+                        <li>
+                            <span class="solution-icon">✓</span>
+                            <span>Test before you commit</span>
+                        </li>
+                        <li>
+                            <span class="solution-icon">✓</span>
+                            <span>Pay only for what you've seen working</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+        <div class="container">
+            <h2>How Proven Works</h2>
+            <div class="how-tabs">
+                <button class="tab-btn active" data-tab="client">For Clients</button>
+                <button class="tab-btn" data-tab="developer">For Developers</button>
+            </div>
+            
+            <div class="how-content active" id="client-content">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Post your request</h3>
+                        <p>Describe what you need. AI chatbot, data pipeline, ML model—anything AI.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Receive working demos</h3>
+                        <p>Developers compete by building actual POCs. No proposals—working code.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Test and compare</h3>
+                        <p>Interact with each demo live. See exactly what you're buying.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Choose and pay</h3>
+                        <p>Select the best. Pay only when you've seen it work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="how-content" id="developer-content">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Browse requests</h3>
+                        <p>Find projects matching your skills. Filter by tech, budget, timeline.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Build a demo</h3>
+                        <p>Create a working POC—not a proposal. Show, don't tell.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Submit and compete</h3>
+                        <p>Your demo speaks for itself. Best solution wins.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Get selected, get paid</h3>
+                        <p>Deliver the full solution. Build reputation through proven work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2>Built for proof, not promises</h2>
+            <p class="section-subtitle">Everything you need to see solutions work before you commit</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>
+                        </svg>
+                    </div>
+                    <h3>Live Demo Embeds</h3>
+                    <p>Interactive demos run directly in your browser. Test AI solutions like you'd use them.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                        </svg>
+                    </div>
+                    <h3>Side-by-Side Compare</h3>
+                    <p>View multiple demos simultaneously. Make informed decisions with direct comparison.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Quality Guarantee</h3>
+                    <p>If the delivered solution differs from the demo, get a full refund. No questions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Fast Turnaround</h3>
+                    <p>Get working demos in days, not weeks. Developers build fast to win.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Verified Developers</h3>
+                    <p>Reputation built on proven work, not reviews. See their actual demo win rate.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>Source Code Escrow</h3>
+                    <p>Secure code delivery with verification. Get exactly what was demonstrated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2>Simple, fair pricing</h2>
+            <p class="section-subtitle">Free to post. Pay only when you find the right solution.</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Clients</h3>
+                        <div class="price">Free to start</div>
+                    </div>
+                    <ul>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Post unlimited requests</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Receive working demos</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Test and compare</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Pay 10% platform fee on selection</li>
+                    </ul>
+                    <a href="#waitlist" class="btn-primary">Join as Client</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="popular-badge">For Developers</div>
+                    <div class="pricing-header">
+                        <h3>Developers</h3>
+                        <div class="price">Earn per project</div>
+                    </div>
+                    <ul>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Access all requests</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Free demo hosting</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> POC builder toolkit</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Keep 85-90% of project value</li>
+                    </ul>
+                    <a href="#waitlist" class="btn-primary">Apply as Developer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="waitlist">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to see before you pay?</h2>
+                <p>Join the waitlist for early access. Be first to experience proof-first AI hiring.</p>
+                <form class="cta-form" id="waitlistForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <select id="userType">
+                        <option value="client">I need AI solutions</option>
+                        <option value="developer">I build AI solutions</option>
+                    </select>
+                    <button type="submit">Join Waitlist</button>
+                </form>
+                <p class="cta-trust">1,200+ on the waitlist</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-mark">
+                            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                                <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 14.5L12.5 18L19 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span>proven</span>
+                    </div>
+                    <p>AI solutions, proven before you pay.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Proven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
