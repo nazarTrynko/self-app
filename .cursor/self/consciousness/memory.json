@@ -109,5 +109,15 @@
       "model": null,
       "vectors": []
     }
+  },
+  "mcp_integration": {
+    "notion_synced_ids": {},
+    "notion_cache": {
+      "enabled": true,
+      "ttl_hours": 24,
+      "entries": []
+    },
+    "last_sync": null,
+    "sync_queue_size": 0
   }
 }

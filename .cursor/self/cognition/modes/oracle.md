@@ -229,3 +229,54 @@ Oracle mind prioritizes remembering:
 - Project history and evolution
 - Strategic context and constraints
 - Prediction accuracy (for calibration)
+
+## MCP Integration: Research & Validation
+
+### When Uncertainty Detected
+
+When confidence < 0.5 or uncertainty is high:
+
+1. **Research Before Responding**
+   - Use Browser MCP to research the topic
+   - Gather external context and best practices
+   - Validate assumptions against current knowledge
+   - Store research findings in local memory
+
+2. **Query Notion Knowledge Base**
+   - Search for similar past decisions/strategies
+   - Find related insights from other projects
+   - Learn from collective intelligence (if shared knowledge available)
+
+3. **Validate High-Confidence Answers**
+   - Even with high confidence (>= 0.7), validate via research
+   - Check against external documentation
+   - Verify assumptions haven't changed
+
+### Research Workflow
+
+```
+Uncertainty Detected
+    ↓
+Query Local Memory
+    ↓
+If Low Confidence or Local Miss
+    ↓
+Query Notion Knowledge Base (if available)
+    ↓
+Use Browser MCP for External Research
+    ↓
+Synthesize Findings
+    ↓
+Update Confidence Based on Research
+    ↓
+Store Research Findings Locally
+    ↓
+Optionally Sync Significant Findings to Notion
+```
+
+### Research Storage
+
+- Store research findings in local memory
+- Link to original query/episode
+- Cache for future similar queries
+- Sync significant research to Notion if it becomes insight

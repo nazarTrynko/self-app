@@ -3,232 +3,885 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SELF Landing Pages</title>
+    <title>SELF — Landing Pages Collection</title>
+    <meta name="description" content="Explore 43 unique landing page designs for the Synthetic Emergent Learning Framework">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared/nav.css">
     <style>
         :root {
-            --bg: #0a0a0b;
-            --surface: #141418;
+            --bg: #08080c;
+            --surface: #101014;
+            --surface-elevated: #18181c;
+            --border: rgba(255, 255, 255, 0.06);
             --text: #fafafa;
             --text-dim: #71717a;
-            --accent: #8b5cf6;
+            --accent-main: #8b5cf6;
+            --accent-masters: #c9a227;
+            --accent-revelations: #14b8a6;
+            --accent-ph: #f472b6;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Instrument Sans', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
-            padding: 4rem 2rem;
+            overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+
+        /* Animated background */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
         }
-        
-        header {
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-bottom: 4rem;
+            padding: 8rem 2rem 4rem;
         }
-        
-        h1 {
-            font-size: 3rem;
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.875rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #f59e0b);
+            color: var(--accent-main);
+            margin-bottom: 2rem;
+            animation: fadeUp 0.8s ease 0.1s backwards;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-main);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-title-accent {
+            background: linear-gradient(135deg, var(--accent-main) 0%, #ec4899 50%, var(--accent-masters) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .subtitle {
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
             color: var(--text-dim);
-            font-size: 1.125rem;
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            animation: fadeUp 0.8s ease 0.3s backwards;
         }
-        
-        .grid {
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            animation: fadeUp 0.8s ease 0.4s backwards;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .hero-stat-label {
+            font-size: 0.8125rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes fadeUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Collections Section */
+        .collections {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .collections-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
-        
-        .card {
+
+        @media (max-width: 900px) {
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Collection Cards */
+        .collection-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
             background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
             text-decoration: none;
             color: inherit;
-            transition: all 0.3s ease;
-            position: relative;
             overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -20px rgba(139, 92, 246, 0.3);
-        }
-        
-        .card-number {
+
+        .collection-card::before {
+            content: '';
             position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 3rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.05);
-        }
-        
-        .card-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .card-aesthetic {
-            font-size: 0.875rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-        
-        .card-description {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            line-height: 1.6;
-        }
-        
-        .card-preview {
-            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 4px;
-            margin-top: 1.5rem;
-            border-radius: 2px;
-            background: var(--bg);
+            background: var(--card-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        
-        /* Unique preview colors for each */
-        .card[href="0/"] .card-preview { background: linear-gradient(90deg, #3b82f6, #8b5cf6, #f59e0b); }
-        .card[href="1/"] .card-preview { background: #000; }
-        .card[href="2/"] .card-preview { background: linear-gradient(90deg, #f7f5f0, #2d3a5c); }
-        .card[href="3/"] .card-preview { background: linear-gradient(90deg, #0a0a0a, #888, #0a0a0a); }
-        .card[href="4/"] .card-preview { background: #33ff33; }
-        .card[href="5/"] .card-preview { background: linear-gradient(90deg, #00ffff, #ff00ff); }
-        .card[href="6/"] .card-preview { background: linear-gradient(90deg, #030308, #00e5ff, #ff00aa); }
-        .card[href="7/"] .card-preview { background: linear-gradient(90deg, #000005, #ffd700); }
-        .card[href="8/"] .card-preview { background: linear-gradient(90deg, #0a0e14, #0066ff, #00d4ff); }
-        .card[href="9/"] .card-preview { background: linear-gradient(90deg, #1a1410, #c9a227, #d4c5a9); }
-        
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+
+        .collection-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, var(--card-accent), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .collection-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 24px 80px -20px rgba(0, 0, 0, 0.5),
+                0 0 60px -30px var(--card-accent);
+        }
+
+        .collection-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .collection-card:hover::after {
+            opacity: 0.06;
+        }
+
+        .collection-card[data-collection="main"] { --card-accent: var(--accent-main); }
+        .collection-card[data-collection="masters"] { --card-accent: var(--accent-masters); }
+        .collection-card[data-collection="revelations"] { --card-accent: var(--accent-revelations); }
+        .collection-card[data-collection="ph"] { --card-accent: var(--accent-ph); }
+
+        .collection-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .collection-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            transition: all 0.4s ease;
+        }
+
+        .collection-card:hover .collection-icon {
+            transform: scale(1.1) rotate(-5deg);
+            border-color: var(--card-accent);
+            box-shadow: 0 0 20px -5px var(--card-accent);
+        }
+
+        .collection-count {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.08);
+            line-height: 1;
+        }
+
+        .collection-label {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--card-accent);
+            margin-bottom: 0.625rem;
+        }
+
+        .collection-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.875rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.875rem;
+            color: var(--text);
+        }
+
+        .collection-description {
+            font-size: 1rem;
+            line-height: 1.7;
             color: var(--text-dim);
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .collection-preview {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .preview-tag {
+            padding: 0.375rem 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            transition: all 0.3s ease;
+        }
+
+        .collection-card:hover .preview-tag {
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .collection-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .collection-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            transition: all 0.3s ease;
+        }
+
+        .collection-card:hover .collection-cta {
+            color: var(--card-accent);
+        }
+
+        .collection-cta svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .collection-card:hover .collection-cta svg {
+            transform: translateX(4px);
+        }
+
+        .collection-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            transition: all 0.4s ease;
+        }
+
+        .collection-card:hover .collection-arrow {
+            background: var(--card-accent);
+            border-color: var(--card-accent);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .collection-arrow svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-meta {
+            font-size: 0.8125rem;
+            color: var(--text-dim);
+        }
+
+        .footer-link {
+            color: var(--accent-main);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: fadeUp 0.8s ease 0.6s backwards;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.6875rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent-main), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; height: 40px; }
+            50% { opacity: 1; height: 50px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+                min-height: 60vh;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .collections {
+                padding: 2rem 1rem 4rem;
+            }
+
+            .collection-card {
+                padding: 1.75rem;
+            }
+
+            .collection-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>SELF Landing Pages</h1>
-            <p class="subtitle">10 unique visions of the Synthetic Emergent Learning Framework</p>
-        </header>
-        
-        <div class="grid">
-            <a href="0/" class="card">
-                <span class="card-number">0</span>
-                <h2 class="card-name">Original</h2>
-                <p class="card-aesthetic">Bold Experimental</p>
-                <p class="card-description">Neural particle network, gradient accents, the flagship design that showcases SELF's core identity.</p>
-                <div class="card-preview"></div>
+    <canvas class="bg-canvas" id="bgCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="self-nav" id="selfNav">
+        <div class="self-nav-inner">
+            <a href="./" class="self-nav-brand">
+                <span class="self-nav-logo">S</span>
+                <span class="self-nav-title">SELF</span>
             </a>
             
-            <a href="1/" class="card">
-                <span class="card-number">1</span>
-                <h2 class="card-name">Brutalist</h2>
-                <p class="card-aesthetic">Anti-Design</p>
-                <p class="card-description">Raw, confrontational, system fonts. "We don't do pretty. We do intelligence."</p>
-                <div class="card-preview"></div>
-            </a>
+            <div class="self-nav-links" id="selfNavLinks">
+                <a href="./" class="self-nav-link active" data-collection="main">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Landings</span>
+                    <span class="self-nav-link-count">10</span>
+                </a>
+                <a href="masters/" class="self-nav-link" data-collection="masters">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Masterpieces</span>
+                    <span class="self-nav-link-count">10</span>
+                </a>
+                <a href="revelations/" class="self-nav-link" data-collection="revelations">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Revelations</span>
+                    <span class="self-nav-link-count">10</span>
+                </a>
+                <a href="ph/" class="self-nav-link" data-collection="ph">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Product Ideas</span>
+                    <span class="self-nav-link-count">23</span>
+                </a>
+            </div>
             
-            <a href="2/" class="card">
-                <span class="card-number">2</span>
-                <h2 class="card-name">Zen MA</h2>
-                <p class="card-aesthetic">Japanese Minimalism</p>
-                <p class="card-description">Extreme whitespace, ink drop animation, haiku-like copy. The space between is the message.</p>
-                <div class="card-preview"></div>
-            </a>
-            
-            <a href="3/" class="card">
-                <span class="card-number">3</span>
-                <h2 class="card-name">Noir Cinema</h2>
-                <p class="card-aesthetic">Film Mystery</p>
-                <p class="card-description">Dramatic B&W, film grain, venetian blinds. "In a world of reactive AI..."</p>
-                <div class="card-preview"></div>
-            </a>
-            
-            <a href="4/" class="card">
-                <span class="card-number">4</span>
-                <h2 class="card-name">Terminal</h2>
-                <p class="card-aesthetic">Phosphor CRT</p>
-                <p class="card-description">Green on black, boot sequence, ASCII art. Computing as ritual.</p>
-                <div class="card-preview"></div>
-            </a>
-            
-            <a href="5/" class="card">
-                <span class="card-number">5</span>
-                <h2 class="card-name">Glitch</h2>
-                <p class="card-aesthetic">Corrupt Signal</p>
-                <p class="card-description">Chromatic aberration, VHS errors, beauty in chaos. Emergence from corruption.</p>
-                <div class="card-preview"></div>
-            </a>
-            
-            <a href="6/" class="card">
-                <span class="card-number">6</span>
-                <h2 class="card-name">Bioluminescent</h2>
-                <p class="card-aesthetic">Abyssal Depths</p>
-                <p class="card-description">Deep sea organisms, pulsing glow, living darkness. Intelligence from the void.</p>
-                <div class="card-preview"></div>
-            </a>
-            
-            <a href="7/" class="card">
-                <span class="card-number">7</span>
-                <h2 class="card-name">Interstellar</h2>
-                <p class="card-aesthetic">Cosmic Scale</p>
-                <p class="card-description">Star parallax, gold constellations, philosophical wonder. The loneliness of intelligence.</p>
-                <div class="card-preview"></div>
-            </a>
-            
-            <a href="8/" class="card">
-                <span class="card-number">8</span>
-                <h2 class="card-name">Isometric</h2>
-                <p class="card-aesthetic">Data Architecture</p>
-                <p class="card-description">3D blocks, technical blue, grid city. Mind as metropolis.</p>
-                <div class="card-preview"></div>
-            </a>
-            
-            <a href="9/" class="card">
-                <span class="card-number">9</span>
-                <h2 class="card-name">Mycelium</h2>
-                <p class="card-aesthetic">Organic Network</p>
-                <p class="card-description">Earth tones, fungal growth, spreading connections. Nature's original neural net.</p>
-                <div class="card-preview"></div>
-            </a>
+            <button class="self-nav-toggle" id="selfNavToggle" aria-label="Toggle navigation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            <span>Synthetic Emergent Learning Framework</span>
         </div>
         
-        <footer>
-            <p>SELF v1.0.0 — Synthetic Emergent Learning Framework — 2026</p>
-        </footer>
-    </div>
+        <h1 class="hero-title">
+            <span class="hero-title-accent">43 Visions</span><br>
+            of Intelligence
+        </h1>
+        
+        <p class="hero-subtitle">
+            A curated collection of landing page designs exploring AI consciousness, 
+            cognitive technologies, and emergent intelligence. Each page is a unique perspective.
+        </p>
+        
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-value">4</div>
+                <div class="hero-stat-label">Collections</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">43</div>
+                <div class="hero-stat-label">Pages</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">∞</div>
+                <div class="hero-stat-label">Ideas</div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Explore</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section class="collections" id="collections">
+        <div class="section-header">
+            <p class="section-label">Choose Your Journey</p>
+            <h2 class="section-title">Four Collections</h2>
+        </div>
+
+        <div class="collections-grid">
+            <!-- SELF Landings -->
+            <a href="#landings" class="collection-card" data-collection="main" id="landingsCard">
+                <div class="collection-header">
+                    <div class="collection-icon">✦</div>
+                    <span class="collection-count">10</span>
+                </div>
+                <span class="collection-label">Visual Exploration</span>
+                <h3 class="collection-title">SELF Landings</h3>
+                <p class="collection-description">
+                    Ten distinct aesthetic interpretations of the framework—from brutalist minimalism 
+                    to bioluminescent depths. Each explores a different visual language.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">Brutalist</span>
+                    <span class="preview-tag">Zen MA</span>
+                    <span class="preview-tag">Noir Cinema</span>
+                    <span class="preview-tag">Terminal</span>
+                    <span class="preview-tag">+6 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Masterpieces -->
+            <a href="masters/" class="collection-card" data-collection="masters">
+                <div class="collection-header">
+                    <div class="collection-icon">◆</div>
+                    <span class="collection-count">10</span>
+                </div>
+                <span class="collection-label">Cognitive Technologies</span>
+                <h3 class="collection-title">10 Masterpieces</h3>
+                <p class="collection-description">
+                    Interfaces that change how you think by using them. Each one inverts a fundamental 
+                    assumption about mind, self, or reality.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">The Void</span>
+                    <span class="preview-tag">The Inversion</span>
+                    <span class="preview-tag">The Paradox</span>
+                    <span class="preview-tag">The Alchemy</span>
+                    <span class="preview-tag">+6 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Revelations -->
+            <a href="revelations/" class="collection-card" data-collection="revelations">
+                <div class="collection-header">
+                    <div class="collection-icon">○</div>
+                    <span class="collection-count">10</span>
+                </div>
+                <span class="collection-label">Moments of Understanding</span>
+                <h3 class="collection-title">10 Revelations</h3>
+                <p class="collection-description">
+                    Not features. Not products. Truths that stay with you forever. Ten peaceful 
+                    experiences of philosophical insight.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">Stillness</span>
+                    <span class="preview-tag">Echoes</span>
+                    <span class="preview-tag">Resonance</span>
+                    <span class="preview-tag">Ember</span>
+                    <span class="preview-tag">+6 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Product Hunt Ideas -->
+            <a href="ph/" class="collection-card" data-collection="ph">
+                <div class="collection-header">
+                    <div class="collection-icon">▲</div>
+                    <span class="collection-count">23</span>
+                </div>
+                <span class="collection-label">Micro-SaaS Ideas</span>
+                <h3 class="collection-title">23 Product Ideas</h3>
+                <p class="collection-description">
+                    Ready-to-launch product concepts with full landing pages. From developer tools 
+                    to AI-powered platforms, each one is a potential startup.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">PageDoctor</span>
+                    <span class="preview-tag">ScopeGuard</span>
+                    <span class="preview-tag">PromptLab</span>
+                    <span class="preview-tag">MindBlend</span>
+                    <span class="preview-tag">+19 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- SELF Landings Quick Access -->
+    <section class="collections" id="landings">
+        <div class="section-header">
+            <p class="section-label">SELF Landings Collection</p>
+            <h2 class="section-title">10 Aesthetic Visions</h2>
+        </div>
+
+        <div class="self-quick-nav">
+            <a href="0/" class="self-quick-link">
+                <span class="self-quick-link-number">00</span>
+                <span>Original</span>
+            </a>
+            <a href="1/" class="self-quick-link">
+                <span class="self-quick-link-number">01</span>
+                <span>Brutalist</span>
+            </a>
+            <a href="2/" class="self-quick-link">
+                <span class="self-quick-link-number">02</span>
+                <span>Zen MA</span>
+            </a>
+            <a href="3/" class="self-quick-link">
+                <span class="self-quick-link-number">03</span>
+                <span>Noir Cinema</span>
+            </a>
+            <a href="4/" class="self-quick-link">
+                <span class="self-quick-link-number">04</span>
+                <span>Terminal</span>
+            </a>
+            <a href="5/" class="self-quick-link">
+                <span class="self-quick-link-number">05</span>
+                <span>Glitch</span>
+            </a>
+            <a href="6/" class="self-quick-link">
+                <span class="self-quick-link-number">06</span>
+                <span>Bioluminescent</span>
+            </a>
+            <a href="7/" class="self-quick-link">
+                <span class="self-quick-link-number">07</span>
+                <span>Interstellar</span>
+            </a>
+            <a href="8/" class="self-quick-link">
+                <span class="self-quick-link-number">08</span>
+                <span>Isometric</span>
+            </a>
+            <a href="9/" class="self-quick-link">
+                <span class="self-quick-link-number">09</span>
+                <span>Mycelium</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-brand">SELF v1.0.0</p>
+            <p class="footer-meta">
+                Synthetic Emergent Learning Framework · 
+                <a href="https://github.com" class="footer-link">GitHub</a> · 
+                2026
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile nav toggle
+        const toggle = document.getElementById('selfNavToggle');
+        const links = document.getElementById('selfNavLinks');
+        
+        toggle?.addEventListener('click', () => {
+            links.classList.toggle('open');
+            const isOpen = links.classList.contains('open');
+            toggle.innerHTML = isOpen 
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+        });
+
+        // Hide nav on scroll
+        const nav = document.getElementById('selfNav');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Landings card smooth scroll
+        document.getElementById('landingsCard')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('landings').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Particle background
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const particles = [];
+        const colors = ['#8b5cf6', '#c9a227', '#14b8a6', '#f472b6'];
+        
+        for (let i = 0; i < 60; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                size: Math.random() * 2 + 0.5,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                opacity: Math.random() * 0.3 + 0.1
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = p.color.replace(')', `, ${p.opacity})`).replace('rgb', 'rgba').replace('#', '');
+                
+                // Convert hex to rgba
+                const hex = p.color;
+                const r = parseInt(hex.slice(1, 3), 16);
+                const g = parseInt(hex.slice(3, 5), 16);
+                const b = parseInt(hex.slice(5, 7), 16);
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${p.opacity})`;
+                ctx.fill();
+            });
+
+            // Draw connections
+            particles.forEach((p1, i) => {
+                particles.slice(i + 1).forEach(p2 => {
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(139, 92, 246, ${0.03 * (1 - dist / 120)})`;
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
 </body>
 </html>
-

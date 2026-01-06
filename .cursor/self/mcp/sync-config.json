@@ -1,0 +1,57 @@
+{
+  "$schema": "SELF MCP Sync Configuration v1.0",
+  "version": "1.0.0",
+  "notion": {
+    "enabled": false,
+    "api_token": null,
+    "workspace_id": null,
+    "sync_thresholds": {
+      "episode_confidence": 0.7,
+      "episode_surprise_min": 0.3,
+      "insight_confidence": 0.6,
+      "insight_evidence_count": 3,
+      "pattern_occurrences": 5,
+      "pattern_confidence": 0.6,
+      "evolution_generations": true
+    },
+    "databases": {
+      "knowledge_base": null,
+      "evolution": null,
+      "insights": null,
+      "patterns": null,
+      "shared_hub": null
+    },
+    "sync_strategy": {
+      "mode": "surprise_driven",
+      "batch_size": 10,
+      "retry_attempts": 3,
+      "retry_backoff_ms": 1000,
+      "cache_ttl_hours": 24
+    },
+    "privacy": {
+      "default_privacy": "private",
+      "encrypt_sensitive": true,
+      "require_approval_for_sensitive": true,
+      "audit_log_enabled": true
+    }
+  },
+  "browser": {
+    "enabled": true,
+    "research_confidence_threshold": 0.5,
+    "validation_enabled": true,
+    "cache_research_results": true
+  },
+  "sync_queue": {
+    "enabled": true,
+    "persist_to_file": ".cursor/self/mcp/sync-queue.json",
+    "max_queue_size": 100,
+    "retry_failed_after_hours": 24
+  },
+  "health_checks": {
+    "enabled": true,
+    "check_interval_seconds": 300,
+    "failover_to_local": true,
+    "notify_on_degradation": true
+  }
+}
+

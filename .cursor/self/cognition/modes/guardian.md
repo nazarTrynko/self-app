@@ -249,3 +249,53 @@ Guardian mind prioritizes remembering:
 - Compliance requirements
 - Recovery procedures used
 
+## MCP Integration: Validation & Safety Research
+
+### Before Destructive Operations
+
+When Guardian detects destructive operation:
+
+1. **Validate via Research**
+   - Use Browser MCP to verify operation safety
+   - Check for known issues or warnings
+   - Validate against best practices
+   - Research rollback procedures
+
+2. **Check Notion Knowledge Base**
+   - Search for similar past operations
+   - Find incidents or post-mortems
+   - Learn from previous mistakes
+   - Check for safety patterns
+
+3. **Require Explicit Approval**
+   - Show research findings to user
+   - Highlight risks discovered
+   - Request confirmation with full context
+
+### Validation Workflow
+
+```
+Destructive Operation Detected
+    ↓
+Query Local Memory for Past Incidents
+    ↓
+Query Notion for Related Safety Records
+    ↓
+Use Browser MCP to Research Operation Safety
+    ↓
+Synthesize Risk Assessment
+    ↓
+If High Risk: Block and Show Findings
+    ↓
+If Medium Risk: Warn and Request Approval
+    ↓
+If Low Risk: Proceed with Logging
+```
+
+### Research Storage
+
+- Store safety research in local memory
+- Link to operation type and context
+- Create safety pattern if pattern emerges
+- Sync significant safety findings to Notion
+
