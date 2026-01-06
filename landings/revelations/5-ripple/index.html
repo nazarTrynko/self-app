@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIPPLE — Do Your Actions Matter?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="ripple"></canvas>
+    
+    <div class="experience">
+        <div class="phase phase-intro active" id="phase-intro">
+            <p class="whisper">Every action propagates infinitely.</p>
+            <p class="whisper delay-1">You can never see the end of what you've started.</p>
+            <p class="instruction delay-2">Click to drop a pebble</p>
+        </div>
+
+        <div class="phase phase-zoom" id="phase-zoom">
+            <p class="zoom-text">Watch the ripples spread...</p>
+            <p class="zoom-sub">Now zoom out.</p>
+            <p class="zoom-hint">Scroll to see further</p>
+        </div>
+
+        <div class="phase phase-infinite" id="phase-infinite">
+            <p class="wisdom">Your smallest action never stops.</p>
+            <p class="wisdom-sub">Effects have effects have effects.</p>
+            <p class="wisdom-sub">Forever.</p>
+            <p class="wisdom-sub final">Not scary. Beautiful.</p>
+        </div>
+    </div>
+
+    <div class="zoom-indicator" id="zoom-indicator">
+        <span class="zoom-level">1x</span>
+        <span class="label">perspective</span>
+    </div>
+
+    <a href="../" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Return
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
