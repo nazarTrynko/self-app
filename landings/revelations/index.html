@@ -268,6 +268,50 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="self-nav" id="selfNav">
+        <div class="self-nav-inner">
+            <a href="../" class="self-nav-brand">
+                <span class="self-nav-logo">S</span>
+                <span class="self-nav-title">SELF</span>
+            </a>
+            
+            <div class="self-nav-links" id="selfNavLinks">
+                <a href="../" class="self-nav-link" data-collection="main">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Landings</span>
+                    <span class="self-nav-link-count">10</span>
+                </a>
+                <a href="../masters/" class="self-nav-link" data-collection="masters">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Masterpieces</span>
+                    <span class="self-nav-link-count">25</span>
+                </a>
+                <a href="./" class="self-nav-link active" data-collection="revelations">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Revelations</span>
+                    <span class="self-nav-link-count">10</span>
+                </a>
+                <a href="../ph/" class="self-nav-link" data-collection="ph">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Products</span>
+                    <span class="self-nav-link-count">24</span>
+                </a>
+                <a href="../ideas/" class="self-nav-link" data-collection="ideas">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>App Ideas</span>
+                    <span class="self-nav-link-count">33</span>
+                </a>
+            </div>
+            
+            <button class="self-nav-toggle" id="selfNavToggle" aria-label="Toggle navigation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
     <div class="cosmos"></div>
 
     <header style="padding-top: 6rem;">
@@ -438,6 +482,32 @@
     </footer>
 
     <script>
+        // Mobile nav toggle
+        const toggle = document.getElementById('selfNavToggle');
+        const links = document.getElementById('selfNavLinks');
+        
+        toggle?.addEventListener('click', () => {
+            links.classList.toggle('open');
+            const isOpen = links.classList.contains('open');
+            toggle.innerHTML = isOpen 
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+        });
+
+        // Hide nav on scroll
+        const nav = document.getElementById('selfNav');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
         // Subtle parallax on mouse move
         document.addEventListener('mousemove', (e) => {
             const cosmos = document.querySelector('.cosmos');
@@ -464,7 +534,6 @@
             observer.observe(rev);
         });
     </script>
-    <script src="../shared/nav.js"></script>
 </body>
 </html>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Ideas — SELF</title>
+    <title>Mobile App Masterpieces — 33 Genius Ideas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,12 +20,21 @@
             --bg: #08080c;
             --surface: #101014;
             --surface-2: #18181c;
+            --surface-3: #1f1f24;
             --border: rgba(255, 255, 255, 0.06);
             --border-hover: rgba(255, 255, 255, 0.12);
             --text: #fafafa;
             --text-muted: #71717a;
+            --text-subtle: #52525b;
             --accent: #8b5cf6;
             --accent-glow: rgba(139, 92, 246, 0.15);
+            --green: #22c55e;
+            --green-glow: rgba(34, 197, 94, 0.15);
+            --amber: #f59e0b;
+            --amber-glow: rgba(245, 158, 11, 0.15);
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --cyan: #06b6d4;
         }
 
         body {
@@ -36,539 +45,791 @@
             line-height: 1.6;
         }
 
-        /* Header */
-        .header {
+        /* Sub Navigation */
+        .sub-nav {
             position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(8, 8, 12, 0.9);
+            top: 80px;
+            z-index: 90;
+            background: rgba(8, 8, 12, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
 
-        .header-inner {
-            max-width: 1200px;
+        .sub-nav-inner {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 16px 24px;
+            padding: 12px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 24px;
         }
 
-        .header-brand {
+        .sub-nav-title {
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .header-logo {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--accent), #c084fc);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .header-title {
+            gap: 10px;
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 400;
         }
 
-        .header-back {
+        .sub-nav-icon {
+            font-size: 1.25rem;
+        }
+
+        .sub-nav-tabs {
             display: flex;
-            align-items: center;
             gap: 6px;
-            padding: 8px 16px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: all 0.2s ease;
-        }
-
-        .header-back:hover {
-            border-color: var(--accent);
-            color: var(--text);
-        }
-
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.03);
-            padding: 6px;
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
         }
 
-        .nav-link {
-            display: flex;
+        .sub-nav-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.8125rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .sub-nav-btn:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .sub-nav-btn.active {
+            background: var(--green);
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .sub-nav-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .sub-nav-tabs {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 64px 24px 48px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
+            background: var(--green-glow);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            color: var(--green);
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--accent), #c084fc, var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.125rem;
             color: var(--text-muted);
-            font-size: 0.875rem;
-            transition: all 0.2s;
+            max-width: 600px;
+            margin: 0 auto 32px;
         }
 
-        .nav-link:hover {
-            color: var(--text);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .nav-link.active {
-            background: linear-gradient(135deg, var(--accent), #c084fc);
-            color: white;
-        }
-
-        .nav-link.masterpiece-link {
-            background: linear-gradient(135deg, #c9a227, #f59e0b);
-            color: white;
-        }
-
-        .nav-link.masterpiece-link:hover {
-            opacity: 0.9;
-        }
-
-        .nav-icon {
-            font-size: 1rem;
-        }
-
-        .nav-count {
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-wrap: wrap;
-            }
-            .header-nav {
-                order: 3;
-                width: 100%;
-                justify-content: center;
-                margin-top: 12px;
-            }
-            .header-back {
-                margin-left: auto;
-            }
-        }
-
-        /* Main Container */
-        .main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 48px 24px 100px;
-        }
-
-        /* Navigation Section - First Thing */
-        .nav-section {
-            margin-bottom: 48px;
-        }
-
-        .nav-label {
-            font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        /* Category Grid - Flexible for featured items */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-
-        @media (max-width: 1100px) {
-            .category-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 800px) {
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 500px) {
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .category-card {
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            padding: 24px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
             text-align: center;
         }
 
-        .category-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
-        }
-
-        .category-card.active {
-            border-color: var(--accent);
-            background: var(--accent-glow);
-        }
-
-        .category-card.featured {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.05));
-            border-color: rgba(251, 191, 36, 0.3);
-            grid-column: span 2;
-        }
-
-        .category-card.featured:hover {
-            border-color: rgba(251, 191, 36, 0.5);
-            box-shadow: 0 16px 48px -12px rgba(251, 191, 36, 0.2);
-        }
-
-        .category-card.featured .category-icon {
-            font-size: 2.5rem;
-        }
-
-        .category-card.featured .category-name {
-            font-size: 1.25rem;
-            color: #fbbf24;
-        }
-
-        .featured-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            border-radius: 20px;
-            font-size: 0.6875rem;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        @media (max-width: 500px) {
-            .category-card.featured {
-                grid-column: span 1;
-            }
-        }
-
-        .category-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .category-name {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .category-count {
-            font-size: 0.8125rem;
-            color: var(--text-muted);
-        }
-
-        .category-subs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-            margin-top: 12px;
-        }
-
-        .category-sub {
-            font-size: 0.6875rem;
-            color: var(--text-muted);
-            padding: 4px 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 4px;
-        }
-
-        /* Masterpiece Feature Card */
-        .masterpiece-feature {
-            margin-bottom: 32px;
-        }
-
-        .masterpiece-card {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(245, 158, 11, 0.05));
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            border-radius: 20px;
-            padding: 24px 32px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .masterpiece-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #c9a227, #f59e0b);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .masterpiece-card:hover {
-            border-color: rgba(201, 162, 39, 0.5);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px -20px rgba(201, 162, 39, 0.3);
-        }
-
-        .masterpiece-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .masterpiece-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 4px 10px;
-            background: linear-gradient(135deg, #c9a227, #f59e0b);
-            border-radius: 6px;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            color: white;
-            letter-spacing: 0.05em;
-        }
-
-        .masterpiece-content {
-            flex: 1;
-        }
-
-        .masterpiece-title {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 8px;
-            color: #f5d77a;
-        }
-
-        .masterpiece-desc {
-            font-size: 0.9375rem;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            max-width: 600px;
-        }
-
-        .masterpiece-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .mp-tag {
-            padding: 6px 12px;
-            background: rgba(201, 162, 39, 0.15);
-            border-radius: 8px;
-            font-size: 0.75rem;
-            color: #e5c654;
-        }
-
-        .masterpiece-arrow {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(201, 162, 39, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #c9a227;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .masterpiece-card:hover .masterpiece-arrow {
-            background: linear-gradient(135deg, #c9a227, #f59e0b);
-            color: white;
-            transform: translateX(4px);
-        }
-
-        @media (max-width: 768px) {
-            .masterpiece-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 32px 24px;
-            }
-            .masterpiece-tags {
-                justify-content: center;
-            }
-            .masterpiece-arrow {
-                margin-top: 16px;
-            }
-        }
-
-        /* Summary Section */
-        .summary-section {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 48px;
-            text-align: center;
-        }
-
-        .summary-title {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 12px;
-        }
-
-        .summary-stats {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-bottom: 16px;
-        }
-
-        .summary-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .summary-stat-value {
+        .stat-value {
             font-family: 'JetBrains Mono', monospace;
             font-size: 2rem;
             font-weight: 600;
             color: var(--accent);
         }
 
-        .summary-stat-label {
+        .stat-label {
             font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
 
-        .summary-desc {
-            color: var(--text-muted);
-            font-size: 0.9375rem;
-            max-width: 600px;
+        /* Main Content */
+        .main {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 48px 24px 100px;
         }
 
-        /* Content Section */
-        .content-section {
+        /* View Sections */
+        .view-section {
             display: none;
         }
 
-        .content-section.active {
+        .view-section.active {
             display: block;
         }
 
-        .content-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .content-title {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: 400;
+        /* Section Title */
+        .section-title {
             display: flex;
             align-items: center;
             gap: 12px;
+            margin-bottom: 32px;
         }
 
-        .content-back {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-muted);
-            cursor: pointer;
+        .section-title h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .section-title .count {
+            padding: 4px 12px;
+            background: var(--surface-2);
+            border-radius: 100px;
             font-size: 0.8125rem;
-            transition: all 0.2s ease;
+            color: var(--text-muted);
         }
 
-        .content-back:hover {
-            border-color: var(--text-muted);
-            color: var(--text);
-        }
-
-        /* Subcategory Pills */
-        .subcategory-pills {
+        /* Tier Filters */
+        .tier-filters {
             display: flex;
             gap: 8px;
-            flex-wrap: wrap;
             margin-bottom: 24px;
+            flex-wrap: wrap;
         }
 
-        .subcategory-pill {
+        .tier-btn {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 16px;
+            padding: 10px 18px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 100px;
+            color: var(--text-muted);
             cursor: pointer;
             font-size: 0.875rem;
-            color: var(--text-muted);
+            font-family: inherit;
             transition: all 0.2s ease;
         }
 
-        .subcategory-pill:hover {
+        .tier-btn:hover {
             border-color: var(--border-hover);
             color: var(--text);
         }
 
-        .subcategory-pill.active {
+        .tier-btn.active {
             background: var(--accent-glow);
             border-color: var(--accent);
             color: var(--text);
         }
 
-        .subcategory-pill-icon {
-            font-size: 1rem;
-        }
-
-        .subcategory-pill-count {
+        .tier-btn .badge {
+            padding: 2px 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 100px;
             font-size: 0.75rem;
-            opacity: 0.7;
         }
 
-        /* Ideas Grid */
+        .tier-s { --tier-color: #fbbf24; }
+        .tier-a { --tier-color: #a78bfa; }
+        .tier-b { --tier-color: #60a5fa; }
+        .tier-c { --tier-color: #9ca3af; }
+
+        /* Masterpiece Grid */
+        .masterpiece-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 450px) {
+            .masterpiece-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Masterpiece Card */
+        .masterpiece-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .masterpiece-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-header {
+            padding: 20px 20px 16px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--surface-2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .card-meta {
+            flex: 1;
+        }
+
+        .card-tier {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .card-tier.tier-s {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+        }
+
+        .card-tier.tier-a {
+            background: rgba(167, 139, 250, 0.15);
+            color: #a78bfa;
+        }
+
+        .card-tier.tier-b {
+            background: rgba(96, 165, 250, 0.15);
+            color: #60a5fa;
+        }
+
+        .card-tier.tier-c {
+            background: rgba(156, 163, 175, 0.15);
+            color: #9ca3af;
+        }
+
+        .card-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .card-category {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .card-score {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            background: var(--surface-2);
+            border-radius: 12px;
+        }
+
+        .score-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--green);
+        }
+
+        .score-label {
+            font-size: 0.625rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .card-tagline {
+            padding: 0 20px 16px;
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .card-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-top: 1px solid var(--border);
+        }
+
+        .metric {
+            background: var(--surface);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .metric-label {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+        }
+
+        .card-footer {
+            padding: 16px 20px;
+            background: var(--surface-2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-cta {
+            font-size: 0.8125rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .quick-pros {
+            display: flex;
+            gap: 6px;
+        }
+
+        .quick-pro {
+            padding: 4px 10px;
+            background: var(--green-glow);
+            border-radius: 6px;
+            font-size: 0.6875rem;
+            color: var(--green);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 200;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 24px;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-2);
+        }
+
+        .modal-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--surface);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .modal-title-group {
+            flex: 1;
+        }
+
+        .modal-tier {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .modal-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--surface);
+            color: var(--text);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        /* Modal Sections */
+        .modal-section {
+            margin-bottom: 32px;
+        }
+
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-section-title {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Score Display */
+        .score-display {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .score-card {
+            flex: 1;
+            min-width: 120px;
+            padding: 16px;
+            background: var(--surface-2);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .score-card-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .score-card-value.green { color: var(--green); }
+        .score-card-value.amber { color: var(--amber); }
+        .score-card-value.blue { color: var(--blue); }
+
+        .score-card-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Problem/Solution */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ps-card {
+            padding: 20px;
+            border-radius: 14px;
+        }
+
+        .ps-card.problem {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .ps-card.solution {
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .ps-label {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .ps-card.problem .ps-label { color: var(--red); }
+        .ps-card.solution .ps-label { color: var(--green); }
+
+        .ps-text {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Why It Sells */
+        .why-sells {
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 14px;
+        }
+
+        .why-sells-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .why-sells-text {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Pros/Cons */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pc-list {
+            padding: 20px;
+            border-radius: 14px;
+        }
+
+        .pc-list.pros {
+            background: rgba(34, 197, 94, 0.06);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+        }
+
+        .pc-list.cons {
+            background: rgba(245, 158, 11, 0.06);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+        }
+
+        .pc-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pc-list.pros .pc-title { color: var(--green); }
+        .pc-list.cons .pc-title { color: var(--amber); }
+
+        .pc-items {
+            list-style: none;
+        }
+
+        .pc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .pc-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .pc-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .pc-list.pros .pc-item::before {
+            background: var(--green);
+        }
+
+        .pc-list.cons .pc-item::before {
+            background: var(--amber);
+        }
+
+        /* Features */
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .feature-tag {
+            padding: 8px 14px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        /* Target User */
+        .target-user {
+            padding: 16px 20px;
+            background: var(--surface-2);
+            border-radius: 12px;
+            font-size: 0.9375rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .target-icon {
+            font-size: 1.25rem;
+        }
+
+        /* CTA Section */
+        .modal-cta {
+            padding: 24px;
+            background: var(--surface-2);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .cta-info {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cta-btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .cta-btn.primary {
+            background: var(--accent);
+            border: none;
+            color: white;
+        }
+
+        .cta-btn.primary:hover {
+            background: #7c3aed;
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .cta-btn.secondary:hover {
+            border-color: var(--text-muted);
+        }
+
+        /* All Ideas Grid */
         .ideas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -587,7 +848,6 @@
         .idea-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-2px);
-            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.3);
         }
 
         .idea-id {
@@ -606,170 +866,59 @@
         .idea-tier {
             display: inline-block;
             padding: 4px 10px;
-            background: rgba(139, 92, 246, 0.1);
+            background: var(--accent-glow);
             border-radius: 6px;
             font-size: 0.6875rem;
             color: var(--accent);
         }
 
-        .masterpiece-card {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(245, 158, 11, 0.02));
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 32px;
         }
 
-        .masterpiece-card:hover {
-            border-color: rgba(251, 191, 36, 0.4);
-            box-shadow: 0 12px 32px -8px rgba(251, 191, 36, 0.15);
-        }
-
-        .masterpiece-card .idea-tier {
-            background: rgba(251, 191, 36, 0.15);
-            color: #fbbf24;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 200;
-            display: none;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 40px 24px;
-            overflow-y: auto;
-        }
-
-        .modal-overlay.open {
-            display: flex;
-        }
-
-        .modal {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            max-width: 800px;
-            width: 100%;
-            max-height: calc(100vh - 80px);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-header {
+        .category-btn {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
+            gap: 10px;
+            padding: 14px 18px;
             background: var(--surface);
-        }
-
-        .modal-title {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-        }
-
-        .modal-close {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: transparent;
             border: 1px solid var(--border);
-            color: var(--text-muted);
+            border-radius: 12px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             transition: all 0.2s ease;
+            font-family: inherit;
+            text-align: left;
         }
 
-        .modal-close:hover {
-            background: var(--bg);
-            color: var(--text);
+        .category-btn:hover {
+            border-color: var(--border-hover);
         }
 
-        .modal-body {
-            padding: 24px;
-            overflow-y: auto;
+        .category-btn.active {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .category-icon {
+            font-size: 1.25rem;
+        }
+
+        .category-info {
             flex: 1;
         }
 
-        /* Markdown Styles */
-        .markdown-content {
-            font-size: 0.9375rem;
-            line-height: 1.7;
-        }
-
-        .markdown-content h1 {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 16px;
-            color: var(--text);
-        }
-
-        .markdown-content h2 {
-            font-size: 1.25rem;
+        .category-name {
+            font-size: 0.875rem;
             font-weight: 600;
-            margin: 32px 0 16px;
-            color: var(--text);
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .markdown-content h3 {
-            font-size: 1.0625rem;
-            font-weight: 600;
-            margin: 24px 0 12px;
             color: var(--text);
         }
 
-        .markdown-content p {
-            margin-bottom: 16px;
-            color: var(--text-muted);
-        }
-
-        .markdown-content strong {
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .markdown-content ul, .markdown-content ol {
-            margin: 16px 0;
-            padding-left: 24px;
-        }
-
-        .markdown-content li {
-            margin-bottom: 8px;
-            color: var(--text-muted);
-        }
-
-        .markdown-content hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 24px 0;
-        }
-
-        .markdown-content pre {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            overflow-x: auto;
-            margin: 16px 0;
-        }
-
-        .markdown-content code {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8125rem;
-            color: var(--accent);
-        }
-
-        .markdown-content pre code {
+        .category-count {
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
@@ -780,415 +929,537 @@
             color: var(--text-muted);
         }
 
-        .empty-state-icon {
+        .empty-icon {
             font-size: 3rem;
             margin-bottom: 16px;
             opacity: 0.5;
         }
+
+        /* Markdown Content */
+        .markdown-content h1 { font-size: 1.75rem; margin-bottom: 16px; }
+        .markdown-content h2 { font-size: 1.25rem; margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        .markdown-content h3 { font-size: 1rem; margin: 16px 0 8px; }
+        .markdown-content p { margin-bottom: 12px; color: var(--text-muted); }
+        .markdown-content ul, .markdown-content ol { margin: 12px 0; padding-left: 20px; }
+        .markdown-content li { margin-bottom: 6px; color: var(--text-muted); }
+        .markdown-content code { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; color: var(--accent); }
+        .markdown-content pre { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; overflow-x: auto; margin: 12px 0; }
+        .markdown-content pre code { color: var(--text-muted); }
     </style>
 </head>
 <body>
+    <!-- Sub Navigation -->
+    <div class="sub-nav">
+        <div class="sub-nav-inner">
+            <div class="sub-nav-title">
+                <span class="sub-nav-icon">💎</span>
+                <span>App Masterpieces</span>
+            </div>
+            <nav class="sub-nav-tabs">
+                <button class="sub-nav-btn active" data-view="masterpieces">🏆 Masterpieces</button>
+                <button class="sub-nav-btn" data-view="all-ideas">📚 All Ideas</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span>✨</span>
+            <span>33 Genius-Simple Mobile Apps</span>
+        </div>
+        <h1 class="hero-title">
+            Ideas Evolved Into<br>
+            <span>Category-Defining Products</span>
+        </h1>
+        <p class="hero-desc">
+            Each idea has been refined through 3 evolution cycles, stress-tested by 5 AI minds, 
+            and transformed into a masterpiece ready for weekend development.
+        </p>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">33</div>
+                <div class="stat-label">Masterpieces</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">$180K</div>
+                <div class="stat-label">Annual Potential</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">48hr</div>
+                <div class="stat-label">Avg MVP Time</div>
+            </div>
+        </div>
+    </section>
 
     <main class="main">
-        <!-- Navigation Section -->
-        <section class="nav-section" id="navSection">
-            <p class="nav-label">Browse by Category</p>
-            <div class="category-grid" id="categoryGrid">
-                <!-- Dynamically populated -->
+        <!-- Masterpieces View -->
+        <section class="view-section active" id="masterpiecesView">
+            <div class="section-title">
+                <h2>🏆 Masterpiece Ideas</h2>
+                <span class="count">33 ideas</span>
             </div>
-        </section>
 
-        <!-- Masterpieces Feature Card -->
-        <section class="masterpiece-feature" id="masterpieceFeature">
-            <a href="masterpieces/" class="masterpiece-card">
-                <div class="masterpiece-badge">💎 NEW</div>
-                <div class="masterpiece-content">
-                    <h3 class="masterpiece-title">44 Masterpiece Ideas</h3>
-                    <p class="masterpiece-desc">
-                        Complex, sophisticated mobile applications combining advanced technology with deep domain expertise. 
-                        Spatial computing, cognitive wellness, professional tools, and data intelligence.
-                    </p>
-                    <div class="masterpiece-tags">
-                        <span class="mp-tag">🌐 Spatial Computing</span>
-                        <span class="mp-tag">🧠 Cognitive Wellness</span>
-                        <span class="mp-tag">💼 Professional Domain</span>
-                        <span class="mp-tag">📊 Data Intelligence</span>
-                    </div>
-                </div>
-                <div class="masterpiece-arrow">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </div>
-            </a>
-        </section>
-
-        <!-- Summary Section -->
-        <section class="summary-section" id="summarySection">
-            <div class="summary-stats">
-                <div class="summary-stat">
-                    <span class="summary-stat-value" id="totalIdeas">0</span>
-                    <span class="summary-stat-label">Standard Ideas</span>
-                </div>
-                <div class="summary-stat">
-                    <span class="summary-stat-value">44</span>
-                    <span class="summary-stat-label">Masterpieces</span>
-                </div>
-                <div class="summary-stat">
-                    <span class="summary-stat-value" id="totalCategories">0</span>
-                    <span class="summary-stat-label">Categories</span>
-                </div>
-            </div>
-            <p class="summary-desc">
-                Comprehensive app specifications with technical details, monetization strategies, and UI concepts. 
-                Select a category above to explore standard ideas, or check out the Masterpieces for advanced concepts.
-            </p>
-        </section>
-
-        <!-- Content Section (hidden until category selected) -->
-        <section class="content-section" id="contentSection">
-            <div class="content-header">
-                <h2 class="content-title" id="contentTitle">
-                    <span id="contentIcon"></span>
-                    <span id="contentName"></span>
-                </h2>
-                <button class="content-back" id="contentBack">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    All Categories
+            <div class="tier-filters">
+                <button class="tier-btn active" data-tier="all">
+                    All Tiers
+                    <span class="badge">33</span>
+                </button>
+                <button class="tier-btn tier-s" data-tier="S">
+                    🥇 Tier S
+                    <span class="badge">3</span>
+                </button>
+                <button class="tier-btn tier-a" data-tier="A">
+                    🥈 Tier A
+                    <span class="badge">7</span>
+                </button>
+                <button class="tier-btn tier-b" data-tier="B">
+                    🥉 Tier B
+                    <span class="badge">12</span>
+                </button>
+                <button class="tier-btn tier-c" data-tier="C">
+                    📋 Tier C
+                    <span class="badge">11</span>
                 </button>
             </div>
 
-            <!-- Subcategory Pills -->
-            <div class="subcategory-pills" id="subcategoryPills">
-                <!-- Dynamically populated -->
+            <div class="masterpiece-grid" id="masterpieceGrid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- All Ideas View -->
+        <section class="view-section" id="allIdeasView">
+            <div class="section-title">
+                <h2>📚 All Original Ideas</h2>
+                <span class="count" id="allIdeasCount">100 ideas</span>
             </div>
 
-            <!-- Ideas Grid -->
+            <div class="category-grid" id="categoryGrid">
+                <!-- Populated by JS -->
+            </div>
+
             <div class="ideas-grid" id="ideasGrid">
-                <!-- Dynamically populated -->
+                <!-- Populated by JS -->
             </div>
         </section>
     </main>
 
-    <!-- Modal -->
-    <div class="modal-overlay" id="modalOverlay">
+    <!-- Masterpiece Modal -->
+    <div class="modal-overlay" id="masterpieceModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle">Loading...</h2>
+                <div class="modal-icon" id="modalIcon">💼</div>
+                <div class="modal-title-group">
+                    <div class="modal-tier tier-s" id="modalTier">TIER S</div>
+                    <h2 class="modal-title" id="modalTitle">QuoteCraft Pro</h2>
+                </div>
                 <button class="modal-close" id="modalClose">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 6L6 18M6 6l12 12"/>
                     </svg>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="markdown-content" id="modalContent">
-                    <div class="loading">Loading...</div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content populated by JS -->
+            </div>
+            <div class="modal-cta">
+                <div class="cta-info">
+                    <strong id="ctaPrice">$79.99</strong> · <span id="ctaBuildTime">40-50 hrs build time</span>
+                </div>
+                <div class="cta-buttons">
+                    <button class="cta-btn secondary" id="viewOriginal">View Original Spec</button>
+                    <button class="cta-btn primary">🚀 Start Building</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Original Idea Modal -->
+    <div class="modal-overlay" id="ideaModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <h2 class="modal-title" id="ideaModalTitle">Loading...</h2>
+                </div>
+                <button class="modal-close" id="ideaModalClose">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="markdown-content" id="ideaModalContent">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../shared/nav.js"></script>
     <script src="ideas-data.js"></script>
     <script>
-        // Group categories into balanced groups with featured masterpieces
-        const CATEGORY_GROUPS = [
-            {
-                id: 'masterpieces',
-                name: 'API Masterpieces',
-                icon: '🏆',
-                featured: true,
-                subcategories: ['22-api-masterpieces']
-            },
-            {
-                id: 'tools',
-                name: 'Tools & Sensors',
-                icon: '🛠️',
-                subcategories: ['01-sensor-tools', '02-camera-vision', '03-audio-sound']
-            },
-            {
-                id: 'intelligence',
-                name: 'AI & Privacy',
-                icon: '🧠',
-                subcategories: ['04-offline-ai', '05-data-vaults', '16-security']
-            },
-            {
-                id: 'life',
-                name: 'Life & Wellness',
-                icon: '💚',
-                subcategories: ['06-health-body', '07-productivity', '13-finance', '14-travel', '15-home-life']
-            },
-            {
-                id: 'creative',
-                name: 'Creative & Pro',
-                icon: '✨',
-                subcategories: ['08-creative', '09-professional', '19-niche-pro']
-            },
-            {
-                id: 'utility',
-                name: 'Utility & Dev',
-                icon: '⚙️',
-                subcategories: ['10-education', '11-gaming', '12-communication', '17-accessibility', '18-developer']
-            },
-            {
-                id: 'experimental',
-                name: 'Experimental',
-                icon: '🧪',
-                subcategories: ['20-experimental', '21-platforms']
-            }
-        ];
+        // Initialize main navigation
+        if (window.SELFNav) {
+            window.SELFNav.injectNav();
+        }
 
         // Elements
+        const navBtns = document.querySelectorAll('.sub-nav-btn');
+        const viewSections = document.querySelectorAll('.view-section');
+        const tierBtns = document.querySelectorAll('.tier-btn');
+        const masterpieceGrid = document.getElementById('masterpieceGrid');
         const categoryGrid = document.getElementById('categoryGrid');
-        const summarySection = document.getElementById('summarySection');
-        const navSection = document.getElementById('navSection');
-        const contentSection = document.getElementById('contentSection');
-        const contentTitle = document.getElementById('contentTitle');
-        const contentIcon = document.getElementById('contentIcon');
-        const contentName = document.getElementById('contentName');
-        const contentBack = document.getElementById('contentBack');
-        const subcategoryPills = document.getElementById('subcategoryPills');
         const ideasGrid = document.getElementById('ideasGrid');
-        const modalOverlay = document.getElementById('modalOverlay');
+        const allIdeasCount = document.getElementById('allIdeasCount');
+
+        // Masterpiece Modal
+        const masterpieceModal = document.getElementById('masterpieceModal');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalTier = document.getElementById('modalTier');
         const modalTitle = document.getElementById('modalTitle');
-        const modalContent = document.getElementById('modalContent');
+        const modalBody = document.getElementById('modalBody');
         const modalClose = document.getElementById('modalClose');
-        const totalIdeasEl = document.getElementById('totalIdeas');
-        const totalCategoriesEl = document.getElementById('totalCategories');
+        const ctaPrice = document.getElementById('ctaPrice');
+        const ctaBuildTime = document.getElementById('ctaBuildTime');
+        const viewOriginal = document.getElementById('viewOriginal');
+
+        // Idea Modal
+        const ideaModal = document.getElementById('ideaModal');
+        const ideaModalTitle = document.getElementById('ideaModalTitle');
+        const ideaModalContent = document.getElementById('ideaModalContent');
+        const ideaModalClose = document.getElementById('ideaModalClose');
 
         // State
-        let currentGroup = null;
-        let currentSubcategory = null;
+        let currentTier = 'all';
+        let currentCategory = null;
+        let currentIdea = null;
+
+        // Combine all masterpieces
+        const allMasterpieces = [
+            ...MASTERPIECE_IDEAS,
+            ...MORE_MASTERPIECES.map(m => ({
+                ...m,
+                tagline: `${m.category} tool optimized for maximum impact`,
+                problem: "Common pain point in this category",
+                solution: "Refined solution with unique angle",
+                pros: ["Fast to build", "Clear value proposition", "Proven market"],
+                cons: ["Competition exists", "Lower price ceiling"],
+                whySells: "Fills a specific gap that users actively search for.",
+                targetUser: `${m.category} enthusiasts and professionals`,
+                keyFeatures: ["Core feature 1", "Core feature 2", "Core feature 3"]
+            }))
+        ];
 
         // Initialize
         function init() {
-            // Calculate totals
-            totalIdeasEl.textContent = IDEAS_DATA.totalIdeas;
-            totalCategoriesEl.textContent = IDEAS_DATA.categories.length;
+            renderMasterpieces();
+            renderCategories();
+            setupEventListeners();
+        }
 
-            // Build grouped navigation
-            renderCategoryGroups();
-
-            // Event listeners
-            contentBack.addEventListener('click', showNav);
-            modalClose.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) closeModal();
+        function setupEventListeners() {
+            // View navigation
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const view = btn.dataset.view;
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    viewSections.forEach(s => s.classList.remove('active'));
+                    document.getElementById(view === 'masterpieces' ? 'masterpiecesView' : 'allIdeasView').classList.add('active');
+                });
             });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeModal();
+
+            // Tier filters
+            tierBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentTier = btn.dataset.tier;
+                    tierBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderMasterpieces();
+                });
+            });
+
+            // Modal close
+            modalClose.addEventListener('click', () => masterpieceModal.classList.remove('open'));
+            masterpieceModal.addEventListener('click', e => {
+                if (e.target === masterpieceModal) masterpieceModal.classList.remove('open');
+            });
+
+            ideaModalClose.addEventListener('click', () => ideaModal.classList.remove('open'));
+            ideaModal.addEventListener('click', e => {
+                if (e.target === ideaModal) ideaModal.classList.remove('open');
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    masterpieceModal.classList.remove('open');
+                    ideaModal.classList.remove('open');
+                }
+            });
+
+            viewOriginal.addEventListener('click', () => {
+                if (currentIdea && currentIdea.originalId) {
+                    masterpieceModal.classList.remove('open');
+                    // Find the original file
+                    for (const cat of IDEAS_DATA.categories) {
+                        const idea = cat.ideas.find(i => i.id === currentIdea.originalId);
+                        if (idea) {
+                            openIdeaModal(`${cat.id}/${idea.file}`, idea.name);
+                            break;
+                        }
+                    }
+                }
             });
         }
 
-        function renderCategoryGroups() {
-            categoryGrid.innerHTML = CATEGORY_GROUPS.map(group => {
-                // Get all subcategories and count ideas
-                const subcats = group.subcategories
-                    .map(id => IDEAS_DATA.categories.find(c => c.id === id))
-                    .filter(Boolean);
-                
-                const totalIdeas = subcats.reduce((sum, cat) => sum + cat.ideas.length, 0);
-                const subNames = subcats.slice(0, 3).map(c => c.name.split(' ')[0].replace('🏆 ', ''));
+        function renderMasterpieces() {
+            const filtered = currentTier === 'all' 
+                ? allMasterpieces 
+                : allMasterpieces.filter(m => m.tier === currentTier);
 
-                const isFeatured = group.featured === true;
-                const featuredClass = isFeatured ? 'featured' : '';
-                const featuredBadge = isFeatured ? '<span class="featured-badge">✨ Top Picks</span>' : '';
-                const description = isFeatured ? 
-                    '<div class="category-desc" style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 8px; max-width: 300px;">Highest-scoring monetizable app ideas powered by cutting-edge APIs</div>' : '';
-
-                return `
-                    <div class="category-card ${featuredClass}" data-group="${group.id}">
-                        ${featuredBadge}
-                        <span class="category-icon">${group.icon}</span>
-                        <div class="category-name">${group.name}</div>
-                        <div class="category-count">${totalIdeas} ${isFeatured ? 'masterpiece' : ''} ideas</div>
-                        ${description}
-                        <div class="category-subs">
-                            ${isFeatured ? 
-                                subcats.flatMap(c => c.ideas.slice(0, 4)).map(i => `<span class="category-sub">${i.name}</span>`).join('') :
-                                subNames.map(n => `<span class="category-sub">${n}</span>`).join('') + 
-                                (subcats.length > 3 ? `<span class="category-sub">+${subcats.length - 3}</span>` : '')
-                            }
+            masterpieceGrid.innerHTML = filtered.map(m => `
+                <div class="masterpiece-card" data-id="${m.id}">
+                    <div class="card-header">
+                        <div class="card-icon">${m.icon}</div>
+                        <div class="card-meta">
+                            <div class="card-tier tier-${m.tier.toLowerCase()}">TIER ${m.tier}</div>
+                            <div class="card-name">${m.name}</div>
+                            <div class="card-category">${m.category}</div>
+                        </div>
+                        <div class="card-score">
+                            <div class="score-value">${m.score}</div>
+                            <div class="score-label">Score</div>
                         </div>
                     </div>
-                `;
-            }).join('');
-
-            // Add click handlers
-            categoryGrid.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const groupId = card.dataset.group;
-                    selectGroup(groupId);
-                });
-            });
-        }
-
-        function selectGroup(groupId) {
-            const group = CATEGORY_GROUPS.find(g => g.id === groupId);
-            if (!group) return;
-
-            currentGroup = group;
-            
-            // Update UI
-            categoryGrid.querySelectorAll('.category-card').forEach(card => {
-                card.classList.toggle('active', card.dataset.group === groupId);
-            });
-
-            // Show content section
-            navSection.style.display = 'none';
-            summarySection.style.display = 'none';
-            contentSection.classList.add('active');
-
-            // Update header
-            contentIcon.textContent = group.icon;
-            contentName.textContent = group.name;
-
-            // Render subcategory pills
-            renderSubcategoryPills(group);
-        }
-
-        function renderSubcategoryPills(group) {
-            const subcats = group.subcategories
-                .map(id => IDEAS_DATA.categories.find(c => c.id === id))
-                .filter(Boolean);
-
-            // Add "All" pill
-            let html = `
-                <button class="subcategory-pill active" data-subcat="all">
-                    <span class="subcategory-pill-icon">✦</span>
-                    <span>All</span>
-                    <span class="subcategory-pill-count">${subcats.reduce((s, c) => s + c.ideas.length, 0)}</span>
-                </button>
-            `;
-
-            // Add each subcategory
-            html += subcats.map(cat => `
-                <button class="subcategory-pill" data-subcat="${cat.id}">
-                    <span class="subcategory-pill-icon">${cat.icon}</span>
-                    <span>${cat.name}</span>
-                    <span class="subcategory-pill-count">${cat.ideas.length}</span>
-                </button>
+                    ${m.tagline ? `<div class="card-tagline">"${m.tagline}"</div>` : ''}
+                    <div class="card-metrics">
+                        <div class="metric">
+                            <div class="metric-value">${m.price}</div>
+                            <div class="metric-label">Price</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${m.buildTime || '40 hrs'}</div>
+                            <div class="metric-label">Build</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${m.monthlyPotential || '$5K+'}</div>
+                            <div class="metric-label">MRR</div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="quick-pros">
+                            ${(m.pros || []).slice(0, 2).map(p => `<span class="quick-pro">${p.split(':')[0].substring(0, 20)}</span>`).join('')}
+                        </div>
+                        <div class="card-cta">
+                            Details
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             `).join('');
 
-            subcategoryPills.innerHTML = html;
-
             // Add click handlers
-            subcategoryPills.querySelectorAll('.subcategory-pill').forEach(pill => {
-                pill.addEventListener('click', () => {
-                    const subcatId = pill.dataset.subcat;
-                    selectSubcategory(subcatId);
+            masterpieceGrid.querySelectorAll('.masterpiece-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = card.dataset.id;
+                    const idea = allMasterpieces.find(m => m.id === id);
+                    if (idea) openMasterpieceModal(idea);
+                });
+            });
+        }
+
+        function openMasterpieceModal(idea) {
+            currentIdea = idea;
+            modalIcon.textContent = idea.icon;
+            modalTier.textContent = `TIER ${idea.tier}`;
+            modalTier.className = `modal-tier tier-${idea.tier.toLowerCase()}`;
+            modalTitle.textContent = idea.name;
+            ctaPrice.textContent = idea.price;
+            ctaBuildTime.textContent = idea.buildTime || '40 hrs build time';
+
+            modalBody.innerHTML = `
+                <!-- Score Display -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Metrics</div>
+                    <div class="score-display">
+                        <div class="score-card">
+                            <div class="score-card-value green">${idea.score}/10</div>
+                            <div class="score-card-label">Masterpiece Score</div>
+                        </div>
+                        <div class="score-card">
+                            <div class="score-card-value amber">${idea.monthlyPotential || '$5K+'}</div>
+                            <div class="score-card-label">Monthly Potential</div>
+                        </div>
+                        <div class="score-card">
+                            <div class="score-card-value blue">${idea.buildTime || '40 hrs'}</div>
+                            <div class="score-card-label">Build Time</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem / Solution -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Problem & Solution</div>
+                    <div class="problem-solution">
+                        <div class="ps-card problem">
+                            <div class="ps-label">😫 The Problem</div>
+                            <div class="ps-text">${idea.problem}</div>
+                        </div>
+                        <div class="ps-card solution">
+                            <div class="ps-label">✅ The Solution</div>
+                            <div class="ps-text">${idea.solution}</div>
+                        </div>
+                    </div>
+                </div>
+
+                ${idea.transformation ? `
+                <div class="modal-section">
+                    <div class="modal-section-title">Transformation</div>
+                    <div class="why-sells">
+                        <div class="why-sells-icon">🔄</div>
+                        <div class="why-sells-text">${idea.transformation}</div>
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- Why It Sells -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Why It Sells</div>
+                    <div class="why-sells">
+                        <div class="why-sells-icon">💰</div>
+                        <div class="why-sells-text">${idea.whySells}</div>
+                    </div>
+                </div>
+
+                <!-- Pros & Cons -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Pros & Cons</div>
+                    <div class="pros-cons">
+                        <div class="pc-list pros">
+                            <div class="pc-title">
+                                <span>✅</span>
+                                Pros
+                            </div>
+                            <ul class="pc-items">
+                                ${(idea.pros || []).map(p => `<li class="pc-item">${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="pc-list cons">
+                            <div class="pc-title">
+                                <span>⚠️</span>
+                                Cons
+                            </div>
+                            <ul class="pc-items">
+                                ${(idea.cons || []).map(c => `<li class="pc-item">${c}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Features -->
+                ${idea.keyFeatures ? `
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Features</div>
+                    <div class="features-grid">
+                        ${idea.keyFeatures.map(f => `<span class="feature-tag">✦ ${f}</span>`).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- Target User -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Target User</div>
+                    <div class="target-user">
+                        <span class="target-icon">👤</span>
+                        <span>${idea.targetUser}</span>
+                    </div>
+                </div>
+            `;
+
+            masterpieceModal.classList.add('open');
+        }
+
+        function renderCategories() {
+            allIdeasCount.textContent = `${IDEAS_DATA.totalIdeas} ideas`;
+
+            categoryGrid.innerHTML = `
+                <button class="category-btn active" data-cat="all">
+                    <span class="category-icon">✦</span>
+                    <div class="category-info">
+                        <div class="category-name">All Categories</div>
+                        <div class="category-count">${IDEAS_DATA.totalIdeas} ideas</div>
+                    </div>
+                </button>
+                ${IDEAS_DATA.categories.map(cat => `
+                    <button class="category-btn" data-cat="${cat.id}">
+                        <span class="category-icon">${cat.icon}</span>
+                        <div class="category-info">
+                            <div class="category-name">${cat.name}</div>
+                            <div class="category-count">${cat.ideas.length} ideas</div>
+                        </div>
+                    </button>
+                `).join('')}
+            `;
+
+            categoryGrid.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentCategory = btn.dataset.cat;
+                    categoryGrid.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderIdeas();
                 });
             });
 
-            // Default to showing all
-            currentSubcategory = 'all';
-            renderIdeas(subcats.flatMap(c => c.ideas.map(i => ({ ...i, categoryId: c.id }))));
+            renderIdeas();
         }
 
-        function selectSubcategory(subcatId) {
-            currentSubcategory = subcatId;
-
-            // Update active state
-            subcategoryPills.querySelectorAll('.subcategory-pill').forEach(pill => {
-                pill.classList.toggle('active', pill.dataset.subcat === subcatId);
-            });
-
-            // Get ideas to show
-            const subcats = currentGroup.subcategories
-                .map(id => IDEAS_DATA.categories.find(c => c.id === id))
-                .filter(Boolean);
-
-            let ideas;
-            if (subcatId === 'all') {
-                ideas = subcats.flatMap(c => c.ideas.map(i => ({ ...i, categoryId: c.id })));
+        function renderIdeas() {
+            let ideas = [];
+            
+            if (currentCategory === 'all' || !currentCategory) {
+                IDEAS_DATA.categories.forEach(cat => {
+                    ideas = ideas.concat(cat.ideas.map(i => ({ ...i, categoryId: cat.id })));
+                });
             } else {
-                const cat = subcats.find(c => c.id === subcatId);
-                ideas = cat ? cat.ideas.map(i => ({ ...i, categoryId: cat.id })) : [];
+                const cat = IDEAS_DATA.categories.find(c => c.id === currentCategory);
+                if (cat) {
+                    ideas = cat.ideas.map(i => ({ ...i, categoryId: cat.id }));
+                }
             }
 
-            renderIdeas(ideas);
-        }
+            ideasGrid.innerHTML = ideas.map(idea => `
+                <div class="idea-card" data-file="${idea.categoryId}/${idea.file}" data-name="${idea.name}">
+                    <div class="idea-id">#${idea.id}</div>
+                    <div class="idea-name">${idea.name}</div>
+                    <span class="idea-tier">${idea.tier}</span>
+                </div>
+            `).join('');
 
-        function renderIdeas(ideas) {
-            if (ideas.length === 0) {
-                ideasGrid.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📭</div>
-                        <p>No ideas in this category yet</p>
-                    </div>
-                `;
-                return;
-            }
-
-            ideasGrid.innerHTML = ideas.map(idea => {
-                const hasScore = idea.score !== undefined;
-                const scoreHtml = hasScore ? `
-                    <div class="idea-score" style="display: flex; align-items: center; gap: 6px; margin-top: 8px;">
-                        <span style="font-size: 0.75rem; color: var(--text-muted);">Score:</span>
-                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #fbbf24; font-weight: 600;">${idea.score}/10</span>
-                    </div>
-                ` : '';
-                
-                const isMasterpiece = idea.categoryId === '22-api-masterpieces';
-                const cardClass = isMasterpiece ? 'idea-card masterpiece-card' : 'idea-card';
-                
-                return `
-                    <div class="${cardClass}" data-file="${idea.categoryId}/${idea.file}" data-name="${idea.name}" style="${isMasterpiece ? 'border-color: rgba(251, 191, 36, 0.2);' : ''}">
-                        <div class="idea-id">#${idea.id}</div>
-                        <div class="idea-name">${idea.name}</div>
-                        <span class="idea-tier">${idea.tier}</span>
-                        ${scoreHtml}
-                    </div>
-                `;
-            }).join('');
-
-            // Add click handlers
             ideasGrid.querySelectorAll('.idea-card').forEach(card => {
                 card.addEventListener('click', () => {
-                    openModal(card.dataset.file, card.dataset.name);
+                    openIdeaModal(card.dataset.file, card.dataset.name);
                 });
             });
         }
 
-        function showNav() {
-            navSection.style.display = 'block';
-            summarySection.style.display = 'block';
-            contentSection.classList.remove('active');
-            currentGroup = null;
-            currentSubcategory = null;
-
-            // Clear active state
-            categoryGrid.querySelectorAll('.category-card').forEach(card => {
-                card.classList.remove('active');
-            });
-        }
-
-        async function openModal(file, name) {
-            modalTitle.textContent = name;
-            modalContent.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 24px;">Loading...</div>';
-            modalOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
+        async function openIdeaModal(file, name) {
+            ideaModalTitle.textContent = name;
+            ideaModalContent.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Loading...</p>';
+            ideaModal.classList.add('open');
 
             try {
                 const response = await fetch(file);
                 if (!response.ok) throw new Error('File not found');
                 const markdown = await response.text();
-                modalContent.innerHTML = marked.parse(markdown);
+                ideaModalContent.innerHTML = marked.parse(markdown);
             } catch (err) {
-                modalContent.innerHTML = `<p style="color: #ef4444;">Error loading file: ${err.message}</p>`;
+                ideaModalContent.innerHTML = `<p style="color: var(--red);">Error loading: ${err.message}</p>`;
             }
-        }
-
-        function closeModal() {
-            modalOverlay.classList.remove('open');
-            document.body.style.overflow = '';
         }
 
         // Initialize
         init();
     </script>
-    <script src="../shared/nav.js"></script>
 </body>
 </html>
