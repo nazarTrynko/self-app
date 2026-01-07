@@ -71,6 +71,7 @@
         if (path.includes('/ideas/')) return 'ideas';
         if (path.includes('/pro-pwas/')) return 'pwas';
         if (path.includes('/aurum/')) return 'aurum';
+        if (path.includes('/stealth-ideas/')) return 'stealth-ideas';
         if (path.includes('/self/')) return 'docs';
         if (path.includes('/sitemap/')) return 'sitemap';
         
@@ -164,6 +165,12 @@
                         <span class="nav-link-icon">🛠️</span>
                         <span class="nav-link-text">Pro PWAs</span>
                         <span class="nav-link-count">5</span>
+                    </a>
+                    
+                    <a href="${base}stealth-ideas/" class="nav-link ${current === 'stealth-ideas' ? 'active' : ''}" data-collection="stealth-ideas">
+                        <span class="nav-link-icon">🎭</span>
+                        <span class="nav-link-text">Stealth Ideas</span>
+                        <span class="nav-link-count">10</span>
                     </a>
                 </div>
                 
@@ -287,6 +294,7 @@
             { id: 'ph', name: 'Product Ideas', desc: 'Micro-SaaS concepts', icon: '▲', count: 23, path: 'ph/' },
             { id: 'ideas', name: 'App Ideas', desc: 'Mobile blueprints', icon: '📱', count: 81, path: 'ideas/' },
             { id: 'pwas', name: 'Pro PWAs', desc: 'Field worker tools', icon: '🛠️', count: 5, path: 'pro-pwas/' },
+            { id: 'stealth-ideas', name: 'Stealth Ideas', desc: 'Anonymous monetization', icon: '🎭', count: 10, path: 'stealth-ideas/' },
             { id: 'aurum', name: 'AURUM', desc: 'Prompt vault platform', icon: '⬡', count: 1, path: 'aurum/' }
         ];
         
