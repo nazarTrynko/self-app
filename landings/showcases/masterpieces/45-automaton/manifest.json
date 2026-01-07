@@ -1,0 +1,11 @@
+{
+    "name": "THE AUTOMATON - Life in Three Dimensions",
+    "short_name": "THE AUTOMATON",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#050008",
+    "theme_color": "#00ff88",
+    "description": "Watch life emerge, evolve, and transcend in 3D cellular space",
+    "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>", "sizes": "any", "type": "image/svg+xml" }]
+}
+

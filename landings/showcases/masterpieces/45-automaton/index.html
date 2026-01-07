@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE AUTOMATON | Life in Three Dimensions</title>
+    <meta name="description" content="Watch life emerge, evolve, and transcend in 3D cellular space">
+    <meta name="theme-color" content="#050008">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="three-container"></div>
+    
+    <nav class="nav">
+        <a href="../index.html" class="nav-back">← Masterpieces</a>
+        <span class="nav-title">45 / 45</span>
+    </nav>
+
+    <main class="content">
+        <header class="hero">
+            <div class="hero-number">45</div>
+            <h1 class="hero-title">THE AUTOMATON</h1>
+            <p class="hero-subtitle">Life in Three Dimensions</p>
+            <p class="hero-tagline">Simple rules, infinite complexity</p>
+        </header>
+
+        <section class="insight">
+            <blockquote>
+                "From simplicity, complexity. From local rules, global patterns. The automaton shows how the universe creates richness from almost nothing."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2>Create Life</h2>
+            <div class="controls">
+                <button class="control-btn" id="randomize">🎲 Seed Random</button>
+                <button class="control-btn" id="togglePlay">⏸️ Pause</button>
+                <button class="control-btn" id="stepOnce">⏭️ Step</button>
+                <button class="control-btn" id="clear">🗑️ Clear</button>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Living Cells</span>
+                    <span class="stat-value" id="cellCount">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Generation</span>
+                    <span class="stat-value" id="generation">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Rule Set</span>
+                    <span class="stat-value" id="ruleSet">4/4</span>
+                </div>
+            </div>
+            <div class="growth-controls">
+                <label>
+                    Grid Size: <span id="sizeValue">20</span>³
+                    <input type="range" id="gridSize" min="10" max="40" value="20">
+                </label>
+                <label>
+                    Speed
+                    <input type="range" id="simSpeed" min="1" max="10" value="5">
+                </label>
+                <div class="rule-selector">
+                    <span>Rule: </span>
+                    <select id="ruleSelect">
+                        <option value="4445">4/4/4/5 - Classic Life</option>
+                        <option value="5576">5/5/7/6 - Amoeba</option>
+                        <option value="6677">6/6/7/7 - Crystal</option>
+                        <option value="4567">4/5/6/7 - Builder</option>
+                        <option value="3356">3/3/5/6 - Explosive</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <h2>The Philosophy of Emergence</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>Simple Rules</h3>
+                    <p>Each cell looks at neighbors and decides: live or die. Two numbers define survival; two define birth. Nothing more.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Emergent Complexity</h3>
+                    <p>From these tiny local decisions, gliders emerge. Oscillators pulse. Structures grow, die, and sometimes achieve stability.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Universal Computation</h3>
+                    <p>Cellular automata can compute anything. Your brain, the universe—perhaps all are automata following rules we don't yet know.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>THE AUTOMATON — Growth Patterns Collection</p>
+        <p class="footer-sub">Part of the SELF Masterpiece Series</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

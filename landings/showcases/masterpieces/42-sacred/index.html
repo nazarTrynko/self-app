@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SACRED | Divine Geometry Unfolds</title>
+    <meta name="description" content="Watch sacred geometry unfold—Flower of Life, Metatron's Cube, Platonic solids morphing">
+    <meta name="theme-color" content="#0a0520">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div id="three-container"></div>
+    
+    <nav class="nav">
+        <a href="../index.html" class="nav-back">← Masterpieces</a>
+        <span class="nav-title">42 / 45</span>
+    </nav>
+
+    <main class="content">
+        <header class="hero">
+            <div class="hero-number">42</div>
+            <h1 class="hero-title">THE SACRED</h1>
+            <p class="hero-subtitle">Divine Geometry Unfolds</p>
+            <p class="hero-tagline">Mathematical patterns of creation</p>
+        </header>
+
+        <section class="insight">
+            <blockquote>
+                "The same geometric principles appear in temple architecture, flower petals, galaxies, and atoms. Sacred geometry suggests mathematics itself may be the language of creation."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2>Witness the Forms</h2>
+            <div class="controls">
+                <button class="control-btn" id="morphNext">✡ Morph</button>
+                <button class="control-btn" id="toggleAnimate">⏸ Pause</button>
+                <button class="control-btn" id="showPhi">φ Golden Ratio</button>
+            </div>
+            <div class="form-selector">
+                <button class="form-btn active" data-form="flower">Flower of Life</button>
+                <button class="form-btn" data-form="metatron">Metatron's Cube</button>
+                <button class="form-btn" data-form="seed">Seed of Life</button>
+                <button class="form-btn" data-form="torus">Torus</button>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Form</span>
+                    <span class="stat-value" id="formName">Flower</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Circles</span>
+                    <span class="stat-value" id="circleCount">19</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Symmetry</span>
+                    <span class="stat-value" id="symmetry">6-fold</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <h2>The Language of Form</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>Flower of Life</h3>
+                    <p>19 overlapping circles creating 6-fold symmetry. Found in temples from Egypt to China, separated by millennia yet identical in form.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Metatron's Cube</h3>
+                    <p>13 circles connected by lines reveal all five Platonic solids within. A map of dimensional relationships encoded in 2D.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Golden Ratio</h3>
+                    <p>φ = 1.618... appears throughout sacred geometry. This "divine proportion" links forms across scales and domains.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>THE SACRED — Growth Patterns Collection</p>
+        <p class="footer-sub">Part of the SELF Masterpiece Series</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

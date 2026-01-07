@@ -1,0 +1,17 @@
+{
+    "name": "THE SACRED - Divine Geometry Unfolds",
+    "short_name": "THE SACRED",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#050310",
+    "theme_color": "#ffd700",
+    "description": "Watch sacred geometry unfold—Flower of Life, Metatron's Cube, Platonic solids morphing",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✡</text></svg>",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
+

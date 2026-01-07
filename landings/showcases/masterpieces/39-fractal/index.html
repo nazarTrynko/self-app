@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE FRACTAL | Infinite Depth Explorer</title>
+    <meta name="description" content="Dive infinitely into 3D Mandelbulb fractals—mathematical landscapes of endless complexity">
+    <meta name="theme-color" content="#0a0010">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="fractal-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../index.html" class="nav-back">← Masterpieces</a>
+        <span class="nav-title">39 / 45</span>
+    </nav>
+
+    <main class="content">
+        <header class="hero">
+            <div class="hero-number">39</div>
+            <h1 class="hero-title">THE FRACTAL</h1>
+            <p class="hero-subtitle">Infinite Depth Explorer</p>
+            <p class="hero-tagline">Zoom forever into mathematical infinity</p>
+        </header>
+
+        <section class="insight">
+            <blockquote>
+                "The Mandelbulb contains universes within universes—each magnification reveals new worlds, each zoom discovers structures no human has seen before."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2>Explore the Infinite</h2>
+            <div class="controls">
+                <button class="control-btn" id="zoomIn">🔍+ Zoom In</button>
+                <button class="control-btn" id="zoomOut">🔍- Zoom Out</button>
+                <button class="control-btn" id="toggleRotate">🔄 Auto-Rotate</button>
+                <button class="control-btn" id="resetView">↺ Reset</button>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Zoom</span>
+                    <span class="stat-value" id="zoomLevel">1.0×</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Power</span>
+                    <span class="stat-value" id="powerValue">8</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Iterations</span>
+                    <span class="stat-value" id="iterValue">64</span>
+                </div>
+            </div>
+            <div class="growth-controls">
+                <label>
+                    Power (n)
+                    <input type="range" id="powerSlider" min="2" max="12" value="8" step="0.5">
+                </label>
+                <label>
+                    Iterations
+                    <input type="range" id="iterSlider" min="16" max="128" value="64">
+                </label>
+                <label>
+                    Color Shift
+                    <input type="range" id="colorSlider" min="0" max="100" value="50">
+                </label>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <h2>The Mathematics of Infinity</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>Self-Similarity</h3>
+                    <p>The Mandelbulb is a 3D analog of the Mandelbrot set—zoom in anywhere and discover similar structures at every scale, infinitely.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Iteration</h3>
+                    <p>Each point in space is tested: does the formula z = z^n + c escape to infinity or stay bounded? The boundary between yes and no creates the fractal.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Discovery</h3>
+                    <p>Every zoom into the Mandelbulb discovers structures no human has ever seen. You are an explorer in an infinite mathematical landscape.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>THE FRACTAL — Growth Patterns Collection</p>
+        <p class="footer-sub">Part of the SELF Masterpiece Series</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

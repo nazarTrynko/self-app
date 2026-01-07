@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE DENDRITE | Branching Crystal Formation</title>
+    <meta name="description" content="Watch crystalline branches grow like frost on glass through L-system generative art">
+    <meta name="theme-color" content="#0a1628">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div id="three-container"></div>
+    
+    <nav class="nav">
+        <a href="../index.html" class="nav-back">← Masterpieces</a>
+        <span class="nav-title">37 / 45</span>
+    </nav>
+
+    <main class="content">
+        <header class="hero">
+            <div class="hero-number">37</div>
+            <h1 class="hero-title">THE DENDRITE</h1>
+            <p class="hero-subtitle">Branching Crystal Formation</p>
+            <p class="hero-tagline">Frost on glass, neurons forming, lightning frozen</p>
+        </header>
+
+        <section class="insight">
+            <blockquote>
+                "The same mathematical grammar writes frost patterns on windows, neural pathways in brains, and river deltas viewed from space. Branching is the universe's favorite word."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2>Grow Your Dendrite</h2>
+            <div class="controls">
+                <button class="control-btn" id="growNew">❄️ New Growth</button>
+                <button class="control-btn" id="toggleAnimate">⏸ Pause</button>
+                <button class="control-btn" id="resetView">🔄 Reset</button>
+            </div>
+            <div class="presets">
+                <span class="preset-label">Presets:</span>
+                <button class="preset-btn active" data-preset="frost">Frost</button>
+                <button class="preset-btn" data-preset="neural">Neural</button>
+                <button class="preset-btn" data-preset="lightning">Lightning</button>
+                <button class="preset-btn" data-preset="tree">Tree</button>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Depth</span>
+                    <span class="stat-value" id="depthValue">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Branches</span>
+                    <span class="stat-value" id="branchCount">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Iterations</span>
+                    <span class="stat-value" id="iterCount">0</span>
+                </div>
+            </div>
+            <div class="growth-controls">
+                <label>
+                    Branch Angle
+                    <input type="range" id="branchAngle" min="10" max="60" value="25">
+                    <span id="angleDisplay">25°</span>
+                </label>
+                <label>
+                    Length Decay
+                    <input type="range" id="lengthDecay" min="50" max="90" value="70">
+                    <span id="decayDisplay">0.70</span>
+                </label>
+                <label>
+                    Max Depth
+                    <input type="range" id="maxDepth" min="3" max="10" value="7">
+                    <span id="depthDisplay">7</span>
+                </label>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <h2>The Grammar of Branches</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>L-Systems</h3>
+                    <p>Lindenmayer systems encode growth as string rewriting rules. "F" becomes "F[+F][-F]F"—a simple substitution that generates infinite complexity.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Self-Similarity</h3>
+                    <p>Every branch contains the whole pattern at smaller scale. Zoom in, and you find the same structure repeating: fractals before mathematicians named them.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Randomness</h3>
+                    <p>Pure mathematical rules create mechanical patterns. Adding controlled randomness produces the organic variation that makes natural forms feel alive.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="technical">
+            <h2>The L-System</h2>
+            <div class="code-block">
+                <pre><code>Axiom: F
+Rule:  F → F[+F][-F]F
+
+Interpretation:
+  F = Draw forward
+  + = Turn left
+  - = Turn right
+  [ = Save position
+  ] = Restore position</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>THE DENDRITE — Growth Patterns Collection</p>
+        <p class="footer-sub">Part of the SELF Masterpiece Series</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

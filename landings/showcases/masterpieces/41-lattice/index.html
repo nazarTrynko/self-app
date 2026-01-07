@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE LATTICE | Infinite Grid Growth</title>
+    <meta name="description" content="Navigate an infinite, ever-expanding 3D grid structure—a meditation on infinite space">
+    <meta name="theme-color" content="#000a10">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="three-container"></div>
+    
+    <nav class="nav">
+        <a href="../index.html" class="nav-back">← Masterpieces</a>
+        <span class="nav-title">41 / 45</span>
+    </nav>
+
+    <main class="content">
+        <header class="hero">
+            <div class="hero-number">41</div>
+            <h1 class="hero-title">THE LATTICE</h1>
+            <p class="hero-subtitle">Infinite Grid Growth</p>
+            <p class="hero-tagline">Structure extending forever into void</p>
+        </header>
+
+        <section class="insight">
+            <blockquote>
+                "The grid is humanity's fundamental organizing principle—from city streets to pixels to atoms. What happens when order extends infinitely?"
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2>Navigate Infinity</h2>
+            <div class="controls">
+                <button class="control-btn" id="togglePulse">⚡ Energy Pulse</button>
+                <button class="control-btn" id="toggleRotate">🔄 Auto-Rotate</button>
+                <button class="control-btn" id="resetView">↺ Reset View</button>
+            </div>
+            <div class="lattice-types">
+                <span class="type-label">Grid:</span>
+                <button class="type-btn active" data-type="cubic">Cubic</button>
+                <button class="type-btn" data-type="hexagonal">Hexagonal</button>
+                <button class="type-btn" data-type="tetrahedral">Tetrahedral</button>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Nodes</span>
+                    <span class="stat-value" id="nodeCount">∞</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Distance</span>
+                    <span class="stat-value" id="distValue">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Pulses</span>
+                    <span class="stat-value" id="pulseCount">0</span>
+                </div>
+            </div>
+            <div class="growth-controls">
+                <label>
+                    Grid Density
+                    <input type="range" id="densitySlider" min="1" max="5" value="2">
+                </label>
+                <label>
+                    Pulse Speed
+                    <input type="range" id="pulseSpeed" min="1" max="10" value="5">
+                </label>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <h2>The Mathematics of Space</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>Infinite Generation</h3>
+                    <p>The grid extends procedurally—new sections generate as you approach, old ones fade as you leave. You're always at the center of infinity.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Order in Void</h3>
+                    <p>Without the grid, space is formless. The lattice imposes meaning on emptiness, creates reference where there was none.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Energy Flow</h3>
+                    <p>Pulses travel the network like thoughts in neurons—information moving through structure, giving it life beyond geometry.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>THE LATTICE — Growth Patterns Collection</p>
+        <p class="footer-sub">Part of the SELF Masterpiece Series</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

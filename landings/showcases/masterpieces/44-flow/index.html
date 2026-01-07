@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE FLOW | Energy Field Dynamics</title>
+    <meta name="description" content="Watch millions of particles dance through invisible force fields">
+    <meta name="theme-color" content="#000510">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="three-container"></div>
+    
+    <nav class="nav">
+        <a href="../index.html" class="nav-back">← Masterpieces</a>
+        <span class="nav-title">44 / 45</span>
+    </nav>
+
+    <main class="content">
+        <header class="hero">
+            <div class="hero-number">44</div>
+            <h1 class="hero-title">THE FLOW</h1>
+            <p class="hero-subtitle">Energy Field Dynamics</p>
+            <p class="hero-tagline">Rivers of light through invisible currents</p>
+        </header>
+
+        <section class="insight">
+            <blockquote>
+                "Energy flows are everywhere—wind, ocean currents, magnetic fields. Making the invisible visible reveals patterns that govern all movement."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2>Sculpt the Flow</h2>
+            <div class="controls">
+                <button class="control-btn" id="addAttractor">⊕ Attractor</button>
+                <button class="control-btn" id="addRepeller">⊖ Repeller</button>
+                <button class="control-btn" id="addVortex">↻ Vortex</button>
+                <button class="control-btn" id="resetFlow">🔄 Reset</button>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Particles</span>
+                    <span class="stat-value" id="particleCount">100K</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Forces</span>
+                    <span class="stat-value" id="forceCount">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Turbulence</span>
+                    <span class="stat-value" id="turbValue">5</span>
+                </div>
+            </div>
+            <div class="growth-controls">
+                <label>
+                    Turbulence
+                    <input type="range" id="turbulence" min="1" max="10" value="5">
+                </label>
+                <label>
+                    Flow Speed
+                    <input type="range" id="flowSpeed" min="1" max="10" value="5">
+                </label>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <h2>The Mathematics of Motion</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>Curl Noise</h3>
+                    <p>Divergence-free vector fields create smooth, incompressible flow—no particles bunch up or spread apart, just endless swirling motion.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Attractors & Repellers</h3>
+                    <p>Points of attraction and repulsion create structure in the flow. Particles orbit attractors and stream away from repellers.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Emergence</h3>
+                    <p>Simple rules—follow the field—create complex, beautiful patterns. No particle knows the whole; beauty emerges from local behavior.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>THE FLOW — Growth Patterns Collection</p>
+        <p class="footer-sub">Part of the SELF Masterpiece Series</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

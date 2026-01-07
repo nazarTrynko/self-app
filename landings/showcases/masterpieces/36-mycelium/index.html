@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MYCELIUM | Underground Network Growth</title>
+    <meta name="description" content="Watch an underground fungal network spread and grow in real-time through Diffusion Limited Aggregation">
+    <meta name="theme-color" content="#1a0f00">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div id="three-container"></div>
+    
+    <nav class="nav">
+        <a href="../index.html" class="nav-back">← Masterpieces</a>
+        <span class="nav-title">36 / 45</span>
+    </nav>
+
+    <main class="content">
+        <header class="hero">
+            <div class="hero-number">36</div>
+            <h1 class="hero-title">THE MYCELIUM</h1>
+            <p class="hero-subtitle">Underground Network Growth</p>
+            <p class="hero-tagline">Nature's original internet, spreading through darkness</p>
+        </header>
+
+        <section class="insight">
+            <blockquote>
+                "The mycelium beneath our feet connects entire forests—sharing nutrients, warnings, and wisdom across miles. We walk over Earth's largest organism without ever seeing it."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2>Experience the Growth</h2>
+            <div class="controls">
+                <button class="control-btn" id="plantSeed">🌱 Plant Seed</button>
+                <button class="control-btn" id="toggleGrowth">⏸ Pause</button>
+                <button class="control-btn" id="resetNetwork">🔄 Reset</button>
+                <button class="control-btn" id="toggleNutrients">💫 Nutrients</button>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Seeds</span>
+                    <span class="stat-value" id="seedCount">1</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Nodes</span>
+                    <span class="stat-value" id="nodeCount">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Connections</span>
+                    <span class="stat-value" id="connectionCount">0</span>
+                </div>
+            </div>
+            <div class="growth-controls">
+                <label>
+                    Growth Rate
+                    <input type="range" id="growthRate" min="1" max="20" value="10">
+                </label>
+                <label>
+                    Branch Angle
+                    <input type="range" id="branchAngle" min="10" max="60" value="30">
+                </label>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <h2>The Underground Intelligence</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>Connection</h3>
+                    <p>Mycelium networks demonstrate that connection precedes communication. The physical link must exist before information can flow.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Patience</h3>
+                    <p>Growth happens through accumulated small steps. Each node finds its place through random exploration until it touches something solid.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Emergence</h3>
+                    <p>No central controller designs the network. Complex structure emerges from simple rules repeated endlessly in darkness.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="technical">
+            <h2>The Algorithm</h2>
+            <p><strong>Diffusion Limited Aggregation</strong> simulates how particles drift randomly until they touch an existing structure and stick. This same mathematics governs:</p>
+            <ul>
+                <li>Lightning bolt paths through atmosphere</li>
+                <li>Mineral veins forming in rock</li>
+                <li>River delta branching patterns</li>
+                <li>Neuron dendrite growth</li>
+                <li>Frost crystal formation</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>THE MYCELIUM — Growth Patterns Collection</p>
+        <p class="footer-sub">Part of the SELF Masterpiece Series</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+
