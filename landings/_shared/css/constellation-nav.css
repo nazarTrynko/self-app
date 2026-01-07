@@ -3,13 +3,13 @@
    Ethereal orbs drifting like stars
    =========================================== */
 
-/* Canvas container - fixed in bottom-right */
+/* Canvas container - fixed in bottom-right, expands to full page */
 .constellation-nav {
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     z-index: 1000;
     pointer-events: none;
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1),
@@ -17,8 +17,8 @@
 }
 
 .constellation-nav.expanded {
-    width: min(100vw, 700px);
-    height: min(100vh, 700px);
+    width: 100vw;
+    height: 100vh;
 }
 
 /* The canvas itself */
@@ -109,7 +109,7 @@
 @media (max-width: 768px) {
     .constellation-nav.expanded {
         width: 100vw;
-        height: min(100vh, 500px);
+        height: 100vh;
     }
     
     .constellation-mother-area {
@@ -127,7 +127,8 @@
 /* Very small screens */
 @media (max-width: 480px) {
     .constellation-nav.expanded {
-        height: min(100vh, 400px);
+        width: 100vw;
+        height: 100vh;
     }
     
     .constellation-mother-area {

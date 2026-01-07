@@ -1,0 +1,317 @@
+/* DREAMWEAVER - AI Dream Worlds */
+/* Design: Surrealist art meets liminal spaces meets vapor-wave */
+
+:root {
+    --bg-void: #0a0812;
+    --bg-surface: #12101a;
+    --text-primary: #f5f0ff;
+    --text-secondary: #a09aad;
+    --dream-purple: #7c3aed;
+    --unreality-pink: #f472b6;
+    --fog-white: rgba(255, 255, 255, 0.05);
+    --gradient-dream: linear-gradient(135deg, var(--dream-purple), var(--unreality-pink));
+    --glow-dream: 0 0 100px rgba(124, 58, 237, 0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Recursive', sans-serif;
+    background: var(--bg-void);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#dreamCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, var(--bg-void) 0%, transparent 100%);
+}
+
+.nav-back { color: var(--text-secondary); text-decoration: none; }
+.nav-brand {
+    font-weight: 600;
+    background: var(--gradient-dream);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.nav-cta {
+    padding: 0.6rem 1.25rem;
+    background: var(--gradient-dream);
+    color: var(--bg-void);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+}
+
+.hero-badge {
+    padding: 0.5rem 1.25rem;
+    background: rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--dream-purple);
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.title-line { display: block; }
+.title-gradient {
+    font-weight: 600;
+    font-style: normal;
+    background: var(--gradient-dream);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-tagline {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin-bottom: 4rem;
+}
+
+/* Dream Portal */
+.dream-portal {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin-bottom: 3rem;
+}
+
+.portal-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--dream-purple);
+    border-radius: 50%;
+    animation: portal-rotate 10s linear infinite;
+}
+
+.portal-ring.delay {
+    animation-delay: -5s;
+    opacity: 0.5;
+}
+
+@keyframes portal-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.portal-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, var(--dream-purple) 0%, transparent 70%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--glow-dream);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.portal-core:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.portal-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.dream-particles {
+    position: absolute;
+    inset: -50px;
+}
+
+.dream-particles span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--unreality-pink);
+    border-radius: 50%;
+    animation: float-dream 6s ease-in-out infinite;
+}
+
+.dream-particles span:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+.dream-particles span:nth-child(2) { top: 30%; right: 10%; animation-delay: 1s; }
+.dream-particles span:nth-child(3) { bottom: 20%; left: 10%; animation-delay: 2s; }
+.dream-particles span:nth-child(4) { top: 50%; left: 5%; animation-delay: 3s; }
+.dream-particles span:nth-child(5) { bottom: 30%; right: 20%; animation-delay: 4s; }
+.dream-particles span:nth-child(6) { top: 70%; right: 5%; animation-delay: 5s; }
+
+@keyframes float-dream {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+    50% { transform: translateY(-20px) scale(1.5); opacity: 1; }
+}
+
+.hero-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Sections */
+.section {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 2rem;
+}
+
+.section-content { max-width: 800px; margin: 0 auto; }
+.section-label {
+    font-size: 0.75rem;
+    color: var(--dream-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.section-text.large {
+    font-size: 1.35rem;
+    color: var(--text-primary);
+}
+
+/* Features */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature {
+    padding: 2rem;
+    background: var(--bg-surface);
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    border-radius: 16px;
+}
+
+.feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+.feature h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.feature p { font-size: 0.95rem; color: var(--text-secondary); }
+
+.section-mindblowing {
+    background: var(--bg-surface);
+    text-align: center;
+}
+
+/* Waitlist */
+.section-waitlist { text-align: center; }
+
+.waitlist-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.waitlist-form input {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.waitlist-form input:focus {
+    outline: none;
+    border-color: var(--dream-purple);
+}
+
+.waitlist-form button {
+    padding: 1rem 2rem;
+    background: var(--gradient-dream);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(124, 58, 237, 0.1);
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer a { color: var(--text-secondary); text-decoration: none; }
+.footer p { font-size: 0.85rem; color: var(--text-secondary); }
+
+@media (max-width: 768px) {
+    .nav { padding: 1rem; }
+    .dream-portal { transform: scale(0.8); }
+}
+

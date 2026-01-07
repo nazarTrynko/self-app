@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#030818">
+    <title>QUANTUM DECISION — Navigate Probability Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="quantum-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">27 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="quantum-icon">
+                    <div class="orbit orbit-1"></div>
+                    <div class="orbit orbit-2"></div>
+                    <div class="orbit orbit-3"></div>
+                    <div class="nucleus"></div>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">QUANTUM<br>DECISION</h1>
+                <p class="hero-subtitle">
+                    Navigate the probability space of choices.<br>
+                    All futures exist until you observe one.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "Until the wave function collapses, all possibilities are real.<br>
+                Your decision is the observation that creates your future."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Quantum Field</h2>
+            <p class="section-subtitle">Your decision exists in superposition—click to collapse</p>
+            
+            <div class="decision-container">
+                <div class="decision-input">
+                    <label>What decision are you facing?</label>
+                    <input type="text" id="decision-question" placeholder="Should I...?" />
+                </div>
+                
+                <div class="quantum-field" id="quantum-field">
+                    <canvas id="field-canvas"></canvas>
+                    <div class="possibilities" id="possibilities">
+                        <!-- Possibilities will be added here -->
+                    </div>
+                    <div class="collapse-zone" id="collapse-zone">
+                        <span>COLLAPSE ZONE</span>
+                    </div>
+                </div>
+                
+                <div class="possibility-inputs">
+                    <div class="possibility-input">
+                        <input type="text" placeholder="Option A" data-option="0" />
+                        <span class="probability" id="prob-0">33%</span>
+                    </div>
+                    <div class="possibility-input">
+                        <input type="text" placeholder="Option B" data-option="1" />
+                        <span class="probability" id="prob-1">33%</span>
+                    </div>
+                    <div class="possibility-input">
+                        <input type="text" placeholder="Option C" data-option="2" />
+                        <span class="probability" id="prob-2">33%</span>
+                    </div>
+                </div>
+                
+                <div class="quantum-controls">
+                    <button class="control-btn" id="add-option">+ Add Option</button>
+                    <button class="control-btn primary" id="collapse-btn">⚛️ COLLAPSE WAVE FUNCTION</button>
+                </div>
+            </div>
+            
+            <div class="result-display" id="result-display">
+                <div class="result-content">
+                    <span class="result-label">THE UNIVERSE HAS DECIDED</span>
+                    <span class="result-value" id="result-value"></span>
+                    <p class="result-insight">This was always the path. The other possibilities have vanished into unrealized potential.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-grid">
+                <article class="philosophy-card">
+                    <h3>Superposition</h3>
+                    <p>Before observation, your decision exists in all states simultaneously. Every option is real. This is the space of infinite potential.</p>
+                </article>
+                <article class="philosophy-card">
+                    <h3>Entanglement</h3>
+                    <p>Decisions are connected across time and space. What you choose here affects possibilities there. Everything is correlated.</p>
+                </article>
+                <article class="philosophy-card">
+                    <h3>Collapse</h3>
+                    <p>The moment you commit, the wave function collapses. Infinite possibilities become one reality. This is the price of action.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation">
+            <div class="meditation-content">
+                <p>
+                    The quantum metaphor teaches us something profound about decisions:
+                    until we commit, we are paralyzed by possibility. The fear of
+                    losing alternative futures keeps us in superposition forever.
+                </p>
+                <p class="highlight">
+                    But life is lived in collapsed wave functions.<br>
+                    The only way forward is through observation.<br>
+                    Choose, and let the other possibilities go.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../28-collective/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">COLLECTIVE MIND →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

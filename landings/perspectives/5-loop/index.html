@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE LOOP — Infinite Recursion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="loop-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← Perspectives</a>
+        <span class="nav-number">05 / 05</span>
+    </nav>
+
+    <main>
+        <div class="content-layer">
+            <header class="header">
+                <h1 class="title">THE LOOP</h1>
+                <p class="subtitle">You are here, reading about being here, reading about being here...</p>
+            </header>
+
+            <div class="recursion-text" id="recursion-text">
+                <div class="text-layer" data-depth="0">
+                    <p>To improve yourself</p>
+                </div>
+                <div class="text-layer" data-depth="1">
+                    <p>you must understand yourself</p>
+                </div>
+                <div class="text-layer" data-depth="2">
+                    <p>to understand yourself</p>
+                </div>
+                <div class="text-layer" data-depth="3">
+                    <p>you must observe yourself</p>
+                </div>
+                <div class="text-layer" data-depth="4">
+                    <p>to observe yourself</p>
+                </div>
+                <div class="text-layer" data-depth="5">
+                    <p>you must be outside yourself</p>
+                </div>
+                <div class="text-layer" data-depth="6">
+                    <p>but who is observing?</p>
+                </div>
+            </div>
+
+            <div class="depth-indicator" id="depth-indicator">
+                <span class="depth-label">Recursion Depth</span>
+                <span class="depth-value" id="depth-value">0</span>
+                <span class="depth-infinity">→ ∞</span>
+            </div>
+
+            <section class="philosophy">
+                <div class="philosophy-item">
+                    <span class="phi-symbol">∞</span>
+                    <p>Every end is a beginning wearing a disguise.</p>
+                </div>
+                <div class="philosophy-item">
+                    <span class="phi-symbol">◯</span>
+                    <p>The snake eating its tail creates, not destroys.</p>
+                </div>
+                <div class="philosophy-item">
+                    <span class="phi-symbol">⟳</span>
+                    <p>Iteration isn't repetition—each pass leaves traces.</p>
+                </div>
+            </section>
+
+            <div class="meta-container">
+                <p class="meta-text">
+                    This page is about recursion.<br>
+                    <span class="meta-nested">This sentence is about this page being about recursion.</span><br>
+                    <span class="meta-nested-2">This text describes a sentence about a page about recursion.</span><br>
+                    <span class="meta-nested-3">You are reading text describing text describing...</span>
+                </p>
+            </div>
+
+            <footer class="footer">
+                <a href="../1-threshold/" class="loop-back">
+                    Return to The Threshold
+                    <span class="loop-hint">(The loop completes)</span>
+                </a>
+            </footer>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

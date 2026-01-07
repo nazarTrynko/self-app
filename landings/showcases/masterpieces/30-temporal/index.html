@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f0a1a">
+    <title>TEMPORAL CONSCIOUSNESS — Experience Time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="time-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">30 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="time-icon">
+                    <div class="clock-face">
+                        <div class="clock-hand hour"></div>
+                        <div class="clock-hand minute"></div>
+                        <div class="clock-pulse"></div>
+                    </div>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">TEMPORAL<br>CONSCIOUSNESS</h1>
+                <p class="hero-subtitle">
+                    Experience time as your mind processes it.<br>
+                    Feel how attention distorts duration.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "A minute of pain lasts an hour. An hour of joy passes in a minute.<br>
+                Time is not what clocks measure. Time is what minds experience."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Temporal Field</h2>
+            <p class="section-subtitle">Your subjective experience of duration, visualized</p>
+            
+            <div class="time-display">
+                <canvas id="stream-canvas"></canvas>
+                <div class="time-overlay">
+                    <div class="current-time">
+                        <span class="time-label">Clock Time</span>
+                        <span class="time-value" id="clock-time">00:00:00</span>
+                    </div>
+                    <div class="subjective-time">
+                        <span class="time-label">Subjective Time</span>
+                        <span class="time-value" id="subjective-time">00:00:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calibration-panel">
+                <h3>Time Perception Test</h3>
+                <p class="calibration-instruction" id="calibration-text">Press START, then press STOP when you think 10 seconds have passed</p>
+                <div class="calibration-controls">
+                    <button class="control-btn" id="calibrate-btn">START</button>
+                </div>
+                <div class="calibration-result" id="calibration-result">
+                    <!-- Result will appear here -->
+                </div>
+            </div>
+            
+            <div class="state-controls">
+                <h3>Shift Your Temporal State</h3>
+                <div class="state-buttons">
+                    <button class="state-btn" data-state="flow">🌊 Flow</button>
+                    <button class="state-btn" data-state="boredom">😴 Boredom</button>
+                    <button class="state-btn" data-state="anxiety">😰 Anxiety</button>
+                    <button class="state-btn active" data-state="neutral">⚖️ Neutral</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>Time Is Not Universal</h3>
+                <p>
+                    Einstein showed that time is relative between observers moving at different speeds.
+                    But consciousness shows something equally profound: time is relative within
+                    a single observer based on their mental state.
+                </p>
+                <p>
+                    Flow states compress hours into minutes. Anxiety stretches seconds into eternities.
+                    Your experience of duration is not a measurement—it's a construction.
+                </p>
+                <p class="highlight">
+                    If you can change your state, you can change your time.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../31-synesthetic/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">SYNESTHETIC PERCEPTION →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

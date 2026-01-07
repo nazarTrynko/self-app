@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NERVEMAP - See your stress in real-time. A living visualization of your nervous system.">
+    <title>NERVEMAP — Living Digital Twin of Your Nervous System</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="nerveCanvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Projects</a>
+        <div class="nav-brand">🧬 NERVEMAP</div>
+        <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-badge">Project #03 • Confidence: 89%</div>
+        
+        <h1 class="hero-title">
+            <span class="title-line">See Your</span>
+            <span class="title-gradient">Nervous System</span>
+        </h1>
+        
+        <p class="hero-tagline">A living visualization that breathes, pulses, and glows with your body's hidden data.</p>
+        
+        <div class="body-visual">
+            <div class="body-outline">
+                <div class="brain"></div>
+                <div class="spine">
+                    <div class="nerve-pulse"></div>
+                </div>
+                <div class="heart">
+                    <span class="heart-rate">68</span>
+                    <span class="heart-label">BPM</span>
+                </div>
+                <div class="vagus-left"></div>
+                <div class="vagus-right"></div>
+            </div>
+            <div class="state-indicator">
+                <div class="state-bar">
+                    <div class="state-fill calm"></div>
+                </div>
+                <span class="state-label">CALM</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="section section-concept">
+        <div class="section-content">
+            <span class="section-label">The Concept</span>
+            <h2 class="section-title">Witness Your Body's State</h2>
+            <p class="section-text">
+                NERVEMAP creates a real-time visualization of your autonomic nervous system using data from 
+                wearables. It renders a beautiful, anatomically-inspired digital twin that shows your current 
+                state: heart rate variability as a pulsing heart, respiratory patterns as flowing breath, 
+                and stress/calm balance as a shifting color spectrum.
+            </p>
+            <p class="section-text">
+                "Your HRV is 45ms" tells you nothing. But seeing your digital nervous system in a calm 
+                teal state versus an agitated red state creates immediate, visceral understanding.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-features">
+        <div class="section-content">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Real-Time Biofeedback</h2>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⌚</div>
+                    <h3>Wearable Sync</h3>
+                    <p>Connects with Apple Watch, Fitbit, Oura, Whoop, or phone sensors.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🫀</div>
+                    <h3>HRV Visualization</h3>
+                    <p>Heart rate variability shown as the rhythmic pulse of your digital heart.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🫁</div>
+                    <h3>Breath Sync</h3>
+                    <p>Breathing exercises that visibly affect the visualization in real-time.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📸</div>
+                    <h3>Snapshot Journaling</h3>
+                    <p>Capture states and note what triggered them for pattern recognition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-mindblowing">
+        <div class="section-content">
+            <span class="section-label">The Mind-Blowing Moment</span>
+            <h2 class="section-title">Breathe and Watch</h2>
+            <p class="section-text large">
+                When you intentionally take a deep breath and watch—in real-time—as the visualization 
+                shifts from agitated red to calm teal, particles slowing down, the digital nervous 
+                system visibly relaxing.
+            </p>
+            <p class="section-text">
+                The feedback loop between body and visualization creates an almost meditative state.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-waitlist" id="waitlist">
+        <div class="section-content">
+            <h2 class="section-title">Map Your Nervous System</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Join Waitlist →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="../">← Back to All Projects</a>
+        <p>Part of the <a href="../../">SELF Framework</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

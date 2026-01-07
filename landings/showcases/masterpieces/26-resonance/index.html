@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0012">
+    <title>NEURAL RESONANCE — Feel the Patterns</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <canvas id="neural-canvas"></canvas>
+    <div id="neural-overlay"></div>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">26 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="brain-icon">
+                    <svg viewBox="0 0 100 100" class="brain-svg">
+                        <defs>
+                            <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#a855f7"/>
+                                <stop offset="50%" style="stop-color:#6366f1"/>
+                                <stop offset="100%" style="stop-color:#06b6d4"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="url(#brainGrad)" stroke-width="0.5" opacity="0.3"/>
+                        <circle cx="50" cy="50" r="30" fill="none" stroke="url(#brainGrad)" stroke-width="0.5" opacity="0.5"/>
+                        <circle cx="50" cy="50" r="20" fill="none" stroke="url(#brainGrad)" stroke-width="0.5" opacity="0.7"/>
+                    </svg>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">NEURAL<br>RESONANCE</h1>
+                <p class="hero-subtitle">
+                    Feel the patterns your brain cannot see.<br>
+                    Your consciousness, rendered as light.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "The brain processes 11 million bits per second.<br>
+                Consciousness perceives 40. What happens to the rest?"
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Neural Field</h2>
+            <p class="section-subtitle">Your physiological signals, translated into neural light</p>
+            
+            <div class="neural-display">
+                <div class="display-frame">
+                    <canvas id="brain-visualization"></canvas>
+                    <div class="display-overlay">
+                        <div class="state-indicator">
+                            <span class="state-label">Current State</span>
+                            <span class="state-value" id="current-state">SENSING...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="frequency-bands">
+                    <div class="band" data-band="delta">
+                        <span class="band-name">Delta</span>
+                        <div class="band-bar"><div class="band-fill" id="delta-fill"></div></div>
+                        <span class="band-hz">0.5-4Hz</span>
+                    </div>
+                    <div class="band" data-band="theta">
+                        <span class="band-name">Theta</span>
+                        <div class="band-bar"><div class="band-fill" id="theta-fill"></div></div>
+                        <span class="band-hz">4-8Hz</span>
+                    </div>
+                    <div class="band" data-band="alpha">
+                        <span class="band-name">Alpha</span>
+                        <div class="band-bar"><div class="band-fill" id="alpha-fill"></div></div>
+                        <span class="band-hz">8-12Hz</span>
+                    </div>
+                    <div class="band" data-band="beta">
+                        <span class="band-name">Beta</span>
+                        <div class="band-bar"><div class="band-fill" id="beta-fill"></div></div>
+                        <span class="band-hz">12-30Hz</span>
+                    </div>
+                    <div class="band" data-band="gamma">
+                        <span class="band-name">Gamma</span>
+                        <div class="band-bar"><div class="band-fill" id="gamma-fill"></div></div>
+                        <span class="band-hz">30-100Hz</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-row">
+                <div class="metric">
+                    <span class="metric-value" id="coherence-value">--</span>
+                    <span class="metric-label">Coherence</span>
+                </div>
+                <div class="metric highlight">
+                    <span class="metric-value" id="resonance-value">--</span>
+                    <span class="metric-label">Resonance</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="hrv-value">--</span>
+                    <span class="metric-label">HRV (ms)</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="start-btn">Begin Session</button>
+                <button class="control-btn secondary" id="mode-btn">Change State</button>
+            </div>
+        </section>
+
+        <section class="states-grid">
+            <h2 class="section-title">Consciousness States</h2>
+            <div class="states">
+                <article class="state-card" data-state="focus">
+                    <div class="state-icon">🎯</div>
+                    <h3>Deep Focus</h3>
+                    <p>High beta, sustained attention, minimal wandering</p>
+                </article>
+                <article class="state-card" data-state="flow">
+                    <div class="state-icon">🌊</div>
+                    <h3>Flow State</h3>
+                    <p>Alpha-theta bridge, effortless action, time dilation</p>
+                </article>
+                <article class="state-card" data-state="creative">
+                    <div class="state-icon">✨</div>
+                    <h3>Creative</h3>
+                    <p>Theta bursts, loose associations, insight potential</p>
+                </article>
+                <article class="state-card" data-state="meditative">
+                    <div class="state-icon">🧘</div>
+                    <h3>Meditative</h3>
+                    <p>Alpha dominance, present awareness, calm alertness</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>The Invisible Made Visible</h3>
+                <p>
+                    Your brain generates electrical patterns every moment you exist—
+                    rhythms of thought, waves of awareness, the electromagnetic signature 
+                    of consciousness itself. These patterns shape everything you experience, 
+                    yet you've never seen them.
+                </p>
+                <p>
+                    Neural Resonance doesn't read your mind. It translates your body's 
+                    signals—heart rhythm, micro-movements, breath patterns—into a symbolic 
+                    neural landscape. What you see isn't literal brain activity. 
+                    It's a mirror for your inner state.
+                </p>
+                <p class="highlight-text">
+                    When the particles sync, you're in resonance.<br>
+                    When they scatter, something has shifted.<br>
+                    Learn to recognize your own patterns.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../27-quantum/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">QUANTUM DECISION →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

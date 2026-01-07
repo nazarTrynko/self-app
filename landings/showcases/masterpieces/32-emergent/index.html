@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a140f">
+    <title>EMERGENT LANGUAGE — Watch Communication Evolve</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="lang-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">32 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="symbol-icon">
+                    <span class="symbol s1">◈</span>
+                    <span class="symbol s2">◇</span>
+                    <span class="symbol s3">△</span>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">EMERGENT<br>LANGUAGE</h1>
+                <p class="hero-subtitle">
+                    Watch new communication systems evolve.<br>
+                    Meaning arises from the need to coordinate.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "No one designed language. It emerged from minds that needed to share.<br>
+                Watch it happen again, compressed into minutes instead of millennia."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Symbol Laboratory</h2>
+            <p class="section-subtitle">Agents develop language to solve coordination problems</p>
+            
+            <div class="simulation-display">
+                <canvas id="agents-canvas"></canvas>
+                <div class="sim-stats">
+                    <div class="stat">
+                        <span class="stat-label">Generation</span>
+                        <span class="stat-value" id="gen-count">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Vocabulary</span>
+                        <span class="stat-value" id="vocab-count">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Success Rate</span>
+                        <span class="stat-value" id="success-rate">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lexicon-panel">
+                <h3>Emergent Lexicon</h3>
+                <div class="lexicon" id="lexicon">
+                    <div class="lexicon-item">
+                        <span class="symbol-display">◈</span>
+                        <span class="meaning">Awaiting emergence...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="speed-btn">⏩ Speed Up</button>
+                <button class="control-btn secondary" id="reset-btn">Reset Simulation</button>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>Language Is Emergence Made Visible</h3>
+                <p>
+                    Human language wasn't designed. It wasn't programmed. It emerged from
+                    the pressure of minds needing to coordinate action, share knowledge,
+                    and build shared understanding. These symbols aren't assigned meanings—
+                    they develop them through use.
+                </p>
+                <p class="highlight">
+                    You are watching the fundamental miracle of communication<br>
+                    arise from nothing but the need to be understood.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../33-stream/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">CONSCIOUSNESS STREAM →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

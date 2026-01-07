@@ -187,6 +187,17 @@
             transition: all 0.4s var(--ease-elegant);
             text-decoration: none;
             color: inherit;
+            display: block;
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        
+        .story-card:focus {
+            outline-color: var(--accent-primary);
+        }
+        
+        .story-card:focus:not(:focus-visible) {
+            outline: none;
         }
         
         .story-card:hover {
@@ -323,9 +334,9 @@
             <p class="section-subtitle">Each carousel is a complete experience — immersive, interactive, and designed to transform.</p>
         </header>
         
-        <div class="stories-grid">
+        <div class="stories-grid" role="list" aria-label="Available carousel stories">
             <!-- Loving Kindness -->
-            <a href="stories/loving-kindness/" class="story-card">
+            <a href="stories/loving-kindness/" class="story-card" role="listitem" aria-label="Loving Kindness - Interactive metta meditation with heartbeat canvas">
                 <div class="story-preview" style="background: linear-gradient(135deg, #F5F0E8, #FAE8E4);">
                     <div class="story-preview-placeholder">💗</div>
                 </div>
@@ -343,7 +354,7 @@
             </a>
             
             <!-- Programmer's Day -->
-            <a href="stories/programmers-day/" class="story-card">
+            <a href="stories/programmers-day/" class="story-card" role="listitem" aria-label="Programmer's Day - Celebrate with matrix rain and interactive code elements">
                 <div class="story-preview" style="background: linear-gradient(135deg, #0d1117, #1a1a2e);">
                     <div class="story-preview-placeholder">👨‍💻</div>
                 </div>
@@ -361,7 +372,7 @@
             </a>
             
             <!-- Digital Detox -->
-            <a href="stories/digital-detox/" class="story-card">
+            <a href="stories/digital-detox/" class="story-card" role="listitem" aria-label="Digital Detox - Mindful technology relationship with water ripples">
                 <div class="story-preview" style="background: linear-gradient(135deg, #D4DEE4, #B8C8D0);">
                     <div class="story-preview-placeholder">🌊</div>
                 </div>
@@ -379,7 +390,7 @@
             </a>
             
             <!-- Imposter Syndrome -->
-            <a href="stories/imposter-syndrome/" class="story-card">
+            <a href="stories/imposter-syndrome/" class="story-card" role="listitem" aria-label="Imposter Syndrome - Conquer self-doubt with theatrical spotlight">
                 <div class="story-preview" style="background: linear-gradient(135deg, #0a0a0f, #1a1815);">
                     <div class="story-preview-placeholder">🔦</div>
                 </div>
@@ -397,7 +408,7 @@
             </a>
             
             <!-- Morning Rituals -->
-            <a href="stories/morning-rituals/" class="story-card">
+            <a href="stories/morning-rituals/" class="story-card" role="listitem" aria-label="Morning Rituals - Sacred morning routines with sunrise animation">
                 <div class="story-preview" style="background: linear-gradient(135deg, #FFE4CC, #FFD4A8);">
                     <div class="story-preview-placeholder">🌅</div>
                 </div>
@@ -415,7 +426,7 @@
             </a>
             
             <!-- Burnout Recovery -->
-            <a href="stories/burnout-recovery/" class="story-card">
+            <a href="stories/burnout-recovery/" class="story-card" role="listitem" aria-label="Burnout Recovery - Phoenix rising with ember particles">
                 <div class="story-preview" style="background: linear-gradient(135deg, #2a2320, #4a3830);">
                     <div class="story-preview-placeholder">🔥</div>
                 </div>
@@ -433,7 +444,7 @@
             </a>
             
             <!-- Creative Flow -->
-            <a href="stories/creative-flow/" class="story-card">
+            <a href="stories/creative-flow/" class="story-card" role="listitem" aria-label="Creative Flow - Access flow states with watercolor blobs">
                 <div class="story-preview" style="background: linear-gradient(135deg, #FAF7F2, #E8E0F0);">
                     <div class="story-preview-placeholder">🎨</div>
                 </div>
@@ -451,7 +462,7 @@
             </a>
             
             <!-- Mindful Communication -->
-            <a href="stories/mindful-communication/" class="story-card">
+            <a href="stories/mindful-communication/" class="story-card" role="listitem" aria-label="Mindful Communication - Deep listening with sound wave visualization">
                 <div class="story-preview" style="background: linear-gradient(135deg, #F8F5F0, #F0EDE8);">
                     <div class="story-preview-placeholder">🗣️</div>
                 </div>
@@ -469,7 +480,7 @@
             </a>
             
             <!-- Gratitude Practice -->
-            <a href="stories/gratitude-practice/" class="story-card">
+            <a href="stories/gratitude-practice/" class="story-card" role="listitem" aria-label="Gratitude Practice - Rewire your brain with falling leaves">
                 <div class="story-preview" style="background: linear-gradient(135deg, #F5EDE0, #FCF5E8);">
                     <div class="story-preview-placeholder">🍂</div>
                 </div>
@@ -487,7 +498,7 @@
             </a>
             
             <!-- Work-Life Balance -->
-            <a href="stories/work-life-balance/" class="story-card">
+            <a href="stories/work-life-balance/" class="story-card" role="listitem" aria-label="Work-Life Balance - Integration with day/night morph animation">
                 <div class="story-preview" style="background: linear-gradient(135deg, #87CEEB, #1E3A5F);">
                     <div class="story-preview-placeholder">☯️</div>
                 </div>

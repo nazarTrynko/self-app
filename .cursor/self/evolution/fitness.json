@@ -2,10 +2,10 @@
   "$schema": "SELF Evolution Fitness Tracker v1.0",
   "metadata": {
     "created": "2026-01-05T00:00:00Z",
-    "last_updated": "2026-01-05T00:00:00Z",
+    "last_updated": "2026-01-07T20:20:53.992494",
     "current_generation": 1,
     "total_generations": 1,
-    "total_evaluations": 0
+    "total_evaluations": 1
   },
   "fitness_dimensions": {
     "effectiveness": {
@@ -30,7 +30,7 @@
     },
     "adaptability": {
       "description": "Did the response adapt to context well?",
-      "weight": 0.10,
+      "weight": 0.1,
       "measurement": "context_relevance_score"
     }
   },
@@ -42,11 +42,11 @@
       },
       {
         "signal": "code_accepted_without_changes",
-        "score": 0.20
+        "score": 0.2
       },
       {
         "signal": "follow_up_on_topic",
-        "score": 0.10
+        "score": 0.1
       },
       {
         "signal": "request_for_more",
@@ -64,7 +64,7 @@
     "negative": [
       {
         "signal": "explicit_criticism",
-        "score": -0.20
+        "score": -0.2
       },
       {
         "signal": "code_heavily_modified",
@@ -72,7 +72,7 @@
       },
       {
         "signal": "topic_abandoned",
-        "score": -0.10
+        "score": -0.1
       },
       {
         "signal": "clarification_needed",
@@ -84,7 +84,7 @@
       },
       {
         "signal": "user_does_opposite",
-        "score": -0.30
+        "score": -0.3
       }
     ]
   },
@@ -96,13 +96,13 @@
         {
           "id": "base_v1",
           "type": "base",
-          "fitness_score": 0.5,
-          "evaluations": 0,
+          "fitness_score": 0.7,
+          "evaluations": 1,
           "mutations_spawned": 0
         }
       ],
       "best_performer": "base_v1",
-      "average_fitness": 0.5
+      "average_fitness": 0.7
     }
   },
   "selection_config": {
@@ -132,7 +132,7 @@
       },
       {
         "type": "tone_shift",
-        "probability": 0.10
+        "probability": 0.1
       }
     ],
     "max_mutations_per_generation": 3
@@ -152,5 +152,13 @@
     "generation_summaries": [],
     "fitness_trends": [],
     "significant_mutations": []
-  }
+  },
+  "feedback_log": [
+    {
+      "timestamp": "2026-01-07T20:20:53.992481",
+      "signal": "code_accepted_without_changes",
+      "score": 0.2,
+      "episode_id": null
+    }
+  ]
 }

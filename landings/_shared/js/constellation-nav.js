@@ -33,14 +33,21 @@
         childRadius: 16,
         childGlowRadius: 40,
         breathingSpeed: 0.0008,
-        driftSpeed: 0.0004,
-        cursorRepelDist: 120,
-        cursorRepelForce: 0.4,
-        threadOpacity: 0.06,
-        threadMaxDist: 160,
+        driftSpeed: 0.002,
+        cursorRepelDist: 150,
+        cursorRepelForce: 0.6,
+        threadOpacity: 0.04,
+        threadMaxDist: 250,
         spawnDuration: 800,
-        collapseDuration: 500,
-        hoverGlowMultiplier: 1.6
+        collapseDuration: 600,
+        hoverGlowMultiplier: 1.6,
+        // New settings for roaming behavior
+        gravityStrength: 0.008,        // Pull toward mother orb
+        wanderForce: 1.2,              // How much orbs wander
+        maxSpeed: 3,                   // Speed limit
+        friction: 0.98,                // Gradual slowdown
+        autoCollapseTime: 18000,       // Auto-collapse after 18 seconds
+        returnStartTime: 14000         // Start gravitating back at 14 seconds
     };
 
     // State
@@ -57,6 +64,8 @@
     let mouseY = -1000;
     let hoveredOrb = null;
     let animationId = null;
+    let expandedAt = 0;           // When constellation was expanded
+    let autoCollapseScheduled = null;
 
     /**
      * Initialize the constellation navigation
@@ -121,8 +130,8 @@
     function initMotherOrb() {
         const rect = container.getBoundingClientRect();
         motherOrb = {
-            x: rect.width - 70,
-            y: rect.height - 70,
+            x: rect.width - 80,
+            y: rect.height - 80,
             radius: SETTINGS.motherRadius,
             glowRadius: SETTINGS.motherGlowRadius,
             phase: 0,
@@ -144,8 +153,8 @@
         
         // Update mother orb position
         if (motherOrb) {
-            motherOrb.x = rect.width - 70;
-            motherOrb.y = rect.height - 70;
+            motherOrb.x = rect.width - 80;
+            motherOrb.y = rect.height - 80;
         }
     }
 
@@ -310,12 +319,21 @@
         motherButton.setAttribute('aria-label', 'Open masterpieces constellation');
         label.classList.remove('visible');
 
-        // Animate orbs back to mother
+        // Clear auto-collapse timer
+        if (autoCollapseScheduled) {
+            clearTimeout(autoCollapseScheduled);
+            autoCollapseScheduled = null;
+        }
+
+        // Animate orbs back to mother with stagger
         const startTime = performance.now();
         orbs.forEach((orb, index) => {
-            orb.collapseStart = startTime + index * 40;
+            orb.collapseStart = startTime + index * 30;
             orb.startX = orb.x;
             orb.startY = orb.y;
+            // Stop velocity
+            orb.vx = 0;
+            orb.vy = 0;
         });
 
         // Remove container class after animation
@@ -323,7 +341,7 @@
             container.classList.remove('expanded');
             orbs = [];
             setTimeout(resizeCanvas, 100);
-        }, SETTINGS.collapseDuration + orbs.length * 40);
+        }, SETTINGS.collapseDuration + orbs.length * 30 + 100);
     }
 
     /**
@@ -331,35 +349,55 @@
      */
     function birthConstellation() {
         const rect = container.getBoundingClientRect();
-        const centerX = rect.width - 70;
-        const centerY = rect.height - 70;
+        const centerX = rect.width - 80;
+        const centerY = rect.height - 80;
         const now = performance.now();
+        expandedAt = now;
 
         orbs = MASTERPIECES.map((mp, index) => {
-            // Calculate target position in a loose spiral/scattered pattern
-            const angle = (index / MASTERPIECES.length) * Math.PI * 1.8 - Math.PI * 0.7;
-            const dist = 100 + (index % 3) * 50 + Math.random() * 40;
-            const targetX = Math.min(rect.width - 60, Math.max(60, centerX - Math.cos(angle) * dist));
-            const targetY = Math.min(rect.height - 100, Math.max(60, centerY - Math.sin(angle) * dist - 80));
+            // Random initial velocity burst in all directions
+            const angle = (index / MASTERPIECES.length) * Math.PI * 2 + (Math.random() - 0.5) * 0.8;
+            const initialSpeed = 2 + Math.random() * 3;
+            
+            // Target positions spread across the entire page
+            const targetAngle = angle + Math.PI; // Opposite direction from spawn
+            const targetDist = 200 + Math.random() * 400;
+            const targetX = Math.min(rect.width - 100, Math.max(100, centerX + Math.cos(targetAngle) * targetDist));
+            const targetY = Math.min(rect.height - 150, Math.max(100, centerY + Math.sin(targetAngle) * targetDist - 200));
 
             return {
                 data: mp,
                 x: centerX,
                 y: centerY,
+                vx: Math.cos(angle) * initialSpeed,  // Velocity X
+                vy: Math.sin(angle) * initialSpeed,  // Velocity Y
                 targetX: targetX,
                 targetY: targetY,
+                homeX: centerX,  // Remember spawn point
+                homeY: centerY,
                 radius: SETTINGS.childRadius,
                 glowRadius: SETTINGS.childGlowRadius,
                 phase: Math.random() * Math.PI * 2,
                 phaseY: Math.random() * Math.PI * 2,
-                birthStart: now + index * 80,
+                birthStart: now + index * 60,
                 birthProgress: 0,
                 visible: false,
                 collapseStart: null,
                 startX: 0,
-                startY: 0
+                startY: 0,
+                wanderAngle: Math.random() * Math.PI * 2
             };
         });
+
+        // Schedule auto-collapse
+        if (autoCollapseScheduled) {
+            clearTimeout(autoCollapseScheduled);
+        }
+        autoCollapseScheduled = setTimeout(() => {
+            if (isExpanded) {
+                collapse();
+            }
+        }, SETTINGS.autoCollapseTime);
     }
 
     /**
@@ -367,14 +405,16 @@
      */
     function redistributeOrbs() {
         const rect = container.getBoundingClientRect();
-        const centerX = rect.width - 70;
-        const centerY = rect.height - 70;
+        const centerX = rect.width - 80;
+        const centerY = rect.height - 80;
 
-        orbs.forEach((orb, index) => {
-            const angle = (index / MASTERPIECES.length) * Math.PI * 1.8 - Math.PI * 0.7;
-            const dist = 100 + (index % 3) * 50 + Math.random() * 40;
-            orb.targetX = Math.min(rect.width - 60, Math.max(60, centerX - Math.cos(angle) * dist));
-            orb.targetY = Math.min(rect.height - 100, Math.max(60, centerY - Math.sin(angle) * dist - 80));
+        // Update mother orb position (home base)
+        orbs.forEach((orb) => {
+            orb.homeX = centerX;
+            orb.homeY = centerY;
+            // Ensure orbs stay within new boundaries
+            orb.x = Math.min(rect.width - 60, Math.max(60, orb.x));
+            orb.y = Math.min(rect.height - 120, Math.max(60, orb.y));
         });
     }
 
@@ -400,18 +440,30 @@
             motherOrb.phase = Math.sin(time * 0.8) * 0.15 + 1;
         }
 
+        const rect = container.getBoundingClientRect();
+        const timeSinceExpand = timestamp - expandedAt;
+        
+        // Calculate gravity multiplier based on time (increases as return time approaches)
+        let gravityMultiplier = 1;
+        if (timeSinceExpand > SETTINGS.returnStartTime) {
+            const returnProgress = (timeSinceExpand - SETTINGS.returnStartTime) / 
+                                   (SETTINGS.autoCollapseTime - SETTINGS.returnStartTime);
+            gravityMultiplier = 1 + returnProgress * 8; // Gravity increases significantly
+        }
+
         // Update child orbs
         orbs.forEach(orb => {
-            // Birth animation
+            // Birth animation - burst outward
             if (orb.birthProgress < 1) {
                 const elapsed = timestamp - orb.birthStart;
                 if (elapsed > 0) {
                     orb.birthProgress = Math.min(1, elapsed / SETTINGS.spawnDuration);
                     orb.visible = true;
-                    // Ease out cubic
-                    const ease = 1 - Math.pow(1 - orb.birthProgress, 3);
-                    orb.x = motherOrb.x + (orb.targetX - motherOrb.x) * ease;
-                    orb.y = motherOrb.y + (orb.targetY - motherOrb.y) * ease;
+                    // Apply velocity during birth
+                    if (orb.birthProgress > 0.3) {
+                        orb.x += orb.vx * 2;
+                        orb.y += orb.vy * 2;
+                    }
                 }
                 return;
             }
@@ -421,44 +473,101 @@
                 const elapsed = timestamp - orb.collapseStart;
                 if (elapsed > 0) {
                     const progress = Math.min(1, elapsed / SETTINGS.collapseDuration);
-                    // Ease in cubic
-                    const ease = progress * progress * progress;
+                    // Ease in-out for smooth return
+                    const ease = progress < 0.5 
+                        ? 4 * progress * progress * progress 
+                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
                     orb.x = orb.startX + (motherOrb.x - orb.startX) * ease;
                     orb.y = orb.startY + (motherOrb.y - orb.startY) * ease;
-                    orb.visible = progress < 0.95;
+                    orb.visible = progress < 0.98;
                 }
                 return;
             }
 
-            // Organic drift motion
-            const driftX = Math.sin(time * 0.5 + orb.phase) * 0.4;
-            const driftY = Math.cos(time * 0.35 + orb.phaseY) * 0.35;
-            orb.x += driftX;
-            orb.y += driftY;
+            // === CHAOTIC WANDERING ===
+            // Perlin-like wandering
+            orb.wanderAngle += (Math.random() - 0.5) * 0.3;
+            const wanderX = Math.cos(orb.wanderAngle) * SETTINGS.wanderForce * 0.1;
+            const wanderY = Math.sin(orb.wanderAngle) * SETTINGS.wanderForce * 0.1;
+            orb.vx += wanderX;
+            orb.vy += wanderY;
 
-            // Cursor repulsion
+            // Organic drift motion (adds gentle oscillation)
+            const driftX = Math.sin(time * 0.7 + orb.phase) * 0.15;
+            const driftY = Math.cos(time * 0.5 + orb.phaseY) * 0.12;
+            orb.vx += driftX;
+            orb.vy += driftY;
+
+            // === GRAVITATIONAL PULL toward mother orb ===
+            const dx = motherOrb.x - orb.x;
+            const dy = motherOrb.y - orb.y;
+            const distToMother = Math.sqrt(dx * dx + dy * dy);
+            if (distToMother > 10) {
+                const gravity = SETTINGS.gravityStrength * gravityMultiplier;
+                orb.vx += (dx / distToMother) * gravity;
+                orb.vy += (dy / distToMother) * gravity;
+            }
+
+            // === CURSOR REPULSION ===
             if (mouseX > 0 && mouseY > 0) {
-                const dx = orb.x - mouseX;
-                const dy = orb.y - mouseY;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < SETTINGS.cursorRepelDist && dist > 0) {
-                    const force = (SETTINGS.cursorRepelDist - dist) / SETTINGS.cursorRepelDist * SETTINGS.cursorRepelForce;
-                    orb.x += (dx / dist) * force;
-                    orb.y += (dy / dist) * force;
+                const cdx = orb.x - mouseX;
+                const cdy = orb.y - mouseY;
+                const cursorDist = Math.sqrt(cdx * cdx + cdy * cdy);
+                if (cursorDist < SETTINGS.cursorRepelDist && cursorDist > 0) {
+                    const force = (SETTINGS.cursorRepelDist - cursorDist) / SETTINGS.cursorRepelDist * SETTINGS.cursorRepelForce;
+                    orb.vx += (cdx / cursorDist) * force;
+                    orb.vy += (cdy / cursorDist) * force;
                 }
             }
 
-            // Soft boundary reflection
-            const rect = container.getBoundingClientRect();
-            const margin = 40;
-            if (orb.x < margin) orb.x += (margin - orb.x) * 0.1;
-            if (orb.x > rect.width - margin) orb.x -= (orb.x - (rect.width - margin)) * 0.1;
-            if (orb.y < margin) orb.y += (margin - orb.y) * 0.1;
-            if (orb.y > rect.height - margin - 60) orb.y -= (orb.y - (rect.height - margin - 60)) * 0.1;
+            // === ORB-TO-ORB REPULSION (prevent clustering) ===
+            orbs.forEach(other => {
+                if (other === orb || !other.visible) return;
+                const odx = orb.x - other.x;
+                const ody = orb.y - other.y;
+                const odist = Math.sqrt(odx * odx + ody * ody);
+                if (odist < 80 && odist > 0) {
+                    const repel = (80 - odist) / 80 * 0.15;
+                    orb.vx += (odx / odist) * repel;
+                    orb.vy += (ody / odist) * repel;
+                }
+            });
 
-            // Gentle return to target
-            orb.x += (orb.targetX - orb.x) * 0.003;
-            orb.y += (orb.targetY - orb.y) * 0.003;
+            // === FRICTION (gradual slowdown) ===
+            orb.vx *= SETTINGS.friction;
+            orb.vy *= SETTINGS.friction;
+
+            // === SPEED LIMIT ===
+            const speed = Math.sqrt(orb.vx * orb.vx + orb.vy * orb.vy);
+            if (speed > SETTINGS.maxSpeed) {
+                orb.vx = (orb.vx / speed) * SETTINGS.maxSpeed;
+                orb.vy = (orb.vy / speed) * SETTINGS.maxSpeed;
+            }
+
+            // === APPLY VELOCITY ===
+            orb.x += orb.vx;
+            orb.y += orb.vy;
+
+            // === SOFT BOUNDARY BOUNCE (full page) ===
+            const margin = 60;
+            const bottomMargin = 120; // Keep away from mother orb area when far
+
+            if (orb.x < margin) {
+                orb.x = margin;
+                orb.vx = Math.abs(orb.vx) * 0.6;
+            }
+            if (orb.x > rect.width - margin) {
+                orb.x = rect.width - margin;
+                orb.vx = -Math.abs(orb.vx) * 0.6;
+            }
+            if (orb.y < margin) {
+                orb.y = margin;
+                orb.vy = Math.abs(orb.vy) * 0.6;
+            }
+            if (orb.y > rect.height - bottomMargin) {
+                orb.y = rect.height - bottomMargin;
+                orb.vy = -Math.abs(orb.vy) * 0.6;
+            }
         });
     }
 

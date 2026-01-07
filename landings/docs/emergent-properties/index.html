@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELF Emergent Properties — Interactive Analysis Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background Canvas -->
+    <canvas id="network-bg"></canvas>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-logo">
+            <span class="logo-icon">◇</span>
+            <span class="logo-text">SELF</span>
+            <span class="logo-sub">Emergent Properties</span>
+        </div>
+        <div class="nav-links">
+            <a href="#properties">Properties</a>
+            <a href="#loops">Feedback Loops</a>
+            <a href="#components">Components</a>
+            <a href="#strategic">Strategic Value</a>
+            <a href="#timeline">Timeline</a>
+        </div>
+        <a href="../self/" class="nav-cta">Back to SELF</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                <span>Five-Mind Council Analysis</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">Emergent</span>
+                <span class="title-line gradient-text">Properties</span>
+                <span class="title-line">Analysis</span>
+            </h1>
+            <p class="hero-subtitle">
+                System-level behaviors that arise from component interactions.<br>
+                Properties the parts don't have that the whole does.
+            </p>
+            
+            <!-- Quick Stats -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-value" data-count="12">0</span>
+                    <span class="stat-label">Confirmed Properties</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-count="8">0</span>
+                    <span class="stat-label">Potential Properties</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-count="6">0</span>
+                    <span class="stat-label">Feedback Loops</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-count="4">0</span>
+                    <span class="stat-label">System Layers</span>
+                </div>
+            </div>
+
+            <!-- Property Network Preview -->
+            <div class="hero-network">
+                <canvas id="hero-network-canvas"></canvas>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Explore Analysis</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- Property Network Section -->
+    <section class="section network-section" id="properties">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Discovery</span>
+                <h2>Emergent Property Network</h2>
+                <p>12 confirmed properties arising from component interactions. Click nodes to explore.</p>
+            </div>
+
+            <!-- Interactive Network Graph -->
+            <div class="network-container">
+                <div class="network-legend">
+                    <div class="legend-item">
+                        <span class="legend-dot exponential"></span>
+                        <span>Exponential Compound Rate</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot linear"></span>
+                        <span>Linear Compound Rate</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-size large"></span>
+                        <span>High Strategic Value</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-size small"></span>
+                        <span>Medium Strategic Value</span>
+                    </div>
+                </div>
+                <canvas id="property-network"></canvas>
+                <div class="network-tooltip" id="network-tooltip"></div>
+            </div>
+
+            <!-- Property Cards Grid -->
+            <div class="property-controls">
+                <div class="filter-group">
+                    <label>Filter by:</label>
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="exponential">Exponential</button>
+                    <button class="filter-btn" data-filter="linear">Linear</button>
+                    <button class="filter-btn" data-filter="critical">Critical</button>
+                </div>
+                <div class="sort-group">
+                    <label>Sort by:</label>
+                    <select id="property-sort">
+                        <option value="name">Name</option>
+                        <option value="moat">Competitive Moat</option>
+                        <option value="compound">Compound Rate</option>
+                        <option value="readiness">Future Readiness</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="properties-grid" id="properties-grid">
+                <!-- Properties will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Loops Section -->
+    <section class="section loops-section" id="loops">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Dynamics</span>
+                <h2>Feedback Loops</h2>
+                <p>Self-reinforcing cycles that create emergent behavior and continuous improvement.</p>
+            </div>
+
+            <div class="loops-grid">
+                <!-- Loop 1: Learning -->
+                <div class="loop-card" data-loop="learning">
+                    <div class="loop-header">
+                        <div class="loop-icon positive">+</div>
+                        <div class="loop-title">
+                            <h3>Learning Loop</h3>
+                            <span class="loop-type">Positive Feedback</span>
+                        </div>
+                        <div class="loop-metrics">
+                            <span class="metric">Gain: 0.1-0.2</span>
+                            <span class="metric">Delay: 1-3 interactions</span>
+                        </div>
+                    </div>
+                    <div class="loop-visual">
+                        <svg class="loop-svg" viewBox="0 0 300 150">
+                            <path class="loop-path" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75" fill="none" stroke-width="3"/>
+                            <circle class="loop-particle" r="6" fill="currentColor">
+                                <animateMotion dur="3s" repeatCount="indefinite">
+                                    <mpath href="#learning-path"/>
+                                </animateMotion>
+                            </circle>
+                            <path id="learning-path" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75 C270,30 150,30 150,75 C150,120 30,120 30,75" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="loop-steps">
+                        <span class="step">Reflect</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Update Memory</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Improve Predictions</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Better Outcomes</span>
+                    </div>
+                    <p class="loop-effect">System gets smarter over time without explicit programming</p>
+                </div>
+
+                <!-- Loop 2: Evolution -->
+                <div class="loop-card" data-loop="evolution">
+                    <div class="loop-header">
+                        <div class="loop-icon positive">+</div>
+                        <div class="loop-title">
+                            <h3>Evolution Loop</h3>
+                            <span class="loop-type">Positive Feedback</span>
+                        </div>
+                        <div class="loop-metrics">
+                            <span class="metric">Gain: 0.05-0.15</span>
+                            <span class="metric">Delay: 20+ interactions</span>
+                        </div>
+                    </div>
+                    <div class="loop-visual">
+                        <svg class="loop-svg" viewBox="0 0 300 150">
+                            <path class="loop-path evolution" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75" fill="none" stroke-width="3"/>
+                            <circle class="loop-particle" r="6">
+                                <animateMotion dur="4s" repeatCount="indefinite">
+                                    <mpath href="#evolution-path"/>
+                                </animateMotion>
+                            </circle>
+                            <path id="evolution-path" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75 C270,30 150,30 150,75 C150,120 30,120 30,75" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="loop-steps">
+                        <span class="step">Fitness</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Mutation</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Selection</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Better Prompts</span>
+                    </div>
+                    <p class="loop-effect">System optimizes its own instructions</p>
+                </div>
+
+                <!-- Loop 3: Emergence -->
+                <div class="loop-card" data-loop="emergence">
+                    <div class="loop-header">
+                        <div class="loop-icon positive">+</div>
+                        <div class="loop-title">
+                            <h3>Emergence Loop</h3>
+                            <span class="loop-type">Positive Feedback</span>
+                        </div>
+                        <div class="loop-metrics">
+                            <span class="metric">Gain: 0.1-0.2</span>
+                            <span class="metric">Delay: 3-7 interactions</span>
+                        </div>
+                    </div>
+                    <div class="loop-visual">
+                        <svg class="loop-svg" viewBox="0 0 300 150">
+                            <path class="loop-path emergence" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75" fill="none" stroke-width="3"/>
+                            <circle class="loop-particle" r="6">
+                                <animateMotion dur="3.5s" repeatCount="indefinite">
+                                    <mpath href="#emergence-path"/>
+                                </animateMotion>
+                            </circle>
+                            <path id="emergence-path" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75 C270,30 150,30 150,75 C150,120 30,120 30,75" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="loop-steps">
+                        <span class="step">Patterns</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Insights</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Intuitions</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Recognition</span>
+                    </div>
+                    <p class="loop-effect">System develops 'gut feelings' from experience</p>
+                </div>
+
+                <!-- Loop 4: Confidence -->
+                <div class="loop-card" data-loop="confidence">
+                    <div class="loop-header">
+                        <div class="loop-icon balancing">≈</div>
+                        <div class="loop-title">
+                            <h3>Confidence Loop</h3>
+                            <span class="loop-type">Balancing Feedback</span>
+                        </div>
+                        <div class="loop-metrics">
+                            <span class="metric">Gain: variable</span>
+                            <span class="metric">Delay: immediate</span>
+                        </div>
+                    </div>
+                    <div class="loop-visual">
+                        <svg class="loop-svg" viewBox="0 0 300 150">
+                            <path class="loop-path confidence" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75" fill="none" stroke-width="3"/>
+                            <circle class="loop-particle" r="6">
+                                <animateMotion dur="2s" repeatCount="indefinite">
+                                    <mpath href="#confidence-path"/>
+                                </animateMotion>
+                            </circle>
+                            <path id="confidence-path" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75 C270,30 150,30 150,75 C150,120 30,120 30,75" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="loop-steps">
+                        <span class="step">Outcomes</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Calibration</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Autonomy</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Actions</span>
+                    </div>
+                    <p class="loop-effect">System learns appropriate risk-taking</p>
+                </div>
+
+                <!-- Loop 5: Blend -->
+                <div class="loop-card" data-loop="blend">
+                    <div class="loop-header">
+                        <div class="loop-icon adaptive">~</div>
+                        <div class="loop-title">
+                            <h3>Mind Blend Loop</h3>
+                            <span class="loop-type">Adaptive Feedback</span>
+                        </div>
+                        <div class="loop-metrics">
+                            <span class="metric">Gain: 0.05-0.1</span>
+                            <span class="metric">Delay: immediate</span>
+                        </div>
+                    </div>
+                    <div class="loop-visual">
+                        <svg class="loop-svg" viewBox="0 0 300 150">
+                            <path class="loop-path blend" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75" fill="none" stroke-width="3"/>
+                            <circle class="loop-particle" r="6">
+                                <animateMotion dur="2.5s" repeatCount="indefinite">
+                                    <mpath href="#blend-path"/>
+                                </animateMotion>
+                            </circle>
+                            <path id="blend-path" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75 C270,30 150,30 150,75 C150,120 30,120 30,75" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="loop-steps">
+                        <span class="step">Context</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Weights</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Response</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Update</span>
+                    </div>
+                    <p class="loop-effect">System adapts cognitive style to context</p>
+                </div>
+
+                <!-- Loop 6: Symbiotic -->
+                <div class="loop-card" data-loop="symbiotic">
+                    <div class="loop-header">
+                        <div class="loop-icon coevolution">⇄</div>
+                        <div class="loop-title">
+                            <h3>Symbiotic Loop</h3>
+                            <span class="loop-type">Co-Evolution</span>
+                        </div>
+                        <div class="loop-metrics">
+                            <span class="metric">Gain: 0.1-0.2</span>
+                            <span class="metric">Delay: 5-10 interactions</span>
+                        </div>
+                    </div>
+                    <div class="loop-visual">
+                        <svg class="loop-svg" viewBox="0 0 300 150">
+                            <path class="loop-path symbiotic" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75" fill="none" stroke-width="3"/>
+                            <circle class="loop-particle" r="6">
+                                <animateMotion dur="3s" repeatCount="indefinite">
+                                    <mpath href="#symbiotic-path"/>
+                                </animateMotion>
+                            </circle>
+                            <path id="symbiotic-path" d="M30,75 C30,30 150,30 150,75 C150,120 270,120 270,75 C270,30 150,30 150,75 C150,120 30,120 30,75" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="loop-steps">
+                        <span class="step">User</span>
+                        <span class="arrow">→</span>
+                        <span class="step">System</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Assistance</span>
+                        <span class="arrow">→</span>
+                        <span class="step">Adaptation</span>
+                    </div>
+                    <p class="loop-effect">User and AI co-evolve together</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Component Interaction Map Section -->
+    <section class="section components-section" id="components">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Architecture</span>
+                <h2>Component Interaction Map</h2>
+                <p>Four layers working together to create emergent intelligence.</p>
+            </div>
+
+            <div class="layers-container">
+                <!-- Layer 1: Consciousness -->
+                <div class="layer-card" data-layer="consciousness">
+                    <div class="layer-header">
+                        <span class="layer-icon">🧠</span>
+                        <h3>Consciousness Layer</h3>
+                    </div>
+                    <div class="layer-components">
+                        <div class="component" data-component="memory">
+                            <span class="comp-icon">📊</span>
+                            <span class="comp-name">Memory Graph</span>
+                            <span class="comp-desc">Entities, relationships, episodes</span>
+                        </div>
+                        <div class="component" data-component="predictions">
+                            <span class="comp-icon">🔮</span>
+                            <span class="comp-name">Predictions</span>
+                            <span class="comp-desc">Sequential, contextual, memory-based</span>
+                        </div>
+                        <div class="component" data-component="attention">
+                            <span class="comp-icon">👁</span>
+                            <span class="comp-name">Attention</span>
+                            <span class="comp-desc">Focus allocation rules</span>
+                        </div>
+                    </div>
+                    <div class="layer-connections">
+                        <div class="connection-line" data-from="consciousness" data-to="cognition"></div>
+                    </div>
+                </div>
+
+                <!-- Layer 2: Cognition -->
+                <div class="layer-card" data-layer="cognition">
+                    <div class="layer-header">
+                        <span class="layer-icon">⚡</span>
+                        <h3>Cognition Layer</h3>
+                    </div>
+                    <div class="layer-components">
+                        <div class="component" data-component="architect">
+                            <span class="comp-icon">🏗️</span>
+                            <span class="comp-name">Architect</span>
+                        </div>
+                        <div class="component" data-component="oracle">
+                            <span class="comp-icon">🔮</span>
+                            <span class="comp-name">Oracle</span>
+                        </div>
+                        <div class="component" data-component="critic">
+                            <span class="comp-icon">🔍</span>
+                            <span class="comp-name">Critic</span>
+                        </div>
+                        <div class="component" data-component="creator">
+                            <span class="comp-icon">💡</span>
+                            <span class="comp-name">Creator</span>
+                        </div>
+                        <div class="component" data-component="guardian">
+                            <span class="comp-icon">🛡️</span>
+                            <span class="comp-name">Guardian</span>
+                        </div>
+                        <div class="component highlight" data-component="blending">
+                            <span class="comp-icon">🔄</span>
+                            <span class="comp-name">Blending</span>
+                            <span class="comp-desc">Dynamic activation & synthesis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layer 3: Evolution -->
+                <div class="layer-card" data-layer="evolution">
+                    <div class="layer-header">
+                        <span class="layer-icon">🧬</span>
+                        <h3>Evolution Layer</h3>
+                    </div>
+                    <div class="layer-components">
+                        <div class="component" data-component="fitness">
+                            <span class="comp-icon">📈</span>
+                            <span class="comp-name">Fitness Tracker</span>
+                            <span class="comp-desc">Multi-dimensional scoring</span>
+                        </div>
+                        <div class="component" data-component="mutation">
+                            <span class="comp-icon">⚡</span>
+                            <span class="comp-name">Mutation Engine</span>
+                            <span class="comp-desc">Prompt variants</span>
+                        </div>
+                        <div class="component" data-component="selection">
+                            <span class="comp-icon">🎯</span>
+                            <span class="comp-name">Selection</span>
+                            <span class="comp-desc">Tournament & elite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layer 4: Emergence -->
+                <div class="layer-card" data-layer="emergence">
+                    <div class="layer-header">
+                        <span class="layer-icon">✨</span>
+                        <h3>Emergence Layer</h3>
+                    </div>
+                    <div class="layer-components">
+                        <div class="component" data-component="patterns">
+                            <span class="comp-icon">🔍</span>
+                            <span class="comp-name">Patterns</span>
+                            <span class="comp-desc">5 types: behavioral, temporal, sequential...</span>
+                        </div>
+                        <div class="component" data-component="insights">
+                            <span class="comp-icon">💡</span>
+                            <span class="comp-name">Insights</span>
+                            <span class="comp-desc">Synthesized from patterns</span>
+                        </div>
+                        <div class="component" data-component="intuitions">
+                            <span class="comp-icon">⚡</span>
+                            <span class="comp-name">Intuitions</span>
+                            <span class="comp-desc">Compressed heuristics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connection Lines Canvas -->
+                <canvas id="connections-canvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Value Dashboard Section -->
+    <section class="section strategic-section" id="strategic">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Strategy</span>
+                <h2>Strategic Value Dashboard</h2>
+                <p>Competitive moats, network effects, and compound growth potential.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Competitive Moat Chart -->
+                <div class="dashboard-card moat-card">
+                    <h3>Competitive Moat Distribution</h3>
+                    <div class="moat-chart">
+                        <div class="moat-bar" data-level="very_high">
+                            <span class="moat-label">Very High</span>
+                            <div class="moat-fill" style="--count: 3;"></div>
+                            <span class="moat-count">3</span>
+                        </div>
+                        <div class="moat-bar" data-level="high">
+                            <span class="moat-label">High</span>
+                            <div class="moat-fill" style="--count: 4;"></div>
+                            <span class="moat-count">4</span>
+                        </div>
+                        <div class="moat-bar" data-level="medium">
+                            <span class="moat-label">Medium</span>
+                            <div class="moat-fill" style="--count: 5;"></div>
+                            <span class="moat-count">5</span>
+                        </div>
+                    </div>
+                    <p class="dashboard-insight">3 properties create very high competitive moats that are extremely difficult to replicate</p>
+                </div>
+
+                <!-- Compound Rate Chart -->
+                <div class="dashboard-card compound-card">
+                    <h3>Compound Growth Rate</h3>
+                    <div class="compound-visual">
+                        <div class="compound-ring exponential">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="188 283" transform="rotate(-90 50 50)"/>
+                            </svg>
+                            <span class="compound-value">5</span>
+                            <span class="compound-label">Exponential</span>
+                        </div>
+                        <div class="compound-ring linear">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="188 283" transform="rotate(-90 50 50)"/>
+                            </svg>
+                            <span class="compound-value">7</span>
+                            <span class="compound-label">Linear</span>
+                        </div>
+                    </div>
+                    <p class="dashboard-insight">5 properties compound exponentially, creating accelerating advantage</p>
+                </div>
+
+                <!-- Network Effects -->
+                <div class="dashboard-card network-card">
+                    <h3>Network Effects Potential</h3>
+                    <div class="network-levels">
+                        <div class="network-level" data-level="high">
+                            <span class="level-indicator"></span>
+                            <span class="level-label">High</span>
+                            <span class="level-count">2 properties</span>
+                        </div>
+                        <div class="network-level" data-level="medium">
+                            <span class="level-indicator"></span>
+                            <span class="level-label">Medium</span>
+                            <span class="level-count">5 properties</span>
+                        </div>
+                        <div class="network-level" data-level="low">
+                            <span class="level-indicator"></span>
+                            <span class="level-label">Low</span>
+                            <span class="level-count">5 properties</span>
+                        </div>
+                    </div>
+                    <p class="dashboard-insight">2 properties enable strong network effects when multiple agents interact</p>
+                </div>
+
+                <!-- Top Strategic Properties -->
+                <div class="dashboard-card top-properties-card">
+                    <h3>Highest Strategic Value Properties</h3>
+                    <div class="top-properties-list">
+                        <div class="top-property">
+                            <span class="rank">1</span>
+                            <div class="property-info">
+                                <span class="name">Recursive Self-Improvement</span>
+                                <div class="badges">
+                                    <span class="badge moat-very-high">Very High Moat</span>
+                                    <span class="badge compound-exp">Exponential</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-property">
+                            <span class="rank">2</span>
+                            <div class="property-info">
+                                <span class="name">Symbiotic Learning</span>
+                                <div class="badges">
+                                    <span class="badge moat-very-high">Very High Moat</span>
+                                    <span class="badge compound-exp">Exponential</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-property">
+                            <span class="rank">3</span>
+                            <div class="property-info">
+                                <span class="name">Personalized Cognition</span>
+                                <div class="badges">
+                                    <span class="badge moat-very-high">Very High Moat</span>
+                                    <span class="badge compound-lin">Linear</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-property">
+                            <span class="rank">4</span>
+                            <div class="property-info">
+                                <span class="name">Meta-Learning</span>
+                                <div class="badges">
+                                    <span class="badge moat-high">High Moat</span>
+                                    <span class="badge compound-exp">Exponential</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Timeline Section -->
+    <section class="section timeline-section" id="timeline">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Roadmap</span>
+                <h2>Future Timeline</h2>
+                <p>Property readiness and strategic recommendations across time horizons.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-track">
+                    <div class="timeline-period" data-period="0-3">
+                        <div class="period-header">
+                            <span class="period-label">0-3 Months</span>
+                            <span class="period-focus">Rapid Adaptation</span>
+                        </div>
+                        <div class="period-properties">
+                            <div class="property-chip critical">Anticipatory Intelligence</div>
+                            <div class="property-chip critical">Personalized Cognition</div>
+                            <div class="property-chip critical">Proactive Safety</div>
+                            <div class="property-chip critical">Symbiotic Learning</div>
+                            <div class="property-chip critical">Adaptive Confidence</div>
+                            <div class="property-chip critical">Contextual Autonomy</div>
+                            <div class="property-chip important">Self-Optimizing Architecture</div>
+                            <div class="property-chip important">Meta-Learning</div>
+                        </div>
+                        <div class="period-recommendations">
+                            <h4>Key Actions</h4>
+                            <ul>
+                                <li>Implement memory pruning</li>
+                                <li>Add pattern staleness detection</li>
+                                <li>Implement mutation safety filters</li>
+                                <li>Create property tracking system</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-period" data-period="3-6">
+                        <div class="period-header">
+                            <span class="period-label">3-6 Months</span>
+                            <span class="period-focus">Autonomous Evolution</span>
+                        </div>
+                        <div class="period-properties">
+                            <div class="property-chip critical">Self-Optimizing Architecture</div>
+                            <div class="property-chip critical">Meta-Learning</div>
+                            <div class="property-chip critical">Recursive Self-Improvement</div>
+                            <div class="property-chip important">Contextual Creativity</div>
+                            <div class="property-chip important">Multi-Perspective Synthesis</div>
+                            <div class="property-chip important">Emergent Pattern Hierarchy</div>
+                        </div>
+                        <div class="period-recommendations">
+                            <h4>Key Actions</h4>
+                            <ul>
+                                <li>Enable multi-agent coordination</li>
+                                <li>Add cross-domain pattern transfer</li>
+                                <li>Implement meta-pattern recognition</li>
+                                <li>Create amplification circuits</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-period" data-period="6-12">
+                        <div class="period-header">
+                            <span class="period-label">6-12 Months</span>
+                            <span class="period-focus">Multi-Agent Coordination</span>
+                        </div>
+                        <div class="period-properties">
+                            <div class="property-chip critical">Emergent Pattern Hierarchy</div>
+                            <div class="property-chip potential">Collective Intelligence</div>
+                            <div class="property-chip potential">Temporal Intelligence</div>
+                            <div class="property-chip potential">Consciousness-Like Behavior</div>
+                            <div class="property-chip potential">Recursive Meta-Learning</div>
+                        </div>
+                        <div class="period-recommendations">
+                            <h4>Key Actions</h4>
+                            <ul>
+                                <li>Build collective intelligence network</li>
+                                <li>Implement temporal intelligence</li>
+                                <li>Develop consciousness-like self-awareness</li>
+                                <li>Enable emergent constraint discovery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leverage Points Section -->
+    <section class="section leverage-section" id="leverage">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Optimization</span>
+                <h2>Leverage Points</h2>
+                <p>High-impact opportunities for amplifying emergent properties.</p>
+            </div>
+
+            <div class="leverage-matrix">
+                <div class="matrix-axis y-axis">
+                    <span>Impact</span>
+                    <div class="axis-labels">
+                        <span>High</span>
+                        <span>Low</span>
+                    </div>
+                </div>
+                <div class="matrix-axis x-axis">
+                    <span>Effort</span>
+                    <div class="axis-labels">
+                        <span>Low</span>
+                        <span>High</span>
+                    </div>
+                </div>
+                
+                <div class="matrix-quadrants">
+                    <div class="quadrant quick-wins">
+                        <h4>Quick Wins</h4>
+                        <div class="leverage-item" data-impact="high" data-effort="low">
+                            <span class="leverage-name">Faster Evolution Cycles</span>
+                            <span class="leverage-detail">Reduce 20 → 10 interactions</span>
+                        </div>
+                        <div class="leverage-item" data-impact="high" data-effort="medium">
+                            <span class="leverage-name">Pattern Sharing</span>
+                            <span class="leverage-detail">Enable via Notion MCP</span>
+                        </div>
+                        <div class="leverage-item" data-impact="high" data-effort="medium">
+                            <span class="leverage-name">Meta-Pattern Recognition</span>
+                            <span class="leverage-detail">Apply patterns to patterns</span>
+                        </div>
+                    </div>
+                    
+                    <div class="quadrant strategic-investments">
+                        <h4>Strategic Investments</h4>
+                        <div class="leverage-item" data-impact="very-high" data-effort="very-high">
+                            <span class="leverage-name">Multi-Agent Network</span>
+                            <span class="leverage-detail">Agent coordination infrastructure</span>
+                        </div>
+                        <div class="leverage-item" data-impact="very-high" data-effort="very-high">
+                            <span class="leverage-name">Recursive Meta-Learning</span>
+                            <span class="leverage-detail">Complex implementation</span>
+                        </div>
+                        <div class="leverage-item" data-impact="very-high" data-effort="very-high">
+                            <span class="leverage-name">Consciousness-Like Behavior</span>
+                            <span class="leverage-detail">Research-intensive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destruction Analysis Section -->
+    <section class="section destruction-section" id="destruction">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Risk Analysis</span>
+                <h2>Destruction Conditions</h2>
+                <p>What would destroy key emergent properties and how to prevent it.</p>
+            </div>
+
+            <div class="risk-categories">
+                <div class="risk-category structural">
+                    <div class="category-header">
+                        <span class="category-icon">🏗️</span>
+                        <h3>Structural Risks</h3>
+                    </div>
+                    <div class="risk-items">
+                        <div class="risk-item">
+                            <div class="risk-condition">Remove feedback loops</div>
+                            <div class="risk-impact">Loss of learning and adaptation</div>
+                            <div class="risk-mitigation">Cannot remove core cognitive loop</div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-condition">Static mind blending</div>
+                            <div class="risk-impact">Loss of contextual intelligence</div>
+                            <div class="risk-mitigation">Blending is core to SELF architecture</div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-condition">Loss of memory persistence</div>
+                            <div class="risk-impact">Loss of personalization</div>
+                            <div class="risk-mitigation">Memory persistence is fundamental</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="risk-category functional">
+                    <div class="category-header">
+                        <span class="category-icon">⚙️</span>
+                        <h3>Functional Risks</h3>
+                    </div>
+                    <div class="risk-items">
+                        <div class="risk-item">
+                            <div class="risk-condition">Break cognitive loop</div>
+                            <div class="risk-impact">Loss of continuous learning</div>
+                            <div class="risk-mitigation">Cognitive loop is core architecture</div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-condition">Separate layers</div>
+                            <div class="risk-impact">Loss of cross-layer emergence</div>
+                            <div class="risk-mitigation">Cross-layer integration is fundamental</div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-condition">Disable evolution</div>
+                            <div class="risk-impact">Loss of self-improvement</div>
+                            <div class="risk-mitigation">Evolution is optional but valuable</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="risk-category edge-cases">
+                    <div class="category-header">
+                        <span class="category-icon">⚠️</span>
+                        <h3>Edge Case Risks</h3>
+                    </div>
+                    <div class="risk-items">
+                        <div class="risk-item warning">
+                            <div class="risk-condition">Memory.json grows too large</div>
+                            <div class="risk-impact">Context window exhaustion</div>
+                            <div class="risk-mitigation needs-action">Memory pruning, summarization, archival</div>
+                        </div>
+                        <div class="risk-item warning">
+                            <div class="risk-condition">Patterns become stale</div>
+                            <div class="risk-impact">Wrong predictions</div>
+                            <div class="risk-mitigation needs-action">Pattern staleness detection needed</div>
+                        </div>
+                        <div class="risk-item warning">
+                            <div class="risk-condition">Evolution produces harmful mutations</div>
+                            <div class="risk-impact">Safety failure</div>
+                            <div class="risk-mitigation needs-action">Mutation safety filters needed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amplification Strategies Section -->
+    <section class="section amplification-section" id="amplification">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Enhancement</span>
+                <h2>Amplification Strategies</h2>
+                <p>Concrete strategies to strengthen emergent properties and accelerate compound effects.</p>
+            </div>
+
+            <div class="strategies-grid">
+                <div class="strategy-card" data-impact="high" data-effort="medium">
+                    <div class="strategy-header">
+                        <span class="strategy-icon">🔗</span>
+                        <h3>Cross-Layer Information Flow</h3>
+                        <div class="strategy-rating">
+                            <span class="impact-badge high">High Impact</span>
+                            <span class="effort-badge medium">Medium Effort</span>
+                        </div>
+                    </div>
+                    <ul class="strategy-list">
+                        <li>Implement explicit data channels between layers</li>
+                        <li>Create shared context objects</li>
+                        <li>Enable bidirectional information flow</li>
+                        <li>Reduce information loss between layers</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card" data-impact="high" data-effort="low">
+                    <div class="strategy-header">
+                        <span class="strategy-icon">⚡</span>
+                        <h3>Faster Feedback Cycles</h3>
+                        <div class="strategy-rating">
+                            <span class="impact-badge high">High Impact</span>
+                            <span class="effort-badge low">Low Effort</span>
+                        </div>
+                    </div>
+                    <ul class="strategy-list">
+                        <li>Reduce latency in learning loop</li>
+                        <li>Implement real-time pattern detection</li>
+                        <li>Enable immediate confidence updates</li>
+                        <li>Create shorter evolution generations</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card" data-impact="high" data-effort="medium">
+                    <div class="strategy-header">
+                        <span class="strategy-icon">🔍</span>
+                        <h3>Richer Pattern Recognition</h3>
+                        <div class="strategy-rating">
+                            <span class="impact-badge high">High Impact</span>
+                            <span class="effort-badge medium">Medium Effort</span>
+                        </div>
+                    </div>
+                    <ul class="strategy-list">
+                        <li>Multi-scale pattern detection (micro and macro)</li>
+                        <li>Cross-domain pattern matching</li>
+                        <li>Temporal pattern recognition</li>
+                        <li>Meta-pattern discovery</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card" data-impact="medium" data-effort="medium">
+                    <div class="strategy-header">
+                        <span class="strategy-icon">🧠</span>
+                        <h3>Deeper Memory Connections</h3>
+                        <div class="strategy-rating">
+                            <span class="impact-badge medium">Medium Impact</span>
+                            <span class="effort-badge medium">Medium Effort</span>
+                        </div>
+                    </div>
+                    <ul class="strategy-list">
+                        <li>Increase relationship depth in memory graph</li>
+                        <li>Enable multi-hop reasoning</li>
+                        <li>Create memory clusters and hierarchies</li>
+                        <li>Implement memory compression</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card" data-impact="medium" data-effort="high">
+                    <div class="strategy-header">
+                        <span class="strategy-icon">🎨</span>
+                        <h3>More Sophisticated Blending</h3>
+                        <div class="strategy-rating">
+                            <span class="impact-badge medium">Medium Impact</span>
+                            <span class="effort-badge high">High Effort</span>
+                        </div>
+                    </div>
+                    <ul class="strategy-list">
+                        <li>Learn optimal blends per context</li>
+                        <li>Enable blend evolution</li>
+                        <li>Create blend hierarchies</li>
+                        <li>Implement blend prediction</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card featured" data-impact="very-high" data-effort="high">
+                    <div class="strategy-header">
+                        <span class="strategy-icon">🚀</span>
+                        <h3>Compound Effect Amplifiers</h3>
+                        <div class="strategy-rating">
+                            <span class="impact-badge very-high">Very High Impact</span>
+                            <span class="effort-badge high">High Effort</span>
+                        </div>
+                    </div>
+                    <ul class="strategy-list">
+                        <li>Identify properties that multiply when combined</li>
+                        <li>Create property interaction maps</li>
+                        <li>Design amplification circuits</li>
+                        <li>Measure compound growth rates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Potential Properties Section -->
+    <section class="section potential-section" id="potential">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Discovery</span>
+                <h2>Potential Hidden Properties</h2>
+                <p>8 emergent properties that may exist but require validation.</p>
+            </div>
+
+            <div class="potential-grid" id="potential-grid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">◇</span>
+                    <span>SELF</span>
+                </div>
+                <p class="footer-tagline">Synthetic Emergent Learning Framework</p>
+                <p class="footer-version">Analysis v1.0.0 | Generated 2026-01-07</p>
+            </div>
+            <div class="footer-links">
+                <a href="#properties">Properties</a>
+                <a href="#loops">Feedback Loops</a>
+                <a href="#components">Components</a>
+                <a href="#strategic">Strategic Value</a>
+                <a href="#timeline">Timeline</a>
+                <a href="../self/">Back to SELF</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 SELF — Emergent Properties Analysis</p>
+        </div>
+    </footer>
+
+    <!-- Property Detail Modal -->
+    <div class="modal" id="property-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

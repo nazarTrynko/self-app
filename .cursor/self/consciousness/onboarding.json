@@ -1,0 +1,89 @@
+{
+  "$schema": "SELF Onboarding Config v1.0",
+  "metadata": {
+    "created": "2026-01-07T00:00:00Z",
+    "version": "1.0.0",
+    "description": "Configuration for SELF onboarding flow"
+  },
+  "questions": [
+    {
+      "id": "coding_style",
+      "question": "What's your preferred coding style?",
+      "examples": ["functional", "OOP", "pragmatic", "test-driven"],
+      "default": "pragmatic",
+      "category": "technical"
+    },
+    {
+      "id": "communication_style",
+      "question": "How do you like explanations?",
+      "examples": ["concise", "detailed", "examples-first", "code-first"],
+      "default": "adaptive",
+      "category": "communication"
+    },
+    {
+      "id": "risk_tolerance",
+      "question": "Risk tolerance for automated changes?",
+      "options": ["low", "medium", "high"],
+      "default": "medium",
+      "category": "behavior"
+    },
+    {
+      "id": "detail_level",
+      "question": "Default detail level in responses?",
+      "options": ["minimal", "adaptive", "comprehensive"],
+      "default": "adaptive",
+      "category": "communication"
+    },
+    {
+      "id": "expertise_areas",
+      "question": "Your expertise areas (comma-separated)",
+      "examples": ["typescript", "react", "python", "backend", "devops"],
+      "default": [],
+      "category": "technical",
+      "type": "list"
+    },
+    {
+      "id": "learning_goals",
+      "question": "What are you currently learning or improving?",
+      "examples": ["system design", "testing", "performance", "new language"],
+      "default": [],
+      "category": "growth",
+      "type": "list"
+    },
+    {
+      "id": "working_style",
+      "question": "How do you prefer to work?",
+      "examples": ["deep-focus", "iterative", "exploratory", "deadline-driven"],
+      "default": "iterative",
+      "category": "behavior"
+    },
+    {
+      "id": "feedback_preference",
+      "question": "How much critique do you want?",
+      "options": ["encouraging", "balanced", "rigorous"],
+      "default": "balanced",
+      "category": "communication"
+    }
+  ],
+  "seed_episodes": [
+    {
+      "type": "decision",
+      "summary": "User completed SELF onboarding, establishing baseline preferences",
+      "outcome": "success",
+      "confidence": 0.9,
+      "minds_active": ["oracle"],
+      "learnings": ["user_preferences_captured", "baseline_established"]
+    }
+  ],
+  "seed_patterns": [
+    {
+      "id": "onboard_baseline",
+      "type": "behavioral",
+      "description": "User has completed onboarding and established preferences",
+      "confidence": 0.8,
+      "status": "confirmed"
+    }
+  ],
+  "completion_message": "Onboarding complete! SELF now understands your preferences and will adapt accordingly. Use '/self status' anytime to review."
+}
+

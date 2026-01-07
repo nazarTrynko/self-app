@@ -383,6 +383,155 @@ def cmd_memory_prune(days: int = 30):
     return False
 
 
+def cmd_memory_compress():
+    """Compress memory using hot/warm/cold tiering."""
+    memory = load_json(FILES["memory"])
+    if memory is None:
+        print("❌ Cannot load memory.json")
+        return False
+    
+    print("\n🗜️  Memory Compression\n")
+    
+    now = datetime.now()
+    hot_cutoff = (now - timedelta(days=7)).isoformat()
+    warm_cutoff = (now - timedelta(days=30)).isoformat()
+    
+    episodes = memory.get("episodes", {}).get("recent", [])
+    if not isinstance(episodes, list):
+        episodes = []
+    
+    # Categorize episodes
+    hot = []    # < 7 days: full detail
+    warm = []   # 7-30 days: summarized
+    cold = []   # > 30 days: archived/removed
+    
+    for ep in episodes:
+        if not isinstance(ep, dict):
+            continue
+        ts = ep.get("timestamp", "")
+        if ts > hot_cutoff:
+            hot.append(ep)
+        elif ts > warm_cutoff:
+            # Compress to summary
+            warm.append({
+                "id": ep.get("id"),
+                "timestamp": ts,
+                "type": ep.get("type"),
+                "summary": ep.get("summary", "")[:100],
+                "outcome": ep.get("outcome"),
+                "confidence": ep.get("confidence"),
+                "surprise_score": ep.get("surprise_score", 0),
+                "compressed": True
+            })
+        else:
+            cold.append(ep.get("id"))
+    
+    print(f"  Episodes categorized:")
+    print(f"    🔥 Hot (< 7 days): {len(hot)} - full detail")
+    print(f"    🌡️  Warm (7-30 days): {len(warm)} - compressed")
+    print(f"    🧊 Cold (> 30 days): {len(cold)} - archived")
+    
+    # Store warm separately
+    if "warm_memory" not in memory:
+        memory["warm_memory"] = []
+    
+    # Merge warm episodes (avoid duplicates)
+    existing_warm_ids = {e.get("id") for e in memory["warm_memory"]}
+    for ep in warm:
+        if ep.get("id") not in existing_warm_ids:
+            memory["warm_memory"].append(ep)
+    
+    # Archive cold to separate file (or Notion)
+    if cold:
+        archive_path = CONSCIOUSNESS_DIR / "memory_archive.json"
+        archive = load_json(archive_path) if archive_path.exists() else {"archived_episodes": []}
+        
+        # Get full cold episodes before removing
+        cold_episodes = [ep for ep in episodes if ep.get("id") in cold]
+        archive["archived_episodes"].extend(cold_episodes)
+        archive["archived_episodes"] = archive["archived_episodes"][-200:]  # Keep last 200
+        archive["last_archived"] = now.isoformat()
+        
+        save_json(archive_path, archive, backup=False)
+        print(f"    📦 Archived {len(cold)} episodes to memory_archive.json")
+    
+    # Update recent to only hot episodes
+    memory["episodes"]["recent"] = hot
+    
+    # Update metadata
+    memory["metadata"]["last_updated"] = now.isoformat()
+    memory["metadata"]["compression_applied"] = now.isoformat()
+    
+    # Calculate size savings
+    original_count = len(episodes)
+    new_count = len(hot)
+    
+    if save_json(FILES["memory"], memory):
+        print(f"\n  ✅ Compression complete")
+        print(f"     Active episodes: {original_count} → {new_count}")
+        print(f"     Warm cache: {len(memory['warm_memory'])} summaries")
+        return True
+    return False
+
+
+def cmd_memory_stats():
+    """Show memory statistics and tiers."""
+    memory = load_json(FILES["memory"])
+    if memory is None:
+        print("❌ Cannot load memory.json")
+        return
+    
+    print("\n" + "=" * 60)
+    print("  Memory Statistics")
+    print("=" * 60 + "\n")
+    
+    # Episodes
+    recent = memory.get("episodes", {}).get("recent", [])
+    significant = memory.get("episodes", {}).get("significant", [])
+    warm = memory.get("warm_memory", [])
+    
+    # Check archive
+    archive_path = CONSCIOUSNESS_DIR / "memory_archive.json"
+    archive_count = 0
+    if archive_path.exists():
+        archive = load_json(archive_path)
+        if archive:
+            archive_count = len(archive.get("archived_episodes", []))
+    
+    print(f"  Episode Tiers:")
+    print(f"    🔥 Hot (recent): {len(recent)}")
+    print(f"    ⭐ Significant: {len([s for s in significant if isinstance(s, dict)])}")
+    print(f"    🌡️  Warm (compressed): {len(warm)}")
+    print(f"    🧊 Cold (archived): {archive_count}")
+    print(f"    Total tracked: {len(recent) + len(warm) + archive_count}")
+    
+    # Entities
+    entities = memory.get("entities", {})
+    print(f"\n  Entities:")
+    print(f"    Users: {len(entities.get('users', []))}")
+    print(f"    Projects: {len(entities.get('projects', []))}")
+    print(f"    Concepts: {len(entities.get('concepts', []))}")
+    print(f"    Tools: {len(entities.get('tools', []))}")
+    
+    # Relationships
+    edges = memory.get("relationships", {}).get("edges", [])
+    print(f"\n  Relationships: {len(edges)}")
+    
+    # Knowledge clusters
+    clusters = memory.get("knowledge_clusters", {}).get("clusters", [])
+    print(f"  Knowledge Clusters: {len(clusters)}")
+    
+    # File sizes
+    memory_size = FILES["memory"].stat().st_size if FILES["memory"].exists() else 0
+    print(f"\n  File Size: {memory_size:,} bytes ({memory_size/1024:.1f} KB)")
+    
+    # Compression recommendation
+    if len(recent) > 30:
+        print(f"\n  💡 Recommendation: Run 'memory compress' to optimize")
+    
+    print("\n" + "=" * 60 + "\n")
+
+
 def cmd_onboard():
     """Interactive onboarding flow to seed initial memory."""
     print("\n" + "=" * 60)
@@ -394,50 +543,90 @@ def cmd_onboard():
         print("❌ Cannot load memory.json. Run 'init' first.")
         return False
     
-    # Questions
+    # Load onboarding config if available
+    onboarding_config_path = CONSCIOUSNESS_DIR / "onboarding.json"
+    onboarding_config = load_json(onboarding_config_path) if onboarding_config_path.exists() else None
+    
     print("Answer these questions to help SELF learn your preferences.\n")
     print("(Press Enter to skip any question)\n")
     
-    questions = {
-        "coding_style": "What's your preferred coding style? (e.g., 'functional', 'OOP', 'pragmatic'): ",
-        "communication_style": "How do you like explanations? (e.g., 'concise', 'detailed', 'examples-first'): ",
-        "risk_tolerance": "Risk tolerance for automated changes? (low/medium/high): ",
-        "detail_level": "Default detail level? (minimal/adaptive/comprehensive): ",
-    }
-    
-    expertise_prompt = "Your expertise areas (comma-separated, e.g., 'typescript, react, backend'): "
-    
     preferences = {}
-    for key, prompt in questions.items():
-        answer = input(f"  {prompt}").strip()
+    lists = {}
+    
+    # Core questions
+    questions = [
+        ("coding_style", "What's your preferred coding style?", 
+         "e.g., 'functional', 'OOP', 'pragmatic', 'test-driven'"),
+        ("communication_style", "How do you like explanations?",
+         "e.g., 'concise', 'detailed', 'examples-first', 'code-first'"),
+        ("risk_tolerance", "Risk tolerance for automated changes?",
+         "low/medium/high", ["low", "medium", "high"]),
+        ("detail_level", "Default detail level?",
+         "minimal/adaptive/comprehensive", ["minimal", "adaptive", "comprehensive"]),
+        ("working_style", "How do you prefer to work?",
+         "e.g., 'deep-focus', 'iterative', 'exploratory', 'deadline-driven'"),
+        ("feedback_preference", "How much critique do you want?",
+         "encouraging/balanced/rigorous", ["encouraging", "balanced", "rigorous"]),
+    ]
+    
+    for item in questions:
+        key = item[0]
+        question = item[1]
+        hint = item[2]
+        options = item[3] if len(item) > 3 else None
+        
+        prompt = f"  {question}\n    ({hint}): "
+        answer = input(prompt).strip().lower()
+        
         if answer:
+            # Validate against options if provided
+            if options and answer not in options:
+                print(f"    ⚠️  Using '{answer}' (not in standard options)")
             preferences[key] = answer
     
-    expertise = input(f"\n  {expertise_prompt}").strip()
-    expertise_list = [e.strip() for e in expertise.split(",") if e.strip()] if expertise else []
+    # List-type questions
+    print()
+    list_questions = [
+        ("expertise_areas", "Your expertise areas", "typescript, react, python, backend"),
+        ("learning_goals", "What are you currently learning?", "system design, testing, new language"),
+    ]
+    
+    for key, question, examples in list_questions:
+        prompt = f"  {question} (comma-separated)?\n    (e.g., '{examples}'): "
+        answer = input(prompt).strip()
+        if answer:
+            lists[key] = [item.strip() for item in answer.split(",") if item.strip()]
     
     # Update memory
     if memory["entities"]["users"]:
         user = memory["entities"]["users"][0]
         user["preferences"].update(preferences)
-        user["expertise_areas"] = expertise_list
+        for key, value in lists.items():
+            user[key] = value
     
     memory["metadata"]["last_updated"] = datetime.now().isoformat()
     
-    # Add onboarding episode
+    # Add onboarding episode with surprise score
     episode = {
         "id": f"ep_{uuid.uuid4().hex[:12]}",
         "timestamp": datetime.now().isoformat(),
         "type": "decision",
-        "summary": "User completed onboarding, preferences captured",
+        "summary": "User completed SELF onboarding, establishing baseline preferences",
         "entities_involved": ["user_primary"],
         "outcome": "success",
         "confidence": 0.9,
+        "surprise_score": 0.1,  # Expected success
         "minds_active": ["oracle"],
-        "learnings": list(preferences.keys()),
+        "learnings": list(preferences.keys()) + list(lists.keys()),
         "emotional_valence": 0.5
     }
     memory["episodes"]["recent"].insert(0, episode)
+    
+    # Add to significant if first onboarding
+    existing_onboarding = [e for e in memory["episodes"].get("significant", []) 
+                          if "onboarding" in e.get("summary", "").lower()]
+    if not existing_onboarding:
+        memory["episodes"]["significant"].insert(0, episode)
     
     if save_json(FILES["memory"], memory):
         print("\n" + "-" * 60)
@@ -445,8 +634,13 @@ def cmd_onboard():
         print("  Summary:")
         for key, value in preferences.items():
             print(f"    {key}: {value}")
-        if expertise_list:
-            print(f"    expertise: {', '.join(expertise_list)}")
+        for key, value in lists.items():
+            if value:
+                print(f"    {key}: {', '.join(value)}")
+        
+        if onboarding_config:
+            print(f"\n  {onboarding_config.get('completion_message', '')}")
+        
         print("\n" + "=" * 60 + "\n")
         return True
     return False
@@ -804,6 +998,451 @@ def create_default_fitness():
     }
 
 
+def cmd_feedback(signal: str, episode_id: Optional[str] = None, score_override: Optional[float] = None):
+    """Record feedback signal and update fitness scores."""
+    fitness = load_json(FILES["fitness"])
+    memory = load_json(FILES["memory"])
+    
+    if fitness is None or memory is None:
+        print("❌ Cannot load required files")
+        return False
+    
+    # Find signal definition
+    all_signals = (
+        fitness.get("scoring_signals", {}).get("positive", []) +
+        fitness.get("scoring_signals", {}).get("negative", [])
+    )
+    
+    signal_def = next((s for s in all_signals if s["signal"] == signal), None)
+    
+    if signal_def is None and score_override is None:
+        print(f"❌ Unknown signal: {signal}")
+        print("   Known signals:")
+        for s in all_signals:
+            print(f"     {s['signal']:30} ({s['score']:+.2f})")
+        return False
+    
+    score = score_override if score_override is not None else signal_def["score"]
+    
+    # Update fitness
+    current_gen = f"generation_{fitness['metadata']['current_generation']:03d}"
+    if current_gen not in fitness["prompt_variants"]:
+        current_gen = "generation_001"
+    
+    gen_data = fitness["prompt_variants"].get(current_gen, {})
+    variants = gen_data.get("variants", [])
+    
+    if variants:
+        # Update the first (active) variant
+        variant = variants[0]
+        old_score = variant.get("fitness_score", 0.5)
+        evals = variant.get("evaluations", 0)
+        
+        # Weighted average with decay toward new signal
+        new_score = (old_score * evals + (0.5 + score)) / (evals + 1)
+        new_score = max(0.0, min(1.0, new_score))  # Clamp
+        
+        variant["fitness_score"] = round(new_score, 3)
+        variant["evaluations"] = evals + 1
+        
+        # Update generation stats
+        gen_data["average_fitness"] = round(new_score, 3)
+    
+    # Log the feedback
+    if "feedback_log" not in fitness:
+        fitness["feedback_log"] = []
+    
+    feedback_entry = {
+        "timestamp": datetime.now().isoformat(),
+        "signal": signal,
+        "score": score,
+        "episode_id": episode_id
+    }
+    fitness["feedback_log"].insert(0, feedback_entry)
+    fitness["feedback_log"] = fitness["feedback_log"][:100]  # Keep last 100
+    
+    fitness["metadata"]["total_evaluations"] = fitness["metadata"].get("total_evaluations", 0) + 1
+    fitness["metadata"]["last_updated"] = datetime.now().isoformat()
+    
+    if save_json(FILES["fitness"], fitness):
+        indicator = "📈" if score > 0 else "📉" if score < 0 else "➡️"
+        print(f"✅ Feedback recorded: {signal} ({score:+.2f}) {indicator}")
+        if variants:
+            print(f"   Fitness: {old_score:.3f} → {new_score:.3f}")
+        return True
+    return False
+
+
+def cmd_reflect(episode_summary: str, outcome: str = "success", confidence: float = 0.7,
+                signals: List[str] = None):
+    """Complete REFLECT step: log episode and process feedback signals."""
+    print("\n🔄 REFLECT Step\n")
+    
+    # Add episode
+    minds = ["architect"]  # Default
+    if cmd_memory_add(episode_summary, "task", outcome, confidence, minds):
+        print()
+    
+    # Calculate and show surprise
+    outcome_values = {"success": 1.0, "failure": 0.0, "partial": 0.5, "abandoned": 0.0}
+    actual = outcome_values.get(outcome, 0.5)
+    surprise = abs(confidence - actual)
+    
+    if surprise >= 0.3:
+        print(f"⚡ HIGH SURPRISE ({surprise:.2f}) - This is valuable learning!")
+    
+    # Process feedback signals
+    if signals:
+        print("\n📊 Processing feedback signals:")
+        for signal in signals:
+            cmd_feedback(signal)
+    
+    # Auto-detect feedback from outcome
+    auto_signals = []
+    if outcome == "success" and confidence >= 0.7:
+        auto_signals.append("no_corrections_needed")
+    elif outcome == "failure" and confidence >= 0.7:
+        auto_signals.append("error_in_response")
+    elif outcome == "partial":
+        auto_signals.append("clarification_needed")
+    
+    if auto_signals:
+        print("\n🤖 Auto-detected signals:")
+        for signal in auto_signals:
+            cmd_feedback(signal)
+    
+    print("\n✅ REFLECT complete\n")
+    return True
+
+
+def cmd_fitness_status():
+    """Show current fitness status and recent feedback."""
+    fitness = load_json(FILES["fitness"])
+    if fitness is None:
+        print("❌ Cannot load fitness.json")
+        return
+    
+    print("\n" + "=" * 60)
+    print("  Fitness Status")
+    print("=" * 60 + "\n")
+    
+    current_gen = fitness["metadata"].get("current_generation", 1)
+    total_evals = fitness["metadata"].get("total_evaluations", 0)
+    
+    print(f"  Generation: {current_gen}")
+    print(f"  Total Evaluations: {total_evals}")
+    
+    # Current variant stats
+    gen_key = f"generation_{current_gen:03d}"
+    if gen_key not in fitness.get("prompt_variants", {}):
+        gen_key = "generation_001"
+    
+    gen_data = fitness.get("prompt_variants", {}).get(gen_key, {})
+    variants = gen_data.get("variants", [])
+    
+    if variants:
+        variant = variants[0]
+        print(f"\n  Current Variant: {variant.get('id', 'unknown')}")
+        print(f"  Fitness Score: {variant.get('fitness_score', 0.5):.3f}")
+        print(f"  Evaluations: {variant.get('evaluations', 0)}")
+    
+    # Fitness dimensions
+    print("\n  Fitness Dimensions:")
+    for dim, info in fitness.get("fitness_dimensions", {}).items():
+        weight = info.get("weight", 0) * 100
+        print(f"    {dim:15} ({weight:.0f}%): {info.get('description', '')[:40]}")
+    
+    # Recent feedback
+    feedback_log = fitness.get("feedback_log", [])[:5]
+    if feedback_log:
+        print("\n  Recent Feedback:")
+        for fb in feedback_log:
+            signal = fb.get("signal", "unknown")
+            score = fb.get("score", 0)
+            indicator = "📈" if score > 0 else "📉" if score < 0 else "➡️"
+            print(f"    {indicator} {signal} ({score:+.2f})")
+    
+    print("\n" + "=" * 60 + "\n")
+
+
+def cmd_surprise_analysis():
+    """Analyze surprise scores to identify learning opportunities."""
+    memory = load_json(FILES["memory"])
+    if memory is None:
+        print("❌ Cannot load memory.json")
+        return
+    
+    print("\n" + "=" * 60)
+    print("  Surprise-Driven Learning Analysis")
+    print("=" * 60 + "\n")
+    
+    # Get all episodes from recent (which contains full objects)
+    recent_episodes = memory.get("episodes", {}).get("recent", [])
+    significant_ref = memory.get("episodes", {}).get("significant", [])
+    
+    # Filter to only dict objects (full episodes)
+    all_episodes = [ep for ep in recent_episodes if isinstance(ep, dict)]
+    
+    # Remove duplicates by ID
+    seen_ids = set()
+    unique_episodes = []
+    for ep in all_episodes:
+        ep_id = ep.get("id", "")
+        if ep_id and ep_id not in seen_ids:
+            seen_ids.add(ep_id)
+            unique_episodes.append(ep)
+    
+    if not unique_episodes:
+        print("  No episodes recorded yet. Use 'memory add' or 'reflect' to add episodes.")
+        print("\n" + "=" * 60 + "\n")
+        return
+    
+    # Calculate stats
+    surprise_scores = [ep.get("surprise_score", 0) for ep in unique_episodes if "surprise_score" in ep]
+    
+    if surprise_scores:
+        avg_surprise = sum(surprise_scores) / len(surprise_scores)
+        high_surprise = [s for s in surprise_scores if s >= 0.3]
+        
+        print(f"  Total Episodes: {len(unique_episodes)}")
+        print(f"  With Surprise Score: {len(surprise_scores)}")
+        print(f"  Average Surprise: {avg_surprise:.2f}")
+        print(f"  High Surprise (≥0.3): {len(high_surprise)} ({len(high_surprise)/len(surprise_scores)*100:.0f}%)")
+    
+    # Show high-surprise episodes (learning gold!)
+    high_surprise_eps = sorted(
+        [ep for ep in unique_episodes if ep.get("surprise_score", 0) >= 0.3],
+        key=lambda x: x.get("surprise_score", 0),
+        reverse=True
+    )[:5]
+    
+    if high_surprise_eps:
+        print("\n  ⚡ High-Surprise Episodes (Best Learning Opportunities):")
+        for ep in high_surprise_eps:
+            surprise = ep.get("surprise_score", 0)
+            confidence = ep.get("confidence", 0)
+            outcome = ep.get("outcome", "unknown")
+            summary = ep.get("summary", "No summary")[:50]
+            
+            print(f"\n    📌 {ep.get('id', 'unknown')}")
+            print(f"       Surprise: {surprise:.2f} | Confidence: {confidence:.2f} | Outcome: {outcome}")
+            print(f"       {summary}...")
+    
+    # Surprise patterns
+    print("\n  Surprise Patterns:")
+    
+    # High confidence failures (overconfidence)
+    overconfident = [ep for ep in unique_episodes 
+                     if ep.get("confidence", 0) >= 0.7 and ep.get("outcome") == "failure"]
+    if overconfident:
+        print(f"    ⚠️  Overconfidence: {len(overconfident)} high-confidence failures")
+    
+    # Low confidence successes (underconfidence)
+    underconfident = [ep for ep in unique_episodes 
+                      if ep.get("confidence", 0) <= 0.5 and ep.get("outcome") == "success"]
+    if underconfident:
+        print(f"    💡 Underconfidence: {len(underconfident)} low-confidence successes")
+    
+    # Well-calibrated
+    calibrated = [ep for ep in unique_episodes if ep.get("surprise_score", 1) < 0.2]
+    if calibrated:
+        print(f"    ✅ Well-calibrated: {len(calibrated)} predictions with surprise < 0.2")
+    
+    print("\n" + "=" * 60 + "\n")
+
+
+def calculate_surprise(confidence: float, outcome: str) -> float:
+    """Calculate surprise score from confidence and outcome."""
+    outcome_values = {
+        "success": 1.0,
+        "failure": 0.0,
+        "partial": 0.5,
+        "abandoned": 0.0
+    }
+    actual = outcome_values.get(outcome, 0.5)
+    return round(abs(confidence - actual), 2)
+
+
+def cmd_predict(prediction: str, confidence: float = 0.6, context: str = None):
+    """Add a prediction about what user will need next."""
+    predictions = load_json(FILES["predictions"])
+    if predictions is None:
+        print("❌ Cannot load predictions.json")
+        return False
+    
+    pred_id = f"pred_{uuid.uuid4().hex[:8]}"
+    
+    new_prediction = {
+        "id": pred_id,
+        "prediction": prediction,
+        "confidence": confidence,
+        "context": context,
+        "created": datetime.now().isoformat(),
+        "status": "active",
+        "resolved": None,
+        "outcome": None
+    }
+    
+    # Add to active predictions
+    if "active_predictions" not in predictions:
+        predictions["active_predictions"] = []
+    
+    predictions["active_predictions"].insert(0, new_prediction)
+    
+    # Keep only max active predictions
+    max_active = predictions.get("config", {}).get("max_active_predictions", 10)
+    predictions["active_predictions"] = predictions["active_predictions"][:max_active]
+    
+    predictions["metadata"]["last_updated"] = datetime.now().isoformat()
+    
+    if save_json(FILES["predictions"], predictions):
+        print(f"✅ Prediction added: {pred_id}")
+        print(f"   \"{prediction}\"")
+        print(f"   Confidence: {confidence}")
+        return True
+    return False
+
+
+def cmd_prediction_resolve(pred_id: str, hit: bool, notes: str = None):
+    """Resolve a prediction as hit or miss."""
+    predictions = load_json(FILES["predictions"])
+    if predictions is None:
+        print("❌ Cannot load predictions.json")
+        return False
+    
+    # Find the prediction
+    pred = None
+    pred_idx = None
+    for i, p in enumerate(predictions.get("active_predictions", [])):
+        if p.get("id") == pred_id or pred_id in p.get("prediction", ""):
+            pred = p
+            pred_idx = i
+            break
+    
+    if pred is None:
+        print(f"❌ Prediction not found: {pred_id}")
+        print("\n  Active predictions:")
+        for p in predictions.get("active_predictions", [])[:5]:
+            print(f"    {p.get('id')}: {p.get('prediction', '')[:50]}...")
+        return False
+    
+    # Update prediction
+    pred["status"] = "resolved"
+    pred["resolved"] = datetime.now().isoformat()
+    pred["outcome"] = "hit" if hit else "miss"
+    if notes:
+        pred["resolution_notes"] = notes
+    
+    # Move to history
+    if "prediction_history" not in predictions:
+        predictions["prediction_history"] = {"total": 0, "correct": 0, "partial_match": 0, "missed": 0, "accuracy": 0.0, "recent": []}
+    
+    history = predictions["prediction_history"]
+    history["total"] = history.get("total", 0) + 1
+    
+    if hit:
+        history["correct"] = history.get("correct", 0) + 1
+    else:
+        history["missed"] = history.get("missed", 0) + 1
+    
+    # Calculate accuracy
+    if history["total"] > 0:
+        history["accuracy"] = round(history["correct"] / history["total"], 3)
+    
+    # Add to recent
+    if "recent" not in history:
+        history["recent"] = []
+    history["recent"].insert(0, {
+        "id": pred["id"],
+        "prediction": pred["prediction"],
+        "outcome": pred["outcome"],
+        "confidence": pred["confidence"],
+        "resolved": pred["resolved"]
+    })
+    history["recent"] = history["recent"][:50]  # Keep last 50
+    
+    # Remove from active
+    predictions["active_predictions"].pop(pred_idx)
+    
+    predictions["metadata"]["last_updated"] = datetime.now().isoformat()
+    
+    if save_json(FILES["predictions"], predictions):
+        indicator = "✅ HIT" if hit else "❌ MISS"
+        print(f"{indicator}: {pred['prediction'][:60]}...")
+        print(f"   Accuracy: {history['correct']}/{history['total']} ({history['accuracy']*100:.1f}%)")
+        return True
+    return False
+
+
+def cmd_prediction_status():
+    """Show prediction engine status and accuracy."""
+    predictions = load_json(FILES["predictions"])
+    if predictions is None:
+        print("❌ Cannot load predictions.json")
+        return
+    
+    print("\n" + "=" * 60)
+    print("  Prediction Engine Status")
+    print("=" * 60 + "\n")
+    
+    history = predictions.get("prediction_history", {})
+    total = history.get("total", 0)
+    correct = history.get("correct", 0)
+    accuracy = history.get("accuracy", 0)
+    
+    print(f"  Total Predictions: {total}")
+    print(f"  Correct (Hits): {correct}")
+    print(f"  Missed: {history.get('missed', 0)}")
+    print(f"  Accuracy: {accuracy*100:.1f}%")
+    
+    # Target metric
+    if total >= 10:
+        if accuracy >= 0.4:
+            print(f"\n  🎯 TARGET MET: Accuracy >= 40%")
+        else:
+            print(f"\n  ⚠️  Below target: Need >= 40% accuracy")
+    else:
+        print(f"\n  📊 Need {10 - total} more predictions to assess")
+    
+    # Active predictions
+    active = predictions.get("active_predictions", [])
+    if active:
+        print(f"\n  Active Predictions ({len(active)}):")
+        for p in active[:5]:
+            conf = p.get("confidence", 0)
+            pred_text = p.get("prediction", "")[:45]
+            print(f"    • {p.get('id')}: {pred_text}... ({conf:.0%})")
+    
+    # Recent history
+    recent = history.get("recent", [])[:5]
+    if recent:
+        print(f"\n  Recent Resolutions:")
+        for r in recent:
+            outcome = "✅" if r.get("outcome") == "hit" else "❌"
+            print(f"    {outcome} {r.get('prediction', '')[:40]}...")
+    
+    # Calibration analysis
+    if total >= 5:
+        recent_all = history.get("recent", [])
+        if recent_all:
+            # Group by confidence level
+            high_conf = [r for r in recent_all if r.get("confidence", 0) >= 0.7]
+            low_conf = [r for r in recent_all if r.get("confidence", 0) < 0.5]
+            
+            if high_conf:
+                high_hits = sum(1 for r in high_conf if r.get("outcome") == "hit")
+                high_acc = high_hits / len(high_conf)
+                print(f"\n  Calibration:")
+                print(f"    High confidence (≥70%): {high_acc*100:.0f}% accurate")
+            
+            if low_conf:
+                low_hits = sum(1 for r in low_conf if r.get("outcome") == "hit")
+                low_acc = low_hits / len(low_conf)
+                print(f"    Low confidence (<50%): {low_acc*100:.0f}% accurate")
+    
+    print("\n" + "=" * 60 + "\n")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="SELF Runtime - Synthetic Emergent Learning Framework CLI",
@@ -818,6 +1457,9 @@ Examples:
   python self_runtime.py memory add "Task completed successfully"
   python self_runtime.py memory prune --days 14
   python self_runtime.py onboard             Start interactive onboarding
+  python self_runtime.py feedback code_accepted_without_changes
+  python self_runtime.py reflect "Fixed bug in auth" --outcome success
+  python self_runtime.py fitness             Show fitness status
         """
     )
     
@@ -853,6 +1495,45 @@ Examples:
     prune_parser = memory_sub.add_parser("prune", help="Prune old entries")
     prune_parser.add_argument("--days", type=int, default=30, help="Prune entries older than N days")
     
+    memory_sub.add_parser("compress", help="Compress memory using hot/warm/cold tiering")
+    memory_sub.add_parser("stats", help="Show memory statistics and tiers")
+    
+    # Feedback command
+    feedback_parser = subparsers.add_parser("feedback", help="Record feedback signal")
+    feedback_parser.add_argument("signal", help="Feedback signal name (e.g., 'code_accepted_without_changes')")
+    feedback_parser.add_argument("--episode", help="Episode ID to associate")
+    feedback_parser.add_argument("--score", type=float, help="Override score value")
+    
+    # Reflect command
+    reflect_parser = subparsers.add_parser("reflect", help="Complete REFLECT step with episode and feedback")
+    reflect_parser.add_argument("summary", help="Episode summary")
+    reflect_parser.add_argument("--outcome", default="success", choices=["success", "failure", "partial", "abandoned"])
+    reflect_parser.add_argument("--confidence", type=float, default=0.7)
+    reflect_parser.add_argument("--signals", nargs="+", help="Feedback signals to record")
+    
+    # Fitness command
+    subparsers.add_parser("fitness", help="Show fitness status and recent feedback")
+    
+    # Surprise analysis command
+    subparsers.add_parser("surprise", help="Analyze surprise scores for learning opportunities")
+    
+    # Prediction commands
+    predict_parser = subparsers.add_parser("predict", help="Prediction operations")
+    predict_sub = predict_parser.add_subparsers(dest="predict_cmd")
+    
+    add_pred = predict_sub.add_parser("add", help="Add a prediction")
+    add_pred.add_argument("prediction", help="What you predict will happen/be needed")
+    add_pred.add_argument("--confidence", type=float, default=0.6, help="Confidence 0.0-1.0")
+    add_pred.add_argument("--context", help="Optional context for the prediction")
+    
+    resolve_pred = predict_sub.add_parser("resolve", help="Resolve a prediction as hit/miss")
+    resolve_pred.add_argument("pred_id", help="Prediction ID or partial match")
+    resolve_pred.add_argument("--hit", action="store_true", help="Prediction was correct")
+    resolve_pred.add_argument("--miss", action="store_true", help="Prediction was incorrect")
+    resolve_pred.add_argument("--notes", help="Resolution notes")
+    
+    predict_sub.add_parser("status", help="Show prediction engine status")
+    
     args = parser.parse_args()
     
     if args.command is None:
@@ -874,8 +1555,34 @@ Examples:
             cmd_memory_add(args.summary, args.type, args.outcome, args.confidence, args.minds)
         elif args.memory_cmd == "prune":
             cmd_memory_prune(args.days)
+        elif args.memory_cmd == "compress":
+            cmd_memory_compress()
+        elif args.memory_cmd == "stats":
+            cmd_memory_stats()
         else:
             memory_parser.print_help()
+    elif args.command == "feedback":
+        cmd_feedback(args.signal, args.episode, args.score)
+    elif args.command == "reflect":
+        cmd_reflect(args.summary, args.outcome, args.confidence, args.signals)
+    elif args.command == "fitness":
+        cmd_fitness_status()
+    elif args.command == "surprise":
+        cmd_surprise_analysis()
+    elif args.command == "predict":
+        if args.predict_cmd == "add":
+            cmd_predict(args.prediction, args.confidence, args.context)
+        elif args.predict_cmd == "resolve":
+            if args.hit:
+                cmd_prediction_resolve(args.pred_id, True, args.notes)
+            elif args.miss:
+                cmd_prediction_resolve(args.pred_id, False, args.notes)
+            else:
+                print("❌ Specify --hit or --miss")
+        elif args.predict_cmd == "status":
+            cmd_prediction_status()
+        else:
+            predict_parser.print_help()
 
 
 if __name__ == "__main__":

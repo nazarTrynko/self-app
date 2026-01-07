@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0f1a">
+    <title>COLLECTIVE MIND — See How Ideas Flow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="network-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">28 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="network-icon">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="30" r="6" fill="#22d3ee"/>
+                        <circle cx="25" cy="50" r="5" fill="#a78bfa"/>
+                        <circle cx="75" cy="50" r="5" fill="#a78bfa"/>
+                        <circle cx="35" cy="75" r="4" fill="#34d399"/>
+                        <circle cx="65" cy="75" r="4" fill="#34d399"/>
+                        <line x1="50" y1="30" x2="25" y2="50" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+                        <line x1="50" y1="30" x2="75" y2="50" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+                        <line x1="25" y1="50" x2="35" y2="75" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+                        <line x1="75" y1="50" x2="65" y2="75" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+                        <line x1="35" y1="75" x2="65" y2="75" stroke="#34d399" stroke-width="1" opacity="0.5"/>
+                    </svg>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">COLLECTIVE<br>MIND</h1>
+                <p class="hero-subtitle">
+                    See how ideas flow through human networks.<br>
+                    The invisible architecture of thought made visible.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "Every idea you have was seeded by a thousand minds.<br>
+                You are a node in a network you cannot see."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Idea Galaxy</h2>
+            <p class="section-subtitle">Watch concepts cluster, cascade, and collide in real-time</p>
+            
+            <div class="network-display">
+                <canvas id="galaxy-canvas"></canvas>
+                <div class="network-overlay">
+                    <div class="cascade-counter">
+                        <span class="counter-value" id="node-count">0</span>
+                        <span class="counter-label">Active Nodes</span>
+                    </div>
+                    <div class="cascade-counter">
+                        <span class="counter-value" id="cascade-count">0</span>
+                        <span class="counter-label">Cascades/min</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="trend-panel">
+                <h3>Active Cascades</h3>
+                <div class="trends" id="trends">
+                    <div class="trend-item">
+                        <span class="trend-topic">Loading...</span>
+                        <div class="trend-bar"><div class="trend-fill" style="width: 20%"></div></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="inject-btn">💡 Inject Idea</button>
+                <button class="control-btn" id="cascade-btn">🌊 Trigger Cascade</button>
+                <button class="control-btn secondary" id="reset-btn">Reset Network</button>
+            </div>
+        </section>
+
+        <section class="clusters">
+            <h2 class="section-title">Echo Chambers & Bridges</h2>
+            <div class="cluster-grid">
+                <article class="cluster-card" data-cluster="tech">
+                    <div class="cluster-viz">
+                        <div class="cluster-nodes"></div>
+                    </div>
+                    <h3>Tech Discourse</h3>
+                    <p>High internal density, moderate external connection</p>
+                    <span class="cluster-stat">Isolation: 34%</span>
+                </article>
+                <article class="cluster-card" data-cluster="culture">
+                    <div class="cluster-viz">
+                        <div class="cluster-nodes"></div>
+                    </div>
+                    <h3>Cultural Exchange</h3>
+                    <p>Highly connected, many bridge nodes</p>
+                    <span class="cluster-stat">Isolation: 12%</span>
+                </article>
+                <article class="cluster-card" data-cluster="science">
+                    <div class="cluster-viz">
+                        <div class="cluster-nodes"></div>
+                    </div>
+                    <h3>Scientific Network</h3>
+                    <p>Specialized sub-clusters with weak ties</p>
+                    <span class="cluster-stat">Isolation: 58%</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>You Are Part of Something Larger</h3>
+                <p>
+                    Every thought you think has ancestors. Every idea you share creates descendants.
+                    The collective mind is not a metaphor—it's the actual information architecture
+                    we live inside. We are nodes in a network older than any individual,
+                    carrying signals we didn't originate toward destinations we'll never see.
+                </p>
+                <p class="highlight">
+                    When you speak, you are not just expressing yourself.<br>
+                    You are the medium through which ideas replicate.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../29-biomorph/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">BIOMORPHIC AI →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

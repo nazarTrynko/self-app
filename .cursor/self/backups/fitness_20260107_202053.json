@@ -1,0 +1,156 @@
+{
+  "$schema": "SELF Evolution Fitness Tracker v1.0",
+  "metadata": {
+    "created": "2026-01-05T00:00:00Z",
+    "last_updated": "2026-01-05T00:00:00Z",
+    "current_generation": 1,
+    "total_generations": 1,
+    "total_evaluations": 0
+  },
+  "fitness_dimensions": {
+    "effectiveness": {
+      "description": "Did the response solve the user's problem?",
+      "weight": 0.35,
+      "measurement": "task_completion_rate"
+    },
+    "efficiency": {
+      "description": "How quickly was the solution provided?",
+      "weight": 0.15,
+      "measurement": "interaction_count_to_solution"
+    },
+    "satisfaction": {
+      "description": "Was the user satisfied with the response?",
+      "weight": 0.25,
+      "measurement": "explicit_and_implicit_feedback"
+    },
+    "accuracy": {
+      "description": "Was the response correct and precise?",
+      "weight": 0.15,
+      "measurement": "error_rate_and_corrections"
+    },
+    "adaptability": {
+      "description": "Did the response adapt to context well?",
+      "weight": 0.10,
+      "measurement": "context_relevance_score"
+    }
+  },
+  "scoring_signals": {
+    "positive": [
+      {
+        "signal": "explicit_thanks",
+        "score": 0.15
+      },
+      {
+        "signal": "code_accepted_without_changes",
+        "score": 0.20
+      },
+      {
+        "signal": "follow_up_on_topic",
+        "score": 0.10
+      },
+      {
+        "signal": "request_for_more",
+        "score": 0.12
+      },
+      {
+        "signal": "user_implements_suggestion",
+        "score": 0.25
+      },
+      {
+        "signal": "no_corrections_needed",
+        "score": 0.18
+      }
+    ],
+    "negative": [
+      {
+        "signal": "explicit_criticism",
+        "score": -0.20
+      },
+      {
+        "signal": "code_heavily_modified",
+        "score": -0.15
+      },
+      {
+        "signal": "topic_abandoned",
+        "score": -0.10
+      },
+      {
+        "signal": "clarification_needed",
+        "score": -0.08
+      },
+      {
+        "signal": "error_in_response",
+        "score": -0.25
+      },
+      {
+        "signal": "user_does_opposite",
+        "score": -0.30
+      }
+    ]
+  },
+  "prompt_variants": {
+    "generation_001": {
+      "id": "gen_001",
+      "created": "2026-01-05T00:00:00Z",
+      "variants": [
+        {
+          "id": "base_v1",
+          "type": "base",
+          "fitness_score": 0.5,
+          "evaluations": 0,
+          "mutations_spawned": 0
+        }
+      ],
+      "best_performer": "base_v1",
+      "average_fitness": 0.5
+    }
+  },
+  "selection_config": {
+    "tournament_size": 3,
+    "elite_preservation": 2,
+    "selection_pressure": 0.7,
+    "min_evaluations_before_selection": 5
+  },
+  "mutation_config": {
+    "mutation_rate": 0.15,
+    "mutation_types": [
+      {
+        "type": "word_substitution",
+        "probability": 0.3
+      },
+      {
+        "type": "sentence_reorder",
+        "probability": 0.2
+      },
+      {
+        "type": "emphasis_shift",
+        "probability": 0.25
+      },
+      {
+        "type": "detail_level_adjust",
+        "probability": 0.15
+      },
+      {
+        "type": "tone_shift",
+        "probability": 0.10
+      }
+    ],
+    "max_mutations_per_generation": 3
+  },
+  "crossover_config": {
+    "crossover_rate": 0.3,
+    "crossover_points": 2,
+    "preference_for_high_fitness": 0.8
+  },
+  "convergence_detection": {
+    "fitness_plateau_threshold": 0.02,
+    "plateau_generations": 5,
+    "diversity_minimum": 0.3,
+    "restart_on_convergence": true
+  },
+  "history": {
+    "generation_summaries": [],
+    "fitness_trends": [],
+    "significant_mutations": []
+  }
+}

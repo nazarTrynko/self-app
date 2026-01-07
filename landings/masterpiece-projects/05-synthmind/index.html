@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SYNTHMIND - Think together as one brain. Watch multiple minds form a living neural network in real-time.">
+    <title>SYNTHMIND — Collaborative Neural Network Thinking</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="networkCanvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Projects</a>
+        <div class="nav-brand">🧠 SYNTHMIND</div>
+        <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-badge">Project #05 • Confidence: 85%</div>
+        
+        <h1 class="hero-title">
+            <span class="title-line">Think Together</span>
+            <span class="title-gradient">As One Brain</span>
+        </h1>
+        
+        <p class="hero-tagline">Watch multiple minds form a living neural network in real-time. Thoughts connecting like synapses firing.</p>
+        
+        <div class="network-visual">
+            <div class="node node-1"><span>Ideas</span></div>
+            <div class="node node-2"><span>Growth</span></div>
+            <div class="node node-3"><span>Focus</span></div>
+            <div class="node node-center active"><span>Insight</span></div>
+            <div class="node node-5"><span>Data</span></div>
+            <svg class="connections">
+                <line class="connection" x1="50%" y1="50%" x2="20%" y2="20%"/>
+                <line class="connection" x1="50%" y1="50%" x2="80%" y2="25%"/>
+                <line class="connection" x1="50%" y1="50%" x2="25%" y2="75%"/>
+                <line class="connection" x1="50%" y1="50%" x2="80%" y2="70%"/>
+            </svg>
+            <div class="participant-cursors">
+                <span class="cursor c1">●</span>
+                <span class="cursor c2">●</span>
+                <span class="cursor c3">●</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="section section-concept">
+        <div class="section-content">
+            <span class="section-label">The Concept</span>
+            <h2 class="section-title">Visualize Collective Thought</h2>
+            <p class="section-text">
+                SYNTHMIND is a collaborative thinking tool where participants' ideas appear as nodes in 
+                a shared neural network visualization. As you add thoughts, they connect to related ideas 
+                from others, forming visible synaptic connections.
+            </p>
+            <p class="section-text">
+                The more people engage with a node, the larger and more connected it becomes. Watch ideas 
+                evolve, merge, branch, and form clusters in real-time—a literal visualization of collective intelligence.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-features">
+        <div class="section-content">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Collaborative Intelligence</h2>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Auto-Connections</h3>
+                    <p>AI detects semantic relationships and connects related thoughts automatically.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👁️</div>
+                    <h3>Attention Heat Maps</h3>
+                    <p>See where participants are focused. Hot zones pulse with activity.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Voice to Node</h3>
+                    <p>Speak your thoughts. They appear as nodes in the network instantly.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔮</div>
+                    <h3>AI Synthesis</h3>
+                    <p>AI proposes merged super-nodes from clusters of related thoughts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-mindblowing">
+        <div class="section-content">
+            <span class="section-label">The Mind-Blowing Moment</span>
+            <h2 class="section-title">Watch Consensus Emerge</h2>
+            <p class="section-text large">
+                When an idea cluster suddenly emerges—three people had the same insight from different 
+                angles, and you watch their nodes gravitate toward each other and merge.
+            </p>
+            <p class="section-text">
+                The "aha" moment of group thinking becomes visible. You see consensus form before anyone speaks it.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-waitlist" id="waitlist">
+        <div class="section-content">
+            <h2 class="section-title">Join the Network</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Join Waitlist →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="../">← Back to All Projects</a>
+        <p>Part of the <a href="../../">SELF Framework</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a14">
+    <title>SYNESTHETIC PERCEPTION — Translate Between Senses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="synth-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">31 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="sense-icon">
+                    <div class="sense-ring ring-1"></div>
+                    <div class="sense-ring ring-2"></div>
+                    <div class="sense-ring ring-3"></div>
+                    <div class="sense-core"></div>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">SYNESTHETIC<br>PERCEPTION</h1>
+                <p class="hero-subtitle">
+                    Translate between senses your body doesn't have.<br>
+                    See sound. Hear color. Feel data.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "Synesthetes experience reality more richly than the rest of us.<br>
+                For them, music has shape. Numbers have color. Words have taste."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Chromesthesia Experience</h2>
+            <p class="section-subtitle">Click or tap to create sounds and watch them become light</p>
+            
+            <div class="synth-display">
+                <canvas id="chromesthesia-canvas"></canvas>
+                <div class="synth-info">
+                    <span class="info-label">Touch to create sound-colors</span>
+                </div>
+            </div>
+            
+            <div class="mode-selector">
+                <h3>Translation Mode</h3>
+                <div class="modes">
+                    <button class="mode-btn active" data-mode="chromesthesia">🎨 Sound → Color</button>
+                    <button class="mode-btn" data-mode="music">🎵 Color → Sound</button>
+                    <button class="mode-btn" data-mode="texture">✋ Sound → Texture</button>
+                </div>
+            </div>
+            
+            <div class="frequency-display">
+                <div class="freq-band" data-freq="low">
+                    <div class="freq-color" style="background: linear-gradient(135deg, #ef4444, #f97316)"></div>
+                    <span class="freq-label">Bass (Red-Orange)</span>
+                </div>
+                <div class="freq-band" data-freq="mid">
+                    <div class="freq-color" style="background: linear-gradient(135deg, #eab308, #22c55e)"></div>
+                    <span class="freq-label">Mid (Yellow-Green)</span>
+                </div>
+                <div class="freq-band" data-freq="high">
+                    <div class="freq-color" style="background: linear-gradient(135deg, #3b82f6, #a855f7)"></div>
+                    <span class="freq-label">Treble (Blue-Violet)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>The Borders Between Senses Are Arbitrary</h3>
+                <p>
+                    Your brain receives electrical signals and constructs experience from them.
+                    The separation between seeing, hearing, and feeling is a construction—
+                    useful, but not fundamental. Synesthetes prove that boundaries can blur.
+                </p>
+                <p class="highlight">
+                    What if you could choose how to experience reality?<br>
+                    What if you could hear a sunset or see a symphony?
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../32-emergent/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">EMERGENT LANGUAGE →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

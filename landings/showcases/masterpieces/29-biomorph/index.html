@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a1a0f">
+    <title>BIOMORPHIC AI — Watch Life Evolve</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="life-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">29 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="dna-icon">
+                    <div class="helix helix-1"></div>
+                    <div class="helix helix-2"></div>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">BIOMORPHIC<br>AI</h1>
+                <p class="hero-subtitle">
+                    Watch artificial life evolve in real-time.<br>
+                    Genuine emergence. Actual evolution. No scripts.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "Evolution is the most powerful algorithm in the universe.<br>
+                It created everything, including the minds observing it."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Living Ecosystem</h2>
+            <p class="section-subtitle">Creatures compete, adapt, and evolve before your eyes</p>
+            
+            <div class="ecosystem-display">
+                <canvas id="ecosystem-canvas"></canvas>
+                <div class="ecosystem-hud">
+                    <div class="hud-stat">
+                        <span class="stat-label">Generation</span>
+                        <span class="stat-value" id="generation">1</span>
+                    </div>
+                    <div class="hud-stat">
+                        <span class="stat-label">Population</span>
+                        <span class="stat-value" id="population">0</span>
+                    </div>
+                    <div class="hud-stat">
+                        <span class="stat-label">Species</span>
+                        <span class="stat-value" id="species">3</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="species-panel">
+                <h3>Active Species</h3>
+                <div class="species-list" id="species-list">
+                    <div class="species-item" data-species="herbivore">
+                        <span class="species-icon" style="background: #4ade80"></span>
+                        <span class="species-name">Herbivores</span>
+                        <span class="species-count" id="herbivore-count">0</span>
+                    </div>
+                    <div class="species-item" data-species="predator">
+                        <span class="species-icon" style="background: #f87171"></span>
+                        <span class="species-name">Predators</span>
+                        <span class="species-count" id="predator-count">0</span>
+                    </div>
+                    <div class="species-item" data-species="scavenger">
+                        <span class="species-icon" style="background: #facc15"></span>
+                        <span class="species-name">Scavengers</span>
+                        <span class="species-count" id="scavenger-count">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="behavior-panel">
+                <h3>Emergent Behaviors Detected</h3>
+                <div class="behaviors" id="behaviors">
+                    <div class="behavior-item">
+                        <span class="behavior-gen">Gen 1</span>
+                        <span class="behavior-text">Basic movement patterns</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="speed-btn">⏩ Speed Up</button>
+                <button class="control-btn" id="event-btn">🌋 Extinction Event</button>
+                <button class="control-btn secondary" id="reset-btn">Reset Ecosystem</button>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>You Are Watching Creation</h3>
+                <p>
+                    These creatures weren't programmed to hunt, flee, or cooperate.
+                    Their behaviors emerged through the blind algorithm of selection.
+                    The ones that survived, reproduced. The ones that didn't, vanished.
+                    Over thousands of generations, complexity arose from simplicity.
+                </p>
+                <p class="highlight">
+                    This is not simulation. This is the actual process<br>
+                    that made every living thing, including you.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../30-temporal/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">TEMPORAL CONSCIOUSNESS →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

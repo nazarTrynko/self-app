@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ECHOVERSE - Conversations that exist in space, decay like echoes, and leave traces you can revisit.">
+    <title>ECHOVERSE — Spatial Audio Social Network</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="soundCanvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Projects</a>
+        <div class="nav-brand">
+            <span class="brand-icon">🔊</span>
+            <span class="brand-name">ECHOVERSE</span>
+        </div>
+        <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-badge">Project #02 • Confidence: 82%</div>
+        
+        <h1 class="hero-title">
+            <span class="title-line">Conversations</span>
+            <span class="title-line title-gradient">In Space</span>
+        </h1>
+        
+        <p class="hero-tagline">
+            Social media that sounds like the real world. Messages decay like echoes.
+        </p>
+        
+        <div class="sound-visual">
+            <div class="sound-orb orb-1"></div>
+            <div class="sound-orb orb-2"></div>
+            <div class="sound-orb orb-3"></div>
+            <div class="sound-orb orb-center">
+                <span>YOU</span>
+            </div>
+            <div class="sound-wave"></div>
+            <div class="sound-wave delay-1"></div>
+            <div class="sound-wave delay-2"></div>
+        </div>
+        
+        <p class="hero-hint">
+            <span class="headphones-icon">🎧</span>
+            Best experienced with headphones
+        </p>
+    </header>
+
+    <section class="section section-concept">
+        <div class="section-content">
+            <span class="section-label">The Concept</span>
+            <h2 class="section-title">Audio-First Social</h2>
+            <p class="section-text">
+                ECHOVERSE is an audio-first social platform where every voice message exists in a 3D spatial 
+                environment. Instead of scrolling a feed, you navigate through "soundscapes" where 
+                conversations literally occupy space.
+            </p>
+            <p class="section-text">
+                Walk toward a discussion to hear it more clearly. Leave a voice reply that orbits the 
+                original message. Conversations naturally decay over time—fading like real echoes unless 
+                they're amplified by engagement.
+            </p>
+            
+            <div class="decay-visual">
+                <div class="decay-stage">
+                    <span class="decay-label">New</span>
+                    <div class="decay-bar full"></div>
+                </div>
+                <div class="decay-stage">
+                    <span class="decay-label">12h</span>
+                    <div class="decay-bar high"></div>
+                </div>
+                <div class="decay-stage">
+                    <span class="decay-label">24h</span>
+                    <div class="decay-bar medium"></div>
+                </div>
+                <div class="decay-stage">
+                    <span class="decay-label">48h</span>
+                    <div class="decay-bar low"></div>
+                </div>
+                <div class="decay-stage">
+                    <span class="decay-label">72h</span>
+                    <div class="decay-bar faded"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-experience">
+        <div class="section-content">
+            <span class="section-label">The Experience</span>
+            <h2 class="section-title">Navigate Sound</h2>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Proximity Audio</h3>
+                    <p>Conversations get louder as you approach. Navigate by interest, not algorithm.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Natural Decay</h3>
+                    <p>Messages fade over 24-72 hours unless amplified. Nothing is forever.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Resonance</h3>
+                    <p>Amplify messages you love. More resonance = longer lifespan and louder volume.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Chambers</h3>
+                    <p>Create private spatial rooms for intimate group conversations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-mindblowing">
+        <div class="section-content">
+            <span class="section-label">The Mind-Blowing Moment</span>
+            <h2 class="section-title">Close Your Eyes</h2>
+            <p class="section-text large">
+                The first time you close your eyes, put on headphones, and navigate purely by sound—walking 
+                toward conversations that interest you, hearing ambient chatter from distant discussions.
+            </p>
+            <p class="section-text">
+                It feels like stepping into a crowded plaza, not opening an app.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-waitlist" id="waitlist">
+        <div class="section-content">
+            <h2 class="section-title">Enter the Echoverse</h2>
+            <p class="section-text">Join the waitlist for early access.</p>
+            
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Join Waitlist →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="../">← Back to All Projects</a>
+        <p>Part of the <a href="../../">SELF Framework</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

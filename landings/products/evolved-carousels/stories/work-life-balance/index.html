@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="../../src/shared/navigation.css">
     <style>
         :root {
             --bg-day: #E8F4F8;
@@ -127,6 +127,16 @@
 </head>
 <body>
     <div class="carousel-container" id="carousel">
+        <nav class="carousel-nav-top" role="navigation" aria-label="Main navigation">
+            <a href="../../index.html#stories" class="nav-back" aria-label="Back to gallery">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Gallery</span>
+            </a>
+            <a href="../../index.html" class="nav-home" aria-label="Home">Evolved Carousels</a>
+        </nav>
+        <a href="#carousel" class="skip-link">Skip to carousel</a>
         <canvas class="carousel-canvas" id="canvas"></canvas>
         <div class="carousel-slides">
             <!-- Slide 1: Cover -->
