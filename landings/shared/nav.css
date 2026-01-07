@@ -14,6 +14,7 @@
     --nav-accent-masters: #c9a227;
     --nav-accent-revelations: #14b8a6;
     --nav-accent-ph: #f472b6;
+    --nav-accent-ideas: #22c55e;
     --nav-radius: 16px;
     --nav-transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -133,6 +134,8 @@
 .self-nav-link[data-collection="revelations"].active { --link-accent: var(--nav-accent-revelations); }
 .self-nav-link[data-collection="ph"] .self-nav-link-indicator,
 .self-nav-link[data-collection="ph"].active { --link-accent: var(--nav-accent-ph); }
+.self-nav-link[data-collection="ideas"] .self-nav-link-indicator,
+.self-nav-link[data-collection="ideas"].active { --link-accent: var(--nav-accent-ideas); }
 
 .self-nav-link-indicator {
     width: 6px;
@@ -321,6 +324,7 @@
 .self-collection-card[data-collection="masters"] { --card-accent: var(--nav-accent-masters); }
 .self-collection-card[data-collection="revelations"] { --card-accent: var(--nav-accent-revelations); }
 .self-collection-card[data-collection="ph"] { --card-accent: var(--nav-accent-ph); }
+.self-collection-card[data-collection="ideas"] { --card-accent: var(--nav-accent-ideas); }
 
 .self-collection-icon {
     width: 48px;

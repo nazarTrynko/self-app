@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/nav.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * {
@@ -44,78 +45,79 @@
             line-height: 1.6;
         }
 
-        /* Header */
-        .header {
+        /* Sub Navigation */
+        .sub-nav {
             position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(8, 8, 12, 0.9);
+            top: 80px;
+            z-index: 90;
+            background: rgba(8, 8, 12, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
 
-        .header-inner {
+        .sub-nav-inner {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 16px 24px;
+            padding: 12px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 24px;
         }
 
-        .header-brand {
+        .sub-nav-title {
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .header-logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent), #c084fc);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.125rem;
-        }
-
-        .header-title {
+            gap: 10px;
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 400;
         }
 
-        .header-nav {
-            display: flex;
-            gap: 8px;
+        .sub-nav-icon {
+            font-size: 1.25rem;
         }
 
-        .nav-btn {
-            padding: 10px 18px;
+        .sub-nav-tabs {
+            display: flex;
+            gap: 6px;
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+        }
+
+        .sub-nav-btn {
+            padding: 8px 16px;
             background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 10px;
+            border: none;
+            border-radius: 8px;
             color: var(--text-muted);
             cursor: pointer;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-family: inherit;
             transition: all 0.2s ease;
         }
 
-        .nav-btn:hover {
-            border-color: var(--border-hover);
+        .sub-nav-btn:hover {
             color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .nav-btn.active {
-            background: var(--accent-glow);
-            border-color: var(--accent);
-            color: var(--text);
+        .sub-nav-btn.active {
+            background: var(--green);
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .sub-nav-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .sub-nav-tabs {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         /* Hero Section */
@@ -946,19 +948,19 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-inner">
-            <a href="./" class="header-brand">
-                <div class="header-logo">💎</div>
-                <span class="header-title">App Masterpieces</span>
-            </a>
-            <nav class="header-nav">
-                <button class="nav-btn active" data-view="masterpieces">🏆 Masterpieces</button>
-                <button class="nav-btn" data-view="all-ideas">📚 All Ideas</button>
+    <!-- Sub Navigation -->
+    <div class="sub-nav">
+        <div class="sub-nav-inner">
+            <div class="sub-nav-title">
+                <span class="sub-nav-icon">💎</span>
+                <span>App Masterpieces</span>
+            </div>
+            <nav class="sub-nav-tabs">
+                <button class="sub-nav-btn active" data-view="masterpieces">🏆 Masterpieces</button>
+                <button class="sub-nav-btn" data-view="all-ideas">📚 All Ideas</button>
             </nav>
         </div>
-    </header>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -1092,10 +1094,16 @@
         </div>
     </div>
 
+    <script src="../shared/nav.js"></script>
     <script src="ideas-data.js"></script>
     <script>
+        // Initialize main navigation
+        if (window.SELFNav) {
+            window.SELFNav.injectNav();
+        }
+
         // Elements
-        const navBtns = document.querySelectorAll('.nav-btn');
+        const navBtns = document.querySelectorAll('.sub-nav-btn');
         const viewSections = document.querySelectorAll('.view-section');
         const tierBtns = document.querySelectorAll('.tier-btn');
         const masterpieceGrid = document.getElementById('masterpieceGrid');
