@@ -1,0 +1,505 @@
+/**
+ * Loving Kindness Carousel Styles
+ * Warm, nurturing aesthetic for metta meditation
+ */
+
+/* Slide-specific styles */
+
+/* Cover Slide */
+.slide-cover .slide-eyebrow {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-lg);
+}
+
+.slide-cover .slide-title {
+    font-family: var(--font-display);
+    font-size: var(--text-hero);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent-primary);
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+}
+
+.slide-cover .slide-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-medium);
+    max-width: 400px;
+}
+
+.slide-cover .slide-visual {
+    position: absolute;
+    right: 10%;
+    bottom: 20%;
+    opacity: 0.6;
+}
+
+.silhouette-container {
+    width: 200px;
+    height: 300px;
+}
+
+.silhouette {
+    width: 100%;
+    height: 100%;
+    color: var(--accent-primary);
+}
+
+/* Problem Slide */
+.slide-problem {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #252220 100%);
+}
+
+.quote-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.problem-quote {
+    font-family: var(--font-accent);
+    font-size: var(--text-xl);
+    font-style: italic;
+    color: var(--text-on-dark-muted);
+    opacity: 0.7;
+    border-left: 2px solid var(--accent-primary);
+    padding-left: var(--space-lg);
+    animation: quoteReveal 0.8s var(--ease-elegant) forwards;
+}
+
+.problem-quote.delay-1 { animation-delay: 0.2s; }
+.problem-quote.delay-2 { animation-delay: 0.4s; }
+
+@keyframes quoteReveal {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 0.7;
+        transform: translateX(0);
+    }
+}
+
+.problem-insight {
+    font-size: var(--text-lg);
+    color: var(--text-on-dark);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Definition Slide */
+.definition-card {
+    max-width: 450px;
+    text-align: left;
+}
+
+.definition-label {
+    font-size: var(--text-sm);
+    color: var(--accent-primary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: var(--space-sm);
+}
+
+.definition-term {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: var(--space-lg);
+}
+
+.definition-text {
+    font-size: var(--text-base);
+    color: var(--text-medium);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+}
+
+.definition-text strong {
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+.definition-origin {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-light);
+}
+
+.origin-lang {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.origin-word {
+    font-size: var(--text-lg);
+    color: var(--accent-secondary);
+}
+
+/* Benefits Slide */
+.benefits-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    margin-bottom: var(--space-xl);
+}
+
+.benefits-list {
+    list-style: none;
+    margin-bottom: var(--space-xl);
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid rgba(45, 42, 38, 0.08);
+    opacity: 0;
+    animation: benefitReveal 0.5s var(--ease-elegant) forwards;
+}
+
+.benefit-item:nth-child(1) { animation-delay: 0.1s; }
+.benefit-item:nth-child(2) { animation-delay: 0.2s; }
+.benefit-item:nth-child(3) { animation-delay: 0.3s; }
+.benefit-item:nth-child(4) { animation-delay: 0.4s; }
+.benefit-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes benefitReveal {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.benefit-icon {
+    color: var(--accent-primary);
+    font-size: 1.2rem;
+}
+
+.benefit-text {
+    font-size: var(--text-lg);
+    font-weight: 400;
+}
+
+.benefits-source {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Audience Slide */
+.audience-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    margin-bottom: var(--space-2xl);
+}
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    max-width: 500px;
+}
+
+.audience-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s var(--ease-elegant);
+}
+
+.audience-item:hover {
+    transform: translateY(-4px);
+}
+
+.audience-emoji {
+    font-size: 2.5rem;
+}
+
+.audience-label {
+    font-size: var(--text-sm);
+    color: var(--text-medium);
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Practice Slide - Breathing Circle */
+.practice-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    margin-bottom: var(--space-sm);
+}
+
+.practice-instruction {
+    font-size: var(--text-base);
+    color: var(--text-muted);
+    margin-bottom: var(--space-xl);
+}
+
+.breathing-circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.breathing-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 4s var(--ease-elegant);
+    box-shadow: 0 10px 40px rgba(232, 114, 92, 0.3);
+}
+
+.breathing-circle.inhale {
+    transform: scale(1.3);
+}
+
+.breathing-circle.hold {
+    transform: scale(1.3);
+}
+
+.breathing-circle.exhale {
+    transform: scale(1);
+}
+
+.breathing-text {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-style: italic;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.breathing-guide {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.guide-phase {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    transition: all 0.3s var(--ease-elegant);
+}
+
+.guide-phase.active {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.breathing-toggle {
+    padding: var(--space-md) var(--space-xl);
+    background: white;
+    border: 2px solid var(--accent-primary);
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--accent-primary);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-elegant);
+}
+
+.breathing-toggle:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.breathing-toggle .toggle-stop {
+    display: none;
+}
+
+.breathing-toggle.active .toggle-start {
+    display: none;
+}
+
+.breathing-toggle.active .toggle-stop {
+    display: inline;
+}
+
+/* Affirmation Slide */
+.affirmation-intro {
+    font-size: var(--text-base);
+    color: var(--text-muted);
+    margin-bottom: var(--space-xl);
+}
+
+.affirmation-text {
+    margin-bottom: var(--space-2xl);
+}
+
+.affirmation-line {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-style: italic;
+    color: var(--accent-primary);
+    margin-bottom: var(--space-md);
+    opacity: 0;
+    animation: typeReveal 0.8s var(--ease-elegant) forwards;
+}
+
+.affirmation-line:nth-child(1) { animation-delay: 0.2s; }
+.affirmation-line:nth-child(2) { animation-delay: 0.6s; }
+.affirmation-line:nth-child(3) { animation-delay: 1.0s; }
+.affirmation-line:nth-child(4) { animation-delay: 1.4s; }
+
+@keyframes typeReveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.personalization {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.personalization-label {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.personalization-input {
+    padding: var(--space-md) var(--space-lg);
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    text-align: center;
+    width: 200px;
+    transition: border-color 0.3s;
+}
+
+.personalization-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.personalization-btn {
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--accent-secondary);
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-elegant);
+}
+
+.personalization-btn:hover {
+    background: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* CTA Final Slide */
+.slide-cta-final .cta-heart {
+    font-size: 4rem;
+    margin-bottom: var(--space-lg);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    56% { transform: scale(1); }
+}
+
+.slide-cta-final .cta-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    margin-bottom: var(--space-md);
+}
+
+.slide-cta-final .cta-text {
+    font-size: var(--text-base);
+    color: var(--text-medium);
+    max-width: 400px;
+    margin: 0 auto var(--space-lg);
+}
+
+.cta-event {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xl);
+}
+
+.event-date {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--accent-primary);
+}
+
+.event-location {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.cta-hint {
+    margin-top: var(--space-lg);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide-cover .slide-visual {
+        display: none;
+    }
+    
+    .audience-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .breathing-circle {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .breathing-guide {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+    }
+}
+

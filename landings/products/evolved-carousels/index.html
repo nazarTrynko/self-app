@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolved Carousels — Interactive Story Experience</title>
+    <meta name="description" content="10 transformative carousel stories combining cognitive technology patterns with 2026 design trends">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-light: #F5F0E8;
+            --bg-cream: #FAF7F2;
+            --accent-primary: #E8725C;
+            --accent-primary-dark: #D4604E;
+            --accent-secondary: #D4A574;
+            --text-dark: #2D2A26;
+            --text-medium: #5A5652;
+            --text-muted: #8B8580;
+            --text-light: #B5B0A8;
+            
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --font-accent: 'Crimson Pro', Georgia, serif;
+            
+            --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-primary);
+            border-radius: 100px;
+        }
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .hero-title span {
+            color: var(--accent-primary);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-medium);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 100px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+            text-decoration: none;
+        }
+        
+        .hero-cta:hover {
+            background: var(--accent-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(232, 114, 92, 0.3);
+        }
+        
+        .hero-cta svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s var(--ease-elegant);
+        }
+        
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+        
+        /* Stories Grid */
+        .stories-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s var(--ease-elegant);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(45, 42, 38, 0.12);
+        }
+        
+        .story-preview {
+            aspect-ratio: 4/3;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-preview canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .story-preview-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .story-info {
+            padding: 1.5rem;
+        }
+        
+        .story-category {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        .story-slides {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .story-slides svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.8s var(--ease-elegant) forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+        <div class="hero-content">
+            <span class="hero-badge animate-in">10 Interactive Stories</span>
+            <h1 class="hero-title animate-in delay-1">
+                Evolved<br><span>Carousels</span>
+            </h1>
+            <p class="hero-subtitle animate-in delay-2">
+                Transformative visual experiences that breathe, respond, and evolve — built with cognitive technology patterns and 2026 design aesthetics.
+            </p>
+            <a href="#stories" class="hero-cta animate-in delay-3">
+                Explore Stories
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+    
+    <section class="stories-section" id="stories">
+        <header class="section-header">
+            <h2 class="section-title">Choose Your Journey</h2>
+            <p class="section-subtitle">Each carousel is a complete experience — immersive, interactive, and designed to transform.</p>
+        </header>
+        
+        <div class="stories-grid">
+            <!-- Loving Kindness -->
+            <a href="stories/loving-kindness/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #F5F0E8, #FAE8E4);">
+                    <div class="story-preview-placeholder">💗</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Meditation</span>
+                    <h3 class="story-title">Loving Kindness</h3>
+                    <p class="story-description">Як бути добріше до себе? Interactive metta meditation with heartbeat canvas.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        8 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Programmer's Day -->
+            <a href="stories/programmers-day/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #0d1117, #1a1a2e);">
+                    <div class="story-preview-placeholder">👨‍💻</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Celebration</span>
+                    <h3 class="story-title">Programmer's Day</h3>
+                    <p class="story-description">День 256 — celebrate with matrix rain and interactive code elements.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        9 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Digital Detox -->
+            <a href="stories/digital-detox/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #D4DEE4, #B8C8D0);">
+                    <div class="story-preview-placeholder">🌊</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Wellness</span>
+                    <h3 class="story-title">Digital Detox</h3>
+                    <p class="story-description">Цифрове очищення — mindful technology relationship with water ripples.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        7 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Imposter Syndrome -->
+            <a href="stories/imposter-syndrome/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #0a0a0f, #1a1815);">
+                    <div class="story-preview-placeholder">🔦</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Growth</span>
+                    <h3 class="story-title">Imposter Syndrome</h3>
+                    <p class="story-description">Синдром самозванця — conquer self-doubt with theatrical spotlight.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        8 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Morning Rituals -->
+            <a href="stories/morning-rituals/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #FFE4CC, #FFD4A8);">
+                    <div class="story-preview-placeholder">🌅</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Habits</span>
+                    <h3 class="story-title">Morning Rituals</h3>
+                    <p class="story-description">Ранкові ритуали — sacred morning routines with sunrise animation.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        7 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Burnout Recovery -->
+            <a href="stories/burnout-recovery/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #2a2320, #4a3830);">
+                    <div class="story-preview-placeholder">🔥</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Recovery</span>
+                    <h3 class="story-title">Burnout Recovery</h3>
+                    <p class="story-description">Відновлення після вигорання — phoenix rising with ember particles.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        8 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Creative Flow -->
+            <a href="stories/creative-flow/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #FAF7F2, #E8E0F0);">
+                    <div class="story-preview-placeholder">🎨</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Creativity</span>
+                    <h3 class="story-title">Creative Flow</h3>
+                    <p class="story-description">Потік творчості — access flow states with watercolor blobs.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        7 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Mindful Communication -->
+            <a href="stories/mindful-communication/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #F8F5F0, #F0EDE8);">
+                    <div class="story-preview-placeholder">🗣️</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Relationships</span>
+                    <h3 class="story-title">Mindful Communication</h3>
+                    <p class="story-description">Усвідомлене спілкування — deep listening with sound wave vis.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        7 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Gratitude Practice -->
+            <a href="stories/gratitude-practice/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #F5EDE0, #FCF5E8);">
+                    <div class="story-preview-placeholder">🍂</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Mindfulness</span>
+                    <h3 class="story-title">Gratitude Practice</h3>
+                    <p class="story-description">Практика вдячності — rewire your brain with falling leaves.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        6 slides
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Work-Life Balance -->
+            <a href="stories/work-life-balance/" class="story-card">
+                <div class="story-preview" style="background: linear-gradient(135deg, #87CEEB, #1E3A5F);">
+                    <div class="story-preview-placeholder">☯️</div>
+                </div>
+                <div class="story-info">
+                    <span class="story-category">Balance</span>
+                    <h3 class="story-title">Work-Life Balance</h3>
+                    <p class="story-description">Баланс життя і роботи — integration with day/night morph.</p>
+                    <div class="story-slides">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                        7 slides
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>Evolved Carousels — Built with <a href="#">SELF Framework</a> • 2026</p>
+    </footer>
+    
+    <script>
+        // Hero canvas animation
+        const canvas = document.getElementById('heroCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resize() {
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+        }
+        
+        resize();
+        window.addEventListener('resize', resize);
+        
+        // Particles
+        const particles = [];
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                size: Math.random() * 3 + 1,
+                speedX: (Math.random() - 0.5) * 0.5,
+                speedY: (Math.random() - 0.5) * 0.5,
+                opacity: Math.random() * 0.3 + 0.1
+            });
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                
+                if (p.x < 0) p.x = window.innerWidth;
+                if (p.x > window.innerWidth) p.x = 0;
+                if (p.y < 0) p.y = window.innerHeight;
+                if (p.y > window.innerHeight) p.y = 0;
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(232, 114, 92, ${p.opacity})`;
+                ctx.fill();
+            });
+            
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(232, 114, 92, ${0.05 * (1 - dist / 150)})`;
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

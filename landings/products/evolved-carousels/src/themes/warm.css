@@ -1,0 +1,668 @@
+/**
+ * Warm Theme - Evolved Carousels
+ * Inspired by bmd reference aesthetic
+ * 
+ * Soft brutalism meets nature distilled
+ */
+
+:root {
+    /* === Core Colors === */
+    --bg-light: #F5F0E8;
+    --bg-cream: #FAF7F2;
+    --bg-warm: #EDE8E0;
+    
+    --accent-primary: #E8725C;
+    --accent-primary-light: #F09080;
+    --accent-primary-dark: #D4604E;
+    
+    --accent-secondary: #D4A574;
+    --accent-gold: #C9A227;
+    
+    --text-dark: #2D2A26;
+    --text-medium: #5A5652;
+    --text-muted: #8B8580;
+    --text-light: #B5B0A8;
+    
+    /* Contrast / Dark slides */
+    --bg-dark: #1A1815;
+    --bg-dark-elevated: #252220;
+    --text-on-dark: #F5F0E8;
+    --text-on-dark-muted: #A8A4A0;
+    
+    /* === Typography === */
+    --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --font-body: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-accent: 'Crimson Pro', Georgia, serif;
+    --font-ui: 'Instrument Sans', 'Inter', sans-serif;
+    
+    /* Font sizes - fluid typography */
+    --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+    --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.35rem);
+    --text-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+    --text-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+    --text-3xl: clamp(2.5rem, 2rem + 3vw, 5rem);
+    --text-hero: clamp(3rem, 2.5rem + 4vw, 6rem);
+    
+    /* === Spacing === */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 6rem;
+    
+    /* === Animation === */
+    --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --duration-fast: 200ms;
+    --duration-normal: 400ms;
+    --duration-slide: 600ms;
+    --duration-slow: 800ms;
+    
+    --delay-stagger: 100ms;
+    
+    /* === Borders & Radius === */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+    
+    --border-light: 1px solid rgba(45, 42, 38, 0.08);
+    --border-medium: 1px solid rgba(45, 42, 38, 0.15);
+    
+    /* === Shadows === */
+    --shadow-sm: 0 1px 2px rgba(45, 42, 38, 0.05);
+    --shadow-md: 0 4px 12px rgba(45, 42, 38, 0.08);
+    --shadow-lg: 0 8px 30px rgba(45, 42, 38, 0.12);
+    --shadow-glow: 0 0 40px rgba(232, 114, 92, 0.15);
+    
+    /* === Z-index layers === */
+    --z-canvas: 0;
+    --z-content: 1;
+    --z-nav: 10;
+    --z-overlay: 20;
+    --z-modal: 30;
+}
+
+/* === Base Reset === */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--bg-light);
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+h1 { font-size: var(--text-hero); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+.text-accent {
+    color: var(--accent-primary);
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+blockquote {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: var(--text-lg);
+    color: var(--text-medium);
+    border-left: 3px solid var(--accent-primary);
+    padding-left: var(--space-lg);
+}
+
+/* === Carousel Container === */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--bg-light);
+}
+
+/* Canvas background */
+.carousel-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-canvas);
+    pointer-events: none;
+}
+
+/* === Slides === */
+.carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-content);
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-xl);
+    padding-top: calc(var(--space-xl) + 60px); /* Account for nav */
+    padding-bottom: calc(var(--space-xl) + 80px); /* Account for dots */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--duration-slide) var(--ease-elegant),
+                visibility var(--duration-slide) var(--ease-elegant);
+}
+
+.carousel-slide.slide-idle {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.carousel-slide.slide-entering {
+    opacity: 1;
+    visibility: visible;
+    animation: slideEnter var(--duration-slide) var(--ease-elegant) forwards;
+}
+
+.carousel-slide.slide-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carousel-slide.slide-exiting {
+    opacity: 0;
+    visibility: visible;
+    animation: slideExit var(--duration-slide) var(--ease-elegant) forwards;
+}
+
+@keyframes slideEnter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideExit {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Slide content */
+.slide-content {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+.slide-content.align-left {
+    text-align: left;
+}
+
+/* Slide backgrounds */
+.slide-bg-light {
+    background: var(--bg-light);
+}
+
+.slide-bg-cream {
+    background: var(--bg-cream);
+}
+
+.slide-bg-dark {
+    background: var(--bg-dark);
+    color: var(--text-on-dark);
+}
+
+.slide-bg-image {
+    background-size: cover;
+    background-position: center;
+}
+
+.slide-bg-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(26, 24, 21, 0.3) 0%,
+        rgba(26, 24, 21, 0.5) 100%
+    );
+}
+
+.slide-bg-image .slide-content {
+    position: relative;
+    z-index: 1;
+    color: var(--text-on-dark);
+}
+
+/* === Element Animations === */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+[data-animate].animate-in {
+    animation: elementEnter var(--duration-normal) var(--ease-elegant) forwards;
+}
+
+@keyframes elementEnter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Specific element animations */
+[data-animate="fade"] {
+    transform: none;
+}
+
+[data-animate="scale"] {
+    transform: scale(0.9);
+}
+
+[data-animate="scale"].animate-in {
+    animation: elementScaleEnter var(--duration-normal) var(--ease-bounce) forwards;
+}
+
+@keyframes elementScaleEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* === Navigation === */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--space-md);
+    pointer-events: none;
+    z-index: var(--z-nav);
+}
+
+.carousel-nav-btn {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    transition: all var(--duration-fast) var(--ease-smooth);
+    box-shadow: var(--shadow-md);
+}
+
+.carousel-nav-btn:hover {
+    background: white;
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.carousel-nav-btn:active {
+    transform: scale(0.95);
+}
+
+.carousel-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.carousel-nav-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Dark slide nav adjustment */
+.slide-bg-dark ~ .carousel-nav .carousel-nav-btn,
+.slide-bg-image ~ .carousel-nav .carousel-nav-btn {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+/* === Dots === */
+.carousel-dots {
+    position: absolute;
+    bottom: var(--space-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--space-sm);
+    z-index: var(--z-nav);
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--text-light);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.carousel-dot:hover {
+    background: var(--text-muted);
+}
+
+.carousel-dot.active {
+    background: var(--accent-primary);
+    width: 24px;
+}
+
+/* === Progress === */
+.carousel-progress {
+    position: absolute;
+    bottom: var(--space-xl);
+    right: var(--space-xl);
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    z-index: var(--z-nav);
+}
+
+.carousel-separator {
+    margin: 0 var(--space-xs);
+    opacity: 0.5;
+}
+
+/* === Brand Logo === */
+.carousel-brand {
+    position: absolute;
+    top: var(--space-lg);
+    left: var(--space-xl);
+    font-family: var(--font-ui);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 0.05em;
+    z-index: var(--z-nav);
+}
+
+/* === Footer Tag === */
+.carousel-tag {
+    position: absolute;
+    bottom: var(--space-xl);
+    left: var(--space-xl);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--accent-primary);
+    letter-spacing: 0.02em;
+    z-index: var(--z-nav);
+}
+
+/* === Arrow Indicator === */
+.carousel-arrow {
+    position: absolute;
+    bottom: var(--space-xl);
+    right: calc(var(--space-xl) + 60px);
+    color: var(--accent-primary);
+    z-index: var(--z-nav);
+}
+
+.carousel-arrow svg {
+    width: 40px;
+    height: 16px;
+}
+
+/* === Slide Type: Cover === */
+.slide-cover .slide-title {
+    font-size: var(--text-hero);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--accent-primary);
+    margin-bottom: var(--space-lg);
+}
+
+.slide-cover .slide-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-medium);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* === Slide Type: Content === */
+.slide-content-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-md);
+}
+
+.slide-list {
+    list-style: none;
+    text-align: left;
+}
+
+.slide-list li {
+    position: relative;
+    padding-left: var(--space-lg);
+    margin-bottom: var(--space-md);
+    font-size: var(--text-lg);
+    font-weight: 500;
+}
+
+.slide-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+/* === Slide Type: Quote === */
+.slide-quote {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    max-width: 700px;
+}
+
+.slide-quote-author {
+    margin-top: var(--space-lg);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-style: normal;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+/* === Slide Type: CTA === */
+.slide-cta-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-lg);
+}
+
+.slide-cta-text {
+    font-size: var(--text-base);
+    color: var(--text-medium);
+    margin-bottom: var(--space-xl);
+    max-width: 500px;
+}
+
+.slide-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.slide-cta-button:hover {
+    background: var(--accent-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.slide-cta-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* === Glassmorphism Card === */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+}
+
+/* === Grain Texture Overlay === */
+.grain-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .carousel-slide {
+        padding: var(--space-lg);
+        padding-top: calc(var(--space-lg) + 50px);
+        padding-bottom: calc(var(--space-lg) + 70px);
+    }
+    
+    .carousel-nav {
+        display: none;
+    }
+    
+    .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-brand {
+        left: var(--space-lg);
+    }
+    
+    .carousel-tag {
+        left: var(--space-lg);
+    }
+    
+    .carousel-progress {
+        right: var(--space-lg);
+    }
+    
+    .carousel-arrow {
+        display: none;
+    }
+    
+    .slide-list li {
+        font-size: var(--text-base);
+    }
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .carousel-slide {
+        transition: opacity 0.01ms !important;
+    }
+}
+
+/* === Print === */
+@media print {
+    .carousel-nav,
+    .carousel-dots,
+    .carousel-progress,
+    .carousel-canvas {
+        display: none;
+    }
+    
+    .carousel-slide {
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+        page-break-after: always;
+    }
+}
+

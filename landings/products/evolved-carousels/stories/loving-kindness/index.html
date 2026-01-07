@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Loving Kindness — Як бути добріше до себе?</title>
+    <meta name="description" content="Interactive metta meditation carousel with heartbeat canvas">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../src/themes/warm.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <!-- Canvas Background -->
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        
+        <!-- Grain Overlay -->
+        <div class="grain-overlay"></div>
+        
+        <!-- Brand -->
+        <div class="carousel-brand">bmd</div>
+        
+        <!-- Slides -->
+        <div class="carousel-slides">
+            
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide slide-cover slide-bg-light">
+                <div class="slide-content">
+                    <p class="slide-eyebrow" data-animate>Медитація • 8 слайдів</p>
+                    <h1 class="slide-title" data-animate>
+                        Як бути <br>добріше <br>до себе?
+                    </h1>
+                    <p class="slide-subtitle" data-animate>
+                        Практика люблячої доброти для внутрішнього спокою
+                    </p>
+                </div>
+                <div class="slide-visual">
+                    <div class="silhouette-container" data-animate="scale">
+                        <svg class="silhouette" viewBox="0 0 200 300" fill="none">
+                            <path d="M100 30 C60 30 40 60 40 100 C40 130 60 150 100 180 C140 150 160 130 160 100 C160 60 140 30 100 30" fill="currentColor" opacity="0.1"/>
+                            <ellipse cx="100" cy="80" rx="35" ry="40" fill="currentColor" opacity="0.15"/>
+                            <path d="M65 130 L65 250 Q65 280 100 280 Q135 280 135 250 L135 130" fill="currentColor" opacity="0.1"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Problem -->
+            <div class="carousel-slide slide-problem slide-bg-dark">
+                <div class="slide-content">
+                    <div class="quote-stack" data-animate>
+                        <blockquote class="problem-quote">"Я недостатньо хороший..."</blockquote>
+                        <blockquote class="problem-quote delay-1">"Всі краще за мене..."</blockquote>
+                        <blockquote class="problem-quote delay-2">"Я не заслуговую..."</blockquote>
+                    </div>
+                    <p class="problem-insight" data-animate>
+                        Ми часто говоримо собі те, що ніколи б не сказали другу.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Definition -->
+            <div class="carousel-slide slide-definition slide-bg-light">
+                <div class="slide-content">
+                    <div class="glass-card definition-card" data-animate>
+                        <span class="definition-label">Що таке</span>
+                        <h2 class="definition-term">Люблячa <br>доброта</h2>
+                        <p class="definition-text">
+                            <strong>Metta</strong> — буддійська практика розвитку безумовної любові та доброзичливості до себе та інших.
+                        </p>
+                        <div class="definition-origin">
+                            <span class="origin-lang">Палі:</span>
+                            <span class="origin-word">मेत्ता</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Benefits -->
+            <div class="carousel-slide slide-benefits slide-bg-cream">
+                <div class="slide-content align-left">
+                    <h2 class="benefits-title" data-animate>Що дає практика?</h2>
+                    <ul class="benefits-list" data-animate>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✦</span>
+                            <span class="benefit-text">Зменшує тривогу та стрес</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✦</span>
+                            <span class="benefit-text">Покращує самооцінку</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✦</span>
+                            <span class="benefit-text">Розвиває емпатію</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✦</span>
+                            <span class="benefit-text">Підвищує рівень щастя</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✦</span>
+                            <span class="benefit-text">Зміцнює стосунки</span>
+                        </li>
+                    </ul>
+                    <p class="benefits-source" data-animate>
+                        За даними досліджень Стенфордського університету
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 5: For Whom -->
+            <div class="carousel-slide slide-audience slide-bg-light">
+                <div class="slide-content">
+                    <h2 class="audience-title" data-animate>Для кого ця практика?</h2>
+                    <div class="audience-grid" data-animate>
+                        <div class="audience-item">
+                            <span class="audience-emoji">😔</span>
+                            <span class="audience-label">Для тих, хто надто суворий до себе</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="audience-emoji">😰</span>
+                            <span class="audience-label">Для тих, хто відчуває тривогу</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="audience-emoji">💔</span>
+                            <span class="audience-label">Для тих, хто переживає втрату</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="audience-emoji">🌱</span>
+                            <span class="audience-label">Для всіх, хто хоче рости</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Practice - Interactive Breathing -->
+            <div class="carousel-slide slide-practice slide-bg-cream">
+                <div class="slide-content">
+                    <h2 class="practice-title" data-animate>Спробуйте зараз</h2>
+                    <p class="practice-instruction" data-animate>Дихайте разом з колом</p>
+                    
+                    <div class="breathing-circle-container" data-animate="scale">
+                        <div class="breathing-circle" id="breathingCircle">
+                            <span class="breathing-text" id="breathingText">Вдих</span>
+                        </div>
+                        <div class="breathing-guide">
+                            <span class="guide-phase active" data-phase="inhale">Вдих 4с</span>
+                            <span class="guide-phase" data-phase="hold">Затримка 4с</span>
+                            <span class="guide-phase" data-phase="exhale">Видих 4с</span>
+                        </div>
+                    </div>
+                    
+                    <button class="breathing-toggle" id="breathingToggle">
+                        <span class="toggle-start">Почати</span>
+                        <span class="toggle-stop">Зупинити</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Slide 7: Affirmation -->
+            <div class="carousel-slide slide-affirmation slide-bg-light">
+                <div class="slide-content">
+                    <p class="affirmation-intro" data-animate>Повторюйте про себе:</p>
+                    <div class="affirmation-text" data-animate>
+                        <p class="affirmation-line" id="affirmation1">Нехай я буду щасливий/а</p>
+                        <p class="affirmation-line" id="affirmation2">Нехай я буду здоровий/а</p>
+                        <p class="affirmation-line" id="affirmation3">Нехай я буду в безпеці</p>
+                        <p class="affirmation-line" id="affirmation4">Нехай я живу легко</p>
+                    </div>
+                    <div class="personalization" data-animate>
+                        <label class="personalization-label">Ваше ім'я:</label>
+                        <input type="text" class="personalization-input" id="nameInput" placeholder="Введіть ім'я">
+                        <button class="personalization-btn" id="personalizeBtn">
+                            Персоналізувати
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 8: CTA -->
+            <div class="carousel-slide slide-cta-final slide-bg-cream">
+                <div class="slide-content">
+                    <div class="cta-heart" data-animate="scale">💗</div>
+                    <h2 class="cta-title" data-animate>Готові до глибшої практики?</h2>
+                    <p class="cta-text" data-animate>
+                        Приєднуйтесь до нашої групової медитації люблячої доброти
+                    </p>
+                    <div class="cta-event" data-animate>
+                        <span class="event-date">15 вересня, 19:00</span>
+                        <span class="event-location">Онлайн • Zoom</span>
+                    </div>
+                    <button class="slide-cta-button" data-animate>
+                        Зареєструватися
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <p class="cta-hint" data-animate>Безкоштовно • 60 хвилин</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Tag -->
+        <div class="carousel-tag">#ЛюблячаДоброта</div>
+        
+        <!-- Arrow -->
+        <div class="carousel-arrow">
+            <svg viewBox="0 0 50 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M0 10h45M40 5l5 5-5 5"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/heartbeat.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

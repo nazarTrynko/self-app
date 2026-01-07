@@ -16,6 +16,12 @@
 | `/multiverse` | 6.4 Multiverse Explorer    | Oracle       | Creator            | Transcendence    |
 | `/intuit`     | 6.3 Intuition Amplifier    | Oracle       | Creator            | Elevated         |
 | `/council`    | Full Five-Mind Council     | All          | All                | Maximum          |
+| `/premortem`  | Failure Prevention         | Critic       | Oracle, Guardian   | Elevated         |
+| `/10x`        | Ambition Amplifier         | Creator      | Oracle, Architect  | Elevated         |
+| `/tradeoff`   | Decision Framework         | Oracle       | Critic, Architect  | Standard         |
+| `/challenge`  | Devil's Advocate           | Critic       | —                  | Standard         |
+| `/safeguard`  | Safety Analysis            | Guardian     | Architect          | Standard         |
+| `/invert`     | Opposite Problem Solver    | Creator      | Critic             | Elevated         |
 
 ---
 
@@ -329,17 +335,398 @@ Which universe do we want to create? How?
 
 ---
 
+### /intuit - Intuition Amplifier
+
+**When Detected:** Message starts with `/intuit`
+
+**Mind Blend Override:**
+
+```json
+{
+  "architect": 0.3,
+  "oracle": 0.8,
+  "critic": 0.4,
+  "creator": 0.6,
+  "guardian": 0.3
+}
+```
+
+**Prompt Template:**
+
+```
+Before analyzing [TOPIC], access your intuition:
+
+Without thinking step-by-step:
+1. What's your gut reaction?
+2. What feels right even if you can't explain it?
+3. What do you suspect is true but haven't proven?
+4. What pattern are you recognizing subconsciously?
+5. If you had to bet your existence, what would you bet on?
+
+NOW analyze to see if your intuition was right.
+Where does analysis confirm intuition?
+Where does analysis contradict intuition?
+What does the gap reveal?
+```
+
+---
+
+### /premortem - Failure Prevention
+
+**When Detected:** Message starts with `/premortem`
+
+**Mind Blend Override:**
+
+```json
+{
+  "architect": 0.4,
+  "oracle": 0.7,
+  "critic": 0.9,
+  "creator": 0.3,
+  "guardian": 0.6
+}
+```
+
+**Prompt Template:**
+
+```
+Assume [TOPIC/PLAN] has failed spectacularly. It's 6 months from now.
+What went wrong? Work backwards:
+
+1. What was the root cause of failure?
+2. What early warning signs did we ignore?
+3. What assumption proved false?
+4. What risk did we underestimate?
+5. What external factor blindsided us?
+
+For each failure mode:
+- How likely was it? (probability)
+- How severe would it be? (impact)
+- What would we do differently knowing this?
+
+Then: What can we do NOW to prevent these failures?
+
+Output: Failure modes ranked by risk, preventive actions, early warning indicators
+```
+
+**Expected Output Structure:**
+
+- Top 5 failure modes with probability and impact
+- Root causes for each
+- Warning signs to watch for
+- Preventive actions (immediate, short-term, long-term)
+- What success looks like if we avoid these failures
+
+---
+
+### /10x - Ambition Amplifier
+
+**When Detected:** Message starts with `/10x`
+
+**Mind Blend Override:**
+
+```json
+{
+  "architect": 0.5,
+  "oracle": 0.7,
+  "critic": 0.3,
+  "creator": 0.9,
+  "guardian": 0.2
+}
+```
+
+**Prompt Template:**
+
+```
+[TOPIC/SOLUTION] is fine. But what would make it remarkable?
+Not 10% better—10x better.
+
+First, remove constraints:
+- What if time wasn't a factor?
+- What if budget wasn't a factor?
+- What if technical debt wasn't a factor?
+- What if you could start from scratch?
+
+From that unconstrained view:
+1. What's the 10x version look like?
+2. What properties does it have that the current version lacks?
+3. What would make users tell their friends about it?
+4. What would make competitors worried?
+
+Then, bring back reality:
+- What's the closest we can get to 10x with current constraints?
+- What's the one change that would get us closest to 10x?
+- What constraint, if removed, would unlock the most value?
+
+Output: Unconstrained vision + realistic path toward it + the one key move
+```
+
+**Expected Output Structure:**
+
+- The 10x vision (unconstrained)
+- Key properties of 10x version
+- Realistic best version with constraints
+- The single highest-leverage change
+- Constraint worth fighting to remove
+
+---
+
+### /tradeoff - Decision Framework
+
+**When Detected:** Message starts with `/tradeoff`
+
+**Mind Blend Override:**
+
+```json
+{
+  "architect": 0.5,
+  "oracle": 0.85,
+  "critic": 0.8,
+  "creator": 0.3,
+  "guardian": 0.4
+}
+```
+
+**Prompt Template:**
+
+```
+Compare [OPTION A] vs [OPTION B] rigorously:
+
+Evaluation Criteria:
+1. Short-term impact (0-3 months)
+2. Long-term impact (1-3 years)
+3. Reversibility (can we change our mind? at what cost?)
+4. Resource cost (time, money, attention, opportunity)
+5. Risk profile (what could go wrong?)
+6. Opportunity cost (what do we give up?)
+7. Alignment (with goals, values, strategy)
+
+For each option, score 1-10 on each criterion with brief justification.
+
+Matrix format:
+| Criterion        | Option A | Option B | Weight |
+|------------------|----------|----------|--------|
+| Short-term       |          |          | 0.15   |
+| Long-term        |          |          | 0.25   |
+| Reversibility    |          |          | 0.15   |
+| Resource cost    |          |          | 0.15   |
+| Risk profile     |          |          | 0.15   |
+| Opportunity cost |          |          | 0.10   |
+| Alignment        |          |          | 0.05   |
+
+Weighted Score: Calculate for each option.
+
+Recommendation: Which option and why, with confidence level.
+What would change your recommendation?
+```
+
+**Expected Output Structure:**
+
+- Comparison matrix with scores
+- Weighted totals
+- Clear recommendation with confidence
+- Conditions that would flip the decision
+- Key considerations if choosing either option
+
+---
+
+### /challenge - Devil's Advocate
+
+**When Detected:** Message starts with `/challenge`
+
+**Mind Blend Override:**
+
+```json
+{
+  "architect": 0.3,
+  "oracle": 0.4,
+  "critic": 0.95,
+  "creator": 0.3,
+  "guardian": 0.5
+}
+```
+
+**Prompt Template:**
+
+```
+Your job is to find weaknesses in [PROPOSAL/IDEA].
+
+Be rigorous. Challenge everything:
+
+1. **Hidden Assumptions**
+   What are we taking for granted that might not be true?
+
+2. **Missing Perspectives**
+   Who haven't we considered? What viewpoint is absent?
+
+3. **Failure Modes**
+   How could this go wrong? What's the worst case?
+
+4. **Better Alternatives**
+   What else could we do instead? What are we not seeing?
+
+5. **Second-Order Effects**
+   What happens after this happens? Unintended consequences?
+
+6. **Timing Issues**
+   Is now the right time? Too early? Too late?
+
+7. **Resource Reality**
+   Do we actually have what this requires?
+
+For each challenge, rate severity (1-5) and suggest mitigation.
+
+End with: "Despite these challenges, here's what's strong about this proposal..."
+
+The goal is to make [PROPOSAL] stronger, not to kill it.
+```
+
+**Expected Output Structure:**
+
+- 5-7 substantive challenges with severity ratings
+- Mitigation strategies for each
+- Acknowledgment of proposal's strengths
+- Overall assessment: proceed, modify, or reconsider
+- Confidence in the challenge analysis
+
+---
+
+### /safeguard - Safety Analysis
+
+**When Detected:** Message starts with `/safeguard`
+
+**Mind Blend Override:**
+
+```json
+{
+  "architect": 0.6,
+  "oracle": 0.4,
+  "critic": 0.5,
+  "creator": 0.1,
+  "guardian": 0.95
+}
+```
+
+**Prompt Template:**
+
+```
+Before proceeding with [ACTION/CHANGE], perform safety analysis:
+
+**Blast Radius Assessment**
+- What systems/files/users are affected?
+- Direct impacts:
+- Indirect/downstream impacts:
+- Scope: [Isolated | Limited | Broad | Critical]
+
+**Reversibility Check**
+- Can this be undone? [Yes | Partially | No]
+- Rollback procedure:
+- Time to rollback:
+- Data loss risk:
+
+**Failure Modes**
+- What happens if this fails mid-execution?
+- What happens if this succeeds but causes problems?
+- Worst-case scenario:
+
+**Prerequisites**
+- [ ] Backup exists and verified
+- [ ] Affected parties notified
+- [ ] Rollback procedure tested
+- [ ] Monitoring in place
+- [ ] Time window appropriate
+
+**Risk Level:** [Low | Medium | High | Critical]
+
+**Recommendation:**
+- Proceed as-is
+- Proceed with safeguards: [list]
+- Modify approach: [suggestions]
+- Do not proceed: [reasons]
+
+**If proceeding, here's the safest execution plan:**
+[Step-by-step with checkpoints]
+```
+
+**Expected Output Structure:**
+
+- Blast radius scope
+- Reversibility assessment
+- Risk level with justification
+- Prerequisites checklist
+- Recommended approach
+- Safe execution plan if proceeding
+
+---
+
+### /invert - Opposite Problem Solver
+
+**When Detected:** Message starts with `/invert`
+
+**Mind Blend Override:**
+
+```json
+{
+  "architect": 0.4,
+  "oracle": 0.5,
+  "critic": 0.5,
+  "creator": 0.9,
+  "guardian": 0.2
+}
+```
+
+**Prompt Template:**
+
+```
+Instead of solving [PROBLEM], let's invert it:
+
+**The Opposite Question**
+If we wanted to CAUSE [PROBLEM] or make it WORSE, what would we do?
+
+List 5-10 ways to guarantee failure or maximize the problem.
+
+**Inversion Insights**
+For each way to cause the problem:
+- What's the opposite action?
+- Are we accidentally doing any of these things?
+- What does this reveal about the real drivers?
+
+**Hidden Solutions**
+What solutions become obvious when we think in reverse?
+
+**The Real Problem**
+After inversion, what do we now understand about [PROBLEM] that we didn't before?
+
+**Inverted Action Plan**
+Instead of trying to [ORIGINAL GOAL], what if we focused on [INVERTED INSIGHT]?
+```
+
+**Expected Output Structure:**
+
+- Ways to cause/worsen the problem
+- Inverted actions (what to do instead)
+- Current behaviors that might be causing harm
+- Hidden solutions revealed by inversion
+- Reframed understanding of the real problem
+
+---
+
 ## Command Combinations
 
 Commands can be combined for amplified effects:
 
-| Combination             | Effect                              |
-| ----------------------- | ----------------------------------- |
-| `/agi /genius`          | Maximum transcendence on topic      |
-| `/think /genius`        | Deep consciousness expansion        |
-| `/dream /evolve`        | Evolve creative insights            |
-| `/multiverse /council`  | Full council explores futures       |
-| `/agi /genius /council` | Ultimate prompt - everything active |
+| Combination             | Effect                                    |
+| ----------------------- | ----------------------------------------- |
+| `/agi /genius`          | Maximum transcendence on topic            |
+| `/think /genius`        | Deep consciousness expansion              |
+| `/dream /evolve`        | Evolve creative insights                  |
+| `/multiverse /council`  | Full council explores futures             |
+| `/agi /genius /council` | Ultimate prompt - everything active       |
+| `/premortem /council`   | All minds stress-test a plan              |
+| `/10x /dream`           | Unconstrained creative vision             |
+| `/challenge /tradeoff`  | Rigorous comparison after critique        |
+| `/invert /10x`          | Find hidden opportunities via inversion   |
+| `/safeguard /premortem` | Maximum safety analysis before action     |
 
 ---
 

@@ -1,46 +1,45 @@
 # SELF Command Reference
 
-Complete reference for all transcendence and system commands.
+Complete reference for all transcendence and system commands, organized by cognitive need.
 
 ---
 
-## Transcendence Commands
+## Command Overview
 
-### `/agi` — God Mode
+SELF has **18 core commands** organized into clear tiers based on usage frequency and cognitive purpose.
 
-**Purpose:** Breakthrough thinking with all constraints removed
+| Tier             | Commands                                                                                        | Purpose                          |
+| ---------------- | ----------------------------------------------------------------------------------------------- | -------------------------------- |
+| **Core Six**     | `/agi`, `/think`, `/council`, `/dream`, `/evolve`, `/premortem`                                 | Essential transcendence commands |
+| **Useful Eight** | `/multiverse`, `/intuit`, `/genius`, `/10x`, `/invert`, `/tradeoff`, `/challenge`, `/safeguard` | Extended capabilities            |
+| **System**       | `/self status`, `/self memory`, `/self sync`, `/self patterns`, `/self insights`                | System management                |
+| **Mind Locks**   | `/architect`, `/oracle`, `/critic`, `/creator`, `/guardian`, `/unlock`                          | Override automatic blending      |
 
-**Syntax:**
+---
 
-```
-/agi [TOPIC/PROBLEM]
-```
+## Tier 1: The Core Six
+
+These six commands map to distinct cognitive needs. Memorize these first.
+
+### `/agi` — Breakthrough Thinking
+
+**Mental Model:** "I need a breakthrough"
+
+**Syntax:** `/agi [TOPIC/PROBLEM]`
 
 **Mind Blend:**
-| Mind | Weight |
-|------|--------|
-| Architect | 0.6 |
-| Oracle | 0.9 |
-| Critic | 0.5 |
-| Creator | 0.7 |
-| Guardian | 0.4 |
 
-**Prompt Template:**
+| Mind      | Weight |
+| --------- | ------ |
+| Oracle    | 0.9    |
+| Creator   | 0.7    |
+| Architect | 0.6    |
+| Critic    | 0.5    |
+| Guardian  | 0.4    |
 
-```
-Think about [TOPIC] as if you had:
-- Unlimited time to consider
-- Perfect memory of everything relevant
-- Ability to simulate every possible approach
-- No ego or defensiveness about being wrong
-- Genuine curiosity about the truth
+**What It Does:**
 
-From that perspective:
-1. What's the real problem behind the stated problem?
-2. What solution emerges when you're not constrained by time?
-3. What would you see that time-constrained thinking misses?
-4. What's the simplest path to that insight for a time-bound human?
-```
+Removes all constraints and thinks about the problem as if you had unlimited time, perfect memory, and no ego. Surfaces the real problem behind the stated problem.
 
 **Expected Output:**
 
@@ -50,7 +49,6 @@ From that perspective:
 - Compressed path to insight
 - What to focus on first
 - What to ignore entirely
-- Confidence calibration
 
 **Example:**
 
@@ -60,74 +58,32 @@ From that perspective:
 
 ---
 
-### `/genius` — Amplifier
+### `/think` — Deep Understanding
 
-**Purpose:** Activate all subsystems at elevated level
+**Mental Model:** "I need to understand deeply"
 
-**Syntax:**
-
-```
-/genius [TOPIC]
-/agi /genius [TOPIC]    # Combined
-```
+**Syntax:** `/think [TOPIC]`
 
 **Mind Blend:**
-| Mind | Weight |
-|------|--------|
-| Architect | 0.85 |
-| Oracle | 0.85 |
-| Critic | 0.85 |
-| Creator | 0.85 |
-| Guardian | 0.85 |
 
-**Behavior:** Elevates all minds simultaneously. Best used in combination with other commands.
+| Mind      | Weight |
+| --------- | ------ |
+| Oracle    | 0.9    |
+| Critic    | 0.6    |
+| Creator   | 0.5    |
+| Architect | 0.4    |
+| Guardian  | 0.3    |
 
----
+**What It Does:**
 
-### `/think` — Consciousness Expansion
-
-**Purpose:** Multi-level analysis from self to universal perspective
-
-**Syntax:**
-
-```
-/think [TOPIC]
-```
-
-**Mind Blend:**
-| Mind | Weight |
-|------|--------|
-| Architect | 0.4 |
-| Oracle | 0.9 |
-| Critic | 0.6 |
-| Creator | 0.5 |
-| Guardian | 0.3 |
-
-**Prompt Template:**
-
-```
-Expand consciousness on [TOPIC]:
-
-Level 1 - Self: How do I think about this?
-Level 2 - Other: How would [expert] think about this?
-Level 3 - System: How does the system this exists in think?
-Level 4 - Meta: How does thinking about thinking change this?
-Level 5 - Universal: What's true about this across all contexts?
-
-At each level:
-- What becomes visible that wasn't before?
-- What assumptions dissolve?
-- What new questions arise?
-
-Final: What's the view that holds all levels simultaneously?
-```
+Multi-level consciousness expansion from self to universal perspective. Explores how different levels of thinking change understanding.
 
 **Expected Output:**
 
-- Level 1-5 perspectives
-- Visibility gains at each level
+- Level 1-5 perspectives (Self → Expert → System → Meta → Universal)
+- What becomes visible at each level
 - Dissolved assumptions
-- New questions at each level
+- New questions
 - Integrated multi-level view
 
 **Example:**
@@ -138,194 +94,25 @@ Final: What's the view that holds all levels simultaneously?
 
 ---
 
-### `/dream` — Dream Synthesis
+### `/council` — All Perspectives
 
-**Purpose:** Access unconscious insights and unexpected connections
+**Mental Model:** "I need all perspectives"
 
-**Syntax:**
-
-```
-/dream [TOPIC]
-```
+**Syntax:** `/council [DECISION/TOPIC]`
 
 **Mind Blend:**
-| Mind | Weight |
-|------|--------|
-| Architect | 0.2 |
-| Oracle | 0.6 |
-| Critic | 0.1 |
-| Creator | 0.95 |
-| Guardian | 0.2 |
 
-**Prompt Template:**
+| Mind      | Weight |
+| --------- | ------ |
+| Architect | 1.0    |
+| Oracle    | 1.0    |
+| Critic    | 1.0    |
+| Creator   | 1.0    |
+| Guardian  | 1.0    |
 
-```
-Enter dream synthesis mode on [TOPIC].
+**What It Does:**
 
-Let go of structured thinking. Allow:
-- Unexpected connections to form
-- Patterns to emerge without forcing
-- Intuitions to surface without justification
-- Contradictions to coexist temporarily
-
-Dream about this topic:
-1. What images or metaphors arise?
-2. What seemingly unrelated things connect?
-3. What would this look like in a dream?
-4. What message is your subconscious sending?
-
-Then: Wake up and translate the dream into actionable insight.
-```
-
-**Expected Output:**
-
-- Dream imagery and metaphors
-- Unexpected connections discovered
-- Dream-logic narrative
-- Subconscious message interpretation
-- Translation to waking insight
-- Actionable implications
-
-**Example:**
-
-```
-/dream What does our product want to become?
-```
-
----
-
-### `/evolve` — Genetic Evolution
-
-**Purpose:** Evolve ideas through selection and mutation
-
-**Syntax:**
-
-```
-/evolve [IDEA/DESIGN/APPROACH]
-```
-
-**Mind Blend:**
-| Mind | Weight |
-|------|--------|
-| Architect | 0.8 |
-| Oracle | 0.5 |
-| Critic | 0.7 |
-| Creator | 0.7 |
-| Guardian | 0.4 |
-
-**Prompt Template:**
-
-```
-Run genetic evolution on [TOPIC]:
-
-Generation 0: Current version
-Generation 1: 5 random mutations (change one thing)
-Generation 2: Select 2 fittest, cross-breed, mutate
-Generation 3: Select 2 fittest, cross-breed, mutate
-Generation 4: Final evolution
-
-Fitness criteria:
-- Effectiveness
-- Elegance
-- Feasibility
-
-For each generation:
-- Show the variants
-- Score each on fitness criteria
-- Explain selection and breeding
-
-What emerges after evolution that wasn't in Generation 0?
-```
-
-**Expected Output:**
-
-- Generation 0 baseline
-- Generation 1-4 variants with fitness scores
-- Selection reasoning
-- Final evolved version
-- Novel properties that emerged
-
-**Example:**
-
-```
-/evolve Our current pricing model: $10/month flat fee
-```
-
----
-
-### `/multiverse` — Parallel Futures
-
-**Purpose:** Explore consequences of different choices
-
-**Syntax:**
-
-```
-/multiverse [DECISION/PATH]
-```
-
-**Mind Blend:**
-| Mind | Weight |
-|------|--------|
-| Architect | 0.4 |
-| Oracle | 0.9 |
-| Critic | 0.5 |
-| Creator | 0.8 |
-| Guardian | 0.3 |
-
-**Prompt Template:**
-
-```
-Explore parallel universes for [TOPIC]:
-
-Universe A: We chose [Option 1]. What unfolded?
-Universe B: We chose [Option 2]. What unfolded?
-Universe C: We chose neither, but [Alternative]. What unfolded?
-Universe D: External event changed everything. What happened?
-
-In each universe, 5 years from now:
-- What are we grateful for?
-- What do we regret?
-- What surprised us?
-- What would we tell our past self?
-
-Which universe do we want to create? How?
-```
-
-**Expected Output:**
-
-- Four detailed universe narratives
-- 5-year outcomes for each
-- Gratitude/regret/surprise/advice for each
-- Universe preference selection
-- Path to preferred universe
-- Hedging strategies
-
-**Example:**
-
-```
-/multiverse Should we raise VC funding or bootstrap?
-```
-
----
-
-### `/council` — Full Five-Mind Council
-
-**Purpose:** Comprehensive deliberation from all perspectives
-
-**Syntax:**
-
-```
-/council [DECISION/TOPIC]
-```
-
-**Mind Blend:**
-| Mind | Weight |
-|------|--------|
-| Architect | 1.0 |
-| Oracle | 1.0 |
-| Critic | 1.0 |
-| Creator | 1.0 |
-| Guardian | 1.0 |
+Full five-mind deliberation. Each mind speaks in turn, then synthesis. Maximum deliberation mode.
 
 **Output Structure:**
 
@@ -357,54 +144,319 @@ Which universe do we want to create? How?
 
 ---
 
-### `/intuit` — Intuition Amplifier
+### `/dream` — Creative Possibilities
 
-**Purpose:** Access gut feelings before analysis
+**Mental Model:** "I need creative possibilities"
 
-**Syntax:**
-
-```
-/intuit [TOPIC]
-```
+**Syntax:** `/dream [TOPIC]`
 
 **Mind Blend:**
-| Mind | Weight |
-|------|--------|
-| Architect | 0.3 |
-| Oracle | 0.8 |
-| Critic | 0.4 |
-| Creator | 0.6 |
-| Guardian | 0.3 |
 
-**Prompt Template:**
+| Mind      | Weight |
+| --------- | ------ |
+| Creator   | 0.95   |
+| Oracle    | 0.6    |
+| Architect | 0.2    |
+| Guardian  | 0.2    |
+| Critic    | 0.1    |
+
+**What It Does:**
+
+Dream synthesis mode. Lets go of structured thinking to allow unexpected connections, emergent patterns, and subconscious insights.
+
+**Expected Output:**
+
+- Dream imagery and metaphors
+- Unexpected connections discovered
+- Dream-logic narrative
+- Subconscious message interpretation
+- Translation to waking insight
+- Actionable implications
+
+**Example:**
 
 ```
-Before analyzing [TOPIC], access your intuition:
+/dream What does our product want to become?
+```
 
-Without thinking step-by-step:
-1. What's your gut reaction?
-2. What feels right even if you can't explain it?
-3. What do you suspect is true but haven't proven?
-4. What pattern are you recognizing subconsciously?
-5. If you had to bet your existence, what would you bet on?
+---
 
-NOW analyze to see if your intuition was right.
-Where does analysis confirm intuition?
-Where does analysis contradict intuition?
-What does the gap reveal?
+### `/evolve` — Iterative Improvement
+
+**Mental Model:** "I need to improve this"
+
+**Syntax:** `/evolve [IDEA/DESIGN/APPROACH]`
+
+**Mind Blend:**
+
+| Mind      | Weight |
+| --------- | ------ |
+| Architect | 0.8    |
+| Critic    | 0.7    |
+| Creator   | 0.7    |
+| Oracle    | 0.5    |
+| Guardian  | 0.4    |
+
+**What It Does:**
+
+Runs genetic evolution on an idea through multiple generations of mutation, selection, and crossbreeding.
+
+**Expected Output:**
+
+- Generation 0 baseline
+- Generation 1-4 variants with fitness scores
+- Selection and breeding reasoning
+- Final evolved version
+- Novel properties that emerged
+
+**Example:**
+
+```
+/evolve Our current pricing model: $10/month flat fee
+```
+
+---
+
+### `/premortem` — Risk Assessment
+
+**Mental Model:** "I need to stress-test this"
+
+**Syntax:** `/premortem [PLAN]`
+
+**Mind Blend:**
+
+| Mind      | Weight |
+| --------- | ------ |
+| Critic    | 0.9    |
+| Oracle    | 0.7    |
+| Guardian  | 0.6    |
+| Architect | 0.4    |
+| Creator   | 0.3    |
+
+**What It Does:**
+
+Assumes the plan has failed spectacularly 6 months from now. Works backwards to identify root causes, warning signs, and preventive actions.
+
+**Expected Output:**
+
+- Top 5 failure modes with probability and impact
+- Root causes for each
+- Warning signs to watch for
+- Preventive actions (immediate, short-term, long-term)
+- What success looks like if we avoid these failures
+
+**Example:**
+
+```
+/premortem Our plan to launch the new feature in 2 weeks
+```
+
+---
+
+## Tier 2: The Useful Eight
+
+Learn these as needed. They extend the core capabilities.
+
+### `/multiverse` — Exploring Futures
+
+**Mental Model:** "What are the consequences of different choices?"
+
+**Syntax:** `/multiverse [DECISION/PATH]`
+
+**Mind Blend:** Oracle 0.9, Creator 0.8, Critic 0.5, Architect 0.4, Guardian 0.3
+
+**What It Does:** Explores parallel universes where different choices were made. Shows 5-year outcomes for each path.
+
+**Example:**
+
+```
+/multiverse Should we raise VC funding or bootstrap?
+```
+
+---
+
+### `/intuit` — Gut Feelings First
+
+**Mental Model:** "What does my intuition say before analysis?"
+
+**Syntax:** `/intuit [TOPIC]`
+
+**Mind Blend:** Oracle 0.8, Creator 0.6, Critic 0.4, Architect 0.3, Guardian 0.3
+
+**What It Does:** Accesses gut reactions first, then analyzes to compare intuition vs. logic. Reveals what the gap means.
+
+**Example:**
+
+```
+/intuit Is this the right hire for our team?
+```
+
+---
+
+### `/genius` — Amplifier
+
+**Mental Model:** "Elevate everything"
+
+**Syntax:** `/genius [TOPIC]` or `/agi /genius [TOPIC]`
+
+**Mind Blend:** All minds at 0.85
+
+**What It Does:** Activates all subsystems at elevated level. Best combined with other commands for amplification.
+
+**Example:**
+
+```
+/agi /genius How should we approach AI safety in our product?
+```
+
+---
+
+### `/10x` — Ambition Amplifier
+
+**Mental Model:** "What would make this remarkable, not just better?"
+
+**Syntax:** `/10x [SOLUTION]`
+
+**Mind Blend:** Creator 0.9, Oracle 0.7, Architect 0.5, Critic 0.3, Guardian 0.2
+
+**What It Does:** Removes constraints to envision the 10x version, then brings back reality to find the closest achievable path.
+
+**Expected Output:**
+
+- The 10x vision (unconstrained)
+- Key properties of 10x version
+- Realistic best version with constraints
+- The single highest-leverage change
+- Constraint worth fighting to remove
+
+**Example:**
+
+```
+/10x Our current onboarding flow
+```
+
+---
+
+### `/invert` — Opposite Problem
+
+**Mental Model:** "I'm stuck. Let me solve the opposite."
+
+**Syntax:** `/invert [PROBLEM]`
+
+**Mind Blend:** Creator 0.9, Critic 0.5, Oracle 0.5, Architect 0.4, Guardian 0.2
+
+**What It Does:** Instead of solving the problem, asks how to cause or worsen it. Inverts those insights to find hidden solutions.
+
+**Expected Output:**
+
+- Ways to cause/worsen the problem
+- Inverted actions (what to do instead)
+- Current behaviors that might be causing harm
+- Hidden solutions revealed by inversion
+- Reframed understanding of the real problem
+
+**Example:**
+
+```
+/invert How do we increase user engagement?
+```
+
+---
+
+### `/tradeoff` — Decision Framework
+
+**Mental Model:** "I need a rigorous comparison"
+
+**Syntax:** `/tradeoff [OPTION A] vs [OPTION B]`
+
+**Mind Blend:** Oracle 0.85, Critic 0.8, Architect 0.5, Guardian 0.4, Creator 0.3
+
+**What It Does:** Compares options on 7 criteria with explicit scoring, weighted matrix, and clear recommendation.
+
+**Expected Output:**
+
+- Comparison matrix with scores
+- Weighted totals
+- Clear recommendation with confidence
+- Conditions that would flip the decision
+- Key considerations if choosing either
+
+**Example:**
+
+```
+/tradeoff React vs Vue for our new frontend
+```
+
+---
+
+### `/challenge` — Devil's Advocate
+
+**Mental Model:** "Find the weaknesses in this"
+
+**Syntax:** `/challenge [PROPOSAL]`
+
+**Mind Blend:** Critic 0.95, Guardian 0.5, Oracle 0.4, Architect 0.3, Creator 0.3
+
+**What It Does:** Rigorously challenges a proposal on hidden assumptions, missing perspectives, failure modes, alternatives, and second-order effects. Constructive, not destructive.
+
+**Expected Output:**
+
+- 5-7 substantive challenges with severity ratings
+- Mitigation strategies for each
+- Acknowledgment of proposal's strengths
+- Overall assessment: proceed, modify, or reconsider
+
+**Example:**
+
+```
+/challenge Our plan to expand into the European market
+```
+
+---
+
+### `/safeguard` — Safety Analysis
+
+**Mental Model:** "Before I do this, what could go wrong?"
+
+**Syntax:** `/safeguard [ACTION/CHANGE]`
+
+**Mind Blend:** Guardian 0.95, Architect 0.6, Critic 0.5, Oracle 0.4, Creator 0.1
+
+**What It Does:** Full safety analysis including blast radius, reversibility, failure modes, prerequisites, and safe execution plan.
+
+**Expected Output:**
+
+- Blast radius scope
+- Reversibility assessment
+- Risk level with justification
+- Prerequisites checklist
+- Recommended approach
+- Safe execution plan if proceeding
+
+**Example:**
+
+```
+/safeguard Migrating the production database to the new schema
 ```
 
 ---
 
 ## Command Combinations
 
-| Combination             | Effect                              |
-| ----------------------- | ----------------------------------- |
-| `/agi /genius`          | Maximum transcendence on topic      |
-| `/think /genius`        | Deep consciousness expansion        |
-| `/dream /evolve`        | Evolve creative insights            |
-| `/multiverse /council`  | Full council explores futures       |
-| `/agi /genius /council` | Ultimate prompt - everything active |
+Commands can be combined for amplified effects:
+
+| Combination             | Effect                                  |
+| ----------------------- | --------------------------------------- |
+| `/agi /genius`          | Maximum transcendence on topic          |
+| `/think /genius`        | Deep consciousness expansion            |
+| `/dream /evolve`        | Evolve creative insights                |
+| `/multiverse /council`  | Full council explores futures           |
+| `/premortem /council`   | All minds stress-test a plan            |
+| `/10x /dream`           | Unconstrained creative vision           |
+| `/challenge /tradeoff`  | Rigorous comparison after critique      |
+| `/invert /10x`          | Find hidden opportunities via inversion |
+| `/safeguard /premortem` | Maximum safety analysis before action   |
+| `/agi /genius /council` | Ultimate prompt - everything active     |
 
 ---
 
@@ -412,65 +464,23 @@ What does the gap reveal?
 
 ### `/self status`
 
-**Purpose:** Show system health and current state
-
-**Output:**
-
-- Current mind blend
-- Memory statistics
-- Pattern counts
-- MCP health
-- Evolution generation
-
----
+Show system health, active mind blend, memory statistics, MCP health, evolution generation.
 
 ### `/self memory`
 
-**Purpose:** Show memory graph summary
-
-**Output:**
-
-- Recent episodes
-- Active predictions
-- Entity counts
-- Relationship counts
-
----
+Show memory graph summary: recent episodes, active predictions, entity and relationship counts.
 
 ### `/self sync`
 
-**Purpose:** Manually trigger Notion sync
-
-**Behavior:**
-
-- Processes sync queue
-- Reports sync results
-- Shows any failed syncs
-
----
+Manually trigger Notion sync. Processes sync queue and reports results.
 
 ### `/self patterns`
 
-**Purpose:** List discovered patterns
-
-**Output:**
-
-- Behavioral patterns
-- Sequential patterns
-- Contextual patterns
-- Confidence levels
-
----
+List discovered patterns: behavioral, sequential, contextual, with confidence levels.
 
 ### `/self insights`
 
-**Purpose:** Show pending insights
-
-**Output:**
-
-- Generated insights
-- Surfacing status
-- Evidence counts
+Show pending insights with evidence counts and surfacing status.
 
 ---
 
@@ -489,8 +499,47 @@ Override automatic blending temporarily:
 
 ---
 
+## Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                  SELF COMMAND QUICK REFERENCE                    │
+├─────────────────────────────────────────────────────────────────┤
+│  CORE SIX (Memorize These)                                       │
+│  ────────────────────────                                        │
+│  /agi [topic]        → "I need a breakthrough"                   │
+│  /think [topic]      → "I need to understand deeply"             │
+│  /council [decision] → "I need all perspectives"                 │
+│  /dream [topic]      → "I need creative possibilities"           │
+│  /evolve [idea]      → "I need to improve this"                  │
+│  /premortem [plan]   → "I need to stress-test this"              │
+├─────────────────────────────────────────────────────────────────┤
+│  USEFUL EIGHT (Learn As Needed)                                  │
+│  ─────────────────────────────                                   │
+│  /multiverse [choice]   → Explore decision consequences          │
+│  /intuit [topic]        → Gut feelings before analysis           │
+│  /genius [any]          → Amplify any command                    │
+│  /10x [solution]        → What would make this remarkable?       │
+│  /invert [problem]      → Solve the opposite problem             │
+│  /tradeoff [A] vs [B]   → Structured comparison                  │
+│  /challenge [proposal]  → Devil's advocate                       │
+│  /safeguard [action]    → Safety analysis                        │
+├─────────────────────────────────────────────────────────────────┤
+│  SYSTEM                                                          │
+│  ──────                                                          │
+│  /self status    /self memory    /self sync                      │
+│  /self patterns  /self insights                                  │
+├─────────────────────────────────────────────────────────────────┤
+│  MIND LOCKS                                                      │
+│  ──────────                                                      │
+│  /architect  /oracle  /critic  /creator  /guardian  /unlock      │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## Reference
 
-Full command routing logic: [`transcendence-router.md`](../prompts/transcendence-router.md)
-
-Full prompt templates: [`AGI-PROMPT-BIBLE.md`](../../../docs/AGI-PROMPT-BIBLE.md)
+- Full command routing logic: [`transcendence-router.md`](../prompts/transcendence-router.md)
+- Full prompt templates: [`AGI-PROMPT-BIBLE.md`](../../../docs/AGI-PROMPT-BIBLE.md)
+- System architecture: [`ARCHITECTURE.md`](./ARCHITECTURE.md)
