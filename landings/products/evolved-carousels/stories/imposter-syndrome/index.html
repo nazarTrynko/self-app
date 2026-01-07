@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Imposter Syndrome — Синдром самозванця</title>
+    <meta name="description" content="Conquering self-doubt for creators with theatrical spotlight effect">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../src/shared/navigation.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-elevated: #12121a;
+            --accent-gold: #c9a227;
+            --accent-warm: #e8725c;
+            --text-light: #f0e6d8;
+            --text-muted: #8a8580;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-dark); color: var(--text-light); overflow: hidden; }
+        
+        .carousel-container { position: relative; width: 100%; height: 100vh; height: 100dvh; }
+        .carousel-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .carousel-slides { position: relative; width: 100%; height: 100%; z-index: 1; }
+        
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.6s var(--ease-elegant);
+        }
+        .carousel-slide.slide-active { opacity: 1; visibility: visible; }
+        
+        .slide-content { max-width: 700px; text-align: center; }
+        
+        /* Cover */
+        .silhouette-visual { font-size: 6rem; margin-bottom: 2rem; filter: drop-shadow(0 0 60px rgba(201, 162, 39, 0.3)); }
+        .slide-cover .slide-title {
+            font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 400; font-style: italic; margin-bottom: 1rem;
+        }
+        .slide-cover .slide-title span { color: var(--accent-gold); }
+        .slide-cover .slide-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+        
+        /* Thoughts */
+        .thought-bubbles { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem; }
+        .thought {
+            font-family: var(--font-display); font-size: 1.5rem; font-style: italic;
+            color: var(--text-muted); padding: 1rem 2rem;
+            background: var(--bg-elevated); border-radius: 20px;
+            opacity: 0; animation: thoughtReveal 0.8s var(--ease-elegant) forwards;
+        }
+        .thought:nth-child(1) { animation-delay: 0.2s; }
+        .thought:nth-child(2) { animation-delay: 0.5s; }
+        .thought:nth-child(3) { animation-delay: 0.8s; }
+        
+        @keyframes thoughtReveal {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        /* Stats */
+        .stat-highlight {
+            font-family: var(--font-display); font-size: clamp(5rem, 15vw, 10rem);
+            font-weight: 400; color: var(--accent-gold); line-height: 1; margin-bottom: 1rem;
+        }
+        .stat-label { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .stat-detail { font-size: 1rem; color: var(--text-muted); max-width: 400px; margin: 0 auto; }
+        
+        /* Reframe */
+        .reframe-container { display: flex; flex-direction: column; gap: 2rem; }
+        .reframe-old, .reframe-new {
+            padding: 1.5rem 2rem; border-radius: 16px;
+            font-family: var(--font-display); font-size: 1.25rem;
+        }
+        .reframe-old { background: rgba(232, 114, 92, 0.1); border: 1px solid rgba(232, 114, 92, 0.3); }
+        .reframe-new { background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); }
+        .reframe-arrow { font-size: 2rem; color: var(--accent-gold); }
+        
+        /* Transform input */
+        .transform-exercise { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; }
+        .transform-input {
+            width: 100%; max-width: 400px; padding: 1rem;
+            background: var(--bg-elevated); border: 2px solid var(--text-muted);
+            border-radius: 12px; color: var(--text-light);
+            font-family: var(--font-body); font-size: 1rem; text-align: center;
+            transition: border-color 0.3s;
+        }
+        .transform-input:focus { outline: none; border-color: var(--accent-gold); }
+        .transform-output {
+            padding: 1.5rem 2rem; background: rgba(201, 162, 39, 0.1);
+            border-radius: 16px; font-family: var(--font-display); font-size: 1.25rem;
+            color: var(--accent-gold); min-height: 60px;
+        }
+        
+        /* Accomplishments */
+        .accomplishments-list { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+        .accomplishment {
+            display: flex; align-items: center; gap: 1rem; padding: 1rem;
+            background: var(--bg-elevated); border-radius: 12px;
+        }
+        .accomplishment-icon { font-size: 1.5rem; }
+        .accomplishment-text { font-size: 1rem; color: var(--text-light); }
+        
+        /* CTA */
+        .cta-title { font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem; }
+        .cta-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 400px; }
+        .cta-button {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: var(--accent-gold); color: var(--bg-dark);
+            border: none; border-radius: 100px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3); }
+        
+        .section-title { font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem; }
+        
+        [data-animate] { opacity: 0; transform: translateY(20px); }
+        .slide-active [data-animate] { animation: fadeInUp 0.6s var(--ease-elegant) forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <nav class="carousel-nav-top" role="navigation" aria-label="Main navigation">
+            <a href="../../index.html#stories" class="nav-back" aria-label="Back to gallery">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Gallery</span>
+            </a>
+            <a href="../../index.html" class="nav-home" aria-label="Home">Evolved Carousels</a>
+        </nav>
+        <a href="#carousel" class="skip-link">Skip to carousel</a>
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        <div class="carousel-slides">
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide slide-cover">
+                <div class="slide-content">
+                    <div class="silhouette-visual" data-animate>🎭</div>
+                    <h1 class="slide-title" data-animate>Синдром<br><span>самозванця</span></h1>
+                    <p class="slide-subtitle" data-animate>Коли успіх відчувається як випадковість</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Recognition -->
+            <div class="carousel-slide slide-thoughts">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Знайомі думки?</h2>
+                    <div class="thought-bubbles">
+                        <div class="thought">"Я не заслуговую цієї посади..."</div>
+                        <div class="thought">"Скоро всі зрозуміють, що я нічого не вмію..."</div>
+                        <div class="thought">"Мені просто пощастило..."</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Statistics -->
+            <div class="carousel-slide slide-stats">
+                <div class="slide-content">
+                    <div class="stat-highlight" data-animate>70%</div>
+                    <p class="stat-label" data-animate>людей відчувають синдром самозванця</p>
+                    <p class="stat-detail" data-animate>Це не означає, що ви шахрай. Це означає, що ви — амбітна людина, яка прагне до більшого.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Reframe -->
+            <div class="carousel-slide slide-reframe">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Переосмислення</h2>
+                    <div class="reframe-container" data-animate>
+                        <div class="reframe-old">"Я не достатньо хороший"</div>
+                        <div class="reframe-arrow">↓</div>
+                        <div class="reframe-new">"Я постійно вчуся і росту"</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Transform Exercise -->
+            <div class="carousel-slide slide-transform">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Трансформуйте страх</h2>
+                    <div class="transform-exercise" data-animate>
+                        <p style="color: var(--text-muted);">Напишіть свій таємний страх:</p>
+                        <input type="text" class="transform-input" id="fearInput" placeholder="Я боюсь, що...">
+                        <div class="transform-output" id="transformOutput">
+                            Ваша трансформація з'явиться тут
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Evidence -->
+            <div class="carousel-slide slide-evidence">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Ваші докази успіху</h2>
+                    <div class="accomplishments-list" data-animate>
+                        <div class="accomplishment">
+                            <span class="accomplishment-icon">📚</span>
+                            <span class="accomplishment-text">Кожен навик, який ви освоїли</span>
+                        </div>
+                        <div class="accomplishment">
+                            <span class="accomplishment-icon">💡</span>
+                            <span class="accomplishment-text">Кожна проблема, яку ви вирішили</span>
+                        </div>
+                        <div class="accomplishment">
+                            <span class="accomplishment-icon">🤝</span>
+                            <span class="accomplishment-text">Кожна людина, якій ви допомогли</span>
+                        </div>
+                        <div class="accomplishment">
+                            <span class="accomplishment-icon">🎯</span>
+                            <span class="accomplishment-text">Кожна мета, яку ви досягли</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem; color: var(--text-muted);" data-animate>Це не випадковість. Це — ви.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 7: CTA -->
+            <div class="carousel-slide slide-cta">
+                <div class="slide-content">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;" data-animate>✨</div>
+                    <h2 class="cta-title" data-animate>Ви вже тут.</h2>
+                    <p class="cta-text" data-animate>Приєднуйтесь до воркшопу з подолання синдрому самозванця</p>
+                    <button class="cta-button" data-animate>
+                        Зареєструватися
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/spotlight.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const spotlightCanvas = new SpotlightCanvas(canvas);
+            
+            const carousel = new CarouselEngine('#carousel', {
+                autoPlay: false, loop: true, transition: 'fade', transitionDuration: 600, haptic: true
+            });
+            
+            carousel.setCanvasBackground(spotlightCanvas);
+            
+            // Transform exercise
+            const fearInput = document.getElementById('fearInput');
+            const transformOutput = document.getElementById('transformOutput');
+            
+            const transformations = {
+                'не достатньо': 'Я постійно вчуся і вдосконалююсь',
+                'не вмію': 'Я здатний навчитися чому завгодно',
+                'шахрай': 'Я заслуговую бути тут завдяки своїй праці',
+                'пощастило': 'Я створив цю можливість своїми зусиллями',
+                'зрозуміють': 'Мої знання та навички реальні',
+                'боюсь': 'Страх — це знак, що я росту'
+            };
+            
+            fearInput.addEventListener('input', () => {
+                const fear = fearInput.value.toLowerCase();
+                let transformation = 'Ваш страх — це точка росту. Ви сильніші за свої сумніви.';
+                
+                for (const [key, value] of Object.entries(transformations)) {
+                    if (fear.includes(key)) {
+                        transformation = value;
+                        break;
+                    }
+                }
+                
+                transformOutput.textContent = transformation;
+            });
+        });
+    </script>
+</body>
+</html>
+

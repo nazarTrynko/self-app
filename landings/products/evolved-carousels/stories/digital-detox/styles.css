@@ -1,0 +1,555 @@
+/**
+ * Digital Detox Carousel Styles
+ * Serene, nature-distilled aesthetic
+ */
+
+:root {
+    --bg-water: #D4DEE4;
+    --bg-water-light: #E8EEF2;
+    --accent-teal: #4A7C8C;
+    --accent-sage: #7BA38C;
+    --text-dark: #2C3E44;
+    --text-muted: #6B8088;
+    
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', sans-serif;
+    --ease-water: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-water);
+    color: var(--text-dark);
+}
+
+/* Override warm theme for water aesthetic */
+.carousel-container {
+    background: var(--bg-water);
+}
+
+.carousel-slide {
+    background: transparent;
+}
+
+.slide-content {
+    max-width: 600px;
+}
+
+/* Slide 1: Cover */
+.slide-cover .phone-visual {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.phone-frame {
+    width: 80px;
+    height: 140px;
+    background: linear-gradient(145deg, #3a4a50, #2a3a40);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: phoneSink 3s ease-in-out infinite;
+}
+
+@keyframes phoneSink {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(10px) rotate(5deg); }
+}
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e, #0d1117);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone-emoji {
+    font-size: 2rem;
+    opacity: 0.5;
+}
+
+.water-ripple {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 20px;
+    background: radial-gradient(ellipse, rgba(74, 124, 140, 0.3), transparent);
+    border-radius: 50%;
+    animation: rippleExpand 2s ease-out infinite;
+}
+
+@keyframes rippleExpand {
+    0% { transform: translateX(-50%) scale(0.5); opacity: 0.8; }
+    100% { transform: translateX(-50%) scale(2); opacity: 0; }
+}
+
+.slide-cover .slide-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.slide-cover .slide-title span {
+    color: var(--accent-teal);
+}
+
+.slide-cover .slide-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* Slide 2: Screen Time Calculator */
+.screen-time-calc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.time-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-number {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--accent-teal);
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.time-slider-container {
+    width: 100%;
+    max-width: 300px;
+}
+
+.time-slider {
+    width: 100%;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(74, 124, 140, 0.2);
+    border-radius: 4px;
+    outline: none;
+}
+
+.time-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--accent-teal);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(74, 124, 140, 0.4);
+}
+
+.time-markers {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.time-impact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+}
+
+.time-impact span {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.time-impact strong {
+    color: var(--accent-teal);
+    font-weight: 600;
+}
+
+/* Slide 3: Signs Checklist */
+.signs-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.sign-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-water);
+}
+
+.sign-item:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.sign-checkbox {
+    display: none;
+}
+
+.sign-check {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--accent-teal);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.sign-checkbox:checked + .sign-check {
+    background: var(--accent-teal);
+    color: white;
+}
+
+.sign-text {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.signs-result {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.signs-result.warning {
+    color: var(--accent-teal);
+    font-weight: 500;
+}
+
+/* Slide 4: Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.benefit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    transition: transform 0.3s var(--ease-water);
+}
+
+.benefit-card:hover {
+    transform: translateY(-4px);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+}
+
+.benefit-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.benefit-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* Slide 5: Challenge Timer */
+.challenge-timer {
+    margin-bottom: 2rem;
+}
+
+.timer-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.timer-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-bg {
+    fill: none;
+    stroke: rgba(74, 124, 140, 0.2);
+    stroke-width: 8;
+}
+
+.timer-progress {
+    fill: none;
+    stroke: var(--accent-teal);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 565.48;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s var(--ease-water);
+}
+
+.timer-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.timer-hours {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--accent-teal);
+    display: block;
+    line-height: 1;
+}
+
+.timer-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.challenge-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.rule {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.challenge-btn {
+    padding: 1rem 2rem;
+    background: var(--accent-teal);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-water);
+}
+
+.challenge-btn:hover {
+    background: #3a6a7a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(74, 124, 140, 0.3);
+}
+
+.challenge-btn.active {
+    background: var(--accent-sage);
+}
+
+/* Slide 6: Morning Rituals */
+.ritual-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.ritual-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    border-left: 3px solid transparent;
+}
+
+.ritual-item.highlight {
+    background: rgba(74, 124, 140, 0.1);
+    border-left-color: var(--accent-teal);
+}
+
+.ritual-time {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--accent-teal);
+    min-width: 60px;
+}
+
+.ritual-action {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.ritual-note {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Slide 7: CTA */
+.nature-visual {
+    margin-bottom: 1.5rem;
+}
+
+.nature-emoji {
+    font-size: 4rem;
+    display: block;
+    animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+
+.cta-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.cta-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--accent-teal);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-water);
+    margin-bottom: 1.5rem;
+}
+
+.cta-button:hover {
+    background: #3a6a7a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(74, 124, 140, 0.3);
+}
+
+.cta-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.cta-reminder {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.cta-reminder:hover {
+    color: var(--accent-teal);
+}
+
+/* Navigation */
+.carousel-tag {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    font-size: 0.875rem;
+    color: var(--accent-teal);
+    z-index: 10;
+}
+
+/* Section title */
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+/* Animations */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.slide-active [data-animate] {
+    animation: fadeInUp 0.6s var(--ease-water) forwards;
+}
+
+.slide-active [data-animate="scale"] {
+    animation: scaleIn 0.6s var(--ease-water) forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .benefits-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    
+    .benefit-card {
+        padding: 1rem;
+    }
+    
+    .timer-circle {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .timer-hours {
+        font-size: 3rem;
+    }
+}
+

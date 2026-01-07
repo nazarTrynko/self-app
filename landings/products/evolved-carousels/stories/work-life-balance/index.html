@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Work-Life Balance — Баланс життя і роботи</title>
+    <meta name="description" content="Integration with day-to-night morph animation">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-day: #E8F4F8;
+            --bg-night: #1A2535;
+            --accent-sun: #FFB347;
+            --accent-moon: #C4C9D4;
+            --accent-balance: #7BA3C9;
+            --text-dark: #2A3540;
+            --text-light: #E8EEF4;
+            --text-muted: #6A7A8A;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-day); color: var(--text-dark); overflow: hidden; }
+        
+        .carousel-container { position: relative; width: 100%; height: 100vh; height: 100dvh; }
+        .carousel-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .carousel-slides { position: relative; width: 100%; height: 100%; z-index: 1; }
+        
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.6s var(--ease-elegant);
+        }
+        .carousel-slide.slide-active { opacity: 1; visibility: visible; }
+        
+        .slide-content { max-width: 600px; text-align: center; }
+        
+        /* Cover */
+        .balance-visual { font-size: 5rem; margin-bottom: 2rem; display: flex; justify-content: center; gap: 0.5rem; }
+        .slide-title { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+        .slide-title span { color: var(--accent-balance); }
+        .slide-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+        
+        /* Myth */
+        .myth-container { display: flex; flex-direction: column; gap: 2rem; }
+        .myth-wrong { font-family: var(--font-display); font-size: 2rem; font-style: italic; color: var(--text-muted); text-decoration: line-through; }
+        .myth-right { font-family: var(--font-display); font-size: 2rem; font-style: italic; color: var(--accent-balance); }
+        .myth-explanation { font-size: 1rem; color: var(--text-muted); max-width: 400px; margin: 0 auto; }
+        
+        /* Integration */
+        .integration-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .integration-side { padding: 1.5rem; border-radius: 16px; text-align: left; }
+        .integration-side.boundaries { background: rgba(255, 179, 71, 0.1); }
+        .integration-side.blend { background: rgba(123, 163, 201, 0.1); }
+        .integration-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+        .integration-list { font-size: 0.95rem; }
+        .integration-list li { margin-bottom: 0.5rem; }
+        
+        /* Life Wheel */
+        .wheel-container { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        .wheel-visual {
+            width: 250px; height: 250px; border-radius: 50%;
+            background: conic-gradient(
+                var(--accent-sun) 0deg 45deg,
+                var(--accent-balance) 45deg 90deg,
+                var(--accent-moon) 90deg 135deg,
+                #8FB0A0 135deg 180deg,
+                #C9A227 180deg 225deg,
+                #E8725C 225deg 270deg,
+                #9B8ABB 270deg 315deg,
+                #6AB6B0 315deg 360deg
+            );
+            position: relative;
+        }
+        .wheel-center {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60%; height: 60%; background: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display); font-size: 1.25rem; color: var(--text-dark);
+        }
+        .wheel-labels { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; font-size: 0.75rem; }
+        .wheel-labels span { padding: 0.25rem 0.75rem; background: rgba(123, 163, 201, 0.1); border-radius: 100px; }
+        
+        /* Seasons */
+        .seasons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .season-card {
+            padding: 1.25rem; background: white; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .season-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+        .season-title { font-weight: 500; margin-bottom: 0.25rem; }
+        .season-desc { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* Rituals */
+        .rituals-list { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+        .ritual-item {
+            display: flex; align-items: center; gap: 1rem; padding: 1rem;
+            background: white; border-radius: 12px;
+        }
+        .ritual-icon { font-size: 1.5rem; }
+        .ritual-content { flex: 1; }
+        .ritual-name { font-weight: 500; }
+        .ritual-example { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* CTA */
+        .section-title { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 2rem; }
+        .cta-button {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: var(--accent-balance); color: white;
+            border: none; border-radius: 100px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(123, 163, 201, 0.3); }
+        
+        [data-animate] { opacity: 0; transform: translateY(20px); }
+        .slide-active [data-animate] { animation: fadeInUp 0.6s var(--ease-elegant) forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        <div class="carousel-slides">
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div class="balance-visual" data-animate>☀️ ☯️ 🌙</div>
+                    <h1 class="slide-title" data-animate>Баланс<br><span>життя і роботи</span></h1>
+                    <p class="slide-subtitle" data-animate>Інтеграція, а не розділення</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Myth -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Міф про 50/50</h2>
+                    <div class="myth-container" data-animate>
+                        <p class="myth-wrong">"Баланс = рівні частини"</p>
+                        <p class="myth-right">"Баланс = правильні пропорції для вас"</p>
+                        <p class="myth-explanation">Баланс — це не статичний стан, а динамічний процес, який змінюється залежно від етапу життя.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Integration -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Два підходи</h2>
+                    <div class="integration-comparison" data-animate>
+                        <div class="integration-side boundaries">
+                            <p class="integration-label" style="color: var(--accent-sun);">Межі</p>
+                            <ul class="integration-list">
+                                <li>Чіткий розподіл часу</li>
+                                <li>Робота = робота</li>
+                                <li>Вимикання після 18:00</li>
+                            </ul>
+                        </div>
+                        <div class="integration-side blend">
+                            <p class="integration-label" style="color: var(--accent-balance);">Інтеграція</p>
+                            <ul class="integration-list">
+                                <li>Гнучкий розклад</li>
+                                <li>Робота вплетена в життя</li>
+                                <li>Результат важливіший за час</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Life Wheel -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Колесо життя</h2>
+                    <div class="wheel-container" data-animate>
+                        <div class="wheel-visual">
+                            <div class="wheel-center">Ви</div>
+                        </div>
+                        <div class="wheel-labels">
+                            <span>Кар'єра</span>
+                            <span>Здоров'я</span>
+                            <span>Стосунки</span>
+                            <span>Розвиток</span>
+                            <span>Фінанси</span>
+                            <span>Відпочинок</span>
+                            <span>Творчість</span>
+                            <span>Духовність</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Seasons -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Сезони життя</h2>
+                    <div class="seasons-grid" data-animate>
+                        <div class="season-card">
+                            <div class="season-emoji">🌱</div>
+                            <div class="season-title">Старт кар'єри</div>
+                            <div class="season-desc">Більше роботи, менше відпочинку</div>
+                        </div>
+                        <div class="season-card">
+                            <div class="season-emoji">👶</div>
+                            <div class="season-title">Батьківство</div>
+                            <div class="season-desc">Сім'я на першому місці</div>
+                        </div>
+                        <div class="season-card">
+                            <div class="season-emoji">🚀</div>
+                            <div class="season-title">Зростання</div>
+                            <div class="season-desc">Інтенсивний розвиток</div>
+                        </div>
+                        <div class="season-card">
+                            <div class="season-emoji">🌿</div>
+                            <div class="season-title">Стабільність</div>
+                            <div class="season-desc">Рівномірний розподіл</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Transition Rituals -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Ритуали переходу</h2>
+                    <div class="rituals-list" data-animate>
+                        <div class="ritual-item">
+                            <span class="ritual-icon">🚶</span>
+                            <div class="ritual-content">
+                                <div class="ritual-name">Прогулянка</div>
+                                <div class="ritual-example">15 хвилин між роботою і домом</div>
+                            </div>
+                        </div>
+                        <div class="ritual-item">
+                            <span class="ritual-icon">👔→👕</span>
+                            <div class="ritual-content">
+                                <div class="ritual-name">Зміна одягу</div>
+                                <div class="ritual-example">Фізичний сигнал кінця робочого дня</div>
+                            </div>
+                        </div>
+                        <div class="ritual-item">
+                            <span class="ritual-icon">📱✖️</span>
+                            <div class="ritual-content">
+                                <div class="ritual-name">Цифрова межа</div>
+                                <div class="ritual-example">Робочі застосунки — тільки на робочому пристрої</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 7: CTA -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;" data-animate>⚖️</div>
+                    <h2 class="section-title" data-animate>Знайдіть свій баланс</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;" data-animate>Запишіться на коучинг-сесію з балансу</p>
+                    <button class="cta-button" data-animate>
+                        Записатися
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/daynight.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const daynightCanvas = new DayNightCanvas(canvas);
+            
+            const carousel = new CarouselEngine('#carousel', {
+                autoPlay: false, loop: true, transition: 'fade', transitionDuration: 600, haptic: true
+            });
+            
+            carousel.setCanvasBackground(daynightCanvas);
+        });
+    </script>
+</body>
+</html>
+

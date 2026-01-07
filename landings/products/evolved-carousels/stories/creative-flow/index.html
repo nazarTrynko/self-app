@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Creative Flow — Потік творчості</title>
+    <meta name="description" content="Access flow states with organic watercolor blob animation">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-cream: #FAF7F2;
+            --bg-lavender: rgba(200, 180, 220, 0.2);
+            --accent-lavender: #9B8ABB;
+            --accent-peach: #E8B4A0;
+            --accent-sage: #8FB0A0;
+            --text-dark: #3A3540;
+            --text-muted: #7A7580;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-cream); color: var(--text-dark); overflow: hidden; }
+        
+        .carousel-container { position: relative; width: 100%; height: 100vh; height: 100dvh; }
+        .carousel-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .carousel-slides { position: relative; width: 100%; height: 100%; z-index: 1; }
+        
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.6s var(--ease-elegant);
+        }
+        .carousel-slide.slide-active { opacity: 1; visibility: visible; }
+        
+        .slide-content { max-width: 600px; text-align: center; }
+        
+        /* Cover */
+        .flow-visual { font-size: 5rem; margin-bottom: 2rem; animation: floatGently 4s ease-in-out infinite; }
+        @keyframes floatGently { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        .slide-title { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+        .slide-title span { color: var(--accent-lavender); }
+        .slide-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+        
+        /* Flow Model */
+        .flow-diagram { width: 100%; max-width: 350px; margin: 0 auto 2rem; }
+        .diagram-visual {
+            aspect-ratio: 1; border-radius: 50%; position: relative;
+            background: linear-gradient(135deg, var(--accent-peach) 0%, var(--accent-lavender) 50%, var(--accent-sage) 100%);
+            opacity: 0.3;
+        }
+        .diagram-center {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; border-radius: 50%; width: 60%; height: 60%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .diagram-label { font-family: var(--font-display); font-size: 1.5rem; font-style: italic; color: var(--accent-lavender); }
+        .diagram-sublabel { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* Conditions */
+        .conditions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .condition-card {
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            padding: 1.5rem; background: white; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .condition-icon { font-size: 2rem; }
+        .condition-title { font-size: 1rem; font-weight: 500; }
+        .condition-desc { font-size: 0.875rem; color: var(--text-muted); text-align: center; }
+        
+        /* Triggers */
+        .triggers-list { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+        .trigger-tag {
+            padding: 0.75rem 1.25rem; background: white; border: 2px solid var(--accent-lavender);
+            border-radius: 100px; font-size: 0.95rem; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .trigger-tag:hover, .trigger-tag.selected { background: var(--accent-lavender); color: white; }
+        
+        /* Blockers */
+        .blockers-list { display: flex; flex-direction: column; gap: 1rem; }
+        .blocker {
+            display: flex; align-items: center; gap: 1rem; padding: 1rem;
+            background: rgba(232, 180, 160, 0.2); border-radius: 12px;
+        }
+        .blocker-icon { font-size: 1.5rem; }
+        .blocker-text { font-size: 1rem; }
+        
+        /* Environment */
+        .env-tips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .env-tip { padding: 1.25rem; background: white; border-radius: 12px; text-align: left; }
+        .env-tip-title { font-weight: 500; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .env-tip-desc { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* CTA */
+        .section-title { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 2rem; }
+        .cta-button {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: var(--accent-lavender); color: white;
+            border: none; border-radius: 100px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(155, 138, 187, 0.3); }
+        
+        [data-animate] { opacity: 0; transform: translateY(20px); }
+        .slide-active [data-animate] { animation: fadeInUp 0.6s var(--ease-elegant) forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        <div class="carousel-slides">
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div class="flow-visual" data-animate>🎨</div>
+                    <h1 class="slide-title" data-animate>Потік<br><span>творчості</span></h1>
+                    <p class="slide-subtitle" data-animate>Коли час зникає, а робота тече</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Science -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Модель потоку</h2>
+                    <div class="flow-diagram" data-animate>
+                        <div class="diagram-visual">
+                            <div class="diagram-center">
+                                <span class="diagram-label">Flow</span>
+                                <span class="diagram-sublabel">Навички = Виклик</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted);" data-animate>Mihaly Csikszentmihalyi: потік виникає, коли виклик відповідає рівню навичок</p>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Conditions -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Умови потоку</h2>
+                    <div class="conditions-grid" data-animate>
+                        <div class="condition-card">
+                            <span class="condition-icon">🎯</span>
+                            <span class="condition-title">Чіткі цілі</span>
+                            <span class="condition-desc">Знаєте, що робити далі</span>
+                        </div>
+                        <div class="condition-card">
+                            <span class="condition-icon">⚡</span>
+                            <span class="condition-title">Зворотній зв'язок</span>
+                            <span class="condition-desc">Бачите результат одразу</span>
+                        </div>
+                        <div class="condition-card">
+                            <span class="condition-icon">⚖️</span>
+                            <span class="condition-title">Баланс</span>
+                            <span class="condition-desc">Не надто легко, не надто важко</span>
+                        </div>
+                        <div class="condition-card">
+                            <span class="condition-icon">🧘</span>
+                            <span class="condition-title">Концентрація</span>
+                            <span class="condition-desc">Повне занурення</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Triggers -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Що запускає ваш потік?</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;" data-animate>Оберіть свої тригери:</p>
+                    <div class="triggers-list" data-animate>
+                        <span class="trigger-tag">🎵 Музика</span>
+                        <span class="trigger-tag">☕ Кава</span>
+                        <span class="trigger-tag">🌅 Ранок</span>
+                        <span class="trigger-tag">🌙 Ніч</span>
+                        <span class="trigger-tag">🏃 Рух</span>
+                        <span class="trigger-tag">🤫 Тиша</span>
+                        <span class="trigger-tag">👥 Колаборація</span>
+                        <span class="trigger-tag">🏖️ Новий простір</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Blockers -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Вбивці потоку</h2>
+                    <div class="blockers-list" data-animate>
+                        <div class="blocker">
+                            <span class="blocker-icon">📱</span>
+                            <span class="blocker-text">Сповіщення та переривання</span>
+                        </div>
+                        <div class="blocker">
+                            <span class="blocker-icon">🔀</span>
+                            <span class="blocker-text">Мультитаскінг</span>
+                        </div>
+                        <div class="blocker">
+                            <span class="blocker-icon">😴</span>
+                            <span class="blocker-text">Втома та недосип</span>
+                        </div>
+                        <div class="blocker">
+                            <span class="blocker-icon">😰</span>
+                            <span class="blocker-text">Страх невдачі</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Environment -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Створіть середовище</h2>
+                    <div class="env-tips" data-animate>
+                        <div class="env-tip">
+                            <div class="env-tip-title">🚫 Блокуйте</div>
+                            <div class="env-tip-desc">Вимкніть сповіщення на 90 хвилин</div>
+                        </div>
+                        <div class="env-tip">
+                            <div class="env-tip-title">🎧 Занурюйтесь</div>
+                            <div class="env-tip-desc">Використовуйте навушники як сигнал</div>
+                        </div>
+                        <div class="env-tip">
+                            <div class="env-tip-title">📋 Готуйтесь</div>
+                            <div class="env-tip-desc">Підготуйте все заздалегідь</div>
+                        </div>
+                        <div class="env-tip">
+                            <div class="env-tip-title">⏰ Захищайте</div>
+                            <div class="env-tip-desc">Заплануйте "глибокі" години</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 7: CTA -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;" data-animate>🌊</div>
+                    <h2 class="section-title" data-animate>Знайдіть свій потік</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;" data-animate>Запишіться на творчу сесію з фасилітатором</p>
+                    <button class="cta-button" data-animate>
+                        Забронювати сесію
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/watercolor.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const watercolorCanvas = new WatercolorCanvas(canvas);
+            
+            const carousel = new CarouselEngine('#carousel', {
+                autoPlay: false, loop: true, transition: 'fade', transitionDuration: 600, haptic: true
+            });
+            
+            carousel.setCanvasBackground(watercolorCanvas);
+            
+            // Trigger selection
+            document.querySelectorAll('.trigger-tag').forEach(tag => {
+                tag.addEventListener('click', () => tag.classList.toggle('selected'));
+            });
+        });
+    </script>
+</body>
+</html>
+

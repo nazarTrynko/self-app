@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE FIVE — Minds That Blend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="flow-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← Perspectives</a>
+        <span class="nav-number">02 / 05</span>
+    </nav>
+
+    <div class="mind-overlay" id="mind-overlay">
+        <button class="close-btn" id="close-overlay">×</button>
+        <div class="mind-content" id="mind-content">
+            <!-- Content injected by JS -->
+        </div>
+    </div>
+
+    <main>
+        <header class="header">
+            <h1 class="title">THE FIVE</h1>
+            <p class="subtitle">Move your cursor. Watch them blend. Click to enter.</p>
+        </header>
+
+        <div class="mind-labels">
+            <div class="mind-label" data-mind="architect">
+                <span class="mind-name">Architect</span>
+                <span class="mind-hint">Structure</span>
+            </div>
+            <div class="mind-label" data-mind="oracle">
+                <span class="mind-name">Oracle</span>
+                <span class="mind-hint">Wisdom</span>
+            </div>
+            <div class="mind-label" data-mind="critic">
+                <span class="mind-name">Critic</span>
+                <span class="mind-hint">Truth</span>
+            </div>
+            <div class="mind-label" data-mind="creator">
+                <span class="mind-name">Creator</span>
+                <span class="mind-hint">Innovation</span>
+            </div>
+            <div class="mind-label" data-mind="guardian">
+                <span class="mind-name">Guardian</span>
+                <span class="mind-hint">Safety</span>
+            </div>
+        </div>
+
+        <div class="blend-indicator" id="blend-indicator">
+            <span class="blend-text">Current Blend</span>
+            <div class="blend-bars">
+                <div class="blend-bar" data-mind="architect"><span></span></div>
+                <div class="blend-bar" data-mind="oracle"><span></span></div>
+                <div class="blend-bar" data-mind="critic"><span></span></div>
+                <div class="blend-bar" data-mind="creator"><span></span></div>
+                <div class="blend-bar" data-mind="guardian"><span></span></div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <a href="../3-negative/" class="next-link">
+                Next: Negative Space →
+            </a>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

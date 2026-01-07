@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Morning Rituals — Ранкові ритуали</title>
+    <meta name="description" content="Sacred morning routines with golden hour sunrise animation">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-warm: #F5EDE0;
+            --bg-golden: #FFF5E6;
+            --accent-gold: #D4A574;
+            --accent-orange: #E8925C;
+            --text-dark: #3D3530;
+            --text-muted: #8A7A6A;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-warm); color: var(--text-dark); overflow: hidden; }
+        
+        .carousel-container { position: relative; width: 100%; height: 100vh; height: 100dvh; }
+        .carousel-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .carousel-slides { position: relative; width: 100%; height: 100%; z-index: 1; }
+        
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.6s var(--ease-elegant);
+        }
+        .carousel-slide.slide-active { opacity: 1; visibility: visible; }
+        
+        .slide-content { max-width: 600px; text-align: center; }
+        
+        /* Cover */
+        .sun-visual { font-size: 5rem; margin-bottom: 2rem; animation: sunRise 3s ease-out; }
+        @keyframes sunRise { from { transform: translateY(50px); opacity: 0.5; } to { transform: translateY(0); opacity: 1; } }
+        
+        .slide-title { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+        .slide-title span { color: var(--accent-orange); }
+        .slide-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+        
+        /* Cortisol Chart */
+        .cortisol-chart { width: 100%; max-width: 400px; margin: 0 auto 2rem; }
+        .chart-visual { height: 150px; background: linear-gradient(to right, var(--accent-gold) 30%, var(--bg-warm) 70%); border-radius: 12px; position: relative; overflow: hidden; }
+        .chart-curve { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(to top, rgba(232, 146, 92, 0.3), transparent);
+            clip-path: polygon(0 100%, 10% 60%, 30% 20%, 50% 40%, 70% 60%, 100% 80%, 100% 100%);
+        }
+        .chart-label { margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* Elements Grid */
+        .elements-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .element-card {
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            padding: 1.5rem; background: white; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .element-icon { font-size: 2rem; }
+        .element-title { font-size: 1rem; font-weight: 500; }
+        .element-desc { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* Anti-patterns */
+        .antipatterns { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+        .antipattern {
+            display: flex; align-items: center; gap: 1rem; padding: 1rem;
+            background: rgba(232, 146, 92, 0.1); border-radius: 12px;
+        }
+        .antipattern-icon { font-size: 1.5rem; }
+        .antipattern-text { font-size: 1rem; }
+        .antipattern-text s { color: var(--text-muted); }
+        
+        /* Routine Builder */
+        .routine-builder { display: flex; flex-direction: column; gap: 0.75rem; }
+        .routine-item {
+            display: flex; align-items: center; gap: 1rem; padding: 1rem;
+            background: white; border-radius: 12px; cursor: move;
+            border: 2px dashed transparent; transition: all 0.2s;
+        }
+        .routine-item:hover { border-color: var(--accent-gold); }
+        .routine-item.dragging { opacity: 0.5; }
+        .routine-handle { color: var(--text-muted); font-size: 1.25rem; }
+        .routine-content { flex: 1; text-align: left; }
+        .routine-duration { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* CTA */
+        .section-title { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 2rem; }
+        .cta-button {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: var(--accent-orange); color: white;
+            border: none; border-radius: 100px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232, 146, 92, 0.3); }
+        
+        [data-animate] { opacity: 0; transform: translateY(20px); }
+        .slide-active [data-animate] { animation: fadeInUp 0.6s var(--ease-elegant) forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        <div class="carousel-slides">
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide slide-cover">
+                <div class="slide-content">
+                    <div class="sun-visual" data-animate>🌅</div>
+                    <h1 class="slide-title" data-animate>Ранкові<br><span>ритуали</span></h1>
+                    <p class="slide-subtitle" data-animate>Священний час, що визначає весь день</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Science -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Наука ранку</h2>
+                    <div class="cortisol-chart" data-animate>
+                        <div class="chart-visual">
+                            <div class="chart-curve"></div>
+                        </div>
+                        <p class="chart-label">Рівень кортизолу найвищий вранці — використайте це</p>
+                    </div>
+                    <p style="color: var(--text-muted);" data-animate>Перші 90 хвилин після пробудження — найпродуктивніший час дня</p>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Elements -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Чотири стовпи</h2>
+                    <div class="elements-grid" data-animate>
+                        <div class="element-card">
+                            <span class="element-icon">💧</span>
+                            <span class="element-title">Гідратація</span>
+                            <span class="element-desc">Склянка води відразу</span>
+                        </div>
+                        <div class="element-card">
+                            <span class="element-icon">🧘</span>
+                            <span class="element-title">Рух</span>
+                            <span class="element-desc">10 хв розтяжки</span>
+                        </div>
+                        <div class="element-card">
+                            <span class="element-icon">🤫</span>
+                            <span class="element-title">Тиша</span>
+                            <span class="element-desc">Медитація або молитва</span>
+                        </div>
+                        <div class="element-card">
+                            <span class="element-icon">🎯</span>
+                            <span class="element-title">Намір</span>
+                            <span class="element-desc">Головна ціль дня</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Anti-patterns -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Чого уникати</h2>
+                    <div class="antipatterns" data-animate>
+                        <div class="antipattern">
+                            <span class="antipattern-icon">📱</span>
+                            <span class="antipattern-text"><s>Телефон відразу після пробудження</s></span>
+                        </div>
+                        <div class="antipattern">
+                            <span class="antipattern-icon">☕</span>
+                            <span class="antipattern-text"><s>Кава в перші 90 хвилин</s></span>
+                        </div>
+                        <div class="antipattern">
+                            <span class="antipattern-icon">📧</span>
+                            <span class="antipattern-text"><s>Перевірка email натщесерце</s></span>
+                        </div>
+                        <div class="antipattern">
+                            <span class="antipattern-icon">⏰</span>
+                            <span class="antipattern-text"><s>Снуз на будильнику</s></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Routine Builder -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Створіть свій ритуал</h2>
+                    <div class="routine-builder" data-animate>
+                        <div class="routine-item" draggable="true">
+                            <span class="routine-handle">⋮⋮</span>
+                            <div class="routine-content">Склянка води</div>
+                            <span class="routine-duration">1 хв</span>
+                        </div>
+                        <div class="routine-item" draggable="true">
+                            <span class="routine-handle">⋮⋮</span>
+                            <div class="routine-content">Розтяжка</div>
+                            <span class="routine-duration">10 хв</span>
+                        </div>
+                        <div class="routine-item" draggable="true">
+                            <span class="routine-handle">⋮⋮</span>
+                            <div class="routine-content">Медитація</div>
+                            <span class="routine-duration">10 хв</span>
+                        </div>
+                        <div class="routine-item" draggable="true">
+                            <span class="routine-handle">⋮⋮</span>
+                            <div class="routine-content">Журналювання</div>
+                            <span class="routine-duration">5 хв</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted);" data-animate>Перетягніть, щоб змінити порядок</p>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Famous Routines -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Ранки видатних</h2>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;" data-animate>
+                        <blockquote style="font-family: var(--font-display); font-size: 1.25rem; font-style: italic; padding-left: 1rem; border-left: 3px solid var(--accent-gold);">
+                            "Я прокидаюсь о 4:30. Перша година — для мене."
+                            <cite style="display: block; margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: normal;">— Tim Cook, CEO Apple</cite>
+                        </blockquote>
+                        <blockquote style="font-family: var(--font-display); font-size: 1.25rem; font-style: italic; padding-left: 1rem; border-left: 3px solid var(--accent-gold);">
+                            "Ранок — це час, коли я інвестую в себе."
+                            <cite style="display: block; margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: normal;">— Oprah Winfrey</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 7: CTA -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;" data-animate>🌄</div>
+                    <h2 class="section-title" data-animate>7-денний челендж</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;" data-animate>Спробуйте новий ранковий ритуал протягом тижня</p>
+                    <button class="cta-button" data-animate>
+                        Почати челендж
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/sunrise.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const sunriseCanvas = new SunriseCanvas(canvas);
+            
+            const carousel = new CarouselEngine('#carousel', {
+                autoPlay: false, loop: true, transition: 'fade', transitionDuration: 600, haptic: true
+            });
+            
+            carousel.setCanvasBackground(sunriseCanvas);
+            
+            // Simple drag and drop for routine items
+            const items = document.querySelectorAll('.routine-item');
+            let draggedItem = null;
+            
+            items.forEach(item => {
+                item.addEventListener('dragstart', () => {
+                    draggedItem = item;
+                    item.classList.add('dragging');
+                });
+                
+                item.addEventListener('dragend', () => {
+                    item.classList.remove('dragging');
+                    draggedItem = null;
+                });
+                
+                item.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    if (draggedItem && draggedItem !== item) {
+                        const builder = item.parentNode;
+                        const items = [...builder.children];
+                        const draggedIdx = items.indexOf(draggedItem);
+                        const targetIdx = items.indexOf(item);
+                        
+                        if (draggedIdx < targetIdx) {
+                            builder.insertBefore(draggedItem, item.nextSibling);
+                        } else {
+                            builder.insertBefore(draggedItem, item);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

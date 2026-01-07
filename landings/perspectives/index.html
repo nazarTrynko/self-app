@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERSPECTIVES — Five Ways of Seeing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --threshold-color: #1a1a1a;
+            --five-gradient: linear-gradient(90deg, #1e3a5f, #c9a227, #8b1e3f, #5c3d7a, #2d4a3e);
+            --negative-color: #fafafa;
+            --chronos-color: #0a0a0f;
+            --loop-color: #141414;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        header {
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            letter-spacing: 0.02em;
+        }
+
+        .back-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        main {
+            padding: 2rem 4rem 6rem;
+        }
+
+        .intro {
+            max-width: 700px;
+            margin-bottom: 5rem;
+        }
+
+        .intro h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: #888;
+            line-height: 1.7;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            position: relative;
+            aspect-ratio: 4/3;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-bg {
+            position: absolute;
+            inset: 0;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .card:hover .card-bg {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            position: absolute;
+            inset: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 2;
+        }
+
+        .card-number {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+        }
+
+        .card-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* Card 1: Threshold */
+        .card-threshold .card-bg {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0a0a0a 100%);
+        }
+
+        .card-threshold .card-title {
+            color: #fff;
+        }
+
+        .card-threshold::before {
+            content: 'THRESHOLD';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Instrument Serif', serif;
+            font-size: 3rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.03);
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Card 2: The Five */
+        .card-five .card-bg {
+            background: var(--five-gradient);
+        }
+
+        .card-five .card-content {
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        }
+
+        /* Card 3: Negative */
+        .card-negative .card-bg {
+            background: #fafafa;
+        }
+
+        .card-negative .card-title,
+        .card-negative .card-subtitle,
+        .card-negative .card-number {
+            color: #1a1a1a;
+        }
+
+        .card-negative::before {
+            content: 'What isn\'t there';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: rgba(0,0,0,0.05);
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Card 4: Chronos */
+        .card-chronos .card-bg {
+            background: linear-gradient(135deg, #0a0a15 0%, #0f0f1a 50%, #050510 100%);
+        }
+
+        .card-chronos::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .card-chronos::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background: rgba(255, 0, 255, 0.5);
+            transform: translate(-50%, -100%) rotate(45deg);
+            transform-origin: bottom center;
+            z-index: 1;
+        }
+
+        /* Card 5: Loop */
+        .card-loop .card-bg {
+            background: #141414;
+        }
+
+        .card-loop::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transform: translate(-50%, -50%) rotate(45deg);
+            z-index: 1;
+        }
+
+        .card-loop::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transform: translate(-50%, -50%) rotate(22.5deg);
+            z-index: 1;
+        }
+
+        a.card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @media (max-width: 768px) {
+            header, main {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                aspect-ratio: 16/10;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <header>
+        <div class="logo">Perspectives</div>
+        <a href="../" class="back-link">All Landings</a>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Five Ways of Seeing</h1>
+            <p>Each perspective reveals what others hide. Together, they approach something like understanding. Click to experience.</p>
+        </section>
+
+        <div class="grid">
+            <a href="1-threshold/" class="card card-threshold">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <span class="card-number">01</span>
+                    <h2 class="card-title">The Threshold</h2>
+                    <p class="card-subtitle">The moment before becoming</p>
+                </div>
+            </a>
+
+            <a href="2-the-five/" class="card card-five">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <span class="card-number">02</span>
+                    <h2 class="card-title">The Five</h2>
+                    <p class="card-subtitle">Minds that blend</p>
+                </div>
+            </a>
+
+            <a href="3-negative/" class="card card-negative">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <span class="card-number">03</span>
+                    <h2 class="card-title">Negative Space</h2>
+                    <p class="card-subtitle">What isn't there</p>
+                </div>
+            </a>
+
+            <a href="4-chronos/" class="card card-chronos">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <span class="card-number">04</span>
+                    <h2 class="card-title">Chronos</h2>
+                    <p class="card-subtitle">Time as illusion</p>
+                </div>
+            </a>
+
+            <a href="5-loop/" class="card card-loop">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <span class="card-number">05</span>
+                    <h2 class="card-title">The Loop</h2>
+                    <p class="card-subtitle">Infinite recursion</p>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
+

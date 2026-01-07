@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Mindful Communication — Усвідомлене спілкування</title>
+    <meta name="description" content="Deep listening with sound wave visualization">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-warm: #F8F5F0;
+            --accent-coral: #E8725C;
+            --accent-teal: #6AB6B0;
+            --accent-gold: #D4A574;
+            --text-dark: #2D2A26;
+            --text-muted: #8A8580;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-warm); color: var(--text-dark); overflow: hidden; }
+        
+        .carousel-container { position: relative; width: 100%; height: 100vh; height: 100dvh; }
+        .carousel-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .carousel-slides { position: relative; width: 100%; height: 100%; z-index: 1; }
+        
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.6s var(--ease-elegant);
+        }
+        .carousel-slide.slide-active { opacity: 1; visibility: visible; }
+        
+        .slide-content { max-width: 600px; text-align: center; }
+        
+        /* Cover */
+        .comm-visual { font-size: 5rem; margin-bottom: 2rem; display: flex; justify-content: center; gap: 1rem; }
+        .slide-title { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+        .slide-title span { color: var(--accent-coral); }
+        .slide-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+        
+        /* Comparison */
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .compare-side { padding: 1.5rem; border-radius: 16px; }
+        .compare-side.reactive { background: rgba(232, 114, 92, 0.1); }
+        .compare-side.responsive { background: rgba(106, 182, 176, 0.1); }
+        .compare-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+        .compare-reactive .compare-label { color: var(--accent-coral); }
+        .compare-responsive .compare-label { color: var(--accent-teal); }
+        .compare-list { font-size: 0.95rem; text-align: left; }
+        .compare-list li { margin-bottom: 0.5rem; }
+        
+        /* STOP Technique */
+        .stop-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .stop-card {
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            padding: 1.5rem; background: white; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .stop-letter { font-family: var(--font-display); font-size: 3rem; color: var(--accent-coral); }
+        .stop-word { font-size: 1.1rem; font-weight: 500; }
+        .stop-desc { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* Checklist */
+        .checklist { display: flex; flex-direction: column; gap: 0.75rem; text-align: left; }
+        .checklist-item {
+            display: flex; align-items: center; gap: 1rem; padding: 1rem;
+            background: white; border-radius: 12px;
+        }
+        .checklist-icon { font-size: 1.25rem; }
+        .checklist-text { font-size: 1rem; }
+        
+        /* I-Statements */
+        .statement-example {
+            padding: 1.5rem; background: white; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 1rem;
+        }
+        .statement-wrong { color: var(--accent-coral); text-decoration: line-through; margin-bottom: 1rem; }
+        .statement-right { color: var(--accent-teal); font-weight: 500; }
+        
+        /* Pause Timer */
+        .pause-container { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        .pause-timer {
+            width: 150px; height: 150px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent-gold));
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display); font-size: 3rem; color: white;
+            cursor: pointer; transition: transform 0.3s;
+        }
+        .pause-timer:hover { transform: scale(1.05); }
+        .pause-instruction { font-size: 1rem; color: var(--text-muted); }
+        
+        /* CTA */
+        .section-title { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 2rem; }
+        .cta-button {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: var(--accent-coral); color: white;
+            border: none; border-radius: 100px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232, 114, 92, 0.3); }
+        
+        [data-animate] { opacity: 0; transform: translateY(20px); }
+        .slide-active [data-animate] { animation: fadeInUp 0.6s var(--ease-elegant) forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        <div class="carousel-slides">
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div class="comm-visual" data-animate>👂 🗣️</div>
+                    <h1 class="slide-title" data-animate>Усвідомлене<br><span>спілкування</span></h1>
+                    <p class="slide-subtitle" data-animate>Мистецтво слухати і бути почутим</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Reactive vs Responsive -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Два типи реакції</h2>
+                    <div class="comparison" data-animate>
+                        <div class="compare-side reactive">
+                            <p class="compare-label">Реактивний</p>
+                            <ul class="compare-list">
+                                <li>Миттєва відповідь</li>
+                                <li>Емоційна реакція</li>
+                                <li>Захист і напад</li>
+                            </ul>
+                        </div>
+                        <div class="compare-side responsive">
+                            <p class="compare-label">Відповідальний</p>
+                            <ul class="compare-list">
+                                <li>Пауза перед відповіддю</li>
+                                <li>Усвідомлений вибір</li>
+                                <li>Емпатія і розуміння</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: STOP Technique -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Техніка СТОП</h2>
+                    <div class="stop-grid" data-animate>
+                        <div class="stop-card">
+                            <span class="stop-letter">С</span>
+                            <span class="stop-word">Стоп</span>
+                            <span class="stop-desc">Зупиніться</span>
+                        </div>
+                        <div class="stop-card">
+                            <span class="stop-letter">Т</span>
+                            <span class="stop-word">Тіло</span>
+                            <span class="stop-desc">Відчуйте тіло</span>
+                        </div>
+                        <div class="stop-card">
+                            <span class="stop-letter">О</span>
+                            <span class="stop-word">Огляд</span>
+                            <span class="stop-desc">Спостерігайте</span>
+                        </div>
+                        <div class="stop-card">
+                            <span class="stop-letter">П</span>
+                            <span class="stop-word">Продовжуйте</span>
+                            <span class="stop-desc">Усвідомлено</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Active Listening -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Активне слухання</h2>
+                    <div class="checklist" data-animate>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">👀</span>
+                            <span class="checklist-text">Зоровий контакт</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">📵</span>
+                            <span class="checklist-text">Прибрати телефон</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🤔</span>
+                            <span class="checklist-text">Уточнюючі питання</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🔄</span>
+                            <span class="checklist-text">Перефразування</span>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">⏸️</span>
+                            <span class="checklist-text">Не перебивати</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: I-Statements -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>"Я"-висловлювання</h2>
+                    <div class="statement-example" data-animate>
+                        <p class="statement-wrong">"Ти ніколи мене не слухаєш!"</p>
+                        <p class="statement-right">"Я відчуваю себе непочутим, коли..."</p>
+                    </div>
+                    <div class="statement-example" data-animate>
+                        <p class="statement-wrong">"Ти завжди запізнюєшся!"</p>
+                        <p class="statement-right">"Мені важливо починати вчасно, тому що..."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Pause Practice -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Практика паузи</h2>
+                    <div class="pause-container" data-animate>
+                        <div class="pause-timer" id="pauseTimer">3</div>
+                        <p class="pause-instruction">Натисніть, щоб почати 3-секундну паузу перед відповіддю</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 7: CTA -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;" data-animate>💬</div>
+                    <h2 class="section-title" data-animate>Спілкуйтесь краще</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;" data-animate>Запишіться на воркшоп з ненасильницького спілкування</p>
+                    <button class="cta-button" data-animate>
+                        Зареєструватися
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/soundwave.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const soundwaveCanvas = new SoundwaveCanvas(canvas);
+            
+            const carousel = new CarouselEngine('#carousel', {
+                autoPlay: false, loop: true, transition: 'fade', transitionDuration: 600, haptic: true
+            });
+            
+            carousel.setCanvasBackground(soundwaveCanvas);
+            
+            // Pause timer
+            const timer = document.getElementById('pauseTimer');
+            let counting = false;
+            
+            timer.addEventListener('click', () => {
+                if (counting) return;
+                counting = true;
+                let count = 3;
+                timer.textContent = count;
+                
+                const interval = setInterval(() => {
+                    count--;
+                    if (count > 0) {
+                        timer.textContent = count;
+                    } else {
+                        timer.textContent = '✓';
+                        clearInterval(interval);
+                        if ('vibrate' in navigator) navigator.vibrate([100, 50, 100]);
+                        setTimeout(() => {
+                            timer.textContent = '3';
+                            counting = false;
+                        }, 1500);
+                    }
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
+

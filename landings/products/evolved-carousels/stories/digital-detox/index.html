@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Digital Detox — Цифрове очищення</title>
+    <meta name="description" content="Mindful technology relationship with calming water effects">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../src/themes/warm.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../src/shared/navigation.css">
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <!-- Navigation -->
+        <nav class="carousel-nav-top" role="navigation" aria-label="Main navigation">
+            <a href="../../index.html#stories" class="nav-back" aria-label="Back to gallery">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Gallery</span>
+            </a>
+            <a href="../../index.html" class="nav-home" aria-label="Home">Evolved Carousels</a>
+        </nav>
+        <a href="#carousel" class="skip-link">Skip to carousel</a>
+        
+        <!-- Canvas Background -->
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        
+        <!-- Slides -->
+        <div class="carousel-slides">
+            
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide slide-cover">
+                <div class="slide-content">
+                    <div class="phone-visual" data-animate="scale">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <span class="phone-emoji">📱</span>
+                            </div>
+                        </div>
+                        <div class="water-ripple"></div>
+                    </div>
+                    <h1 class="slide-title" data-animate>
+                        Цифрове<br><span>очищення</span>
+                    </h1>
+                    <p class="slide-subtitle" data-animate>
+                        Здорові стосунки з технологіями
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Problem - Screen Time -->
+            <div class="carousel-slide slide-problem">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Скільки часу ви проводите?</h2>
+                    <div class="screen-time-calc" data-animate>
+                        <div class="time-display">
+                            <span class="time-number" id="screenTimeHours">7</span>
+                            <span class="time-label">годин/день</span>
+                        </div>
+                        <div class="time-slider-container">
+                            <input type="range" class="time-slider" id="screenTimeSlider" min="1" max="16" value="7">
+                            <div class="time-markers">
+                                <span>1г</span>
+                                <span>8г</span>
+                                <span>16г</span>
+                            </div>
+                        </div>
+                        <div class="time-impact" id="timeImpact">
+                            <span class="impact-yearly">= <strong>2555</strong> годин/рік</span>
+                            <span class="impact-days">= <strong>106</strong> днів</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Signs -->
+            <div class="carousel-slide slide-signs">
+                <div class="slide-content align-left">
+                    <h2 class="section-title" data-animate>Коли потрібен детокс?</h2>
+                    <div class="signs-checklist" data-animate>
+                        <label class="sign-item">
+                            <input type="checkbox" class="sign-checkbox">
+                            <span class="sign-check">✓</span>
+                            <span class="sign-text">Перевіряєте телефон відразу після пробудження</span>
+                        </label>
+                        <label class="sign-item">
+                            <input type="checkbox" class="sign-checkbox">
+                            <span class="sign-check">✓</span>
+                            <span class="sign-text">Відчуваєте тривогу без телефону</span>
+                        </label>
+                        <label class="sign-item">
+                            <input type="checkbox" class="sign-checkbox">
+                            <span class="sign-check">✓</span>
+                            <span class="sign-text">Скролите без мети</span>
+                        </label>
+                        <label class="sign-item">
+                            <input type="checkbox" class="sign-checkbox">
+                            <span class="sign-check">✓</span>
+                            <span class="sign-text">Важко сконцентруватися на задачах</span>
+                        </label>
+                        <label class="sign-item">
+                            <input type="checkbox" class="sign-checkbox">
+                            <span class="sign-check">✓</span>
+                            <span class="sign-text">Порушений сон через екрани</span>
+                        </label>
+                    </div>
+                    <p class="signs-result" id="signsResult" data-animate>
+                        Позначте те, що вам відгукується
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Benefits -->
+            <div class="carousel-slide slide-benefits">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Що дає цифровий детокс?</h2>
+                    <div class="benefits-grid" data-animate>
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🧠</span>
+                            <span class="benefit-title">Ясність думок</span>
+                            <span class="benefit-desc">Менше інформаційного шуму</span>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-icon">😴</span>
+                            <span class="benefit-title">Кращий сон</span>
+                            <span class="benefit-desc">Без синього світла</span>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-icon">👥</span>
+                            <span class="benefit-title">Справжні зв'язки</span>
+                            <span class="benefit-desc">Більше живого спілкування</span>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-icon">⏰</span>
+                            <span class="benefit-title">Більше часу</span>
+                            <span class="benefit-desc">На важливі справи</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: 24-Hour Challenge -->
+            <div class="carousel-slide slide-challenge">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>24-годинний челендж</h2>
+                    <div class="challenge-timer" data-animate>
+                        <div class="timer-circle">
+                            <svg viewBox="0 0 200 200">
+                                <circle class="timer-bg" cx="100" cy="100" r="90"/>
+                                <circle class="timer-progress" id="timerProgress" cx="100" cy="100" r="90"/>
+                            </svg>
+                            <div class="timer-content">
+                                <span class="timer-hours" id="timerHours">24</span>
+                                <span class="timer-label">годин</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="challenge-rules" data-animate>
+                        <p class="rule">📵 Без соцмереж</p>
+                        <p class="rule">📧 Мінімум email</p>
+                        <p class="rule">🌿 Більше природи</p>
+                    </div>
+                    <button class="challenge-btn" id="startChallenge" data-animate>
+                        Почати челендж
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Morning Ritual -->
+            <div class="carousel-slide slide-rituals">
+                <div class="slide-content align-left">
+                    <h2 class="section-title" data-animate>Ранок без телефону</h2>
+                    <div class="ritual-timeline" data-animate>
+                        <div class="ritual-item">
+                            <span class="ritual-time">6:30</span>
+                            <span class="ritual-action">Прокидання без будильника в телефоні</span>
+                        </div>
+                        <div class="ritual-item">
+                            <span class="ritual-time">6:35</span>
+                            <span class="ritual-action">Склянка води, не перевіряючи повідомлень</span>
+                        </div>
+                        <div class="ritual-item">
+                            <span class="ritual-time">6:45</span>
+                            <span class="ritual-action">10 хвилин медитації або розтяжки</span>
+                        </div>
+                        <div class="ritual-item">
+                            <span class="ritual-time">7:00</span>
+                            <span class="ritual-action">Сніданок без екранів</span>
+                        </div>
+                        <div class="ritual-item highlight">
+                            <span class="ritual-time">8:00</span>
+                            <span class="ritual-action">Перша перевірка телефону</span>
+                        </div>
+                    </div>
+                    <p class="ritual-note" data-animate>
+                        Перша година без телефону змінює весь день
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 7: CTA -->
+            <div class="carousel-slide slide-cta">
+                <div class="slide-content">
+                    <div class="nature-visual" data-animate="scale">
+                        <span class="nature-emoji">🌊</span>
+                    </div>
+                    <h2 class="cta-title" data-animate>Готові спробувати?</h2>
+                    <p class="cta-text" data-animate>
+                        Завантажте карточки з офлайн-активностями для вашого детоксу
+                    </p>
+                    <button class="cta-button" data-animate>
+                        Завантажити PDF
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                    </button>
+                    <div class="cta-reminder" data-animate>
+                        <span class="reminder-icon">🔔</span>
+                        <span class="reminder-text">Встановити нагадування про детокс</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Tag -->
+        <div class="carousel-tag">#ЦифровийДетокс</div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/water.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

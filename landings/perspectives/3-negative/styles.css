@@ -1,0 +1,274 @@
+:root {
+    --bg: #fafafa;
+    --text: #1a1a1a;
+    --accent: #000;
+    --reveal-size: 150px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+#reveal-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: multiply;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200;
+}
+
+.nav-back {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.nav-back:hover {
+    opacity: 1;
+}
+
+.nav-number {
+    font-size: 0.85rem;
+    color: var(--text);
+    letter-spacing: 0.1em;
+    opacity: 0.3;
+}
+
+.instruction {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 50;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+.instruction p {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text);
+    opacity: 0.4;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+}
+
+.instruction.hidden {
+    opacity: 0;
+}
+
+main {
+    position: relative;
+    z-index: 10;
+}
+
+.hidden-content {
+    padding: 100vh 0;
+}
+
+.hidden-section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+/* All text starts invisible (white on white) */
+.hidden-title,
+.hidden-text,
+.hidden-quote,
+.hidden-cite {
+    color: var(--bg);
+    transition: color 0.1s ease;
+    position: relative;
+}
+
+/* These will be revealed by the canvas mask */
+.hidden-title {
+    font-size: clamp(3rem, 12vw, 10rem);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.02em;
+}
+
+.hidden-text {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+.hidden-quote {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-style: italic;
+    max-width: 700px;
+    line-height: 1.4;
+}
+
+.hidden-cite {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    font-style: normal;
+    letter-spacing: 0.1em;
+}
+
+/* Revealed state */
+.revealed {
+    color: var(--text) !important;
+}
+
+.scroll-hint {
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.3;
+    z-index: 50;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-hint span {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.scroll-hint svg {
+    width: 20px;
+    height: 20px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+
+.scroll-hint.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.footer {
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    z-index: 200;
+}
+
+.next-link {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.next-link:hover {
+    opacity: 1;
+}
+
+/* Custom cursor indicator */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.cursor.active {
+    width: 150px;
+    height: 150px;
+    border-color: rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --reveal-size: 100px;
+    }
+
+    .nav {
+        padding: 1.5rem;
+    }
+
+    .hidden-section {
+        padding: 2rem 1.5rem;
+        min-height: 60vh;
+    }
+
+    .footer {
+        right: 1.5rem;
+    }
+
+    body {
+        cursor: auto;
+    }
+
+    /* On mobile, text fades in on scroll instead */
+    .hidden-title,
+    .hidden-text,
+    .hidden-quote,
+    .hidden-cite {
+        color: var(--bg);
+        transition: color 0.8s ease;
+    }
+
+    .hidden-section.in-view .hidden-title,
+    .hidden-section.in-view .hidden-text,
+    .hidden-section.in-view .hidden-quote,
+    .hidden-section.in-view .hidden-cite {
+        color: var(--text);
+    }
+}
+

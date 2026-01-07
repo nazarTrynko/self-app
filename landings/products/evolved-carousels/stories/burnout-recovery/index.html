@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Burnout Recovery — Відновлення після вигорання</title>
+    <meta name="description" content="Phoenix rising from exhaustion with ember particle animation">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #1A1815;
+            --bg-ember: #2A2320;
+            --accent-ember: #FF8C42;
+            --accent-gold: #FFD700;
+            --accent-coral: #E8725C;
+            --text-light: #F5E6D3;
+            --text-muted: #9A8A7A;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-dark); color: var(--text-light); overflow: hidden; }
+        
+        .carousel-container { position: relative; width: 100%; height: 100vh; height: 100dvh; }
+        .carousel-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .carousel-slides { position: relative; width: 100%; height: 100%; z-index: 1; }
+        
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.6s var(--ease-elegant);
+        }
+        .carousel-slide.slide-active { opacity: 1; visibility: visible; }
+        
+        .slide-content { max-width: 600px; text-align: center; }
+        
+        /* Cover */
+        .phoenix-visual { font-size: 5rem; margin-bottom: 2rem; animation: emberGlow 2s ease-in-out infinite; }
+        @keyframes emberGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 140, 66, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.7)); }
+        }
+        
+        .slide-title { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+        .slide-title span { color: var(--accent-ember); }
+        .slide-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+        
+        /* Stages */
+        .stages-list { display: flex; flex-direction: column; gap: 0.75rem; text-align: left; }
+        .stage { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: var(--bg-ember); border-radius: 8px; }
+        .stage-num { font-family: var(--font-display); font-size: 1.25rem; color: var(--accent-ember); min-width: 30px; }
+        .stage-text { font-size: 0.95rem; }
+        
+        /* Quiz */
+        .quiz-container { display: flex; flex-direction: column; gap: 1.5rem; }
+        .quiz-question { font-family: var(--font-display); font-size: 1.25rem; font-style: italic; margin-bottom: 1rem; }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .quiz-option {
+            padding: 1rem; background: var(--bg-ember); border: 2px solid transparent;
+            border-radius: 12px; cursor: pointer; transition: all 0.2s; text-align: left;
+        }
+        .quiz-option:hover { border-color: var(--accent-ember); }
+        .quiz-option.selected { background: rgba(255, 140, 66, 0.2); border-color: var(--accent-ember); }
+        .quiz-result { margin-top: 1.5rem; padding: 1.5rem; background: rgba(255, 140, 66, 0.1); border-radius: 12px; }
+        
+        /* Three R's */
+        .three-rs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .r-card {
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            padding: 1.5rem; background: var(--bg-ember); border-radius: 16px;
+        }
+        .r-letter { font-family: var(--font-display); font-size: 3rem; color: var(--accent-gold); }
+        .r-title { font-size: 1.1rem; font-weight: 500; }
+        .r-desc { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* Boundaries */
+        .boundaries-list { display: flex; flex-direction: column; gap: 1rem; }
+        .boundary { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-ember); border-radius: 12px; }
+        .boundary-icon { font-size: 1.5rem; }
+        .boundary-content { text-align: left; }
+        .boundary-title { font-weight: 500; margin-bottom: 0.25rem; }
+        .boundary-example { font-size: 0.875rem; color: var(--text-muted); }
+        
+        /* CTA */
+        .section-title { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 2rem; }
+        .cta-button {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: linear-gradient(135deg, var(--accent-ember), var(--accent-gold)); color: var(--bg-dark);
+            border: none; border-radius: 100px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255, 140, 66, 0.4); }
+        
+        [data-animate] { opacity: 0; transform: translateY(20px); }
+        .slide-active [data-animate] { animation: fadeInUp 0.6s var(--ease-elegant) forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) { .three-rs { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        <div class="carousel-slides">
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div class="phoenix-visual" data-animate>🔥</div>
+                    <h1 class="slide-title" data-animate>Відновлення після<br><span>вигорання</span></h1>
+                    <p class="slide-subtitle" data-animate>Фенікс завжди відроджується</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Stages -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>12 стадій вигорання</h2>
+                    <div class="stages-list" data-animate>
+                        <div class="stage"><span class="stage-num">1-3</span><span class="stage-text">Надмірна амбіція → Працюємо більше → Ігноруємо потреби</span></div>
+                        <div class="stage"><span class="stage-num">4-6</span><span class="stage-text">Конфлікти → Зміна цінностей → Заперечення проблем</span></div>
+                        <div class="stage"><span class="stage-num">7-9</span><span class="stage-text">Ізоляція → Зміни поведінки → Деперсоналізація</span></div>
+                        <div class="stage"><span class="stage-num">10-12</span><span class="stage-text">Внутрішня порожнеча → Депресія → Колапс</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Quick Assessment -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Швидка діагностика</h2>
+                    <div class="quiz-container" data-animate>
+                        <p class="quiz-question">Як часто ви відчуваєте виснаження наприкінці робочого дня?</p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-score="1">Рідко — я маю енергію</div>
+                            <div class="quiz-option" data-score="2">Іноді — залежить від дня</div>
+                            <div class="quiz-option" data-score="3">Часто — потрібен час на відновлення</div>
+                            <div class="quiz-option" data-score="4">Завжди — я постійно виснажений/а</div>
+                        </div>
+                        <div class="quiz-result" id="quizResult" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Permission -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;" data-animate>🌙</div>
+                    <h2 class="section-title" data-animate>Дозвіл на відпочинок</h2>
+                    <p style="font-family: var(--font-display); font-size: 1.5rem; font-style: italic; margin-bottom: 2rem;" data-animate>
+                        "Відпочинок — це не нагорода за продуктивність.<br>Це необхідність для життя."
+                    </p>
+                    <p style="color: var(--text-muted);" data-animate>Ви не машина. Ви людина.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Three R's -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Три кроки відновлення</h2>
+                    <div class="three-rs" data-animate>
+                        <div class="r-card">
+                            <span class="r-letter">R</span>
+                            <span class="r-title">Rest</span>
+                            <span class="r-desc">Справжній відпочинок без почуття провини</span>
+                        </div>
+                        <div class="r-card">
+                            <span class="r-letter">R</span>
+                            <span class="r-title">Reconnect</span>
+                            <span class="r-desc">Повернення до цінностей та близьких</span>
+                        </div>
+                        <div class="r-card">
+                            <span class="r-letter">R</span>
+                            <span class="r-title">Rebuild</span>
+                            <span class="r-desc">Створення нових, здорових звичок</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Boundaries -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Здорові межі</h2>
+                    <div class="boundaries-list" data-animate>
+                        <div class="boundary">
+                            <span class="boundary-icon">⏰</span>
+                            <div class="boundary-content">
+                                <div class="boundary-title">Часові межі</div>
+                                <div class="boundary-example">"Я не відповідаю на робочі листи після 18:00"</div>
+                            </div>
+                        </div>
+                        <div class="boundary">
+                            <span class="boundary-icon">🙅</span>
+                            <div class="boundary-content">
+                                <div class="boundary-title">Межі завдань</div>
+                                <div class="boundary-example">"Це не входить в мої обов'язки"</div>
+                            </div>
+                        </div>
+                        <div class="boundary">
+                            <span class="boundary-icon">🔋</span>
+                            <div class="boundary-content">
+                                <div class="boundary-title">Енергетичні межі</div>
+                                <div class="boundary-example">"Мені потрібен перерва для відновлення"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 7: Prevention -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Сталий темп</h2>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; text-align: left;" data-animate>
+                        <p style="font-size: 1.1rem;">✦ Регулярні перерви кожні 90 хвилин</p>
+                        <p style="font-size: 1.1rem;">✦ Один повний вихідний на тиждень</p>
+                        <p style="font-size: 1.1rem;">✦ Хобі, не пов'язані з роботою</p>
+                        <p style="font-size: 1.1rem;">✦ Фізична активність 3+ рази на тиждень</p>
+                        <p style="font-size: 1.1rem;">✦ 7-8 годин сну щодня</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 8: CTA -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;" data-animate>🌅</div>
+                    <h2 class="section-title" data-animate>Час для відновлення</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;" data-animate>Запишіться на індивідуальну консультацію з коучем</p>
+                    <button class="cta-button" data-animate>
+                        Записатися
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/ember.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const emberCanvas = new EmberCanvas(canvas);
+            
+            const carousel = new CarouselEngine('#carousel', {
+                autoPlay: false, loop: true, transition: 'fade', transitionDuration: 600, haptic: true
+            });
+            
+            carousel.setCanvasBackground(emberCanvas);
+            
+            // Quiz
+            const options = document.querySelectorAll('.quiz-option');
+            const result = document.getElementById('quizResult');
+            
+            options.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    options.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+                    
+                    const score = parseInt(opt.dataset.score);
+                    const messages = {
+                        1: "Чудово! Ви маєте здорову енергію. Продовжуйте піклуватися про себе.",
+                        2: "Зверніть увагу на дні, коли ви виснажені. Що їх відрізняє?",
+                        3: "Час для профілактики. Розгляньте встановлення чіткіших меж.",
+                        4: "Це серйозний сигнал. Рекомендуємо звернутися до спеціаліста."
+                    };
+                    
+                    result.textContent = messages[score];
+                    result.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

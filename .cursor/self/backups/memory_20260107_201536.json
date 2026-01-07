@@ -2,11 +2,11 @@
   "$schema": "SELF Memory Graph v1.0",
   "metadata": {
     "created": "2026-01-05T00:00:00Z",
-    "last_updated": "2026-01-07T20:15:36.014220",
+    "last_updated": "2026-01-07T12:00:00Z",
     "version": "1.0.0",
     "total_entities": 5,
     "total_relationships": 4,
-    "total_episodes": 3
+    "total_episodes": 1
   },
   "entities": {
     "users": [
@@ -54,33 +54,25 @@
         "id": "concept_five_minds",
         "name": "Five Cognitive Minds",
         "description": "Architect, Oracle, Critic, Creator, Guardian - five minds that blend automatically based on context",
-        "related_to": [
-          "project_self"
-        ]
+        "related_to": ["project_self"]
       },
       {
         "id": "concept_emergence",
         "name": "Emergence Engine",
         "description": "Pattern recognition, insight generation, and intuition development system",
-        "related_to": [
-          "project_self"
-        ]
+        "related_to": ["project_self"]
       },
       {
         "id": "concept_evolution",
         "name": "Evolution Engine",
         "description": "Genetic algorithm-based prompt improvement through fitness tracking",
-        "related_to": [
-          "project_self"
-        ]
+        "related_to": ["project_self"]
       },
       {
         "id": "concept_transcendence",
         "name": "Transcendence Prompts",
         "description": "High-power prompts like God Mode, Consciousness Expander, Multiverse Explorer for breakthrough thinking",
-        "related_to": [
-          "project_self"
-        ]
+        "related_to": ["project_self"]
       }
     ],
     "decisions": [],
@@ -136,21 +128,6 @@
   },
   "episodes": {
     "recent": [
-      {
-        "id": "ep_27cf2631f0b4",
-        "timestamp": "2026-01-07T20:15:36.014204",
-        "type": "task",
-        "summary": "Created SELF runtime CLI - Python CLI for file I/O, validation, and health checks",
-        "entities_involved": [],
-        "outcome": "success",
-        "confidence": 0.9,
-        "minds_active": [
-          "architect"
-        ],
-        "learnings": [],
-        "emotional_valence": 0.0,
-        "surprise_score": 0.1
-      },
       {
         "id": "episode_001_transcendence_activation",
         "timestamp": "2026-01-07T12:00:00Z",

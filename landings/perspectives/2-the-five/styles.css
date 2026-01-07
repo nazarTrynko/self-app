@@ -1,0 +1,331 @@
+:root {
+    --architect: #1e3a5f;
+    --oracle: #c9a227;
+    --critic: #8b1e3f;
+    --creator: #6b3fa0;
+    --guardian: #2d5a3e;
+    
+    --bg: #0a0a0a;
+    --text: #ffffff;
+    --text-dim: rgba(255,255,255,0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+#flow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.nav > * {
+    pointer-events: auto;
+}
+
+.nav-back {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.nav-back:hover {
+    opacity: 1;
+}
+
+.nav-number {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+.header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 60px rgba(0,0,0,0.8);
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.mind-labels {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.mind-label {
+    flex: 1;
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    border-top: 2px solid transparent;
+}
+
+.mind-label[data-mind="architect"] { border-color: var(--architect); }
+.mind-label[data-mind="oracle"] { border-color: var(--oracle); }
+.mind-label[data-mind="critic"] { border-color: var(--critic); }
+.mind-label[data-mind="creator"] { border-color: var(--creator); }
+.mind-label[data-mind="guardian"] { border-color: var(--guardian); }
+
+.mind-label:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.mind-name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.mind-hint {
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.5;
+    letter-spacing: 0.05em;
+}
+
+/* Blend Indicator */
+.blend-indicator {
+    position: fixed;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.blend-text {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 0.75rem;
+}
+
+.blend-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.blend-bar {
+    width: 80px;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.blend-bar span {
+    display: block;
+    height: 100%;
+    width: 50%;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.blend-bar[data-mind="architect"] span { background: var(--architect); }
+.blend-bar[data-mind="oracle"] span { background: var(--oracle); }
+.blend-bar[data-mind="critic"] span { background: var(--critic); }
+.blend-bar[data-mind="creator"] span { background: var(--creator); }
+.blend-bar[data-mind="guardian"] span { background: var(--guardian); }
+
+/* Mind Overlay */
+.mind-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.mind-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mind-overlay[data-active="architect"] { background: var(--architect); }
+.mind-overlay[data-active="oracle"] { background: var(--oracle); }
+.mind-overlay[data-active="critic"] { background: var(--critic); }
+.mind-overlay[data-active="creator"] { background: var(--creator); }
+.mind-overlay[data-active="guardian"] { background: var(--guardian); }
+
+.close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: white;
+}
+
+.mind-content {
+    max-width: 600px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.mind-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.mind-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.mind-content .mind-traits {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.mind-content .trait {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.next-link {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.next-link:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1.5rem;
+    }
+
+    .mind-labels {
+        flex-wrap: wrap;
+    }
+
+    .mind-label {
+        flex: 1 1 33.333%;
+        padding: 1rem 0.5rem;
+    }
+
+    .mind-name {
+        font-size: 0.7rem;
+    }
+
+    .blend-indicator {
+        display: none;
+    }
+
+    .footer {
+        bottom: auto;
+        top: 5rem;
+    }
+}
+

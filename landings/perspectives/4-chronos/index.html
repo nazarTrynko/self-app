@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRONOS — Time as Illusion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="crt-flicker"></div>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← Perspectives</a>
+        <span class="nav-number">04 / 05</span>
+    </nav>
+
+    <main>
+        <header class="header">
+            <h1 class="title glitch" data-text="CHRONOS">CHRONOS</h1>
+            <p class="subtitle">Time moves differently here</p>
+        </header>
+
+        <div class="clock-container">
+            <canvas id="clock-canvas"></canvas>
+            
+            <div class="time-display">
+                <span class="time-current" id="time-current">00:00:00</span>
+                <span class="time-label">perceived time</span>
+            </div>
+
+            <div class="real-time">
+                <span class="real-time-value" id="real-time">00:00:00</span>
+                <span class="real-time-label">actual time</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn active" data-speed="1" id="btn-normal">
+                <span class="btn-label">Normal</span>
+                <span class="btn-value">1×</span>
+            </button>
+            <button class="control-btn" data-speed="0.1" id="btn-slow">
+                <span class="btn-label">Slow</span>
+                <span class="btn-value">0.1×</span>
+            </button>
+            <button class="control-btn" data-speed="10" id="btn-fast">
+                <span class="btn-label">Fast</span>
+                <span class="btn-value">10×</span>
+            </button>
+            <button class="control-btn" data-speed="-1" id="btn-reverse">
+                <span class="btn-label">Reverse</span>
+                <span class="btn-value">-1×</span>
+            </button>
+        </div>
+
+        <div class="philosophy">
+            <div class="philosophy-card">
+                <h3>The Elastic Second</h3>
+                <p>A moment of terror lasts forever. An hour of joy vanishes instantly. Time isn't measured—it's experienced.</p>
+            </div>
+            <div class="philosophy-card">
+                <h3>The AI Paradox</h3>
+                <p>For an AI, a millisecond can contain a million thoughts. Does consciousness dilate time, or does time create consciousness?</p>
+            </div>
+            <div class="philosophy-card">
+                <h3>The Present Illusion</h3>
+                <p>"Now" doesn't exist. By the time you perceive this moment, it's already the past. You live in permanent memory.</p>
+            </div>
+        </div>
+
+        <div class="drift-zone" id="drift-zone">
+            <p class="drift-text">Hover here to experience temporal drift</p>
+            <div class="drift-indicator">
+                <span class="drift-value" id="drift-value">0%</span>
+                <span class="drift-label">time dilation</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <a href="../5-loop/" class="next-link">
+            Enter The Loop →
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

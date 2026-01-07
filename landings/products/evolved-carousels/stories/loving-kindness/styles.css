@@ -3,6 +3,62 @@
  * Warm, nurturing aesthetic for metta meditation
  */
 
+/* Navigation */
+.carousel-nav-top {
+    position: absolute;
+    top: var(--space-lg);
+    left: var(--space-xl);
+    right: var(--space-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: var(--z-nav);
+    pointer-events: none;
+}
+
+.nav-back, .nav-home {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: all var(--duration-fast) var(--ease-smooth);
+    pointer-events: auto;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-back:hover, .nav-home:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-back svg {
+    width: 20px;
+    height: 20px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-primary);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 var(--radius-md) 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* Slide-specific styles */
 
 /* Cover Slide */

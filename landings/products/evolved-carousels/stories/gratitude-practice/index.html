@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Gratitude Practice — Практика вдячності</title>
+    <meta name="description" content="Rewire your brain for appreciation with falling leaves animation">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-warm: #F5EDE0;
+            --bg-golden: #FCF5E8;
+            --accent-gold: #D4A03E;
+            --accent-copper: #B86B3D;
+            --accent-amber: #E8A54B;
+            --text-dark: #3D3530;
+            --text-muted: #8A7A6A;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-warm); color: var(--text-dark); overflow: hidden; }
+        
+        .carousel-container { position: relative; width: 100%; height: 100vh; height: 100dvh; }
+        .carousel-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .carousel-slides { position: relative; width: 100%; height: 100%; z-index: 1; }
+        
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.6s var(--ease-elegant);
+        }
+        .carousel-slide.slide-active { opacity: 1; visibility: visible; }
+        
+        .slide-content { max-width: 600px; text-align: center; }
+        
+        /* Cover */
+        .leaf-visual { font-size: 5rem; margin-bottom: 2rem; animation: leafFloat 3s ease-in-out infinite; }
+        @keyframes leafFloat { 0%, 100% { transform: rotate(-5deg) translateY(0); } 50% { transform: rotate(5deg) translateY(-10px); } }
+        
+        .slide-title { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+        .slide-title span { color: var(--accent-gold); }
+        .slide-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+        
+        /* Science */
+        .brain-fact { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .brain-emoji { font-size: 4rem; }
+        .brain-stat { font-family: var(--font-display); font-size: 3rem; color: var(--accent-gold); }
+        .brain-desc { font-size: 1.1rem; color: var(--text-muted); max-width: 400px; }
+        
+        /* Daily Ritual */
+        .ritual-steps { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+        .ritual-step {
+            display: flex; align-items: center; gap: 1.5rem; padding: 1rem;
+            background: white; border-radius: 12px;
+        }
+        .ritual-num { font-family: var(--font-display); font-size: 2rem; color: var(--accent-gold); min-width: 40px; }
+        .ritual-text { font-size: 1rem; }
+        
+        /* Depth Levels */
+        .depth-levels { display: flex; flex-direction: column; gap: 1rem; }
+        .depth-level {
+            padding: 1.25rem; border-radius: 12px; text-align: left;
+            border-left: 4px solid var(--accent-gold);
+        }
+        .depth-level:nth-child(1) { background: rgba(212, 160, 62, 0.1); }
+        .depth-level:nth-child(2) { background: rgba(212, 160, 62, 0.15); }
+        .depth-level:nth-child(3) { background: rgba(212, 160, 62, 0.2); }
+        .depth-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-copper); margin-bottom: 0.5rem; }
+        .depth-example { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; }
+        
+        /* Interactive Writing */
+        .gratitude-form { display: flex; flex-direction: column; gap: 1rem; }
+        .gratitude-input {
+            width: 100%; padding: 1rem; border: 2px solid rgba(212, 160, 62, 0.3);
+            border-radius: 12px; font-family: var(--font-body); font-size: 1rem;
+            background: white; transition: border-color 0.3s;
+        }
+        .gratitude-input:focus { outline: none; border-color: var(--accent-gold); }
+        .gratitude-input::placeholder { color: var(--text-muted); }
+        .gratitude-submit {
+            padding: 1rem; background: var(--accent-gold); color: white;
+            border: none; border-radius: 100px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+        }
+        .gratitude-submit:hover { background: var(--accent-copper); transform: translateY(-2px); }
+        .gratitude-result { margin-top: 1rem; padding: 1rem; background: rgba(212, 160, 62, 0.1); border-radius: 12px; display: none; }
+        
+        /* CTA */
+        .section-title { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 2rem; }
+        .cta-button {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: var(--accent-gold); color: white;
+            border: none; border-radius: 100px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.3s var(--ease-elegant);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212, 160, 62, 0.3); }
+        
+        [data-animate] { opacity: 0; transform: translateY(20px); }
+        .slide-active [data-animate] { animation: fadeInUp 0.6s var(--ease-elegant) forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <canvas class="carousel-canvas" id="canvas"></canvas>
+        <div class="carousel-slides">
+            <!-- Slide 1: Cover -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div class="leaf-visual" data-animate>🍂</div>
+                    <h1 class="slide-title" data-animate>Практика<br><span>вдячності</span></h1>
+                    <p class="slide-subtitle" data-animate>Щоденний урожай щастя</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Science -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Наука вдячності</h2>
+                    <div class="brain-fact" data-animate>
+                        <span class="brain-emoji">🧠</span>
+                        <span class="brain-stat">21 день</span>
+                        <p class="brain-desc">Регулярна практика вдячності протягом 21 дня змінює нейронні шляхи мозку, роблячи позитивне мислення звичним.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Daily Ritual -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Щоденний ритуал</h2>
+                    <div class="ritual-steps" data-animate>
+                        <div class="ritual-step">
+                            <span class="ritual-num">1</span>
+                            <span class="ritual-text">Виберіть час — ранок або вечір</span>
+                        </div>
+                        <div class="ritual-step">
+                            <span class="ritual-num">2</span>
+                            <span class="ritual-text">Знайдіть тихе місце без відволікань</span>
+                        </div>
+                        <div class="ritual-step">
+                            <span class="ritual-num">3</span>
+                            <span class="ritual-text">Запишіть 3 речі, за які ви вдячні</span>
+                        </div>
+                        <div class="ritual-step">
+                            <span class="ritual-num">4</span>
+                            <span class="ritual-text">Відчуйте вдячність у тілі</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Depth Levels -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Рівні глибини</h2>
+                    <div class="depth-levels" data-animate>
+                        <div class="depth-level">
+                            <p class="depth-label">Поверхневий</p>
+                            <p class="depth-example">"Дякую за каву вранці"</p>
+                        </div>
+                        <div class="depth-level">
+                            <p class="depth-label">Глибокий</p>
+                            <p class="depth-example">"Дякую за підтримку друга у важкий момент"</p>
+                        </div>
+                        <div class="depth-level">
+                            <p class="depth-label">Трансцендентний</p>
+                            <p class="depth-example">"Дякую за можливість бути живим і відчувати"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Interactive -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <h2 class="section-title" data-animate>Ваші 3 сьогодні</h2>
+                    <div class="gratitude-form" data-animate>
+                        <input type="text" class="gratitude-input" placeholder="1. Я вдячний/а за..." id="gratitude1">
+                        <input type="text" class="gratitude-input" placeholder="2. Я вдячний/а за..." id="gratitude2">
+                        <input type="text" class="gratitude-input" placeholder="3. Я вдячний/а за..." id="gratitude3">
+                        <button class="gratitude-submit" id="saveGratitude">Зберегти</button>
+                        <div class="gratitude-result" id="gratitudeResult"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: CTA -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;" data-animate>📔</div>
+                    <h2 class="section-title" data-animate>Почніть сьогодні</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;" data-animate>Завантажте наш щоденник вдячності у PDF форматі</p>
+                    <button class="cta-button" data-animate>
+                        Завантажити безкоштовно
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../src/core/canvas-backgrounds/base.js"></script>
+    <script src="../../src/core/canvas-backgrounds/leaves.js"></script>
+    <script src="../../src/core/carousel-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const leavesCanvas = new LeavesCanvas(canvas);
+            
+            const carousel = new CarouselEngine('#carousel', {
+                autoPlay: false, loop: true, transition: 'fade', transitionDuration: 600, haptic: true
+            });
+            
+            carousel.setCanvasBackground(leavesCanvas);
+            
+            // Save gratitude
+            const saveBtn = document.getElementById('saveGratitude');
+            const result = document.getElementById('gratitudeResult');
+            
+            saveBtn.addEventListener('click', () => {
+                const gratitudes = [
+                    document.getElementById('gratitude1').value,
+                    document.getElementById('gratitude2').value,
+                    document.getElementById('gratitude3').value
+                ].filter(g => g.trim());
+                
+                if (gratitudes.length > 0) {
+                    // Save to localStorage
+                    const today = new Date().toISOString().split('T')[0];
+                    const saved = JSON.parse(localStorage.getItem('gratitudes') || '{}');
+                    saved[today] = gratitudes;
+                    localStorage.setItem('gratitudes', JSON.stringify(saved));
+                    
+                    result.textContent = `✨ Збережено ${gratitudes.length} подяки! Повертайтесь завтра.`;
+                    result.style.display = 'block';
+                    
+                    if ('vibrate' in navigator) navigator.vibrate(100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
