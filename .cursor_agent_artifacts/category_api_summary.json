@@ -1,0 +1,642 @@
+{
+  "Camera & Vision": {
+    "idea_count": 8,
+    "top_apis": [
+      [
+        "Camera",
+        8
+      ],
+      [
+        "File System",
+        7
+      ],
+      [
+        "Clipboard",
+        3
+      ],
+      [
+        "On-device ML",
+        3
+      ],
+      [
+        "Share API",
+        2
+      ],
+      [
+        "Biometrics",
+        2
+      ],
+      [
+        "On-device ML (TensorFlow Lite/Core ML)",
+        1
+      ],
+      [
+        "AR",
+        1
+      ],
+      [
+        "ARKit/ARCore",
+        1
+      ]
+    ]
+  },
+  "Sensor Tools": {
+    "idea_count": 8,
+    "top_apis": [
+      [
+        "Accelerometer",
+        7
+      ],
+      [
+        "Gyroscope",
+        6
+      ],
+      [
+        "File System",
+        4
+      ],
+      [
+        "Magnetometer",
+        3
+      ],
+      [
+        "Haptics",
+        2
+      ],
+      [
+        "Camera",
+        2
+      ],
+      [
+        "Camera (AR)",
+        1
+      ],
+      [
+        "Microphone",
+        1
+      ],
+      [
+        "GPS (optional)",
+        1
+      ],
+      [
+        "Barometer",
+        1
+      ]
+    ]
+  },
+  "Audio & Sound": {
+    "idea_count": 7,
+    "top_apis": [
+      [
+        "File System",
+        7
+      ],
+      [
+        "Microphone",
+        6
+      ],
+      [
+        "Web Audio API",
+        6
+      ],
+      [
+        "Notifications",
+        2
+      ],
+      [
+        "On-device ML",
+        2
+      ],
+      [
+        "Biometrics",
+        1
+      ],
+      [
+        "Haptics",
+        1
+      ],
+      [
+        "Geolocation",
+        1
+      ],
+      [
+        "Background Audio",
+        1
+      ]
+    ]
+  },
+  "Productivity": {
+    "idea_count": 7,
+    "top_apis": [
+      [
+        "File System",
+        7
+      ],
+      [
+        "Notifications",
+        6
+      ],
+      [
+        "Haptics",
+        3
+      ],
+      [
+        "Calendar",
+        3
+      ],
+      [
+        "Canvas API",
+        1
+      ]
+    ]
+  },
+  "Professional/Trade": {
+    "idea_count": 7,
+    "top_apis": [
+      [
+        "File System",
+        7
+      ],
+      [
+        "Camera",
+        6
+      ],
+      [
+        "GPS",
+        3
+      ],
+      [
+        "Contacts",
+        2
+      ],
+      [
+        "Signature Pad",
+        2
+      ],
+      [
+        "Compass",
+        1
+      ],
+      [
+        "Haptics",
+        1
+      ],
+      [
+        "Geolocation",
+        1
+      ],
+      [
+        "Notifications",
+        1
+      ]
+    ]
+  },
+  "Creative Tools": {
+    "idea_count": 6,
+    "top_apis": [
+      [
+        "File System",
+        6
+      ],
+      [
+        "Canvas API",
+        3
+      ],
+      [
+        "Camera",
+        2
+      ],
+      [
+        "Clipboard",
+        2
+      ],
+      [
+        "Touch Events",
+        1
+      ],
+      [
+        "Web Audio API",
+        1
+      ],
+      [
+        "MIDI",
+        1
+      ]
+    ]
+  },
+  "Health & Body": {
+    "idea_count": 6,
+    "top_apis": [
+      [
+        "File System",
+        5
+      ],
+      [
+        "Notifications",
+        5
+      ],
+      [
+        "Haptics",
+        3
+      ],
+      [
+        "Web Audio API",
+        2
+      ],
+      [
+        "Accelerometer",
+        2
+      ],
+      [
+        "Camera",
+        1
+      ],
+      [
+        "HealthKit",
+        1
+      ],
+      [
+        "Gyroscope",
+        1
+      ],
+      [
+        "Camera (ambient light)",
+        1
+      ],
+      [
+        "Microphone",
+        1
+      ]
+    ]
+  },
+  "Offline AI/ML": {
+    "idea_count": 6,
+    "top_apis": [
+      [
+        "On-device ML",
+        6
+      ],
+      [
+        "Camera",
+        5
+      ],
+      [
+        "File System",
+        5
+      ],
+      [
+        "Clipboard",
+        2
+      ],
+      [
+        "Microphone",
+        1
+      ],
+      [
+        "Share API",
+        1
+      ]
+    ]
+  },
+  "Education": {
+    "idea_count": 5,
+    "top_apis": [
+      [
+        "File System",
+        5
+      ],
+      [
+        "Notifications",
+        2
+      ],
+      [
+        "TTS",
+        2
+      ],
+      [
+        "Haptics",
+        1
+      ],
+      [
+        "Camera",
+        1
+      ],
+      [
+        "Calendar",
+        1
+      ]
+    ]
+  },
+  "Finance": {
+    "idea_count": 5,
+    "top_apis": [
+      [
+        "File System",
+        5
+      ],
+      [
+        "Notifications",
+        2
+      ],
+      [
+        "Camera",
+        1
+      ]
+    ]
+  },
+  "Gaming": {
+    "idea_count": 5,
+    "top_apis": [
+      [
+        "File System",
+        5
+      ],
+      [
+        "Notifications",
+        1
+      ],
+      [
+        "Haptics",
+        1
+      ],
+      [
+        "Accelerometer",
+        1
+      ]
+    ]
+  },
+  "Personal Data Vaults": {
+    "idea_count": 5,
+    "top_apis": [
+      [
+        "Biometrics",
+        5
+      ],
+      [
+        "Web Crypto API",
+        5
+      ],
+      [
+        "File System",
+        5
+      ],
+      [
+        "Camera",
+        3
+      ],
+      [
+        "Clipboard",
+        1
+      ],
+      [
+        "Contacts",
+        1
+      ],
+      [
+        "Share API",
+        1
+      ]
+    ]
+  },
+  "Communication": {
+    "idea_count": 4,
+    "top_apis": [
+      [
+        "File System",
+        4
+      ],
+      [
+        "Contacts",
+        2
+      ],
+      [
+        "Bluetooth",
+        1
+      ],
+      [
+        "WiFi Direct",
+        1
+      ],
+      [
+        "Biometrics",
+        1
+      ],
+      [
+        "Notifications",
+        1
+      ],
+      [
+        "Clipboard",
+        1
+      ],
+      [
+        "Share API",
+        1
+      ]
+    ]
+  },
+  "Accessibility": {
+    "idea_count": 3,
+    "top_apis": [
+      [
+        "Camera",
+        2
+      ],
+      [
+        "Flashlight",
+        1
+      ],
+      [
+        "Image Processing",
+        1
+      ],
+      [
+        "Speech Recognition",
+        1
+      ],
+      [
+        "Audio Recording",
+        1
+      ],
+      [
+        "Color Analysis",
+        1
+      ],
+      [
+        "AR",
+        1
+      ]
+    ]
+  },
+  "Developer": {
+    "idea_count": 3,
+    "top_apis": [
+      [
+        "Local Processing",
+        2
+      ],
+      [
+        "Share Extension",
+        1
+      ],
+      [
+        "URLSession",
+        1
+      ],
+      [
+        "Local Storage",
+        1
+      ]
+    ]
+  },
+  "Experimental": {
+    "idea_count": 3,
+    "top_apis": [
+      [
+        "Local ML",
+        3
+      ],
+      [
+        "Speech Recognition",
+        1
+      ],
+      [
+        "Storage",
+        1
+      ],
+      [
+        "HealthKit",
+        1
+      ],
+      [
+        "Notifications",
+        1
+      ],
+      [
+        "Screen Time",
+        1
+      ],
+      [
+        "Usage Data",
+        1
+      ]
+    ]
+  },
+  "Home Life": {
+    "idea_count": 3,
+    "top_apis": [
+      [
+        "Local Storage",
+        3
+      ],
+      [
+        "Camera",
+        2
+      ],
+      [
+        "Notifications",
+        2
+      ],
+      [
+        "Barcode Scanner",
+        1
+      ],
+      [
+        "Calendar",
+        1
+      ]
+    ]
+  },
+  "Niche Pro": {
+    "idea_count": 3,
+    "top_apis": [
+      [
+        "Local Storage",
+        1
+      ],
+      [
+        "Calculator",
+        1
+      ],
+      [
+        "Audio Analysis",
+        1
+      ],
+      [
+        "Microphone",
+        1
+      ],
+      [
+        "Camera",
+        1
+      ],
+      [
+        "ARKit",
+        1
+      ],
+      [
+        "Image Processing",
+        1
+      ]
+    ]
+  },
+  "Security": {
+    "idea_count": 3,
+    "top_apis": [
+      [
+        "System Settings",
+        1
+      ],
+      [
+        "App Permissions",
+        1
+      ],
+      [
+        "Bluetooth",
+        1
+      ],
+      [
+        "Sound",
+        1
+      ],
+      [
+        "Local Network",
+        1
+      ],
+      [
+        "Network",
+        1
+      ],
+      [
+        "WiFi Scanning",
+        1
+      ]
+    ]
+  },
+  "Travel": {
+    "idea_count": 2,
+    "top_apis": [
+      [
+        "File System",
+        2
+      ],
+      [
+        "Notifications",
+        1
+      ],
+      [
+        "Camera",
+        1
+      ],
+      [
+        "GPS",
+        1
+      ]
+    ]
+  },
+  "Platforms": {
+    "idea_count": 1,
+    "top_apis": []
+  }
+}

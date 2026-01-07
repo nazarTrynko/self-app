@@ -1,0 +1,1388 @@
+{
+  "total": 100,
+  "records": [
+    {
+      "file_path": "landings/ideas/01-sensor-tools/001-level-pro.md",
+      "name": "Level Pro",
+      "original_id": "001",
+      "category": "Sensor Tools",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "Accelerometer",
+        "Gyroscope",
+        "Camera (AR)",
+        "Haptics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/01-sensor-tools/002-vibration-analyzer.md",
+      "name": "Vibration Analyzer",
+      "original_id": "002",
+      "category": "Sensor Tools",
+      "tier": "Pro ($79)",
+      "offline": "Full",
+      "apis": [
+        "Accelerometer",
+        "Gyroscope",
+        "Microphone",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/01-sensor-tools/003-compass-navigator.md",
+      "name": "Compass Navigator",
+      "original_id": "003",
+      "category": "Sensor Tools",
+      "tier": "Micro ($3)",
+      "offline": "Full",
+      "apis": [
+        "Magnetometer",
+        "Accelerometer",
+        "Gyroscope",
+        "GPS (optional)"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/01-sensor-tools/004-altitude-tracker.md",
+      "name": "Altitude Tracker",
+      "original_id": "004",
+      "category": "Sensor Tools",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Barometer",
+        "GPS",
+        "Accelerometer",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/01-sensor-tools/005-g-force-meter.md",
+      "name": "G-Force Meter",
+      "original_id": "005",
+      "category": "Sensor Tools",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "Accelerometer",
+        "Gyroscope",
+        "Camera",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/01-sensor-tools/006-seismograph.md",
+      "name": "Pocket Seismograph",
+      "original_id": "006",
+      "category": "Sensor Tools",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Accelerometer",
+        "Gyroscope",
+        "Notifications",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/01-sensor-tools/007-metal-detector.md",
+      "name": "Metal Finder",
+      "original_id": "007",
+      "category": "Sensor Tools",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "Magnetometer",
+        "Haptics",
+        "Audio"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/01-sensor-tools/008-motion-capture.md",
+      "name": "Motion Capture Lite",
+      "original_id": "008",
+      "category": "Sensor Tools",
+      "tier": "Pro ($49)",
+      "offline": "Full",
+      "apis": [
+        "Accelerometer",
+        "Gyroscope",
+        "Magnetometer",
+        "Camera",
+        "Bluetooth"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/02-camera-vision/009-document-scanner.md",
+      "name": "DocScan Pro",
+      "original_id": "009",
+      "category": "Camera & Vision",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "File System",
+        "Share API",
+        "Biometrics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/02-camera-vision/010-color-picker.md",
+      "name": "Color Capture",
+      "original_id": "010",
+      "category": "Camera & Vision",
+      "tier": "Micro ($3)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "Clipboard",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/02-camera-vision/011-plant-identifier.md",
+      "name": "Plant ID Offline",
+      "original_id": "011",
+      "category": "Camera & Vision",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "On-device ML (TensorFlow Lite/Core ML)",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/02-camera-vision/012-food-scale.md",
+      "name": "Food Scale AI",
+      "original_id": "012",
+      "category": "Camera & Vision",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "On-device ML",
+        "AR"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/02-camera-vision/013-qr-toolkit.md",
+      "name": "QR Toolkit Pro",
+      "original_id": "013",
+      "category": "Camera & Vision",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "Clipboard",
+        "Share API",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/02-camera-vision/014-handwriting-ocr.md",
+      "name": "Handwriting Digitizer",
+      "original_id": "014",
+      "category": "Camera & Vision",
+      "tier": "Premium ($20)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "On-device ML",
+        "File System",
+        "Clipboard"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/02-camera-vision/015-ar-measure.md",
+      "name": "AR Measure Pro",
+      "original_id": "015",
+      "category": "Camera & Vision",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "ARKit/ARCore",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/02-camera-vision/016-face-age-progress.md",
+      "name": "FaceVault Time",
+      "original_id": "016",
+      "category": "Camera & Vision",
+      "tier": "Pro ($25)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "On-device ML",
+        "File System",
+        "Biometrics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/03-audio-sound/017-sound-meter.md",
+      "name": "Sound Meter Pro",
+      "original_id": "017",
+      "category": "Audio & Sound",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "Microphone",
+        "Web Audio API",
+        "File System",
+        "Notifications"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/03-audio-sound/018-voice-recorder-pro.md",
+      "name": "Voice Vault",
+      "original_id": "018",
+      "category": "Audio & Sound",
+      "tier": "Pro ($35)",
+      "offline": "Full",
+      "apis": [
+        "Microphone",
+        "Web Audio API",
+        "On-device ML",
+        "File System",
+        "Biometrics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/03-audio-sound/019-tuner-metronome.md",
+      "name": "Music Toolkit",
+      "original_id": "019",
+      "category": "Audio & Sound",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Microphone",
+        "Web Audio API",
+        "Haptics",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/03-audio-sound/020-audio-spectrum.md",
+      "name": "Audio Analyzer",
+      "original_id": "020",
+      "category": "Audio & Sound",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "Microphone",
+        "Web Audio API",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/03-audio-sound/021-bird-identifier.md",
+      "name": "Bird Song ID",
+      "original_id": "021",
+      "category": "Audio & Sound",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "Microphone",
+        "On-device ML",
+        "File System",
+        "Geolocation"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/03-audio-sound/022-white-noise.md",
+      "name": "SoundScape Sleep",
+      "original_id": "022",
+      "category": "Audio & Sound",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "Web Audio API",
+        "Background Audio",
+        "Notifications",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/03-audio-sound/023-piano-ear-trainer.md",
+      "name": "Ear Training Pro",
+      "original_id": "023",
+      "category": "Audio & Sound",
+      "tier": "Pro ($25)",
+      "offline": "Full",
+      "apis": [
+        "Web Audio API",
+        "Microphone",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/04-offline-ai/024-offline-translator.md",
+      "name": "Translate Offline",
+      "original_id": "024",
+      "category": "Offline AI/ML",
+      "tier": "Premium ($20)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "Microphone",
+        "On-device ML",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/04-offline-ai/025-writing-assistant.md",
+      "name": "Writer's Mind",
+      "original_id": "025",
+      "category": "Offline AI/ML",
+      "tier": "Pro ($40)",
+      "offline": "Full",
+      "apis": [
+        "On-device ML",
+        "File System",
+        "Clipboard"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/04-offline-ai/026-image-enhancer.md",
+      "name": "Photo Enhance AI",
+      "original_id": "026",
+      "category": "Offline AI/ML",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "On-device ML",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/04-offline-ai/027-object-detector.md",
+      "name": "Object Lens",
+      "original_id": "027",
+      "category": "Offline AI/ML",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "On-device ML",
+        "Clipboard",
+        "Share API"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/04-offline-ai/028-face-blur.md",
+      "name": "Privacy Blur",
+      "original_id": "028",
+      "category": "Offline AI/ML",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "On-device ML",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/04-offline-ai/029-smart-crop.md",
+      "name": "Smart Crop AI",
+      "original_id": "029",
+      "category": "Offline AI/ML",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "On-device ML",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/05-data-vaults/030-password-vault.md",
+      "name": "Local Vault",
+      "original_id": "030",
+      "category": "Personal Data Vaults",
+      "tier": "Premium ($20)",
+      "offline": "Full",
+      "apis": [
+        "Biometrics",
+        "Web Crypto API",
+        "File System",
+        "Clipboard"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/05-data-vaults/031-digital-will.md",
+      "name": "Legacy Vault",
+      "original_id": "031",
+      "category": "Personal Data Vaults",
+      "tier": "Pro ($50)",
+      "offline": "Full",
+      "apis": [
+        "Biometrics",
+        "Web Crypto API",
+        "File System",
+        "Contacts"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/05-data-vaults/032-journal-vault.md",
+      "name": "Private Journal",
+      "original_id": "032",
+      "category": "Personal Data Vaults",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Biometrics",
+        "Web Crypto API",
+        "File System",
+        "Camera"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/05-data-vaults/033-medical-records.md",
+      "name": "Health Record Vault",
+      "original_id": "033",
+      "category": "Personal Data Vaults",
+      "tier": "Pro ($35)",
+      "offline": "Full",
+      "apis": [
+        "Biometrics",
+        "Web Crypto API",
+        "File System",
+        "Camera"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/05-data-vaults/034-document-safe.md",
+      "name": "Document Safe",
+      "original_id": "034",
+      "category": "Personal Data Vaults",
+      "tier": "Micro ($8)",
+      "offline": "Full",
+      "apis": [
+        "Biometrics",
+        "Web Crypto API",
+        "File System",
+        "Camera",
+        "Share API"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/06-health-body/035-heart-rate-monitor.md",
+      "name": "Pulse Check",
+      "original_id": "035",
+      "category": "Health & Body",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "Web Audio API",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/06-health-body/036-breathing-trainer.md",
+      "name": "Breathe Right",
+      "original_id": "036",
+      "category": "Health & Body",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "Web Audio API",
+        "Haptics",
+        "Notifications",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/06-health-body/037-water-tracker.md",
+      "name": "Hydrate",
+      "original_id": "037",
+      "category": "Health & Body",
+      "tier": "Micro ($3)",
+      "offline": "Full",
+      "apis": [
+        "Notifications",
+        "Haptics",
+        "File System",
+        "HealthKit"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/06-health-body/038-posture-coach.md",
+      "name": "Posture Coach",
+      "original_id": "038",
+      "category": "Health & Body",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "Accelerometer",
+        "Gyroscope",
+        "Notifications",
+        "Haptics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/06-health-body/039-vision-break.md",
+      "name": "Eye Care Pro",
+      "original_id": "039",
+      "category": "Health & Body",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "Notifications",
+        "Camera (ambient light)",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/06-health-body/040-sleep-tracker.md",
+      "name": "Sleep Insight",
+      "original_id": "040",
+      "category": "Health & Body",
+      "tier": "Pro ($20)",
+      "offline": "Full",
+      "apis": [
+        "Accelerometer",
+        "Microphone",
+        "Notifications",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/07-productivity/041-pomodoro-pro.md",
+      "name": "Focus Flow",
+      "original_id": "041",
+      "category": "Productivity",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "Notifications",
+        "Haptics",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/07-productivity/042-task-board.md",
+      "name": "Kanban Pocket",
+      "original_id": "042",
+      "category": "Productivity",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Notifications",
+        "Haptics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/07-productivity/043-habit-tracker.md",
+      "name": "Habit Grid",
+      "original_id": "043",
+      "category": "Productivity",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "Notifications",
+        "File System",
+        "Haptics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/07-productivity/044-note-graph.md",
+      "name": "Note Graph",
+      "original_id": "044",
+      "category": "Productivity",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Canvas API"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/07-productivity/045-time-blocker.md",
+      "name": "Time Block",
+      "original_id": "045",
+      "category": "Productivity",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "Calendar",
+        "Notifications",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/07-productivity/046-meeting-prep.md",
+      "name": "Meeting Mind",
+      "original_id": "046",
+      "category": "Productivity",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Calendar",
+        "Notifications"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/07-productivity/047-weekly-review.md",
+      "name": "Weekly Review",
+      "original_id": "047",
+      "category": "Productivity",
+      "tier": "Pro ($20)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Notifications",
+        "Calendar"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/08-creative/048-color-palette.md",
+      "name": "Palette Studio",
+      "original_id": "048",
+      "category": "Creative Tools",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "File System",
+        "Clipboard"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/08-creative/049-vector-sketch.md",
+      "name": "Vector Sketch",
+      "original_id": "049",
+      "category": "Creative Tools",
+      "tier": "Premium ($20)",
+      "offline": "Full",
+      "apis": [
+        "Canvas API",
+        "File System",
+        "Touch Events"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/08-creative/050-font-preview.md",
+      "name": "Font Preview",
+      "original_id": "050",
+      "category": "Creative Tools",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Clipboard"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/08-creative/051-music-scratchpad.md",
+      "name": "Music Scratchpad",
+      "original_id": "051",
+      "category": "Creative Tools",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "Web Audio API",
+        "MIDI",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/08-creative/052-story-board.md",
+      "name": "Story Board",
+      "original_id": "052",
+      "category": "Creative Tools",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Canvas API",
+        "Camera",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/08-creative/053-pattern-maker.md",
+      "name": "Pattern Lab",
+      "original_id": "053",
+      "category": "Creative Tools",
+      "tier": "Micro ($6)",
+      "offline": "Full",
+      "apis": [
+        "Canvas API",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/09-professional/054-invoice-generator.md",
+      "name": "Invoice Pro",
+      "original_id": "054",
+      "category": "Professional/Trade",
+      "tier": "Premium ($25)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Camera",
+        "Contacts"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/09-professional/055-site-survey.md",
+      "name": "Site Survey Pro",
+      "original_id": "055",
+      "category": "Professional/Trade",
+      "tier": "Pro ($60)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "GPS",
+        "Compass",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/09-professional/056-estimate-builder.md",
+      "name": "Quote Builder",
+      "original_id": "056",
+      "category": "Professional/Trade",
+      "tier": "Pro ($45)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Camera",
+        "Contacts"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/09-professional/057-field-forms.md",
+      "name": "Field Forms",
+      "original_id": "057",
+      "category": "Professional/Trade",
+      "tier": "Premium ($30)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Camera",
+        "GPS",
+        "Signature Pad"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/09-professional/058-inventory-scanner.md",
+      "name": "Stock Scanner",
+      "original_id": "058",
+      "category": "Professional/Trade",
+      "tier": "Premium ($20)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "File System",
+        "Haptics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/09-professional/059-job-timer.md",
+      "name": "Job Clock",
+      "original_id": "059",
+      "category": "Professional/Trade",
+      "tier": "Micro ($8)",
+      "offline": "Full",
+      "apis": [
+        "Geolocation",
+        "File System",
+        "Notifications"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/09-professional/060-delivery-proof.md",
+      "name": "Proof of Delivery",
+      "original_id": "060",
+      "category": "Professional/Trade",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "GPS",
+        "Signature Pad",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/10-education/061-flashcard-master.md",
+      "name": "Flashcard Master",
+      "original_id": "061",
+      "category": "Education",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Notifications",
+        "TTS"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/10-education/062-math-practice.md",
+      "name": "Math Trainer",
+      "original_id": "062",
+      "category": "Education",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Haptics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/10-education/063-typing-tutor.md",
+      "name": "Type Master",
+      "original_id": "063",
+      "category": "Education",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/10-education/064-language-vocab.md",
+      "name": "Vocab Builder",
+      "original_id": "064",
+      "category": "Education",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "TTS",
+        "Camera"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/10-education/065-study-planner.md",
+      "name": "Study Planner Pro",
+      "original_id": "065",
+      "category": "Education",
+      "tier": "Pro ($18)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Notifications",
+        "Calendar"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/11-gaming/066-puzzle-daily.md",
+      "name": "Logic Daily",
+      "original_id": "066",
+      "category": "Gaming",
+      "tier": "Micro ($3)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Notifications"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/11-gaming/067-word-games.md",
+      "name": "Word Champion",
+      "original_id": "067",
+      "category": "Gaming",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/11-gaming/068-chess-trainer.md",
+      "name": "Chess Tactics",
+      "original_id": "068",
+      "category": "Gaming",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/11-gaming/069-trivia-master.md",
+      "name": "Trivia Master",
+      "original_id": "069",
+      "category": "Gaming",
+      "tier": "Micro ($3)",
+      "offline": "Full",
+      "apis": [
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/11-gaming/070-brain-age.md",
+      "name": "Brain Gym",
+      "original_id": "070",
+      "category": "Gaming",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Haptics",
+        "Accelerometer"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/12-communication/071-offline-messenger.md",
+      "name": "Mesh Chat",
+      "original_id": "071",
+      "category": "Communication",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "Bluetooth",
+        "WiFi Direct",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/12-communication/072-contact-backup.md",
+      "name": "Contact Vault",
+      "original_id": "072",
+      "category": "Communication",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "Contacts",
+        "File System",
+        "Biometrics"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/12-communication/073-anniversary-reminder.md",
+      "name": "Date Keeper",
+      "original_id": "073",
+      "category": "Communication",
+      "tier": "Micro ($3)",
+      "offline": "Full",
+      "apis": [
+        "Contacts",
+        "Notifications",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/12-communication/074-email-templates.md",
+      "name": "Email Templates Pro",
+      "original_id": "074",
+      "category": "Communication",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "Clipboard",
+        "File System",
+        "Share API"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/13-finance/075-expense-tracker.md",
+      "name": "Spend Smart",
+      "original_id": "075",
+      "category": "Finance",
+      "tier": "Micro ($5)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Camera",
+        "Notifications"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/13-finance/076-investment-tracker.md",
+      "name": "Portfolio Watch",
+      "original_id": "076",
+      "category": "Finance",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/13-finance/077-bill-reminder.md",
+      "name": "Bill Tracker",
+      "original_id": "077",
+      "category": "Finance",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "Notifications",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/13-finance/078-net-worth.md",
+      "name": "Net Worth Tracker",
+      "original_id": "078",
+      "category": "Finance",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/13-finance/079-tip-calculator.md",
+      "name": "Split Check",
+      "original_id": "079",
+      "category": "Finance",
+      "tier": "Micro ($2)",
+      "offline": "Full",
+      "apis": [
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/14-travel/080-packing-list.md",
+      "name": "Pack Perfect",
+      "original_id": "080",
+      "category": "Travel",
+      "tier": "Micro ($4)",
+      "offline": "Full",
+      "apis": [
+        "File System",
+        "Notifications"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/14-travel/081-travel-journal.md",
+      "name": "Journey Log",
+      "original_id": "081",
+      "category": "Travel",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "GPS",
+        "File System"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/15-home-life/082-pantry-tracker.md",
+      "name": "Pantry Tracker",
+      "original_id": "082",
+      "category": "Home Life",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "Barcode Scanner",
+        "Local Storage"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/15-home-life/083-plant-care.md",
+      "name": "Plant Care",
+      "original_id": "083",
+      "category": "Home Life",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "Notifications",
+        "Local Storage"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/15-home-life/084-home-maintenance.md",
+      "name": "Home Maintenance",
+      "original_id": "084",
+      "category": "Home Life",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Notifications",
+        "Calendar",
+        "Local Storage"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/16-security/085-privacy-checkup.md",
+      "name": "Privacy Checkup",
+      "original_id": "085",
+      "category": "Security",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "System Settings",
+        "App Permissions"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/16-security/086-device-finder.md",
+      "name": "Device Finder",
+      "original_id": "086",
+      "category": "Security",
+      "tier": "Premium ($8)",
+      "offline": "Partial",
+      "apis": [
+        "Bluetooth",
+        "Sound",
+        "Local Network"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/16-security/087-wifi-analyzer.md",
+      "name": "WiFi Analyzer",
+      "original_id": "087",
+      "category": "Security",
+      "tier": "Premium ($10)",
+      "offline": "Partial",
+      "apis": [
+        "Network",
+        "WiFi Scanning"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/17-accessibility/088-magnifier-pro.md",
+      "name": "Magnifier Pro",
+      "original_id": "088",
+      "category": "Accessibility",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "Flashlight",
+        "Image Processing"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/17-accessibility/089-voice-memos-transcribe.md",
+      "name": "Voice Memos Transcribe",
+      "original_id": "089",
+      "category": "Accessibility",
+      "tier": "Premium ($15)",
+      "offline": "Full",
+      "apis": [
+        "Speech Recognition",
+        "Audio Recording"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/17-accessibility/090-color-blind-assist.md",
+      "name": "Color Blind Assist",
+      "original_id": "090",
+      "category": "Accessibility",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "Color Analysis",
+        "AR"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/18-developer/091-regex-tester.md",
+      "name": "Regex Tester",
+      "original_id": "091",
+      "category": "Developer",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Local Processing"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/18-developer/092-json-viewer.md",
+      "name": "JSON Viewer",
+      "original_id": "092",
+      "category": "Developer",
+      "tier": "Premium ($8)",
+      "offline": "Full",
+      "apis": [
+        "Local Processing",
+        "Share Extension"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/18-developer/093-http-client.md",
+      "name": "HTTP Client",
+      "original_id": "093",
+      "category": "Developer",
+      "tier": "Premium ($12)",
+      "offline": "Partial",
+      "apis": [
+        "URLSession",
+        "Local Storage"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/19-niche-pro/094-bartender-tools.md",
+      "name": "Bartender Tools",
+      "original_id": "094",
+      "category": "Niche Pro",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Local Storage",
+        "Calculator"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/19-niche-pro/095-dj-bpm-key.md",
+      "name": "DJ BPM & Key",
+      "original_id": "095",
+      "category": "Niche Pro",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "Audio Analysis",
+        "Microphone"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/19-niche-pro/096-tattoo-preview.md",
+      "name": "Tattoo Preview",
+      "original_id": "096",
+      "category": "Niche Pro",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "Camera",
+        "ARKit",
+        "Image Processing"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/20-experimental/097-dream-journal-ai.md",
+      "name": "Dream Journal AI",
+      "original_id": "097",
+      "category": "Experimental",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Speech Recognition",
+        "Local ML",
+        "Storage"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/20-experimental/098-emotion-tracker.md",
+      "name": "Emotion Tracker",
+      "original_id": "098",
+      "category": "Experimental",
+      "tier": "Premium ($10)",
+      "offline": "Full",
+      "apis": [
+        "HealthKit",
+        "Notifications",
+        "Local ML"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/20-experimental/099-focus-score.md",
+      "name": "Focus Score",
+      "original_id": "099",
+      "category": "Experimental",
+      "tier": "Premium ($12)",
+      "offline": "Full",
+      "apis": [
+        "Screen Time",
+        "Usage Data",
+        "Local ML"
+      ]
+    },
+    {
+      "file_path": "landings/ideas/21-platforms/100-proven.md",
+      "name": "Proven",
+      "original_id": "100",
+      "category": "Platforms",
+      "tier": "Marketplace (Revenue Share)",
+      "offline": null,
+      "apis": []
+    }
+  ],
+  "api_counts": {
+    "File System": 74,
+    "Camera": 35,
+    "Notifications": 25,
+    "Haptics": 12,
+    "On-device ML": 11,
+    "Accelerometer": 10,
+    "Microphone": 10,
+    "Biometrics": 9,
+    "Clipboard": 9,
+    "Web Audio API": 9,
+    "Gyroscope": 7,
+    "Calendar": 5,
+    "Contacts": 5,
+    "GPS": 5,
+    "Local Storage": 5,
+    "Share API": 5,
+    "Web Crypto API": 5,
+    "Canvas API": 4,
+    "Bluetooth": 3,
+    "Local ML": 3,
+    "Magnetometer": 3,
+    "AR": 2,
+    "Geolocation": 2,
+    "HealthKit": 2,
+    "Image Processing": 2,
+    "Local Processing": 2,
+    "Signature Pad": 2,
+    "Speech Recognition": 2,
+    "TTS": 2,
+    "ARKit": 1,
+    "ARKit/ARCore": 1,
+    "App Permissions": 1,
+    "Audio": 1,
+    "Audio Analysis": 1,
+    "Audio Recording": 1,
+    "Background Audio": 1,
+    "Barcode Scanner": 1,
+    "Barometer": 1,
+    "Calculator": 1,
+    "Camera (AR)": 1,
+    "Camera (ambient light)": 1,
+    "Color Analysis": 1,
+    "Compass": 1,
+    "Flashlight": 1,
+    "GPS (optional)": 1,
+    "Local Network": 1,
+    "MIDI": 1,
+    "Network": 1,
+    "On-device ML (TensorFlow Lite/Core ML)": 1,
+    "Screen Time": 1,
+    "Share Extension": 1,
+    "Sound": 1,
+    "Storage": 1,
+    "System Settings": 1,
+    "Touch Events": 1,
+    "URLSession": 1,
+    "Usage Data": 1,
+    "WiFi Direct": 1,
+    "WiFi Scanning": 1
+  },
+  "category_counts": {
+    "Camera & Vision": 8,
+    "Sensor Tools": 8,
+    "Audio & Sound": 7,
+    "Productivity": 7,
+    "Professional/Trade": 7,
+    "Creative Tools": 6,
+    "Health & Body": 6,
+    "Offline AI/ML": 6,
+    "Education": 5,
+    "Finance": 5,
+    "Gaming": 5,
+    "Personal Data Vaults": 5,
+    "Communication": 4,
+    "Accessibility": 3,
+    "Developer": 3,
+    "Experimental": 3,
+    "Home Life": 3,
+    "Niche Pro": 3,
+    "Security": 3,
+    "Travel": 2,
+    "Platforms": 1
+  }
+}
