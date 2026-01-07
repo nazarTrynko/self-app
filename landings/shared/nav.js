@@ -11,7 +11,8 @@
         main: { name: 'SELF Landings', count: 10, accent: '#8b5cf6' },
         masters: { name: 'Masterpieces', count: 25, accent: '#c9a227' },
         revelations: { name: 'Revelations', count: 10, accent: '#14b8a6' },
-        ph: { name: 'Product Ideas', count: 23, accent: '#f472b6' }
+        ph: { name: 'Product Ideas', count: 23, accent: '#f472b6' },
+        ideas: { name: 'App Ideas', count: 125, accent: '#06b6d4' }
     };
 
     // Detect current collection and depth from URL
@@ -33,6 +34,11 @@
             collection = 'ph';
             const phMatch = path.match(/\/ph\/\d+-/);
             depth = phMatch ? 2 : 1;
+        } else if (path.includes('/ideas/')) {
+            collection = 'ideas';
+            // Check if we're in ideas/index.html (depth 1) or ideas/masterpieces/ (depth 2)
+            const ideasMatch = path.match(/\/ideas\/(masterpieces|[\d]+-)/);
+            depth = ideasMatch ? 2 : 1;
         } else {
             // Check if we're in a numbered folder like /0/, /1/, etc.
             const numMatch = path.match(/\/(\d+)\//);
@@ -84,6 +90,11 @@
                         <span class="self-nav-link-indicator"></span>
                         <span>Product Ideas</span>
                         <span class="self-nav-link-count">${collections.ph.count}</span>
+                    </a>
+                    <a href="${base}ideas/" class="self-nav-link ${collection === 'ideas' ? 'active' : ''}" data-collection="ideas">
+                        <span class="self-nav-link-indicator"></span>
+                        <span>App Ideas</span>
+                        <span class="self-nav-link-count">${collections.ideas.count}</span>
                     </a>
                 </div>
                 

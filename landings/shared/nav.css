@@ -133,6 +133,8 @@
 .self-nav-link[data-collection="revelations"].active { --link-accent: var(--nav-accent-revelations); }
 .self-nav-link[data-collection="ph"] .self-nav-link-indicator,
 .self-nav-link[data-collection="ph"].active { --link-accent: var(--nav-accent-ph); }
+.self-nav-link[data-collection="ideas"] .self-nav-link-indicator,
+.self-nav-link[data-collection="ideas"].active { --link-accent: #06b6d4; }
 
 .self-nav-link-indicator {
     width: 6px;
