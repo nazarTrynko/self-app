@@ -55,6 +55,22 @@ body {
     height: 100vh;
 }
 
+/* Navigation integration - adjust for fixed nav */
+/* Navigation integration - adjust for fixed nav */
+body[data-self-nav] .generator-container {
+    padding-top: 0;
+}
+
+body[data-self-nav] .top-bar {
+    position: sticky;
+    top: 80px;
+    z-index: 99;
+}
+
+body[data-self-nav] .back-link {
+    display: none; /* Navigation handles this */
+}
+
 /* ─────────────────────────────────────────────────────────────────────────────
    Generator Container
    ───────────────────────────────────────────────────────────────────────────── */

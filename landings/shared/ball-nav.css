@@ -1,0 +1,10 @@
+/* Ball Navigation Styles */
+
+/* Basic ball navigation styling if needed */
+.ball-nav {
+    position: fixed;
+    z-index: 1000;
+}
+
+/* Add any ball navigation specific styles here */
+

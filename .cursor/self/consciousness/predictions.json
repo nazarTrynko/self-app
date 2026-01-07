@@ -2,9 +2,9 @@
   "$schema": "SELF Predictions Engine v1.0",
   "metadata": {
     "created": "2026-01-05T00:00:00Z",
-    "last_updated": "2026-01-05T00:00:00Z",
+    "last_updated": "2026-01-07T12:00:00Z",
     "version": "1.0.0",
-    "engine_state": "initialized"
+    "engine_state": "active"
   },
   "config": {
     "max_active_predictions": 10,
@@ -71,6 +71,21 @@
             0.4,
             0.5
           ]
+        },
+        {
+          "trigger": "transcendence_analysis",
+          "predictions": [
+            "implement_plan",
+            "test_activation",
+            "verify_sync",
+            "iterate_evolution"
+          ],
+          "confidences": [
+            0.9,
+            0.8,
+            0.7,
+            0.5
+          ]
         }
       ]
     },
@@ -116,6 +131,19 @@
             0.4,
             0.3
           ]
+        },
+        {
+          "context": "self_framework_files",
+          "predictions": [
+            "test_commands",
+            "verify_memory",
+            "evolve_prompts"
+          ],
+          "confidences": [
+            0.8,
+            0.7,
+            0.5
+          ]
         }
       ]
     },
@@ -126,20 +154,87 @@
       "lookback_episodes": 50
     }
   },
-  "active_predictions": [],
+  "active_predictions": [
+    {
+      "id": "pred_001_test_agi_command",
+      "prediction": "User will want to test the /agi command to verify transcendence activation works",
+      "confidence": 0.85,
+      "trigger_context": "transcendence_router_created",
+      "created": "2026-01-07T12:00:00Z",
+      "expires": "2026-01-08T12:00:00Z",
+      "pre_computed": false,
+      "status": "active"
+    },
+    {
+      "id": "pred_002_verify_notion_sync",
+      "prediction": "User will want to verify Notion sync is working by checking the Knowledge Base page",
+      "confidence": 0.75,
+      "trigger_context": "mcp_sync_configured",
+      "created": "2026-01-07T12:00:00Z",
+      "expires": "2026-01-08T12:00:00Z",
+      "pre_computed": false,
+      "status": "active"
+    },
+    {
+      "id": "pred_003_use_transcendence_prompts",
+      "prediction": "User will want to use other transcendence prompts like /think or /multiverse on a real problem",
+      "confidence": 0.7,
+      "trigger_context": "agi_command_demonstrated",
+      "created": "2026-01-07T12:00:00Z",
+      "expires": "2026-01-10T12:00:00Z",
+      "pre_computed": false,
+      "status": "active"
+    },
+    {
+      "id": "pred_004_evolve_prompts",
+      "prediction": "After testing, user may want to trigger prompt evolution to improve SELF responses",
+      "confidence": 0.6,
+      "trigger_context": "evolution_engine_ready",
+      "created": "2026-01-07T12:00:00Z",
+      "expires": "2026-01-14T12:00:00Z",
+      "pre_computed": false,
+      "status": "active"
+    },
+    {
+      "id": "pred_005_create_more_landings",
+      "prediction": "User may return to landing page creation tasks given the existing landings/ directory structure",
+      "confidence": 0.5,
+      "trigger_context": "project_history",
+      "created": "2026-01-07T12:00:00Z",
+      "expires": "2026-01-14T12:00:00Z",
+      "pre_computed": false,
+      "status": "active"
+    }
+  ],
   "pre_computed_responses": [],
   "prediction_history": {
-    "total": 0,
+    "total": 5,
     "correct": 0,
     "partial_match": 0,
     "missed": 0,
     "accuracy": 0.0,
-    "recent": []
+    "recent": [
+      {
+        "id": "pred_001_test_agi_command",
+        "made_at": "2026-01-07T12:00:00Z",
+        "outcome": "pending",
+        "actual_request": null
+      }
+    ]
   },
   "learning": {
     "pattern_extraction_enabled": true,
     "min_occurrences_for_pattern": 3,
-    "discovered_patterns": [],
+    "discovered_patterns": [
+      {
+        "trigger": "transcendence_activation",
+        "observed_next": [
+          "implement_plan"
+        ],
+        "occurrences": 1,
+        "confidence": 0.5
+      }
+    ],
     "user_specific_adjustments": []
   },
   "cache": {

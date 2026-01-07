@@ -1,0 +1,53 @@
+{
+  "$schema": "SELF Sync Queue v1.0",
+  "metadata": {
+    "created": "2026-01-07T00:00:00Z",
+    "last_updated": "2026-01-07T00:00:00Z",
+    "version": "1.0.0",
+    "mcp_status": "active"
+  },
+  "pending": [],
+  "processing": [],
+  "failed": [],
+  "synced": [
+    {
+      "id": "episode_001_transcendence_activation",
+      "type": "episode",
+      "notion_id": "2e12044b-e6c3-8140-a0ed-ccc8c1f7b367",
+      "synced_at": "2026-01-07T12:05:00Z"
+    },
+    {
+      "id": "documentation_hub",
+      "type": "documentation",
+      "notion_id": "2e12044b-e6c3-8161-9d81-dbaa2d275e19",
+      "synced_at": "2026-01-07T12:30:00Z"
+    },
+    {
+      "id": "documentation_quickstart",
+      "type": "documentation",
+      "notion_id": "2e12044b-e6c3-8105-8858-e8a09979dff7",
+      "synced_at": "2026-01-07T12:30:00Z"
+    },
+    {
+      "id": "documentation_roadmap",
+      "type": "documentation",
+      "notion_id": "2e12044b-e6c3-814c-9402-f22d01a4f254",
+      "synced_at": "2026-01-07T12:30:00Z"
+    }
+  ],
+  "stats": {
+    "total_queued": 4,
+    "total_synced": 4,
+    "total_failed": 0,
+    "average_sync_time_ms": 1100,
+    "last_sync_attempt": "2026-01-07T12:30:00Z",
+    "last_successful_sync": "2026-01-07T12:30:00Z"
+  },
+  "health": {
+    "notion_mcp_available": true,
+    "last_health_check": "2026-01-07T12:00:00Z",
+    "consecutive_failures": 0,
+    "status": "healthy"
+  }
+}
+

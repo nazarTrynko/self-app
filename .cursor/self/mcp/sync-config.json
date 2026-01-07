@@ -2,9 +2,9 @@
   "$schema": "SELF MCP Sync Configuration v1.0",
   "version": "1.0.0",
   "notion": {
-    "enabled": false,
-    "api_token": null,
-    "workspace_id": null,
+    "enabled": true,
+    "api_token": "via_mcp",
+    "workspace_id": "1019aa05-3b8a-4b02-abb6-c07aaa095acb",
     "sync_thresholds": {
       "episode_confidence": 0.7,
       "episode_surprise_min": 0.3,
@@ -15,7 +15,7 @@
       "evolution_generations": true
     },
     "databases": {
-      "knowledge_base": null,
+      "knowledge_base": "2e12044b-e6c3-81d3-9377-e47078e759cf",
       "evolution": null,
       "insights": null,
       "patterns": null,

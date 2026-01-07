@@ -305,3 +305,19 @@ The blending system itself evolves:
 4. **Deprecate ineffective blends** over time
 
 This allows the system to learn the optimal cognitive style for each user.
+
+---
+
+## Operational Data
+
+Blend learning data is tracked in: `.cursor/self/cognition/blend-learning.json`
+
+This file contains:
+
+- **blend_history**: Record of all blend events with outcomes
+- **learned_patterns**: Discovered optimal blends for context patterns
+- **personalized_defaults**: User-specific adjustments to base signal weights
+- **effectiveness_tracking**: Statistics by mind, mode, and context
+- **blend_recommendations**: Active recommendations based on learning
+
+The system uses this data to continuously improve blend selection for the user.

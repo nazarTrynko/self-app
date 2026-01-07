@@ -1,0 +1,169 @@
+{
+  "$schema": "SELF Blend Learning v1.0",
+  "metadata": {
+    "created": "2026-01-07T00:00:00Z",
+    "last_updated": "2026-01-07T12:00:00Z",
+    "version": "1.0.0",
+    "total_blend_events": 1,
+    "learning_enabled": true
+  },
+  "blend_history": [
+    {
+      "id": "blend_001",
+      "timestamp": "2026-01-07T12:00:00Z",
+      "blend": {
+        "architect": 0.6,
+        "oracle": 0.9,
+        "critic": 0.5,
+        "creator": 0.7,
+        "guardian": 0.4
+      },
+      "primary_mind": "oracle",
+      "secondary_minds": [
+        "creator",
+        "architect"
+      ],
+      "mode": "multi_perspective",
+      "context_type": "transcendence_activation",
+      "context_signals": [
+        "question_asked",
+        "meta_design_topic",
+        "framework_files"
+      ],
+      "episode_id": "episode_001_transcendence_activation",
+      "outcome": "positive",
+      "user_feedback": "implicit_accept",
+      "effectiveness_score": 0.85
+    }
+  ],
+  "learned_patterns": [
+    {
+      "id": "learned_001_transcendence_blend",
+      "context_pattern": {
+        "triggers": [
+          "transcendence_command",
+          "meta_design_topic"
+        ],
+        "file_types": [
+          "markdown",
+          "json"
+        ]
+      },
+      "optimal_blend": {
+        "architect": 0.6,
+        "oracle": 0.9,
+        "critic": 0.5,
+        "creator": 0.7,
+        "guardian": 0.4
+      },
+      "confidence": 0.65,
+      "evidence": {
+        "positive_outcomes": 1,
+        "negative_outcomes": 0,
+        "total_uses": 1
+      },
+      "status": "emerging"
+    }
+  ],
+  "personalized_defaults": {
+    "description": "User-specific adjustments to base signal weights",
+    "adjustments": {
+      "architect": 0.0,
+      "oracle": 0.1,
+      "critic": 0.0,
+      "creator": 0.1,
+      "guardian": 0.0
+    },
+    "confidence": 0.5,
+    "last_calibrated": "2026-01-07T12:00:00Z",
+    "calibration_episodes": 1
+  },
+  "effectiveness_tracking": {
+    "by_mind": {
+      "architect": {
+        "activations": 1,
+        "positive_outcomes": 1,
+        "effectiveness_rate": 1.0
+      },
+      "oracle": {
+        "activations": 1,
+        "positive_outcomes": 1,
+        "effectiveness_rate": 1.0
+      },
+      "critic": {
+        "activations": 1,
+        "positive_outcomes": 1,
+        "effectiveness_rate": 1.0
+      },
+      "creator": {
+        "activations": 1,
+        "positive_outcomes": 1,
+        "effectiveness_rate": 1.0
+      },
+      "guardian": {
+        "activations": 0,
+        "positive_outcomes": 0,
+        "effectiveness_rate": 0.0
+      }
+    },
+    "by_mode": {
+      "single_dominant": {
+        "uses": 0,
+        "positive_outcomes": 0,
+        "effectiveness_rate": 0.0
+      },
+      "dual_blend": {
+        "uses": 0,
+        "positive_outcomes": 0,
+        "effectiveness_rate": 0.0
+      },
+      "multi_perspective": {
+        "uses": 1,
+        "positive_outcomes": 1,
+        "effectiveness_rate": 1.0
+      },
+      "full_council": {
+        "uses": 0,
+        "positive_outcomes": 0,
+        "effectiveness_rate": 0.0
+      }
+    },
+    "by_context": {
+      "transcendence_activation": {
+        "uses": 1,
+        "positive_outcomes": 1,
+        "effectiveness_rate": 1.0,
+        "best_blend": "learned_001_transcendence_blend"
+      }
+    }
+  },
+  "learning_config": {
+    "min_events_to_learn": 3,
+    "min_confidence_to_apply": 0.6,
+    "decay_rate_per_week": 0.05,
+    "reinforcement_boost": 0.1,
+    "negative_outcome_penalty": 0.15
+  },
+  "evolution_signals": {
+    "description": "Signals to feed into evolution engine for prompt improvement",
+    "pending_signals": [],
+    "processed_signals": []
+  },
+  "blend_recommendations": {
+    "description": "Recommended blends for upcoming contexts based on learning",
+    "active_recommendations": [
+      {
+        "context_pattern": "transcendence_command",
+        "recommended_blend": {
+          "architect": 0.6,
+          "oracle": 0.9,
+          "critic": 0.5,
+          "creator": 0.7,
+          "guardian": 0.4
+        },
+        "confidence": 0.65,
+        "source": "learned_001_transcendence_blend"
+      }
+    ]
+  }
+}

@@ -2,9 +2,9 @@
   "$schema": "SELF Pattern Recognition v1.0",
   "metadata": {
     "created": "2026-01-05T00:00:00Z",
-    "last_updated": "2026-01-05T00:00:00Z",
-    "total_patterns_discovered": 0,
-    "active_patterns": 0
+    "last_updated": "2026-01-07T12:00:00Z",
+    "total_patterns_discovered": 1,
+    "active_patterns": 4
   },
   "pattern_types": {
     "behavioral": {
@@ -48,14 +48,49 @@
       ]
     }
   },
-  "discovered_patterns": [],
+  "discovered_patterns": [
+    {
+      "id": "discovered_001_transcendence_meta_design",
+      "type": "sequential",
+      "description": "Transcendence prompts used for meta-design lead to implementation planning",
+      "conditions": {
+        "triggers": [
+          "transcendence_command",
+          "meta_design_topic",
+          "framework_evolution"
+        ],
+        "context_requirements": {
+          "topic_type": "self_framework"
+        }
+      },
+      "confidence": 0.65,
+      "evidence": {
+        "occurrence_count": 1,
+        "first_observed": "2026-01-07T12:00:00Z",
+        "last_observed": "2026-01-07T12:00:00Z",
+        "supporting_episodes": [
+          "episode_001_transcendence_activation"
+        ]
+      },
+      "predictions": {
+        "when_pattern_detected": "User will want structured implementation plan with phases",
+        "accuracy_history": []
+      },
+      "actionable_insights": [
+        "insight_001_structure_without_substrate"
+      ],
+      "status": "emerging"
+    }
+  ],
   "pattern_schema": {
     "pattern": {
       "id": "string",
       "type": "behavioral|temporal|sequential|contextual|correlational",
       "description": "string",
       "conditions": {
-        "triggers": ["signal list"],
+        "triggers": [
+          "signal list"
+        ],
         "context_requirements": {}
       },
       "confidence": 0.0,
@@ -63,13 +98,17 @@
         "occurrence_count": 0,
         "first_observed": "timestamp",
         "last_observed": "timestamp",
-        "supporting_episodes": ["episode_ids"]
+        "supporting_episodes": [
+          "episode_ids"
+        ]
       },
       "predictions": {
         "when_pattern_detected": "predicted_behavior",
         "accuracy_history": []
       },
-      "actionable_insights": [],
+      "actionable_insights": [
+        "insight_ids"
+      ],
       "status": "emerging|confirmed|deprecated"
     }
   },
@@ -86,10 +125,22 @@
       "type": "sequential",
       "description": "Create-Test-Refactor cycle",
       "conditions": {
-        "triggers": ["file_create", "test_add", "refactor_action"],
-        "context_requirements": {"sequence_window_minutes": 60}
+        "triggers": [
+          "file_create",
+          "test_add",
+          "refactor_action"
+        ],
+        "context_requirements": {
+          "sequence_window_minutes": 60
+        }
       },
       "confidence": 0.7,
+      "evidence": {
+        "occurrence_count": 0,
+        "first_observed": null,
+        "last_observed": null,
+        "supporting_episodes": []
+      },
       "status": "confirmed"
     },
     {
@@ -97,10 +148,23 @@
       "type": "behavioral",
       "description": "Question indicates learning mode",
       "conditions": {
-        "triggers": ["question_asked", "multiple_questions"],
-        "context_requirements": {"topic_is_new": true}
+        "triggers": [
+          "question_asked",
+          "multiple_questions"
+        ],
+        "context_requirements": {
+          "topic_is_new": true
+        }
       },
       "confidence": 0.65,
+      "evidence": {
+        "occurrence_count": 1,
+        "first_observed": "2026-01-07T12:00:00Z",
+        "last_observed": "2026-01-07T12:00:00Z",
+        "supporting_episodes": [
+          "episode_001_transcendence_activation"
+        ]
+      },
       "status": "confirmed"
     },
     {
@@ -108,13 +172,39 @@
       "type": "contextual",
       "description": "Error context requires Guardian + Architect blend",
       "conditions": {
-        "triggers": ["error_present", "bug_mentioned"],
+        "triggers": [
+          "error_present",
+          "bug_mentioned"
+        ],
         "context_requirements": {}
       },
       "confidence": 0.8,
+      "evidence": {
+        "occurrence_count": 0,
+        "first_observed": null,
+        "last_observed": null,
+        "supporting_episodes": []
+      },
       "status": "confirmed"
     }
   ],
+  "episode_pattern_index": {
+    "description": "Bidirectional index mapping episodes to patterns and patterns to episodes",
+    "by_episode": {
+      "episode_001_transcendence_activation": [
+        "builtin_002",
+        "discovered_001_transcendence_meta_design"
+      ]
+    },
+    "by_pattern": {
+      "builtin_002": [
+        "episode_001_transcendence_activation"
+      ],
+      "discovered_001_transcendence_meta_design": [
+        "episode_001_transcendence_activation"
+      ]
+    }
+  },
   "analytics": {
     "pattern_hit_rate": 0.0,
     "false_positive_rate": 0.0,
@@ -122,4 +212,3 @@
     "least_useful_patterns": []
   }
 }
-
