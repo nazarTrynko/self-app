@@ -40,6 +40,39 @@
     // ─────────────────────────────────────────────────────────────────────────────
     // Utility Functions
     // ─────────────────────────────────────────────────────────────────────────────
+    function getSiteBaseSegment(pathSegments) {
+        // GitHub Pages "project site" URLs look like:
+        // https://<user>.github.io/<repo>/...
+        // In that case, the first path segment is the repo name and should be treated as the site root.
+        //
+        // Locally (or on custom domains), there is typically no such extra segment.
+        const host = (window.location.hostname || '').toLowerCase();
+        const isGitHubPagesHost = host.endsWith('.github.io');
+
+        if (!isGitHubPagesHost) return null;
+        if (!pathSegments || pathSegments.length === 0) return null;
+
+        const first = String(pathSegments[0]).toLowerCase();
+
+        // If the first segment is already a known collection/root folder, then we're not under a repo prefix.
+        const knownTopLevel = new Set([
+            'masters',
+            'revelations',
+            'ph',
+            'ideas',
+            'pro-pwas',
+            'aurum',
+            'stealth-ideas',
+            'self',
+            'sitemap'
+        ]);
+
+        if (knownTopLevel.has(first)) return null;
+        if (/^\d+$/.test(first)) return null; // numbered landing pages at root
+
+        return pathSegments[0];
+    }
+
     function getBasePath() {
         const path = window.location.pathname;
         const segments = path.split('/').filter(Boolean);
@@ -52,7 +85,14 @@
         const isFile = lastSegment.includes('.');
         
         // Calculate depth (directories only)
-        const dirSegments = isFile ? segments.slice(0, -1) : segments;
+        let dirSegments = isFile ? segments.slice(0, -1) : segments;
+
+        // Treat "/<repo>/" as site root on GitHub Pages project sites
+        const baseSegment = getSiteBaseSegment(dirSegments);
+        if (baseSegment && String(dirSegments[0]).toLowerCase() === String(baseSegment).toLowerCase()) {
+            dirSegments = dirSegments.slice(1);
+        }
+
         const depth = dirSegments.length;
         
         // If depth is 0, we're at root
