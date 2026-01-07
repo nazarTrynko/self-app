@@ -1,4 +1,347 @@
 // Auto-generated ideas data for the browser
+// Enhanced with Masterpiece scores and selling points
+
+const MASTERPIECE_IDEAS = [
+  {
+    id: "M001",
+    name: "QuoteCraft Pro",
+    originalId: "056",
+    category: "Professional",
+    icon: "💼",
+    score: 9.6,
+    tier: "S",
+    price: "$79.99",
+    buildTime: "40-50 hrs",
+    monthlyPotential: "$15K+",
+    tagline: "Win More Jobs. Know Your Numbers.",
+    problem: "Contractors lose $500-2000/month on forgotten quote items and underpriced labor",
+    solution: "AI-powered quote builder with win-rate analytics and follow-up automation",
+    transformation: "Quote calculator → Win-Rate Optimizer",
+    pros: [
+      "Clear ROI: One saved quote pays for app",
+      "Proven market: 3.7M contractors in US",
+      "High willingness to pay",
+      "Data moat: Quote history is irreplaceable",
+      "Fast build time for MVP"
+    ],
+    cons: [
+      "Requires trade-specific templates",
+      "PDF generation complexity",
+      "Competition from subscription tools"
+    ],
+    whySells: "Every contractor has lost money on a bad quote. This app promises to end that forever with proof (analytics). The ROI story writes itself.",
+    targetUser: "Solo contractors, handymen, tradespeople",
+    keyFeatures: ["Win-rate analytics", "Smart pricing suggestions", "Follow-up automation", "Professional PDFs"]
+  },
+  {
+    id: "M002",
+    name: "VitalDoc",
+    originalId: "033",
+    category: "Health",
+    icon: "🏥",
+    score: 9.5,
+    tier: "S",
+    price: "$49.99",
+    buildTime: "60 hrs",
+    monthlyPotential: "$12K+",
+    tagline: "Your Complete Health Story",
+    problem: "Medical records scattered across providers. Can't answer doctor's questions accurately.",
+    solution: "Personal health timeline with AI organization, doctor briefs, and emergency protocols",
+    transformation: "Record storage → Medical Memory",
+    pros: [
+      "Emotional + practical value",
+      "Family upsell opportunity",
+      "Irreplaceable data = strong moat",
+      "Healthcare frustration is universal",
+      "Privacy-first differentiator"
+    ],
+    cons: [
+      "OCR accuracy challenges",
+      "Complex data structures",
+      "Not a medical device (legal clarity needed)"
+    ],
+    whySells: "Everyone has been at a doctor's office unable to remember when symptoms started. This is the 'never feel helpless again' app.",
+    targetUser: "Chronic condition patients, parents, elderly caregivers",
+    keyFeatures: ["Smart Timeline", "Doctor Brief generator", "Emergency Card", "Correlation Engine"]
+  },
+  {
+    id: "M003",
+    name: "SitePro 360",
+    originalId: "055",
+    category: "Professional",
+    icon: "📋",
+    score: 9.4,
+    tier: "S",
+    price: "$79.99",
+    buildTime: "60 hrs",
+    monthlyPotential: "$10K+",
+    tagline: "Capture. Annotate. Report.",
+    problem: "Site visits create scattered documentation across camera roll, notes, and emails",
+    solution: "Voice-first documentation that auto-organizes photos, notes, and measurements by project",
+    transformation: "Site survey → Professional Eyes",
+    pros: [
+      "Professional necessity",
+      "High price tolerance in B2B",
+      "Voice-first is game-changing",
+      "Works 100% offline (critical for sites)",
+      "Clear time savings"
+    ],
+    cons: [
+      "Voice transcription quality varies",
+      "Offline maps complexity",
+      "Steep competition from enterprise tools"
+    ],
+    whySells: "Inspectors bill by the hour. If this saves 30 min per site, it pays for itself in one job. Voice documentation is the magic demo moment.",
+    targetUser: "Home inspectors, property managers, insurance adjusters",
+    keyFeatures: ["Voice-to-Documentation", "AI annotations", "Offline maps", "Client-ready reports"]
+  },
+  {
+    id: "M004",
+    name: "Decibel Guardian",
+    originalId: "017",
+    category: "Safety",
+    icon: "🔊",
+    score: 9.3,
+    tier: "A",
+    price: "$49.99",
+    buildTime: "35 hrs",
+    monthlyPotential: "$8K+",
+    tagline: "Compliance Confidence. Legal Protection.",
+    problem: "OSHA fines for noise violations are $15,000+. Businesses need proof of compliance.",
+    solution: "Automatic noise monitoring with compliance dashboard, team tracking, and legal-ready reports",
+    transformation: "Sound meter → Compliance Guardian",
+    pros: [
+      "Mandatory market (OSHA compliance)",
+      "High B2B price tolerance",
+      "Legal protection = priceless",
+      "Low build complexity",
+      "Clear differentiation from basic meters"
+    ],
+    cons: [
+      "Microphone calibration across devices",
+      "Requires OSHA standards knowledge",
+      "Niche market (but high value)"
+    ],
+    whySells: "One OSHA fine = $15,000. This app = $50. The math sells itself. Safety officers MUST have documentation.",
+    targetUser: "Safety officers, factory managers, construction supervisors",
+    keyFeatures: ["OSHA compliance dashboard", "Team exposure tracking", "Legal-ready reports", "Auto monitoring"]
+  },
+  {
+    id: "M005",
+    name: "Fortress",
+    originalId: "030",
+    category: "Security",
+    icon: "🛡️",
+    score: 9.2,
+    tier: "A",
+    price: "$49.99",
+    buildTime: "50 hrs",
+    monthlyPotential: "$8K+",
+    tagline: "Zero Trust. Complete Control.",
+    problem: "Cloud password managers get breached. Users want local-only security they control.",
+    solution: "Local-first password manager with breach monitoring, security scoring, and digital legacy",
+    transformation: "Password vault → Digital Fortress",
+    pros: [
+      "Privacy timing is perfect (post-breaches)",
+      "One-time purchase beats subscriptions",
+      "Family tier drives upsells",
+      "Digital legacy is unique angle",
+      "No server costs"
+    ],
+    cons: [
+      "Encryption must be bulletproof",
+      "Auto-fill integration is complex",
+      "Trust is hard to build"
+    ],
+    whySells: "LastPass got hacked. 1Password is $36/year forever. This is $50 once, stays on YOUR device. Post-breach market is hungry for alternatives.",
+    targetUser: "Privacy-conscious users, breach victims, security professionals",
+    keyFeatures: ["Breach Monitor", "Security Score", "Family Vault", "Digital Legacy"]
+  },
+  {
+    id: "M006",
+    name: "DreamTrack",
+    originalId: "040",
+    category: "Health",
+    icon: "🌙",
+    score: 9.1,
+    tier: "A",
+    price: "$29.99",
+    buildTime: "50 hrs",
+    monthlyPotential: "$7K+",
+    tagline: "Understand Your Sleep. No Wearable Needed.",
+    problem: "Sleep trackers need expensive wearables. Phone-based solutions are basic.",
+    solution: "Advanced sleep tracking using phone sensors with AI coach, debt calculator, and smart alarm",
+    transformation: "Sleep tracker → Sleep Intelligence",
+    pros: [
+      "Massive market (everyone sleeps)",
+      "No wearable = low barrier",
+      "Subscription fatigue favors one-time",
+      "Snoring detection is compelling demo",
+      "Health trends drive engagement"
+    ],
+    cons: [
+      "Sleep phase estimation is approximate",
+      "Battery drain concerns",
+      "Accuracy vs wearables"
+    ],
+    whySells: "Wearables cost $200+. Sleep apps are $5/month forever. This is $30 once with snoring detection your partner will love.",
+    targetUser: "Sleep-curious, health optimizers, snoring sufferers",
+    keyFeatures: ["Sleep Debt Calculator", "AI Sleep Coach", "Snoring Detection", "Smart Alarm"]
+  },
+  {
+    id: "M007",
+    name: "Linguist",
+    originalId: "024",
+    category: "AI",
+    icon: "🌍",
+    score: 9.0,
+    tier: "A",
+    price: "$29.99",
+    buildTime: "70 hrs",
+    monthlyPotential: "$10K+",
+    tagline: "Speak Any Language. Trust No Server.",
+    problem: "Translation apps need internet. Privacy-conscious users don't want conversations in the cloud.",
+    solution: "Fully offline translator with camera, voice, and text translation. Zero data leaves device.",
+    transformation: "Translator → Privacy-First Language Bridge",
+    pros: [
+      "Travelers NEED offline",
+      "Privacy angle is timely",
+      "Language packs = ongoing revenue",
+      "Camera translation is magic",
+      "Huge TAM (international travel)"
+    ],
+    cons: [
+      "ML model size vs quality",
+      "50+ languages is complex",
+      "Google Translate is free (online)"
+    ],
+    whySells: "Standing in Tokyo with no internet, Google Translate is useless. This works. That moment of relief = instant conversion.",
+    targetUser: "International travelers, privacy advocates, healthcare workers",
+    keyFeatures: ["Camera translation", "Voice conversation mode", "50+ language packs", "Zero cloud"]
+  },
+  {
+    id: "M008",
+    name: "ChromaCraft",
+    originalId: "010+048",
+    category: "Design",
+    icon: "🎨",
+    score: 9.0,
+    tier: "A",
+    price: "$9.99",
+    buildTime: "30 hrs",
+    monthlyPotential: "$5K+",
+    tagline: "Capture → Create → Export in Seconds",
+    problem: "Designers need colors from real world but extracting palettes is tedious",
+    solution: "Point camera, capture color, generate palette, export to design tools instantly",
+    transformation: "Color picker + palette → Design System Generator",
+    pros: [
+      "Fast build time",
+      "Clear workflow improvement",
+      "Pro export formats (ASE, Tailwind)",
+      "WCAG accessibility built-in",
+      "Designers pay for tools"
+    ],
+    cons: [
+      "Lots of free alternatives",
+      "Lower price ceiling",
+      "Needs perfect color accuracy"
+    ],
+    whySells: "Designers use this 10+ times per project. At $10, it's an impulse buy that becomes indispensable.",
+    targetUser: "Graphic designers, web developers, interior designers",
+    keyFeatures: ["Camera color capture", "AI palette generation", "WCAG contrast check", "Pro exports"]
+  },
+  {
+    id: "M009",
+    name: "FlowState",
+    originalId: "041",
+    category: "Productivity",
+    icon: "🧘",
+    score: 8.9,
+    tier: "A",
+    price: "$14.99",
+    buildTime: "35 hrs",
+    monthlyPotential: "$6K+",
+    tagline: "Focus Isn't Time. It's Energy.",
+    problem: "Pomodoro timers track time, not focus quality. No insight into what breaks concentration.",
+    solution: "Energy-aware focus tracker with distraction autopsy and personalized work patterns",
+    transformation: "Timer → Focus Intelligence System",
+    pros: [
+      "ADHD market is massive and underserved",
+      "Unique angle (energy vs time)",
+      "Gamification drives retention",
+      "Low build complexity",
+      "Pairs well with other productivity"
+    ],
+    cons: [
+      "Crowded productivity space",
+      "Self-reporting bias",
+      "Habit formation is hard"
+    ],
+    whySells: "Every ADHD person has tried Pomodoro and failed. This finally explains WHY focus breaks. That insight is worth paying for.",
+    targetUser: "Knowledge workers, students, ADHD individuals",
+    keyFeatures: ["Energy tracking", "Distraction Autopsy", "Focus quality scores", "Pattern insights"]
+  },
+  {
+    id: "M010",
+    name: "Precision Level",
+    originalId: "001",
+    category: "Tools",
+    icon: "📐",
+    score: 8.8,
+    tier: "A",
+    price: "$19.99",
+    buildTime: "25 hrs",
+    monthlyPotential: "$4K+",
+    tagline: "The Last Level You'll Ever Need",
+    problem: "Physical levels are imprecise, phone apps lack calibration and professional features",
+    solution: "Calibration-certified digital level with AR guides, job logging, and measurement history",
+    transformation: "Level app → Professional Instrument",
+    pros: [
+      "Fast to build",
+      "Hardware replacement value",
+      "AR demo is compelling",
+      "Calibration certificate = pro feature",
+      "Construction market is huge"
+    ],
+    cons: [
+      "Sensor accuracy varies by device",
+      "Free alternatives exist",
+      "Lower price ceiling"
+    ],
+    whySells: "Professional levels cost $50-200. This phone is already in your pocket. The calibration certificate makes it 'real' to pros.",
+    targetUser: "Contractors, carpenters, DIYers",
+    keyFeatures: ["Calibration certificate", "AR overlay", "Job logging", "0.1° precision"]
+  }
+];
+
+// Additional masterpieces (11-33)
+const MORE_MASTERPIECES = [
+  { id: "M011", name: "Musician's Edge", score: 8.7, price: "$12.99", tier: "B", icon: "🎸", category: "Music" },
+  { id: "M012", name: "Breathwork Pro", score: 8.6, price: "$19.99", tier: "B", icon: "🌬️", category: "Health" },
+  { id: "M013", name: "DocuScan Intelligence", score: 8.5, price: "$9.99", tier: "B", icon: "📄", category: "Utility" },
+  { id: "M014", name: "Delivery Proof Pro", score: 8.5, price: "$14.99", tier: "B", icon: "📦", category: "Professional" },
+  { id: "M015", name: "WiFi Commander", score: 8.4, price: "$9.99", tier: "B", icon: "📶", category: "Utility" },
+  { id: "M016", name: "Identity Stack", score: 8.4, price: "$19.99", tier: "B", icon: "🎯", category: "Productivity" },
+  { id: "M017", name: "Invoice Swift", score: 8.3, price: "$29.99", tier: "B", icon: "🧾", category: "Professional" },
+  { id: "M018", name: "Expense Oracle", score: 8.3, price: "$14.99", tier: "B", icon: "💳", category: "Finance" },
+  { id: "M019", name: "Flashcard Genius", score: 8.2, price: "$9.99", tier: "B", icon: "🃏", category: "Education" },
+  { id: "M020", name: "Voice Journal", score: 8.2, price: "$14.99", tier: "B", icon: "🎙️", category: "Productivity" },
+  { id: "M021", name: "Field Forms Pro", score: 8.1, price: "$49.99", tier: "B", icon: "📝", category: "Professional" },
+  { id: "M022", name: "Job Clock", score: 8.1, price: "$9.99", tier: "B", icon: "⏱️", category: "Professional" },
+  { id: "M023", name: "AR Measure Pro", score: 8.0, price: "$7.99", tier: "C", icon: "📏", category: "Tools" },
+  { id: "M024", name: "Water Rhythm", score: 8.0, price: "$4.99", tier: "C", icon: "💧", category: "Health" },
+  { id: "M025", name: "Posture Guardian", score: 7.9, price: "$9.99", tier: "C", icon: "🧍", category: "Health" },
+  { id: "M026", name: "Vision Break", score: 7.9, price: "$4.99", tier: "C", icon: "👁️", category: "Health" },
+  { id: "M027", name: "Regex Lab", score: 7.8, price: "$7.99", tier: "C", icon: "🔧", category: "Developer" },
+  { id: "M028", name: "JSON Explorer", score: 7.8, price: "$5.99", tier: "C", icon: "{ }", category: "Developer" },
+  { id: "M029", name: "Magnify Pro", score: 7.7, price: "$4.99", tier: "C", icon: "🔍", category: "Accessibility" },
+  { id: "M030", name: "Color Ally", score: 7.7, price: "$6.99", tier: "C", icon: "🌈", category: "Accessibility" },
+  { id: "M031", name: "BPM Finder", score: 7.6, price: "$5.99", tier: "C", icon: "🎧", category: "Music" },
+  { id: "M032", name: "Bartender's Brain", score: 7.6, price: "$9.99", tier: "C", icon: "🍸", category: "Niche" },
+  { id: "M033", name: "Net Worth Now", score: 7.5, price: "$9.99", tier: "C", icon: "📊", category: "Finance" }
+];
+
+// Original categories data
 const IDEAS_DATA = {
   categories: [
     {
@@ -199,4 +542,5 @@ const IDEAS_DATA = {
 
 // Calculate total
 IDEAS_DATA.totalIdeas = IDEAS_DATA.categories.reduce((sum, cat) => sum + cat.ideas.length, 0);
-
+IDEAS_DATA.masterpieces = MASTERPIECE_IDEAS;
+IDEAS_DATA.moreMasterpieces = MORE_MASTERPIECES;
