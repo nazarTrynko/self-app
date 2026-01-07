@@ -1,0 +1,19 @@
+{
+  "name": "THE SYNESTHETIC - Cross-Sensory Perception",
+  "short_name": "SYNESTHETIC",
+  "description": "See sounds. Hear colors. Experience reality through multiple senses simultaneously.",
+  "start_url": "/landings/showcases/masterpieces/31-synesthetic/",
+  "display": "standalone",
+  "background_color": "#080510",
+  "theme_color": "#ff6b6b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["entertainment", "music", "art"]
+}
+

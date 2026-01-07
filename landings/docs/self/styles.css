@@ -142,6 +142,22 @@ body {
     color: var(--accent-cyan);
 }
 
+.nav-links a.nav-analysis {
+    color: var(--accent-purple);
+    position: relative;
+}
+
+.nav-links a.nav-analysis::after {
+    content: '✦';
+    font-size: 0.6rem;
+    margin-left: 4px;
+    opacity: 0.7;
+}
+
+.nav-links a.nav-analysis:hover {
+    color: var(--accent-cyan);
+}
+
 .nav-cta {
     padding: 10px 24px;
     background: var(--gradient-primary);

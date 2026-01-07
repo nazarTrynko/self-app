@@ -1,0 +1,19 @@
+{
+  "name": "THE STREAM - Consciousness Flow",
+  "short_name": "STREAM",
+  "description": "Map the flow of awareness. Watch thoughts branch, merge, and dissolve.",
+  "start_url": "/landings/showcases/masterpieces/33-stream/",
+  "display": "standalone",
+  "background_color": "#0a0a18",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["health", "lifestyle", "productivity"]
+}
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030810">
+    <title>QUANTUM ENTANGLEMENT — See Connections Beyond Space</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="entangle-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">34 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="entangle-icon">
+                    <div class="particle p1"></div>
+                    <div class="entangle-line"></div>
+                    <div class="particle p2"></div>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">QUANTUM<br>ENTANGLEMENT</h1>
+                <p class="hero-subtitle">
+                    See connections that transcend space.<br>
+                    Spooky action at a distance, made visible.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "When particles become entangled, measuring one instantly affects the other—<br>
+                no matter how far apart. Einstein called it 'spooky.' It's real."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Entanglement Lab</h2>
+            <p class="section-subtitle">Create entangled pairs and watch correlation in action</p>
+            
+            <div class="lab-display">
+                <canvas id="lab-canvas"></canvas>
+                <div class="lab-panels">
+                    <div class="particle-panel" id="panel-a">
+                        <h4>Particle A</h4>
+                        <div class="state-display" id="state-a">|ψ⟩ = ↑+↓</div>
+                        <button class="measure-btn" id="measure-a">MEASURE</button>
+                        <div class="result" id="result-a"></div>
+                    </div>
+                    <div class="correlation-display">
+                        <span class="corr-label">Entanglement</span>
+                        <div class="corr-line"></div>
+                        <span class="corr-value" id="correlation">100%</span>
+                    </div>
+                    <div class="particle-panel" id="panel-b">
+                        <h4>Particle B</h4>
+                        <div class="state-display" id="state-b">|ψ⟩ = ↑+↓</div>
+                        <button class="measure-btn" id="measure-b">MEASURE</button>
+                        <div class="result" id="result-b"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-panel">
+                <div class="stat">
+                    <span class="stat-value" id="trials">0</span>
+                    <span class="stat-label">Trials</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="correlations">0</span>
+                    <span class="stat-label">Correlations</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="bell-value">-</span>
+                    <span class="stat-label">Bell Value</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="create-pair">⚛️ Create Entangled Pair</button>
+                <button class="control-btn secondary" id="reset-stats">Reset Statistics</button>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>Reality Is Non-Local</h3>
+                <p>
+                    Quantum entanglement proves that the universe doesn't work the way 
+                    our intuitions suggest. Particles can be correlated in ways that have 
+                    no classical explanation. Information doesn't travel between them—
+                    they were never truly separate.
+                </p>
+                <p class="highlight">
+                    At the quantum level, separation is an illusion.<br>
+                    Connection is more fundamental than distance.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../35-hyperdimensional/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">HYPERDIMENSIONAL NAVIGATOR →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

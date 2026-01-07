@@ -1,0 +1,19 @@
+{
+  "name": "THE BIOMORPH - AI Evolution",
+  "short_name": "BIOMORPH",
+  "description": "Watch digital life forms evolve. Artificial intelligence meets natural selection.",
+  "start_url": "/landings/showcases/masterpieces/29-biomorph/",
+  "display": "standalone",
+  "background_color": "#020808",
+  "theme_color": "#00ff88",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["education", "entertainment", "utilities"]
+}
+

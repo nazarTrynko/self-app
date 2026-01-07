@@ -1,0 +1,280 @@
+/* MINDPALACE - Memory Architecture */
+/* Design: Classical architecture meets dreamscape meets cozy library */
+
+:root {
+    --bg-void: #0f0d0b;
+    --bg-surface: #1a1714;
+    --text-primary: #fef3c7;
+    --text-secondary: #a39580;
+    --library-wood: #92400e;
+    --memory-gold: #fcd34d;
+    --thought-blue: #60a5fa;
+    --parchment: #fef3c7;
+    --gradient-palace: linear-gradient(135deg, var(--library-wood), var(--memory-gold));
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--bg-void);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#palaceCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, var(--bg-void) 0%, transparent 100%);
+}
+
+.nav-back { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+.nav-brand {
+    font-weight: 600;
+    background: var(--gradient-palace);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.nav-cta {
+    padding: 0.6rem 1.25rem;
+    background: var(--gradient-palace);
+    color: var(--bg-void);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+}
+
+.hero-badge {
+    padding: 0.5rem 1.25rem;
+    background: rgba(146, 64, 14, 0.2);
+    border: 1px solid rgba(146, 64, 14, 0.4);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--memory-gold);
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-family: 'Spectral', serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.title-line { display: block; }
+.title-gradient {
+    font-weight: 600;
+    background: var(--gradient-palace);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-tagline {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 550px;
+    margin-bottom: 4rem;
+}
+
+/* Palace Visual */
+.palace-visual {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 3rem;
+}
+
+.room {
+    position: relative;
+    width: 100px;
+    height: 120px;
+    background: var(--bg-surface);
+    border: 2px solid var(--library-wood);
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    transition: all 0.3s;
+}
+
+.room.active {
+    width: 120px;
+    height: 150px;
+    border-color: var(--memory-gold);
+    box-shadow: 0 0 40px rgba(252, 211, 77, 0.3);
+}
+
+.room-icon { font-size: 1.5rem; }
+.room-name { font-size: 0.75rem; font-weight: 500; }
+.room-count { font-size: 0.6rem; color: var(--text-secondary); }
+.room-indicator {
+    position: absolute;
+    bottom: -24px;
+    font-size: 0.6rem;
+    color: var(--memory-gold);
+    letter-spacing: 0.1em;
+}
+
+.door {
+    width: 20px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--library-wood), transparent);
+    border-radius: 4px 4px 0 0;
+}
+
+.hero-hint {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Sections */
+.section {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 2rem;
+}
+
+.section-content { max-width: 800px; margin: 0 auto; }
+.section-label {
+    font-size: 0.75rem;
+    color: var(--memory-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Spectral', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.section-text.large {
+    font-size: 1.35rem;
+    color: var(--text-primary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature {
+    padding: 2rem;
+    background: var(--bg-surface);
+    border: 1px solid rgba(146, 64, 14, 0.2);
+    border-radius: 12px;
+}
+
+.feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+.feature h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.feature p { font-size: 0.95rem; color: var(--text-secondary); }
+
+.section-mindblowing {
+    background: var(--bg-surface);
+    text-align: center;
+}
+
+.section-waitlist { text-align: center; }
+
+.waitlist-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.waitlist-form input {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid rgba(146, 64, 14, 0.3);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.waitlist-form input:focus {
+    outline: none;
+    border-color: var(--memory-gold);
+}
+
+.waitlist-form button {
+    padding: 1rem 2rem;
+    background: var(--gradient-palace);
+    border: none;
+    border-radius: 8px;
+    color: var(--bg-void);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(146, 64, 14, 0.2);
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 0.85rem;
+}
+
+.footer a { color: var(--text-secondary); text-decoration: none; }
+.footer p { color: var(--text-secondary); }
+
+@media (max-width: 768px) {
+    .nav { padding: 1rem; }
+    .palace-visual { transform: scale(0.8); }
+}
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0510">
+    <title>HYPERDIMENSIONAL NAVIGATOR — Explore Beyond 3D</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="three-container"></div>
+    <canvas id="hyper-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">35 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="tesseract-icon">
+                    <canvas id="mini-tesseract"></canvas>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">HYPER<br>DIMENSIONAL</h1>
+                <p class="hero-subtitle">
+                    Explore spaces with more than 3 dimensions.<br>
+                    See what the mind was never designed to perceive.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "A tesseract is to a cube as a cube is to a square.<br>
+                Your brain can't see it. But you can learn to understand it."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">The Tesseract</h2>
+            <p class="section-subtitle">A 4-dimensional hypercube projected into 3D, then 2D</p>
+            
+            <div class="tesseract-display">
+                <canvas id="tesseract-canvas"></canvas>
+                <div class="rotation-info">
+                    <div class="rotation-axis">
+                        <span class="axis-label">XW Rotation</span>
+                        <input type="range" id="xw-rotation" min="-180" max="180" value="0" />
+                    </div>
+                    <div class="rotation-axis">
+                        <span class="axis-label">YW Rotation</span>
+                        <input type="range" id="yw-rotation" min="-180" max="180" value="0" />
+                    </div>
+                    <div class="rotation-axis">
+                        <span class="axis-label">ZW Rotation</span>
+                        <input type="range" id="zw-rotation" min="-180" max="180" value="0" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="object-selector">
+                <button class="object-btn active" data-object="tesseract">Tesseract (4D Cube)</button>
+                <button class="object-btn" data-object="hypersphere">Hypersphere Slices</button>
+                <button class="object-btn" data-object="simplex">4-Simplex</button>
+            </div>
+            
+            <div class="topology-info">
+                <div class="topo-stat">
+                    <span class="topo-value" id="vertices">16</span>
+                    <span class="topo-label">Vertices</span>
+                </div>
+                <div class="topo-stat">
+                    <span class="topo-value" id="edges">32</span>
+                    <span class="topo-label">Edges</span>
+                </div>
+                <div class="topo-stat">
+                    <span class="topo-value" id="faces">24</span>
+                    <span class="topo-label">Faces</span>
+                </div>
+                <div class="topo-stat">
+                    <span class="topo-value" id="cells">8</span>
+                    <span class="topo-label">Cells (3D)</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="auto-rotate">▶ Auto Rotate</button>
+                <button class="control-btn secondary" id="reset-view">Reset View</button>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>Dimensions Beyond Imagination</h3>
+                <p>
+                    You live in 3D space. Your brain evolved to navigate it.
+                    Higher dimensions are not just mathematical abstractions—
+                    they may be part of physical reality. String theory requires 10 or 11.
+                    Your inability to visualize them is a limitation of biology, not mathematics.
+                </p>
+                <p class="highlight">
+                    What you see is a shadow of a shadow.<br>
+                    The tesseract exists in 4D. You see its 2D projection.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../" class="next-platform">
+            <span class="next-label">Return to</span>
+            <span class="next-name">← ALL MASTERPIECES</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

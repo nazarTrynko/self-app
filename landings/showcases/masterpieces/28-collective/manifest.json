@@ -1,0 +1,19 @@
+{
+  "name": "THE COLLECTIVE - Mind Map",
+  "short_name": "COLLECTIVE",
+  "description": "Witness emergent intelligence. Individual thoughts become collective wisdom.",
+  "start_url": "/landings/showcases/masterpieces/28-collective/",
+  "display": "standalone",
+  "background_color": "#050810",
+  "theme_color": "#00ffaa",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["productivity", "social", "utilities"]
+}
+

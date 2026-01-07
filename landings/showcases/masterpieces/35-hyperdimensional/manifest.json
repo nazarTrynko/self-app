@@ -1,0 +1,19 @@
+{
+  "name": "THE HYPERDIMENSIONAL - 4D Navigator",
+  "short_name": "HYPERDIM",
+  "description": "Explore beyond 3D. Navigate tesseracts and hyperspheres projected into perceivable space.",
+  "start_url": "/landings/showcases/masterpieces/35-hyperdimensional/",
+  "display": "standalone",
+  "background_color": "#0a0510",
+  "theme_color": "#e879f9",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["education", "entertainment", "utilities"]
+}
+

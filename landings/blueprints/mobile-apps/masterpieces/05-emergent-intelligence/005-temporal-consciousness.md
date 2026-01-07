@@ -52,6 +52,7 @@ An application that makes subjective time perception visible and manipulable. Th
 **Model:** One-Time Purchase with Premium Content
 **Price:** $59.99 (full app) + $19.99 temporal training courses
 **Strategy:**
+
 - Meditation app partnerships (temporal aspect of practice)
 - Sports psychology integration
 - Productivity coach certification program
@@ -120,6 +121,7 @@ An application that makes subjective time perception visible and manipulable. Th
 ## Technical Notes
 
 **Primary APIs:**
+
 - WebGL2: Temporal field visualization with shader-based time distortion effects
 - Web Audio: Tempo-shifted soundscapes that match subjective time
 - DeviceMotion: Micro-movement analysis correlating with temporal state
@@ -129,44 +131,45 @@ An application that makes subjective time perception visible and manipulable. Th
 - IndexedDB: Temporal history and pattern storage
 
 **Temporal Perception Model:**
+
 ```javascript
 // Time perception is affected by multiple factors
 class TemporalState {
   constructor() {
     this.factors = {
-      attention: 1.0,      // High attention → slower time
-      emotion: 0.0,        // Positive → faster, negative → slower
-      novelty: 0.5,        // Novel experiences → slower time
-      anxiety: 0.0,        // Anxiety → slower (but unpleasant)
-      flow: 0.0,           // Flow → faster (pleasant)
-      fatigue: 0.0,        // Fatigue → slower
-      anticipation: 0.0    // Waiting → slower
+      attention: 1.0, // High attention → slower time
+      emotion: 0.0, // Positive → faster, negative → slower
+      novelty: 0.5, // Novel experiences → slower time
+      anxiety: 0.0, // Anxiety → slower (but unpleasant)
+      flow: 0.0, // Flow → faster (pleasant)
+      fatigue: 0.0, // Fatigue → slower
+      anticipation: 0.0, // Waiting → slower
     };
   }
-  
+
   // Calculate subjective time multiplier
   // >1 means time feels fast, <1 means time feels slow
   get subjectiveMultiplier() {
     let multiplier = 1.0;
-    
+
     // High attention slows time
     multiplier -= (this.factors.attention - 0.5) * 0.3;
-    
+
     // Positive emotion speeds time
     multiplier += this.factors.emotion * 0.2;
-    
+
     // Novelty slows time
     multiplier -= this.factors.novelty * 0.2;
-    
+
     // Flow speeds time (but pleasantly)
     multiplier += this.factors.flow * 0.4;
-    
+
     // Anxiety slows time (unpleasantly)
     multiplier -= this.factors.anxiety * 0.3;
-    
+
     return Math.max(0.3, Math.min(2.0, multiplier));
   }
-  
+
   // Present moment "width" in seconds
   get presentWidth() {
     // Focused states have narrower "now"
@@ -177,34 +180,35 @@ class TemporalState {
 ```
 
 **Calibration Exercises:**
+
 ```javascript
 // Time estimation test
 class TemporalCalibration {
   async runDurationEstimate(targetSeconds) {
     const startTime = performance.now();
-    
+
     // User does simple task or waits
     await this.presentStimuli(targetSeconds);
-    
+
     // User estimates duration
     const estimate = await this.getUserEstimate();
-    
+
     const actualDuration = (performance.now() - startTime) / 1000;
-    
+
     return {
       actual: actualDuration,
       estimated: estimate,
       ratio: estimate / actualDuration,
-      interpretation: this.interpretRatio(estimate / actualDuration)
+      interpretation: this.interpretRatio(estimate / actualDuration),
     };
   }
-  
+
   interpretRatio(ratio) {
-    if (ratio < 0.7) return 'Significant time compression (time flying)';
-    if (ratio < 0.9) return 'Moderate time compression';
-    if (ratio > 1.3) return 'Significant time dilation (time dragging)';
-    if (ratio > 1.1) return 'Moderate time dilation';
-    return 'Accurate time perception';
+    if (ratio < 0.7) return "Significant time compression (time flying)";
+    if (ratio < 0.9) return "Moderate time compression";
+    if (ratio > 1.3) return "Significant time dilation (time dragging)";
+    if (ratio > 1.1) return "Moderate time dilation";
+    return "Accurate time perception";
   }
 }
 ```
@@ -215,12 +219,14 @@ All exercises and visualizations work offline. Temporal history stored locally. 
 ## Competition & Differentiation
 
 **Existing Solutions:**
+
 - Meditation timers (don't measure perception)
 - Productivity timers (focus on clock time)
 - Flow state apps (don't address time perception)
 - Academic research tools (not consumer-friendly)
 
 **Our Edge:**
+
 - First app focused specifically on temporal perception
 - Bridges meditation, productivity, and consciousness exploration
 - Makes invisible (subjective time) visible
@@ -233,6 +239,7 @@ All exercises and visualizations work offline. Temporal history stored locally. 
 **Complexity:** High
 **Timeline:** 14-18 weeks
 **Key Challenges:**
+
 - Making subjective time measurement reliable
 - Avoiding placebo effects in calibration
 - Creating meaningful visualizations of temporal experience
@@ -255,4 +262,3 @@ All exercises and visualizations work offline. Temporal history stored locally. 
 **🛡️ GUARDIAN:** "Could be psychologically destabilizing for some users—time distortion is a symptom of dissociation, anxiety, and other conditions. Include grounding exercises. Don't encourage unhealthy dissociation from linear time. Add mental health resources."
 
 **Verdict:** GO WITH CARE — Unique and fascinating concept with genuine scientific basis. Requires thoughtful execution to avoid pseudoscience while embracing the experiential mystery of temporal consciousness.
-

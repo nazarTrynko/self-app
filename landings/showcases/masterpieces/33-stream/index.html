@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a18">
+    <title>CONSCIOUSNESS STREAM — Map the Flow of Awareness</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="awareness-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">33 / 35</span>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="stream-icon">
+                    <div class="ripple r1"></div>
+                    <div class="ripple r2"></div>
+                    <div class="ripple r3"></div>
+                    <div class="center-point"></div>
+                </div>
+                <p class="hero-label">Emergent Intelligence</p>
+                <h1 class="hero-title">CONSCIOUSNESS<br>STREAM</h1>
+                <p class="hero-subtitle">
+                    Map the flow of awareness itself.<br>
+                    Watch your thoughts branch, merge, and dissolve.
+                </p>
+            </div>
+        </section>
+
+        <section class="insight">
+            <blockquote>
+                "Consciousness is not a thing. It's a process—<br>
+                a river of awareness flowing through the landscape of mind."
+            </blockquote>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-title">Your Stream of Consciousness</h2>
+            <p class="section-subtitle">Type a thought. Watch it flow into the stream.</p>
+            
+            <div class="stream-display">
+                <canvas id="stream-viz-canvas"></canvas>
+                <div class="stream-info">
+                    <span class="stream-label">Thought Depth</span>
+                    <div class="depth-bar"><div class="depth-fill" id="depth-fill"></div></div>
+                </div>
+            </div>
+            
+            <div class="thought-input">
+                <input type="text" id="thought-text" placeholder="What are you thinking right now?" />
+                <button class="add-btn" id="add-thought">Add to Stream</button>
+            </div>
+            
+            <div class="categories">
+                <span class="category" data-cat="work" style="--cat-color: #3b82f6">Work</span>
+                <span class="category" data-cat="memory" style="--cat-color: #a855f7">Memory</span>
+                <span class="category" data-cat="future" style="--cat-color: #06b6d4">Future</span>
+                <span class="category" data-cat="emotion" style="--cat-color: #f43f5e">Emotion</span>
+                <span class="category" data-cat="body" style="--cat-color: #f97316">Body</span>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h3>The River You Cannot Step In Twice</h3>
+                <p>
+                    Every moment, thoughts arise and pass away. We identify with the stream,
+                    believing we ARE our thoughts. But you are not the river—you are the 
+                    awareness through which the river flows. Watch the stream without 
+                    being swept away by it.
+                </p>
+                <p class="highlight">
+                    The observer is not the observed.<br>
+                    You are the space in which thoughts appear.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../34-entangled/" class="next-platform">
+            <span class="next-label">Next Experience</span>
+            <span class="next-name">QUANTUM ENTANGLEMENT →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
+

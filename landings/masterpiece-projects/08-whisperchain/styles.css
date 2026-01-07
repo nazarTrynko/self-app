@@ -1,0 +1,295 @@
+/* WHISPERCHAIN - Message Travel */
+/* Design: Subway map meets neural pathway meets secret society */
+
+:root {
+    --bg-void: #0a0e14;
+    --bg-surface: #121820;
+    --text-primary: #f0f4f8;
+    --text-secondary: #8892a2;
+    --midnight-blue: #1e3a5f;
+    --whisper-gray: #9ca3af;
+    --annotation-gold: #f59e0b;
+    --chain-purple: #8b5cf6;
+    --gradient-chain: linear-gradient(135deg, var(--chain-purple), var(--annotation-gold));
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-void);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#chainCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, var(--bg-void) 0%, transparent 100%);
+}
+
+.nav-back { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+.nav-brand {
+    font-weight: 600;
+    background: var(--gradient-chain);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.nav-cta {
+    padding: 0.6rem 1.25rem;
+    background: var(--gradient-chain);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+}
+
+.hero-badge {
+    padding: 0.5rem 1.25rem;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--chain-purple);
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-family: 'Alegreya', serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.title-line { display: block; }
+.title-gradient {
+    font-weight: 600;
+    background: var(--gradient-chain);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-tagline {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin-bottom: 4rem;
+}
+
+/* Chain Visual */
+.chain-visual {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 2rem;
+}
+
+.chain-node {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: var(--bg-surface);
+    border: 2px solid var(--chain-purple);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chain-node.sender { border-color: var(--chain-purple); }
+.chain-node.intermediate { border-color: var(--whisper-gray); }
+.chain-node.receiver { border-color: var(--annotation-gold); }
+
+.node-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+
+.node-annotation {
+    position: absolute;
+    bottom: -20px;
+    font-size: 0.55rem;
+    color: var(--annotation-gold);
+    white-space: nowrap;
+}
+
+.chain-line {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--chain-purple), var(--whisper-gray));
+    position: relative;
+}
+
+.chain-line::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--whisper-gray);
+    border-radius: 50%;
+    animation: pulse-dot 1s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.hero-hint {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Sections */
+.section {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 2rem;
+}
+
+.section-content { max-width: 800px; margin: 0 auto; }
+.section-label {
+    font-size: 0.75rem;
+    color: var(--chain-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Alegreya', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.section-text.large {
+    font-size: 1.35rem;
+    color: var(--text-primary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature {
+    padding: 2rem;
+    background: var(--bg-surface);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    border-radius: 12px;
+}
+
+.feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+.feature h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.feature p { font-size: 0.95rem; color: var(--text-secondary); }
+
+.section-mindblowing {
+    background: var(--bg-surface);
+    text-align: center;
+}
+
+.section-waitlist { text-align: center; }
+
+.waitlist-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.waitlist-form input {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.waitlist-form input:focus {
+    outline: none;
+    border-color: var(--chain-purple);
+}
+
+.waitlist-form button {
+    padding: 1rem 2rem;
+    background: var(--gradient-chain);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(139, 92, 246, 0.1);
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 0.85rem;
+}
+
+.footer a { color: var(--text-secondary); text-decoration: none; }
+.footer p { color: var(--text-secondary); }
+
+@media (max-width: 768px) {
+    .nav { padding: 1rem; }
+    .chain-visual { transform: scale(0.8); }
+}
+

@@ -1,0 +1,19 @@
+{
+  "name": "THE EMERGENT - Language Evolution",
+  "short_name": "EMERGENT",
+  "description": "Watch language emerge from chaos. Meaning from randomness. Communication from void.",
+  "start_url": "/landings/showcases/masterpieces/32-emergent/",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#a78bfa",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["education", "productivity", "utilities"]
+}
+

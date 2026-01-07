@@ -1,0 +1,19 @@
+{
+  "name": "THE ENTANGLED - Quantum Connections",
+  "short_name": "ENTANGLED",
+  "description": "See connections beyond space. Spooky action at a distance, made visible.",
+  "start_url": "/landings/showcases/masterpieces/34-entangled/",
+  "display": "standalone",
+  "background_color": "#030810",
+  "theme_color": "#00d4ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["education", "entertainment", "utilities"]
+}
+

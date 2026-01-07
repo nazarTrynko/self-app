@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MINDPALACE - Build a palace from your knowledge. Walk through rooms of memories and ideas in your personal 3D mind space.">
+    <title>MINDPALACE — Walk Through Your Memories in 3D</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="palaceCanvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Projects</a>
+        <div class="nav-brand">🏛️ MINDPALACE</div>
+        <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-badge">Project #09 • Confidence: 88%</div>
+        
+        <h1 class="hero-title">
+            <span class="title-line">Walk Through</span>
+            <span class="title-gradient">Your Knowledge</span>
+        </h1>
+        
+        <p class="hero-tagline">Build a palace from your memories. Literally walk through rooms of ideas in your personal 3D mind space.</p>
+        
+        <div class="palace-visual">
+            <div class="room library">
+                <span class="room-icon">📚</span>
+                <span class="room-name">Library</span>
+                <span class="room-count">47 items</span>
+            </div>
+            <div class="door door-left"></div>
+            <div class="room study active">
+                <span class="room-icon">💡</span>
+                <span class="room-name">Study</span>
+                <span class="room-indicator">YOU</span>
+            </div>
+            <div class="door door-right"></div>
+            <div class="room workshop">
+                <span class="room-icon">🔧</span>
+                <span class="room-name">Workshop</span>
+                <span class="room-count">23 items</span>
+            </div>
+        </div>
+        
+        <p class="hero-hint">Navigate by walking. Remember by location.</p>
+    </header>
+
+    <section class="section section-concept">
+        <div class="section-content">
+            <span class="section-label">The Concept</span>
+            <h2 class="section-title">The Ancient Technique, Realized</h2>
+            <p class="section-text">
+                MINDPALACE is a knowledge management system based on the ancient memory palace technique. 
+                Instead of notes in folders, you place memories in rooms. Instead of links between documents, 
+                you walk through doors. Your knowledge base becomes a literal space you can navigate.
+            </p>
+            <p class="section-text">
+                The method of loci is one of the most powerful memory systems ever discovered, used by 
+                memory champions and ancient orators. MINDPALACE makes it real—a 3D environment you build 
+                and explore, optimized for how human memory actually works.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-features">
+        <div class="section-content">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Build Your Palace</h2>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🚪</div>
+                    <h3>Room-Based Organization</h3>
+                    <p>Create rooms for themes. Place objects as knowledge. Walking through triggers recall.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📍</div>
+                    <h3>Spatial Placement</h3>
+                    <p>Shelf = reference. Table = active. Floor = archive. Position carries meaning.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Spaced Repetition</h3>
+                    <p>The palace highlights what you should revisit. Glowing objects need review.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📥</div>
+                    <h3>Import Everything</h3>
+                    <p>Bring in notes from Notion, Obsidian, Apple Notes. Transform files into objects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-mindblowing">
+        <div class="section-content">
+            <span class="section-label">The Mind-Blowing Moment</span>
+            <h2 class="section-title">You Remember Where It Is</h2>
+            <p class="section-text large">
+                When you can't remember something, closing your eyes and mentally walking to where 
+                you placed it—and finding it there. The spatial memory kicks in.
+            </p>
+            <p class="section-text">
+                You remember where it is even when you don't remember what it is. Then you open the 
+                app and it's exactly where you remembered.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-waitlist" id="waitlist">
+        <div class="section-content">
+            <h2 class="section-title">Build Your Palace</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Join Waitlist →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="../">← Back to All Projects</a>
+        <p>Part of the <a href="../../">SELF Framework</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

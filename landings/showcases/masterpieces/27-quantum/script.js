@@ -1,16 +1,258 @@
-// QUANTUM DECISION ENGINE - Probability Space Visualization
+// QUANTUM DECISION ENGINE - Advanced 3D Probability Space Visualization
 // Emergent Intelligence Category - Showcase 27
+// Features Three.js 3D quantum field with particle physics
 
-class QuantumField {
+// Three.js Quantum Field Background
+class QuantumField3D {
     constructor() {
-        this.canvas = document.getElementById('quantum-canvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.particles = [];
+        this.container = document.getElementById('three-container');
+        if (!this.container || typeof THREE === 'undefined') {
+            console.warn('Three.js container not found or THREE not loaded');
+            return;
+        }
+        
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.particles = null;
+        this.connections = null;
         this.time = 0;
+        this.mouse = { x: 0, y: 0 };
         this.collapsed = false;
         
-        this.resize();
         this.init();
+        this.createParticles();
+        this.createConnections();
+        this.bindEvents();
+        this.animate();
+    }
+
+    init() {
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        this.renderer.setClearColor(0x030818, 1);
+        this.container.appendChild(this.renderer.domElement);
+        
+        this.camera.position.z = 30;
+        
+        // Add subtle fog for depth
+        this.scene.fog = new THREE.FogExp2(0x030818, 0.015);
+    }
+
+    createParticles() {
+        const particleCount = 500;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+        const sizes = new Float32Array(particleCount);
+        const phases = new Float32Array(particleCount);
+        
+        for (let i = 0; i < particleCount; i++) {
+            // Spherical distribution
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            const radius = 10 + Math.random() * 30;
+            
+            positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+            positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+            positions[i * 3 + 2] = radius * Math.cos(phi);
+            
+            // Cyan to purple gradient
+            const hue = 0.5 + Math.random() * 0.2;
+            const color = new THREE.Color().setHSL(hue, 0.8, 0.6);
+            colors[i * 3] = color.r;
+            colors[i * 3 + 1] = color.g;
+            colors[i * 3 + 2] = color.b;
+            
+            sizes[i] = 0.5 + Math.random() * 1.5;
+            phases[i] = Math.random() * Math.PI * 2;
+        }
+        
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+        geometry.setAttribute('phase', new THREE.BufferAttribute(phases, 1));
+        
+        // Custom shader material for quantum particles
+        const material = new THREE.ShaderMaterial({
+            uniforms: {
+                time: { value: 0 },
+                collapsed: { value: 0 }
+            },
+            vertexShader: `
+                attribute float size;
+                attribute float phase;
+                varying vec3 vColor;
+                varying float vPhase;
+                uniform float time;
+                uniform float collapsed;
+                
+                void main() {
+                    vColor = color;
+                    vPhase = phase;
+                    
+                    vec3 pos = position;
+                    
+                    // Superposition oscillation
+                    float oscillation = sin(time * 2.0 + phase) * (1.0 - collapsed);
+                    pos.x += oscillation * 2.0;
+                    pos.y += cos(time * 1.5 + phase) * 2.0 * (1.0 - collapsed);
+                    pos.z += sin(time + phase * 2.0) * 1.5 * (1.0 - collapsed);
+                    
+                    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+                    gl_PointSize = size * (300.0 / -mvPosition.z);
+                    gl_Position = projectionMatrix * mvPosition;
+                }
+            `,
+            fragmentShader: `
+                varying vec3 vColor;
+                varying float vPhase;
+                uniform float time;
+                
+                void main() {
+                    float dist = length(gl_PointCoord - vec2(0.5));
+                    if (dist > 0.5) discard;
+                    
+                    float alpha = 1.0 - (dist * 2.0);
+                    alpha *= 0.6 + sin(time * 3.0 + vPhase) * 0.2;
+                    
+                    // Glow effect
+                    vec3 glow = vColor * (1.0 + (0.5 - dist) * 2.0);
+                    
+                    gl_FragColor = vec4(glow, alpha);
+                }
+            `,
+            vertexColors: true,
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+        
+        this.particles = new THREE.Points(geometry, material);
+        this.scene.add(this.particles);
+        
+        // Store original positions for collapse animation
+        this.originalPositions = positions.slice();
+    }
+
+    createConnections() {
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(1000 * 6); // 1000 line segments
+        
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        
+        const material = new THREE.LineBasicMaterial({
+            color: 0x38bdf8,
+            transparent: true,
+            opacity: 0.1,
+            blending: THREE.AdditiveBlending
+        });
+        
+        this.connections = new THREE.LineSegments(geometry, material);
+        this.scene.add(this.connections);
+    }
+
+    updateConnections() {
+        if (!this.particles) return;
+        
+        const particlePositions = this.particles.geometry.attributes.position.array;
+        const connectionPositions = this.connections.geometry.attributes.position.array;
+        const maxConnections = 500;
+        const connectionDistance = 8;
+        
+        let connectionIndex = 0;
+        
+        for (let i = 0; i < particlePositions.length / 3 && connectionIndex < maxConnections; i++) {
+            for (let j = i + 1; j < particlePositions.length / 3 && connectionIndex < maxConnections; j++) {
+                const dx = particlePositions[i * 3] - particlePositions[j * 3];
+                const dy = particlePositions[i * 3 + 1] - particlePositions[j * 3 + 1];
+                const dz = particlePositions[i * 3 + 2] - particlePositions[j * 3 + 2];
+                const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                
+                if (dist < connectionDistance) {
+                    connectionPositions[connectionIndex * 6] = particlePositions[i * 3];
+                    connectionPositions[connectionIndex * 6 + 1] = particlePositions[i * 3 + 1];
+                    connectionPositions[connectionIndex * 6 + 2] = particlePositions[i * 3 + 2];
+                    connectionPositions[connectionIndex * 6 + 3] = particlePositions[j * 3];
+                    connectionPositions[connectionIndex * 6 + 4] = particlePositions[j * 3 + 1];
+                    connectionPositions[connectionIndex * 6 + 5] = particlePositions[j * 3 + 2];
+                    connectionIndex++;
+                }
+            }
+        }
+        
+        // Clear remaining connections
+        for (let i = connectionIndex * 6; i < connectionPositions.length; i++) {
+            connectionPositions[i] = 0;
+        }
+        
+        this.connections.geometry.attributes.position.needsUpdate = true;
+    }
+
+    bindEvents() {
+        window.addEventListener('resize', () => {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+    }
+
+    collapse() {
+        this.collapsed = true;
+    }
+
+    reset() {
+        this.collapsed = false;
+    }
+
+    animate() {
+        requestAnimationFrame(() => this.animate());
+        
+        this.time += 0.016;
+        
+        if (this.particles) {
+            this.particles.material.uniforms.time.value = this.time;
+            this.particles.material.uniforms.collapsed.value = this.collapsed ? 1 : 0;
+            
+            // Gentle rotation
+            this.particles.rotation.y += 0.001;
+            this.particles.rotation.x = Math.sin(this.time * 0.2) * 0.1;
+            
+            // Mouse influence
+            this.particles.rotation.y += this.mouse.x * 0.001;
+            this.particles.rotation.x += this.mouse.y * 0.001;
+        }
+        
+        if (this.connections) {
+            this.connections.rotation.y = this.particles.rotation.y;
+            this.connections.rotation.x = this.particles.rotation.x;
+        }
+        
+        // Update connections every few frames for performance
+        if (Math.floor(this.time * 60) % 3 === 0) {
+            this.updateConnections();
+        }
+        
+        this.renderer.render(this.scene, this.camera);
+    }
+}
+
+// 2D Canvas overlay for additional effects
+class QuantumField2D {
+    constructor() {
+        this.canvas = document.getElementById('quantum-canvas');
+        if (!this.canvas) return;
+        
+        this.ctx = this.canvas.getContext('2d');
+        this.ripples = [];
+        this.time = 0;
+        
+        this.resize();
         window.addEventListener('resize', () => this.resize());
         this.animate();
     }
@@ -20,100 +262,37 @@ class QuantumField {
         this.canvas.height = window.innerHeight;
     }
 
-    init() {
-        this.particles = [];
-        const count = Math.min(200, Math.floor((this.canvas.width * this.canvas.height) / 10000));
-        
-        for (let i = 0; i < count; i++) {
-            this.particles.push({
-                x: Math.random() * this.canvas.width,
-                y: Math.random() * this.canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                radius: 1 + Math.random() * 2,
-                phase: Math.random() * Math.PI * 2,
-                frequency: 0.5 + Math.random() * 2,
-                superposition: true,
-                hue: 190 + Math.random() * 40
-            });
-        }
+    addRipple(x, y) {
+        this.ripples.push({
+            x: x || this.canvas.width / 2,
+            y: y || this.canvas.height / 2,
+            radius: 0,
+            opacity: 0.8,
+            speed: 3 + Math.random() * 2
+        });
     }
 
     update() {
         this.time += 0.016;
-
-        this.particles.forEach(p => {
-            if (p.superposition) {
-                // Quantum uncertainty - particles shimmer between positions
-                p.x += p.vx + Math.sin(this.time * p.frequency + p.phase) * 0.5;
-                p.y += p.vy + Math.cos(this.time * p.frequency + p.phase) * 0.5;
-            } else {
-                // Collapsed state - particles move normally
-                p.x += p.vx;
-                p.y += p.vy;
-            }
-
-            // Wrap around
-            if (p.x < 0) p.x = this.canvas.width;
-            if (p.x > this.canvas.width) p.x = 0;
-            if (p.y < 0) p.y = this.canvas.height;
-            if (p.y > this.canvas.height) p.y = 0;
+        
+        this.ripples.forEach(r => {
+            r.radius += r.speed;
+            r.opacity -= 0.01;
         });
+        
+        this.ripples = this.ripples.filter(r => r.opacity > 0);
     }
 
     draw() {
-        this.ctx.fillStyle = 'rgba(3, 8, 24, 0.1)';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-        // Draw probability connections
-        this.ctx.strokeStyle = 'rgba(56, 189, 248, 0.05)';
-        this.ctx.lineWidth = 0.5;
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        for (let i = 0; i < this.particles.length; i++) {
-            for (let j = i + 1; j < this.particles.length; j++) {
-                const dx = this.particles[i].x - this.particles[j].x;
-                const dy = this.particles[i].y - this.particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                
-                if (dist < 100) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
-                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
-                    this.ctx.stroke();
-                }
-            }
-        }
-
-        // Draw particles
-        this.particles.forEach(p => {
-            // Probability cloud (superposition effect)
-            if (p.superposition) {
-                const spread = 10 + Math.sin(this.time * p.frequency) * 5;
-                for (let i = 0; i < 3; i++) {
-                    const offsetX = Math.sin(this.time * p.frequency + i * 2) * spread;
-                    const offsetY = Math.cos(this.time * p.frequency + i * 2) * spread;
-                    
-                    this.ctx.beginPath();
-                    this.ctx.arc(p.x + offsetX, p.y + offsetY, p.radius * 0.5, 0, Math.PI * 2);
-                    this.ctx.fillStyle = `hsla(${p.hue}, 80%, 60%, 0.2)`;
-                    this.ctx.fill();
-                }
-            }
-
-            // Main particle
-            const glow = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 5);
-            glow.addColorStop(0, `hsla(${p.hue}, 80%, 60%, 0.6)`);
-            glow.addColorStop(1, 'transparent');
-            
+        // Draw ripples
+        this.ripples.forEach(r => {
             this.ctx.beginPath();
-            this.ctx.arc(p.x, p.y, p.radius * 5, 0, Math.PI * 2);
-            this.ctx.fillStyle = glow;
-            this.ctx.fill();
-
-            this.ctx.beginPath();
-            this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            this.ctx.fillStyle = `hsla(${p.hue}, 80%, 70%, 0.8)`;
-            this.ctx.fill();
+            this.ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+            this.ctx.strokeStyle = `rgba(56, 189, 248, ${r.opacity})`;
+            this.ctx.lineWidth = 2;
+            this.ctx.stroke();
         });
     }
 
@@ -358,7 +537,8 @@ class DecisionField {
 // Main App
 class QuantumDecisionApp {
     constructor() {
-        this.bgField = new QuantumField();
+        this.bgField3D = new QuantumField3D();
+        this.bgField2D = new QuantumField2D();
         this.decisionField = new DecisionField();
         
         this.bindEvents();
@@ -383,6 +563,13 @@ class QuantumDecisionApp {
                     this.decisionField.options[i].text = e.target.value;
                 }
             });
+        });
+        
+        // Add ripple on click
+        document.addEventListener('click', (e) => {
+            if (this.bgField2D) {
+                this.bgField2D.addRipple(e.clientX, e.clientY);
+            }
         });
     }
 
@@ -414,6 +601,20 @@ class QuantumDecisionApp {
     collapse() {
         const result = this.decisionField.collapse();
         
+        // Collapse the 3D field too
+        if (this.bgField3D) {
+            this.bgField3D.collapse();
+        }
+        
+        // Add multiple ripples for dramatic effect
+        if (this.bgField2D) {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    this.bgField2D.addRipple(window.innerWidth / 2, window.innerHeight / 2);
+                }, i * 200);
+            }
+        }
+        
         if (result) {
             const resultDisplay = document.getElementById('result-display');
             const resultValue = document.getElementById('result-value');
@@ -432,4 +633,3 @@ class QuantumDecisionApp {
 document.addEventListener('DOMContentLoaded', () => {
     new QuantumDecisionApp();
 });
-

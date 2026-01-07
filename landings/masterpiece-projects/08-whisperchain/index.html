@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WHISPERCHAIN - Messages that travel through people, gaining context and annotations along the way.">
+    <title>WHISPERCHAIN — Messages That Travel Through People</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="chainCanvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Projects</a>
+        <div class="nav-brand">🔗 WHISPERCHAIN</div>
+        <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-badge">Project #08 • Confidence: 79%</div>
+        
+        <h1 class="hero-title">
+            <span class="title-line">Messages That</span>
+            <span class="title-gradient">Travel Through People</span>
+        </h1>
+        
+        <p class="hero-tagline">The telephone game as a social network. Messages gain context and wisdom as they travel.</p>
+        
+        <div class="chain-visual">
+            <div class="chain-node sender">
+                <span class="node-label">You</span>
+            </div>
+            <div class="chain-line"></div>
+            <div class="chain-node intermediate">
+                <span class="node-label">@sarah</span>
+                <span class="node-annotation">+insight</span>
+            </div>
+            <div class="chain-line"></div>
+            <div class="chain-node intermediate">
+                <span class="node-label">anon</span>
+                <span class="node-annotation">+context</span>
+            </div>
+            <div class="chain-line"></div>
+            <div class="chain-node receiver">
+                <span class="node-label">@maya</span>
+            </div>
+        </div>
+        
+        <p class="hero-hint">Estimated arrival: ~4 hours (thoughtful chain)</p>
+    </header>
+
+    <section class="section section-concept">
+        <div class="section-content">
+            <span class="section-label">The Concept</span>
+            <h2 class="section-title">Messages Enhanced by Journey</h2>
+            <p class="section-text">
+                WHISPERCHAIN is a communication platform where messages don't go directly to recipients. 
+                Instead, they travel through intermediate users who can add context, questions, reactions, 
+                or translations. By the time a message reaches its destination, it carries the collective 
+                wisdom of everyone who touched it.
+            </p>
+            <p class="section-text">
+                It's not chaos—you control the chain length, require certain expertise nodes, or specify 
+                anonymity levels. A technical question might route through engineers. A creative prompt 
+                might route through artists. The chain itself becomes valuable.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-features">
+        <div class="section-content">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Chain Parameters</h2>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🔢</div>
+                    <h3>Chain Length</h3>
+                    <p>Choose how many people touch your message before delivery. More hops = richer context.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Expertise Routing</h3>
+                    <p>Route through specific expertise categories: UX, engineering, founders, creatives.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Reputation System</h3>
+                    <p>Build reputation as a valuable chain participant. Trusted nodes get better chains.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👁️</div>
+                    <h3>Live Tracking</h3>
+                    <p>Watch your message travel through the network in real-time. See each annotation appear.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-mindblowing">
+        <div class="section-content">
+            <span class="section-label">The Mind-Blowing Moment</span>
+            <h2 class="section-title">Strangers Improved Your Message</h2>
+            <p class="section-text large">
+                Watching strangers improve your message. You send something half-formed, and through 
+                the chain, it becomes clearer than you could have made it alone.
+            </p>
+            <p class="section-text">
+                The message that arrives at your recipient isn't yours anymore—it's a collaboration 
+                with people you never met who cared enough to contribute.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-waitlist" id="waitlist">
+        <div class="section-content">
+            <h2 class="section-title">Join the Chain</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Join Waitlist →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="../">← Back to All Projects</a>
+        <p>Part of the <a href="../../">SELF Framework</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

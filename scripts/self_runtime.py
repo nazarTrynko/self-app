@@ -1374,6 +1374,388 @@ def cmd_prediction_resolve(pred_id: str, hit: bool, notes: str = None):
     return False
 
 
+def cmd_demo_full():
+    """Run a full demo of all SELF systems."""
+    print("\n" + "=" * 60)
+    print("  SELF Full System Demo")
+    print("=" * 60 + "\n")
+    
+    print("🚀 Starting comprehensive system demonstration...\n")
+    
+    # 1. System Status
+    print("=" * 40)
+    print("1️⃣  SYSTEM STATUS")
+    print("=" * 40)
+    cmd_status()
+    
+    # 2. Memory Stats
+    print("=" * 40)
+    print("2️⃣  MEMORY SYSTEM")
+    print("=" * 40)
+    cmd_memory_stats()
+    
+    # 3. Add a demo episode
+    print("=" * 40)
+    print("3️⃣  MEMORY RECORDING (Demo Episode)")
+    print("=" * 40)
+    cmd_memory_add(
+        "Demo episode: SELF runtime full demo executed successfully",
+        "task",
+        "success",
+        0.8,
+        ["architect", "oracle"]
+    )
+    print()
+    
+    # 4. Prediction Engine
+    print("=" * 40)
+    print("4️⃣  PREDICTION ENGINE")
+    print("=" * 40)
+    cmd_prediction_status()
+    
+    # 5. Fitness & Evolution
+    print("=" * 40)
+    print("5️⃣  EVOLUTION ENGINE")
+    print("=" * 40)
+    cmd_evolution_status()
+    
+    # 6. Surprise Analysis
+    print("=" * 40)
+    print("6️⃣  SURPRISE-DRIVEN LEARNING")
+    print("=" * 40)
+    cmd_surprise_analysis()
+    
+    # 7. Sync Status
+    print("=" * 40)
+    print("7️⃣  NOTION SYNC")
+    print("=" * 40)
+    cmd_sync_status()
+    
+    print("=" * 60)
+    print("  ✅ DEMO COMPLETE")
+    print("=" * 60)
+    print("""
+  All systems operational. Next steps:
+  
+  • Run 'onboard' to personalize SELF
+  • Use 'reflect' after tasks to build memory
+  • Use 'feedback' to train the evolution engine
+  • Use 'predict add' to test prediction accuracy
+  
+  For full command list: python self_runtime.py --help
+""")
+
+
+def cmd_demo_quick():
+    """Run a quick health check demo."""
+    print("\n🔍 SELF Quick Check\n")
+    
+    # Check all files
+    all_ok = True
+    for name, path in FILES.items():
+        if path.exists():
+            data = load_json(path)
+            if data:
+                print(f"  ✅ {name}")
+            else:
+                print(f"  ⚠️  {name} (parse error)")
+                all_ok = False
+        else:
+            print(f"  ❌ {name} (missing)")
+            all_ok = False
+    
+    # Quick stats
+    memory = load_json(FILES["memory"])
+    if memory:
+        episodes = len(memory.get("episodes", {}).get("recent", []))
+        print(f"\n  Episodes: {episodes}")
+    
+    fitness = load_json(FILES["fitness"])
+    if fitness:
+        score = fitness.get("prompt_variants", {}).get("generation_001", {}).get("average_fitness", 0.5)
+        print(f"  Fitness: {score:.2f}")
+    
+    predictions = load_json(FILES["predictions"])
+    if predictions:
+        accuracy = predictions.get("prediction_history", {}).get("accuracy", 0)
+        print(f"  Prediction Accuracy: {accuracy*100:.0f}%")
+    
+    status = "✅ OPERATIONAL" if all_ok else "⚠️ ISSUES DETECTED"
+    print(f"\n  Status: {status}\n")
+
+
+def cmd_demo_cognitive():
+    """Demo the five minds with example responses."""
+    print("\n" + "=" * 60)
+    print("  Five Minds Demonstration")
+    print("=" * 60 + "\n")
+    
+    minds = [
+        ("ARCHITECT", "🏗️", "Direct, technical, code-focused",
+         "Here's the implementation:\n```python\ndef solve(): return 42\n```\nKey points:\n- Simple and effective\n- O(1) complexity"),
+        ("ORACLE", "🔮", "Reflective, questioning, strategic",
+         "Before we dive in, let me ask: What are we optimizing for?\n\nLooking at this strategically:\n1. Option A - Fast, but risky\n2. Option B - Slower, more reliable\n\nWhat matters most to you?"),
+        ("CRITIC", "🔍", "Skeptical, direct, risk-aware",
+         "**Concerns:**\n- This could fail if [edge case]\n- Assumption: [X] is always true\n\n**Recommendation:** Add error handling before proceeding."),
+        ("CREATOR", "💡", "Generative, possibility-focused",
+         "Interesting challenge! Some possibilities:\n\n**Conventional:** Standard REST API\n**Creative twist:** What if we used WebSockets?\n**Wild idea:** Event sourcing with CQRS\n\nWhat sparks interest?"),
+        ("GUARDIAN", "🛡️", "Cautious, protective, warning-first",
+         "⚠️ **Guardian Alert**\n\nThis operation will modify production data.\n\n**Safeguards required:**\n- [ ] Backup exists\n- [ ] Rollback plan ready\n\nDo you want to continue? (yes/no)")
+    ]
+    
+    for name, emoji, description, example in minds:
+        print(f"  {emoji} **{name}**")
+        print(f"     {description}")
+        print(f"\n     Example response:")
+        for line in example.split("\n"):
+            print(f"     │ {line}")
+        print()
+    
+    print("=" * 60)
+    print("  Minds blend automatically based on context.")
+    print("  Use /architect, /oracle, etc. to lock to a specific mind.")
+    print("=" * 60 + "\n")
+
+
+def cmd_sync_queue(item_type: str = None, item_id: str = None):
+    """Queue an item for Notion sync."""
+    # Load or create sync queue
+    sync_queue_path = SELF_ROOT / "mcp" / "sync-queue.json"
+    
+    if sync_queue_path.exists():
+        queue = load_json(sync_queue_path)
+    else:
+        queue = {
+            "pending": [],
+            "failed": [],
+            "synced": [],
+            "metadata": {
+                "created": datetime.now().isoformat(),
+                "last_processed": None
+            }
+        }
+    
+    if item_type and item_id:
+        # Queue specific item
+        if item_type == "episode":
+            memory = load_json(FILES["memory"])
+            episodes = memory.get("episodes", {}).get("recent", [])
+            item = next((e for e in episodes if e.get("id") == item_id), None)
+            if not item:
+                print(f"❌ Episode not found: {item_id}")
+                return False
+            
+            surprise = item.get("surprise_score", 0)
+            confidence = item.get("confidence", 0)
+            priority = 1 if surprise >= 0.3 or confidence >= 0.7 else 2
+            
+        elif item_type == "insight":
+            insights = load_json(FILES["insights"])
+            item = next((i for i in insights.get("generated_insights", []) 
+                        if i.get("id") == item_id), None)
+            if not item:
+                print(f"❌ Insight not found: {item_id}")
+                return False
+            priority = 1 if item.get("confidence", 0) >= 0.6 else 2
+            
+        else:
+            print(f"❌ Unknown item type: {item_type}")
+            return False
+        
+        # Add to queue
+        queue_item = {
+            "id": item_id,
+            "type": item_type,
+            "priority": priority,
+            "attempts": 0,
+            "created_at": datetime.now().isoformat(),
+            "data": item
+        }
+        
+        queue["pending"].append(queue_item)
+        
+        sync_queue_path.parent.mkdir(parents=True, exist_ok=True)
+        save_json(sync_queue_path, queue, backup=False)
+        
+        print(f"✅ Queued for sync: {item_type}/{item_id} (priority {priority})")
+        return True
+    
+    # Show queue status
+    print("\n" + "=" * 60)
+    print("  Notion Sync Queue")
+    print("=" * 60 + "\n")
+    
+    pending = queue.get("pending", [])
+    failed = queue.get("failed", [])
+    synced = queue.get("synced", [])
+    
+    print(f"  Pending: {len(pending)}")
+    print(f"  Failed: {len(failed)}")
+    print(f"  Synced: {len(synced)}")
+    
+    if pending:
+        print("\n  Pending items:")
+        for item in pending[:5]:
+            print(f"    • [{item.get('priority')}] {item.get('type')}/{item.get('id')}")
+    
+    # Check MCP status
+    mcp_config_path = SELF_ROOT / "mcp" / "sync-config.json"
+    if mcp_config_path.exists():
+        config = load_json(mcp_config_path)
+        if config:
+            enabled = config.get("enabled", False)
+            status = "✅ Enabled" if enabled else "⚠️ Disabled"
+            print(f"\n  MCP Status: {status}")
+    else:
+        print(f"\n  MCP Status: ⚠️ Not configured")
+    
+    print("\n  Note: Use Notion MCP tools to process the queue")
+    print("  Run: /self sync to process pending items")
+    print("\n" + "=" * 60 + "\n")
+
+
+def cmd_sync_status():
+    """Show sync status and Notion integration health."""
+    memory = load_json(FILES["memory"])
+    if memory is None:
+        print("❌ Cannot load memory.json")
+        return
+    
+    print("\n" + "=" * 60)
+    print("  Notion Sync Status")
+    print("=" * 60 + "\n")
+    
+    mcp = memory.get("mcp_integration", {})
+    
+    # Synced IDs
+    synced = mcp.get("notion_synced_ids", {})
+    print(f"  Synced Items: {len(synced)}")
+    
+    if synced:
+        print("  Recent synced:")
+        for local_id, notion_id in list(synced.items())[:5]:
+            print(f"    • {local_id[:30]}... → {notion_id[:20]}...")
+    
+    # Last sync
+    last_sync = mcp.get("last_sync")
+    if last_sync:
+        print(f"\n  Last Sync: {last_sync}")
+    else:
+        print(f"\n  Last Sync: Never")
+    
+    # Cache status
+    cache = mcp.get("notion_cache", {})
+    cache_entries = len(cache.get("entries", []))
+    cache_enabled = cache.get("enabled", False)
+    print(f"\n  Cache: {'Enabled' if cache_enabled else 'Disabled'} ({cache_entries} entries)")
+    
+    # Queue status
+    sync_queue_path = SELF_ROOT / "mcp" / "sync-queue.json"
+    if sync_queue_path.exists():
+        queue = load_json(sync_queue_path)
+        if queue:
+            pending = len(queue.get("pending", []))
+            print(f"  Queue: {pending} items pending")
+    
+    print("\n" + "=" * 60 + "\n")
+
+
+def cmd_evolution_status():
+    """Show evolution engine status and variant fitness."""
+    fitness = load_json(FILES["fitness"])
+    if fitness is None:
+        print("❌ Cannot load fitness.json")
+        return
+    
+    print("\n" + "=" * 60)
+    print("  Evolution Engine Status")
+    print("=" * 60 + "\n")
+    
+    gen = fitness["metadata"].get("current_generation", 1)
+    total_evals = fitness["metadata"].get("total_evaluations", 0)
+    
+    print(f"  Generation: {gen}")
+    print(f"  Total Evaluations: {total_evals}")
+    
+    # Get current generation data
+    gen_key = f"generation_{gen:03d}"
+    gen_data = fitness.get("prompt_variants", {}).get(gen_key, {})
+    
+    if not gen_data:
+        print("  ⚠️  No generation data found")
+        return
+    
+    active = gen_data.get("active_variant", "unknown")
+    print(f"  Active Variant: {active}")
+    
+    # Show all variants
+    print("\n  Variants:")
+    variants = gen_data.get("variants", [])
+    for v in variants:
+        vid = v.get("id", "unknown")
+        score = v.get("fitness_score", 0.5)
+        evals = v.get("evaluations", 0)
+        desc = v.get("description", "")[:30]
+        
+        indicator = "🏆" if vid == gen_data.get("best_performer") else "  "
+        active_mark = " [ACTIVE]" if vid == active else ""
+        
+        bar_len = int(score * 20)
+        bar = "█" * bar_len + "░" * (20 - bar_len)
+        
+        print(f"    {indicator} {vid}: {bar} {score:.2f} ({evals} evals){active_mark}")
+        if desc:
+            print(f"       {desc}...")
+    
+    # Evolution config
+    print(f"\n  Configuration:")
+    print(f"    Min evaluations before selection: {fitness.get('selection_config', {}).get('min_evaluations_before_selection', 5)}")
+    print(f"    Mutation rate: {fitness.get('mutation_config', {}).get('mutation_rate', 0.15)*100:.0f}%")
+    
+    # Next evolution trigger
+    min_evals = fitness.get('selection_config', {}).get('min_evaluations_before_selection', 5)
+    all_evals = sum(v.get("evaluations", 0) for v in variants)
+    if all_evals < min_evals * len(variants):
+        needed = min_evals * len(variants) - all_evals
+        print(f"\n  📊 Need {needed} more evaluations before evolution selection")
+    else:
+        print(f"\n  🧬 Ready for evolution selection!")
+    
+    print("\n" + "=" * 60 + "\n")
+
+
+def cmd_evolution_select(variant_id: str):
+    """Select a variant to use as active."""
+    fitness = load_json(FILES["fitness"])
+    if fitness is None:
+        print("❌ Cannot load fitness.json")
+        return False
+    
+    gen = fitness["metadata"].get("current_generation", 1)
+    gen_key = f"generation_{gen:03d}"
+    gen_data = fitness.get("prompt_variants", {}).get(gen_key, {})
+    
+    # Find variant
+    variant = None
+    for v in gen_data.get("variants", []):
+        if v.get("id") == variant_id:
+            variant = v
+            break
+    
+    if variant is None:
+        print(f"❌ Variant not found: {variant_id}")
+        return False
+    
+    gen_data["active_variant"] = variant_id
+    fitness["metadata"]["last_updated"] = datetime.now().isoformat()
+    
+    if save_json(FILES["fitness"], fitness):
+        print(f"✅ Active variant set to: {variant_id}")
+        print(f"   {variant.get('description', '')}")
+        return True
+    return False
+
+
 def cmd_prediction_status():
     """Show prediction engine status and accuracy."""
     predictions = load_json(FILES["predictions"])
@@ -1534,6 +1916,34 @@ Examples:
     
     predict_sub.add_parser("status", help="Show prediction engine status")
     
+    # Evolution commands
+    evolution_parser = subparsers.add_parser("evolution", help="Evolution engine operations")
+    evolution_sub = evolution_parser.add_subparsers(dest="evolution_cmd")
+    
+    evolution_sub.add_parser("status", help="Show evolution engine status")
+    
+    select_parser = evolution_sub.add_parser("select", help="Select active variant")
+    select_parser.add_argument("variant_id", help="Variant ID to activate")
+    
+    # Sync commands
+    sync_parser = subparsers.add_parser("sync", help="Notion sync operations")
+    sync_sub = sync_parser.add_subparsers(dest="sync_cmd")
+    
+    sync_sub.add_parser("status", help="Show sync status")
+    sync_sub.add_parser("queue", help="Show sync queue")
+    
+    add_sync = sync_sub.add_parser("add", help="Add item to sync queue")
+    add_sync.add_argument("item_type", choices=["episode", "insight", "pattern"])
+    add_sync.add_argument("item_id", help="ID of item to sync")
+    
+    # Demo commands
+    demo_parser = subparsers.add_parser("demo", help="Demo and validation commands")
+    demo_sub = demo_parser.add_subparsers(dest="demo_cmd")
+    
+    demo_sub.add_parser("full", help="Run full system demo")
+    demo_sub.add_parser("quick", help="Quick health check")
+    demo_sub.add_parser("minds", help="Demo the five minds")
+    
     args = parser.parse_args()
     
     if args.command is None:
@@ -1583,6 +1993,31 @@ Examples:
             cmd_prediction_status()
         else:
             predict_parser.print_help()
+    elif args.command == "evolution":
+        if args.evolution_cmd == "status":
+            cmd_evolution_status()
+        elif args.evolution_cmd == "select":
+            cmd_evolution_select(args.variant_id)
+        else:
+            evolution_parser.print_help()
+    elif args.command == "sync":
+        if args.sync_cmd == "status":
+            cmd_sync_status()
+        elif args.sync_cmd == "queue":
+            cmd_sync_queue()
+        elif args.sync_cmd == "add":
+            cmd_sync_queue(args.item_type, args.item_id)
+        else:
+            sync_parser.print_help()
+    elif args.command == "demo":
+        if args.demo_cmd == "full":
+            cmd_demo_full()
+        elif args.demo_cmd == "quick":
+            cmd_demo_quick()
+        elif args.demo_cmd == "minds":
+            cmd_demo_cognitive()
+        else:
+            demo_parser.print_help()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,19 @@
+{
+  "name": "THE TEMPORAL - Time Consciousness",
+  "short_name": "TEMPORAL",
+  "description": "Experience time differently. Past, present, and future as one continuous moment.",
+  "start_url": "/landings/showcases/masterpieces/30-temporal/",
+  "display": "standalone",
+  "background_color": "#0a0510",
+  "theme_color": "#ffd700",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["productivity", "lifestyle", "utilities"]
+}
+

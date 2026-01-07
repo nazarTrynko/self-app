@@ -96,13 +96,35 @@
         {
           "id": "base_v1",
           "type": "base",
+          "description": "Balanced baseline with standard verbosity",
           "fitness_score": 0.7,
           "evaluations": 1,
+          "mutations_spawned": 2
+        },
+        {
+          "id": "terse_v1",
+          "type": "mutation",
+          "description": "Concise, code-heavy, minimal prose",
+          "parent": "base_v1",
+          "mutation": "detail_level_adjust",
+          "fitness_score": 0.5,
+          "evaluations": 0,
+          "mutations_spawned": 0
+        },
+        {
+          "id": "explanatory_v1",
+          "type": "mutation",
+          "description": "Detailed explanations, teaching-focused",
+          "parent": "base_v1",
+          "mutation": "detail_level_adjust",
+          "fitness_score": 0.5,
+          "evaluations": 0,
           "mutations_spawned": 0
         }
       ],
       "best_performer": "base_v1",
-      "average_fitness": 0.7
+      "average_fitness": 0.567,
+      "active_variant": "base_v1"
     }
   },
   "selection_config": {

@@ -1,0 +1,19 @@
+{
+  "name": "THE QUANTUM - Decision Engine",
+  "short_name": "QUANTUM",
+  "description": "Navigate probability space. All futures exist until you observe one.",
+  "start_url": "/landings/showcases/masterpieces/27-quantum/",
+  "display": "standalone",
+  "background_color": "#030818",
+  "theme_color": "#38bdf8",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["productivity", "lifestyle", "utilities"]
+}
+
