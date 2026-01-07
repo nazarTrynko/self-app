@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=JetBrains+Mono:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="shared/nav.css">
-    <link rel="stylesheet" href="shared/showcase.css">
-    <link rel="stylesheet" href="shared/ball-nav.css">
+    <link rel="stylesheet" href="_shared/css/nav.css">
+    <link rel="stylesheet" href="_shared/css/showcase.css">
+    <link rel="stylesheet" href="_shared/css/ball-nav.css">
     <style>
         /* Base Styles */
         * {
@@ -366,7 +366,7 @@
                     <span>Collections</span>
                     <span class="self-nav-link-count">159</span>
                 </a>
-                <a href="self/" class="self-nav-link" data-collection="masters">
+                <a href="docs/self/" class="self-nav-link" data-collection="masters">
                     <span class="self-nav-link-indicator"></span>
                     <span>Documentation</span>
                 </a>
@@ -826,7 +826,7 @@
             </a>
 
             <!-- Masterpieces -->
-            <a href="masters/" class="collection-card" data-collection="masters">
+            <a href="showcases/masterpieces/" class="collection-card" data-collection="masters">
                 <div class="collection-header">
                     <div class="collection-icon">◆</div>
                     <span class="collection-count">25</span>
@@ -859,7 +859,7 @@
             </a>
 
             <!-- Revelations -->
-            <a href="revelations/" class="collection-card" data-collection="revelations">
+            <a href="showcases/revelations/" class="collection-card" data-collection="revelations">
                 <div class="collection-header">
                     <div class="collection-icon">○</div>
                     <span class="collection-count">10</span>
@@ -892,7 +892,7 @@
             </a>
 
             <!-- Product Hunt Ideas -->
-            <a href="ph/" class="collection-card" data-collection="ph">
+            <a href="product-hunt/" class="collection-card" data-collection="ph">
                 <div class="collection-header">
                     <div class="collection-icon">▲</div>
                     <span class="collection-count">23</span>
@@ -925,7 +925,7 @@
             </a>
 
             <!-- App Ideas (MD Files) -->
-            <a href="ideas/" class="collection-card" data-collection="ideas">
+            <a href="blueprints/mobile-apps/" class="collection-card" data-collection="ideas">
                 <div class="collection-header">
                     <div class="collection-icon">📱</div>
                     <span class="collection-count">81</span>
@@ -958,7 +958,7 @@
             </a>
 
             <!-- Pro PWAs -->
-            <a href="pro-pwas/" class="collection-card" data-collection="pro-pwas">
+            <a href="products/pro-pwas/" class="collection-card" data-collection="pro-pwas">
                 <div class="collection-header">
                     <div class="collection-icon">🛠️</div>
                     <span class="collection-count">5</span>
@@ -1000,43 +1000,43 @@
         </div>
 
         <div class="self-quick-nav">
-            <a href="0/" class="self-quick-link">
+            <a href="showcases/self-variants/original/" class="self-quick-link">
                 <span class="self-quick-link-number">00</span>
                 <span>Original</span>
             </a>
-            <a href="1/" class="self-quick-link">
+            <a href="showcases/self-variants/brutalist/" class="self-quick-link">
                 <span class="self-quick-link-number">01</span>
                 <span>Brutalist</span>
             </a>
-            <a href="2/" class="self-quick-link">
+            <a href="showcases/self-variants/zen-ma/" class="self-quick-link">
                 <span class="self-quick-link-number">02</span>
                 <span>Zen MA</span>
             </a>
-            <a href="3/" class="self-quick-link">
+            <a href="showcases/self-variants/noir-cinema/" class="self-quick-link">
                 <span class="self-quick-link-number">03</span>
                 <span>Noir Cinema</span>
             </a>
-            <a href="4/" class="self-quick-link">
+            <a href="showcases/self-variants/terminal/" class="self-quick-link">
                 <span class="self-quick-link-number">04</span>
                 <span>Terminal</span>
             </a>
-            <a href="5/" class="self-quick-link">
+            <a href="showcases/self-variants/glitch/" class="self-quick-link">
                 <span class="self-quick-link-number">05</span>
                 <span>Glitch</span>
             </a>
-            <a href="6/" class="self-quick-link">
+            <a href="showcases/self-variants/bioluminescent/" class="self-quick-link">
                 <span class="self-quick-link-number">06</span>
                 <span>Bioluminescent</span>
             </a>
-            <a href="7/" class="self-quick-link">
+            <a href="showcases/self-variants/interstellar/" class="self-quick-link">
                 <span class="self-quick-link-number">07</span>
                 <span>Interstellar</span>
             </a>
-            <a href="8/" class="self-quick-link">
+            <a href="showcases/self-variants/isometric/" class="self-quick-link">
                 <span class="self-quick-link-number">08</span>
                 <span>Isometric</span>
             </a>
-            <a href="9/" class="self-quick-link">
+            <a href="showcases/self-variants/mycelium/" class="self-quick-link">
                 <span class="self-quick-link-number">09</span>
                 <span>Mycelium</span>
             </a>
@@ -1049,17 +1049,17 @@
             <p class="footer-brand">SELF v1.0.0</p>
             <p class="footer-meta">
                 Synthetic Emergent Learning Framework · 
-                <a href="self/" class="footer-link">Documentation</a> · 
+                <a href="docs/self/" class="footer-link">Documentation</a> · 
                 <em>Think. Learn. Evolve.</em>
             </p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="shared/nav.js"></script>
-    <script src="shared/neural-bg.js"></script>
-    <script src="shared/showcase.js"></script>
-    <script src="shared/ball-nav.js"></script>
+    <script src="_shared/js/nav.js"></script>
+    <script src="_shared/js/neural-bg.js"></script>
+    <script src="_shared/js/showcase.js"></script>
+    <script src="_shared/js/ball-nav.js"></script>
     <script>
         // Smooth scroll for landings card
         document.getElementById('landingsCard')?.addEventListener('click', (e) => {

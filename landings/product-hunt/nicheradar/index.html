@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NicheRadar — Find Underserved Markets Before Everyone Else</title>
+  <meta name="description" content="AI scans Reddit, IH, and Twitter for emerging niches with demand but no good solutions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../_shared/css/reset.css">
+  <link rel="stylesheet" href="../../_shared/css/animations.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo"><span class="logo-icon">📡</span><span>NicheRadar</span></div>
+      <a href="#waitlist" class="nav-cta">Scan Niches</a>
+    </nav>
+
+    <div class="hero-content container">
+      <div class="badge animate-fadeInDown">🔍 Market Intelligence</div>
+      <h1 class="hero-title animate-fadeInUp delay-100">Find Underserved Markets<br><span class="highlight">Before Everyone Else</span></h1>
+      <p class="hero-subtitle animate-fadeInUp delay-200">AI scans Reddit, Indie Hackers, and Twitter to find emerging niches with demand but no good solutions.</p>
+      <form id="hero-waitlist" class="hero-form animate-fadeInUp delay-300" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Get Weekly Niches</button>
+      </form>
+      <p class="hero-note animate-fadeIn delay-400">Free weekly email • Premium daily alerts</p>
+    </div>
+
+    <div class="hero-visual animate-scaleIn delay-500">
+      <div class="radar-card">
+        <div class="radar-header"><span class="radar-title">This Week's Top Niches</span><span class="radar-badge">3 new</span></div>
+        <div class="niche-list">
+          <div class="niche-item"><span class="niche-score hot">🔥 Hot</span><div class="niche-info"><strong>AI resume tailoring for remote jobs</strong><p>847 mentions • Low competition • High intent</p></div></div>
+          <div class="niche-item"><span class="niche-score warm">📈 Rising</span><div class="niche-info"><strong>Notion templates for ADHD productivity</strong><p>523 mentions • 2 weak competitors</p></div></div>
+          <div class="niche-item"><span class="niche-score new">✨ New</span><div class="niche-info"><strong>Invoice tracking for Shopify sellers</strong><p>312 mentions • No good solutions yet</p></div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><h3>AI Scans</h3><p>Monitors Reddit, IH, Twitter for pain points</p></div>
+        <div class="step"><span class="step-num">2</span><h3>Filters Noise</h3><p>Identifies patterns, not one-off complaints</p></div>
+        <div class="step"><span class="step-num">3</span><h3>Scores Opportunity</h3><p>Rates by demand, competition, monetization</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card"><h3>Free</h3><div class="price">$0</div><ul><li>Weekly email digest</li><li>Top 3 niches</li></ul><button class="btn-secondary">Get Weekly Email</button></div>
+        <div class="pricing-card featured"><h3>Pro</h3><div class="price">$29<span>/mo</span></div><ul><li>Daily alerts</li><li>Full niche database</li><li>Competition analysis</li><li>Export to Notion</li></ul><button class="btn-primary btn-shine">Join Waitlist</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="final-cta">
+    <div class="container">
+      <h2>Find Your Next Big Idea</h2>
+      <p>Join founders who spot opportunities before they're obvious.</p>
+      <form id="waitlist-form" class="cta-form" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Get Niche Alerts</button>
+        <div class="form-message"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container"><p class="footer-copy">&copy; 2026 NicheRadar</p></div></footer>
+  <script src="../../_shared/js/waitlist-form.js"></script>
+  <script>document.querySelectorAll('[data-waitlist-form]').forEach(f=>{if(!f.id)f.id='wl-'+Math.random().toString(36).substr(2,9);new WaitlistForm('#'+f.id)});</script>
+</body>
+</html>
+

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WaitlistKit — Launch-Ready Waitlist in 5 Minutes</title>
+  <meta name="description" content="Beautiful waitlist pages with referral mechanics. Built for Product Hunt launches.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../_shared/css/reset.css">
+  <link rel="stylesheet" href="../../_shared/css/animations.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+          <rect x="4" y="8" width="24" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M4 12h24M12 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>WaitlistKit</span>
+      </div>
+      <a href="#waitlist" class="nav-cta">Create Waitlist</a>
+    </nav>
+
+    <div class="hero-content container">
+      <div class="badge animate-fadeInDown">
+        <span>⚡</span> Built for PH Launches
+      </div>
+      
+      <h1 class="hero-title animate-fadeInUp delay-100">
+        Launch-Ready Waitlist<br>
+        <span class="highlight">in 5 Minutes</span>
+      </h1>
+      
+      <p class="hero-subtitle animate-fadeInUp delay-200">
+        Beautiful pages. Referral mechanics. Leaderboards.<br>
+        Everything you need to build pre-launch hype.
+      </p>
+
+      <form id="hero-waitlist" class="hero-form animate-fadeInUp delay-300" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Start Building</button>
+      </form>
+      
+      <p class="hero-note animate-fadeIn delay-400">Free up to 100 signups</p>
+    </div>
+
+    <div class="hero-visual animate-scaleIn delay-500">
+      <div class="preview-window">
+        <div class="window-bar">
+          <div class="window-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="window-url">yourproduct.waitlistkit.com</span>
+        </div>
+        <div class="preview-content">
+          <div class="preview-logo">🚀</div>
+          <h2 class="preview-title">Your Product Name</h2>
+          <p class="preview-text">Something amazing is coming. Be the first to know.</p>
+          <div class="preview-form">
+            <input type="text" placeholder="you@email.com" disabled>
+            <button disabled>Join Waitlist</button>
+          </div>
+          <div class="preview-stats">
+            <span>🎉 847 people on the list</span>
+          </div>
+          <div class="preview-referral">
+            Share to move up: <span class="referral-link">waitlistkit.com/xyz</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Everything You Need to Launch</h2>
+      
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <h3>3 Beautiful Templates</h3>
+          <p>Pick a template, add your logo, customize colors. Done in minutes.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔗</div>
+          <h3>Referral System</h3>
+          <p>Unique referral links for each signup. Track who's bringing friends.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🏆</div>
+          <h3>Live Leaderboard</h3>
+          <p>Show top referrers. Gamify your waitlist and watch it grow.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📧</div>
+          <h3>Email Integration</h3>
+          <p>Export to Mailchimp, ConvertKit, or download CSV anytime.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <h3>Real-time Analytics</h3>
+          <p>Track signups, referrals, and conversion rate live.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🌙</div>
+          <h3>Dark Mode</h3>
+          <p>Beautiful dark and light themes. Match your brand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2 class="section-title">Simple Pricing</h2>
+      
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul>
+            <li>Up to 100 signups</li>
+            <li>1 waitlist page</li>
+            <li>Basic referral system</li>
+            <li>CSV export</li>
+          </ul>
+          <button class="btn-secondary">Start Free</button>
+        </div>
+        
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <h3>Pro</h3>
+          <div class="price">$15<span>/mo</span></div>
+          <ul>
+            <li>Unlimited signups</li>
+            <li>Multiple waitlists</li>
+            <li>Custom domain</li>
+            <li>Leaderboard widget</li>
+            <li>Email integrations</li>
+            <li>Remove branding</li>
+          </ul>
+          <button class="btn-primary btn-shine">Get Pro</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="final-cta">
+    <div class="container">
+      <h2>Build Your Waitlist Now</h2>
+      <p>Join 1,200+ makers who launched with WaitlistKit.</p>
+      
+      <form id="waitlist-form" class="cta-form" data-waitlist-form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary btn-shine">Get Started Free</button>
+        <div class="form-message"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo">
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="8" width="24" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M4 12h24M12 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>WaitlistKit</span>
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2026 WaitlistKit</p>
+    </div>
+  </footer>
+
+  <script src="../../_shared/js/waitlist-form.js"></script>
+  <script src="../../_shared/js/analytics.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+

@@ -22,32 +22,48 @@
         let collection = 'main';
         let depth = 0; // How many directories deep from landings root
         
-        if (path.includes('/masters/')) {
+        if (path.includes('/showcases/masterpieces/')) {
             collection = 'masters';
-            // Check if we're in masters/index.html (depth 1) or masters/11/ (depth 2)
-            const mastersMatch = path.match(/\/masters\/(\d+)?/);
-            depth = mastersMatch && mastersMatch[1] ? 2 : 1;
-        } else if (path.includes('/revelations/')) {
+            // Check if we're in showcases/masterpieces/index.html (depth 2) or showcases/masterpieces/01-xxx/ (depth 3)
+            const mastersMatch = path.match(/\/showcases\/masterpieces\/\d+-/);
+            depth = mastersMatch ? 3 : 2;
+        } else if (path.includes('/showcases/revelations/')) {
             collection = 'revelations';
-            const revMatch = path.match(/\/revelations\/\d+-/);
-            depth = revMatch ? 2 : 1;
-        } else if (path.includes('/ph/')) {
+            const revMatch = path.match(/\/showcases\/revelations\/[^\/]+\//);
+            // Check if deeper than just /showcases/revelations/
+            const parts = path.split('/showcases/revelations/')[1];
+            depth = parts && parts.split('/').filter(Boolean).length > 0 ? 3 : 2;
+        } else if (path.includes('/showcases/self-variants/')) {
+            collection = 'main';
+            depth = 3;
+        } else if (path.includes('/product-hunt/')) {
             collection = 'ph';
-            const phMatch = path.match(/\/ph\/\d+-/);
+            const phMatch = path.match(/\/product-hunt\/[^\/]+\//);
             depth = phMatch ? 2 : 1;
-        } else if (path.includes('/ideas/')) {
+        } else if (path.includes('/blueprints/mobile-apps/')) {
             collection = 'ideas';
-            // Check if we're in ideas/index.html (depth 1) or ideas/01-xxx/ (depth 2)
-            const ideasMatch = path.match(/\/ideas\/\d+-/);
-            depth = ideasMatch ? 2 : 1;
-        } else if (path.includes('/carousel-generator/')) {
+            // Check depth based on path structure
+            const parts = path.split('/blueprints/mobile-apps/')[1];
+            depth = parts && parts.split('/').filter(Boolean).length > 0 ? 3 : 2;
+        } else if (path.includes('/products/carousel-generator/')) {
             collection = 'carousel-generator';
-            const cgMatch = path.match(/\/carousel-generator\/examples\//);
-            depth = cgMatch ? 2 : 1;
+            const cgMatch = path.match(/\/products\/carousel-generator\/examples\//);
+            depth = cgMatch ? 3 : 2;
+        } else if (path.includes('/products/')) {
+            collection = 'main';
+            depth = 2;
+        } else if (path.includes('/docs/')) {
+            collection = 'main';
+            depth = 2;
+        } else if (path.includes('/meta/')) {
+            collection = 'main';
+            depth = 2;
+        } else if (path.includes('/showcases/')) {
+            collection = 'main';
+            depth = 1;
         } else {
-            // Check if we're in a numbered folder like /0/, /1/, etc.
-            const numMatch = path.match(/\/(\d+)\//);
-            depth = numMatch ? 1 : 0;
+            // Root level
+            depth = 0;
         }
         
         return { collection, depth };
@@ -58,7 +74,8 @@
         const { depth } = getPathInfo();
         if (depth === 0) return './';
         if (depth === 1) return '../';
-        return '../../';
+        if (depth === 2) return '../../';
+        return '../../../';
     }
 
     // Generate navigation HTML
@@ -81,27 +98,27 @@
                         <span>Landings</span>
                         <span class="self-nav-link-count">${collections.main.count}</span>
                     </a>
-                    <a href="${base}masters/" class="self-nav-link ${collection === 'masters' ? 'active' : ''}" data-collection="masters">
+                    <a href="${base}showcases/masterpieces/" class="self-nav-link ${collection === 'masters' ? 'active' : ''}" data-collection="masters">
                         <span class="self-nav-link-indicator"></span>
                         <span>Masterpieces</span>
                         <span class="self-nav-link-count">${collections.masters.count}</span>
                     </a>
-                    <a href="${base}revelations/" class="self-nav-link ${collection === 'revelations' ? 'active' : ''}" data-collection="revelations">
+                    <a href="${base}showcases/revelations/" class="self-nav-link ${collection === 'revelations' ? 'active' : ''}" data-collection="revelations">
                         <span class="self-nav-link-indicator"></span>
                         <span>Revelations</span>
                         <span class="self-nav-link-count">${collections.revelations.count}</span>
                     </a>
-                    <a href="${base}ph/" class="self-nav-link ${collection === 'ph' ? 'active' : ''}" data-collection="ph">
+                    <a href="${base}product-hunt/" class="self-nav-link ${collection === 'ph' ? 'active' : ''}" data-collection="ph">
                         <span class="self-nav-link-indicator"></span>
                         <span>Products</span>
                         <span class="self-nav-link-count">${collections.ph.count}</span>
                     </a>
-                    <a href="${base}ideas/" class="self-nav-link ${collection === 'ideas' ? 'active' : ''}" data-collection="ideas">
+                    <a href="${base}blueprints/mobile-apps/" class="self-nav-link ${collection === 'ideas' ? 'active' : ''}" data-collection="ideas">
                         <span class="self-nav-link-indicator"></span>
                         <span>App Ideas</span>
                         <span class="self-nav-link-count">${collections.ideas.count}</span>
                     </a>
-                    <a href="${base}carousel-generator/" class="self-nav-link ${collection === 'carousel-generator' ? 'active' : ''}" data-collection="carousel-generator">
+                    <a href="${base}products/carousel-generator/" class="self-nav-link ${collection === 'carousel-generator' ? 'active' : ''}" data-collection="carousel-generator">
                         <span class="self-nav-link-indicator"></span>
                         <span>Carousel Gen</span>
                         <span class="self-nav-link-count">${collections['carousel-generator'].count}</span>

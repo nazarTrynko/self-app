@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentChain — Visual Chain-of-Thought Reasoning</title>
+    <link rel="stylesheet" href="../../_shared/css/reset.css">
+    <link rel="stylesheet" href="../../_shared/css/animations.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🔗<span>AgentChain</span></div>
+            <a href="#pricing" class="nav-cta">Get Started</a>
+        </nav>
+        <div class="hero">
+            <div class="badge fade-in"><span class="pulse"></span>Chain-of-Thought</div>
+            <h1 class="fade-in">See How AI Agents<br><span class="gradient-text">Think Step-by-Step</span></h1>
+            <p class="subtitle fade-in">Visual reasoning chains show every step of AI agent thinking. Debug, understand, and improve.</p>
+            <form class="url-form fade-in" id="traceForm">
+                <input type="text" placeholder="Enter agent query..." required>
+                <button type="submit">Trace Reasoning</button>
+            </form>
+            <p class="trust-line fade-in">Free tracing • Visual chains • Step-by-step reasoning</p>
+        </div>
+    </header>
+
+    <section class="demo-section">
+        <div class="container">
+            <div class="demo-dashboard">
+                <div class="dashboard-header">
+                    <span>Query: "What's the best pricing strategy?"</span>
+                    <span class="status-badge">5 Steps</span>
+                </div>
+                <div class="chain-visualization">
+                    <div class="chain-step">1. Analyze market data</div>
+                    <div class="chain-arrow">↓</div>
+                    <div class="chain-step">2. Review competitor pricing</div>
+                    <div class="chain-arrow">↓</div>
+                    <div class="chain-step">3. Calculate value proposition</div>
+                    <div class="chain-arrow">↓</div>
+                    <div class="chain-step">4. Consider customer segments</div>
+                    <div class="chain-arrow">↓</div>
+                    <div class="chain-step active">5. Recommend tiered pricing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2>Visual Reasoning Chains</h2>
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon">👁️</div><h3>Visual Chains</h3><p>See every reasoning step in an intuitive visual format</p></div>
+                <div class="feature-card"><div class="feature-icon">🐛</div><h3>Debug</h3><p>Identify where reasoning goes wrong or gets stuck</p></div>
+                <div class="feature-card"><div class="feature-icon">📈</div><h3>Optimize</h3><p>Find bottlenecks and improve reasoning efficiency</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2>Simple Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Free</h3><div class="price">$0</div>
+                    <ul><li>10 traces/month</li><li>Basic visualization</li></ul>
+                    <button class="btn-secondary">Start Free</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Popular</div>
+                    <h3>Pro</h3><div class="price">$29<span>/mo</span></div>
+                    <ul><li>Unlimited traces</li><li>Advanced visualization</li><li>Export chains</li><li>API access</li></ul>
+                    <button class="btn-primary">Join Waitlist</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Start Tracing Agent Reasoning</h2>
+            <form class="cta-form" id="ctaForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Get Early Access</button>
+            </form>
+        </div>
+    </section>
+
+    <footer><div class="container"><p>&copy; 2026 AgentChain</p></div></footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
