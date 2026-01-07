@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURFACE — Who Am I Really?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="surface"></canvas>
+    
+    <div class="experience">
+        <div class="phase phase-intro active" id="phase-intro">
+            <p class="whisper">You cannot see yourself directly.</p>
+            <p class="whisper delay-1">You can only see reflections.</p>
+            <div class="question-container delay-2" id="questions">
+                <!-- Questions will be inserted here -->
+            </div>
+        </div>
+
+        <div class="phase phase-forming" id="phase-forming">
+            <p class="form-text">A form emerges...</p>
+            <p class="form-sub">Not your face. Your shape.</p>
+        </div>
+
+        <div class="phase phase-truth" id="phase-truth">
+            <p class="wisdom">This is not what you look like.</p>
+            <p class="wisdom-sub">It's what you are like.</p>
+            <p class="wisdom-sub">The shape of your consciousness.</p>
+            <p class="wisdom-sub final">Recognize yourself.</p>
+        </div>
+    </div>
+
+    <a href="../" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Return
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

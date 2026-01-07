@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE THRESHOLD — Recognize The Moments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="threshold-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Platforms</a>
+        <span class="nav-number">20 / 35</span>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Kairos — The Right Moment</p>
+                <h1 class="hero-title">THE THRESHOLD</h1>
+                <p class="hero-subtitle">
+                    Choice only exists in the present.<br>
+                    Learn to recognize when you're at a genuine crossroads.
+                </p>
+            </div>
+        </section>
+
+        <section class="doorway">
+            <div class="doorway-visual">
+                <div class="door left-door"></div>
+                <div class="door-light"></div>
+                <div class="door right-door"></div>
+            </div>
+            <p class="doorway-text">You are always at a threshold. Most moments, you don't see it.</p>
+        </section>
+
+        <section class="revelation">
+            <div class="revelation-content">
+                <blockquote>
+                    "The Greeks had two words for time: Chronos (sequential time) and Kairos (the right moment). 
+                    Most of life is Chronos. But Kairos is where everything changes."
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="moment-check">
+            <h2 class="section-title">Are You At A Threshold Now?</h2>
+            <p class="section-intro">Answer honestly. This moment may matter more than you think.</p>
+            
+            <div class="threshold-indicators">
+                <div class="indicator" data-active="false">
+                    <div class="indicator-icon">◇</div>
+                    <div class="indicator-content">
+                        <h3>Recurring Thought</h3>
+                        <p>Is there something you keep thinking about but haven't acted on?</p>
+                    </div>
+                    <button class="indicator-btn" data-answer="recurring">Yes</button>
+                </div>
+
+                <div class="indicator" data-active="false">
+                    <div class="indicator-icon">◇</div>
+                    <div class="indicator-content">
+                        <h3>Unexplained Discomfort</h3>
+                        <p>Do you feel a nameless unease that won't resolve itself?</p>
+                    </div>
+                    <button class="indicator-btn" data-answer="discomfort">Yes</button>
+                </div>
+
+                <div class="indicator" data-active="false">
+                    <div class="indicator-icon">◇</div>
+                    <div class="indicator-content">
+                        <h3>Opportunity Appearing</h3>
+                        <p>Has something appeared recently that could change your trajectory?</p>
+                    </div>
+                    <button class="indicator-btn" data-answer="opportunity">Yes</button>
+                </div>
+
+                <div class="indicator" data-active="false">
+                    <div class="indicator-icon">◇</div>
+                    <div class="indicator-content">
+                        <h3>The Question</h3>
+                        <p>Is there a question you're afraid to ask yourself?</p>
+                    </div>
+                    <button class="indicator-btn" data-answer="question">Yes</button>
+                </div>
+
+                <div class="indicator" data-active="false">
+                    <div class="indicator-icon">◇</div>
+                    <div class="indicator-content">
+                        <h3>Pattern Breaking</h3>
+                        <p>Do you sense that an old pattern is ready to end?</p>
+                    </div>
+                    <button class="indicator-btn" data-answer="pattern">Yes</button>
+                </div>
+            </div>
+
+            <div class="threshold-result" id="threshold-result">
+                <div class="result-meter">
+                    <div class="meter-fill" id="meter-fill"></div>
+                </div>
+                <p class="result-text" id="result-text">Click the indicators that resonate with you.</p>
+            </div>
+        </section>
+
+        <section class="the-moment">
+            <div class="moment-content">
+                <h2>This Moment</h2>
+                <div class="moment-display">
+                    <span class="moment-now" id="moment-now">NOW</span>
+                </div>
+                <p class="moment-truth">
+                    Every moment you spend reading this is a moment you could be at a threshold.
+                    The door is always there. The question is whether you'll walk through it.
+                </p>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-grid">
+                <article class="philosophy-card">
+                    <h3>Why We Miss Thresholds</h3>
+                    <p>
+                        We're designed for Chronos—the steady tick of sequential time. 
+                        Kairos requires a different kind of attention. The crossroads 
+                        doesn't announce itself. It waits to be recognized.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Inversion</h3>
+                    <p>
+                        Every tool focuses on analyzing the past or planning the future.
+                        The Threshold focuses on the present—the only moment where 
+                        choice is actually possible. Past and future are stories.
+                        Now is the only real thing.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Practice</h3>
+                    <p>
+                        Each day, ask: "Am I at a threshold right now?" 
+                        Not every moment is a crossroads. But more are than you realize. 
+                        The skill is learning to recognize when you're standing at a door.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation">
+            <div class="meditation-content">
+                <p class="meditation-prompt">
+                    Close your eyes. Feel this moment. Not the past moment, not the next one. 
+                    This one. Is something asking to change? Is there a door?
+                    You may be at a threshold right now and not know it.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../" class="next-platform">
+            <span class="next-label">Return to</span>
+            <span class="next-name">All Platforms →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+

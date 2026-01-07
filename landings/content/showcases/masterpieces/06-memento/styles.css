@@ -1,0 +1,428 @@
+:root {
+    --bg: #080604;
+    --text: #c9b8a0;
+    --text-dim: #6b5f50;
+    --accent: #a67c52;
+    --accent-light: #c9a27a;
+    --surface: rgba(166, 124, 82, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#memento-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+}
+
+.nav-back {
+    font-size: 0.875rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--accent);
+}
+
+.nav-number {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.revelation {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.revelation-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.revelation-content blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+.mortality-calculator {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-intro {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+}
+
+.calculator-input {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#birth-year {
+    padding: 1rem 1.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    background: var(--surface);
+    border: 1px solid rgba(166, 124, 82, 0.2);
+    color: var(--text);
+    width: 200px;
+    text-align: center;
+}
+
+#birth-year:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+#birth-year::placeholder {
+    color: var(--text-dim);
+}
+
+.calculate-btn {
+    padding: 1rem 2rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calculate-btn:hover {
+    background: var(--accent-light);
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid rgba(166, 124, 82, 0.1);
+}
+
+.stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--accent-light);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.stat-note {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.life-bar {
+    display: flex;
+    height: 20px;
+    border: 1px solid rgba(166, 124, 82, 0.2);
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.life-lived {
+    background: var(--accent);
+    transition: width 1s ease;
+}
+
+.life-remaining {
+    background: var(--surface);
+    flex: 1;
+}
+
+.life-bar-label {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.the-questions {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.question-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.question-card {
+    background: var(--surface);
+    border: 1px solid rgba(166, 124, 82, 0.1);
+    padding: 2rem;
+}
+
+.question-card .timeframe {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.question-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.clarity {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.clarity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.clarity-card {
+    background: var(--surface);
+    border: 1px solid rgba(166, 124, 82, 0.1);
+    padding: 2rem;
+}
+
+.clarity-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--accent-light);
+    margin-bottom: 1rem;
+}
+
+.clarity-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+}
+
+.philosophy {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    background: var(--surface);
+    border: 1px solid rgba(166, 124, 82, 0.1);
+    padding: 2rem;
+}
+
+.philosophy-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.philosophy-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+}
+
+.meditation {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.meditation-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.meditation-prompt {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(166, 124, 82, 0.1);
+}
+
+.next-platform {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.next-platform:hover {
+    transform: translateX(10px);
+}
+
+.next-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+}
+
+.next-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+

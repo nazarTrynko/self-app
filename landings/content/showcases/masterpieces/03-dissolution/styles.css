@@ -1,0 +1,376 @@
+:root {
+    --bg: #0d0a08;
+    --text: #d4c9b8;
+    --text-dim: #7a6f5f;
+    --accent: #8b7355;
+    --accent-light: #a89070;
+    --surface: rgba(139, 115, 85, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Canvas */
+#dissolution-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+}
+
+.nav-back {
+    font-size: 0.875rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--accent);
+}
+
+.nav-number {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: dissolveIn 2s ease 0.4s forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dissolveIn {
+    0% { 
+        opacity: 0; 
+        filter: blur(20px);
+        letter-spacing: 0.5em;
+    }
+    100% { 
+        opacity: 1; 
+        filter: blur(0);
+        letter-spacing: 0.1em;
+    }
+}
+
+/* Revelation */
+.revelation {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.revelation-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.revelation-content blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* Dissolution Chamber */
+.dissolution-chamber {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-intro {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+}
+
+.input-container {
+    margin-bottom: 3rem;
+}
+
+#dissolution-input {
+    width: 100%;
+    min-height: 150px;
+    padding: 1.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid rgba(139, 115, 85, 0.2);
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+#dissolution-input::placeholder {
+    color: var(--text-dim);
+    opacity: 0.7;
+}
+
+#dissolution-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.dissolve-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--accent);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dissolve-btn:hover {
+    background: var(--accent-light);
+}
+
+.dissolution-display {
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#text-canvas {
+    width: 100%;
+    height: 200px;
+}
+
+/* What to Release */
+.what-to-release {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.release-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.release-category {
+    background: var(--surface);
+    border: 1px solid rgba(139, 115, 85, 0.1);
+    padding: 2rem;
+}
+
+.release-category h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.release-category ul {
+    list-style: none;
+}
+
+.release-category li {
+    font-size: 0.875rem;
+    color: var(--text-dim);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.05);
+    font-style: italic;
+}
+
+.release-category li:last-child {
+    border-bottom: none;
+}
+
+/* Philosophy */
+.philosophy {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    background: var(--surface);
+    border: 1px solid rgba(139, 115, 85, 0.1);
+    padding: 2rem;
+}
+
+.philosophy-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.philosophy-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+}
+
+/* Meditation */
+.meditation {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.meditation-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.meditation-prompt {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(139, 115, 85, 0.1);
+}
+
+.next-platform {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.next-platform:hover {
+    transform: translateX(10px);
+}
+
+.next-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+}
+
+.next-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmers Day Carousel — Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="preview-container">
+        <header class="preview-header">
+            <a href="../../index.html" class="back-link">← Back to Generator</a>
+            <h1>Programmers Day Carousel</h1>
+        </header>
+        
+        <div class="carousel-container">
+            <div class="carousel-preview" id="carouselPreview">
+                <!-- Slides will be rendered here -->
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="btn-nav" id="prevSlide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <div class="slide-indicator">
+                    <span id="currentSlide">1</span> / <span id="totalSlides">7</span>
+                </div>
+                <button class="btn-nav" id="nextSlide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="slide-dots" id="slideDots">
+            <!-- Dots will be generated here -->
+        </div>
+    </div>
+
+    <script src="../../templates/template-engine.js"></script>
+    <script src="data.js"></script>
+    <script>
+        // Wait for DOM and scripts to load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof TemplateEngine === 'undefined') {
+                console.error('TemplateEngine not loaded');
+                return;
+            }
+            
+            if (typeof PROGRAMMERS_DAY_CAROUSEL === 'undefined') {
+                console.error('PROGRAMMERS_DAY_CAROUSEL not loaded');
+                return;
+            }
+            
+            const previewContainer = document.getElementById('carouselPreview');
+            if (!previewContainer) {
+                console.error('Preview container not found');
+                return;
+            }
+            
+            const templateEngine = new TemplateEngine(previewContainer);
+            templateEngine.loadTemplate(PROGRAMMERS_DAY_CAROUSEL);
+
+            // Navigation
+            document.getElementById('prevSlide')?.addEventListener('click', () => {
+                templateEngine.prevSlide();
+                updateDots();
+            });
+
+            document.getElementById('nextSlide')?.addEventListener('click', () => {
+                templateEngine.nextSlide();
+                updateDots();
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') templateEngine.prevSlide();
+                if (e.key === 'ArrowRight') templateEngine.nextSlide();
+                updateDots();
+            });
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            previewContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            previewContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    templateEngine.nextSlide();
+                    updateDots();
+                }
+                if (touchEndX > touchStartX + 50) {
+                    templateEngine.prevSlide();
+                    updateDots();
+                }
+            }
+
+            // Update dots
+            function updateDots() {
+                const dots = document.getElementById('slideDots');
+                if (!dots) return;
+                
+                dots.innerHTML = '';
+                for (let i = 0; i < templateEngine.getTotalSlides(); i++) {
+                    const dot = document.createElement('div');
+                    dot.className = `dot ${i === templateEngine.currentSlideIndex ? 'active' : ''}`;
+                    dot.addEventListener('click', () => {
+                        templateEngine.showSlide(i);
+                        updateDots();
+                    });
+                    dots.appendChild(dot);
+                }
+            }
+
+            // Auto-update indicator
+            setInterval(() => {
+                const currentEl = document.getElementById('currentSlide');
+                const totalEl = document.getElementById('totalSlides');
+                if (currentEl) currentEl.textContent = templateEngine.currentSlideIndex + 1;
+                if (totalEl) totalEl.textContent = templateEngine.getTotalSlides();
+            }, 100);
+
+            // Initialize dots
+            updateDots();
+        });
+    </script>
+</body>
+</html>
+

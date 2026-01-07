@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MEMENTO — Your Death Visualized</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="memento-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Platforms</a>
+        <span class="nav-number">16 / 35</span>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Memento Mori</p>
+                <h1 class="hero-title">THE MEMENTO</h1>
+                <p class="hero-subtitle">
+                    Death is the ultimate clarifier.<br>
+                    What would you do if you truly felt your finitude?
+                </p>
+            </div>
+        </section>
+
+        <section class="revelation">
+            <div class="revelation-content">
+                <blockquote>
+                    "We avoid thinking about death. But confronting mortality doesn't create despair—
+                    it creates clarity. When time is finite, every choice matters."
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="mortality-calculator">
+            <h2 class="section-title">Your Remaining Time</h2>
+            <p class="section-intro">Enter your birth year to see your life in perspective</p>
+            
+            <div class="calculator-input">
+                <input type="number" id="birth-year" placeholder="Birth year (e.g., 1990)" min="1900" max="2025">
+                <button class="calculate-btn" id="calculate-btn">Calculate</button>
+            </div>
+
+            <div class="mortality-display" id="mortality-display" style="display: none;">
+                <div class="stat-grid">
+                    <div class="stat">
+                        <span class="stat-value" id="years-lived">--</span>
+                        <span class="stat-label">years lived</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="years-left">--</span>
+                        <span class="stat-label">years remaining*</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="weeks-left">--</span>
+                        <span class="stat-label">weeks left</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="days-left">--</span>
+                        <span class="stat-label">days left</span>
+                    </div>
+                </div>
+                
+                <p class="stat-note">*Based on average life expectancy of 80 years. Your actual time is unknown.</p>
+                
+                <div class="life-bar">
+                    <div class="life-lived" id="life-lived"></div>
+                    <div class="life-remaining" id="life-remaining"></div>
+                </div>
+                <p class="life-bar-label">Your life so far | What remains</p>
+            </div>
+        </section>
+
+        <section class="the-questions">
+            <h2 class="section-title">The Questions Death Asks</h2>
+            
+            <div class="question-cards">
+                <div class="question-card">
+                    <span class="timeframe">If you had 1 year</span>
+                    <p>What would you stop doing immediately? What would you start?</p>
+                </div>
+                
+                <div class="question-card">
+                    <span class="timeframe">If you had 10 years</span>
+                    <p>What legacy would you build? Who would you become?</p>
+                </div>
+                
+                <div class="question-card">
+                    <span class="timeframe">If you had 50 years</span>
+                    <p>What slow work would you begin? What would you plant that you'd never see bloom?</p>
+                </div>
+                
+                <div class="question-card">
+                    <span class="timeframe">If today were your last</span>
+                    <p>What would you regret not saying? Not doing? Not being?</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="clarity">
+            <h2 class="section-title">What Death Clarifies</h2>
+            
+            <div class="clarity-grid">
+                <div class="clarity-card">
+                    <h3>What Matters</h3>
+                    <p>Most of what worries you doesn't matter. Death reveals the essential—love, meaning, contribution, experience.</p>
+                </div>
+                
+                <div class="clarity-card">
+                    <h3>What Doesn't</h3>
+                    <p>Status, approval, accumulation—these dissolve in the face of mortality. You can let them go now.</p>
+                </div>
+                
+                <div class="clarity-card">
+                    <h3>What to Do</h3>
+                    <p>The things you've been postponing. The person you've been meaning to become. The life you've been waiting to live.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-grid">
+                <article class="philosophy-card">
+                    <h3>The Stoic Practice</h3>
+                    <p>
+                        Marcus Aurelius began each day contemplating death. 
+                        Not to despair, but to live fully. "You could leave life right now. 
+                        Let that determine what you do and say and think."
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Inversion</h3>
+                    <p>
+                        Every other tool helps you plan for the future. 
+                        The Memento uses the end of all futures to illuminate the present. 
+                        What would you do today if you knew it was finite?
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>Not Morbid—Clarifying</h3>
+                    <p>
+                        This isn't about fear or sadness. It's about cutting through 
+                        the noise to what actually matters. Death is a gift—
+                        it makes life precious.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation">
+            <div class="meditation-content">
+                <p class="meditation-prompt">
+                    Close your eyes. Imagine yourself at the end of your life, looking back. 
+                    What would that person tell you to do right now? 
+                    What would they say you wasted time on? 
+                    What would they wish you had started sooner?
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../17/" class="next-platform">
+            <span class="next-label">Next Platform</span>
+            <span class="next-name">THE LINEAGE →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+

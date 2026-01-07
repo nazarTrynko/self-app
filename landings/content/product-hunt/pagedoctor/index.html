@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageDoctor — Your Website's Complete Health Check</title>
+    <link rel="stylesheet" href="../../_shared/css/reset.css">
+    <link rel="stylesheet" href="../../_shared/css/animations.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#3B82F6"/>
+                    <path d="M16 8C11.58 8 8 11.58 8 16s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm-1 13l-4-4 1.41-1.41L15 18.17l4.59-4.58L21 15l-6 6z" fill="white"/>
+                </svg>
+                <span>PageDoctor</span>
+            </div>
+            <a href="#pricing" class="nav-cta">Get Health Check</a>
+        </nav>
+
+        <div class="hero">
+            <div class="badge fade-in">
+                <span class="pulse"></span>
+                5 Diagnostic Modes
+            </div>
+            <h1 class="fade-in">Your Website's<br><span class="gradient-text">Complete Health Check</span></h1>
+            <p class="subtitle fade-in">One URL. Five diagnostic analyses. Know exactly why visitors aren't converting — and how to fix it.</p>
+            
+            <form class="url-form fade-in" id="analyzeForm">
+                <div class="input-wrapper">
+                    <span class="protocol">https://</span>
+                    <input type="text" placeholder="yoursite.com" required>
+                </div>
+                <button type="submit">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                    Run Health Check
+                </button>
+            </form>
+            <p class="trust-line fade-in">Free scan • No signup required • Results in 30 seconds</p>
+        </div>
+    </header>
+
+    <section class="demo-section">
+        <div class="container">
+            <div class="demo-dashboard" id="demoDashboard">
+                <div class="dashboard-header">
+                    <div class="site-info">
+                        <div class="favicon">🌐</div>
+                        <span class="site-url">example-startup.com</span>
+                    </div>
+                    <span class="scan-time">Scanned just now</span>
+                </div>
+                
+                <div class="overall-score">
+                    <div class="score-circle" id="scoreCircle">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" class="score-bg"/>
+                            <circle cx="60" cy="60" r="54" class="score-fill" id="scoreFill"/>
+                        </svg>
+                        <div class="score-value">
+                            <span class="number" id="scoreNumber">0</span>
+                            <span class="label">Health Score</span>
+                        </div>
+                    </div>
+                    <div class="score-summary">
+                        <h3>Good, but room to improve</h3>
+                        <p>Your site has solid fundamentals but is leaving conversions on the table. Fix the 3 critical issues below.</p>
+                    </div>
+                </div>
+
+                <div class="diagnostic-modes">
+                    <div class="mode-card" data-score="68" data-color="#EF4444">
+                        <div class="mode-icon conversion">🔬</div>
+                        <div class="mode-info">
+                            <div class="mode-header">
+                                <h4>Conversion Scan</h4>
+                                <span class="mode-score">68</span>
+                            </div>
+                            <p>Why visitors aren't buying</p>
+                            <div class="mode-bar"><div class="mode-fill" style="--score: 68%"></div></div>
+                            <span class="issues critical">3 critical issues</span>
+                        </div>
+                    </div>
+
+                    <div class="mode-card" data-score="82" data-color="#22C55E">
+                        <div class="mode-icon trust">🛡️</div>
+                        <div class="mode-info">
+                            <div class="mode-header">
+                                <h4>Trust Audit</h4>
+                                <span class="mode-score">82</span>
+                            </div>
+                            <p>How trustworthy you appear</p>
+                            <div class="mode-bar"><div class="mode-fill" style="--score: 82%"></div></div>
+                            <span class="issues warning">1 warning</span>
+                        </div>
+                    </div>
+
+                    <div class="mode-card" data-score="71" data-color="#F59E0B">
+                        <div class="mode-icon clarity">⚡</div>
+                        <div class="mode-info">
+                            <div class="mode-header">
+                                <h4>Clarity Check</h4>
+                                <span class="mode-score">71</span>
+                            </div>
+                            <p>Is your message clear?</p>
+                            <div class="mode-bar"><div class="mode-fill" style="--score: 71%"></div></div>
+                            <span class="issues warning">2 issues</span>
+                        </div>
+                    </div>
+
+                    <div class="mode-card" data-score="65" data-color="#EF4444">
+                        <div class="mode-icon impression">👁️</div>
+                        <div class="mode-info">
+                            <div class="mode-header">
+                                <h4>First Impression</h4>
+                                <span class="mode-score">65</span>
+                            </div>
+                            <p>5-second test results</p>
+                            <div class="mode-bar"><div class="mode-fill" style="--score: 65%"></div></div>
+                            <span class="issues critical">2 critical</span>
+                        </div>
+                    </div>
+
+                    <div class="mode-card" data-score="79" data-color="#22C55E">
+                        <div class="mode-icon objection">🚧</div>
+                        <div class="mode-info">
+                            <div class="mode-header">
+                                <h4>Objection Radar</h4>
+                                <span class="mode-score">79</span>
+                            </div>
+                            <p>Hidden purchase blockers</p>
+                            <div class="mode-bar"><div class="mode-fill" style="--score: 79%"></div></div>
+                            <span class="issues warning">1 issue</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="top-fixes">
+                    <h3>Top 3 Fixes <span class="impact-label">Highest Impact</span></h3>
+                    <div class="fix-list">
+                        <div class="fix-item">
+                            <span class="fix-number">1</span>
+                            <div class="fix-content">
+                                <p>Add social proof above the fold</p>
+                                <span class="fix-source">From: Trust Audit, First Impression</span>
+                            </div>
+                            <span class="fix-impact">+12 pts</span>
+                        </div>
+                        <div class="fix-item">
+                            <span class="fix-number">2</span>
+                            <div class="fix-content">
+                                <p>Clarify pricing with competitor comparison</p>
+                                <span class="fix-source">From: Objection Radar</span>
+                            </div>
+                            <span class="fix-impact">+8 pts</span>
+                        </div>
+                        <div class="fix-item">
+                            <span class="fix-number">3</span>
+                            <div class="fix-content">
+                                <p>Reduce hero text by 40% for clarity</p>
+                                <span class="fix-source">From: Clarity Check, First Impression</span>
+                            </div>
+                            <span class="fix-impact">+6 pts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="modes-section" id="modes">
+        <div class="container">
+            <h2>Five Diagnostic Modes</h2>
+            <p class="section-subtitle">Each mode analyzes your page through a different psychological lens</p>
+            
+            <div class="modes-grid">
+                <div class="mode-detail">
+                    <div class="mode-detail-icon conversion">🔬</div>
+                    <h3>Conversion Scan</h3>
+                    <p>Analyzes your page through the lens of a hesitant buyer. Identifies friction points, missing CTAs, unclear value props, and conversion killers.</p>
+                    <ul>
+                        <li>CTA placement & clarity</li>
+                        <li>Value proposition strength</li>
+                        <li>Friction point detection</li>
+                        <li>Urgency & scarcity signals</li>
+                    </ul>
+                </div>
+
+                <div class="mode-detail">
+                    <div class="mode-detail-icon trust">🛡️</div>
+                    <h3>Trust Audit</h3>
+                    <p>Evaluates how trustworthy your page appears to first-time visitors. Checks for social proof, credibility markers, and professional signals.</p>
+                    <ul>
+                        <li>Social proof presence</li>
+                        <li>Security indicators</li>
+                        <li>Brand credibility</li>
+                        <li>Contact accessibility</li>
+                    </ul>
+                </div>
+
+                <div class="mode-detail">
+                    <div class="mode-detail-icon clarity">⚡</div>
+                    <h3>Clarity Check</h3>
+                    <p>Tests if your message is instantly understandable. Measures cognitive load, jargon usage, and information hierarchy.</p>
+                    <ul>
+                        <li>Headline clarity</li>
+                        <li>Jargon detection</li>
+                        <li>Information hierarchy</li>
+                        <li>Reading complexity</li>
+                    </ul>
+                </div>
+
+                <div class="mode-detail">
+                    <div class="mode-detail-icon impression">👁️</div>
+                    <h3>First Impression</h3>
+                    <p>Simulates what visitors perceive in the first 5 seconds. Based on eye-tracking research and attention patterns.</p>
+                    <ul>
+                        <li>Above-fold analysis</li>
+                        <li>Visual hierarchy</li>
+                        <li>Key message visibility</li>
+                        <li>Attention prediction</li>
+                    </ul>
+                </div>
+
+                <div class="mode-detail">
+                    <div class="mode-detail-icon objection">🚧</div>
+                    <h3>Objection Radar</h3>
+                    <p>Detects hidden objections visitors might have. Finds price concerns, effort barriers, risk fears, and unaddressed questions.</p>
+                    <ul>
+                        <li>Price objection detection</li>
+                        <li>Risk concern analysis</li>
+                        <li>Effort perception</li>
+                        <li>Unanswered questions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2>Simple Pricing</h2>
+            <p class="section-subtitle">Start free, upgrade when you need more</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">$0</div>
+                    </div>
+                    <ul>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 3 scans per month</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> All 5 diagnostic modes</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Top 3 fixes</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Shareable report</li>
+                    </ul>
+                    <button class="btn-secondary">Start Free</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="price">$19<span>/mo</span></div>
+                    </div>
+                    <ul>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Unlimited scans</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> All 5 diagnostic modes</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Complete fix list</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Historical tracking</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> PDF export</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Priority support</li>
+                    </ul>
+                    <button class="btn-primary">Join Waitlist</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Agency</h3>
+                        <div class="price">$79<span>/mo</span></div>
+                    </div>
+                    <ul>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Everything in Pro</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Team accounts (5)</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> White-label reports</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> API access</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Client dashboard</li>
+                    </ul>
+                    <button class="btn-secondary">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Know Exactly What to Fix</h2>
+            <p>Stop guessing why visitors aren't converting. Get your complete health check in 30 seconds.</p>
+            <form class="cta-form" id="ctaForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Get Early Access</button>
+            </form>
+            <p class="cta-trust">Join 1,200+ founders on the waitlist</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="8" fill="#3B82F6"/>
+                            <path d="M16 8C11.58 8 8 11.58 8 16s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm-1 13l-4-4 1.41-1.41L15 18.17l4.59-4.58L21 15l-6 6z" fill="white"/>
+                        </svg>
+                        <span>PageDoctor</span>
+                    </div>
+                    <p>Your website's complete health check</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PageDoctor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

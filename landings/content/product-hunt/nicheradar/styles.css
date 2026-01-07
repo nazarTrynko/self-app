@@ -1,0 +1,90 @@
+/* NicheRadar - Deep Blue Exploration Aesthetic */
+:root {
+  --blue-900: #0c1929;
+  --blue-800: #132337;
+  --blue-700: #1a3049;
+  --blue-600: #234066;
+  --blue-500: #3b82f6;
+  --blue-400: #60a5fa;
+  --blue-300: #93c5fd;
+  --white: #ffffff;
+  --gray-400: #9ca3af;
+  --orange-500: #f97316;
+  --green-500: #22c55e;
+  --purple-500: #a855f7;
+  --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+  --section-padding: 5rem 0;
+}
+
+body { font-family: var(--font-sans); background: var(--blue-900); color: var(--white); }
+
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; }
+.logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem; font-weight: 700; }
+.logo-icon { font-size: 1.25rem; }
+.nav-cta { padding: 0.625rem 1.25rem; background: var(--blue-500); color: var(--white); border-radius: 8px; font-weight: 600; font-size: 0.875rem; }
+
+.hero { padding-bottom: 3rem; background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.15) 0%, transparent 60%); }
+.hero-content { text-align: center; padding: 2.5rem 0; }
+.badge { display: inline-block; padding: 0.375rem 0.875rem; background: var(--blue-800); border: 1px solid var(--blue-700); border-radius: 100px; font-size: 0.8125rem; color: var(--blue-300); margin-bottom: 1.25rem; }
+.hero-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+.hero-title .highlight { color: var(--blue-400); }
+.hero-subtitle { font-size: 1.0625rem; color: var(--gray-400); max-width: 520px; margin: 0 auto 1.75rem; line-height: 1.5; }
+.hero-form { display: flex; gap: 0.5rem; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.hero-form input { flex: 1; min-width: 200px; padding: 0.75rem 1rem; background: var(--blue-800); border: 1px solid var(--blue-700); border-radius: 8px; color: var(--white); }
+.hero-form input:focus { outline: none; border-color: var(--blue-500); }
+.btn-primary { padding: 0.75rem 1.5rem; background: var(--blue-500); color: var(--white); border-radius: 8px; font-weight: 600; }
+.btn-primary:hover { background: var(--blue-400); }
+.btn-secondary { width: 100%; padding: 0.75rem; background: transparent; border: 2px solid var(--blue-700); color: var(--white); border-radius: 8px; font-weight: 600; }
+.hero-note { margin-top: 0.75rem; font-size: 0.8125rem; color: var(--gray-400); }
+
+/* Radar Card */
+.hero-visual { display: flex; justify-content: center; padding: 1.5rem 1rem; }
+.radar-card { width: 100%; max-width: 440px; background: var(--blue-800); border: 1px solid var(--blue-700); border-radius: 16px; overflow: hidden; }
+.radar-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; background: var(--blue-700); border-bottom: 1px solid var(--blue-600); }
+.radar-title { font-weight: 600; }
+.radar-badge { font-size: 0.75rem; padding: 0.25rem 0.5rem; background: var(--blue-500); border-radius: 100px; }
+.niche-list { padding: 0.75rem 1.25rem; }
+.niche-item { display: flex; gap: 0.875rem; padding: 0.875rem 0; border-bottom: 1px solid var(--blue-700); }
+.niche-item:last-child { border-bottom: none; }
+.niche-score { flex-shrink: 0; font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 6px; height: fit-content; }
+.niche-score.hot { background: rgba(249,115,22,0.15); color: var(--orange-500); }
+.niche-score.warm { background: rgba(34,197,94,0.15); color: var(--green-500); }
+.niche-score.new { background: rgba(168,85,247,0.15); color: var(--purple-500); }
+.niche-info strong { display: block; font-size: 0.9375rem; margin-bottom: 0.25rem; }
+.niche-info p { font-size: 0.8125rem; color: var(--gray-400); }
+
+/* How It Works */
+.how-it-works { padding: var(--section-padding); background: var(--blue-800); }
+.section-title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; text-align: center; margin-bottom: 2rem; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 700px; margin: 0 auto; }
+.step { text-align: center; padding: 1.5rem; background: var(--blue-700); border-radius: 12px; }
+.step-num { display: inline-flex; width: 32px; height: 32px; background: var(--blue-500); border-radius: 50%; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 0.75rem; }
+.step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+.step p { font-size: 0.8125rem; color: var(--gray-400); }
+
+/* Pricing */
+.pricing { padding: var(--section-padding); }
+.pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; max-width: 520px; margin: 0 auto; }
+.pricing-card { padding: 1.75rem; background: var(--blue-800); border: 2px solid var(--blue-700); border-radius: 12px; text-align: center; }
+.pricing-card.featured { border-color: var(--blue-500); }
+.pricing-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+.price { font-size: 2.25rem; font-weight: 700; color: var(--blue-400); margin-bottom: 1.25rem; }
+.price span { font-size: 0.875rem; color: var(--gray-400); }
+.pricing-card ul { text-align: left; margin-bottom: 1.25rem; }
+.pricing-card li { padding: 0.375rem 0; font-size: 0.875rem; color: var(--gray-400); border-bottom: 1px solid var(--blue-700); }
+.pricing-card button { width: 100%; }
+
+/* Final CTA */
+.final-cta { padding: var(--section-padding); background: var(--blue-800); text-align: center; }
+.final-cta h2 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 0.5rem; }
+.final-cta > .container > p { color: var(--gray-400); margin-bottom: 1.5rem; }
+.cta-form { display: flex; gap: 0.5rem; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.cta-form input { flex: 1; min-width: 200px; padding: 0.75rem 1rem; background: var(--blue-700); border: 1px solid var(--blue-600); border-radius: 8px; color: var(--white); }
+.form-message { width: 100%; padding: 0.5rem; border-radius: 6px; font-size: 0.8125rem; display: none; }
+.form-message.success { background: rgba(34,197,94,0.1); color: #22c55e; }
+
+.footer { padding: 1.5rem 0; text-align: center; border-top: 1px solid var(--blue-800); }
+.footer-copy { font-size: 0.75rem; color: var(--gray-400); }
+
+@media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+

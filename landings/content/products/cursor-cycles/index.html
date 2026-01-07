@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Cycles 2.0 — Prompt Evolution Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">CURSOR CYCLES <span class="version">2.0</span></span>
+            </div>
+            <div class="header-actions">
+                <button id="openGeneBank" class="btn-icon header-btn" title="Gene Bank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </button>
+                <button id="openSettings" class="btn-icon header-btn" title="Settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                </button>
+                <div class="header-status">
+                    <span class="status-indicator" id="statusIndicator"></span>
+                    <span class="status-text" id="statusText">Ready</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Panel: Configuration -->
+            <section class="config-panel">
+                <div class="panel-header">
+                    <h2>Evolution Setup</h2>
+                    <span class="panel-badge">Configure</span>
+                </div>
+
+                <div class="config-section">
+                    <label class="config-label">
+                        <span class="label-text">Goal</span>
+                        <span class="label-hint">What should the prompt achieve?</span>
+                    </label>
+                    <textarea id="goalInput" class="config-textarea" rows="2" placeholder="e.g., Generate production-ready React components with TypeScript, tests, and documentation"></textarea>
+                </div>
+
+                <div class="config-section">
+                    <label class="config-label">
+                        <span class="label-text">Seed Prompt</span>
+                        <span class="label-hint">Your starting prompt to evolve</span>
+                    </label>
+                    <textarea id="seedPrompt" class="config-textarea" rows="6" placeholder="Create a React component that..."></textarea>
+                </div>
+
+                <div class="config-section">
+                    <label class="config-label">
+                        <span class="label-text">Benchmark Cases</span>
+                        <span class="label-hint">Objective tests for verification (one per line)</span>
+                    </label>
+                    <textarea id="benchmarkCases" class="config-textarea" rows="4" placeholder="Must compile without errors
+Must include TypeScript types
+Must have at least one test
+Must include JSDoc comments"></textarea>
+                </div>
+
+                <div class="config-row">
+                    <div class="config-section half">
+                        <label class="config-label">
+                            <span class="label-text">Population Size</span>
+                        </label>
+                        <div class="button-group">
+                            <button class="btn-option" data-value="4">4</button>
+                            <button class="btn-option active" data-value="8">8</button>
+                            <button class="btn-option" data-value="16">16</button>
+                        </div>
+                    </div>
+                    <div class="config-section half">
+                        <label class="config-label">
+                            <span class="label-text">Max Generations</span>
+                        </label>
+                        <div class="button-group">
+                            <button class="btn-option" data-value="25">25</button>
+                            <button class="btn-option active" data-value="50">50</button>
+                            <button class="btn-option" data-value="100">100</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-actions">
+                    <button id="startEvolution" class="btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5,3 19,12 5,21"/>
+                        </svg>
+                        Start Evolution
+                    </button>
+                    <button id="pauseEvolution" class="btn-secondary" disabled>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </svg>
+                        Pause
+                    </button>
+                </div>
+            </section>
+
+            <!-- Center Panel: Evolution Dashboard -->
+            <section class="evolution-panel">
+                <div class="panel-header">
+                    <h2>Evolution Progress</h2>
+                    <div class="generation-counter">
+                        <span id="currentGen">0</span>
+                        <span class="separator">/</span>
+                        <span id="maxGen">50</span>
+                    </div>
+                </div>
+                
+                <!-- Generation Progress Bar -->
+                <div class="generation-progress" style="padding: 0 var(--spacing-md);">
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="evolutionProgressBar" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text" id="evolutionProgressText">0%</span>
+                </div>
+
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="evolutionLoadingOverlay">
+                    <div class="spinner spinner-lg"></div>
+                    <span class="loading-text" id="loadingText">Initializing evolution...</span>
+                </div>
+
+                <!-- Fitness Landscape Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Fitness Landscape</h3>
+                        <div class="chart-legend">
+                            <span class="legend-item best">Best</span>
+                            <span class="legend-item avg">Average</span>
+                            <span class="legend-item worst">Worst</span>
+                        </div>
+                    </div>
+                    <canvas id="fitnessChart"></canvas>
+                </div>
+
+                <!-- Population Grid -->
+                <div class="population-section">
+                    <div class="section-header">
+                        <h3>Current Population</h3>
+                        <button id="togglePopulationView" class="btn-icon" title="Toggle view">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="populationGrid" class="population-grid">
+                        <!-- Populated by JavaScript -->
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <p>Awaiting evolution start</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Log -->
+                <div class="activity-section">
+                    <div class="section-header">
+                        <h3>Evolution Log</h3>
+                        <button id="clearLog" class="btn-icon" title="Clear log">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3,6 5,6 21,6"/>
+                                <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6M8,6V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="activityLog" class="activity-log">
+                        <div class="log-entry info">
+                            <span class="log-time">--:--</span>
+                            <span class="log-message">System initialized. Configure and start evolution.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Analysis & Output -->
+            <section class="analysis-panel">
+                <div class="panel-header">
+                    <h2>Best Performer</h2>
+                    <span class="panel-badge fitness" id="bestFitnessBadge">--</span>
+                </div>
+
+                <!-- Fitness Dimensions -->
+                <div class="dimensions-section">
+                    <h3>Fitness Dimensions</h3>
+                    <div class="dimension-bars">
+                        <div class="dimension-item">
+                            <div class="dimension-label">
+                                <span>Clarity</span>
+                                <span class="dimension-value" id="dimClarity">--</span>
+                            </div>
+                            <div class="dimension-bar">
+                                <div class="dimension-fill" id="dimClarityBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="dimension-item">
+                            <div class="dimension-label">
+                                <span>Completeness</span>
+                                <span class="dimension-value" id="dimCompleteness">--</span>
+                            </div>
+                            <div class="dimension-bar">
+                                <div class="dimension-fill" id="dimCompletenessBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="dimension-item">
+                            <div class="dimension-label">
+                                <span>Specificity</span>
+                                <span class="dimension-value" id="dimSpecificity">--</span>
+                            </div>
+                            <div class="dimension-bar">
+                                <div class="dimension-fill" id="dimSpecificityBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="dimension-item">
+                            <div class="dimension-label">
+                                <span>Robustness</span>
+                                <span class="dimension-value" id="dimRobustness">--</span>
+                            </div>
+                            <div class="dimension-bar">
+                                <div class="dimension-fill" id="dimRobustnessBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="dimension-item">
+                            <div class="dimension-label">
+                                <span>Efficiency</span>
+                                <span class="dimension-value" id="dimEfficiency">--</span>
+                            </div>
+                            <div class="dimension-bar">
+                                <div class="dimension-fill" id="dimEfficiencyBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="dimension-item">
+                            <div class="dimension-label">
+                                <span>Novelty</span>
+                                <span class="dimension-value" id="dimNovelty">--</span>
+                            </div>
+                            <div class="dimension-bar">
+                                <div class="dimension-fill" id="dimNoveltyBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evolved Prompt Output -->
+                <div class="output-section">
+                    <div class="section-header">
+                        <h3>Evolved Prompt</h3>
+                        <button id="copyPrompt" class="btn-icon" title="Copy to clipboard">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5,15H4a2,2,0,0,1-2-2V4A2,2,0,0,1,4,2H13a2,2,0,0,1,2,2V5"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="evolvedPromptOutput" class="output-code">
+                        <pre><code>// Evolution not started yet</code></pre>
+                    </div>
+                </div>
+
+                <!-- Lineage / DNA View -->
+                <div class="lineage-section">
+                    <div class="section-header">
+                        <h3>Prompt DNA</h3>
+                        <button id="exportDNA" class="btn-icon" title="Export DNA">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21,15v4a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V15"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="dnaView" class="dna-view">
+                        <div class="dna-gene">
+                            <span class="gene-name">role</span>
+                            <span class="gene-status inactive"></span>
+                        </div>
+                        <div class="dna-gene">
+                            <span class="gene-name">context</span>
+                            <span class="gene-status inactive"></span>
+                        </div>
+                        <div class="dna-gene">
+                            <span class="gene-name">task</span>
+                            <span class="gene-status inactive"></span>
+                        </div>
+                        <div class="dna-gene">
+                            <span class="gene-name">constraints</span>
+                            <span class="gene-status inactive"></span>
+                        </div>
+                        <div class="dna-gene">
+                            <span class="gene-name">format</span>
+                            <span class="gene-status inactive"></span>
+                        </div>
+                        <div class="dna-gene">
+                            <span class="gene-name">examples</span>
+                            <span class="gene-status inactive"></span>
+                        </div>
+                        <div class="dna-gene">
+                            <span class="gene-name">reasoning</span>
+                            <span class="gene-status inactive"></span>
+                        </div>
+                        <div class="dna-gene">
+                            <span class="gene-name">safeguards</span>
+                            <span class="gene-status inactive"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="output-actions">
+                    <button id="viewFullPrompt" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1,12S5,4,12,4s11,8,11,8-4,8-11,8S1,12,1,12Z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        View Full
+                    </button>
+                    <button id="viewGenealogy" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="5" r="3"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <path d="M12 12l-6 6"/>
+                            <path d="M12 12l6 6"/>
+                            <circle cx="6" cy="19" r="2"/>
+                            <circle cx="18" cy="19" r="2"/>
+                        </svg>
+                        Tree
+                    </button>
+                    <button id="openAbTesting" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="18" rx="1"/>
+                            <rect x="14" y="3" width="7" height="18" rx="1"/>
+                        </svg>
+                        A/B
+                    </button>
+                    <button id="exportHistory" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14,2H6A2,2,0,0,0,4,4V20a2,2,0,0,0,2,2H18a2,2,0,0,0,2-2V8Z"/>
+                            <polyline points="14,2 14,8 20,8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        Export
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Checkpoint Modal -->
+        <div id="checkpointModal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content wide">
+                <div class="modal-header">
+                    <h2>Evolution Checkpoint</h2>
+                    <span class="modal-gen">Generation <span id="checkpointGen">--</span></span>
+                </div>
+                <div class="modal-body">
+                    <div class="checkpoint-tabs">
+                        <button class="checkpoint-tab active" data-tab="auto">Auto Selection</button>
+                        <button class="checkpoint-tab" data-tab="manual">Manual Breeding</button>
+                    </div>
+                    
+                    <div id="autoSelectionTab" class="checkpoint-tab-content active">
+                        <p class="modal-description">Review the top performers and decide how to proceed:</p>
+                        <div id="checkpointCandidates" class="checkpoint-candidates">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div id="manualBreedingTab" class="checkpoint-tab-content hidden">
+                        <p class="modal-description">Select 2 parents for manual breeding:</p>
+                        <div class="breeding-selection">
+                            <div class="parent-selection">
+                                <h4>Parent 1</h4>
+                                <div id="parent1Selection" class="parent-candidates">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div class="breeding-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                    <polyline points="12 5 19 12 12 19"/>
+                                </svg>
+                            </div>
+                            <div class="parent-selection">
+                                <h4>Parent 2</h4>
+                                <div id="parent2Selection" class="parent-candidates">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="breeding-preview">
+                            <h4>Crossover Preview</h4>
+                            <div id="breedingPreview" class="breeding-preview-content">
+                                Select two parents to see crossover preview
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions" id="autoSelectionActions">
+                    <button id="selectWinner" class="btn-primary">Select as Winner</button>
+                    <button id="continueEvolution" class="btn-secondary">Continue Evolving</button>
+                    <button id="stopEvolution" class="btn-danger-outline">Stop</button>
+                </div>
+                <div class="modal-actions hidden" id="manualBreedingActions">
+                    <button id="breedSelected" class="btn-primary" disabled>Breed Selected</button>
+                    <button id="cancelBreeding" class="btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prompt Viewer Modal -->
+        <div id="promptModal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content wide">
+                <div class="modal-header">
+                    <h2>Full Prompt View</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <pre id="fullPromptContent" class="full-prompt-content"></pre>
+                </div>
+                <div class="modal-actions">
+                    <button id="copyFullPrompt" class="btn-primary">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- A/B Testing Modal -->
+        <div id="abTestingModal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content wide ab-testing-modal">
+                <div class="modal-header">
+                    <h2>A/B Comparison</h2>
+                    <button class="modal-close" id="closeAbTesting">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="ab-comparison">
+                        <div class="ab-side ab-side-a">
+                            <div class="ab-header">
+                                <h3>Prompt A</h3>
+                                <select id="abPromptASelect" class="ab-select">
+                                    <option value="">Select prompt...</option>
+                                </select>
+                                <span class="ab-fitness" id="abFitnessA">--</span>
+                            </div>
+                            <pre class="ab-content" id="abContentA">Select a prompt to compare</pre>
+                        </div>
+                        <div class="ab-divider">
+                            <div class="ab-vs">VS</div>
+                        </div>
+                        <div class="ab-side ab-side-b">
+                            <div class="ab-header">
+                                <h3>Prompt B</h3>
+                                <select id="abPromptBSelect" class="ab-select">
+                                    <option value="">Select prompt...</option>
+                                </select>
+                                <span class="ab-fitness" id="abFitnessB">--</span>
+                            </div>
+                            <pre class="ab-content" id="abContentB">Select a prompt to compare</pre>
+                        </div>
+                    </div>
+                    <div class="ab-diff-view" id="abDiffView">
+                        <h4>Differences</h4>
+                        <div class="ab-diff-content" id="abDiffContent">
+                            Select two prompts to see differences
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="abCopyA" class="btn-secondary">Copy A</button>
+                    <button id="abCopyB" class="btn-secondary">Copy B</button>
+                    <button id="abUseBest" class="btn-primary">Use Higher Fitness</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Genealogy Modal -->
+        <div id="genealogyModal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content wide genealogy-modal">
+                <div class="modal-header">
+                    <h2>Prompt Genealogy</h2>
+                    <div class="modal-header-actions">
+                        <button id="resetGenealogyView" class="btn-secondary btn-small">Reset View</button>
+                        <button class="modal-close" id="closeGenealogy">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body genealogy-body">
+                    <canvas id="genealogyCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gene Bank Modal -->
+        <div id="geneBankModal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content wide">
+                <div class="modal-header">
+                    <h2>Gene Bank</h2>
+                    <button class="modal-close" id="closeGeneBank">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="gene-bank-header">
+                        <div class="gene-bank-stats" id="geneBankStats">
+                            <span class="stat-item"><strong id="geneCountStat">0</strong> genes</span>
+                            <span class="stat-item"><strong id="favCountStat">0</strong> favorites</span>
+                        </div>
+                        <div class="gene-bank-actions">
+                            <input type="text" id="geneBankSearch" class="gene-search-input" placeholder="Search genes...">
+                            <select id="geneBankFilter" class="gene-filter-select">
+                                <option value="all">All Types</option>
+                                <option value="role">Role</option>
+                                <option value="task">Task</option>
+                                <option value="constraints">Constraints</option>
+                                <option value="format">Format</option>
+                                <option value="examples">Examples</option>
+                                <option value="reasoning">Reasoning</option>
+                                <option value="safeguards">Safeguards</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gene-bank-list" id="geneBankList">
+                        <div class="empty-state">
+                            <p>No genes stored yet.</p>
+                            <p class="hint">Save high-performing genes from your evolutions to reuse later.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="exportGeneBank" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21,15v4a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V15"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Export
+                    </button>
+                    <button id="importGeneBank" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21,15v4a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V15"/>
+                            <polyline points="17,8 12,3 7,8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        Import
+                    </button>
+                    <button id="closeGeneBankBtn" class="btn-primary">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="settingsModal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <button class="modal-close" id="closeSettings">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Evaluation Mode -->
+                    <div class="settings-section">
+                        <h3>Evaluation Mode</h3>
+                        <p class="settings-hint">Choose how prompts are evaluated for fitness</p>
+                        <div class="settings-toggle-group">
+                            <label class="settings-toggle">
+                                <input type="radio" name="evalMode" value="heuristic" id="evalModeHeuristic" checked>
+                                <span class="toggle-label">
+                                    <span class="toggle-title">Heuristic (Fast)</span>
+                                    <span class="toggle-desc">Uses rule-based scoring. No API calls needed.</span>
+                                </span>
+                            </label>
+                            <label class="settings-toggle">
+                                <input type="radio" name="evalMode" value="llm" id="evalModeLLM">
+                                <span class="toggle-label">
+                                    <span class="toggle-title">LLM-Assisted</span>
+                                    <span class="toggle-desc">Uses AI to evaluate prompt quality. Requires API key.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- API Configuration (shown when LLM mode selected) -->
+                    <div id="apiConfigSection" class="settings-section api-config hidden">
+                        <h3>API Configuration</h3>
+                        
+                        <div class="settings-field">
+                            <label for="apiProvider">Provider</label>
+                            <select id="apiProvider" class="settings-select">
+                                <option value="openai">OpenAI</option>
+                                <option value="anthropic">Anthropic (Claude)</option>
+                                <option value="local">Local (Ollama)</option>
+                            </select>
+                        </div>
+
+                        <div class="settings-field">
+                            <label for="apiModel">Model</label>
+                            <select id="apiModel" class="settings-select">
+                                <option value="gpt-4o-mini">GPT-4o Mini (Fast)</option>
+                                <option value="gpt-4o">GPT-4o (Best)</option>
+                                <option value="gpt-4-turbo">GPT-4 Turbo</option>
+                            </select>
+                        </div>
+
+                        <div class="settings-field" id="apiKeyField">
+                            <label for="apiKey">API Key</label>
+                            <div class="api-key-input">
+                                <input type="password" id="apiKey" class="settings-input" placeholder="sk-...">
+                                <button type="button" id="toggleApiKeyVisibility" class="btn-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1,12S5,4,12,4s11,8,11,8-4,8-11,8S1,12,1,12Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="settings-hint">Your API key is stored locally and never sent to our servers.</span>
+                        </div>
+
+                        <div class="api-status" id="apiStatus">
+                            <span class="status-dot"></span>
+                            <span class="status-message">Not configured</span>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Settings -->
+                    <div class="settings-section">
+                        <h3>Advanced</h3>
+                        
+                        <div class="settings-field inline">
+                            <label for="checkpointInterval">Checkpoint Interval</label>
+                            <input type="number" id="checkpointInterval" class="settings-input small" value="10" min="5" max="50">
+                            <span class="settings-unit">generations</span>
+                        </div>
+
+                        <div class="settings-field inline">
+                            <label for="eliteCount">Elite Preservation</label>
+                            <input type="number" id="eliteCount" class="settings-input small" value="2" min="1" max="5">
+                            <span class="settings-unit">individuals</span>
+                        </div>
+
+                        <div class="settings-field inline">
+                            <label for="mutationRate">Mutation Rate</label>
+                            <input type="range" id="mutationRate" class="settings-range" value="25" min="5" max="50">
+                            <span class="settings-value" id="mutationRateValue">25%</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Management -->
+                    <div class="settings-section">
+                        <h3>Data Management</h3>
+                        <div class="settings-buttons">
+                            <button id="clearAllData" class="btn-secondary btn-danger-outline">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="3,6 5,6 21,6"/>
+                                    <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6M8,6V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"/>
+                                </svg>
+                                Clear Saved Data
+                            </button>
+                            <button id="exportAllSettings" class="btn-secondary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21,15v4a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V15"/>
+                                    <polyline points="7,10 12,15 17,10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                Export Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="saveSettings" class="btn-primary">Save Settings</button>
+                    <button id="cancelSettings" class="btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Engine Scripts -->
+    <!-- Core Engine Scripts (order matters for dependencies) -->
+    <script src="engine/prompt-dna.js"></script>
+    <script src="engine/llm-executor.js"></script>
+    <script src="engine/fitness.js"></script>
+    <script src="engine/critics.js"></script>
+    <script src="engine/evolution.js"></script>
+    <script src="engine/meta-learning.js"></script>
+    <script src="engine/gene-bank.js"></script>
+    <!-- UI Scripts -->
+    <script src="ui/chart.js"></script>
+    <script src="ui/genealogy.js"></script>
+    <script src="ui/app.js"></script>
+</body>
+</html>
+

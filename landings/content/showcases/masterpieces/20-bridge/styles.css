@@ -1,0 +1,559 @@
+:root {
+    --bg: #000000;
+    --bg-subtle: #050505;
+    --text: #888888;
+    --text-bright: #cccccc;
+    --accent: #1a1a2e;
+    --accent-glow: #2a2a4e;
+    --bridge-color: #2e3a4e;
+    --bridge-glow: #3e4a5e;
+    --time: #6a7a9a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#bridge-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav-back {
+    font-size: 0.875rem;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.nav-back:hover {
+    opacity: 1;
+}
+
+.nav-number {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    opacity: 0.3;
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 2s ease 0.5s forwards;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    margin-bottom: 2rem;
+    color: var(--text-bright);
+    opacity: 0;
+    animation: bridgeReveal 3s ease 0s forwards;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 2;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 2s ease 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.7; }
+}
+
+@keyframes bridgeReveal {
+    0% { 
+        opacity: 0; 
+        letter-spacing: 1em;
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.5;
+        letter-spacing: 0.5em;
+        filter: blur(5px);
+    }
+    100% { 
+        opacity: 1; 
+        letter-spacing: 0.3em;
+        filter: blur(0);
+    }
+}
+
+.revelation {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.revelation-content blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 2;
+    color: var(--text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.bridge-builder {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-bright);
+}
+
+.section-intro {
+    text-align: center;
+    color: var(--text);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+    opacity: 0.7;
+}
+
+.builder-container {
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+}
+
+.time-selector {
+    text-align: center;
+}
+
+.selector-label {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.time-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.time-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.75rem 1.25rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time-btn:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-bright);
+}
+
+.time-btn.active {
+    background: var(--bridge-color);
+    border-color: var(--bridge-glow);
+    color: var(--text-bright);
+}
+
+.message-composer {
+    margin-top: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.compose-section {
+    margin-bottom: 2rem;
+}
+
+.compose-section label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-bright);
+    margin-bottom: 0.75rem;
+}
+
+.compose-section textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-bright);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.compose-section textarea:focus {
+    outline: none;
+    border-color: rgba(106, 122, 154, 0.4);
+}
+
+.compose-section textarea::placeholder {
+    color: var(--text);
+    opacity: 0.4;
+}
+
+.seal-btn, .new-btn {
+    width: 100%;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    padding: 1.25rem 2rem;
+    background: var(--bridge-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-bright);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.seal-btn:hover, .new-btn:hover {
+    background: var(--bridge-glow);
+    border-color: rgba(106, 122, 154, 0.3);
+}
+
+.letter-sealed {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.sealed-visualization {
+    max-width: 400px;
+    margin: 0 auto 4rem;
+    aspect-ratio: 1;
+}
+
+#time-canvas {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sealed-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 500px;
+    margin: 0 auto 3rem;
+}
+
+.info-card {
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.info-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.info-card p {
+    font-size: 1.25rem;
+    color: var(--text-bright);
+}
+
+.days-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem !important;
+    color: var(--time) !important;
+}
+
+.sealed-message {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    background: rgba(46, 58, 78, 0.1);
+    border: 1px solid rgba(62, 74, 94, 0.2);
+}
+
+.sealed-message h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+}
+
+.message-preview {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.8;
+}
+
+.past-letters {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.past-letters h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.letters-list {
+    min-height: 50px;
+}
+
+.past-letter {
+    background: rgba(10, 10, 10, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.past-letter.arrived {
+    border-color: rgba(106, 122, 154, 0.3);
+    background: rgba(46, 58, 78, 0.15);
+}
+
+.letter-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--time);
+    margin-bottom: 0.75rem;
+}
+
+.letter-excerpt {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.no-letters {
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.5;
+    text-align: center;
+    padding: 2rem;
+}
+
+.new-btn {
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+    background: transparent;
+}
+
+.time-principles {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.principle-card {
+    background: rgba(10, 10, 10, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+}
+
+.principle-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+}
+
+.principle-card p {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+.philosophy {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    background: rgba(10, 10, 10, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    padding: 2rem;
+}
+
+.philosophy-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+}
+
+.philosophy-card p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+.meditation {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.meditation-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.meditation-prompt {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 2;
+    color: var(--text);
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.back-all {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.back-all:hover {
+    transform: translateX(-10px);
+}
+
+.back-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+}
+
+.back-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--text-bright);
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        letter-spacing: 0.15em;
+    }
+
+    .builder-container {
+        padding: 1.5rem;
+    }
+
+    .sealed-info {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConvertFix — Know Exactly Why Visitors Aren't Converting</title>
+  <meta name="description" content="AI analyzes your landing page and tells you exactly what to fix. Stop guessing, start converting.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../_shared/css/reset.css">
+  <link rel="stylesheet" href="../../_shared/css/animations.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+          <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 16h12M16 10v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>ConvertFix</span>
+      </div>
+      <a href="#waitlist" class="nav-cta">Get Free Scan</a>
+    </nav>
+
+    <div class="hero-content container">
+      <div class="badge animate-fadeInDown">
+        <span class="status-dot"></span>
+        AI-Powered Analysis
+      </div>
+      
+      <h1 class="hero-title animate-fadeInUp delay-100">
+        Know Exactly Why<br>
+        <span class="highlight">Visitors Aren't Converting</span>
+      </h1>
+      
+      <p class="hero-subtitle animate-fadeInUp delay-200">
+        Enter your URL. Get specific, actionable fixes in 30 seconds.<br>
+        No more guessing why your conversion rate is stuck at 0.5%.
+      </p>
+
+      <form id="hero-form" class="hero-form animate-fadeInUp delay-300" data-waitlist-form>
+        <div class="url-input-wrapper">
+          <span class="url-prefix">https://</span>
+          <input type="text" placeholder="yoursite.com" required>
+        </div>
+        <button type="submit" class="btn-primary btn-shine">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          Scan Page
+        </button>
+      </form>
+      
+      <p class="hero-note animate-fadeIn delay-400">
+        First scan free • No signup required
+      </p>
+    </div>
+
+    <!-- Diagnostic Visual -->
+    <div class="hero-visual animate-scaleIn delay-500">
+      <div class="scan-result">
+        <div class="scan-header">
+          <div class="scan-url">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+            example-startup.com
+          </div>
+          <div class="scan-score">
+            <span class="score-value">47</span>
+            <span class="score-label">/ 100</span>
+          </div>
+        </div>
+        
+        <div class="scan-issues">
+          <div class="issue critical">
+            <div class="issue-icon">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"/>
+              </svg>
+            </div>
+            <div class="issue-content">
+              <strong>Headline doesn't match ad copy</strong>
+              <p>Visitors from your Google Ads see "Free Trial" but land on "Start Today"</p>
+            </div>
+            <span class="issue-tag">Critical</span>
+          </div>
+          
+          <div class="issue warning">
+            <div class="issue-icon">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"/>
+              </svg>
+            </div>
+            <div class="issue-content">
+              <strong>CTA below the fold on mobile</strong>
+              <p>67% of your traffic is mobile, but they can't see the signup button</p>
+            </div>
+            <span class="issue-tag">High</span>
+          </div>
+          
+          <div class="issue info">
+            <div class="issue-icon">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"/>
+              </svg>
+            </div>
+            <div class="issue-content">
+              <strong>No social proof above fold</strong>
+              <p>Add testimonials or trust badges to build credibility faster</p>
+            </div>
+            <span class="issue-tag">Medium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem Section -->
+  <section class="problem">
+    <div class="container">
+      <h2 class="section-title">Your Landing Page Is Leaking Money</h2>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">97%</div>
+          <div class="stat-label">of visitors leave without converting</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$2,847</div>
+          <div class="stat-label">wasted on ads that don't convert</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">14 hrs</div>
+          <div class="stat-label">spent guessing what to change</div>
+        </div>
+      </div>
+      
+      <p class="problem-text">
+        You've built a landing page. You've driven traffic. But conversions? Crickets.<br>
+        <strong>Generic advice like "make the CTA bigger" doesn't help when you don't know what's actually broken.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution">
+    <div class="container">
+      <h2 class="section-title">AI That Sees What You Can't</h2>
+      <p class="section-subtitle">Get specific fixes, not vague suggestions</p>
+      
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h3>Visual Hierarchy Analysis</h3>
+          <p>We scan your page like a first-time visitor. What do they see first? Is it the right thing?</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h3>Copy Effectiveness Score</h3>
+          <p>Is your headline clear? Does your CTA create urgency? We grade every word.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3>Mobile Conversion Check</h3>
+          <p>67% of traffic is mobile. We test if your page actually works where it matters.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3>Competitor Comparison</h3>
+          <p>See how your page stacks up against competitors in your space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">30 Seconds to Clarity</h2>
+      
+      <div class="process">
+        <div class="process-step">
+          <div class="process-number">01</div>
+          <div class="process-content">
+            <h3>Enter Your URL</h3>
+            <p>Paste your landing page URL. No login required for your first scan.</p>
+          </div>
+        </div>
+        
+        <div class="process-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-number">02</div>
+          <div class="process-content">
+            <h3>AI Analyzes Everything</h3>
+            <p>We check 47 conversion factors across copy, design, and user experience.</p>
+          </div>
+        </div>
+        
+        <div class="process-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-number">03</div>
+          <div class="process-content">
+            <h3>Get Prioritized Fixes</h3>
+            <p>Receive a ranked list of exactly what to change, with before/after examples.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="results-banner">
+        <div class="result">
+          <span class="result-number">+127%</span>
+          <span class="result-label">avg. conversion lift</span>
+        </div>
+        <div class="result">
+          <span class="result-number">2,400+</span>
+          <span class="result-label">pages analyzed</span>
+        </div>
+        <div class="result">
+          <span class="result-number">30 sec</span>
+          <span class="result-label">to first insight</span>
+        </div>
+      </div>
+      
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>"I spent $500 on a conversion consultant. ConvertFix found the same issues in 30 seconds for $9. The headline mismatch alone was killing our conversion."</p>
+          <div class="testimonial-author">
+            <strong>Jake M.</strong>
+            <span>Founder, SaaSly</span>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <p>"Went from 0.8% to 2.3% conversion rate after fixing the top 3 issues. That's an extra $4K MRR from the same traffic."</p>
+          <div class="testimonial-author">
+            <strong>Priya S.</strong>
+            <span>Growth Lead</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing">
+    <div class="container">
+      <h2 class="section-title">Start Fixing Today</h2>
+      
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Single Scan</h3>
+          <div class="price">$9<span>/scan</span></div>
+          <ul>
+            <li>One-time page analysis</li>
+            <li>Top 5 priority fixes</li>
+            <li>Before/after suggestions</li>
+            <li>PDF report</li>
+          </ul>
+          <button class="btn-secondary">Get One Scan</button>
+        </div>
+        
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Best Value</div>
+          <h3>Unlimited</h3>
+          <div class="price">$29<span>/month</span></div>
+          <ul>
+            <li>Unlimited scans</li>
+            <li>All 47 conversion factors</li>
+            <li>Competitor comparison</li>
+            <li>Weekly re-scans</li>
+            <li>Priority support</li>
+          </ul>
+          <button class="btn-primary btn-shine">Start Free Trial</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="waitlist" class="final-cta">
+    <div class="container">
+      <h2>Stop Guessing.<br>Start Converting.</h2>
+      <p>Your first scan is free. See exactly what's wrong in 30 seconds.</p>
+      
+      <form id="waitlist-form" class="cta-form" data-waitlist-form>
+        <input type="email" placeholder="Enter your email for early access" required>
+        <button type="submit" class="btn-primary btn-shine">Get Early Access</button>
+        <div class="form-message"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo">
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 16h12M16 10v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>ConvertFix</span>
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2026 ConvertFix. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../../_shared/js/waitlist-form.js"></script>
+  <script src="../../_shared/js/analytics.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+

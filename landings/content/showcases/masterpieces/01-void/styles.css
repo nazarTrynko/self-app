@@ -1,0 +1,435 @@
+:root {
+    --bg: #000000;
+    --bg-subtle: #050505;
+    --text: #888888;
+    --text-bright: #cccccc;
+    --accent: #1a1a2e;
+    --accent-glow: #2a2a4e;
+    --void-color: #0a0a0a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Canvas */
+#void-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav-back {
+    font-size: 0.875rem;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.nav-back:hover {
+    opacity: 1;
+}
+
+.nav-number {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    opacity: 0.3;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 2s ease 0.5s forwards;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    margin-bottom: 2rem;
+    color: var(--text-bright);
+    opacity: 0;
+    animation: voidReveal 3s ease 0s forwards;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 2;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 2s ease 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.7; }
+}
+
+@keyframes voidReveal {
+    0% { 
+        opacity: 0; 
+        letter-spacing: 1em;
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.3;
+        letter-spacing: 0.5em;
+        filter: blur(5px);
+    }
+    100% { 
+        opacity: 1; 
+        letter-spacing: 0.3em;
+        filter: blur(0);
+    }
+}
+
+/* Revelation */
+.revelation {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.revelation-content blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 2;
+    color: var(--text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Blind Spot Test */
+.blind-spot-test {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-bright);
+}
+
+.section-intro {
+    text-align: center;
+    color: var(--text);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+    opacity: 0.7;
+}
+
+.question-container {
+    margin-bottom: 2rem;
+}
+
+.question-card {
+    display: none;
+    background: var(--void-color);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 3rem 2rem;
+    margin-bottom: 1rem;
+    animation: questionFade 0.5s ease;
+}
+
+.question-card.active {
+    display: block;
+}
+
+@keyframes questionFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.question-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.05);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.question-text {
+    font-size: 1.125rem;
+    color: var(--text-bright);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.option-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-bright);
+}
+
+.option-btn.selected {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--text-bright);
+}
+
+.progress-bar {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-top: 2rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+/* Void Map */
+.void-map {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.map-visualization {
+    max-width: 600px;
+    margin: 0 auto 4rem;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+#topology-canvas {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.void-analysis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    text-align: left;
+}
+
+.analysis-card {
+    background: var(--void-color);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+}
+
+.analysis-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+}
+
+.analysis-card p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text);
+}
+
+.void-card {
+    border-color: rgba(26, 26, 46, 0.5);
+}
+
+.alien-card {
+    border-color: rgba(42, 42, 78, 0.3);
+}
+
+.alien-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--text-bright) !important;
+}
+
+.regenerate-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.regenerate-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: var(--text-bright);
+}
+
+/* Philosophy */
+.philosophy {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    background: var(--void-color);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    padding: 2rem;
+}
+
+.philosophy-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+}
+
+.philosophy-card p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.next-platform {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.next-platform:hover {
+    transform: translateX(10px);
+}
+
+.next-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+}
+
+.next-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--text-bright);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        letter-spacing: 0.15em;
+    }
+
+    .question-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .void-analysis {
+        grid-template-columns: 1fr;
+    }
+}
+
+

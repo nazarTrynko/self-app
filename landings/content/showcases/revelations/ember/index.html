@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBER — What You Leave Behind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="ember"></canvas>
+    
+    <div class="experience">
+        <div class="phase phase-intro active" id="phase-intro">
+            <p class="whisper">A single truth, spoken once...</p>
+            <p class="whisper delay-1">can warm thousands of lives across centuries.</p>
+            <div class="ember-prompt delay-2">
+                <p class="prompt-text">What wisdom would you pass on?</p>
+                <input type="text" id="wisdom-input" class="wisdom-input" placeholder="Type your ember..." maxlength="100">
+            </div>
+        </div>
+
+        <div class="phase phase-passing" id="phase-passing">
+            <p class="ember-text">Your ember travels forward...</p>
+            <p class="ember-sub">Through generations you'll never see.</p>
+        </div>
+
+        <div class="phase phase-legacy" id="phase-legacy">
+            <p class="wisdom">The ember isn't you.</p>
+            <p class="wisdom-sub">It's what you gave.</p>
+            <p class="wisdom-sub">And giving outlives the giver.</p>
+            <p class="wisdom-sub final">Forever.</p>
+        </div>
+    </div>
+
+    <div class="generation-count" id="generation-count">
+        <span class="count">0</span>
+        <span class="label">generations touched</span>
+    </div>
+
+    <a href="../" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Return
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

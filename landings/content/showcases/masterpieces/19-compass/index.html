@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE COMPASS — Where Does Your Attention Naturally Pull?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="compass-canvas"></canvas>
+    
+    <nav class="nav">
+        <a href="../" class="nav-back">← All Platforms</a>
+        <span class="nav-number">29 / 35</span>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Internal GPS Calibration</p>
+                <h1 class="hero-title">THE COMPASS</h1>
+                <p class="hero-subtitle">
+                    Not where you should go—<br>
+                    where your attention naturally pulls.
+                </p>
+            </div>
+        </section>
+
+        <section class="revelation">
+            <div class="revelation-content">
+                <blockquote>
+                    "Forget what you're supposed to want.<br>
+                    Notice what you actually gravitate toward.<br>
+                    Your deepest attention reveals your authentic direction."
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="attention-mapper">
+            <h2 class="section-title">Map Your Gravitational Pull</h2>
+            <p class="section-intro">Answer honestly. Not what sounds good—what's actually true.</p>
+            
+            <div class="mapper-container">
+                <div class="compass-question">
+                    <span class="question-number">01</span>
+                    <label>When you have completely free time—no obligations, no one watching—what do you find yourself doing?</label>
+                    <textarea id="q1" placeholder="I find myself..."></textarea>
+                </div>
+
+                <div class="compass-question">
+                    <span class="question-number">02</span>
+                    <label>What topics do you find yourself reading about, researching, or learning about even when you don't need to?</label>
+                    <textarea id="q2" placeholder="I'm drawn to learning about..."></textarea>
+                </div>
+
+                <div class="compass-question">
+                    <span class="question-number">03</span>
+                    <label>What kinds of problems or challenges do you find yourself wanting to solve, even if you're not being paid?</label>
+                    <textarea id="q3" placeholder="I'm compelled to solve..."></textarea>
+                </div>
+
+                <div class="compass-question">
+                    <span class="question-number">04</span>
+                    <label>When you daydream, where does your mind go? What future do you fantasize about?</label>
+                    <textarea id="q4" placeholder="My mind wanders to..."></textarea>
+                </div>
+
+                <div class="compass-question">
+                    <span class="question-number">05</span>
+                    <label>What makes you lose track of time? When do hours pass like minutes?</label>
+                    <textarea id="q5" placeholder="I lose track of time when..."></textarea>
+                </div>
+
+                <button class="calibrate-btn" id="calibrate-btn">Calibrate Your Compass</button>
+            </div>
+        </section>
+
+        <section class="compass-reading" id="compass-reading" style="display: none;">
+            <h2 class="section-title">Your Internal Compass</h2>
+            
+            <div class="reading-visualization">
+                <canvas id="direction-canvas"></canvas>
+            </div>
+
+            <div class="reading-cards">
+                <div class="reading-card pull-card">
+                    <h3>Your Gravitational Center</h3>
+                    <p id="gravity-description">Analyzing your attention patterns...</p>
+                </div>
+                
+                <div class="reading-card truth-card">
+                    <h3>What This Reveals</h3>
+                    <p id="truth-description">Your attention doesn't lie...</p>
+                </div>
+                
+                <div class="reading-card direction-card">
+                    <h3>Your True North</h3>
+                    <p id="direction-description" class="direction-text">Calculating authentic direction...</p>
+                </div>
+            </div>
+
+            <div class="alignment-check">
+                <h3>The Alignment Question</h3>
+                <p class="alignment-intro">Now ask yourself honestly:</p>
+                <p class="alignment-prompt" id="alignment-prompt">Loading...</p>
+            </div>
+
+            <button class="reset-btn" id="reset-btn">Recalibrate</button>
+        </section>
+
+        <section class="compass-principles">
+            <h2 class="section-title">Attention Never Lies</h2>
+            
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <h3>Words Deceive</h3>
+                    <p>You can say you want anything. You can set any goal. But where your attention actually goes—that reveals the truth beneath the story you tell yourself.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <h3>Should vs. Is</h3>
+                    <p>There's the life you think you should want, and the life your attention naturally builds. The gap between them is the distance from your authentic self.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <h3>The Pull</h3>
+                    <p>Authentic direction feels like a pull, not a push. You don't have to force yourself toward it. It draws you. Resistance is often the signal you're moving against your grain.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <h3>Calibration</h3>
+                    <p>The compass can be miscalibrated—by trauma, by conditioning, by what you think is possible. But underneath, the needle still knows. Listen to it.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="philosophy-grid">
+                <article class="philosophy-card">
+                    <h3>The Authentic Signal</h3>
+                    <p>
+                        Your attention is your deepest vote. Not what you say matters, 
+                        not what you believe should matter—what actually draws your 
+                        focus when no one is watching. That's the signal.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Inversion</h3>
+                    <p>
+                        Every other tool tells you where to go. 
+                        The Compass reveals where you're already going. 
+                        Not direction through decision—direction through attention.
+                    </p>
+                </article>
+                
+                <article class="philosophy-card">
+                    <h3>The Integration</h3>
+                    <p>
+                        The goal isn't to pursue every pull blindly. 
+                        It's to understand what your attention is telling you. 
+                        Then you can choose whether to follow, redirect, or resist—
+                        but at least you'll know the truth.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="meditation">
+            <div class="meditation-content">
+                <p class="meditation-prompt">
+                    If you removed all obligation—financial, social, familial—
+                    and could build a life purely around what naturally draws you, 
+                    what would that look like? 
+                    The answer that arises is your compass reading. 
+                    The distance from your current life is your alignment gap.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../30/" class="next-platform">
+            <span class="next-label">Next Platform</span>
+            <span class="next-name">THE BRIDGE →</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

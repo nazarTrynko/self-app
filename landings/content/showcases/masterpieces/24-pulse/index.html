@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0a0e">
+    <title>THE PULSE — Feel. Track. Understand.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <canvas id="pulse-canvas"></canvas>
+    
+    <nav class="app-nav">
+        <a href="../" class="nav-back">← Masterpieces</a>
+        <span class="nav-number">34 / 35</span>
+    </nav>
+    
+    <div class="app-container">
+        <!-- Main Check-in Screen -->
+        <section id="checkin-screen" class="screen active">
+            <div class="screen-content">
+                <div class="pulse-header">
+                    <span class="pulse-time" id="current-time">Now</span>
+                    <button id="history-btn" class="icon-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="pulse-prompt">
+                    <h1>How do you feel?</h1>
+                    <p>One tap. No overthinking.</p>
+                </div>
+                
+                <div class="emotion-grid" id="emotion-grid">
+                    <button class="emotion-btn" data-emotion="peaceful" data-energy="low" data-valence="positive">
+                        <span class="emotion-emoji">😌</span>
+                        <span class="emotion-label">Peaceful</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="content" data-energy="low" data-valence="positive">
+                        <span class="emotion-emoji">🙂</span>
+                        <span class="emotion-label">Content</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="happy" data-energy="high" data-valence="positive">
+                        <span class="emotion-emoji">😊</span>
+                        <span class="emotion-label">Happy</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="excited" data-energy="high" data-valence="positive">
+                        <span class="emotion-emoji">🤩</span>
+                        <span class="emotion-label">Excited</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="tired" data-energy="low" data-valence="neutral">
+                        <span class="emotion-emoji">😴</span>
+                        <span class="emotion-label">Tired</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="neutral" data-energy="low" data-valence="neutral">
+                        <span class="emotion-emoji">😐</span>
+                        <span class="emotion-label">Neutral</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="anxious" data-energy="high" data-valence="negative">
+                        <span class="emotion-emoji">😰</span>
+                        <span class="emotion-label">Anxious</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="stressed" data-energy="high" data-valence="negative">
+                        <span class="emotion-emoji">😤</span>
+                        <span class="emotion-label">Stressed</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="sad" data-energy="low" data-valence="negative">
+                        <span class="emotion-emoji">😢</span>
+                        <span class="emotion-label">Sad</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="frustrated" data-energy="high" data-valence="negative">
+                        <span class="emotion-emoji">😠</span>
+                        <span class="emotion-label">Frustrated</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="confused" data-energy="low" data-valence="neutral">
+                        <span class="emotion-emoji">🤔</span>
+                        <span class="emotion-label">Confused</span>
+                    </button>
+                    <button class="emotion-btn" data-emotion="grateful" data-energy="low" data-valence="positive">
+                        <span class="emotion-emoji">🙏</span>
+                        <span class="emotion-label">Grateful</span>
+                    </button>
+                </div>
+                
+                <div class="last-checkin" id="last-checkin">
+                    <span>Last: <strong id="last-emotion">—</strong></span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Confirmation Screen -->
+        <section id="confirm-screen" class="screen">
+            <div class="screen-content confirm-content">
+                <div class="confirm-animation">
+                    <div class="confirm-ripple"></div>
+                    <span class="confirm-emoji" id="confirm-emoji">😊</span>
+                </div>
+                
+                <h2 class="confirm-title">Logged</h2>
+                <p class="confirm-message" id="confirm-message">You're feeling happy.</p>
+                
+                <div class="optional-note">
+                    <button id="add-note-btn" class="note-toggle">+ Add a note (optional)</button>
+                    <div class="note-input-area hidden" id="note-area">
+                        <textarea id="note-input" placeholder="What's on your mind?" rows="2"></textarea>
+                        <button id="save-note" class="save-note-btn">Save</button>
+                    </div>
+                </div>
+                
+                <button id="done-btn" class="primary-btn">Done</button>
+            </div>
+        </section>
+        
+        <!-- History Screen -->
+        <section id="history-screen" class="screen">
+            <div class="screen-content history-content">
+                <div class="history-header">
+                    <button id="back-btn" class="icon-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <h2>Your Pulse</h2>
+                    <button id="clear-btn" class="icon-btn small">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polyline points="3 6 5 6 21 6"/>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="pulse-visualization">
+                    <canvas id="pattern-canvas"></canvas>
+                    <div class="pulse-stats" id="pulse-stats">
+                        <div class="stat">
+                            <span class="stat-value" id="stat-total">0</span>
+                            <span class="stat-label">Check-ins</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="stat-top">—</span>
+                            <span class="stat-label">Most frequent</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="stat-streak">0</span>
+                            <span class="stat-label">Day streak</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="history-list" id="history-list">
+                    <p class="empty-history">No check-ins yet. Tap an emotion to begin.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

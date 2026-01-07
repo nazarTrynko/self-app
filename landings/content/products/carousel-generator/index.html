@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Generator — SELF Framework</title>
+    <meta name="description" content="Create masterful Instagram carousel posts with creative templates and custom designs">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../_shared/css/nav.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-self-nav>
+    <script src="../../_shared/js/nav.js"></script>
+    <div class="generator-container">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <a href="../" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to SELF
+                </a>
+            </div>
+            <div class="top-bar-center">
+                <h1 class="generator-title">Carousel Generator</h1>
+            </div>
+            <div class="top-bar-right">
+                <button class="btn-icon" id="aiSuggestBtn" title="AI Suggestions">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </button>
+                <button class="btn-primary" id="exportBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                    Export
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Left Sidebar - Templates -->
+            <aside class="sidebar-left" id="templatesSidebar">
+                <div class="sidebar-header">
+                    <h2>Templates</h2>
+                    <button class="btn-toggle" id="toggleTemplates">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="template-list" id="templateList">
+                    <!-- Templates will be loaded here -->
+                </div>
+                <div class="sidebar-footer">
+                    <button class="btn-secondary" id="customBuilderBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M2 12h20"/>
+                        </svg>
+                        Custom Builder
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Center - Preview Canvas -->
+            <main class="preview-area">
+                <div class="canvas-container">
+                    <div class="canvas-wrapper" id="canvasWrapper">
+                        <div class="carousel-preview" id="carouselPreview">
+                            <!-- Carousel slides will be rendered here -->
+                        </div>
+                        <div class="canvas-controls">
+                            <button class="btn-nav" id="prevSlide">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 18l-6-6 6-6"/>
+                                </svg>
+                            </button>
+                            <div class="slide-indicator" id="slideIndicator">
+                                <span id="currentSlide">1</span> / <span id="totalSlides">1</span>
+                            </div>
+                            <button class="btn-nav" id="nextSlide">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 18l6-6-6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Sidebar - Editor -->
+            <aside class="sidebar-right" id="editorSidebar">
+                <div class="sidebar-header">
+                    <h2>Editor</h2>
+                    <button class="btn-toggle" id="toggleEditor">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="editor-content" id="editorContent">
+                    <div class="editor-section">
+                        <h3>Current Slide</h3>
+                        <div class="slide-selector" id="slideSelector">
+                            <!-- Slide thumbnails -->
+                        </div>
+                    </div>
+                    <div class="editor-section" id="elementEditor">
+                        <h3>Elements</h3>
+                        <div class="element-list" id="elementList">
+                            <!-- Elements will be listed here -->
+                        </div>
+                    </div>
+                    <div class="editor-section" id="styleEditor">
+                        <h3>Styles</h3>
+                        <div class="style-controls" id="styleControls">
+                            <!-- Style controls will be here -->
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Bottom Bar - Slide Navigator -->
+        <footer class="bottom-bar">
+            <div class="slide-navigator" id="slideNavigator">
+                <!-- Slide thumbnails for navigation -->
+            </div>
+            <div class="bottom-actions">
+                <button class="btn-icon" id="addSlideBtn" title="Add Slide">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </button>
+                <button class="btn-icon" id="duplicateSlideBtn" title="Duplicate Slide">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                </button>
+                <button class="btn-icon" id="deleteSlideBtn" title="Delete Slide">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- AI Suggestions Modal -->
+    <div class="modal" id="aiModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>AI Suggestions</h2>
+                <button class="btn-close" id="closeAiModal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="aiSuggestions">
+                <!-- AI suggestions will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal" id="exportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Export Carousel</h2>
+                <button class="btn-close" id="closeExportModal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="export-options">
+                    <label class="export-option">
+                        <input type="radio" name="exportType" value="single" checked>
+                        <span>Single Image (Current Slide)</span>
+                    </label>
+                    <label class="export-option">
+                        <input type="radio" name="exportType" value="all">
+                        <span>All Slides (ZIP)</span>
+                    </label>
+                </div>
+                <div class="export-format">
+                    <label>Format:</label>
+                    <select id="exportFormat">
+                        <option value="png">PNG</option>
+                        <option value="jpg">JPG</option>
+                    </select>
+                </div>
+                <div class="export-dimensions">
+                    <label>Dimensions:</label>
+                    <select id="exportDimensions">
+                        <option value="1080x1080">Square (1080x1080) - Post</option>
+                        <option value="1080x1920">Story (1080x1920)</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                </div>
+                <button class="btn-primary" id="confirmExport">Export</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p id="loadingText">Processing...</p>
+    </div>
+
+    <script src="templates/templates-data.js"></script>
+    <script src="templates/template-engine.js"></script>
+    <script src="export/export-engine.js"></script>
+    <script src="ai/suggestions.js"></script>
+    <script src="examples/programmers-day/data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
