@@ -1,0 +1,20 @@
+{
+  "name": "self-framework",
+  "version": "1.0.0",
+  "description": "SELF — Synthetic Emergent Learning Framework. A thinking partner that learns.",
+  "private": true,
+  "scripts": {
+    "dev": "cd landings && python3 -m http.server 3000",
+    "start": "cd landings && python3 -m http.server 3000"
+  },
+  "keywords": [
+    "self",
+    "ai",
+    "framework",
+    "cognitive",
+    "landing-pages"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+

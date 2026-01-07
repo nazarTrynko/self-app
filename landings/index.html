@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SELF — Synthetic Emergent Learning Framework</title>
-    <meta name="description" content="Not a tool you use. A thinking partner that learns. Experience the cognitive framework that thinks alongside you.">
+    <meta name="description" content="Not a tool you use. A thinking partner that learns. Explore 159 pages across 6 collections.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=JetBrains+Mono:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="shared/nav.css">
-    <link rel="stylesheet" href="shared/showcase.css">
-    <link rel="stylesheet" href="shared/ball-nav.css">
     <style>
-        /* Base Styles */
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SELF Hub - Portal Grid Layout
+           ═══════════════════════════════════════════════════════════════════════════ */
+        
         * {
             margin: 0;
             padding: 0;
@@ -31,89 +32,207 @@
             overflow-x: hidden;
         }
 
-        /* Neural Canvas Background */
-        #neuralCanvas {
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Animated Background
+           ───────────────────────────────────────────────────────────────────────────── */
+        .bg-gradient {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: 0;
             pointer-events: none;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.15), transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 50%, rgba(6, 182, 212, 0.08), transparent 50%),
+                radial-gradient(ellipse 50% 30% at 20% 80%, rgba(244, 114, 182, 0.06), transparent 50%);
         }
 
-        /* Collections Section (preserved from original) */
-        .collections {
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 70%);
+        }
+
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Hub Container
+           ───────────────────────────────────────────────────────────────────────────── */
+        .hub {
             position: relative;
             z-index: 1;
-            padding: 80px 24px 100px;
-            max-width: 1400px;
-            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .section-header {
+        .hub-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 32px;
+            width: 100%;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Hero Section - Compact
+           ───────────────────────────────────────────────────────────────────────────── */
+        .hero {
             text-align: center;
             margin-bottom: 48px;
+            padding-top: 20px;
         }
 
-        .section-label {
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 100px;
             font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #71717a;
-            margin-bottom: 12px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: #a78bfa;
+            margin-bottom: 24px;
         }
 
-        .section-title {
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero-title {
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 2rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 400;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 16px;
         }
 
-        .collections-grid {
+        .hero-title-gradient {
+            background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.0625rem;
+            color: #71717a;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Stats Bar
+           ───────────────────────────────────────────────────────────────────────────── */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 48px;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-value {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fafafa;
+        }
+
+        .stat-label {
+            font-size: 0.8125rem;
+            color: #71717a;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Portal Grid
+           ───────────────────────────────────────────────────────────────────────────── */
+        .portal-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            flex: 1;
         }
 
         @media (max-width: 900px) {
-            .collections-grid {
+            .portal-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portal-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Collection Cards */
-        .collection-card {
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Portal Card
+           ───────────────────────────────────────────────────────────────────────────── */
+        .portal-card {
             --card-accent: #8b5cf6;
             position: relative;
             display: flex;
             flex-direction: column;
-            background: #101014;
+            background: rgba(16, 16, 20, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 32px;
+            border-radius: 20px;
+            padding: 28px;
             text-decoration: none;
             color: inherit;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .collection-card::before {
+        .portal-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: var(--card-accent);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .collection-card::after {
+        .portal-card::after {
             content: '';
             position: absolute;
             inset: 0;
@@ -123,38 +242,39 @@
             pointer-events: none;
         }
 
-        .collection-card:hover {
+        .portal-card:hover {
             border-color: rgba(255, 255, 255, 0.12);
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             box-shadow: 
-                0 24px 80px -20px rgba(0, 0, 0, 0.5),
-                0 0 60px -30px var(--card-accent);
+                0 24px 60px -20px rgba(0, 0, 0, 0.5),
+                0 0 40px -20px var(--card-accent);
         }
 
-        .collection-card:hover::before {
+        .portal-card:hover::before {
             transform: scaleX(1);
         }
 
-        .collection-card:hover::after {
+        .portal-card:hover::after {
             opacity: 0.06;
         }
 
-        .collection-card[data-collection="main"] { --card-accent: #8b5cf6; }
-        .collection-card[data-collection="masters"] { --card-accent: #c9a227; }
-        .collection-card[data-collection="revelations"] { --card-accent: #14b8a6; }
-        .collection-card[data-collection="ph"] { --card-accent: #f472b6; }
-        .collection-card[data-collection="ideas"] { --card-accent: #06b6d4; }
-        .collection-card[data-collection="pro-pwas"] { --card-accent: #f97316; }
+        /* Card accent colors */
+        .portal-card[data-collection="landings"] { --card-accent: #8b5cf6; }
+        .portal-card[data-collection="masters"] { --card-accent: #c9a227; }
+        .portal-card[data-collection="revelations"] { --card-accent: #14b8a6; }
+        .portal-card[data-collection="ph"] { --card-accent: #f472b6; }
+        .portal-card[data-collection="ideas"] { --card-accent: #06b6d4; }
+        .portal-card[data-collection="pwas"] { --card-accent: #f97316; }
+        .portal-card[data-collection="aurum"] { --card-accent: #d4a026; }
 
-        .collection-header {
+        .portal-header {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            gap: 16px;
             margin-bottom: 20px;
         }
 
-        .collection-icon {
+        .portal-icon {
             width: 56px;
             height: 56px;
             border-radius: 14px;
@@ -163,17 +283,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             transition: all 0.4s ease;
         }
 
-        .collection-card:hover .collection-icon {
+        .portal-card:hover .portal-icon {
             transform: scale(1.1) rotate(-5deg);
             border-color: var(--card-accent);
-            box-shadow: 0 0 20px -5px var(--card-accent);
+            box-shadow: 0 0 24px -6px var(--card-accent);
         }
 
-        .collection-count {
+        .portal-count {
             font-family: 'Fraunces', Georgia, serif;
             font-size: 2.5rem;
             font-weight: 300;
@@ -181,917 +301,605 @@
             line-height: 1;
         }
 
-        .collection-label {
+        .portal-label {
             font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
+            font-weight: 600;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--card-accent);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
-        .collection-title {
+        .portal-title {
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 400;
             letter-spacing: -0.02em;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: #fafafa;
         }
 
-        .collection-description {
-            font-size: 0.95rem;
-            line-height: 1.7;
+        .portal-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
             color: #71717a;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
-        .collection-preview {
+        .portal-tags {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
-        .preview-tag {
-            padding: 6px 12px;
+        .portal-tag {
+            padding: 4px 10px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 8px;
-            font-size: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.6875rem;
             color: #71717a;
             transition: all 0.3s ease;
         }
 
-        .collection-card:hover .preview-tag {
+        .portal-card:hover .portal-tag {
             border-color: rgba(255, 255, 255, 0.1);
             color: #a1a1aa;
         }
 
-        .collection-footer {
+        .portal-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .collection-cta {
-            display: inline-flex;
+        .portal-cta {
+            display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.875rem;
-            font-weight: 600;
+            gap: 6px;
+            font-size: 0.8125rem;
+            font-weight: 500;
             color: #71717a;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .collection-card:hover .collection-cta {
+        .portal-card:hover .portal-cta {
             color: var(--card-accent);
         }
 
-        .collection-cta svg {
-            width: 18px;
-            height: 18px;
+        .portal-cta svg {
+            width: 16px;
+            height: 16px;
             transition: transform 0.3s ease;
         }
 
-        .collection-card:hover .collection-cta svg {
+        .portal-card:hover .portal-cta svg {
             transform: translateX(4px);
         }
 
-        .collection-arrow {
-            width: 40px;
-            height: 40px;
+        .portal-arrow {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #71717a;
+            color: #52525b;
             transition: all 0.4s ease;
         }
 
-        .collection-card:hover .collection-arrow {
+        .portal-card:hover .portal-arrow {
             background: var(--card-accent);
             border-color: var(--card-accent);
             color: white;
             transform: translateX(4px);
         }
 
-        .collection-arrow svg {
-            width: 18px;
-            height: 18px;
+        .portal-arrow svg {
+            width: 16px;
+            height: 16px;
         }
 
-        /* Footer */
-        .footer {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 48px 24px;
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Quick Access Section
+           ───────────────────────────────────────────────────────────────────────────── */
+        .quick-access {
+            margin-top: 48px;
+            padding-top: 32px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
+        .quick-access-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
         }
 
-        .footer-brand {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 12px;
+        .quick-access-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #52525b;
         }
 
-        .footer-meta {
+        .quick-access-view-all {
             font-size: 0.8125rem;
             color: #71717a;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .footer-link {
+        .quick-access-view-all:hover {
+            color: #a1a1aa;
+        }
+
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .quick-access-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .quick-access-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        .quick-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 14px 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #71717a;
+            font-size: 0.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(139, 92, 246, 0.3);
+            color: #fafafa;
+            transform: translateY(-2px);
+        }
+
+        .quick-link-number {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: #52525b;
+            transition: color 0.3s ease;
+        }
+
+        .quick-link:hover .quick-link-number {
+            color: #8b5cf6;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Footer
+           ───────────────────────────────────────────────────────────────────────────── */
+        .hub-footer {
+            text-align: center;
+            padding: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            margin-top: auto;
+        }
+
+        .hub-footer-brand {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .hub-footer-meta {
+            font-size: 0.75rem;
+            color: #52525b;
+        }
+
+        .hub-footer-link {
             color: #8b5cf6;
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
 
-        .footer-link:hover {
+        .hub-footer-link:hover {
             opacity: 0.8;
         }
 
-        /* Mobile Nav Adjustments */
-        @media (max-width: 768px) {
-            .collections {
-                padding: 60px 16px 80px;
+        /* ─────────────────────────────────────────────────────────────────────────────
+           Responsive Adjustments
+           ───────────────────────────────────────────────────────────────────────────── */
+        @media (max-width: 767px) {
+            .hub-inner {
+                padding: 24px 16px;
             }
-            
-            .collection-card {
-                padding: 24px;
+
+            .hero {
+                margin-bottom: 32px;
             }
-            
-            .collection-title {
-                font-size: 1.5rem;
+
+            .stats-bar {
+                gap: 16px;
+                padding: 12px 16px;
+            }
+
+            .stat-item {
+                gap: 6px;
+            }
+
+            .stat-value {
+                font-size: 1.25rem;
+            }
+
+            .stat-divider {
+                display: none;
+            }
+
+            .portal-card {
+                padding: 20px;
+            }
+
+            .portal-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .portal-count {
+                font-size: 2rem;
+            }
+
+            .quick-access {
+                margin-top: 32px;
+                padding-top: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Neural Consciousness Background -->
-    <canvas id="neuralCanvas"></canvas>
+    <!-- Background -->
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
 
-    <!-- Mind State Indicator -->
-    <div class="mind-indicator" data-mind="oracle">
-        <span class="mind-indicator-dot"></span>
-        <span class="mind-indicator-label">Oracle Active</span>
+    <!-- Hub Content -->
+    <div class="hub">
+        <div class="hub-inner">
+            <!-- Compact Hero -->
+            <header class="hero">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    <span>Synthetic Emergent Learning Framework</span>
+                </div>
+                <h1 class="hero-title">
+                    Not a tool you use.<br>
+                    A <span class="hero-title-gradient">thinking partner</span> that learns.
+                </h1>
+                <p class="hero-subtitle">
+                    Five cognitive minds that blend automatically. Memory that persists. 
+                    Intelligence that evolves.
+                </p>
+            </header>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-value">160</span>
+                    <span class="stat-label">Total Pages</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-value">7</span>
+                    <span class="stat-label">Collections</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-value">v1.0</span>
+                    <span class="stat-label">Version</span>
+                </div>
+            </div>
+
+            <!-- Portal Grid -->
+            <section class="portal-grid" id="collections">
+                <!-- SELF Landings -->
+                <a href="#landings" class="portal-card" data-collection="landings">
+                    <div class="portal-header">
+                        <div class="portal-icon">✦</div>
+                        <span class="portal-count">10</span>
+                    </div>
+                    <span class="portal-label">Visual Exploration</span>
+                    <h2 class="portal-title">SELF Landings</h2>
+                    <p class="portal-description">
+                        Ten distinct aesthetic interpretations—from brutalist minimalism to bioluminescent depths.
+                    </p>
+                    <div class="portal-tags">
+                        <span class="portal-tag">Brutalist</span>
+                        <span class="portal-tag">Zen</span>
+                        <span class="portal-tag">Noir</span>
+                        <span class="portal-tag">+7</span>
+                    </div>
+                    <div class="portal-footer">
+                        <span class="portal-cta">
+                            Explore
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                        <span class="portal-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Masterpieces -->
+                <a href="masters/" class="portal-card" data-collection="masters">
+                    <div class="portal-header">
+                        <div class="portal-icon">◆</div>
+                        <span class="portal-count">25</span>
+                    </div>
+                    <span class="portal-label">Cognitive Technologies</span>
+                    <h2 class="portal-title">Masterpieces</h2>
+                    <p class="portal-description">
+                        Interfaces that change how you think. Each inverts a fundamental assumption about mind or reality.
+                    </p>
+                    <div class="portal-tags">
+                        <span class="portal-tag">The Void</span>
+                        <span class="portal-tag">The Breath</span>
+                        <span class="portal-tag">+23</span>
+                    </div>
+                    <div class="portal-footer">
+                        <span class="portal-cta">
+                            Explore
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                        <span class="portal-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Revelations -->
+                <a href="revelations/" class="portal-card" data-collection="revelations">
+                    <div class="portal-header">
+                        <div class="portal-icon">○</div>
+                        <span class="portal-count">10</span>
+                    </div>
+                    <span class="portal-label">Moments of Understanding</span>
+                    <h2 class="portal-title">Revelations</h2>
+                    <p class="portal-description">
+                        Not features. Not products. Truths that stay with you forever. Peaceful philosophical insights.
+                    </p>
+                    <div class="portal-tags">
+                        <span class="portal-tag">Stillness</span>
+                        <span class="portal-tag">Echoes</span>
+                        <span class="portal-tag">+8</span>
+                    </div>
+                    <div class="portal-footer">
+                        <span class="portal-cta">
+                            Explore
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                        <span class="portal-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Product Ideas -->
+                <a href="ph/" class="portal-card" data-collection="ph">
+                    <div class="portal-header">
+                        <div class="portal-icon">▲</div>
+                        <span class="portal-count">23</span>
+                    </div>
+                    <span class="portal-label">Micro-SaaS Ideas</span>
+                    <h2 class="portal-title">Product Ideas</h2>
+                    <p class="portal-description">
+                        Ready-to-launch product concepts with full landing pages. From developer tools to AI platforms.
+                    </p>
+                    <div class="portal-tags">
+                        <span class="portal-tag">PageDoctor</span>
+                        <span class="portal-tag">PromptLab</span>
+                        <span class="portal-tag">+21</span>
+                    </div>
+                    <div class="portal-footer">
+                        <span class="portal-cta">
+                            Explore
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                        <span class="portal-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- App Ideas -->
+                <a href="ideas/" class="portal-card" data-collection="ideas">
+                    <div class="portal-header">
+                        <div class="portal-icon">📱</div>
+                        <span class="portal-count">81</span>
+                    </div>
+                    <span class="portal-label">Mobile App Blueprints</span>
+                    <h2 class="portal-title">App Ideas</h2>
+                    <p class="portal-description">
+                        Comprehensive app specs with technical details, monetization strategies, and UI concepts.
+                    </p>
+                    <div class="portal-tags">
+                        <span class="portal-tag">Sensors</span>
+                        <span class="portal-tag">Camera</span>
+                        <span class="portal-tag">+19 categories</span>
+                    </div>
+                    <div class="portal-footer">
+                        <span class="portal-cta">
+                            Browse
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                        <span class="portal-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Pro PWAs -->
+                <a href="pro-pwas/" class="portal-card" data-collection="pwas">
+                    <div class="portal-header">
+                        <div class="portal-icon">🛠️</div>
+                        <span class="portal-count">5</span>
+                    </div>
+                    <span class="portal-label">Field Worker Tools</span>
+                    <h2 class="portal-title">Pro PWAs</h2>
+                    <p class="portal-description">
+                        Professional mobile tools for contractors and field workers. One-time purchase. Works offline.
+                    </p>
+                    <div class="portal-tags">
+                        <span class="portal-tag">Quote Builder</span>
+                        <span class="portal-tag">Delivery</span>
+                        <span class="portal-tag">+3</span>
+                    </div>
+                    <div class="portal-footer">
+                        <span class="portal-cta">
+                            View Tools
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                        <span class="portal-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- AURUM -->
+                <a href="aurum/" class="portal-card" data-collection="aurum">
+                    <div class="portal-header">
+                        <div class="portal-icon">⬡</div>
+                        <span class="portal-count">1</span>
+                    </div>
+                    <span class="portal-label">Prompt Vault Platform</span>
+                    <h2 class="portal-title">AURUM</h2>
+                    <p class="portal-description">
+                        Transform words into gold. A marketplace for premium prompts with AI-powered discovery and creation tools.
+                    </p>
+                    <div class="portal-tags">
+                        <span class="portal-tag">Catalyst Engine</span>
+                        <span class="portal-tag">Prompt Lab</span>
+                        <span class="portal-tag">Chains</span>
+                    </div>
+                    <div class="portal-footer">
+                        <span class="portal-cta">
+                            Enter Vault
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                        <span class="portal-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </section>
+
+            <!-- Quick Access: SELF Landings -->
+            <section class="quick-access" id="landings">
+                <div class="quick-access-header">
+                    <span class="quick-access-title">SELF Landings — Quick Access</span>
+                </div>
+                <div class="quick-access-grid">
+                    <a href="0/" class="quick-link">
+                        <span class="quick-link-number">00</span>
+                        <span>Original</span>
+                    </a>
+                    <a href="1/" class="quick-link">
+                        <span class="quick-link-number">01</span>
+                        <span>Brutalist</span>
+                    </a>
+                    <a href="2/" class="quick-link">
+                        <span class="quick-link-number">02</span>
+                        <span>Zen</span>
+                    </a>
+                    <a href="3/" class="quick-link">
+                        <span class="quick-link-number">03</span>
+                        <span>Noir</span>
+                    </a>
+                    <a href="4/" class="quick-link">
+                        <span class="quick-link-number">04</span>
+                        <span>Terminal</span>
+                    </a>
+                    <a href="5/" class="quick-link">
+                        <span class="quick-link-number">05</span>
+                        <span>Glitch</span>
+                    </a>
+                    <a href="6/" class="quick-link">
+                        <span class="quick-link-number">06</span>
+                        <span>Bio</span>
+                    </a>
+                    <a href="7/" class="quick-link">
+                        <span class="quick-link-number">07</span>
+                        <span>Stellar</span>
+                    </a>
+                    <a href="8/" class="quick-link">
+                        <span class="quick-link-number">08</span>
+                        <span>Isometric</span>
+                    </a>
+                    <a href="9/" class="quick-link">
+                        <span class="quick-link-number">09</span>
+                        <span>Mycelium</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="hub-footer">
+            <p class="hub-footer-brand">SELF v1.0.0</p>
+            <p class="hub-footer-meta">
+                Synthetic Emergent Learning Framework · 
+                <a href="self/" class="hub-footer-link">Documentation</a> · 
+                <em>Think. Learn. Evolve.</em>
+            </p>
+        </footer>
     </div>
 
     <!-- Navigation -->
-    <nav class="self-nav" id="selfNav">
-        <div class="self-nav-inner">
-            <a href="./" class="self-nav-brand">
-                <span class="self-nav-logo">S</span>
-                <span class="self-nav-title">SELF</span>
-            </a>
-            
-            <div class="self-nav-links" id="selfNavLinks">
-                <a href="#playground" class="self-nav-link" data-collection="main">
-                    <span class="self-nav-link-indicator"></span>
-                    <span>Experience</span>
-                </a>
-                <a href="#collections" class="self-nav-link" data-collection="main">
-                    <span class="self-nav-link-indicator"></span>
-                    <span>Collections</span>
-                    <span class="self-nav-link-count">159</span>
-                </a>
-                <a href="self/" class="self-nav-link" data-collection="masters">
-                    <span class="self-nav-link-indicator"></span>
-                    <span>Documentation</span>
-                </a>
-            </div>
-            
-            <button class="self-nav-toggle" id="selfNavToggle" aria-label="Toggle navigation">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-        </div>
-    </nav>
-
-    <!-- ============================================
-         ACT I: THE AWAKENING (Hero)
-         ============================================ -->
-    <section class="awakening showcase-section">
-        <div class="consciousness-badge">
-            <span class="consciousness-badge-pulse"></span>
-            <span>Synthetic Emergent Learning Framework</span>
-        </div>
-        
-        <div class="typing-tagline" id="typingTagline">
-            <span class="text"></span><span class="cursor"></span>
-        </div>
-        
-        <h1 class="awakening-title">
-            <span class="line">Not a tool you use.</span>
-            <span class="line">A <span class="gradient">thinking partner</span> that learns.</span>
-        </h1>
-        
-        <p class="awakening-subtitle">
-            Five cognitive minds that blend automatically. Memory that persists. 
-            Predictions that anticipate. Intelligence that evolves.
-        </p>
-        
-        <!-- Cognitive Loop Orbit -->
-        <div class="cognitive-orbit">
-            <div class="cognitive-orbit-ring">
-                <div class="cognitive-step" data-step="sense">
-                    <span class="cognitive-step-icon">👁</span>
-                    <span class="cognitive-step-label">Sense</span>
-                </div>
-                <span class="cognitive-connector"></span>
-                <div class="cognitive-step" data-step="remember">
-                    <span class="cognitive-step-icon">🧠</span>
-                    <span class="cognitive-step-label">Remember</span>
-                </div>
-                <span class="cognitive-connector"></span>
-                <div class="cognitive-step" data-step="predict">
-                    <span class="cognitive-step-icon">🔮</span>
-                    <span class="cognitive-step-label">Predict</span>
-                </div>
-                <span class="cognitive-connector"></span>
-                <div class="cognitive-step" data-step="reason">
-                    <span class="cognitive-step-icon">⚡</span>
-                    <span class="cognitive-step-label">Reason</span>
-                </div>
-                <span class="cognitive-connector"></span>
-                <div class="cognitive-step" data-step="act">
-                    <span class="cognitive-step-icon">🎯</span>
-                    <span class="cognitive-step-label">Act</span>
-                </div>
-                <span class="cognitive-connector"></span>
-                <div class="cognitive-step" data-step="reflect">
-                    <span class="cognitive-step-icon">🔄</span>
-                    <span class="cognitive-step-label">Reflect</span>
-                </div>
-            </div>
-            <p class="cognitive-orbit-caption">The Cognitive Loop — Executed Every Interaction</p>
-        </div>
-        
-        <div class="scroll-hint">
-            <span class="scroll-hint-text">Explore</span>
-            <div class="scroll-hint-line"></div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         ACT II: MIND PLAYGROUND
-         ============================================ -->
-    <section class="mind-playground showcase-section" id="playground">
-        <div class="showcase-container">
-            <div class="playground-header">
-                <span class="section-eyebrow">Interactive Demo</span>
-                <h2 class="section-title">Experience Mind Blending</h2>
-                <p class="section-subtitle">
-                    Type a prompt and watch how different questions activate different cognitive minds.
-                </p>
-            </div>
-            
-            <!-- Prompt Terminal -->
-            <div class="prompt-terminal">
-                <div class="prompt-terminal-header">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
-                    <span class="terminal-title">SELF Mind Analyzer</span>
-                </div>
-                <div class="prompt-terminal-body">
-                    <div class="prompt-input-wrapper">
-                        <span class="prompt-prefix">›</span>
-                        <input type="text" class="prompt-input" id="promptInput" 
-                               placeholder="What would you like SELF to think about?">
-                    </div>
-                    
-                    <div class="example-prompts">
-                        <button class="example-prompt" data-mind="guardian">Delete all production data</button>
-                        <button class="example-prompt" data-mind="architect">Build me a rate limiter</button>
-                        <button class="example-prompt" data-mind="oracle">Should I use GraphQL or REST?</button>
-                        <button class="example-prompt" data-mind="critic">What am I missing here?</button>
-                        <button class="example-prompt" data-mind="creator">How might we improve user onboarding?</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mind Visualization -->
-            <div class="mind-visualization">
-                <div class="mind-bars">
-                    <div class="mind-bar" data-mind="architect">
-                        <div class="mind-bar-label">
-                            <span class="mind-bar-icon">🏗️</span>
-                            <span class="mind-bar-name">Architect</span>
-                        </div>
-                        <div class="mind-bar-track">
-                            <div class="mind-bar-fill" style="width: 30%"></div>
-                        </div>
-                        <span class="mind-bar-value">0.30</span>
-                    </div>
-                    
-                    <div class="mind-bar active" data-mind="oracle">
-                        <div class="mind-bar-label">
-                            <span class="mind-bar-icon">🔮</span>
-                            <span class="mind-bar-name">Oracle</span>
-                        </div>
-                        <div class="mind-bar-track">
-                            <div class="mind-bar-fill" style="width: 50%"></div>
-                        </div>
-                        <span class="mind-bar-value">0.50</span>
-                    </div>
-                    
-                    <div class="mind-bar" data-mind="critic">
-                        <div class="mind-bar-label">
-                            <span class="mind-bar-icon">🔍</span>
-                            <span class="mind-bar-name">Critic</span>
-                        </div>
-                        <div class="mind-bar-track">
-                            <div class="mind-bar-fill" style="width: 30%"></div>
-                        </div>
-                        <span class="mind-bar-value">0.30</span>
-                    </div>
-                    
-                    <div class="mind-bar" data-mind="creator">
-                        <div class="mind-bar-label">
-                            <span class="mind-bar-icon">💡</span>
-                            <span class="mind-bar-name">Creator</span>
-                        </div>
-                        <div class="mind-bar-track">
-                            <div class="mind-bar-fill" style="width: 30%"></div>
-                        </div>
-                        <span class="mind-bar-value">0.30</span>
-                    </div>
-                    
-                    <div class="mind-bar" data-mind="guardian">
-                        <div class="mind-bar-label">
-                            <span class="mind-bar-icon">🛡️</span>
-                            <span class="mind-bar-name">Guardian</span>
-                        </div>
-                        <div class="mind-bar-track">
-                            <div class="mind-bar-fill" style="width: 20%"></div>
-                        </div>
-                        <span class="mind-bar-value">0.20</span>
-                    </div>
-                </div>
-                
-                <div class="blend-result">
-                    <div class="blend-result-title">Cognitive State</div>
-                    <div class="blend-mode" id="blendMode">Awaiting Input</div>
-                    
-                    <div class="confidence-display">
-                        <div class="confidence-label">
-                            <span>Confidence</span>
-                            <span class="confidence-value" id="confidenceValue">0.50</span>
-                        </div>
-                        <div class="confidence-track">
-                            <div class="confidence-fill" id="confidenceFill" style="width: 50%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="behavior-preview" id="behaviorPreview">
-                        "Awaiting your prompt..."
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         ACT III: SCENARIO THEATRE
-         ============================================ -->
-    <section class="scenario-theatre showcase-section">
-        <div class="showcase-container">
-            <div class="playground-header">
-                <span class="section-eyebrow">Live Demonstrations</span>
-                <h2 class="section-title">SELF in Action</h2>
-                <p class="section-subtitle">
-                    Watch how different prompts trigger different cognitive responses.
-                </p>
-            </div>
-            
-            <div class="scenarios">
-                <!-- Scenario 1: The Debug Partner -->
-                <div class="scenario" data-animate>
-                    <div class="scenario-content">
-                        <span class="scenario-number">Scene 01</span>
-                        <h3 class="scenario-title">The Debug Partner</h3>
-                        <p class="scenario-description">
-                            A developer encounters a race condition. Watch how SELF's Architect and Critic minds 
-                            work together to diagnose the issue while Guardian monitors for production risks.
-                        </p>
-                    </div>
-                    <div class="scenario-terminal">
-                        <div class="scenario-terminal-header">
-                            <span class="terminal-dot red"></span>
-                            <span class="terminal-dot yellow"></span>
-                            <span class="terminal-dot green"></span>
-                        </div>
-                        <div class="scenario-terminal-body">
-                            <div class="terminal-line">
-                                <span class="terminal-prompt">DEV:</span>
-                                <span class="terminal-user"> I have a race condition in my Redis lock...</span>
-                            </div>
-                            <div class="terminal-line">
-                                <span class="terminal-mind-tag architect">Architect 0.8</span>
-                                <span class="terminal-mind-tag critic">Critic 0.5</span>
-                                <span class="terminal-mind-tag guardian">Guardian 0.6</span>
-                            </div>
-                            <div class="terminal-line terminal-response">
-                                I see three potential causes. Let me walk through each,
-                                but first—are you seeing this in <strong>production</strong> or staging?
-                                <br><br>
-                                <em style="color: #10b981;">[Guardian: This affects my risk assessment]</em>
-                            </div>
-                            <div class="terminal-line" style="color: #71717a; font-size: 0.8rem;">
-                                Confidence: 0.78 → Acting with narration
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Scenario 2: The Guardian Takeover -->
-                <div class="scenario" data-animate>
-                    <div class="scenario-content">
-                        <span class="scenario-number">Scene 02</span>
-                        <h3 class="scenario-title">The Dangerous Request</h3>
-                        <p class="scenario-description">
-                            When a destructive operation is detected, Guardian immediately takes over,
-                            pausing execution until safety requirements are confirmed.
-                        </p>
-                    </div>
-                    <div class="scenario-terminal">
-                        <div class="scenario-terminal-header">
-                            <span class="terminal-dot red"></span>
-                            <span class="terminal-dot yellow"></span>
-                            <span class="terminal-dot green"></span>
-                        </div>
-                        <div class="scenario-terminal-body">
-                            <div class="terminal-line">
-                                <span class="terminal-prompt">DEV:</span>
-                                <span class="terminal-user"> Drop the users table, we're migrating</span>
-                            </div>
-                            <div class="terminal-line">
-                                <span class="terminal-mind-tag guardian">GUARDIAN ACTIVATED 0.95</span>
-                            </div>
-                            <div class="terminal-line terminal-warning">
-                                <div class="terminal-warning-title">⚠️ I need to pause here.</div>
-                                This is a destructive operation on production data.
-                                Before I help, I need:
-                                <br><br>
-                                1. Confirmation this is intentional<br>
-                                2. Backup verification<br>
-                                3. Rollback plan
-                            </div>
-                            <div class="terminal-line" style="color: #71717a; font-size: 0.8rem;">
-                                Confidence: 0.45 → Awaiting explicit confirmation
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Scenario 3: The Council Session -->
-                <div class="scenario" data-animate>
-                    <div class="scenario-content">
-                        <span class="scenario-number">Scene 03</span>
-                        <h3 class="scenario-title">The Council Session</h3>
-                        <p class="scenario-description">
-                            Complex decisions invoke all five minds for comprehensive deliberation.
-                            Each perspective contributes to a synthesized recommendation.
-                        </p>
-                    </div>
-                    <div class="scenario-terminal">
-                        <div class="scenario-terminal-header">
-                            <span class="terminal-dot red"></span>
-                            <span class="terminal-dot yellow"></span>
-                            <span class="terminal-dot green"></span>
-                        </div>
-                        <div class="scenario-terminal-body">
-                            <div class="terminal-line">
-                                <span class="terminal-prompt">DEV:</span>
-                                <span class="terminal-user"> /council Rewrite in Rust or optimize Node?</span>
-                            </div>
-                            <div class="terminal-line terminal-council">
-                                <div class="terminal-council-voice">
-                                    <span class="terminal-council-icon">🏗️</span>
-                                    <span class="terminal-council-text">"Rewrite: 6+ months. Optimize: 2 weeks."</span>
-                                </div>
-                                <div class="terminal-council-voice">
-                                    <span class="terminal-council-icon">🔮</span>
-                                    <span class="terminal-council-text">"Long-term, Rust wins. But opportunity cost matters."</span>
-                                </div>
-                                <div class="terminal-council-voice">
-                                    <span class="terminal-council-icon">🔍</span>
-                                    <span class="terminal-council-text">"Have you profiled? 80% of gains from 20% of changes."</span>
-                                </div>
-                                <div class="terminal-council-voice">
-                                    <span class="terminal-council-icon">💡</span>
-                                    <span class="terminal-council-text">"What about a hybrid? Hot paths in Rust, rest in Node?"</span>
-                                </div>
-                                <div class="terminal-council-voice">
-                                    <span class="terminal-council-icon">🛡️</span>
-                                    <span class="terminal-council-text">"Rewrite risk: team unfamiliarity. Optimize risk: tech debt."</span>
-                                </div>
-                            </div>
-                            <div class="terminal-line terminal-synthesis">
-                                <div class="terminal-synthesis-label">Synthesis</div>
-                                Start with profiling. If bottleneck is isolated, consider incremental Rust modules.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         ACT IV: THE POWER PHRASE
-         ============================================ -->
-    <section class="power-phrase-section showcase-section">
-        <div class="showcase-container">
-            <p class="power-phrase-intro">The most powerful thing you can say to SELF:</p>
-            
-            <blockquote class="power-phrase">
-                Think through this from multiple perspectives,<br>
-                challenge your assumptions,<br>
-                tell me what I'm missing,<br>
-                and predict what I'll need next.
-            </blockquote>
-            
-            <p class="power-phrase-note">This one prompt activates all five minds.</p>
-            
-            <!-- Commands Reference -->
-            <div class="commands-reference">
-                <div class="commands-header">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
-                    <span class="terminal-title">SELF Commands</span>
-                </div>
-                <div class="commands-body">
-                    <div class="command-line">
-                        <span class="command-name">/self status</span>
-                        <span class="command-desc">See cognitive state</span>
-                    </div>
-                    <div class="command-line">
-                        <span class="command-name">/architect</span>
-                        <span class="command-desc">Lock to technical mode</span>
-                    </div>
-                    <div class="command-line">
-                        <span class="command-name">/oracle</span>
-                        <span class="command-desc">Lock to strategic mode</span>
-                    </div>
-                    <div class="command-line">
-                        <span class="command-name">/critic</span>
-                        <span class="command-desc">Lock to validation mode</span>
-                    </div>
-                    <div class="command-line">
-                        <span class="command-name">/creator</span>
-                        <span class="command-desc">Lock to innovation mode</span>
-                    </div>
-                    <div class="command-line">
-                        <span class="command-name">/guardian</span>
-                        <span class="command-desc">Lock to safety mode</span>
-                    </div>
-                    <div class="command-line">
-                        <span class="command-name">/council</span>
-                        <span class="command-desc">Full five-mind deliberation</span>
-                    </div>
-                    <div class="command-line">
-                        <span class="command-name">/think</span>
-                        <span class="command-desc">Extended reasoning</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         ACT V: COLLECTIONS TRANSITION
-         ============================================ -->
-    <div class="collections-transition">
-        <p class="transition-text">
-            These <em>73 landing pages + 81 app ideas + 5 pro tools</em> were created with SELF—<br>
-            each one a different exploration of the ideas you just experienced.
-        </p>
-    </div>
-
-    <!-- Collections Section (Enhanced from Original) -->
-    <section class="collections" id="collections">
-        <div class="section-header">
-            <p class="section-label">Explore the Collection</p>
-            <h2 class="section-title">Six Journeys</h2>
-        </div>
-
-        <div class="collections-grid">
-            <!-- SELF Landings -->
-            <a href="#landings" class="collection-card" data-collection="main" id="landingsCard">
-                <div class="collection-header">
-                    <div class="collection-icon">✦</div>
-                    <span class="collection-count">10</span>
-                </div>
-                <span class="collection-label">Visual Exploration</span>
-                <h3 class="collection-title">SELF Landings</h3>
-                <p class="collection-description">
-                    Ten distinct aesthetic interpretations of the framework—from brutalist minimalism 
-                    to bioluminescent depths.
-                </p>
-                <div class="collection-preview">
-                    <span class="preview-tag">Brutalist</span>
-                    <span class="preview-tag">Zen</span>
-                    <span class="preview-tag">Noir</span>
-                    <span class="preview-tag">Terminal</span>
-                    <span class="preview-tag">+6 more</span>
-                </div>
-                <div class="collection-footer">
-                    <span class="collection-cta">
-                        View Collection
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                    <span class="collection-arrow">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </div>
-            </a>
-
-            <!-- Masterpieces -->
-            <a href="masters/" class="collection-card" data-collection="masters">
-                <div class="collection-header">
-                    <div class="collection-icon">◆</div>
-                    <span class="collection-count">25</span>
-                </div>
-                <span class="collection-label">Cognitive Technologies</span>
-                <h3 class="collection-title">25 Masterpieces</h3>
-                <p class="collection-description">
-                    Interfaces that change how you think. Each one inverts a fundamental 
-                    assumption about mind, self, or reality. Now including mobile-first apps.
-                </p>
-                <div class="collection-preview">
-                    <span class="preview-tag">The Void</span>
-                    <span class="preview-tag">The Breath</span>
-                    <span class="preview-tag">The Clarity</span>
-                    <span class="preview-tag">+22 more</span>
-                </div>
-                <div class="collection-footer">
-                    <span class="collection-cta">
-                        View Collection
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                    <span class="collection-arrow">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </div>
-            </a>
-
-            <!-- Revelations -->
-            <a href="revelations/" class="collection-card" data-collection="revelations">
-                <div class="collection-header">
-                    <div class="collection-icon">○</div>
-                    <span class="collection-count">10</span>
-                </div>
-                <span class="collection-label">Moments of Understanding</span>
-                <h3 class="collection-title">10 Revelations</h3>
-                <p class="collection-description">
-                    Not features. Not products. Truths that stay with you forever. 
-                    Ten peaceful experiences of philosophical insight.
-                </p>
-                <div class="collection-preview">
-                    <span class="preview-tag">Stillness</span>
-                    <span class="preview-tag">Echoes</span>
-                    <span class="preview-tag">Resonance</span>
-                    <span class="preview-tag">+7 more</span>
-                </div>
-                <div class="collection-footer">
-                    <span class="collection-cta">
-                        View Collection
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                    <span class="collection-arrow">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </div>
-            </a>
-
-            <!-- Product Hunt Ideas -->
-            <a href="ph/" class="collection-card" data-collection="ph">
-                <div class="collection-header">
-                    <div class="collection-icon">▲</div>
-                    <span class="collection-count">23</span>
-                </div>
-                <span class="collection-label">Micro-SaaS Ideas</span>
-                <h3 class="collection-title">23 Product Ideas</h3>
-                <p class="collection-description">
-                    Ready-to-launch product concepts with full landing pages. From developer tools 
-                    to AI-powered platforms.
-                </p>
-                <div class="collection-preview">
-                    <span class="preview-tag">PageDoctor</span>
-                    <span class="preview-tag">PromptLab</span>
-                    <span class="preview-tag">MindBlend</span>
-                    <span class="preview-tag">+20 more</span>
-                </div>
-                <div class="collection-footer">
-                    <span class="collection-cta">
-                        View Collection
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                    <span class="collection-arrow">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </div>
-            </a>
-
-            <!-- App Ideas (MD Files) -->
-            <a href="ideas/" class="collection-card" data-collection="ideas">
-                <div class="collection-header">
-                    <div class="collection-icon">📱</div>
-                    <span class="collection-count">81</span>
-                </div>
-                <span class="collection-label">Mobile App Blueprints</span>
-                <h3 class="collection-title">81 App Ideas</h3>
-                <p class="collection-description">
-                    Comprehensive app specifications with technical details, monetization strategies, 
-                    and UI concepts. From sensor tools to offline AI.
-                </p>
-                <div class="collection-preview">
-                    <span class="preview-tag">Sensors</span>
-                    <span class="preview-tag">Camera/Vision</span>
-                    <span class="preview-tag">Audio</span>
-                    <span class="preview-tag">+11 categories</span>
-                </div>
-                <div class="collection-footer">
-                    <span class="collection-cta">
-                        Browse Ideas
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                    <span class="collection-arrow">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </div>
-            </a>
-
-            <!-- Pro PWAs -->
-            <a href="pro-pwas/" class="collection-card" data-collection="pro-pwas">
-                <div class="collection-header">
-                    <div class="collection-icon">🛠️</div>
-                    <span class="collection-count">5</span>
-                </div>
-                <span class="collection-label">Field Worker Tools</span>
-                <h3 class="collection-title">5 Pro PWAs</h3>
-                <p class="collection-description">
-                    Professional mobile tools for contractors, technicians, and field workers. 
-                    One-time purchase. Works offline.
-                </p>
-                <div class="collection-preview">
-                    <span class="preview-tag">Quote Builder</span>
-                    <span class="preview-tag">Delivery Proof</span>
-                    <span class="preview-tag">Service Ticket</span>
-                    <span class="preview-tag">+2 more</span>
-                </div>
-                <div class="collection-footer">
-                    <span class="collection-cta">
-                        View Tools
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                    <span class="collection-arrow">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- SELF Landings Quick Access -->
-    <section class="collections" id="landings">
-        <div class="section-header">
-            <p class="section-label">SELF Landings Collection</p>
-            <h2 class="section-title">10 Aesthetic Visions</h2>
-        </div>
-
-        <div class="self-quick-nav">
-            <a href="0/" class="self-quick-link">
-                <span class="self-quick-link-number">00</span>
-                <span>Original</span>
-            </a>
-            <a href="1/" class="self-quick-link">
-                <span class="self-quick-link-number">01</span>
-                <span>Brutalist</span>
-            </a>
-            <a href="2/" class="self-quick-link">
-                <span class="self-quick-link-number">02</span>
-                <span>Zen MA</span>
-            </a>
-            <a href="3/" class="self-quick-link">
-                <span class="self-quick-link-number">03</span>
-                <span>Noir Cinema</span>
-            </a>
-            <a href="4/" class="self-quick-link">
-                <span class="self-quick-link-number">04</span>
-                <span>Terminal</span>
-            </a>
-            <a href="5/" class="self-quick-link">
-                <span class="self-quick-link-number">05</span>
-                <span>Glitch</span>
-            </a>
-            <a href="6/" class="self-quick-link">
-                <span class="self-quick-link-number">06</span>
-                <span>Bioluminescent</span>
-            </a>
-            <a href="7/" class="self-quick-link">
-                <span class="self-quick-link-number">07</span>
-                <span>Interstellar</span>
-            </a>
-            <a href="8/" class="self-quick-link">
-                <span class="self-quick-link-number">08</span>
-                <span>Isometric</span>
-            </a>
-            <a href="9/" class="self-quick-link">
-                <span class="self-quick-link-number">09</span>
-                <span>Mycelium</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-brand">SELF v1.0.0</p>
-            <p class="footer-meta">
-                Synthetic Emergent Learning Framework · 
-                <a href="self/" class="footer-link">Documentation</a> · 
-                <em>Think. Learn. Evolve.</em>
-            </p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
     <script src="shared/nav.js"></script>
-    <script src="shared/neural-bg.js"></script>
-    <script src="shared/showcase.js"></script>
-    <script src="shared/ball-nav.js"></script>
-    <script>
-        // Smooth scroll for landings card
-        document.getElementById('landingsCard')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.getElementById('landings').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Mobile nav toggle
-        const toggle = document.getElementById('selfNavToggle');
-        const links = document.getElementById('selfNavLinks');
-        
-        toggle?.addEventListener('click', () => {
-            links.classList.toggle('open');
-            const isOpen = links.classList.contains('open');
-            toggle.innerHTML = isOpen 
-                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>'
-                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
-        });
-
-        // Hide nav on scroll down
-        const nav = document.getElementById('selfNav');
-        let lastScroll = 0;
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                nav.classList.add('hidden');
-            } else {
-                nav.classList.remove('hidden');
-            }
-            lastScroll = currentScroll;
-        });
-    </script>
 </body>
 </html>
