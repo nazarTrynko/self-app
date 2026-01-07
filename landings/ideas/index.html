@@ -100,6 +100,72 @@
             color: var(--text);
         }
 
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.03);
+            padding: 6px;
+            border-radius: 12px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, var(--accent), #c084fc);
+            color: white;
+        }
+
+        .nav-link.masterpiece-link {
+            background: linear-gradient(135deg, #c9a227, #f59e0b);
+            color: white;
+        }
+
+        .nav-link.masterpiece-link:hover {
+            opacity: 0.9;
+        }
+
+        .nav-icon {
+            font-size: 1rem;
+        }
+
+        .nav-count {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            .header-nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 12px;
+            }
+            .header-back {
+                margin-left: auto;
+            }
+        }
+
         /* Main Container */
         .main {
             max-width: 1200px;
@@ -193,6 +259,128 @@
             padding: 4px 8px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 4px;
+        }
+
+        /* Masterpiece Feature Card */
+        .masterpiece-feature {
+            margin-bottom: 32px;
+        }
+
+        .masterpiece-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(245, 158, 11, 0.05));
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 20px;
+            padding: 24px 32px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .masterpiece-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c9a227, #f59e0b);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .masterpiece-card:hover {
+            border-color: rgba(201, 162, 39, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px -20px rgba(201, 162, 39, 0.3);
+        }
+
+        .masterpiece-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .masterpiece-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, #c9a227, #f59e0b);
+            border-radius: 6px;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.05em;
+        }
+
+        .masterpiece-content {
+            flex: 1;
+        }
+
+        .masterpiece-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #f5d77a;
+        }
+
+        .masterpiece-desc {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            max-width: 600px;
+        }
+
+        .masterpiece-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .mp-tag {
+            padding: 6px 12px;
+            background: rgba(201, 162, 39, 0.15);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: #e5c654;
+        }
+
+        .masterpiece-arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(201, 162, 39, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c9a227;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .masterpiece-card:hover .masterpiece-arrow {
+            background: linear-gradient(135deg, #c9a227, #f59e0b);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .masterpiece-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+            }
+            .masterpiece-tags {
+                justify-content: center;
+            }
+            .masterpiece-arrow {
+                margin-top: 16px;
+            }
         }
 
         /* Summary Section */
@@ -547,6 +735,18 @@
                 <div class="header-logo">S</div>
                 <span class="header-title">App Ideas</span>
             </a>
+            <nav class="header-nav">
+                <a href="./" class="nav-link active">
+                    <span class="nav-icon">📱</span>
+                    <span>All Ideas</span>
+                    <span class="nav-count">81</span>
+                </a>
+                <a href="masterpieces/" class="nav-link masterpiece-link">
+                    <span class="nav-icon">💎</span>
+                    <span>Masterpieces</span>
+                    <span class="nav-count">44</span>
+                </a>
+            </nav>
             <a href="../" class="header-back">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -565,12 +765,41 @@
             </div>
         </section>
 
+        <!-- Masterpieces Feature Card -->
+        <section class="masterpiece-feature" id="masterpieceFeature">
+            <a href="masterpieces/" class="masterpiece-card">
+                <div class="masterpiece-badge">💎 NEW</div>
+                <div class="masterpiece-content">
+                    <h3 class="masterpiece-title">44 Masterpiece Ideas</h3>
+                    <p class="masterpiece-desc">
+                        Complex, sophisticated mobile applications combining advanced technology with deep domain expertise. 
+                        Spatial computing, cognitive wellness, professional tools, and data intelligence.
+                    </p>
+                    <div class="masterpiece-tags">
+                        <span class="mp-tag">🌐 Spatial Computing</span>
+                        <span class="mp-tag">🧠 Cognitive Wellness</span>
+                        <span class="mp-tag">💼 Professional Domain</span>
+                        <span class="mp-tag">📊 Data Intelligence</span>
+                    </div>
+                </div>
+                <div class="masterpiece-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+        </section>
+
         <!-- Summary Section -->
         <section class="summary-section" id="summarySection">
             <div class="summary-stats">
                 <div class="summary-stat">
                     <span class="summary-stat-value" id="totalIdeas">0</span>
-                    <span class="summary-stat-label">App Ideas</span>
+                    <span class="summary-stat-label">Standard Ideas</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="summary-stat-value">44</span>
+                    <span class="summary-stat-label">Masterpieces</span>
                 </div>
                 <div class="summary-stat">
                     <span class="summary-stat-value" id="totalCategories">0</span>
@@ -579,7 +808,7 @@
             </div>
             <p class="summary-desc">
                 Comprehensive app specifications with technical details, monetization strategies, and UI concepts. 
-                Select a category above to explore.
+                Select a category above to explore standard ideas, or check out the Masterpieces for advanced concepts.
             </p>
         </section>
 
