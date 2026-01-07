@@ -122,14 +122,20 @@
             text-align: center;
         }
 
-        /* Category Grid - 4 Balanced Groups */
+        /* Category Grid - Flexible for featured items */
         .category-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
             .category-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -160,6 +166,45 @@
         .category-card.active {
             border-color: var(--accent);
             background: var(--accent-glow);
+        }
+
+        .category-card.featured {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.05));
+            border-color: rgba(251, 191, 36, 0.3);
+            grid-column: span 2;
+        }
+
+        .category-card.featured:hover {
+            border-color: rgba(251, 191, 36, 0.5);
+            box-shadow: 0 16px 48px -12px rgba(251, 191, 36, 0.2);
+        }
+
+        .category-card.featured .category-icon {
+            font-size: 2.5rem;
+        }
+
+        .category-card.featured .category-name {
+            font-size: 1.25rem;
+            color: #fbbf24;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: 20px;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 500px) {
+            .category-card.featured {
+                grid-column: span 1;
+            }
         }
 
         .category-icon {
@@ -376,6 +421,20 @@
             border-radius: 6px;
             font-size: 0.6875rem;
             color: var(--accent);
+        }
+
+        .masterpiece-card {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(245, 158, 11, 0.02));
+        }
+
+        .masterpiece-card:hover {
+            border-color: rgba(251, 191, 36, 0.4);
+            box-shadow: 0 12px 32px -8px rgba(251, 191, 36, 0.15);
+        }
+
+        .masterpiece-card .idea-tier {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
         }
 
         /* Modal */
@@ -631,8 +690,15 @@
 
     <script src="ideas-data.js"></script>
     <script>
-        // Group categories into 4 balanced groups
+        // Group categories into balanced groups with featured masterpieces
         const CATEGORY_GROUPS = [
+            {
+                id: 'masterpieces',
+                name: 'API Masterpieces',
+                icon: '🏆',
+                featured: true,
+                subcategories: ['22-api-masterpieces']
+            },
             {
                 id: 'tools',
                 name: 'Tools & Sensors',
@@ -643,19 +709,31 @@
                 id: 'intelligence',
                 name: 'AI & Privacy',
                 icon: '🧠',
-                subcategories: ['04-offline-ai', '05-data-vaults']
+                subcategories: ['04-offline-ai', '05-data-vaults', '16-security']
             },
             {
                 id: 'life',
                 name: 'Life & Wellness',
                 icon: '💚',
-                subcategories: ['06-health-body', '07-productivity', '13-finance', '14-travel']
+                subcategories: ['06-health-body', '07-productivity', '13-finance', '14-travel', '15-home-life']
             },
             {
                 id: 'creative',
                 name: 'Creative & Pro',
                 icon: '✨',
-                subcategories: ['08-creative', '09-professional', '10-education', '11-gaming', '12-communication']
+                subcategories: ['08-creative', '09-professional', '19-niche-pro']
+            },
+            {
+                id: 'utility',
+                name: 'Utility & Dev',
+                icon: '⚙️',
+                subcategories: ['10-education', '11-gaming', '12-communication', '17-accessibility', '18-developer']
+            },
+            {
+                id: 'experimental',
+                name: 'Experimental',
+                icon: '🧪',
+                subcategories: ['20-experimental', '21-platforms']
             }
         ];
 
@@ -709,16 +787,27 @@
                     .filter(Boolean);
                 
                 const totalIdeas = subcats.reduce((sum, cat) => sum + cat.ideas.length, 0);
-                const subNames = subcats.slice(0, 3).map(c => c.name.split(' ')[0]);
+                const subNames = subcats.slice(0, 3).map(c => c.name.split(' ')[0].replace('🏆 ', ''));
+
+                const isFeatured = group.featured === true;
+                const featuredClass = isFeatured ? 'featured' : '';
+                const featuredBadge = isFeatured ? '<span class="featured-badge">✨ Top Picks</span>' : '';
+                const description = isFeatured ? 
+                    '<div class="category-desc" style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 8px; max-width: 300px;">Highest-scoring monetizable app ideas powered by cutting-edge APIs</div>' : '';
 
                 return `
-                    <div class="category-card" data-group="${group.id}">
+                    <div class="category-card ${featuredClass}" data-group="${group.id}">
+                        ${featuredBadge}
                         <span class="category-icon">${group.icon}</span>
                         <div class="category-name">${group.name}</div>
-                        <div class="category-count">${totalIdeas} ideas</div>
+                        <div class="category-count">${totalIdeas} ${isFeatured ? 'masterpiece' : ''} ideas</div>
+                        ${description}
                         <div class="category-subs">
-                            ${subNames.map(n => `<span class="category-sub">${n}</span>`).join('')}
-                            ${subcats.length > 3 ? `<span class="category-sub">+${subcats.length - 3}</span>` : ''}
+                            ${isFeatured ? 
+                                subcats.flatMap(c => c.ideas.slice(0, 4)).map(i => `<span class="category-sub">${i.name}</span>`).join('') :
+                                subNames.map(n => `<span class="category-sub">${n}</span>`).join('') + 
+                                (subcats.length > 3 ? `<span class="category-sub">+${subcats.length - 3}</span>` : '')
+                            }
                         </div>
                     </div>
                 `;
@@ -830,13 +919,27 @@
                 return;
             }
 
-            ideasGrid.innerHTML = ideas.map(idea => `
-                <div class="idea-card" data-file="${idea.categoryId}/${idea.file}" data-name="${idea.name}">
-                    <div class="idea-id">#${idea.id}</div>
-                    <div class="idea-name">${idea.name}</div>
-                    <span class="idea-tier">${idea.tier}</span>
-                </div>
-            `).join('');
+            ideasGrid.innerHTML = ideas.map(idea => {
+                const hasScore = idea.score !== undefined;
+                const scoreHtml = hasScore ? `
+                    <div class="idea-score" style="display: flex; align-items: center; gap: 6px; margin-top: 8px;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Score:</span>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #fbbf24; font-weight: 600;">${idea.score}/10</span>
+                    </div>
+                ` : '';
+                
+                const isMasterpiece = idea.categoryId === '22-api-masterpieces';
+                const cardClass = isMasterpiece ? 'idea-card masterpiece-card' : 'idea-card';
+                
+                return `
+                    <div class="${cardClass}" data-file="${idea.categoryId}/${idea.file}" data-name="${idea.name}" style="${isMasterpiece ? 'border-color: rgba(251, 191, 36, 0.2);' : ''}">
+                        <div class="idea-id">#${idea.id}</div>
+                        <div class="idea-name">${idea.name}</div>
+                        <span class="idea-tier">${idea.tier}</span>
+                        ${scoreHtml}
+                    </div>
+                `;
+            }).join('');
 
             // Add click handlers
             ideasGrid.querySelectorAll('.idea-card').forEach(card => {

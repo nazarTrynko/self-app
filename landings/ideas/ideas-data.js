@@ -193,6 +193,98 @@ const IDEAS_DATA = {
         { id: "080", file: "080-packing-list.md", name: "Packing List", tier: "Premium" },
         { id: "081", file: "081-travel-journal.md", name: "Travel Journal", tier: "Premium" }
       ]
+    },
+    {
+      id: "15-home-life",
+      name: "Home & Life",
+      icon: "🏠",
+      color: "#f59e0b",
+      ideas: [
+        { id: "082", file: "082-pantry-tracker.md", name: "Pantry Tracker", tier: "Premium" },
+        { id: "083", file: "083-plant-care.md", name: "Plant Care", tier: "Premium" },
+        { id: "084", file: "084-home-maintenance.md", name: "Home Maintenance", tier: "Premium" }
+      ]
+    },
+    {
+      id: "16-security",
+      name: "Security",
+      icon: "🛡️",
+      color: "#dc2626",
+      ideas: [
+        { id: "085", file: "085-privacy-checkup.md", name: "Privacy Checkup", tier: "Premium" },
+        { id: "086", file: "086-device-finder.md", name: "Device Finder", tier: "Premium" },
+        { id: "087", file: "087-wifi-analyzer.md", name: "WiFi Analyzer", tier: "Premium" }
+      ]
+    },
+    {
+      id: "17-accessibility",
+      name: "Accessibility",
+      icon: "♿",
+      color: "#0ea5e9",
+      ideas: [
+        { id: "088", file: "088-magnifier-pro.md", name: "Magnifier Pro", tier: "Premium" },
+        { id: "089", file: "089-voice-memos-transcribe.md", name: "Voice Memos Transcribe", tier: "Premium" },
+        { id: "090", file: "090-color-blind-assist.md", name: "Color Blind Assist", tier: "Premium" }
+      ]
+    },
+    {
+      id: "18-developer",
+      name: "Developer Tools",
+      icon: "👨‍💻",
+      color: "#6366f1",
+      ideas: [
+        { id: "091", file: "091-regex-tester.md", name: "Regex Tester", tier: "Premium" },
+        { id: "092", file: "092-json-viewer.md", name: "JSON Viewer", tier: "Premium" },
+        { id: "093", file: "093-http-client.md", name: "HTTP Client", tier: "Premium" }
+      ]
+    },
+    {
+      id: "19-niche-pro",
+      name: "Niche Professional",
+      icon: "🎯",
+      color: "#be185d",
+      ideas: [
+        { id: "094", file: "094-bartender-tools.md", name: "Bartender Tools", tier: "Premium" },
+        { id: "095", file: "095-dj-bpm-key.md", name: "DJ BPM & Key", tier: "Premium" },
+        { id: "096", file: "096-tattoo-preview.md", name: "Tattoo Preview", tier: "Premium" }
+      ]
+    },
+    {
+      id: "20-experimental",
+      name: "Experimental",
+      icon: "🧪",
+      color: "#7c3aed",
+      ideas: [
+        { id: "097", file: "097-dream-journal-ai.md", name: "Dream Journal AI", tier: "Premium" },
+        { id: "098", file: "098-emotion-tracker.md", name: "Emotion Tracker", tier: "Premium" },
+        { id: "099", file: "099-focus-score.md", name: "Focus Score", tier: "Premium" }
+      ]
+    },
+    {
+      id: "21-platforms",
+      name: "Platforms",
+      icon: "🌐",
+      color: "#0d9488",
+      ideas: [
+        { id: "100", file: "100-proven.md", name: "Proven", tier: "Pro" }
+      ]
+    },
+    {
+      id: "22-api-masterpieces",
+      name: "🏆 API Masterpieces",
+      icon: "🏆",
+      color: "#fbbf24",
+      featured: true,
+      ideas: [
+        { id: "101", file: "101-docugenius.md", name: "DocuGenius", tier: "Pro ($49.99/yr)", score: "8.4" },
+        { id: "102", file: "102-voiceflow.md", name: "VoiceFlow", tier: "Premium ($29.99)", score: "8.3" },
+        { id: "103", file: "103-bodymirror.md", name: "BodyMirror", tier: "Pro ($19.99/mo)", score: "8.6" },
+        { id: "104", file: "104-homehealth-hub.md", name: "HomeHealth Hub", tier: "Pro ($39.99/yr)", score: "8.4" },
+        { id: "105", file: "105-spacevision.md", name: "SpaceVision", tier: "Pro ($14.99/mo)", score: "8.1" },
+        { id: "106", file: "106-meetingmind.md", name: "MeetingMind", tier: "Pro ($29.99/mo)", score: "8.6" },
+        { id: "107", file: "107-safewalk.md", name: "SafeWalk", tier: "Premium ($9.99/mo)", score: "8.4" },
+        { id: "108", file: "108-nutrisnap.md", name: "NutriSnap", tier: "Premium ($12.99/mo)", score: "8.3" }
+      ]
     }
   ]
 };
