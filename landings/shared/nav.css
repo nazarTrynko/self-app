@@ -227,14 +227,17 @@
 }
 
 /* Collection-specific accent colors */
-.nav-link[data-collection="landings"] { --link-accent: var(--accent-landings); }
+.nav-link[data-collection="landings"],
+.nav-link[data-collection="home"] { --link-accent: var(--accent-landings); }
 .nav-link[data-collection="masters"] { --link-accent: var(--accent-masters); }
 .nav-link[data-collection="revelations"] { --link-accent: var(--accent-revelations); }
 .nav-link[data-collection="ph"] { --link-accent: var(--accent-ph); }
 .nav-link[data-collection="ideas"] { --link-accent: var(--accent-ideas); }
 .nav-link[data-collection="pwas"] { --link-accent: var(--accent-pwas); }
 .nav-link[data-collection="aurum"] { --link-accent: var(--accent-aurum); }
+.nav-link[data-collection="stealth-ideas"] { --link-accent: #a855f7; }
 .nav-link[data-collection="docs"] { --link-accent: var(--accent-docs); }
+.nav-link[data-collection="sitemap"] { --link-accent: var(--accent-landings); }
 
 .nav-link[data-collection]:hover .nav-link-icon,
 .nav-link[data-collection].active .nav-link-icon {

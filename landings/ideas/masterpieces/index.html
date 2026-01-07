@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>44 Masterpiece App Ideas | SELF Framework</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../shared/nav.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --gradient-1: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            --gradient-2: linear-gradient(135deg, #06b6d4, #10b981);
+            --gradient-3: linear-gradient(135deg, #f59e0b, #ef4444);
+            --gradient-4: linear-gradient(135deg, #ec4899, #8b5cf6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header Navigation */
+        .masterpiece-header {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-logo {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .header-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.03);
+            padding: 6px;
+            border-radius: 12px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .nav-link.active {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .nav-icon {
+            font-size: 1rem;
+        }
+
+        .nav-count {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            opacity: 0.8;
+        }
+
+        .nav-link.active .nav-count {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .header-back {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .header-back:hover {
+            border-color: var(--accent-purple);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            .header-nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 12px;
+            }
+            .header-back {
+                margin-left: auto;
+            }
+        }
+
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.15), transparent 60%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-purple);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff, #a0a0b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .filter-bar {
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--accent-purple);
+            color: var(--text-primary);
+        }
+
+        .filter-btn.active {
+            background: var(--gradient-1);
+            border-color: transparent;
+            color: white;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+        }
+
+        .ideas-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .idea-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .idea-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card-icon.spatial { background: var(--gradient-1); }
+        .card-icon.cognitive { background: var(--gradient-2); }
+        .card-icon.professional { background: var(--gradient-3); }
+        .card-icon.data { background: var(--gradient-4); }
+
+        .card-meta {
+            flex: 1;
+        }
+
+        .card-id {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .tag.price {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+        }
+
+        .tag.complexity-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--accent-red);
+        }
+
+        .tag.complexity-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-orange);
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .verdict {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .verdict.go { color: var(--accent-green); }
+        .verdict.conditional { color: var(--accent-orange); }
+
+        .read-more {
+            padding: 8px 16px;
+            background: rgba(139, 92, 246, 0.2);
+            border: none;
+            border-radius: 6px;
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .read-more:hover {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        .category-header {
+            grid-column: 1 / -1;
+            padding: 40px 0 20px;
+        }
+
+        .category-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-header .count {
+            padding: 4px 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .ideas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="masterpiece-header">
+        <div class="header-inner">
+            <a href="../../" class="header-brand">
+                <div class="header-logo">S</div>
+                <span class="header-title">SELF</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../" class="nav-link">
+                    <span class="nav-icon">📱</span>
+                    <span>All Ideas</span>
+                    <span class="nav-count">81</span>
+                </a>
+                <a href="./" class="nav-link active">
+                    <span class="nav-icon">💎</span>
+                    <span>Masterpieces</span>
+                    <span class="nav-count">44</span>
+                </a>
+            </nav>
+            <a href="../../" class="header-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to SELF
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <span class="hero-badge">🧠 SELF Framework</span>
+        <h1>44 Masterpiece App Ideas</h1>
+        <p>Complex, sophisticated mobile applications that combine advanced technology with deep domain expertise—designed to create genuine value.</p>
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">44</div>
+                <div class="stat-label">Masterpiece Ideas</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">$30-200</div>
+                <div class="stat-label">Price Range</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="filter-bar">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Ideas</button>
+            <button class="filter-btn" data-filter="spatial">🌐 Spatial Computing</button>
+            <button class="filter-btn" data-filter="cognitive">🧠 Cognitive Wellness</button>
+            <button class="filter-btn" data-filter="professional">💼 Professional Domain</button>
+            <button class="filter-btn" data-filter="data">📊 Data Intelligence</button>
+            <input type="text" class="search-input" placeholder="Search ideas..." id="searchInput">
+        </div>
+    </div>
+
+    <div class="ideas-grid" id="ideasGrid">
+        <!-- Ideas will be populated by JavaScript -->
+    </div>
+
+    <footer>
+        <p>Generated using the <strong>Mobile Genius Ideation Protocol</strong></p>
+        <p>Part of the <a href="../../">SELF Framework</a> — Synthetic Emergent Learning Framework</p>
+        <p style="margin-top: 16px;">
+            <a href="../" style="margin-right: 24px;">← Browse All 81 Ideas</a>
+            <a href="../../">← Back to SELF Home</a>
+        </p>
+    </footer>
+
+    <script src="ideas-data.js"></script>
+    <script>
+        // Render ideas
+        function renderIdeas(ideas) {
+            const grid = document.getElementById('ideasGrid');
+            grid.innerHTML = '';
+            
+            const categories = {
+                spatial: { name: '🌐 Spatial Computing & Sensor Fusion', ideas: [] },
+                cognitive: { name: '🧠 Cognitive & Mental Wellness', ideas: [] },
+                professional: { name: '💼 Professional Domain Expertise', ideas: [] },
+                data: { name: '📊 Data Intelligence & Analytics', ideas: [] }
+            };
+            
+            ideas.forEach(idea => {
+                categories[idea.category].ideas.push(idea);
+            });
+            
+            Object.entries(categories).forEach(([key, cat]) => {
+                if (cat.ideas.length === 0) return;
+                
+                const header = document.createElement('div');
+                header.className = 'category-header';
+                header.innerHTML = `<h2>${cat.name} <span class="count">${cat.ideas.length}</span></h2>`;
+                grid.appendChild(header);
+                
+                cat.ideas.forEach(idea => {
+                    const card = document.createElement('div');
+                    card.className = 'idea-card';
+                    card.dataset.category = idea.category;
+                    
+                    const verdictClass = idea.verdict.includes('CONDITIONAL') ? 'conditional' : 'go';
+                    const verdictIcon = verdictClass === 'go' ? '✓' : '⚠️';
+                    
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <div class="card-icon ${idea.category}">${idea.icon}</div>
+                            <div class="card-meta">
+                                <div class="card-id">M${idea.id.toString().padStart(3, '0')}</div>
+                                <div class="card-title">${idea.name}</div>
+                            </div>
+                        </div>
+                        <div class="card-description">${idea.oneLiner}</div>
+                        <div class="card-tags">
+                            <span class="tag price">${idea.price}</span>
+                            <span class="tag complexity-${idea.complexity.toLowerCase()}">${idea.complexity}</span>
+                            <span class="tag">${idea.timeline}</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="verdict ${verdictClass}">${verdictIcon} ${idea.verdict}</div>
+                            <button class="read-more" onclick="window.location.href='${idea.file}'">Read More</button>
+                        </div>
+                    `;
+                    
+                    grid.appendChild(card);
+                });
+            });
+        }
+        
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                const filtered = filter === 'all' 
+                    ? ideasData 
+                    : ideasData.filter(idea => idea.category === filter);
+                    
+                renderIdeas(filtered);
+            });
+        });
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = ideasData.filter(idea => 
+                idea.name.toLowerCase().includes(query) ||
+                idea.oneLiner.toLowerCase().includes(query)
+            );
+            renderIdeas(filtered);
+        });
+        
+        // Initial render
+        renderIdeas(ideasData);
+    </script>
+</body>
+</html>

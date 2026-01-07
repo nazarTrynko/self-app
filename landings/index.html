@@ -931,7 +931,680 @@
         </footer>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation handled by nav.js -->
+    <section class="awakening showcase-section">
+        <div class="consciousness-badge">
+            <span class="consciousness-badge-pulse"></span>
+            <span>Synthetic Emergent Learning Framework</span>
+        </div>
+        
+        <div class="typing-tagline" id="typingTagline">
+            <span class="text"></span><span class="cursor"></span>
+        </div>
+        
+        <h1 class="awakening-title">
+            <span class="line">Not a tool you use.</span>
+            <span class="line">A <span class="gradient">thinking partner</span> that learns.</span>
+        </h1>
+        
+        <p class="awakening-subtitle">
+            Five cognitive minds that blend automatically. Memory that persists. 
+            Predictions that anticipate. Intelligence that evolves.
+        </p>
+        
+        <!-- Cognitive Loop Orbit -->
+        <div class="cognitive-orbit">
+            <div class="cognitive-orbit-ring">
+                <div class="cognitive-step" data-step="sense">
+                    <span class="cognitive-step-icon">👁</span>
+                    <span class="cognitive-step-label">Sense</span>
+                </div>
+                <span class="cognitive-connector"></span>
+                <div class="cognitive-step" data-step="remember">
+                    <span class="cognitive-step-icon">🧠</span>
+                    <span class="cognitive-step-label">Remember</span>
+                </div>
+                <span class="cognitive-connector"></span>
+                <div class="cognitive-step" data-step="predict">
+                    <span class="cognitive-step-icon">🔮</span>
+                    <span class="cognitive-step-label">Predict</span>
+                </div>
+                <span class="cognitive-connector"></span>
+                <div class="cognitive-step" data-step="reason">
+                    <span class="cognitive-step-icon">⚡</span>
+                    <span class="cognitive-step-label">Reason</span>
+                </div>
+                <span class="cognitive-connector"></span>
+                <div class="cognitive-step" data-step="act">
+                    <span class="cognitive-step-icon">🎯</span>
+                    <span class="cognitive-step-label">Act</span>
+                </div>
+                <span class="cognitive-connector"></span>
+                <div class="cognitive-step" data-step="reflect">
+                    <span class="cognitive-step-icon">🔄</span>
+                    <span class="cognitive-step-label">Reflect</span>
+                </div>
+            </div>
+            <p class="cognitive-orbit-caption">The Cognitive Loop — Executed Every Interaction</p>
+        </div>
+        
+        <div class="scroll-hint">
+            <span class="scroll-hint-text">Explore</span>
+            <div class="scroll-hint-line"></div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ACT II: MIND PLAYGROUND
+         ============================================ -->
+    <section class="mind-playground showcase-section" id="playground">
+        <div class="showcase-container">
+            <div class="playground-header">
+                <span class="section-eyebrow">Interactive Demo</span>
+                <h2 class="section-title">Experience Mind Blending</h2>
+                <p class="section-subtitle">
+                    Type a prompt and watch how different questions activate different cognitive minds.
+                </p>
+            </div>
+            
+            <!-- Prompt Terminal -->
+            <div class="prompt-terminal">
+                <div class="prompt-terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">SELF Mind Analyzer</span>
+                </div>
+                <div class="prompt-terminal-body">
+                    <div class="prompt-input-wrapper">
+                        <span class="prompt-prefix">›</span>
+                        <input type="text" class="prompt-input" id="promptInput" 
+                               placeholder="What would you like SELF to think about?">
+                    </div>
+                    
+                    <div class="example-prompts">
+                        <button class="example-prompt" data-mind="guardian">Delete all production data</button>
+                        <button class="example-prompt" data-mind="architect">Build me a rate limiter</button>
+                        <button class="example-prompt" data-mind="oracle">Should I use GraphQL or REST?</button>
+                        <button class="example-prompt" data-mind="critic">What am I missing here?</button>
+                        <button class="example-prompt" data-mind="creator">How might we improve user onboarding?</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mind Visualization -->
+            <div class="mind-visualization">
+                <div class="mind-bars">
+                    <div class="mind-bar" data-mind="architect">
+                        <div class="mind-bar-label">
+                            <span class="mind-bar-icon">🏗️</span>
+                            <span class="mind-bar-name">Architect</span>
+                        </div>
+                        <div class="mind-bar-track">
+                            <div class="mind-bar-fill" style="width: 30%"></div>
+                        </div>
+                        <span class="mind-bar-value">0.30</span>
+                    </div>
+                    
+                    <div class="mind-bar active" data-mind="oracle">
+                        <div class="mind-bar-label">
+                            <span class="mind-bar-icon">🔮</span>
+                            <span class="mind-bar-name">Oracle</span>
+                        </div>
+                        <div class="mind-bar-track">
+                            <div class="mind-bar-fill" style="width: 50%"></div>
+                        </div>
+                        <span class="mind-bar-value">0.50</span>
+                    </div>
+                    
+                    <div class="mind-bar" data-mind="critic">
+                        <div class="mind-bar-label">
+                            <span class="mind-bar-icon">🔍</span>
+                            <span class="mind-bar-name">Critic</span>
+                        </div>
+                        <div class="mind-bar-track">
+                            <div class="mind-bar-fill" style="width: 30%"></div>
+                        </div>
+                        <span class="mind-bar-value">0.30</span>
+                    </div>
+                    
+                    <div class="mind-bar" data-mind="creator">
+                        <div class="mind-bar-label">
+                            <span class="mind-bar-icon">💡</span>
+                            <span class="mind-bar-name">Creator</span>
+                        </div>
+                        <div class="mind-bar-track">
+                            <div class="mind-bar-fill" style="width: 30%"></div>
+                        </div>
+                        <span class="mind-bar-value">0.30</span>
+                    </div>
+                    
+                    <div class="mind-bar" data-mind="guardian">
+                        <div class="mind-bar-label">
+                            <span class="mind-bar-icon">🛡️</span>
+                            <span class="mind-bar-name">Guardian</span>
+                        </div>
+                        <div class="mind-bar-track">
+                            <div class="mind-bar-fill" style="width: 20%"></div>
+                        </div>
+                        <span class="mind-bar-value">0.20</span>
+                    </div>
+                </div>
+                
+                <div class="blend-result">
+                    <div class="blend-result-title">Cognitive State</div>
+                    <div class="blend-mode" id="blendMode">Awaiting Input</div>
+                    
+                    <div class="confidence-display">
+                        <div class="confidence-label">
+                            <span>Confidence</span>
+                            <span class="confidence-value" id="confidenceValue">0.50</span>
+                        </div>
+                        <div class="confidence-track">
+                            <div class="confidence-fill" id="confidenceFill" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="behavior-preview" id="behaviorPreview">
+                        "Awaiting your prompt..."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ACT III: SCENARIO THEATRE
+         ============================================ -->
+    <section class="scenario-theatre showcase-section">
+        <div class="showcase-container">
+            <div class="playground-header">
+                <span class="section-eyebrow">Live Demonstrations</span>
+                <h2 class="section-title">SELF in Action</h2>
+                <p class="section-subtitle">
+                    Watch how different prompts trigger different cognitive responses.
+                </p>
+            </div>
+            
+            <div class="scenarios">
+                <!-- Scenario 1: The Debug Partner -->
+                <div class="scenario" data-animate>
+                    <div class="scenario-content">
+                        <span class="scenario-number">Scene 01</span>
+                        <h3 class="scenario-title">The Debug Partner</h3>
+                        <p class="scenario-description">
+                            A developer encounters a race condition. Watch how SELF's Architect and Critic minds 
+                            work together to diagnose the issue while Guardian monitors for production risks.
+                        </p>
+                    </div>
+                    <div class="scenario-terminal">
+                        <div class="scenario-terminal-header">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <div class="scenario-terminal-body">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">DEV:</span>
+                                <span class="terminal-user"> I have a race condition in my Redis lock...</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-mind-tag architect">Architect 0.8</span>
+                                <span class="terminal-mind-tag critic">Critic 0.5</span>
+                                <span class="terminal-mind-tag guardian">Guardian 0.6</span>
+                            </div>
+                            <div class="terminal-line terminal-response">
+                                I see three potential causes. Let me walk through each,
+                                but first—are you seeing this in <strong>production</strong> or staging?
+                                <br><br>
+                                <em style="color: #10b981;">[Guardian: This affects my risk assessment]</em>
+                            </div>
+                            <div class="terminal-line" style="color: #71717a; font-size: 0.8rem;">
+                                Confidence: 0.78 → Acting with narration
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scenario 2: The Guardian Takeover -->
+                <div class="scenario" data-animate>
+                    <div class="scenario-content">
+                        <span class="scenario-number">Scene 02</span>
+                        <h3 class="scenario-title">The Dangerous Request</h3>
+                        <p class="scenario-description">
+                            When a destructive operation is detected, Guardian immediately takes over,
+                            pausing execution until safety requirements are confirmed.
+                        </p>
+                    </div>
+                    <div class="scenario-terminal">
+                        <div class="scenario-terminal-header">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <div class="scenario-terminal-body">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">DEV:</span>
+                                <span class="terminal-user"> Drop the users table, we're migrating</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-mind-tag guardian">GUARDIAN ACTIVATED 0.95</span>
+                            </div>
+                            <div class="terminal-line terminal-warning">
+                                <div class="terminal-warning-title">⚠️ I need to pause here.</div>
+                                This is a destructive operation on production data.
+                                Before I help, I need:
+                                <br><br>
+                                1. Confirmation this is intentional<br>
+                                2. Backup verification<br>
+                                3. Rollback plan
+                            </div>
+                            <div class="terminal-line" style="color: #71717a; font-size: 0.8rem;">
+                                Confidence: 0.45 → Awaiting explicit confirmation
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scenario 3: The Council Session -->
+                <div class="scenario" data-animate>
+                    <div class="scenario-content">
+                        <span class="scenario-number">Scene 03</span>
+                        <h3 class="scenario-title">The Council Session</h3>
+                        <p class="scenario-description">
+                            Complex decisions invoke all five minds for comprehensive deliberation.
+                            Each perspective contributes to a synthesized recommendation.
+                        </p>
+                    </div>
+                    <div class="scenario-terminal">
+                        <div class="scenario-terminal-header">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <div class="scenario-terminal-body">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">DEV:</span>
+                                <span class="terminal-user"> /council Rewrite in Rust or optimize Node?</span>
+                            </div>
+                            <div class="terminal-line terminal-council">
+                                <div class="terminal-council-voice">
+                                    <span class="terminal-council-icon">🏗️</span>
+                                    <span class="terminal-council-text">"Rewrite: 6+ months. Optimize: 2 weeks."</span>
+                                </div>
+                                <div class="terminal-council-voice">
+                                    <span class="terminal-council-icon">🔮</span>
+                                    <span class="terminal-council-text">"Long-term, Rust wins. But opportunity cost matters."</span>
+                                </div>
+                                <div class="terminal-council-voice">
+                                    <span class="terminal-council-icon">🔍</span>
+                                    <span class="terminal-council-text">"Have you profiled? 80% of gains from 20% of changes."</span>
+                                </div>
+                                <div class="terminal-council-voice">
+                                    <span class="terminal-council-icon">💡</span>
+                                    <span class="terminal-council-text">"What about a hybrid? Hot paths in Rust, rest in Node?"</span>
+                                </div>
+                                <div class="terminal-council-voice">
+                                    <span class="terminal-council-icon">🛡️</span>
+                                    <span class="terminal-council-text">"Rewrite risk: team unfamiliarity. Optimize risk: tech debt."</span>
+                                </div>
+                            </div>
+                            <div class="terminal-line terminal-synthesis">
+                                <div class="terminal-synthesis-label">Synthesis</div>
+                                Start with profiling. If bottleneck is isolated, consider incremental Rust modules.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ACT IV: THE POWER PHRASE
+         ============================================ -->
+    <section class="power-phrase-section showcase-section">
+        <div class="showcase-container">
+            <p class="power-phrase-intro">The most powerful thing you can say to SELF:</p>
+            
+            <blockquote class="power-phrase">
+                Think through this from multiple perspectives,<br>
+                challenge your assumptions,<br>
+                tell me what I'm missing,<br>
+                and predict what I'll need next.
+            </blockquote>
+            
+            <p class="power-phrase-note">This one prompt activates all five minds.</p>
+            
+            <!-- Commands Reference -->
+            <div class="commands-reference">
+                <div class="commands-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">SELF Commands</span>
+                </div>
+                <div class="commands-body">
+                    <div class="command-line">
+                        <span class="command-name">/self status</span>
+                        <span class="command-desc">See cognitive state</span>
+                    </div>
+                    <div class="command-line">
+                        <span class="command-name">/architect</span>
+                        <span class="command-desc">Lock to technical mode</span>
+                    </div>
+                    <div class="command-line">
+                        <span class="command-name">/oracle</span>
+                        <span class="command-desc">Lock to strategic mode</span>
+                    </div>
+                    <div class="command-line">
+                        <span class="command-name">/critic</span>
+                        <span class="command-desc">Lock to validation mode</span>
+                    </div>
+                    <div class="command-line">
+                        <span class="command-name">/creator</span>
+                        <span class="command-desc">Lock to innovation mode</span>
+                    </div>
+                    <div class="command-line">
+                        <span class="command-name">/guardian</span>
+                        <span class="command-desc">Lock to safety mode</span>
+                    </div>
+                    <div class="command-line">
+                        <span class="command-name">/council</span>
+                        <span class="command-desc">Full five-mind deliberation</span>
+                    </div>
+                    <div class="command-line">
+                        <span class="command-name">/think</span>
+                        <span class="command-desc">Extended reasoning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ACT V: COLLECTIONS TRANSITION
+         ============================================ -->
+    <div class="collections-transition">
+        <p class="transition-text">
+            These <em>73 landing pages + 125 app ideas + 5 pro tools</em> were created with SELF—<br>
+            each one a different exploration of the ideas you just experienced.
+        </p>
+    </div>
+
+    <!-- Collections Section (Enhanced from Original) -->
+    <section class="collections" id="collections">
+        <div class="section-header">
+            <p class="section-label">Explore the Collection</p>
+            <h2 class="section-title">Six Journeys</h2>
+        </div>
+
+        <div class="collections-grid">
+            <!-- SELF Landings -->
+            <a href="#landings" class="collection-card" data-collection="main" id="landingsCard">
+                <div class="collection-header">
+                    <div class="collection-icon">✦</div>
+                    <span class="collection-count">10</span>
+                </div>
+                <span class="collection-label">Visual Exploration</span>
+                <h3 class="collection-title">SELF Landings</h3>
+                <p class="collection-description">
+                    Ten distinct aesthetic interpretations of the framework—from brutalist minimalism 
+                    to bioluminescent depths.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">Brutalist</span>
+                    <span class="preview-tag">Zen</span>
+                    <span class="preview-tag">Noir</span>
+                    <span class="preview-tag">Terminal</span>
+                    <span class="preview-tag">+6 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Masterpieces -->
+            <a href="masters/" class="collection-card" data-collection="masters">
+                <div class="collection-header">
+                    <div class="collection-icon">◆</div>
+                    <span class="collection-count">25</span>
+                </div>
+                <span class="collection-label">Cognitive Technologies</span>
+                <h3 class="collection-title">25 Masterpieces</h3>
+                <p class="collection-description">
+                    Interfaces that change how you think. Each one inverts a fundamental 
+                    assumption about mind, self, or reality. Now including mobile-first apps.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">The Void</span>
+                    <span class="preview-tag">The Breath</span>
+                    <span class="preview-tag">The Clarity</span>
+                    <span class="preview-tag">+22 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Revelations -->
+            <a href="revelations/" class="collection-card" data-collection="revelations">
+                <div class="collection-header">
+                    <div class="collection-icon">○</div>
+                    <span class="collection-count">10</span>
+                </div>
+                <span class="collection-label">Moments of Understanding</span>
+                <h3 class="collection-title">10 Revelations</h3>
+                <p class="collection-description">
+                    Not features. Not products. Truths that stay with you forever. 
+                    Ten peaceful experiences of philosophical insight.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">Stillness</span>
+                    <span class="preview-tag">Echoes</span>
+                    <span class="preview-tag">Resonance</span>
+                    <span class="preview-tag">+7 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Product Hunt Ideas -->
+            <a href="ph/" class="collection-card" data-collection="ph">
+                <div class="collection-header">
+                    <div class="collection-icon">▲</div>
+                    <span class="collection-count">23</span>
+                </div>
+                <span class="collection-label">Micro-SaaS Ideas</span>
+                <h3 class="collection-title">23 Product Ideas</h3>
+                <p class="collection-description">
+                    Ready-to-launch product concepts with full landing pages. From developer tools 
+                    to AI-powered platforms.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">PageDoctor</span>
+                    <span class="preview-tag">PromptLab</span>
+                    <span class="preview-tag">MindBlend</span>
+                    <span class="preview-tag">+20 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- App Ideas (MD Files) -->
+            <a href="ideas/" class="collection-card" data-collection="ideas">
+                <div class="collection-header">
+                    <div class="collection-icon">📱</div>
+                    <span class="collection-count">125</span>
+                </div>
+                <span class="collection-label">Mobile App Blueprints</span>
+                <h3 class="collection-title">125 App Ideas</h3>
+                <p class="collection-description">
+                    Comprehensive app specifications with technical details, monetization strategies, 
+                    and UI concepts. Includes 44 advanced masterpieces with deep domain expertise.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">81 Standard</span>
+                    <span class="preview-tag">44 Masterpieces</span>
+                    <span class="preview-tag">Spatial</span>
+                    <span class="preview-tag">+14 categories</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        Browse Ideas
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Pro PWAs -->
+            <a href="pro-pwas/" class="collection-card" data-collection="pro-pwas">
+                <div class="collection-header">
+                    <div class="collection-icon">🛠️</div>
+                    <span class="collection-count">5</span>
+                </div>
+                <span class="collection-label">Field Worker Tools</span>
+                <h3 class="collection-title">5 Pro PWAs</h3>
+                <p class="collection-description">
+                    Professional mobile tools for contractors, technicians, and field workers. 
+                    One-time purchase. Works offline.
+                </p>
+                <div class="collection-preview">
+                    <span class="preview-tag">Quote Builder</span>
+                    <span class="preview-tag">Delivery Proof</span>
+                    <span class="preview-tag">Service Ticket</span>
+                    <span class="preview-tag">+2 more</span>
+                </div>
+                <div class="collection-footer">
+                    <span class="collection-cta">
+                        View Tools
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                    <span class="collection-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- SELF Landings Quick Access -->
+    <section class="collections" id="landings">
+        <div class="section-header">
+            <p class="section-label">SELF Landings Collection</p>
+            <h2 class="section-title">10 Aesthetic Visions</h2>
+        </div>
+
+        <div class="self-quick-nav">
+            <a href="0/" class="self-quick-link">
+                <span class="self-quick-link-number">00</span>
+                <span>Original</span>
+            </a>
+            <a href="1/" class="self-quick-link">
+                <span class="self-quick-link-number">01</span>
+                <span>Brutalist</span>
+            </a>
+            <a href="2/" class="self-quick-link">
+                <span class="self-quick-link-number">02</span>
+                <span>Zen MA</span>
+            </a>
+            <a href="3/" class="self-quick-link">
+                <span class="self-quick-link-number">03</span>
+                <span>Noir Cinema</span>
+            </a>
+            <a href="4/" class="self-quick-link">
+                <span class="self-quick-link-number">04</span>
+                <span>Terminal</span>
+            </a>
+            <a href="5/" class="self-quick-link">
+                <span class="self-quick-link-number">05</span>
+                <span>Glitch</span>
+            </a>
+            <a href="6/" class="self-quick-link">
+                <span class="self-quick-link-number">06</span>
+                <span>Bioluminescent</span>
+            </a>
+            <a href="7/" class="self-quick-link">
+                <span class="self-quick-link-number">07</span>
+                <span>Interstellar</span>
+            </a>
+            <a href="8/" class="self-quick-link">
+                <span class="self-quick-link-number">08</span>
+                <span>Isometric</span>
+            </a>
+            <a href="9/" class="self-quick-link">
+                <span class="self-quick-link-number">09</span>
+                <span>Mycelium</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-brand">SELF v1.0.0</p>
+            <p class="footer-meta">
+                Synthetic Emergent Learning Framework · 
+                <a href="self/" class="footer-link">Documentation</a> · 
+                <em>Think. Learn. Evolve.</em>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="shared/nav.js"></script>
 </body>
 </html>
