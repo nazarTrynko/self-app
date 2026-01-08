@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="COLLECTIVE — Multiple minds becoming one. Multi-perspective integration and synthesis.">
+    <title>COLLECTIVE — Multiple Minds Becoming One</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="collectiveCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">← Constellation</a>
+        <div class="nav-brand"><span class="brand-symbol">⬢</span> COLLECTIVE</div>
+        <a href="#merge" class="nav-cta">Merge Minds</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.14 The Mind Merger</div>
+            <h1 class="hero-title">Multiple Minds<br><span class="title-accent">Becoming</span><br>One</h1>
+            <p class="hero-essence">What emerges when perspectives merge? COLLECTIVE synthesizes multiple viewpoints into unified intelligence.</p>
+            <a href="#merge" class="btn-collective">⬢ Begin Merger</a>
+        </div>
+        <div class="hero-visual">
+            <div class="minds-visual">
+                <div class="mind mind-1">Mind 1</div>
+                <div class="mind mind-2">Mind 2</div>
+                <div class="mind mind-3">Mind 3</div>
+                <div class="unified-mind">⬢</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-merge" id="merge">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">MIND MERGER</span>
+                <h2 class="section-title">Synthesize Perspectives</h2>
+            </div>
+            <div class="merge-interface">
+                <div class="perspectives-input">
+                    <label>Add different perspectives on a topic</label>
+                    <textarea id="perspectivesInput" placeholder="Enter multiple viewpoints, each on a new line..."></textarea>
+                </div>
+                <button class="merge-btn" id="mergeBtn">⬢ Merge Perspectives</button>
+                <div class="merge-output" id="mergeOutput">
+                    <div class="output-individual"><h4>Individual Perspectives</h4><div id="individuals"></div></div>
+                    <div class="output-unified"><h4>Unified Intelligence</h4><blockquote id="unified">—</blockquote></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">Join The Collective</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join COLLECTIVE</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Connected Minds</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="footer-brand">⬢ COLLECTIVE</div>
+        <a href="../" class="footer-back">Back to Constellation</a>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+

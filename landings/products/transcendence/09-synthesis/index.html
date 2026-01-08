@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SYNTHESIS — The whole is different from sum of parts. System-level insight discovery platform.">
+    <title>SYNTHESIS — The Whole Is Different</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,400&family=Assistant:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="synthesisCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">← Constellation</a>
+        <div class="nav-brand"><span class="brand-symbol">◎</span> SYNTHESIS</div>
+        <a href="#emerge" class="nav-cta">Find Emergence</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.9 The Emergent Property Finder</div>
+            <h1 class="hero-title">The Whole Is<br><span class="title-accent">Different</span><br>From Sum of Parts</h1>
+            <p class="hero-essence">Some properties only exist at the system level. SYNTHESIS finds what emerges when parts combine.</p>
+            <a href="#emerge" class="btn-synthesis">◎ Discover Emergence</a>
+        </div>
+        <div class="hero-visual">
+            <div class="emergence-visual">
+                <div class="part part-1"></div>
+                <div class="part part-2"></div>
+                <div class="part part-3"></div>
+                <div class="whole">◎</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-emerge" id="emerge">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">EMERGENCE ENGINE</span>
+                <h2 class="section-title">What Emerges From Your System?</h2>
+            </div>
+            <div class="emerge-interface">
+                <div class="parts-input">
+                    <label>List the parts/elements of your system</label>
+                    <textarea id="partsInput" placeholder="Enter the components, people, processes, or elements..."></textarea>
+                </div>
+                <button class="emerge-btn" id="emergeBtn">◎ Find Emergent Properties</button>
+                <div class="emerge-output" id="emergeOutput">
+                    <div class="output-parts"><h4>Individual Parts</h4><p id="partsView">—</p></div>
+                    <div class="output-interaction"><h4>Interactions</h4><p id="interactionView">—</p></div>
+                    <div class="output-emergence"><h4>Emergent Properties</h4><blockquote id="emergenceView">—</blockquote></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">See What Emerges</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join SYNTHESIS</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Related Emergences</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="footer-brand">◎ SYNTHESIS</div>
+        <a href="../" class="footer-back">Back to Constellation</a>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+

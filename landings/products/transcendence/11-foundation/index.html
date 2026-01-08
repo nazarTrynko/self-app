@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FOUNDATION — Follow why until bedrock. First principles and root cause discovery.">
+    <title>FOUNDATION — Follow Why Until Bedrock</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="foundationCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">← Constellation</a>
+        <div class="nav-brand"><span class="brand-symbol">▽</span> FOUNDATION</div>
+        <a href="#descend" class="nav-cta">Find Bedrock</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.11 The Infinite Regress Explorer</div>
+            <h1 class="hero-title">Follow Why<br>Until<br><span class="title-accent">Bedrock</span></h1>
+            <p class="hero-essence">Every answer invites another why. FOUNDATION follows the chain until you hit foundational truth.</p>
+            <a href="#descend" class="btn-foundation">▽ Begin Descent</a>
+        </div>
+        <div class="hero-visual">
+            <div class="descent-visual">
+                <div class="layer layer-1">Surface</div>
+                <div class="layer layer-2">Deeper</div>
+                <div class="layer layer-3">Core</div>
+                <div class="bedrock">▽ Bedrock</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-descend" id="descend">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">DESCENT ENGINE</span>
+                <h2 class="section-title">Reach Foundational Truth</h2>
+            </div>
+            <div class="descend-interface">
+                <div class="surface-input">
+                    <label>Start with a belief, assumption, or question</label>
+                    <textarea id="surfaceInput" placeholder="What do you believe or assume?"></textarea>
+                </div>
+                <button class="descend-btn" id="descendBtn">▽ Ask Why (5 Levels)</button>
+                <div class="descend-output" id="descendOutput">
+                    <div class="why-chain" id="whyChain"></div>
+                    <div class="bedrock-insight"><h4>Bedrock Truth</h4><blockquote id="bedrockTruth">—</blockquote></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">Find Your Foundation</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join FOUNDATION</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Deeper Layers</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="footer-brand">▽ FOUNDATION</div>
+        <a href="../" class="footer-back">Back to Constellation</a>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
