@@ -99,3 +99,4 @@ Typing statistics stored locally. No personal content stored beyond progress.
 
 
 
+

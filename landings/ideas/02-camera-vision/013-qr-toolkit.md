@@ -100,3 +100,4 @@ All data local. Scan history can be cleared. No tracking of scanned content.
 
 
 
+

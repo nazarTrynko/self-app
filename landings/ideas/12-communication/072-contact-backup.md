@@ -102,3 +102,4 @@ Contact data stored encrypted locally. No data transmission. Full user control.
 
 
 
+

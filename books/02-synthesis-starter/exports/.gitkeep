@@ -1,0 +1,9 @@
+# Generated exports go here
+#
+# To build:
+#   python scripts/build_book.py books/02-synthesis-starter
+#
+# Output files:
+#   book.html  — Generated reader view
+#   book.pdf   — Print-to-PDF from book.html (via browser)
+

@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="THE TRANSITION RITE — Rewrite your state. Rewrite your story. Become who's next.">
+    <title>THE TRANSITION RITE — Rewrite Your State. Rewrite Your Story.</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-void: #0a0908;
+            --bg-card: #151311;
+            --bg-card-hover: #1c1917;
+            --bg-input: #0d0c0a;
+            --text-primary: #faf9f7;
+            --text-secondary: #a8a29e;
+            --text-muted: #78716c;
+            --accent-gold: #d4a574;
+            --accent-amber: #f59e0b;
+            --accent-rose: #e11d48;
+            --accent-emerald: #10b981;
+            --accent-violet: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --border-subtle: rgba(168, 162, 158, 0.12);
+            --border-active: rgba(212, 165, 116, 0.4);
+            --glow-gold: 0 0 60px rgba(212, 165, 116, 0.15);
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-void);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, var(--bg-void) 0%, transparent 100%);
+        }
+
+        .nav-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        .nav-cta {
+            padding: 0.6rem 1.25rem;
+            background: transparent;
+            border: 1px solid var(--border-active);
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-gold);
+            color: var(--bg-void);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(212, 165, 116, 0.08);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .hero-manifesto {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-manifesto strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent-gold);
+            color: var(--bg-void);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-gold);
+        }
+
+        .hero-cta svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 165, 116, 0.03) 50%, transparent 100%);
+        }
+
+        .philosophy-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .philosophy-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .philosophy-text em {
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        /* Research Foundation Section */
+        .research-foundation {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+            background: var(--bg-card);
+        }
+
+        .research-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+
+        .research-card {
+            padding: 2rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .research-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-author {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .research-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .research-desc strong {
+            color: var(--text-primary);
+        }
+
+        .research-synthesis {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .research-synthesis em {
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        /* Protocols Section */
+        .protocols {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+        }
+
+        .protocols-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .protocol-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .protocol-card:hover {
+            border-color: var(--border-active);
+            transform: translateY(-4px);
+        }
+
+        .protocol-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(212, 165, 116, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .protocol-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .protocol-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Tools Section */
+        .tools {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+            background: var(--bg-card);
+        }
+
+        .tools-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .tools-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Tool Tabs */
+        .tool-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tool-tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tool-tab:hover {
+            border-color: var(--border-active);
+            color: var(--text-primary);
+        }
+
+        .tool-tab.active {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--bg-void);
+        }
+
+        /* Tool Panels */
+        .tool-panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tool-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tool-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .tool-intro h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-intro p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--accent-gold);
+            color: var(--bg-void);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-gold);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-active);
+            color: var(--accent-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--bg-void);
+        }
+
+        /* Results Display */
+        .results {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .results.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .results-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-icon:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Transition Map Results */
+        .map-visual {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .map-node {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .map-node-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .map-node-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .map-arrow {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .map-visual {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .map-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .insight-card {
+            padding: 1.25rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .insight-card h4 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .insight-card p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .insight-card.losses { border-left: 3px solid var(--accent-rose); }
+        .insight-card.gains { border-left: 3px solid var(--accent-emerald); }
+        .insight-card.constraints { border-left: 3px solid var(--accent-amber); }
+        .insight-card.signals { border-left: 3px solid var(--accent-violet); }
+        .insight-card.next { border-left: 3px solid var(--accent-gold); }
+
+        /* Story Editor Results */
+        .story-display {
+            padding: 1.5rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .story-display .agency { color: var(--accent-gold); font-weight: 500; }
+        .story-display .communion { color: var(--accent-cyan); font-weight: 500; }
+        .story-display .contamination { color: var(--accent-rose); text-decoration: underline; }
+        .story-display .redemption { color: var(--accent-emerald); font-weight: 500; }
+        .story-display .turning { color: var(--accent-violet); font-style: italic; }
+
+        .analysis-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .analysis-item {
+            padding: 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+
+        .analysis-item h4 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .analysis-item .score-hint {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .analysis-item .score {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .analysis-item .score.high { color: var(--accent-emerald); }
+        .analysis-item .score.medium { color: var(--accent-amber); }
+        .analysis-item .score.low { color: var(--accent-rose); }
+
+        .rewrite-prompts {
+            padding: 1.5rem;
+            background: rgba(212, 165, 116, 0.05);
+            border: 1px solid var(--border-active);
+        }
+
+        .rewrite-prompts h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .rewrite-prompts ul {
+            list-style: none;
+        }
+
+        .rewrite-prompts li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .rewrite-prompts li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        /* State Script Results */
+        .ritual-output {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .ritual-card {
+            padding: 1.5rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .ritual-card h4 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .ritual-card p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .ritual-card.cue {
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .ritual-card.statement {
+            border-left: 3px solid var(--accent-emerald);
+        }
+
+        .ritual-card.steps {
+            border-left: 3px solid var(--accent-violet);
+        }
+
+        .ritual-steps {
+            list-style: none;
+            counter-reset: steps;
+        }
+
+        .ritual-steps li {
+            counter-increment: steps;
+            padding: 0.75rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .ritual-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .ritual-steps li::before {
+            content: counter(steps);
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-gold);
+            color: var(--bg-void);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-void) 100%);
+        }
+
+        .cta-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 450px;
+            margin: 0 auto 1rem;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .email-form button {
+            padding: 1rem 1.5rem;
+            background: var(--accent-gold);
+            color: var(--bg-void);
+            border: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .email-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .disclaimer-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .disclaimer-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Prompt Kit Toggle */
+        .prompt-kit-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 200;
+        }
+
+        .prompt-kit-btn {
+            padding: 0.75rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .prompt-kit-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Prompt Kit Modal */
+        .prompt-kit-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .prompt-kit-modal.visible {
+            display: block;
+        }
+
+        .prompt-kit-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+        }
+
+        .prompt-kit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .prompt-kit-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+        }
+
+        .prompt-kit-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .prompt-kit-close:hover {
+            color: var(--text-primary);
+        }
+
+        .prompt-item {
+            margin-bottom: 2rem;
+        }
+
+        .prompt-item h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .prompt-item pre {
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
+        }
+
+        .copy-prompt {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-prompt:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--accent-gold);
+            color: var(--bg-void);
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 400;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+    
+    <nav class="nav">
+        <span class="nav-brand">The Transition Rite</span>
+        <a href="#tools" class="nav-cta">Start the Rite</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-badge">A Manifesto for People in Transition</div>
+        <h1 class="hero-title">Rewrite Your <em>State</em>.<br>Rewrite Your <em>Story</em>.</h1>
+        <p class="hero-manifesto">
+            In transition, you don't need a new plan first—you need a new <strong>state</strong> and a new <strong>story</strong>. This isn't therapy. This isn't self-help fluff. This is a rite of passage for people who are done waiting for permission.
+        </p>
+        <a href="#tools" class="hero-cta">
+            Begin the Rite
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+        <span class="hero-scroll-hint">Scroll to discover</span>
+    </header>
+
+    <section class="philosophy">
+        <div class="philosophy-inner">
+            <span class="philosophy-label">The Core Insight</span>
+            <p class="philosophy-text">
+                Your crisis isn't a void. It's an <em>interface</em> between two versions of you. The old story is breaking down. The new one hasn't been written yet. Most people wait for clarity. <em>You can engineer it.</em>
+            </p>
+        </div>
+    </section>
+
+    <section class="research-foundation">
+        <div class="research-inner">
+            <span class="section-label">The Research Foundation</span>
+            <h2 class="section-title">Built on Decades of Science</h2>
+            <p class="section-subtitle">This synthesis draws from two powerful bodies of work</p>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon">📖</div>
+                    <h3>Narrative Identity Theory</h3>
+                    <p class="research-author">McAdams, Josselson & Lieblich</p>
+                    <p class="research-desc">Research showing that identity is constructed through the stories we tell about ourselves. Key concepts: <strong>redemption sequences</strong> (turning suffering into growth), <strong>agency</strong> (sense of control), <strong>communion</strong> (connection to others), and the <strong>springboard effect</strong> (how turning points propel us forward).</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">🧠</div>
+                    <h3>State-Change Mechanics</h3>
+                    <p class="research-author">Bandler & NLP Tradition</p>
+                    <p class="research-desc">Practical techniques for shifting emotional and physiological states through language patterns, anchoring, and representational changes. The insight: <strong>state precedes story</strong>—you can't write a new narrative from an old emotional state.</p>
+                </div>
+            </div>
+            <p class="research-synthesis">The synthesis: McAdams tells you <em>what</em> to change in your narrative. Bandler tells you <em>how</em> to change your state so the new narrative sticks.</p>
+        </div>
+    </section>
+
+    <section class="protocols">
+        <div class="protocols-header">
+            <span class="section-label">What This Book Teaches</span>
+            <h2 class="section-title">Six Synthesis Protocols</h2>
+            <p class="section-subtitle">Combining state-change mechanics with narrative identity reconstruction</p>
+        </div>
+        <div class="protocols-grid">
+            <div class="protocol-card">
+                <div class="protocol-number">01</div>
+                <h3 class="protocol-name">The Transition Map</h3>
+                <p class="protocol-desc">Map your Before → Now → After with losses, gains, constraints, signals, and your next small move.</p>
+            </div>
+            <div class="protocol-card">
+                <div class="protocol-number">02</div>
+                <h3 class="protocol-name">The State Anchor</h3>
+                <p class="protocol-desc">Create a physical cue that instantly accesses your most resourceful state—on demand.</p>
+            </div>
+            <div class="protocol-card">
+                <div class="protocol-number">03</div>
+                <h3 class="protocol-name">The Story Rewrite</h3>
+                <p class="protocol-desc">Transform contamination narratives into redemption arcs through deliberate restructuring.</p>
+            </div>
+            <div class="protocol-card">
+                <div class="protocol-number">04</div>
+                <h3 class="protocol-name">The Redemption Flip</h3>
+                <p class="protocol-desc">Find the gift inside the wound. Every crisis contains the seed of what you're becoming.</p>
+            </div>
+            <div class="protocol-card">
+                <div class="protocol-number">05</div>
+                <h3 class="protocol-name">The Identity Bridge</h3>
+                <p class="protocol-desc">Connect who you were to who you're becoming through a coherent narrative thread.</p>
+            </div>
+            <div class="protocol-card">
+                <div class="protocol-number">06</div>
+                <h3 class="protocol-name">The 60-Second Ritual</h3>
+                <p class="protocol-desc">A daily practice combining state cue + story statement + small action. Takes one minute. Changes everything.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="tools">
+        <div class="tools-header">
+            <span class="section-label">Interactive Tools</span>
+            <h2 class="section-title">Experience the Transformation</h2>
+            <p class="section-subtitle">Try three protocols right now. Save your results.</p>
+        </div>
+        
+        <div class="tools-container">
+            <div class="tool-tabs">
+                <button class="tool-tab active" data-tab="map">Transition Map</button>
+                <button class="tool-tab" data-tab="story">Story Editor</button>
+                <button class="tool-tab" data-tab="ritual">State Script</button>
+            </div>
+
+            <!-- TOOL 1: Transition Map -->
+            <div class="tool-panel active" id="panel-map">
+                <div class="tool-intro">
+                    <h3>Map Your Transition</h3>
+                    <p>Your transition isn't a void. It's an interface between two versions of you.</p>
+                </div>
+                <form id="mapForm">
+                    <div class="form-group">
+                        <label class="form-label">Who were you BEFORE this transition?</label>
+                        <textarea class="form-textarea" id="mapBefore" placeholder="Describe your identity, role, or situation before the change..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Where are you NOW?</label>
+                        <textarea class="form-textarea" id="mapNow" placeholder="Describe your current state, what's uncertain, what's in flux..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Who do you want to become AFTER?</label>
+                        <textarea class="form-textarea" id="mapAfter" placeholder="Describe the person you're becoming, or want to become..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Map My Transition</button>
+                </form>
+                <div class="results" id="mapResults">
+                    <div class="results-header">
+                        <h3 class="results-title">Your Transition Map</h3>
+                        <div class="results-actions">
+                            <button class="btn-icon" onclick="copyResults('map')" title="Copy">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                            <button class="btn-icon" onclick="saveResults('map')" title="Save">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                    <polyline points="7 3 7 8 15 8"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="map-visual">
+                        <div class="map-node">
+                            <div class="map-node-label">Before</div>
+                            <div class="map-node-text" id="mapBeforeDisplay"></div>
+                        </div>
+                        <div class="map-arrow">→</div>
+                        <div class="map-node">
+                            <div class="map-node-label">Now</div>
+                            <div class="map-node-text" id="mapNowDisplay"></div>
+                        </div>
+                        <div class="map-arrow">→</div>
+                        <div class="map-node">
+                            <div class="map-node-label">After</div>
+                            <div class="map-node-text" id="mapAfterDisplay"></div>
+                        </div>
+                    </div>
+                    <div class="insights-grid" id="mapInsights"></div>
+                </div>
+            </div>
+
+            <!-- TOOL 2: Story Editor -->
+            <div class="tool-panel" id="panel-story">
+                <div class="tool-intro">
+                    <h3>Edit Your Story</h3>
+                    <p>Your story isn't just what happened. It's the lens you're using to see what's possible.</p>
+                </div>
+                <form id="storyForm">
+                    <div class="form-group">
+                        <label class="form-label">Write your transition story in 5-7 sentences</label>
+                        <textarea class="form-textarea" id="storyInput" style="min-height: 180px;" placeholder="Tell the story of your transition. What happened? How did it affect you? Where are you now? What are you moving toward?"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Analyze My Story</button>
+                </form>
+                <div class="results" id="storyResults">
+                    <div class="results-header">
+                        <h3 class="results-title">Your Story Analysis</h3>
+                        <div class="results-actions">
+                            <button class="btn-icon" onclick="copyResults('story')" title="Copy">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                            <button class="btn-icon" onclick="saveResults('story')" title="Save">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                    <polyline points="7 3 7 8 15 8"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="story-display" id="storyDisplay"></div>
+                    <div class="analysis-panel" id="storyAnalysis"></div>
+                    <div class="rewrite-prompts" id="rewritePrompts"></div>
+                </div>
+            </div>
+
+            <!-- TOOL 3: State Script -->
+            <div class="tool-panel" id="panel-ritual">
+                <div class="tool-intro">
+                    <h3>Generate Your Ritual</h3>
+                    <p>State isn't just how you feel. It's the foundation your new story stands on.</p>
+                </div>
+                <form id="ritualForm">
+                    <div class="form-group">
+                        <label class="form-label">Your "after" statement (who you're becoming)</label>
+                        <textarea class="form-textarea" id="ritualStatement" placeholder="I am becoming someone who..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">When you imagine your new self, what do you feel?</label>
+                            <select class="form-select" id="ritualFeeling">
+                                <option value="">Select a feeling...</option>
+                                <option value="grounded">Grounded & Stable</option>
+                                <option value="energized">Energized & Alive</option>
+                                <option value="calm">Calm & Centered</option>
+                                <option value="powerful">Powerful & Capable</option>
+                                <option value="light">Light & Free</option>
+                                <option value="warm">Warm & Connected</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Where in your body do you feel it most?</label>
+                            <select class="form-select" id="ritualBody">
+                                <option value="">Select a location...</option>
+                                <option value="chest">Chest / Heart area</option>
+                                <option value="stomach">Stomach / Core</option>
+                                <option value="hands">Hands</option>
+                                <option value="head">Head / Mind</option>
+                                <option value="whole">Whole body</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Generate My Ritual</button>
+                </form>
+                <div class="results" id="ritualResults">
+                    <div class="results-header">
+                        <h3 class="results-title">Your 60-Second Ritual</h3>
+                        <div class="results-actions">
+                            <button class="btn-icon" onclick="copyResults('ritual')" title="Copy">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                            <button class="btn-icon" onclick="saveResults('ritual')" title="Save">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                    <polyline points="7 3 7 8 15 8"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="ritual-output" id="ritualOutput"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="save">
+        <div class="cta-inner">
+            <h2 class="cta-title">Save Your Transformation</h2>
+            <p class="cta-text">Enter your email to save your results and get notified when the full book launches.</p>
+            <form class="email-form" id="emailForm">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Save & Subscribe</button>
+            </form>
+            <p class="cta-note">Your data stays in your browser. We only store your email for launch updates.</p>
+        </div>
+    </section>
+
+    <div class="disclaimer">
+        <div class="disclaimer-inner">
+            <p class="disclaimer-text">
+                <strong>Important:</strong> This is not therapy, medical advice, or a substitute for professional mental health support. These tools are designed for self-reflection and personal development. If you're experiencing a mental health crisis, please contact a qualified professional or crisis helpline. The Transition Rite is for people seeking frameworks for intentional change, not clinical intervention.
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>The Transition Rite — A synthesis of state-change mechanics and narrative identity theory.</p>
+    </footer>
+
+    <!-- Prompt Kit Toggle -->
+    <div class="prompt-kit-toggle">
+        <button class="prompt-kit-btn" onclick="togglePromptKit()">⚡ Prompt Kit</button>
+    </div>
+
+    <!-- Prompt Kit Modal -->
+    <div class="prompt-kit-modal" id="promptKitModal">
+        <div class="prompt-kit-content">
+            <div class="prompt-kit-header">
+                <h2>Evolution Prompt Kit</h2>
+                <button class="prompt-kit-close" onclick="togglePromptKit()">×</button>
+            </div>
+            
+            <div class="prompt-item">
+                <h3>1. Synthesis Council</h3>
+                <pre>You are a council of five minds synthesizing two frameworks into new protocols.
+
+FRAMEWORK A: [Insert framework 1 - key concepts, mechanics, principles]
+FRAMEWORK B: [Insert framework 2 - key concepts, mechanics, principles]
+
+Council Members:
+- ARCHITECT: How can these be combined into elegant, buildable protocols?
+- ORACLE: What does this synthesis become? What's the 10x potential?
+- CRITIC: What's weak in the synthesis? What contradictions exist?
+- CREATOR: What unexpected angles emerge from combining these?
+- GUARDIAN: Is this ethical? Sustainable? Safe to teach?
+
+Generate 3-5 new synthesis protocols that:
+1. Take the best mechanics from both frameworks
+2. Create something neither framework could do alone
+3. Are practical (can be done in 5-15 minutes)
+4. Have clear before/after transformation
+5. Can be taught without prerequisite training
+
+For each protocol, provide: Name, Core Mechanic, Steps, Expected Outcome.</pre>
+                <button class="copy-prompt" onclick="copyPrompt(this)">Copy Prompt</button>
+            </div>
+
+            <div class="prompt-item">
+                <h3>2. Manifesto Refiner</h3>
+                <pre>You are a ruthless editor for manifestos. Your job is to make writing sharper, more permission-giving, and anti-fluff.
+
+CURRENT TEXT:
+[Paste your manifesto text here]
+
+Apply these refinements:
+1. Remove all hedge words (might, could, perhaps, maybe)
+2. Replace passive voice with active voice
+3. Cut any sentence that doesn't earn its place
+4. Add specificity where there's vagueness
+5. Increase the "permission-giving" quality (make readers feel empowered)
+6. Remove anything that sounds like generic self-help
+7. Add unexpected analogies or metaphors where helpful
+8. Ensure every paragraph has a clear "so what" payoff
+
+Output the refined version, then list the 5 most impactful changes you made.</pre>
+                <button class="copy-prompt" onclick="copyPrompt(this)">Copy Prompt</button>
+            </div>
+
+            <div class="prompt-item">
+                <h3>3. Landing Conversion Healer</h3>
+                <pre>You are a conversion optimization specialist for book/product landing pages.
+
+CURRENT LANDING PAGE:
+[Paste your landing page copy here]
+
+TARGET READER: [Describe your ideal reader]
+MAIN OBJECTIONS: [List 3-5 objections they might have]
+DESIRED ACTION: [What do you want them to do?]
+
+Diagnose and heal the landing page by:
+1. Identifying the weakest section (highest drop-off risk)
+2. Rewriting the hero section for immediate hook
+3. Adding/improving social proof or credibility signals
+4. Addressing each objection explicitly in the copy
+5. Strengthening the CTA (make it feel inevitable, not pushy)
+6. Adding a "mind-blowing moment" that demonstrates value before purchase
+
+Output: Rewritten sections with before/after comparison and rationale for each change.</pre>
+                <button class="copy-prompt" onclick="copyPrompt(this)">Copy Prompt</button>
+            </div>
+
+            <div class="prompt-item">
+                <h3>4. Tool Evolver</h3>
+                <pre>You are a product designer specializing in interactive self-reflection tools.
+
+EXISTING TOOL:
+[Describe the current tool: inputs, outputs, UX flow]
+
+BOOK CONTEXT:
+[Brief description of the book's core transformation]
+
+Evolve this tool by:
+1. Adding one new input that deepens the reflection
+2. Adding one new output that increases perceived value
+3. Identifying one "aha moment" that could be built in
+4. Suggesting a visual/interactive enhancement
+5. Creating a "share-worthy" output format
+
+Also generate ONE completely new tool idea that:
+- Complements the existing tool
+- Takes 2-5 minutes to complete
+- Has a clear before/after state
+- Could work standalone or in sequence
+
+Output: Enhanced tool spec + new tool spec with full implementation details.</pre>
+                <button class="copy-prompt" onclick="copyPrompt(this)">Copy Prompt</button>
+            </div>
+
+            <div class="prompt-item">
+                <h3>5. Ethics Guard</h3>
+                <pre>You are an ethics reviewer for self-development content. Your job is to ensure content is helpful, not harmful.
+
+CONTENT TO REVIEW:
+[Paste your content here]
+
+Review for:
+1. COERCION: Does this manipulate rather than persuade? Are there dark patterns?
+2. CLINICAL CLAIMS: Does this promise to treat mental health conditions it can't treat?
+3. VULNERABLE POPULATIONS: Could this harm people in crisis or with certain conditions?
+4. POWER DYNAMICS: Does this create unhealthy dependency on the author/creator?
+5. SCIENTIFIC CLAIMS: Are claims evidence-based or appropriately hedged?
+6. CONSENT: Is it clear what the reader is agreeing to?
+
+For each concern found:
+- Quote the problematic section
+- Explain the risk
+- Provide a rewritten alternative that maintains the value while removing the harm
+
+Output: Ethics report with specific fixes.</pre>
+                <button class="copy-prompt" onclick="copyPrompt(this)">Copy Prompt</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ===== BACKGROUND ANIMATION =====
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        function createParticles() {
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 15000);
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    speedY: (Math.random() - 0.5) * 0.3,
+                    opacity: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212, 165, 116, ${p.opacity})`;
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        resizeCanvas();
+        createParticles();
+        animateParticles();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+
+        // ===== TOOL TABS =====
+        const tabs = document.querySelectorAll('.tool-tab');
+        const panels = document.querySelectorAll('.tool-panel');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
+            });
+        });
+
+        // ===== TOOL 1: TRANSITION MAP =====
+        document.getElementById('mapForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const before = document.getElementById('mapBefore').value.trim();
+            const now = document.getElementById('mapNow').value.trim();
+            const after = document.getElementById('mapAfter').value.trim();
+            
+            if (!before || !now || !after) {
+                showToast('Please fill in all three fields');
+                return;
+            }
+            
+            // Display the map
+            document.getElementById('mapBeforeDisplay').textContent = truncate(before, 60);
+            document.getElementById('mapNowDisplay').textContent = truncate(now, 60);
+            document.getElementById('mapAfterDisplay').textContent = truncate(after, 60);
+            
+            // Generate insights
+            const insights = generateMapInsights(before, now, after);
+            const insightsHTML = `
+                <div class="insight-card losses">
+                    <h4>Losses (What You Left Behind)</h4>
+                    <p>${insights.losses}</p>
+                </div>
+                <div class="insight-card gains">
+                    <h4>Gains (What You've Found)</h4>
+                    <p>${insights.gains}</p>
+                </div>
+                <div class="insight-card constraints">
+                    <h4>Constraints (What's Holding You)</h4>
+                    <p>${insights.constraints}</p>
+                </div>
+                <div class="insight-card signals">
+                    <h4>Signals (What's Calling You)</h4>
+                    <p>${insights.signals}</p>
+                </div>
+                <div class="insight-card next">
+                    <h4>Next Small Move</h4>
+                    <p>${insights.next}</p>
+                </div>
+            `;
+            document.getElementById('mapInsights').innerHTML = insightsHTML;
+            
+            // Show results
+            document.getElementById('mapResults').classList.add('visible');
+            
+            // Store data
+            localStorage.setItem('transitionMap', JSON.stringify({ before, now, after, insights }));
+        });
+        
+        function generateMapInsights(before, now, after) {
+            // Simple heuristic-based insight generation
+            const beforeWords = before.toLowerCase().split(/\s+/);
+            const nowWords = now.toLowerCase().split(/\s+/);
+            const afterWords = after.toLowerCase().split(/\s+/);
+            
+            // Keywords for detection
+            const lossKeywords = ['was', 'had', 'used to', 'before', 'lost', 'left', 'gave up', 'no longer'];
+            const gainKeywords = ['learning', 'discovering', 'found', 'new', 'growing', 'becoming'];
+            const constraintKeywords = ['but', 'however', 'afraid', 'scared', 'uncertain', 'don\'t know', 'stuck', 'can\'t'];
+            const signalKeywords = ['want', 'hope', 'dream', 'excited', 'drawn to', 'calling', 'feel like'];
+            
+            // Generate contextual insights
+            return {
+                losses: generateInsight(before, lossKeywords, [
+                    "The identity you built is dissolving—this is necessary, not failure.",
+                    "You're mourning a version of yourself that served you well. Honor it.",
+                    "What you're releasing made sense then. It doesn't have to make sense now."
+                ]),
+                gains: generateInsight(now, gainKeywords, [
+                    "In the uncertainty, you're developing tolerance for ambiguity—a rare skill.",
+                    "The discomfort is data: you're growing beyond your previous container.",
+                    "You're gaining the ability to sit with 'not knowing'—this is wisdom."
+                ]),
+                constraints: generateInsight(now, constraintKeywords, [
+                    "The thing holding you back is likely protecting something important. What?",
+                    "Your constraint might be a wisdom in disguise—look for the gift in it.",
+                    "Ask: is this a real limit, or a story about a limit?"
+                ]),
+                signals: generateInsight(after, signalKeywords, [
+                    "Your future self is already pulling you forward. Listen to the pull.",
+                    "The vision you hold is permission to move. You don't need more clarity.",
+                    "What excites you is data about who you're becoming."
+                ]),
+                next: generateNextMove(before, now, after)
+            };
+        }
+        
+        function generateInsight(text, keywords, defaults) {
+            const lower = text.toLowerCase();
+            for (const kw of keywords) {
+                if (lower.includes(kw)) {
+                    return defaults[Math.floor(Math.random() * defaults.length)];
+                }
+            }
+            return defaults[0];
+        }
+        
+        function generateNextMove(before, now, after) {
+            const moves = [
+                "Write one sentence about who you're becoming. Read it aloud every morning.",
+                "Identify one small action your future self would take. Do it today.",
+                "Tell one person about who you're becoming. Speaking it makes it real.",
+                "Find one thing in your current life that already belongs to your future self.",
+                "Create a physical symbol of your transition. Put it where you'll see it daily."
+            ];
+            return moves[Math.floor(Math.random() * moves.length)];
+        }
+
+        // ===== TOOL 2: STORY EDITOR =====
+        document.getElementById('storyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const story = document.getElementById('storyInput').value.trim();
+            
+            if (!story) {
+                showToast('Please write your story first');
+                return;
+            }
+            
+            // Analyze the story
+            const analysis = analyzeStory(story);
+            
+            // Display highlighted story
+            document.getElementById('storyDisplay').innerHTML = analysis.highlightedStory;
+            
+            // Display analysis scores
+            const analysisHTML = `
+                <div class="analysis-item">
+                    <h4>Agency</h4>
+                    <p class="score-hint">Self-mastery & control</p>
+                    <div class="score ${getScoreClass(analysis.agencyScore)}">${analysis.agencyScore}/10</div>
+                </div>
+                <div class="analysis-item">
+                    <h4>Communion</h4>
+                    <p class="score-hint">Connection & belonging</p>
+                    <div class="score ${getScoreClass(analysis.communionScore)}">${analysis.communionScore}/10</div>
+                </div>
+                <div class="analysis-item">
+                    <h4>Narrative Arc</h4>
+                    <p class="score-hint">Story direction</p>
+                    <div class="score ${analysis.direction === 'Redemption' ? 'high' : analysis.direction === 'Neutral' ? 'medium' : 'low'}">${analysis.direction}</div>
+                </div>
+                <div class="analysis-item">
+                    <h4>Springboard</h4>
+                    <p class="score-hint">Growth momentum</p>
+                    <div class="score ${analysis.springboard >= 3 ? 'high' : analysis.springboard >= 1 ? 'medium' : 'low'}">${analysis.springboard >= 3 ? 'Strong' : analysis.springboard >= 1 ? 'Present' : 'Weak'}</div>
+                </div>
+            `;
+            document.getElementById('storyAnalysis').innerHTML = analysisHTML;
+            
+            // Display rewrite prompts
+            const promptsHTML = `
+                <h4>Rewrite Suggestions</h4>
+                <ul>
+                    ${analysis.prompts.map(p => `<li>${p}</li>`).join('')}
+                </ul>
+            `;
+            document.getElementById('rewritePrompts').innerHTML = promptsHTML;
+            
+            // Show results
+            document.getElementById('storyResults').classList.add('visible');
+            
+            // Store data
+            localStorage.setItem('storyAnalysis', JSON.stringify({ story, analysis }));
+        });
+        
+        function analyzeStory(story) {
+            // Word pattern dictionaries
+            const agencyWords = ['i decided', 'i chose', 'i made', 'i built', 'i created', 'i started', 'i took', 'i achieved', 'i learned', 'i realized', 'my choice', 'my decision'];
+            const communionWords = ['we', 'together', 'connection', 'love', 'support', 'helped', 'shared', 'community', 'relationship', 'family', 'friends', 'belonging'];
+            const contaminationWords = ['but then', 'until', 'ruined', 'destroyed', 'lost everything', 'fell apart', 'went wrong', 'failed'];
+            const redemptionWords = ['but then i', 'i learned', 'i grew', 'became stronger', 'found meaning', 'transformed', 'discovered', 'emerged', 'now i'];
+            const turningWords = ['suddenly', 'then', 'until', 'when', 'the moment', 'everything changed', 'that\'s when', 'i realized'];
+            
+            let highlightedStory = story;
+            let agencyCount = 0;
+            let communionCount = 0;
+            let contaminationCount = 0;
+            let redemptionCount = 0;
+            
+            // Count and highlight
+            const lower = story.toLowerCase();
+            
+            agencyWords.forEach(w => {
+                if (lower.includes(w)) {
+                    agencyCount++;
+                    const regex = new RegExp(`(${w})`, 'gi');
+                    highlightedStory = highlightedStory.replace(regex, '<span class="agency">$1</span>');
+                }
+            });
+            
+            communionWords.forEach(w => {
+                if (lower.includes(w)) {
+                    communionCount++;
+                    const regex = new RegExp(`\\b(${w})\\b`, 'gi');
+                    highlightedStory = highlightedStory.replace(regex, '<span class="communion">$1</span>');
+                }
+            });
+            
+            contaminationWords.forEach(w => {
+                if (lower.includes(w)) {
+                    contaminationCount++;
+                    const regex = new RegExp(`(${w})`, 'gi');
+                    highlightedStory = highlightedStory.replace(regex, '<span class="contamination">$1</span>');
+                }
+            });
+            
+            redemptionWords.forEach(w => {
+                if (lower.includes(w)) {
+                    redemptionCount++;
+                    const regex = new RegExp(`(${w})`, 'gi');
+                    highlightedStory = highlightedStory.replace(regex, '<span class="redemption">$1</span>');
+                }
+            });
+            
+            turningWords.forEach(w => {
+                if (lower.includes(w)) {
+                    const regex = new RegExp(`(${w})`, 'gi');
+                    highlightedStory = highlightedStory.replace(regex, '<span class="turning">$1</span>');
+                }
+            });
+            
+            // Calculate scores
+            const agencyScore = Math.min(10, agencyCount * 2 + 3);
+            const communionScore = Math.min(10, communionCount * 2 + 2);
+            
+            // Determine direction
+            let direction = 'Neutral';
+            if (redemptionCount > contaminationCount) direction = 'Redemption';
+            else if (contaminationCount > redemptionCount) direction = 'Contamination';
+            
+            // Calculate springboard effect (turning points + forward momentum)
+            const springboardWords = ['now i', 'becoming', 'learning', 'growing', 'building', 'moving toward', 'starting to', 'beginning to', 'finally', 'ready to'];
+            let springboard = 0;
+            springboardWords.forEach(w => {
+                if (lower.includes(w)) springboard++;
+            });
+            
+            // Generate rewrite prompts
+            const prompts = [];
+            if (agencyScore < 5) {
+                prompts.push("Add more 'I decided' or 'I chose' statements—claim your agency in the story.");
+            }
+            if (communionScore < 4) {
+                prompts.push("Include people who helped or walked alongside you—connection strengthens narratives.");
+            }
+            if (direction === 'Contamination') {
+                prompts.push("Find the gift in the wound—what did this experience teach you or make possible?");
+                prompts.push("Rewrite the ending: what became possible BECAUSE of what happened?");
+            }
+            if (direction === 'Neutral') {
+                prompts.push("Add a clear turning point—when did things shift? Name that moment.");
+            }
+            if (prompts.length === 0) {
+                prompts.push("Your story has strong redemption elements. Consider: what's the next chapter?");
+                prompts.push("Who could benefit from hearing this story? That's your audience.");
+            }
+            
+            return {
+                highlightedStory,
+                agencyScore,
+                communionScore,
+                direction,
+                springboard,
+                prompts
+            };
+        }
+        
+        function getScoreClass(score) {
+            if (score >= 7) return 'high';
+            if (score >= 4) return 'medium';
+            return 'low';
+        }
+
+        // ===== TOOL 3: STATE SCRIPT =====
+        document.getElementById('ritualForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const statement = document.getElementById('ritualStatement').value.trim();
+            const feeling = document.getElementById('ritualFeeling').value;
+            const bodyPart = document.getElementById('ritualBody').value;
+            
+            if (!statement || !feeling || !bodyPart) {
+                showToast('Please fill in all fields');
+                return;
+            }
+            
+            // Generate ritual
+            const ritual = generateRitual(statement, feeling, bodyPart);
+            
+            // Display ritual
+            const ritualHTML = `
+                <div class="ritual-card cue">
+                    <h4>Your State Cue</h4>
+                    <p>${ritual.cue}</p>
+                </div>
+                <div class="ritual-card statement">
+                    <h4>Your Story Statement</h4>
+                    <p>"${ritual.statement}"</p>
+                </div>
+                <div class="ritual-card steps">
+                    <h4>Your 60-Second Ritual</h4>
+                    <ol class="ritual-steps">
+                        ${ritual.steps.map(s => `<li>${s}</li>`).join('')}
+                    </ol>
+                </div>
+            `;
+            document.getElementById('ritualOutput').innerHTML = ritualHTML;
+            
+            // Show results
+            document.getElementById('ritualResults').classList.add('visible');
+            
+            // Store data
+            localStorage.setItem('stateRitual', JSON.stringify({ statement, feeling, bodyPart, ritual }));
+        });
+        
+        function generateRitual(statement, feeling, bodyPart) {
+            const feelingCues = {
+                grounded: { action: 'Press your feet firmly into the floor', word: 'ROOTED' },
+                energized: { action: 'Shake your hands rapidly for 3 seconds', word: 'ALIVE' },
+                calm: { action: 'Place your hand on your heart', word: 'STILL' },
+                powerful: { action: 'Stand tall and expand your chest', word: 'STRONG' },
+                light: { action: 'Take a deep breath and lift your shoulders, then release', word: 'FREE' },
+                warm: { action: 'Wrap your arms around yourself briefly', word: 'HOME' }
+            };
+            
+            const bodyFocus = {
+                chest: 'Feel your heart space expand with each breath.',
+                stomach: 'Feel your core strength—your center of gravity.',
+                hands: 'Feel the energy in your palms—ready to create.',
+                head: 'Feel clarity spreading through your mind.',
+                whole: 'Feel this sensation fill every cell of your body.'
+            };
+            
+            const cue = feelingCues[feeling];
+            
+            // Clean up the statement
+            let cleanStatement = statement;
+            if (!cleanStatement.toLowerCase().startsWith('i am')) {
+                cleanStatement = 'I am ' + cleanStatement;
+            }
+            
+            return {
+                cue: `${cue.action}. As you do this, say the word "${cue.word}" silently or aloud.`,
+                statement: cleanStatement,
+                steps: [
+                    `<strong>ANCHOR</strong> (10 sec): ${cue.action}. Say "${cue.word}."`,
+                    `<strong>BREATHE</strong> (10 sec): Three slow breaths. ${bodyFocus[bodyPart]}`,
+                    `<strong>SPEAK</strong> (10 sec): Say aloud: "${cleanStatement}"`,
+                    `<strong>FEEL</strong> (20 sec): Close your eyes. Feel what it's like to already BE this person.`,
+                    `<strong>MOVE</strong> (10 sec): Take one small action your future self would take.`
+                ]
+            };
+        }
+
+        // ===== UTILITY FUNCTIONS =====
+        function truncate(str, len) {
+            if (str.length <= len) return str;
+            return str.substring(0, len) + '...';
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+        
+        function copyResults(type) {
+            let text = '';
+            
+            if (type === 'map') {
+                const data = JSON.parse(localStorage.getItem('transitionMap') || '{}');
+                text = `TRANSITION MAP\n\nBefore: ${data.before}\nNow: ${data.now}\nAfter: ${data.after}\n\nInsights:\n- Losses: ${data.insights?.losses}\n- Gains: ${data.insights?.gains}\n- Constraints: ${data.insights?.constraints}\n- Signals: ${data.insights?.signals}\n- Next Move: ${data.insights?.next}`;
+            } else if (type === 'story') {
+                const data = JSON.parse(localStorage.getItem('storyAnalysis') || '{}');
+                text = `STORY ANALYSIS\n\nStory: ${data.story}\n\nScores:\n- Agency: ${data.analysis?.agencyScore}/10\n- Communion: ${data.analysis?.communionScore}/10\n- Direction: ${data.analysis?.direction}\n\nRewrite Prompts:\n${data.analysis?.prompts?.map(p => '- ' + p).join('\n')}`;
+            } else if (type === 'ritual') {
+                const data = JSON.parse(localStorage.getItem('stateRitual') || '{}');
+                text = `60-SECOND RITUAL\n\nState Cue: ${data.ritual?.cue}\n\nStory Statement: "${data.ritual?.statement}"\n\nSteps:\n${data.ritual?.steps?.map((s, i) => `${i+1}. ${s.replace(/<[^>]*>/g, '')}`).join('\n')}`;
+            }
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard!');
+            });
+        }
+        
+        function saveResults(type) {
+            const data = localStorage.getItem(type === 'map' ? 'transitionMap' : type === 'story' ? 'storyAnalysis' : 'stateRitual');
+            if (data) {
+                showToast('Results saved to browser storage!');
+            }
+        }
+        
+        function togglePromptKit() {
+            document.getElementById('promptKitModal').classList.toggle('visible');
+        }
+        
+        function copyPrompt(btn) {
+            const pre = btn.previousElementSibling;
+            navigator.clipboard.writeText(pre.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy Prompt', 2000);
+            });
+        }
+
+        // ===== EMAIL FORM =====
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            
+            // Store email locally (in real implementation, send to backend)
+            localStorage.setItem('userEmail', email);
+            
+            // Export all results
+            const allData = {
+                email,
+                transitionMap: JSON.parse(localStorage.getItem('transitionMap') || 'null'),
+                storyAnalysis: JSON.parse(localStorage.getItem('storyAnalysis') || 'null'),
+                stateRitual: JSON.parse(localStorage.getItem('stateRitual') || 'null'),
+                exportedAt: new Date().toISOString()
+            };
+            
+            // Create download
+            const blob = new Blob([JSON.stringify(allData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'transition-rite-results.json';
+            a.click();
+            
+            showToast('Results exported! Check your downloads.');
+        });
+
+        // ===== LOAD SAVED DATA =====
+        window.addEventListener('load', () => {
+            // Restore any saved data if user returns
+            const mapData = localStorage.getItem('transitionMap');
+            const storyData = localStorage.getItem('storyAnalysis');
+            const ritualData = localStorage.getItem('stateRitual');
+            
+            if (mapData || storyData || ritualData) {
+                // Could auto-populate forms here if desired
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[BOOK TITLE] — [Your compelling tagline goes here]">
+    <title>[BOOK TITLE] — Navigate Your Transformation</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           CSS VARIABLES — Customize for your book
+           ======================================== */
+        :root {
+            /* Background */
+            --bg-void: #0a0908;
+            --bg-card: #151311;
+            --bg-card-hover: #1c1917;
+            --bg-input: #0d0c0a;
+            
+            /* Text */
+            --text-primary: #faf9f7;
+            --text-secondary: #a8a29e;
+            --text-muted: #78716c;
+            
+            /* Accents — CHANGE THESE FOR YOUR BOOK */
+            --accent-primary: #d4a574;
+            --accent-secondary: #10b981;
+            --accent-tertiary: #8b5cf6;
+            --accent-warning: #f59e0b;
+            
+            /* Borders */
+            --border-subtle: rgba(168, 162, 158, 0.12);
+            --border-active: rgba(212, 165, 116, 0.4);
+            
+            /* Effects */
+            --glow-primary: 0 0 60px rgba(212, 165, 116, 0.15);
+            
+            /* Typography */
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-void);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           BACKGROUND CANVAS
+           ======================================== */
+        .bg-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, var(--bg-void) 0%, transparent 100%);
+        }
+        .nav-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+        }
+        .nav-cta {
+            padding: 0.6rem 1.25rem;
+            background: transparent;
+            border: 1px solid var(--border-active);
+            color: var(--accent-primary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .nav-cta:hover {
+            background: var(--accent-primary);
+            color: var(--bg-void);
+        }
+
+        /* ========================================
+           SECTIONS
+           ======================================== */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 5rem 2rem;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(212, 165, 116, 0.08);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 2.5rem;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+        }
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent-primary);
+        }
+        .hero-manifesto {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+        .hero-manifesto strong {
+            color: var(--text-primary);
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            color: var(--bg-void);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-primary);
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: float 2s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ========================================
+           PORTALS GRID
+           ======================================== */
+        .portals {
+            background: var(--bg-card);
+        }
+        .portals-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .portals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .portal-card {
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .portal-card:hover {
+            border-color: var(--border-active);
+            transform: translateY(-4px);
+        }
+        .portal-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(212, 165, 116, 0.2);
+            margin-bottom: 1rem;
+        }
+        .portal-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .portal-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           TOOLS SECTION
+           ======================================== */
+        .tools {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .tools-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .tools-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+        }
+        .tool-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tool-tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tool-tab:hover {
+            border-color: var(--border-active);
+            color: var(--text-primary);
+        }
+        .tool-tab.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: var(--bg-void);
+        }
+        .tool-panel { display: none; animation: fadeIn 0.3s ease; }
+        .tool-panel.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tool-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .tool-intro h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .tool-intro p {
+            color: var(--text-secondary);
+        }
+
+        /* Forms */
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .form-textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            resize: vertical;
+            transition: all 0.2s;
+        }
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--border-active);
+        }
+        .form-textarea::placeholder { color: var(--text-muted); }
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-primary);
+            border: none;
+            color: var(--bg-void);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .form-submit:hover { opacity: 0.9; }
+
+        /* Results */
+        .results {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-active);
+        }
+        .results.visible { display: block; animation: fadeIn 0.5s ease; }
+        .results h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+        .insight-card {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent-primary);
+        }
+        .insight-card h5 {
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+        .insight-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ========================================
+           CTA SECTION
+           ======================================== */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 165, 116, 0.05) 100%);
+        }
+        .cta-inner { max-width: 600px; margin: 0 auto; }
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .cta-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .email-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--border-active);
+        }
+        .email-form button {
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            border: none;
+            color: var(--bg-void);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* ========================================
+           DISCLAIMER
+           ======================================== */
+        .disclaimer {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            padding: 1.5rem;
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            text-align: center;
+        }
+        .disclaimer strong { color: var(--accent-warning); }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ========================================
+           TOAST
+           ======================================== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 1rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-active);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            .nav { padding: 1rem; }
+            section { padding: 3rem 1rem; }
+            .tools-container { padding: 1.5rem; }
+            .tool-tabs { flex-direction: column; }
+            .tool-tab { width: 100%; text-align: center; }
+            .email-form { flex-direction: column; }
+            .email-form input { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Canvas -->
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <span class="nav-brand">[Book Title]</span>
+        <a href="#tools" class="nav-cta">Try the Tools</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span>A Synthesis of [Source A] + [Source B]</span>
+        </div>
+        <h1 class="hero-title">
+            Navigate Your <em>Transformation</em>
+        </h1>
+        <p class="hero-manifesto">
+            <strong>Change is inevitable.</strong> But how you navigate it is a choice.
+            This framework combines the best of [Source A] and [Source B] to give you 
+            practical tools for <strong>intentional transformation</strong>.
+        </p>
+        <a href="#tools" class="hero-cta">
+            Experience the Framework →
+        </a>
+        <span class="hero-scroll">Scroll to explore</span>
+    </section>
+
+    <!-- Three Portals Section -->
+    <section class="portals">
+        <div class="portals-header">
+            <span class="section-label">The Framework</span>
+            <h2 class="section-title">Three Portals to Transformation</h2>
+            <p class="section-subtitle">Each portal addresses a different dimension of change.</p>
+        </div>
+        <div class="portals-grid">
+            <div class="portal-card">
+                <div class="portal-number">01</div>
+                <h3 class="portal-name">[Portal 1: The Map]</h3>
+                <p class="portal-desc">See your transition clearly. Understand where you've been, where you are, and where you're heading.</p>
+            </div>
+            <div class="portal-card">
+                <div class="portal-number">02</div>
+                <h3 class="portal-name">[Portal 2: The Edit]</h3>
+                <p class="portal-desc">Rewrite the stories that no longer serve you. Transform limiting narratives into empowering ones.</p>
+            </div>
+            <div class="portal-card">
+                <div class="portal-number">03</div>
+                <h3 class="portal-name">[Portal 3: The Ritual]</h3>
+                <p class="portal-desc">Embody your new identity through daily practice. Make the transformation stick.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Tools Section -->
+    <section id="tools" class="tools">
+        <div class="tools-header">
+            <span class="section-label">Interactive Tools</span>
+            <h2 class="section-title">Experience the Framework</h2>
+            <p class="section-subtitle">Try these reflection tools to get a taste of the methodology.</p>
+        </div>
+
+        <div class="tools-container">
+            <div class="tool-tabs">
+                <button class="tool-tab active" data-tab="map">The Map</button>
+                <button class="tool-tab" data-tab="lens">The Lens</button>
+                <button class="tool-tab" data-tab="anchor">The Anchor</button>
+            </div>
+
+            <!-- TOOL 1: The Map -->
+            <div class="tool-panel active" id="panel-map">
+                <div class="tool-intro">
+                    <h3>Transition Map</h3>
+                    <p>See your current transition clearly in three dimensions.</p>
+                </div>
+                <form id="mapForm">
+                    <div class="form-group">
+                        <label class="form-label">Who were you before this transition?</label>
+                        <textarea class="form-textarea" id="mapBefore" placeholder="Describe your identity, role, or situation before the change began..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Where are you now?</label>
+                        <textarea class="form-textarea" id="mapNow" placeholder="Describe your current state—what's uncertain, what's in flux..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Who are you becoming?</label>
+                        <textarea class="form-textarea" id="mapAfter" placeholder="Describe the person emerging, or who you want to become..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Generate Map Insights</button>
+                </form>
+                <div class="results" id="mapResults">
+                    <h4>Your Transition Map</h4>
+                    <div id="mapOutput"></div>
+                </div>
+            </div>
+
+            <!-- TOOL 2: The Lens -->
+            <div class="tool-panel" id="panel-lens">
+                <div class="tool-intro">
+                    <h3>Perspective Lens</h3>
+                    <p>See how the same situation looks through different frames.</p>
+                </div>
+                <form id="lensForm">
+                    <div class="form-group">
+                        <label class="form-label">Describe a challenging situation you're facing</label>
+                        <textarea class="form-textarea" id="lensSituation" placeholder="What's happening? What makes it difficult?"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Apply Three Lenses</button>
+                </form>
+                <div class="results" id="lensResults">
+                    <h4>Three Perspectives</h4>
+                    <div id="lensOutput"></div>
+                </div>
+            </div>
+
+            <!-- TOOL 3: The Anchor -->
+            <div class="tool-panel" id="panel-anchor">
+                <div class="tool-intro">
+                    <h3>Identity Anchor</h3>
+                    <p>Create a grounding statement for your emerging self.</p>
+                </div>
+                <form id="anchorForm">
+                    <div class="form-group">
+                        <label class="form-label">I am becoming someone who...</label>
+                        <textarea class="form-textarea" id="anchorStatement" placeholder="Complete this sentence with your emerging identity..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Evidence that this is already true:</label>
+                        <textarea class="form-textarea" id="anchorEvidence" placeholder="What have you already done that proves you're becoming this person?"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Create Anchor</button>
+                </form>
+                <div class="results" id="anchorResults">
+                    <h4>Your Identity Anchor</h4>
+                    <div id="anchorOutput"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="save">
+        <div class="cta-inner">
+            <span class="section-label">Get Early Access</span>
+            <h2 class="cta-title">Be First to Know</h2>
+            <p class="cta-text">Join the waitlist for launch updates and exclusive bonuses.</p>
+            
+            <form class="email-form" id="emailForm">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
+
+            <div class="disclaimer">
+                <strong>Important:</strong> This is not therapy, medical advice, or a substitute for professional mental health support. These tools are designed for self-reflection and personal development. If you're experiencing a mental health crisis, please contact a qualified professional or crisis helpline.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>[Book Title] — A synthesis of [Source A] + [Source B]</p>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        /* ========================================
+           BACKGROUND CANVAS
+           ======================================== */
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function createParticles() {
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 15000);
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    speedY: (Math.random() - 0.5) * 0.3,
+                    opacity: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212, 165, 116, ${p.opacity})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        resizeCanvas();
+        createParticles();
+        animateParticles();
+        window.addEventListener('resize', () => { resizeCanvas(); createParticles(); });
+
+        /* ========================================
+           TOOL TABS
+           ======================================== */
+        const tabs = document.querySelectorAll('.tool-tab');
+        const panels = document.querySelectorAll('.tool-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
+                trackEvent('tool_tab_switch', { tab: tab.dataset.tab });
+            });
+        });
+
+        /* ========================================
+           TOOL 1: TRANSITION MAP
+           ======================================== */
+        document.getElementById('mapForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const before = document.getElementById('mapBefore').value.trim();
+            const now = document.getElementById('mapNow').value.trim();
+            const after = document.getElementById('mapAfter').value.trim();
+
+            if (!before || !now || !after) {
+                showToast('Please fill in all three fields');
+                return;
+            }
+
+            const insights = generateMapInsights(before, now, after);
+            document.getElementById('mapOutput').innerHTML = insights;
+            document.getElementById('mapResults').classList.add('visible');
+            trackEvent('tool_complete', { tool: 'map' });
+        });
+
+        function generateMapInsights(before, now, after) {
+            // Simple insight generation based on input
+            const insights = [
+                { title: 'What You\'re Leaving', text: 'The identity you held before served a purpose. Honor what it gave you, even as you release it.' },
+                { title: 'The Liminal Space', text: 'Where you are now—the uncertainty—is not a problem to solve but a space to inhabit. Growth happens here.' },
+                { title: 'The Emerging Self', text: 'The person you\'re becoming is already present in your intentions. Trust the direction, even when the path is unclear.' },
+                { title: 'Your Next Move', text: 'What\'s one small action your future self would take today? That\'s your bridge.' }
+            ];
+            
+            return insights.map(i => `
+                <div class="insight-card">
+                    <h5>${i.title}</h5>
+                    <p>${i.text}</p>
+                </div>
+            `).join('');
+        }
+
+        /* ========================================
+           TOOL 2: PERSPECTIVE LENS
+           ======================================== */
+        document.getElementById('lensForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const situation = document.getElementById('lensSituation').value.trim();
+
+            if (!situation) {
+                showToast('Please describe a situation');
+                return;
+            }
+
+            const lenses = [
+                { name: 'The Reactor', perspective: 'This is happening TO me. Why does this keep occurring? What did I do wrong?', color: 'var(--accent-warning)' },
+                { name: 'The Observer', perspective: 'This is happening. Interesting. What patterns do I notice? What can I learn from this?', color: 'var(--accent-secondary)' },
+                { name: 'The Author', perspective: 'This is material for my story. How do I want to write this chapter? What meaning will I create?', color: 'var(--accent-primary)' }
+            ];
+
+            const output = lenses.map(l => `
+                <div class="insight-card" style="border-left-color: ${l.color}">
+                    <h5 style="color: ${l.color}">${l.name}</h5>
+                    <p>${l.perspective}</p>
+                </div>
+            `).join('');
+
+            output += `<div class="insight-card">
+                <h5>The Shift</h5>
+                <p>Notice how the same situation transforms based on the lens you choose. You can't always control what happens, but you can always choose your frame.</p>
+            </div>`;
+
+            document.getElementById('lensOutput').innerHTML = output;
+            document.getElementById('lensResults').classList.add('visible');
+            trackEvent('tool_complete', { tool: 'lens' });
+        });
+
+        /* ========================================
+           TOOL 3: IDENTITY ANCHOR
+           ======================================== */
+        document.getElementById('anchorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const statement = document.getElementById('anchorStatement').value.trim();
+            const evidence = document.getElementById('anchorEvidence').value.trim();
+
+            if (!statement || !evidence) {
+                showToast('Please fill in both fields');
+                return;
+            }
+
+            const fullStatement = statement.toLowerCase().startsWith('i am') ? statement : `I am becoming someone who ${statement}`;
+
+            const output = `
+                <div class="insight-card">
+                    <h5>Your Anchor Statement</h5>
+                    <p style="font-style: italic; font-size: 1.1rem;">"${fullStatement}"</p>
+                </div>
+                <div class="insight-card">
+                    <h5>Your Evidence</h5>
+                    <p>${evidence}</p>
+                </div>
+                <div class="insight-card">
+                    <h5>Daily Practice</h5>
+                    <p>Each morning, read your anchor statement aloud. Then recall your evidence. This bridges who you were and who you're becoming.</p>
+                </div>
+            `;
+
+            document.getElementById('anchorOutput').innerHTML = output;
+            document.getElementById('anchorResults').classList.add('visible');
+            trackEvent('tool_complete', { tool: 'anchor' });
+        });
+
+        /* ========================================
+           EMAIL FORM
+           ======================================== */
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            
+            // Store locally
+            localStorage.setItem('userEmail', email);
+            const waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
+            waitlist.push({ email, timestamp: Date.now() });
+            localStorage.setItem('waitlist', JSON.stringify(waitlist));
+            
+            showToast('You\'re on the list! We\'ll be in touch.');
+            this.reset();
+            trackEvent('waitlist_signup', { source: 'landing' });
+        });
+
+        /* ========================================
+           UTILITIES
+           ======================================== */
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        function trackEvent(eventName, properties = {}) {
+            const event = { event: eventName, properties: { ...properties, page: window.location.pathname, timestamp: Date.now() } };
+            console.log('[Analytics]', event);
+            if (typeof gtag !== 'undefined') gtag('event', eventName, properties);
+            window.dispatchEvent(new CustomEvent('book:event', { detail: event }));
+        }
+
+        // Scroll depth tracking
+        let trackedDepths = new Set();
+        window.addEventListener('scroll', () => {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            [25, 50, 75, 100].forEach(depth => {
+                if (scrollPercent >= depth && !trackedDepths.has(depth)) {
+                    trackedDepths.add(depth);
+                    trackEvent('scroll_depth', { depth: `${depth}%` });
+                }
+            });
+        });
+
+        trackEvent('page_view', { title: document.title });
+    </script>
+</body>
+</html>
+

@@ -100,3 +100,4 @@ Zero data leaves device. Encrypted storage option. Biometric-protected folders a
 
 
 
+

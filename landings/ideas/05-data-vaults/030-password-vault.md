@@ -102,3 +102,4 @@ Zero-knowledge design. Master password never stored. All data encrypted at rest.
 
 
 
+
