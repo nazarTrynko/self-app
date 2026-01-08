@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useCallback, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Wand2, 
-  Sparkles, 
-  Copy, 
-  Check, 
+import { useState, useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Wand2,
+  Sparkles,
+  Copy,
+  Check,
   RotateCcw,
   Zap,
   Brain,
@@ -20,13 +20,17 @@ import {
   ArrowLeft,
   Share2,
   Download,
-  History
-} from 'lucide-react';
-import Link from 'next/link';
-import { transformPrompt } from '@/lib/analysis';
-import { TransformationResult, TransformedSection, ImprovementCategory } from '@/lib/analysis/types';
-import ShareModal from '@/components/ShareModal';
-import { canTransform, recordTransformation } from '@/lib/stripe';
+  History,
+} from "lucide-react";
+import Link from "next/link";
+import { transformPrompt } from "@/lib/analysis";
+import {
+  TransformationResult,
+  TransformedSection,
+  ImprovementCategory,
+} from "@/lib/analysis/types";
+import ShareModal from "@/components/ShareModal";
+import { canTransform, recordTransformation } from "@/lib/stripe";
 
 const CATEGORY_ICONS: Record<ImprovementCategory, React.ElementType> = {
   role_assignment: User,
@@ -40,36 +44,39 @@ const CATEGORY_ICONS: Record<ImprovementCategory, React.ElementType> = {
 };
 
 const CATEGORY_COLORS: Record<ImprovementCategory, string> = {
-  role_assignment: 'text-arcane-400',
-  context_addition: 'text-blue-400',
-  format_specification: 'text-emerald-400',
-  constraint_setting: 'text-rose-400',
-  audience_targeting: 'text-amber-400',
-  tone_definition: 'text-violet-400',
-  structure_enhancement: 'text-cyan-400',
-  example_addition: 'text-pink-400',
+  role_assignment: "text-arcane-400",
+  context_addition: "text-blue-400",
+  format_specification: "text-emerald-400",
+  constraint_setting: "text-rose-400",
+  audience_targeting: "text-amber-400",
+  tone_definition: "text-violet-400",
+  structure_enhancement: "text-cyan-400",
+  example_addition: "text-pink-400",
 };
 
 const CATEGORY_LABELS: Record<ImprovementCategory, string> = {
-  role_assignment: 'Role Assignment',
-  context_addition: 'Task Enhancement',
-  format_specification: 'Format Specification',
-  constraint_setting: 'Constraints',
-  audience_targeting: 'Target Audience',
-  tone_definition: 'Tone & Style',
-  structure_enhancement: 'Structure',
-  example_addition: 'Examples',
+  role_assignment: "Role Assignment",
+  context_addition: "Task Enhancement",
+  format_specification: "Format Specification",
+  constraint_setting: "Constraints",
+  audience_targeting: "Target Audience",
+  tone_definition: "Tone & Style",
+  structure_enhancement: "Structure",
+  example_addition: "Examples",
 };
 
 export default function AlchemistPage() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [result, setResult] = useState<TransformationResult | null>(null);
   const [isTransforming, setIsTransforming] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [selectedSection, setSelectedSection] = useState<TransformedSection | null>(null);
+  const [selectedSection, setSelectedSection] =
+    useState<TransformedSection | null>(null);
   const [showShareModal, setShowShareModal] = useState(false);
   const [rateLimitError, setRateLimitError] = useState<string | null>(null);
-  const [remainingTransforms, setRemainingTransforms] = useState<number | undefined>(undefined);
+  const [remainingTransforms, setRemainingTransforms] = useState<
+    number | undefined
+  >(undefined);
 
   // Check remaining transforms on mount
   useEffect(() => {
@@ -79,27 +86,27 @@ export default function AlchemistPage() {
 
   const handleTransform = useCallback(() => {
     if (!input.trim()) return;
-    
+
     // Check rate limit
     const { allowed, message, remaining } = canTransform();
     if (!allowed) {
-      setRateLimitError(message || 'Rate limit exceeded');
+      setRateLimitError(message || "Rate limit exceeded");
       return;
     }
-    
+
     setRateLimitError(null);
     setIsTransforming(true);
-    
+
     // Simulate processing time for effect
     setTimeout(() => {
       const transformResult = transformPrompt(input);
       setResult(transformResult);
       setIsTransforming(false);
-      
+
       // Record the transformation for rate limiting
       recordTransformation();
       setRemainingTransforms(remaining ? remaining - 1 : undefined);
-      
+
       // Save to history
       saveToHistory(transformResult);
     }, 1500);
@@ -114,14 +121,16 @@ export default function AlchemistPage() {
   }, [result]);
 
   const handleReset = useCallback(() => {
-    setInput('');
+    setInput("");
     setResult(null);
     setSelectedSection(null);
   }, []);
 
   const saveToHistory = (transformation: TransformationResult) => {
     try {
-      const history = JSON.parse(localStorage.getItem('alchemist_history') || '[]');
+      const history = JSON.parse(
+        localStorage.getItem("alchemist_history") || "[]"
+      );
       const newEntry = {
         id: Date.now(),
         timestamp: new Date().toISOString(),
@@ -131,9 +140,12 @@ export default function AlchemistPage() {
       };
       history.unshift(newEntry);
       // Keep only last 20 entries
-      localStorage.setItem('alchemist_history', JSON.stringify(history.slice(0, 20)));
+      localStorage.setItem(
+        "alchemist_history",
+        JSON.stringify(history.slice(0, 20))
+      );
     } catch (e) {
-      console.error('Failed to save to history:', e);
+      console.error("Failed to save to history:", e);
     }
   };
 
@@ -147,11 +159,13 @@ export default function AlchemistPage() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-400 to-arcane-500 flex items-center justify-center">
                 <Wand2 className="w-5 h-5 text-obsidian-950" />
               </div>
-              <span className="font-display font-bold text-lg">PromptCraft</span>
+              <span className="font-display font-bold text-lg">
+                PromptCraft
+              </span>
             </Link>
             <div className="flex items-center gap-4">
-              <Link 
-                href="/alchemist/history" 
+              <Link
+                href="/alchemist/history"
                 className="text-sm text-obsidian-400 hover:text-white transition-colors flex items-center gap-2"
               >
                 <History className="w-4 h-4" />
@@ -167,7 +181,7 @@ export default function AlchemistPage() {
 
       <main className="pt-24 pb-16 section-container">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
@@ -180,8 +194,8 @@ export default function AlchemistPage() {
             Transform Your <span className="gradient-text">Prompt</span>
           </h1>
           <p className="text-obsidian-400 max-w-xl mx-auto">
-            Paste any prompt and watch it transform into something more powerful. 
-            Learn why each change makes a difference.
+            Paste any prompt and watch it transform into something more
+            powerful. Learn why each change makes a difference.
           </p>
         </motion.div>
 
@@ -209,7 +223,7 @@ export default function AlchemistPage() {
                 </button>
               )}
             </div>
-            
+
             <div className="relative">
               <textarea
                 value={input}
@@ -220,10 +234,10 @@ Example: Write me a blog post about productivity"
                 className="alchemist-input w-full"
                 rows={10}
               />
-              
+
               {/* Word count */}
               <div className="absolute bottom-4 right-4 text-xs text-obsidian-600">
-                {input.split(/\s+/).filter(w => w).length} words
+                {input.split(/\s+/).filter((w) => w).length} words
               </div>
             </div>
 
@@ -235,7 +249,10 @@ Example: Write me a blog post about productivity"
                 className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm"
               >
                 {rateLimitError}
-                <Link href="/pricing" className="ml-2 underline hover:no-underline">
+                <Link
+                  href="/pricing"
+                  className="ml-2 underline hover:no-underline"
+                >
                   Upgrade to Pro
                 </Link>
               </motion.div>
@@ -251,7 +268,11 @@ Example: Write me a blog post about productivity"
                 <>
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                   >
                     <Sparkles className="w-5 h-5" />
                   </motion.div>
@@ -264,7 +285,7 @@ Example: Write me a blog post about productivity"
                 </>
               )}
             </button>
-            
+
             {/* Remaining transforms counter */}
             {remainingTransforms !== undefined && (
               <p className="text-xs text-obsidian-500 text-center">
@@ -320,9 +341,9 @@ Example: Write me a blog post about productivity"
                     <div className="text-center">
                       <motion.div
                         className="w-16 h-16 rounded-full bg-gradient-to-br from-gold-400 to-arcane-500 mx-auto mb-4 flex items-center justify-center"
-                        animate={{ 
+                        animate={{
                           scale: [1, 1.1, 1],
-                          rotate: [0, 180, 360]
+                          rotate: [0, 180, 360],
                         }}
                         transition={{ duration: 2, repeat: Infinity }}
                       >
@@ -347,12 +368,14 @@ Example: Write me a blog post about productivity"
                         onClick={() => setSelectedSection(section)}
                         className={`p-3 rounded-lg cursor-pointer transition-all ${
                           selectedSection?.type === section.type
-                            ? 'bg-obsidian-700/50 border border-gold-500/30'
-                            : 'bg-obsidian-800/30 hover:bg-obsidian-700/30 border border-transparent'
+                            ? "bg-obsidian-700/50 border border-gold-500/30"
+                            : "bg-obsidian-800/30 hover:bg-obsidian-700/30 border border-transparent"
                         }`}
                       >
                         <div className="flex items-start gap-3">
-                          <div className={`mt-1 ${CATEGORY_COLORS[section.type]}`}>
+                          <div
+                            className={`mt-1 ${CATEGORY_COLORS[section.type]}`}
+                          >
                             {(() => {
                               const Icon = CATEGORY_ICONS[section.type];
                               return <Icon className="w-4 h-4" />;
@@ -360,7 +383,11 @@ Example: Write me a blog post about productivity"
                           </div>
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
-                              <span className={`text-xs font-medium ${CATEGORY_COLORS[section.type]}`}>
+                              <span
+                                className={`text-xs font-medium ${
+                                  CATEGORY_COLORS[section.type]
+                                }`}
+                              >
                                 {CATEGORY_LABELS[section.type]}
                               </span>
                               {section.isNew && (
@@ -431,21 +458,29 @@ Example: Write me a blog post about productivity"
                         stroke="url(#scoreGradient)"
                         strokeWidth="8"
                         strokeLinecap="round"
-                        initial={{ strokeDasharray: '0 226' }}
-                        animate={{ 
-                          strokeDasharray: `${(result.analysis.score / 100) * 226} 226` 
+                        initial={{ strokeDasharray: "0 226" }}
+                        animate={{
+                          strokeDasharray: `${
+                            (result.analysis.score / 100) * 226
+                          } 226`,
                         }}
                         transition={{ duration: 1, delay: 0.5 }}
                       />
                       <defs>
-                        <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <linearGradient
+                          id="scoreGradient"
+                          x1="0%"
+                          y1="0%"
+                          x2="100%"
+                          y2="0%"
+                        >
                           <stop offset="0%" stopColor="#fbbf24" />
                           <stop offset="100%" stopColor="#a855f7" />
                         </linearGradient>
                       </defs>
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.span 
+                      <motion.span
                         className="text-2xl font-bold"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -457,21 +492,24 @@ Example: Write me a blog post about productivity"
                   </div>
                   <div className="flex-1">
                     <p className="text-sm text-obsidian-400 mb-2">
-                      {result.analysis.score >= 70 
-                        ? 'Excellent! This prompt is well-structured.'
+                      {result.analysis.score >= 70
+                        ? "Excellent! This prompt is well-structured."
                         : result.analysis.score >= 50
-                        ? 'Good foundation with room for improvement.'
-                        : 'Basic prompt - the transformation adds significant value.'}
+                        ? "Good foundation with room for improvement."
+                        : "Basic prompt - the transformation adds significant value."}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {result.analysis.patterns.filter(p => p.present).slice(0, 3).map(p => (
-                        <span 
-                          key={p.pattern.id}
-                          className="text-xs px-2 py-1 rounded bg-obsidian-800 text-obsidian-300"
-                        >
-                          {p.pattern.name}
-                        </span>
-                      ))}
+                      {result.analysis.patterns
+                        .filter((p) => p.present)
+                        .slice(0, 3)
+                        .map((p) => (
+                          <span
+                            key={p.pattern.id}
+                            className="text-xs px-2 py-1 rounded bg-obsidian-800 text-obsidian-300"
+                          >
+                            {p.pattern.name}
+                          </span>
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -492,13 +530,20 @@ Example: Write me a blog post about productivity"
                       transition={{ delay: 0.5 + idx * 0.1 }}
                       className="flex items-start gap-2 text-sm"
                     >
-                      <div className={`mt-0.5 ${
-                        imp.impact === 'high' ? 'text-emerald-400' :
-                        imp.impact === 'medium' ? 'text-amber-400' : 'text-obsidian-400'
-                      }`}>
+                      <div
+                        className={`mt-0.5 ${
+                          imp.impact === "high"
+                            ? "text-emerald-400"
+                            : imp.impact === "medium"
+                            ? "text-amber-400"
+                            : "text-obsidian-400"
+                        }`}
+                      >
                         <Check className="w-4 h-4" />
                       </div>
-                      <span className="text-obsidian-300">{CATEGORY_LABELS[imp.category]}</span>
+                      <span className="text-obsidian-300">
+                        {CATEGORY_LABELS[imp.category]}
+                      </span>
                     </motion.li>
                   ))}
                 </ul>
@@ -518,7 +563,11 @@ Example: Write me a blog post about productivity"
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                     >
-                      <div className={`text-sm font-medium mb-2 ${CATEGORY_COLORS[selectedSection.type]}`}>
+                      <div
+                        className={`text-sm font-medium mb-2 ${
+                          CATEGORY_COLORS[selectedSection.type]
+                        }`}
+                      >
                         {CATEGORY_LABELS[selectedSection.type]}
                       </div>
                       <p className="text-sm text-obsidian-300 leading-relaxed">
@@ -532,7 +581,8 @@ Example: Write me a blog post about productivity"
                       animate={{ opacity: 1 }}
                       className="text-sm text-obsidian-500"
                     >
-                      Click on any section in the transformed prompt to see why it improves results.
+                      Click on any section in the transformed prompt to see why
+                      it improves results.
                     </motion.p>
                   )}
                 </AnimatePresence>
@@ -549,12 +599,9 @@ Example: Write me a blog post about productivity"
             transition={{ delay: 0.5 }}
             className="mt-8 flex flex-wrap justify-center gap-4"
           >
-            <button
-              onClick={handleCopy}
-              className="btn-secondary"
-            >
+            <button onClick={handleCopy} className="btn-secondary">
               <Copy className="w-4 h-4" />
-              {copied ? 'Copied!' : 'Copy Result'}
+              {copied ? "Copied!" : "Copy Result"}
             </button>
             <button
               onClick={() => setShowShareModal(true)}
@@ -563,10 +610,7 @@ Example: Write me a blog post about productivity"
               <Share2 className="w-4 h-4" />
               Share
             </button>
-            <button
-              onClick={handleReset}
-              className="btn-secondary"
-            >
+            <button onClick={handleReset} className="btn-secondary">
               <RotateCcw className="w-4 h-4" />
               Try Another
             </button>

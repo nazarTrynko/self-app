@@ -1,17 +1,9 @@
-'use client';
+"use client";
 
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  X, 
-  Copy, 
-  Check, 
-  Download, 
-  Twitter, 
-  Link2,
-  Wand2 
-} from 'lucide-react';
-import { TransformationResult } from '@/lib/analysis/types';
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Copy, Check, Download, Twitter, Link2, Wand2 } from "lucide-react";
+import { TransformationResult } from "@/lib/analysis/types";
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -19,7 +11,11 @@ interface ShareModalProps {
   result: TransformationResult;
 }
 
-export default function ShareModal({ isOpen, onClose, result }: ShareModalProps) {
+export default function ShareModal({
+  isOpen,
+  onClose,
+  result,
+}: ShareModalProps) {
   const [copied, setCopied] = useState<string | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -44,12 +40,12 @@ ${result.transformedPrompt}
 ---
 Transformed with The Alchemist at promptcraft.app
 `;
-    
-    const blob = new Blob([content], { type: 'text/markdown' });
+
+    const blob = new Blob([content], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'prompt-transformation.md';
+    a.download = "prompt-transformation.md";
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -62,10 +58,10 @@ Before: "${result.originalPrompt.slice(0, 50)}..."
 Score improved to ${result.analysis.score}/100 ✨
 
 Try it: promptcraft.app`;
-    
+
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
-      '_blank'
+      "_blank"
     );
   };
 
@@ -82,7 +78,7 @@ Try it: promptcraft.app`;
       >
         {/* Backdrop */}
         <div className="absolute inset-0 bg-obsidian-950/80 backdrop-blur-sm" />
-        
+
         {/* Modal */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -115,7 +111,9 @@ Try it: promptcraft.app`;
               </div>
               <div>
                 <span className="font-display font-bold">PromptCraft</span>
-                <span className="text-obsidian-400 text-sm ml-2">The Alchemist</span>
+                <span className="text-obsidian-400 text-sm ml-2">
+                  The Alchemist
+                </span>
               </div>
             </div>
 
@@ -137,7 +135,9 @@ Try it: promptcraft.app`;
             <div className="flex items-center justify-between pt-4 border-t border-obsidian-700">
               <div className="flex items-center gap-4">
                 <div className="text-center">
-                  <p className="text-2xl font-bold gradient-text">{result.analysis.score}</p>
+                  <p className="text-2xl font-bold gradient-text">
+                    {result.analysis.score}
+                  </p>
                   <p className="text-xs text-obsidian-500">Score</p>
                 </div>
                 <div className="text-center">
@@ -154,16 +154,16 @@ Try it: promptcraft.app`;
           {/* Share Options */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <button
-              onClick={() => handleCopy(result.transformedPrompt, 'prompt')}
+              onClick={() => handleCopy(result.transformedPrompt, "prompt")}
               className="flex flex-col items-center gap-2 p-4 rounded-xl bg-obsidian-800/50 hover:bg-obsidian-700/50 border border-obsidian-700 transition-colors"
             >
-              {copied === 'prompt' ? (
+              {copied === "prompt" ? (
                 <Check className="w-5 h-5 text-emerald-400" />
               ) : (
                 <Copy className="w-5 h-5 text-obsidian-400" />
               )}
               <span className="text-xs text-obsidian-300">
-                {copied === 'prompt' ? 'Copied!' : 'Copy Prompt'}
+                {copied === "prompt" ? "Copied!" : "Copy Prompt"}
               </span>
             </button>
 
@@ -184,16 +184,16 @@ Try it: promptcraft.app`;
             </button>
 
             <button
-              onClick={() => handleCopy(window.location.href, 'link')}
+              onClick={() => handleCopy(window.location.href, "link")}
               className="flex flex-col items-center gap-2 p-4 rounded-xl bg-obsidian-800/50 hover:bg-obsidian-700/50 border border-obsidian-700 transition-colors"
             >
-              {copied === 'link' ? (
+              {copied === "link" ? (
                 <Check className="w-5 h-5 text-emerald-400" />
               ) : (
                 <Link2 className="w-5 h-5 text-obsidian-400" />
               )}
               <span className="text-xs text-obsidian-300">
-                {copied === 'link' ? 'Copied!' : 'Copy Link'}
+                {copied === "link" ? "Copied!" : "Copy Link"}
               </span>
             </button>
           </div>

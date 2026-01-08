@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { 
-  Wand2, 
-  Check, 
-  Sparkles, 
+import { motion } from "framer-motion";
+import {
+  Wand2,
+  Check,
+  Sparkles,
   Zap,
   Brain,
   History,
@@ -12,25 +12,25 @@ import {
   BookOpen,
   Users,
   Crown,
-  ArrowLeft
-} from 'lucide-react';
-import Link from 'next/link';
+  ArrowLeft,
+} from "lucide-react";
+import Link from "next/link";
 
 const FREE_FEATURES = [
-  { icon: Zap, text: '5 transformations per day' },
-  { icon: Brain, text: 'Basic heuristic analysis' },
-  { icon: Check, text: 'Pattern detection' },
-  { icon: Share2, text: 'Copy & share results' },
+  { icon: Zap, text: "5 transformations per day" },
+  { icon: Brain, text: "Basic heuristic analysis" },
+  { icon: Check, text: "Pattern detection" },
+  { icon: Share2, text: "Copy & share results" },
 ];
 
 const PRO_FEATURES = [
-  { icon: Zap, text: 'Unlimited transformations', highlight: true },
-  { icon: Brain, text: 'AI-powered analysis (Claude)', highlight: true },
-  { icon: History, text: 'Full transformation history' },
-  { icon: Share2, text: 'Export & share results' },
-  { icon: Crown, text: 'Priority access to new features' },
-  { icon: BookOpen, text: 'Prompt DNA courses (coming soon)' },
-  { icon: Users, text: 'Community access (coming soon)' },
+  { icon: Zap, text: "Unlimited transformations", highlight: true },
+  { icon: Brain, text: "AI-powered analysis (Claude)", highlight: true },
+  { icon: History, text: "Full transformation history" },
+  { icon: Share2, text: "Export & share results" },
+  { icon: Crown, text: "Priority access to new features" },
+  { icon: BookOpen, text: "Prompt DNA courses (coming soon)" },
+  { icon: Users, text: "Community access (coming soon)" },
 ];
 
 export default function PricingPage() {
@@ -44,7 +44,9 @@ export default function PricingPage() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-400 to-arcane-500 flex items-center justify-center">
                 <Wand2 className="w-5 h-5 text-obsidian-950" />
               </div>
-              <span className="font-display font-bold text-lg">PromptCraft</span>
+              <span className="font-display font-bold text-lg">
+                PromptCraft
+              </span>
             </Link>
             <Link href="/" className="btn-secondary text-sm py-2">
               <ArrowLeft className="w-4 h-4" />
@@ -83,8 +85,10 @@ export default function PricingPage() {
             className="glass-card p-8"
           >
             <h2 className="font-display font-bold text-2xl mb-2">Free</h2>
-            <p className="text-obsidian-400 mb-6">Perfect for getting started</p>
-            
+            <p className="text-obsidian-400 mb-6">
+              Perfect for getting started
+            </p>
+
             <div className="mb-8">
               <span className="text-5xl font-bold">$0</span>
               <span className="text-obsidian-400 ml-2">forever</span>
@@ -101,8 +105,8 @@ export default function PricingPage() {
               ))}
             </ul>
 
-            <Link 
-              href="/alchemist" 
+            <Link
+              href="/alchemist"
               className="btn-secondary w-full justify-center"
             >
               Start Free
@@ -123,8 +127,10 @@ export default function PricingPage() {
             </div>
 
             <h2 className="font-display font-bold text-2xl mb-2">Pro</h2>
-            <p className="text-obsidian-400 mb-6">For serious prompt crafters</p>
-            
+            <p className="text-obsidian-400 mb-6">
+              For serious prompt crafters
+            </p>
+
             <div className="mb-8">
               <span className="text-5xl font-bold">$9</span>
               <span className="text-obsidian-400 ml-2">/month</span>
@@ -133,29 +139,37 @@ export default function PricingPage() {
             <ul className="space-y-4 mb-8">
               {PRO_FEATURES.map((feature, i) => (
                 <li key={i} className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                    feature.highlight 
-                      ? 'bg-gold-500/20' 
-                      : 'bg-obsidian-800'
-                  }`}>
-                    <feature.icon className={`w-4 h-4 ${
-                      feature.highlight 
-                        ? 'text-gold-400' 
-                        : 'text-obsidian-400'
-                    }`} />
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                      feature.highlight ? "bg-gold-500/20" : "bg-obsidian-800"
+                    }`}
+                  >
+                    <feature.icon
+                      className={`w-4 h-4 ${
+                        feature.highlight
+                          ? "text-gold-400"
+                          : "text-obsidian-400"
+                      }`}
+                    />
                   </div>
-                  <span className={feature.highlight ? 'text-white' : 'text-obsidian-300'}>
+                  <span
+                    className={
+                      feature.highlight ? "text-white" : "text-obsidian-300"
+                    }
+                  >
                     {feature.text}
                   </span>
                 </li>
               ))}
             </ul>
 
-            <button 
+            <button
               className="btn-primary w-full justify-center"
               onClick={() => {
                 // In production, this would redirect to Stripe checkout
-                alert('Stripe integration coming soon! Join the waitlist for early access.');
+                alert(
+                  "Stripe integration coming soon! Join the waitlist for early access."
+                );
               }}
             >
               <Sparkles className="w-5 h-5" />
@@ -182,26 +196,23 @@ export default function PricingPage() {
           <div className="space-y-4">
             {[
               {
-                q: 'What counts as a transformation?',
+                q: "What counts as a transformation?",
                 a: 'Each time you click "Transform Prompt" counts as one transformation. Viewing history or copying results is unlimited.',
               },
               {
-                q: 'What\'s the difference between heuristic and AI analysis?',
-                a: 'Heuristic analysis uses rule-based pattern matching (fast, free). AI analysis uses Claude to provide deeper, more nuanced improvements.',
+                q: "What's the difference between heuristic and AI analysis?",
+                a: "Heuristic analysis uses rule-based pattern matching (fast, free). AI analysis uses Claude to provide deeper, more nuanced improvements.",
               },
               {
-                q: 'Can I cancel anytime?',
-                a: 'Yes! Cancel anytime from your account settings. You\'ll keep Pro access until the end of your billing period.',
+                q: "Can I cancel anytime?",
+                a: "Yes! Cancel anytime from your account settings. You'll keep Pro access until the end of your billing period.",
               },
               {
-                q: 'What payment methods do you accept?',
-                a: 'We accept all major credit cards through Stripe. Apple Pay and Google Pay coming soon.',
+                q: "What payment methods do you accept?",
+                a: "We accept all major credit cards through Stripe. Apple Pay and Google Pay coming soon.",
               },
             ].map((faq, i) => (
-              <div 
-                key={i} 
-                className="glass-card p-6"
-              >
+              <div key={i} className="glass-card p-6">
                 <h3 className="font-semibold mb-2">{faq.q}</h3>
                 <p className="text-sm text-obsidian-400">{faq.a}</p>
               </div>

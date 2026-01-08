@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Wand2, 
-  History, 
-  Trash2, 
-  Copy, 
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Wand2,
+  History,
+  Trash2,
+  Copy,
   Check,
   ArrowLeft,
   Clock,
   TrendingUp,
   ChevronRight,
-  AlertCircle
-} from 'lucide-react';
-import Link from 'next/link';
+  AlertCircle,
+} from "lucide-react";
+import Link from "next/link";
 
 interface HistoryEntry {
   id: number;
@@ -31,19 +31,19 @@ export default function HistoryPage() {
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('alchemist_history');
+      const stored = localStorage.getItem("alchemist_history");
       if (stored) {
         setHistory(JSON.parse(stored));
       }
     } catch (e) {
-      console.error('Failed to load history:', e);
+      console.error("Failed to load history:", e);
     }
   }, []);
 
   const handleDelete = (id: number) => {
-    const updated = history.filter(h => h.id !== id);
+    const updated = history.filter((h) => h.id !== id);
     setHistory(updated);
-    localStorage.setItem('alchemist_history', JSON.stringify(updated));
+    localStorage.setItem("alchemist_history", JSON.stringify(updated));
     if (selectedEntry?.id === id) {
       setSelectedEntry(null);
     }
@@ -52,7 +52,7 @@ export default function HistoryPage() {
   const handleClearAll = () => {
     setHistory([]);
     setSelectedEntry(null);
-    localStorage.removeItem('alchemist_history');
+    localStorage.removeItem("alchemist_history");
   };
 
   const handleCopy = (entry: HistoryEntry) => {
@@ -63,11 +63,11 @@ export default function HistoryPage() {
 
   const formatDate = (timestamp: string) => {
     const date = new Date(timestamp);
-    return date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
@@ -81,12 +81,11 @@ export default function HistoryPage() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-400 to-arcane-500 flex items-center justify-center">
                 <Wand2 className="w-5 h-5 text-obsidian-950" />
               </div>
-              <span className="font-display font-bold text-lg">PromptCraft</span>
+              <span className="font-display font-bold text-lg">
+                PromptCraft
+              </span>
             </Link>
-            <Link 
-              href="/alchemist"
-              className="btn-secondary text-sm py-2"
-            >
+            <Link href="/alchemist" className="btn-secondary text-sm py-2">
               <ArrowLeft className="w-4 h-4" />
               Back to Alchemist
             </Link>
@@ -96,7 +95,7 @@ export default function HistoryPage() {
 
       <main className="pt-24 pb-16 section-container">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
@@ -108,7 +107,8 @@ export default function HistoryPage() {
                 Transformation History
               </h1>
               <p className="text-obsidian-400">
-                Your past prompt transformations, stored locally in your browser.
+                Your past prompt transformations, stored locally in your
+                browser.
               </p>
             </div>
             {history.length > 0 && (
@@ -130,7 +130,9 @@ export default function HistoryPage() {
             className="glass-card p-12 text-center"
           >
             <AlertCircle className="w-16 h-16 text-obsidian-600 mx-auto mb-4" />
-            <h2 className="font-display text-xl font-semibold mb-2">No History Yet</h2>
+            <h2 className="font-display text-xl font-semibold mb-2">
+              No History Yet
+            </h2>
             <p className="text-obsidian-400 mb-6">
               Transform some prompts with The Alchemist to see them here.
             </p>
@@ -152,8 +154,8 @@ export default function HistoryPage() {
                   onClick={() => setSelectedEntry(entry)}
                   className={`glass-card p-4 cursor-pointer transition-all ${
                     selectedEntry?.id === entry.id
-                      ? 'border-gold-500/50'
-                      : 'hover:border-obsidian-600'
+                      ? "border-gold-500/50"
+                      : "hover:border-obsidian-600"
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">
