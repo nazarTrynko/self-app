@@ -98,3 +98,7 @@ No photos sent anywhere. Personal journal stays on device. Optional iCloud/local
 **Timeline:** 8-10 weeks
 **Key Challenges:** ML model optimization for size/accuracy tradeoff, comprehensive plant database, regional model variants
 
+
+
+
+

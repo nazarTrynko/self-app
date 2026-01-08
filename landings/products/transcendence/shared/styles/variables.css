@@ -1,0 +1,193 @@
+/**
+ * Transcendence Products - Design System Variables
+ * Shared design tokens for all product landing pages
+ */
+
+:root {
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Font Sizes - Fluid Scale */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  --text-4xl: clamp(2.5rem, 1.75rem + 3.75vw, 4rem);
+  --text-5xl: clamp(3rem, 2rem + 5vw, 5rem);
+  --text-hero: clamp(3.5rem, 2rem + 7.5vw, 7rem);
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-glow: 0 0 30px var(--color-primary, #fff);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-deep: 0 10px 40px rgba(0, 0, 0, 0.5);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+  --transition-glacial: 1000ms ease;
+  
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-elevated: 10;
+  --z-sticky: 100;
+  --z-overlay: 500;
+  --z-modal: 1000;
+  --z-max: 9999;
+  
+  /* Hub-specific colors */
+  --hub-bg: #030308;
+  --hub-surface: #0A0A12;
+  --hub-text: #E8E8F0;
+  --hub-text-muted: #6B6B7B;
+  --hub-accent: #7B68EE;
+  --hub-glow: rgba(123, 104, 238, 0.4);
+}
+
+/* Common Reset Additions */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* Common Button Styles */
+.btn-transcendence {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--color-primary, #fff);
+  background: transparent;
+  color: var(--color-primary, #fff);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-transcendence::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary, #fff);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.btn-transcendence:hover::before {
+  opacity: 0.1;
+}
+
+.btn-transcendence:hover {
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.btn-transcendence--filled {
+  background: var(--color-primary, #fff);
+  color: var(--color-bg, #000);
+}
+
+.btn-transcendence--filled:hover {
+  background: transparent;
+  color: var(--color-primary, #fff);
+}
+
+/* Common Section Styles */
+.section-transcendence {
+  padding: var(--space-24) var(--space-6);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section-transcendence {
+    padding: var(--space-16) var(--space-4);
+  }
+}
+
+/* Common Container */
+.container-transcendence {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Mini Constellation Nav (appears on product pages) */
+.mini-constellation {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  background: rgba(10, 10, 18, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(123, 104, 238, 0.3);
+  cursor: pointer;
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.mini-constellation:hover {
+  transform: scale(1.1);
+  border-color: var(--hub-accent);
+  box-shadow: 0 0 20px var(--hub-glow);
+}
+
+.mini-constellation svg {
+  width: 30px;
+  height: 30px;
+  stroke: var(--hub-accent);
+}
+
+
+

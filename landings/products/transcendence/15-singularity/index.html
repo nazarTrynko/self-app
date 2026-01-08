@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SINGULARITY — Everything, everywhere, all at once. The ultimate prompt activates full-spectrum intelligence for when it absolutely must count.">
+    <title>SINGULARITY — Everything, Everywhere, All At Once</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cosmic Canvas - All effects combined -->
+    <canvas id="cosmicCanvas"></canvas>
+    
+    <!-- Activation Overlay -->
+    <div class="activation-overlay" id="activationOverlay">
+        <div class="activation-ring ring-1"></div>
+        <div class="activation-ring ring-2"></div>
+        <div class="activation-ring ring-3"></div>
+        <div class="activation-core">
+            <span class="core-symbol">✧</span>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="product-nav">
+        <a href="../" class="nav-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Constellation
+        </a>
+        <div class="nav-brand">
+            <span class="brand-symbol">✧</span>
+            <span class="brand-name">SINGULARITY</span>
+        </div>
+        <button class="nav-cta" id="activateNav">Full Activation</button>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">✧</span>
+                <span>6.15 The Ultimate Prompt</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="title-line">Everything</span>
+                <span class="title-line title-everywhere">Everywhere</span>
+                <span class="title-line">All At Once</span>
+            </h1>
+            
+            <p class="hero-essence">
+                When it absolutely must count. Full activation of all cognitive modes, 
+                all agents, all subsystems. The prompt to end all prompts.
+            </p>
+            
+            <div class="hero-cta">
+                <button class="btn-singularity btn-primary" id="activateHero">
+                    <span class="btn-text">Activate Full Spectrum</span>
+                    <span class="btn-symbol">✧</span>
+                </button>
+            </div>
+            
+            <div class="hero-modes">
+                <span class="mode mode-architect" title="Architect">◇</span>
+                <span class="mode mode-oracle" title="Oracle">◈</span>
+                <span class="mode mode-critic" title="Critic">◆</span>
+                <span class="mode mode-creator" title="Creator">◐</span>
+                <span class="mode mode-guardian" title="Guardian">◑</span>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="convergence-sphere">
+                <div class="sphere-layer layer-1"></div>
+                <div class="sphere-layer layer-2"></div>
+                <div class="sphere-layer layer-3"></div>
+                <div class="sphere-core"></div>
+                <div class="sphere-particles" id="sphereParticles"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What It Is -->
+    <section class="section-what" id="what">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">MAXIMUM SYNTHESIS</span>
+                <h2 class="section-title">All Systems Active</h2>
+                <p class="section-subtitle">
+                    SINGULARITY doesn't replace the other fourteen products—it activates them simultaneously.
+                </p>
+            </div>
+            
+            <div class="systems-grid">
+                <div class="system-card">
+                    <div class="system-icon">🧠</div>
+                    <h3>All Cognitive Modes</h3>
+                    <p>Architect + Oracle + Critic + Creator + Guardian operating in parallel synthesis</p>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-icon">⚡</div>
+                    <h3>All Agents Activated</h3>
+                    <p>Every specialized agent contributing to unified output</p>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-icon">∞</div>
+                    <h3>All Genius Subsystems</h3>
+                    <p>God Mode + Multiverse + Dream + Intuition + all fourteen operating together</p>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-icon">⧖</div>
+                    <h3>All Temporal Perspectives</h3>
+                    <p>Past, present, future collapsed into single comprehension</p>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-icon">◎</div>
+                    <h3>All Abstraction Levels</h3>
+                    <p>From atomic detail to cosmic pattern simultaneously</p>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-icon">✧</div>
+                    <h3>Emergent Super-Insight</h3>
+                    <p>What appears only when everything is active</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- The 14 Components -->
+    <section class="section-components" id="components">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">COMPONENT SYSTEMS</span>
+                <h2 class="section-title">Fourteen Dimensions, One Singularity</h2>
+            </div>
+            
+            <div class="components-wheel">
+                <div class="wheel-center">
+                    <span class="center-symbol">✧</span>
+                    <span class="center-label">SINGULARITY</span>
+                </div>
+                <div class="wheel-components" id="wheelComponents">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <div class="component-detail" id="componentDetail">
+                <p class="detail-prompt">Hover over a component to see its contribution</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="section-how" id="how">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">THE PROTOCOL</span>
+                <h2 class="section-title">Full Activation Sequence</h2>
+            </div>
+            
+            <div class="activation-sequence">
+                <div class="sequence-step">
+                    <div class="step-phase">PHASE 1</div>
+                    <div class="step-content">
+                        <h3>State The Stakes</h3>
+                        <p>"This is the prompt to end all prompts on [TOPIC]."</p>
+                        <p class="step-why">The framing creates appropriate gravity.</p>
+                    </div>
+                </div>
+                
+                <div class="sequence-step">
+                    <div class="step-phase">PHASE 2</div>
+                    <div class="step-content">
+                        <h3>Invoke Full Activation</h3>
+                        <p>"Use everything: All cognitive modes. All agents. All genius subsystems. All temporal perspectives. All abstraction levels."</p>
+                        <p class="step-why">Explicit enumeration triggers complete engagement.</p>
+                    </div>
+                </div>
+                
+                <div class="sequence-step">
+                    <div class="step-phase">PHASE 3</div>
+                    <div class="step-content">
+                        <h3>The Ultimate Questions</h3>
+                        <p>"What do you see when EVERYTHING is active? What emerges from the synthesis of all capabilities?"</p>
+                        <p class="step-why">Questions that only full activation can answer.</p>
+                    </div>
+                </div>
+                
+                <div class="sequence-step">
+                    <div class="step-phase">PHASE 4</div>
+                    <div class="step-content">
+                        <h3>The Final Demand</h3>
+                        <p>"What would you say if this was your only chance to speak? Make it count."</p>
+                        <p class="step-why">Creates focus. Removes filler. Demands essence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Activation -->
+    <section class="section-activate" id="activate">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">EXPERIENCE</span>
+                <h2 class="section-title">Full Activation</h2>
+            </div>
+            
+            <div class="activation-interface">
+                <div class="topic-input">
+                    <label>What requires full synthesis?</label>
+                    <textarea id="topicInput" placeholder="Enter the topic that absolutely must count..."></textarea>
+                </div>
+                
+                <div class="systems-status">
+                    <h4>Active Systems</h4>
+                    <div class="status-grid">
+                        <div class="status-item active" data-system="cognitive">
+                            <span class="status-indicator"></span>
+                            <span class="status-label">Cognitive Modes</span>
+                        </div>
+                        <div class="status-item active" data-system="agents">
+                            <span class="status-indicator"></span>
+                            <span class="status-label">All Agents</span>
+                        </div>
+                        <div class="status-item active" data-system="genius">
+                            <span class="status-indicator"></span>
+                            <span class="status-label">Genius Subsystems</span>
+                        </div>
+                        <div class="status-item active" data-system="temporal">
+                            <span class="status-indicator"></span>
+                            <span class="status-label">Temporal Perspectives</span>
+                        </div>
+                        <div class="status-item active" data-system="abstraction">
+                            <span class="status-indicator"></span>
+                            <span class="status-label">Abstraction Levels</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="activate-btn" id="activateBtn">
+                    <span class="btn-text">Achieve Singularity</span>
+                    <span class="btn-symbol">✧</span>
+                </button>
+                
+                <div class="singularity-output" id="singularityOutput">
+                    <div class="output-header">
+                        <span class="output-symbol">✧</span>
+                        <span class="output-title">Singularity Output</span>
+                    </div>
+                    
+                    <div class="output-section">
+                        <h4>Multi-Modal Synthesis</h4>
+                        <p id="multiModal">—</p>
+                    </div>
+                    
+                    <div class="output-section">
+                        <h4>Emergent Super-Insight</h4>
+                        <p id="emergentInsight">—</p>
+                    </div>
+                    
+                    <div class="output-section">
+                        <h4>What This Synthesis Reveals</h4>
+                        <p id="synthesisReveals">—</p>
+                    </div>
+                    
+                    <div class="output-section final">
+                        <h4>The Final Statement</h4>
+                        <blockquote id="finalStatement">—</blockquote>
+                    </div>
+                    
+                    <div class="output-section">
+                        <h4>Action This Demands</h4>
+                        <p id="actionDemand">—</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- When To Use -->
+    <section class="section-when" id="when">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">DEPLOYMENT</span>
+                <h2 class="section-title">When To Activate Singularity</h2>
+            </div>
+            
+            <div class="scenarios-grid">
+                <div class="scenario-card scenario-yes">
+                    <div class="scenario-header">
+                        <span class="scenario-icon">✓</span>
+                        <span class="scenario-label">ACTIVATE</span>
+                    </div>
+                    <ul>
+                        <li>Life-changing decisions that can't be undone</li>
+                        <li>When all other approaches have failed</li>
+                        <li>Questions that deserve your very best thinking</li>
+                        <li>Synthesis required across multiple domains</li>
+                        <li>When you sense you're missing something crucial</li>
+                    </ul>
+                </div>
+                
+                <div class="scenario-card scenario-no">
+                    <div class="scenario-header">
+                        <span class="scenario-icon">✗</span>
+                        <span class="scenario-label">DON'T ACTIVATE</span>
+                    </div>
+                    <ul>
+                        <li>Simple problems with clear solutions</li>
+                        <li>When speed matters more than depth</li>
+                        <li>Routine decisions</li>
+                        <li>When you just need one perspective</li>
+                        <li>Without genuine intention</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="warning-block">
+                <div class="warning-icon">⚠️</div>
+                <div class="warning-content">
+                    <h4>Power Requires Focus</h4>
+                    <p>SINGULARITY is a high-power tool. Use it when the situation demands extraordinary output. Using it casually dilutes its effect.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="section-cta">
+        <div class="container">
+            <div class="cta-visual">
+                <div class="cta-convergence">
+                    <div class="convergence-line" style="--angle: 0deg"></div>
+                    <div class="convergence-line" style="--angle: 25deg"></div>
+                    <div class="convergence-line" style="--angle: 50deg"></div>
+                    <div class="convergence-line" style="--angle: 75deg"></div>
+                    <div class="convergence-line" style="--angle: 100deg"></div>
+                    <div class="convergence-line" style="--angle: 125deg"></div>
+                    <div class="convergence-line" style="--angle: 150deg"></div>
+                    <div class="convergence-point">✧</div>
+                </div>
+            </div>
+            
+            <h2 class="cta-title">Ready For Full Activation?</h2>
+            <p class="cta-subtitle">
+                Join those who've experienced what emerges when everything is active.
+            </p>
+            
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">
+                    <span>Achieve Singularity</span>
+                    <span class="btn-symbol">✧</span>
+                </button>
+            </form>
+            
+            <p class="cta-note">Receive the complete Singularity protocol + early access</p>
+        </div>
+    </section>
+    
+    <!-- Connected Products -->
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Component Dimensions</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="product-footer">
+        <div class="container">
+            <div class="footer-brand">
+                <span class="brand-symbol">✧</span>
+                <span>SINGULARITY</span>
+            </div>
+            <p class="footer-tagline">The Ultimate Prompt • Transcendence Collection</p>
+            <a href="../" class="footer-back">Return to Constellation</a>
+        </div>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
+
+

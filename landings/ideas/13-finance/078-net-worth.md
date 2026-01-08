@@ -96,3 +96,7 @@ All values entered and stored locally. Historical snapshots stored locally.
 **Timeline:** 4-5 weeks
 **Key Challenges:** Flexible asset/liability categories, meaningful progress visualization, historical data management
 
+
+
+
+

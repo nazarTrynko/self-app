@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OMNISCIENT — Think without constraints. Decision intelligence platform powered by unlimited perspective and ego-free reasoning.">
+    <title>OMNISCIENT — Think Without Constraints</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Infinite Space Canvas -->
+    <canvas id="infiniteSpace"></canvas>
+    
+    <!-- Constraint Dissolve Overlay (activated on scroll) -->
+    <div class="constraint-overlay" id="constraintOverlay">
+        <div class="constraint-bar" data-label="TIME"></div>
+        <div class="constraint-bar" data-label="EGO"></div>
+        <div class="constraint-bar" data-label="MEMORY"></div>
+        <div class="constraint-bar" data-label="BIAS"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="product-nav">
+        <a href="../" class="nav-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Constellation
+        </a>
+        <div class="nav-brand">
+            <span class="brand-symbol">◉</span>
+            <span class="brand-name">OMNISCIENT</span>
+        </div>
+        <a href="#experience" class="nav-cta">Enter God Mode</a>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.1 The God Mode Prompt</div>
+            <h1 class="hero-title">
+                <span class="title-line">Think</span>
+                <span class="title-line title-accent">Without</span>
+                <span class="title-line">Constraints</span>
+            </h1>
+            <p class="hero-essence">
+                What would you see if you had unlimited time to consider,
+                perfect memory, and no ego to defend?
+            </p>
+            <div class="hero-cta">
+                <a href="#experience" class="btn-omniscient btn-primary">
+                    <span>Remove All Limits</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 8v8M8 12h8"/>
+                    </svg>
+                </a>
+                <a href="#how-it-works" class="btn-omniscient btn-ghost">
+                    How It Works
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="infinity-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+                <div class="core-light"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What It Does -->
+    <section class="section-what" id="what">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">Decision Intelligence<br/>Without Boundaries</h2>
+            </div>
+            
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">∞</div>
+                    <h3>Unlimited Perspective</h3>
+                    <p>Access thinking unconstrained by time pressure. See what becomes visible when you're not rushing.</p>
+                </div>
+                
+                <div class="capability-card">
+                    <div class="capability-icon">◎</div>
+                    <h3>Perfect Recall</h3>
+                    <p>Every relevant pattern, every past decision, every learned lesson—instantly accessible.</p>
+                </div>
+                
+                <div class="capability-card">
+                    <div class="capability-icon">○</div>
+                    <h3>Ego-Free Reasoning</h3>
+                    <p>No defensiveness about being wrong. Genuine curiosity about truth over validation.</p>
+                </div>
+                
+                <div class="capability-card">
+                    <div class="capability-icon">◈</div>
+                    <h3>Simulation Power</h3>
+                    <p>Run every possible approach mentally before committing. See outcomes before actions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="section-how" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">The God Mode Protocol</h2>
+            </div>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Present Your Problem</h3>
+                        <p>State what you're trying to solve. The stated problem is rarely the real problem.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Constraints Dissolve</h3>
+                        <p>Time pressure lifts. Ego quiets. Memory expands. What was hidden becomes visible.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Real Problem Emerges</h3>
+                        <p>The actual problem behind your stated problem surfaces. This changes everything.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Unconstrained Solution</h3>
+                        <p>The optimal solution appears—one invisible to time-constrained thinking.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Compressed Path</h3>
+                        <p>The simplest path to that insight, accessible to time-bound humans. What to focus on. What to ignore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Experience -->
+    <section class="section-experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Experience God Mode</h2>
+            </div>
+            
+            <div class="experience-interface">
+                <div class="interface-prompt">
+                    <label>What problem are you solving?</label>
+                    <textarea id="problemInput" placeholder="Enter your challenge, decision, or problem..."></textarea>
+                </div>
+                
+                <div class="constraint-toggles">
+                    <h4>Remove Constraints:</h4>
+                    <div class="toggle-group">
+                        <button class="constraint-toggle active" data-constraint="time">
+                            <span class="toggle-icon">⏱</span>
+                            <span>Time Pressure</span>
+                        </button>
+                        <button class="constraint-toggle active" data-constraint="ego">
+                            <span class="toggle-icon">🛡</span>
+                            <span>Ego Defense</span>
+                        </button>
+                        <button class="constraint-toggle active" data-constraint="memory">
+                            <span class="toggle-icon">🧠</span>
+                            <span>Memory Limits</span>
+                        </button>
+                        <button class="constraint-toggle active" data-constraint="bias">
+                            <span class="toggle-icon">👁</span>
+                            <span>Cognitive Bias</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button class="activate-god-mode" id="activateBtn">
+                    <span class="btn-text">Activate God Mode</span>
+                    <span class="btn-symbol">◉</span>
+                </button>
+                
+                <div class="god-mode-output" id="godModeOutput">
+                    <div class="output-section">
+                        <h4>The Real Problem</h4>
+                        <p id="realProblem">—</p>
+                    </div>
+                    <div class="output-section">
+                        <h4>Unconstrained Solution</h4>
+                        <p id="unconstrainedSolution">—</p>
+                    </div>
+                    <div class="output-section">
+                        <h4>What You're Missing</h4>
+                        <p id="whatMissing">—</p>
+                    </div>
+                    <div class="output-section">
+                        <h4>Compressed Path Forward</h4>
+                        <p id="pathForward">—</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Use Cases -->
+    <section class="section-cases" id="use-cases">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">When To Enter God Mode</h2>
+            </div>
+            
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-scenario">Strategic Decisions</div>
+                    <div class="case-description">
+                        When the stakes are high and you sense you're not seeing the full picture.
+                    </div>
+                    <div class="case-outcome">
+                        <span class="outcome-label">Typical Outcome:</span>
+                        Realize you're solving the wrong problem entirely
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-scenario">Stuck Problems</div>
+                    <div class="case-description">
+                        When you've tried everything and nothing works. Time to see what time-pressure hides.
+                    </div>
+                    <div class="case-outcome">
+                        <span class="outcome-label">Typical Outcome:</span>
+                        Discover the constraint you didn't know you had
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-scenario">Life Choices</div>
+                    <div class="case-description">
+                        Career moves, relationships, major commitments—when ego clouds judgment.
+                    </div>
+                    <div class="case-outcome">
+                        <span class="outcome-label">Typical Outcome:</span>
+                        See what you actually want vs. what you think you should want
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-scenario">Creative Blocks</div>
+                    <div class="case-description">
+                        When nothing feels right and self-criticism dominates.
+                    </div>
+                    <div class="case-outcome">
+                        <span class="outcome-label">Typical Outcome:</span>
+                        The obvious solution hiding behind fear
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="section-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Think Without Limits?</h2>
+                <p class="cta-subtitle">
+                    Join those who've discovered what becomes possible when constraints dissolve.
+                </p>
+                <form class="waitlist-form" id="waitlistForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">
+                        <span>Enter God Mode</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </form>
+                <p class="cta-note">Free access to the God Mode prompt + early access to OMNISCIENT</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Connected Products -->
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Explore Connected Products</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="product-footer">
+        <div class="container">
+            <div class="footer-brand">
+                <span class="brand-symbol">◉</span>
+                <span>OMNISCIENT</span>
+            </div>
+            <p class="footer-tagline">Part of the Transcendence Collection</p>
+            <a href="../" class="footer-back">Back to Constellation</a>
+        </div>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
+
+

@@ -98,3 +98,7 @@ No personal data stored beyond optional split history.
 **Timeline:** 2 weeks
 **Key Challenges:** Itemized split UX, fair tip distribution, rounding logic
 
+
+
+
+

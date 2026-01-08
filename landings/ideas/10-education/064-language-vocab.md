@@ -97,3 +97,7 @@ All learning data local. No cloud sync. Progress exportable.
 **Timeline:** 8-10 weeks
 **Key Challenges:** Quality word databases, native audio sourcing, efficient offline search
 
+
+
+
+

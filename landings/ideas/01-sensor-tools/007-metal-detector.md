@@ -97,3 +97,7 @@ Location only used if user enables find marking. All data local.
 **Timeline:** 2-3 weeks
 **Key Challenges:** Magnetometer sensitivity varies by device, handling magnetic interference, clear detection feedback UX
 
+
+
+
+

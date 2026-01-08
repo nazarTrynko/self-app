@@ -98,3 +98,7 @@ Continuous recording only when in dedicated monitoring mode. All data local. Exp
 **Timeline:** 4-5 weeks
 **Key Challenges:** Distinguishing earthquakes from other vibrations, battery optimization for continuous monitoring, magnitude estimation accuracy
 
+
+
+
+

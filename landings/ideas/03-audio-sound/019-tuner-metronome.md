@@ -97,3 +97,7 @@ Audio analyzed in real-time, never stored. Practice logs are duration/notes only
 **Timeline:** 4-5 weeks
 **Key Challenges:** Accurate pitch detection across instruments, sub-millisecond metronome timing, temperament calculations
 
+
+
+
+

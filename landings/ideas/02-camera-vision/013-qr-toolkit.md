@@ -96,3 +96,7 @@ All data local. Scan history can be cleared. No tracking of scanned content.
 **Timeline:** 3-4 weeks
 **Key Challenges:** QR styling with embedded logos while maintaining scannability, batch processing UX
 
+
+
+
+

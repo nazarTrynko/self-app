@@ -99,3 +99,7 @@ Templates and usage data stored locally. Variable values not persisted.
 **Timeline:** 3-4 weeks
 **Key Challenges:** Variable replacement UX, integration with various email apps, template quality
 
+
+
+
+

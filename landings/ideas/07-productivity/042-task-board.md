@@ -93,3 +93,7 @@ All project data local. No cloud. No accounts. Full data ownership.
 **Timeline:** 5-6 weeks
 **Key Challenges:** Drag-and-drop UX on mobile, data structure for flexible workflows, search performance
 
+
+
+
+

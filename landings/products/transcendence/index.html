@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transcendence Products — 15 conceptual tools for superhuman thinking. Explore the constellation of cognitive enhancement.">
+    <title>Transcendence Products — Beyond Normal AI</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="shared/styles/variables.css">
+    <link rel="stylesheet" href="shared/styles/animations.css">
+    
+    <style>
+        :root {
+            --bg-deep: #030308;
+            --bg-surface: #08080F;
+            --text-primary: #E8E8F0;
+            --text-secondary: #8888A0;
+            --accent-main: #7B68EE;
+            --accent-glow: rgba(123, 104, 238, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Canvas Background */
+        #constellation-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        /* Header */
+        .hub-header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: var(--space-20) var(--space-6) var(--space-12);
+        }
+        
+        .hub-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: rgba(123, 104, 238, 0.1);
+            border: 1px solid rgba(123, 104, 238, 0.3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-main);
+            margin-bottom: var(--space-6);
+            animation: fadeInDown 0.8s ease forwards;
+        }
+        
+        .hub-title {
+            font-family: var(--font-display);
+            font-size: var(--text-hero);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: var(--space-6);
+            background: linear-gradient(135deg, #fff 0%, #7B68EE 50%, #fff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease forwards, shimmer 8s linear infinite;
+        }
+        
+        .hub-subtitle {
+            font-size: var(--text-xl);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+        
+        /* Progress Bar */
+        .hub-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.4s forwards;
+        }
+        
+        .progress-track {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-main), #FF69B4);
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+        }
+        
+        .progress-label {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+        
+        /* Constellation Container */
+        .constellation-container {
+            position: relative;
+            z-index: 5;
+            width: 100%;
+            max-width: 1400px;
+            height: 75vh;
+            min-height: 600px;
+            margin: 0 auto;
+            padding: var(--space-6);
+        }
+        
+        .constellation-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Product Nodes */
+        .product-node {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-node:hover {
+            transform: scale(1.2);
+        }
+        
+        .node-glow {
+            fill: none;
+            stroke-width: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-node:hover .node-glow {
+            opacity: 0.6;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        .node-core {
+            transition: all 0.3s ease;
+        }
+        
+        .product-node:hover .node-core {
+            filter: brightness(1.3);
+        }
+        
+        .node-symbol {
+            font-family: var(--font-body);
+            font-size: 14px;
+            fill: #fff;
+            text-anchor: middle;
+            dominant-baseline: central;
+            pointer-events: none;
+        }
+        
+        .node-label {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 500;
+            fill: var(--text-primary);
+            text-anchor: middle;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .product-node:hover .node-label {
+            opacity: 1;
+        }
+        
+        .node-visited {
+            opacity: 0;
+        }
+        
+        .product-node.visited .node-visited {
+            opacity: 1;
+        }
+        
+        /* Connection Lines */
+        .connection-line {
+            stroke: rgba(123, 104, 238, 0.2);
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 4 4;
+            animation: connectionPulse 3s linear infinite;
+        }
+        
+        /* Tooltip */
+        .product-tooltip {
+            position: fixed;
+            z-index: 100;
+            padding: var(--space-4) var(--space-6);
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(123, 104, 238, 0.3);
+            border-radius: var(--radius-lg);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            max-width: 300px;
+        }
+        
+        .product-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tooltip-name {
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            font-weight: 500;
+            margin-bottom: var(--space-1);
+        }
+        
+        .tooltip-prompt {
+            font-size: var(--text-xs);
+            color: var(--accent-main);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-2);
+        }
+        
+        .tooltip-tagline {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+        
+        /* Footer */
+        .hub-footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: var(--space-12) var(--space-6) var(--space-16);
+        }
+        
+        .footer-cta {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-4);
+        }
+        
+        .footer-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            color: var(--text-secondary);
+        }
+        
+        .hint-icon {
+            width: 16px;
+            height: 16px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Back Link */
+        .back-link {
+            position: fixed;
+            top: var(--space-6);
+            left: var(--space-6);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: var(--text-sm);
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+        
+        .back-link svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Mobile Adaptations */
+        @media (max-width: 768px) {
+            .hub-header {
+                padding: var(--space-16) var(--space-4) var(--space-8);
+            }
+            
+            .constellation-container {
+                height: 60vh;
+                min-height: 500px;
+            }
+            
+            .node-label {
+                opacity: 1;
+                font-size: 9px;
+            }
+            
+            .product-tooltip {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .constellation-container {
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Canvas -->
+    <canvas id="constellation-bg"></canvas>
+    
+    <!-- Back to Products -->
+    <a href="../" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Products
+    </a>
+    
+    <!-- Header -->
+    <header class="hub-header">
+        <div class="hub-badge">
+            <span>⚡</span>
+            <span>15 Cognitive Tools</span>
+        </div>
+        <h1 class="hub-title">Transcendence</h1>
+        <p class="hub-subtitle">
+            Beyond normal AI. Each node represents a distinct mode of superhuman thinking. 
+            Click to enter each dimension.
+        </p>
+        <div class="hub-progress">
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-label" id="progressLabel">0/15 Explored</span>
+        </div>
+    </header>
+    
+    <!-- Constellation -->
+    <div class="constellation-container">
+        <svg class="constellation-svg" id="constellationSvg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet">
+            <!-- Connections will be drawn first (behind nodes) -->
+            <g id="connectionsGroup"></g>
+            <!-- Product nodes -->
+            <g id="nodesGroup"></g>
+        </svg>
+    </div>
+    
+    <!-- Tooltip -->
+    <div class="product-tooltip" id="productTooltip">
+        <div class="tooltip-name" id="tooltipName"></div>
+        <div class="tooltip-prompt" id="tooltipPrompt"></div>
+        <div class="tooltip-tagline" id="tooltipTagline"></div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="hub-footer">
+        <p class="footer-cta">Each product embodies a unique transcendence prompt</p>
+        <div class="footer-hint">
+            <svg class="hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            Hover nodes to preview • Click to explore
+        </div>
+    </footer>
+    
+    <script type="module">
+        import { products, getProductById } from './shared/js/product-data.js';
+        import { getVisitedProducts, markProductVisited, transitionToProduct } from './shared/js/navigation.js';
+        
+        // Canvas Background
+        const canvas = document.getElementById('constellation-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        function createParticles() {
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 15000);
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5 + 0.5,
+                    alpha: Math.random() * 0.5 + 0.1,
+                    speed: Math.random() * 0.2 + 0.05,
+                    drift: (Math.random() - 0.5) * 0.1
+                });
+            }
+        }
+        
+        function animateBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw particles
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(123, 104, 238, ${p.alpha})`;
+                ctx.fill();
+                
+                // Slow drift
+                p.y -= p.speed;
+                p.x += p.drift;
+                
+                // Reset if off screen
+                if (p.y < -10) {
+                    p.y = canvas.height + 10;
+                    p.x = Math.random() * canvas.width;
+                }
+            });
+            
+            requestAnimationFrame(animateBackground);
+        }
+        
+        // Initialize background
+        resizeCanvas();
+        createParticles();
+        animateBackground();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+        
+        // SVG Constellation
+        const svg = document.getElementById('constellationSvg');
+        const connectionsGroup = document.getElementById('connectionsGroup');
+        const nodesGroup = document.getElementById('nodesGroup');
+        const tooltip = document.getElementById('productTooltip');
+        const tooltipName = document.getElementById('tooltipName');
+        const tooltipPrompt = document.getElementById('tooltipPrompt');
+        const tooltipTagline = document.getElementById('tooltipTagline');
+        
+        const visited = getVisitedProducts();
+        
+        // Draw connections first
+        products.forEach(product => {
+            product.connections.forEach(connId => {
+                const connProduct = getProductById(connId);
+                if (!connProduct) return;
+                
+                // Only draw each connection once (when first product id is smaller)
+                if (product.id > connId) return;
+                
+                const x1 = product.position.x * 10;
+                const y1 = product.position.y * 7;
+                const x2 = connProduct.position.x * 10;
+                const y2 = connProduct.position.y * 7;
+                
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('class', 'connection-line');
+                line.setAttribute('x1', x1);
+                line.setAttribute('y1', y1);
+                line.setAttribute('x2', x2);
+                line.setAttribute('y2', y2);
+                connectionsGroup.appendChild(line);
+            });
+        });
+        
+        // Draw nodes
+        products.forEach((product, index) => {
+            const x = product.position.x * 10;
+            const y = product.position.y * 7;
+            const isVisited = visited.includes(product.id);
+            
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            group.setAttribute('class', `product-node ${isVisited ? 'visited' : ''}`);
+            group.setAttribute('data-id', product.id);
+            group.style.transform = `translate(${x}px, ${y}px)`;
+            group.style.animationDelay = `${index * 0.05}s`;
+            
+            // Outer glow
+            const glow = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            glow.setAttribute('class', 'node-glow');
+            glow.setAttribute('r', '30');
+            glow.setAttribute('stroke', product.color.primary);
+            glow.style.setProperty('--glow-color', product.color.primary);
+            group.appendChild(glow);
+            
+            // Core circle
+            const core = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            core.setAttribute('class', 'node-core');
+            core.setAttribute('r', isVisited ? '14' : '12');
+            core.setAttribute('fill', product.color.primary);
+            core.setAttribute('opacity', isVisited ? '1' : '0.8');
+            group.appendChild(core);
+            
+            // Symbol
+            const symbol = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            symbol.setAttribute('class', 'node-symbol');
+            symbol.textContent = product.symbol;
+            group.appendChild(symbol);
+            
+            // Label below
+            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            label.setAttribute('class', 'node-label');
+            label.setAttribute('y', '30');
+            label.textContent = product.name;
+            group.appendChild(label);
+            
+            // Visited indicator
+            const visitedMark = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            visitedMark.setAttribute('class', 'node-visited');
+            visitedMark.setAttribute('r', '4');
+            visitedMark.setAttribute('cx', '10');
+            visitedMark.setAttribute('cy', '-10');
+            visitedMark.setAttribute('fill', '#00FF7F');
+            group.appendChild(visitedMark);
+            
+            // Event listeners
+            group.addEventListener('mouseenter', (e) => {
+                tooltipName.textContent = product.name;
+                tooltipName.style.color = product.color.primary;
+                tooltipPrompt.textContent = product.prompt;
+                tooltipTagline.textContent = product.tagline;
+                
+                tooltip.classList.add('visible');
+            });
+            
+            group.addEventListener('mousemove', (e) => {
+                tooltip.style.left = `${e.clientX + 20}px`;
+                tooltip.style.top = `${e.clientY - 20}px`;
+            });
+            
+            group.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('visible');
+            });
+            
+            group.addEventListener('click', (e) => {
+                transitionToProduct(product.id, e);
+            });
+            
+            nodesGroup.appendChild(group);
+        });
+        
+        // Update progress
+        const progressFill = document.getElementById('progressFill');
+        const progressLabel = document.getElementById('progressLabel');
+        const visitedCount = visited.length;
+        const totalCount = products.length;
+        const percentage = (visitedCount / totalCount) * 100;
+        
+        progressFill.style.width = `${percentage}%`;
+        progressLabel.textContent = `${visitedCount}/${totalCount} Explored`;
+    </script>
+</body>
+</html>
+
+
+

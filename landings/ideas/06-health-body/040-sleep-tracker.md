@@ -98,3 +98,7 @@ Snoring recordings saved locally, user-deletable. Movement data processed, not s
 **Timeline:** 8-10 weeks
 **Key Challenges:** Sleep phase estimation accuracy, snoring detection, battery optimization overnight, smart alarm timing
 
+
+
+
+

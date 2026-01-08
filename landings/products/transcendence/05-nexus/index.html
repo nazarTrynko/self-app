@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXUS — Everything connects. Domain knowledge mapping and connection discovery platform.">
+    <title>NEXUS — Everything Connects</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="nexusCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">← Constellation</a>
+        <div class="nav-brand"><span class="brand-symbol">⬡</span> NEXUS</div>
+        <a href="#map" class="nav-cta">Map Your Domain</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.5 The Knowledge Graph Builder</div>
+            <h1 class="hero-title">Everything<br><span class="title-accent">Connects</span></h1>
+            <p class="hero-essence">Patterns emerge from relationships. NEXUS maps the hidden connections in your domain knowledge.</p>
+            <a href="#map" class="btn-nexus">⬡ Build Your Graph</a>
+        </div>
+        <div class="hero-visual">
+            <div class="network-viz" id="networkViz"></div>
+        </div>
+    </section>
+    
+    <section class="section-what">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">KNOWLEDGE ARCHITECTURE</span>
+                <h2 class="section-title">See The Invisible Structure</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⬡</div>
+                    <h3>Entity Mapping</h3>
+                    <p>Identify and name the key concepts in your domain</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⟷</div>
+                    <h3>Relationship Discovery</h3>
+                    <p>Reveal how concepts connect, depend, and influence each other</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">◎</div>
+                    <h3>Pattern Recognition</h3>
+                    <p>Find clusters, bridges, and structural insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⟴</div>
+                    <h3>Gap Analysis</h3>
+                    <p>Discover missing connections and unexplored territories</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-map" id="map">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">INTERACTIVE</span>
+                <h2 class="section-title">Map Your Knowledge</h2>
+            </div>
+            <div class="map-interface">
+                <div class="domain-input">
+                    <label>What domain are you mapping?</label>
+                    <input type="text" id="domainInput" placeholder="e.g., Machine Learning, Project Management, Personal Finance...">
+                </div>
+                <div class="nodes-input">
+                    <label>Add key concepts (Enter to add)</label>
+                    <input type="text" id="nodeInput" placeholder="Add a concept...">
+                    <div class="nodes-list" id="nodesList"></div>
+                </div>
+                <button class="map-btn" id="mapBtn">⬡ Generate Knowledge Graph</button>
+                <div class="map-output" id="mapOutput">
+                    <div class="output-connections">
+                        <h4>Discovered Connections</h4>
+                        <div id="connections"></div>
+                    </div>
+                    <div class="output-insights">
+                        <h4>Structural Insights</h4>
+                        <p id="insights">—</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">Map Your Universe</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join NEXUS</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Connected Nodes</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="footer-brand">⬡ NEXUS</div>
+        <p class="footer-tagline">Transcendence Collection</p>
+        <a href="../" class="footer-back">Back to Constellation</a>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
+
+

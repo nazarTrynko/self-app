@@ -97,3 +97,7 @@ Academic records stored locally. Export available for records.
 **Timeline:** 6-8 weeks
 **Key Challenges:** GPA calculation flexibility (different systems), schedule complexity, intuitive academic UX
 
+
+
+
+

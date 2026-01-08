@@ -94,3 +94,7 @@ Game progress stored locally. No personal data.
 **Timeline:** 6-8 weeks
 **Key Challenges:** Quality procedural puzzle generation, crossword generation algorithm, engaging difficulty curve
 
+
+
+
+

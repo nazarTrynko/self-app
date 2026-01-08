@@ -98,3 +98,7 @@ Recordings saved locally if user chooses. Location only used for tagging if perm
 **Timeline:** 10-12 weeks
 **Key Challenges:** Model size vs accuracy tradeoff, regional species coverage, field conditions audio handling
 
+
+
+
+

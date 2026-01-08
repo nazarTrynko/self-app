@@ -102,3 +102,7 @@ Video feed analyzed in real-time, never stored. Only numerical results saved. Ex
 **Timeline:** 5-6 weeks
 **Key Challenges:** PPG signal quality across devices, HRV algorithm accuracy, handling motion artifacts
 
+
+
+
+

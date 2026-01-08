@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PARALLEL — Live all futures simultaneously. Consequence visualization and timeline exploration for life's biggest decisions.">
+    <title>PARALLEL — Live All Futures Simultaneously</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Multiverse Canvas -->
+    <canvas id="multiverseCanvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="product-nav">
+        <a href="../" class="nav-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Constellation
+        </a>
+        <div class="nav-brand">
+            <span class="brand-symbol">⫿</span>
+            <span class="brand-name">PARALLEL</span>
+        </div>
+        <a href="#explorer" class="nav-cta">Explore Timelines</a>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.4 The Multiverse Explorer</div>
+            <h1 class="hero-title">
+                <span class="title-word">Live</span>
+                <span class="title-word title-split">
+                    <span class="split-top">All</span>
+                    <span class="split-bottom">Futures</span>
+                </span>
+                <span class="title-word">Simultaneously</span>
+            </h1>
+            <p class="hero-essence">
+                Before you choose, live in every timeline. See what unfolds. 
+                Then decide which universe to create.
+            </p>
+            <div class="hero-cta">
+                <a href="#explorer" class="btn-parallel btn-primary">
+                    <span>Enter The Multiverse</span>
+                    <span class="btn-icon">⫿</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="timeline-branches">
+                <div class="branch branch-a">
+                    <div class="branch-node">A</div>
+                    <div class="branch-line"></div>
+                    <div class="branch-outcome">
+                        <span class="outcome-year">2031</span>
+                        <span class="outcome-text">Path of certainty</span>
+                    </div>
+                </div>
+                <div class="branch branch-b">
+                    <div class="branch-node">B</div>
+                    <div class="branch-line"></div>
+                    <div class="branch-outcome">
+                        <span class="outcome-year">2031</span>
+                        <span class="outcome-text">Path of growth</span>
+                    </div>
+                </div>
+                <div class="branch branch-c">
+                    <div class="branch-node">C</div>
+                    <div class="branch-line"></div>
+                    <div class="branch-outcome">
+                        <span class="outcome-year">2031</span>
+                        <span class="outcome-text">Path unknown</span>
+                    </div>
+                </div>
+                <div class="branch branch-d">
+                    <div class="branch-node">D</div>
+                    <div class="branch-line"></div>
+                    <div class="branch-outcome">
+                        <span class="outcome-year">2031</span>
+                        <span class="outcome-text">Wildcard event</span>
+                    </div>
+                </div>
+                <div class="origin-point">
+                    <span>NOW</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What It Does -->
+    <section class="section-what" id="what">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">CONSEQUENCE VISUALIZATION</span>
+                <h2 class="section-title">See Every Timeline Before Choosing</h2>
+            </div>
+            
+            <div class="universes-preview">
+                <div class="universe-card universe-a">
+                    <div class="universe-header">
+                        <span class="universe-label">Universe A</span>
+                        <span class="universe-choice">You chose Option 1</span>
+                    </div>
+                    <div class="universe-content">
+                        <p class="universe-narrative">The safe path. Predictable outcomes. Known quantities.</p>
+                        <div class="universe-markers">
+                            <div class="marker">
+                                <span class="marker-icon">💚</span>
+                                <span class="marker-label">Grateful for</span>
+                                <span class="marker-value">Stability</span>
+                            </div>
+                            <div class="marker">
+                                <span class="marker-icon">💔</span>
+                                <span class="marker-label">Regret</span>
+                                <span class="marker-value">What if?</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="universe-card universe-b">
+                    <div class="universe-header">
+                        <span class="universe-label">Universe B</span>
+                        <span class="universe-choice">You chose Option 2</span>
+                    </div>
+                    <div class="universe-content">
+                        <p class="universe-narrative">The bold path. Higher variance. Greater potential.</p>
+                        <div class="universe-markers">
+                            <div class="marker">
+                                <span class="marker-icon">💚</span>
+                                <span class="marker-label">Grateful for</span>
+                                <span class="marker-value">The attempt</span>
+                            </div>
+                            <div class="marker">
+                                <span class="marker-icon">💔</span>
+                                <span class="marker-label">Regret</span>
+                                <span class="marker-value">Depends</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="universe-card universe-c">
+                    <div class="universe-header">
+                        <span class="universe-label">Universe C</span>
+                        <span class="universe-choice">You chose neither</span>
+                    </div>
+                    <div class="universe-content">
+                        <p class="universe-narrative">The third door. The option no one mentioned.</p>
+                        <div class="universe-markers">
+                            <div class="marker">
+                                <span class="marker-icon">💚</span>
+                                <span class="marker-label">Grateful for</span>
+                                <span class="marker-value">Creativity</span>
+                            </div>
+                            <div class="marker">
+                                <span class="marker-icon">💔</span>
+                                <span class="marker-label">Regret</span>
+                                <span class="marker-value">Unknown</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="universe-card universe-d">
+                    <div class="universe-header">
+                        <span class="universe-label">Universe D</span>
+                        <span class="universe-choice">External event changed everything</span>
+                    </div>
+                    <div class="universe-content">
+                        <p class="universe-narrative">Black swan. Your choice became irrelevant.</p>
+                        <div class="universe-markers">
+                            <div class="marker">
+                                <span class="marker-icon">💚</span>
+                                <span class="marker-label">Grateful for</span>
+                                <span class="marker-value">Adaptability</span>
+                            </div>
+                            <div class="marker">
+                                <span class="marker-icon">💔</span>
+                                <span class="marker-label">Regret</span>
+                                <span class="marker-value">Nothing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="section-how" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">THE PROTOCOL</span>
+                <h2 class="section-title">How Timeline Exploration Works</h2>
+            </div>
+            
+            <div class="protocol-steps">
+                <div class="protocol-step">
+                    <div class="step-visual">
+                        <div class="visual-branch single"></div>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-number">01</span>
+                        <h3>Define The Decision Point</h3>
+                        <p>Identify the choice and its primary options. This is your branch point.</p>
+                    </div>
+                </div>
+                
+                <div class="protocol-step">
+                    <div class="step-visual">
+                        <div class="visual-branch split-four"></div>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-number">02</span>
+                        <h3>Split Into Four Universes</h3>
+                        <p>Option A, Option B, Alternative C, and External Event D. Four parallel realities.</p>
+                    </div>
+                </div>
+                
+                <div class="protocol-step">
+                    <div class="step-visual">
+                        <div class="visual-branch future"></div>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-number">03</span>
+                        <h3>Travel 5 Years Forward</h3>
+                        <p>In each universe, what are you grateful for? What do you regret? What surprised you?</p>
+                    </div>
+                </div>
+                
+                <div class="protocol-step">
+                    <div class="step-visual">
+                        <div class="visual-branch message"></div>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-number">04</span>
+                        <h3>Message From Future Self</h3>
+                        <p>What would each future version of you tell your present self?</p>
+                    </div>
+                </div>
+                
+                <div class="protocol-step">
+                    <div class="step-visual">
+                        <div class="visual-branch chosen"></div>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-number">05</span>
+                        <h3>Choose Your Universe</h3>
+                        <p>Which reality do you want to create? Now you know the path.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Timeline Explorer -->
+    <section class="section-explorer" id="explorer">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">INTERACTIVE</span>
+                <h2 class="section-title">Explore Your Multiverse</h2>
+            </div>
+            
+            <div class="explorer-interface">
+                <div class="explorer-input">
+                    <label>What decision are you facing?</label>
+                    <input type="text" id="decisionInput" placeholder="e.g., Accept the job offer or start my own thing">
+                </div>
+                
+                <div class="options-grid">
+                    <div class="option-input">
+                        <label>Option A</label>
+                        <input type="text" id="optionA" placeholder="The safe choice">
+                    </div>
+                    <div class="option-input">
+                        <label>Option B</label>
+                        <input type="text" id="optionB" placeholder="The bold choice">
+                    </div>
+                </div>
+                
+                <button class="explore-btn" id="exploreBtn">
+                    <span class="btn-text">Split Into Universes</span>
+                    <span class="btn-icon">⫿</span>
+                </button>
+                
+                <div class="explorer-results" id="explorerResults">
+                    <div class="timeline-visualization">
+                        <div class="timeline-now">
+                            <span>NOW</span>
+                        </div>
+                        <div class="timeline-paths">
+                            <div class="path path-a" data-universe="A">
+                                <div class="path-line"></div>
+                                <div class="path-end">
+                                    <span class="path-label">Universe A</span>
+                                </div>
+                            </div>
+                            <div class="path path-b" data-universe="B">
+                                <div class="path-line"></div>
+                                <div class="path-end">
+                                    <span class="path-label">Universe B</span>
+                                </div>
+                            </div>
+                            <div class="path path-c" data-universe="C">
+                                <div class="path-line"></div>
+                                <div class="path-end">
+                                    <span class="path-label">Universe C</span>
+                                </div>
+                            </div>
+                            <div class="path path-d" data-universe="D">
+                                <div class="path-line"></div>
+                                <div class="path-end">
+                                    <span class="path-label">Universe D</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="universe-details" id="universeDetails">
+                        <p class="select-prompt">Click a universe to explore its timeline</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Key Insights -->
+    <section class="section-insights">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">WHY IT WORKS</span>
+                <h2 class="section-title">The Power of Multiverse Thinking</h2>
+            </div>
+            
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-number">01</div>
+                    <h3>Consequences Become Vivid</h3>
+                    <p>Abstract "what ifs" transform into lived experiences. You don't just know—you feel.</p>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-number">02</div>
+                    <h3>Values Surface</h3>
+                    <p>Gratitude and regret reveal what actually matters. Surprise shows blind spots.</p>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-number">03</div>
+                    <h3>Future Self Speaks</h3>
+                    <p>Advice-to-past-self bridges future wisdom to present action.</p>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-number">04</div>
+                    <h3>Third Options Emerge</h3>
+                    <p>Binary thinking dissolves. Universe C often holds the best path.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="section-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-visual">
+                    <div class="cta-branches">
+                        <span class="branch-line"></span>
+                        <span class="branch-line"></span>
+                        <span class="branch-line"></span>
+                        <span class="branch-line"></span>
+                    </div>
+                </div>
+                <h2 class="cta-title">Which Universe Will You Create?</h2>
+                <p class="cta-subtitle">
+                    Join explorers who've seen their futures before choosing them.
+                </p>
+                <form class="waitlist-form" id="waitlistForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">
+                        <span>Enter The Multiverse</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Connected Products -->
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Connected Dimensions</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="product-footer">
+        <div class="container">
+            <div class="footer-brand">
+                <span class="brand-symbol">⫿</span>
+                <span>PARALLEL</span>
+            </div>
+            <p class="footer-tagline">Part of the Transcendence Collection</p>
+            <a href="../" class="footer-back">Back to Constellation</a>
+        </div>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
+
+

@@ -91,3 +91,7 @@ Location only accessed with permission for declination. All waypoints local. No 
 **Timeline:** 2-3 weeks
 **Key Challenges:** Magnetometer calibration UX, handling magnetic interference gracefully
 
+
+
+
+

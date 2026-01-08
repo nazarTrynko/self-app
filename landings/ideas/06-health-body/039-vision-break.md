@@ -99,3 +99,7 @@ Screen time estimates stored locally. No personal data beyond usage patterns.
 **Timeline:** 2-3 weeks
 **Key Challenges:** Smart reminder timing, engaging eye exercise UX, ambient light interpretation
 
+
+
+
+

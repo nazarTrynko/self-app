@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PANOPTIC — See from all angles at once. Omni-perspective simultaneous viewing for complete understanding.">
+    <title>PANOPTIC — See From All Angles At Once</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="panopticCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">← Constellation</a>
+        <div class="nav-brand"><span class="brand-symbol">⊛</span> PANOPTIC</div>
+        <a href="#viewer" class="nav-cta">All Angles</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.12 The Holographic Viewer</div>
+            <h1 class="hero-title">
+                See From<br>
+                <span class="title-accent">All Angles</span><br>
+                At Once
+            </h1>
+            <p class="hero-essence">Why choose one perspective when you can hold them all? PANOPTIC renders reality in 360°.</p>
+            <a href="#viewer" class="btn-panoptic">⊛ Enter Omni-View</a>
+        </div>
+        <div class="hero-visual">
+            <div class="holographic-core">
+                <div class="facet facet-1"></div>
+                <div class="facet facet-2"></div>
+                <div class="facet facet-3"></div>
+                <div class="facet facet-4"></div>
+                <div class="facet facet-5"></div>
+                <div class="facet facet-6"></div>
+                <div class="core-eye">⊛</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-perspectives">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">OMNI-PERSPECTIVE</span>
+                <h2 class="section-title">Every Angle, Simultaneously</h2>
+            </div>
+            <div class="perspectives-grid">
+                <div class="perspective-card">
+                    <span class="angle">0°</span>
+                    <h3>Self View</h3>
+                    <p>How you see the situation</p>
+                </div>
+                <div class="perspective-card">
+                    <span class="angle">60°</span>
+                    <h3>Other View</h3>
+                    <p>How others experience it</p>
+                </div>
+                <div class="perspective-card">
+                    <span class="angle">120°</span>
+                    <h3>Observer View</h3>
+                    <p>How a neutral party would see it</p>
+                </div>
+                <div class="perspective-card">
+                    <span class="angle">180°</span>
+                    <h3>Opposite View</h3>
+                    <p>The contrarian perspective</p>
+                </div>
+                <div class="perspective-card">
+                    <span class="angle">240°</span>
+                    <h3>System View</h3>
+                    <p>How the larger system sees it</p>
+                </div>
+                <div class="perspective-card">
+                    <span class="angle">300°</span>
+                    <h3>Future View</h3>
+                    <p>How your future self will see it</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-viewer" id="viewer">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">HOLOGRAPHIC INTERFACE</span>
+                <h2 class="section-title">Render All Perspectives</h2>
+            </div>
+            <div class="viewer-interface">
+                <div class="situation-input">
+                    <label>What situation needs 360° vision?</label>
+                    <textarea id="situationInput" placeholder="Describe the conflict, decision, or challenge..."></textarea>
+                </div>
+                <button class="render-btn" id="renderBtn">⊛ Render All Angles</button>
+                <div class="viewer-output" id="viewerOutput">
+                    <div class="output-grid">
+                        <div class="output-angle" id="selfView"><h4>Self View (0°)</h4><p>—</p></div>
+                        <div class="output-angle" id="otherView"><h4>Other View (60°)</h4><p>—</p></div>
+                        <div class="output-angle" id="observerView"><h4>Observer View (120°)</h4><p>—</p></div>
+                        <div class="output-angle" id="oppositeView"><h4>Opposite View (180°)</h4><p>—</p></div>
+                        <div class="output-angle" id="systemView"><h4>System View (240°)</h4><p>—</p></div>
+                        <div class="output-angle" id="futureView"><h4>Future View (300°)</h4><p>—</p></div>
+                    </div>
+                    <div class="output-synthesis">
+                        <h4>Holographic Synthesis</h4>
+                        <blockquote id="synthesis">—</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">See Everything</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join PANOPTIC</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Connected Views</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="footer-brand">⊛ PANOPTIC</div>
+        <p class="footer-tagline">Transcendence Collection</p>
+        <a href="../" class="footer-back">Back to Constellation</a>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+

@@ -91,3 +91,7 @@ All data local. No telemetry. Export only via user action. Designed for industri
 **Timeline:** 8-10 weeks
 **Key Challenges:** FFT implementation performance, sensor sampling rate limitations, calibration across different phone models
 
+
+
+
+

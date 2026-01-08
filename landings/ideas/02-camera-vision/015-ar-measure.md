@@ -96,3 +96,7 @@ All measurements and photos stay on device. Export through standard file sharing
 **Timeline:** 5-6 weeks
 **Key Challenges:** AR measurement accuracy, room scanning reliability, floor plan generation from point cloud
 
+
+
+
+

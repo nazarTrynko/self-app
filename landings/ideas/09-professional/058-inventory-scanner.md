@@ -98,3 +98,7 @@ Inventory data stored locally. Export available as CSV for other systems.
 **Timeline:** 5-6 weeks
 **Key Challenges:** Reliable barcode scanning, efficient search across large inventories, reporting accuracy
 
+
+
+
+

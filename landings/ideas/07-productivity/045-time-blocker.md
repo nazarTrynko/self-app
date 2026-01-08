@@ -99,3 +99,7 @@ Schedule data stored locally. Calendar access is read-only import. Full privacy.
 **Timeline:** 4-5 weeks
 **Key Challenges:** Intuitive block manipulation UX, calendar import handling, tracking vs planned accuracy
 
+
+
+
+

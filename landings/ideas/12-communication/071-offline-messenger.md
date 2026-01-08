@@ -99,3 +99,7 @@ Messages encrypted. No server involvement. All data stays on devices in the mesh
 **Timeline:** 10-12 weeks
 **Key Challenges:** Reliable mesh routing, cross-platform Bluetooth, message delivery confirmation
 
+
+
+
+

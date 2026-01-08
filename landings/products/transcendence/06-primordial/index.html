@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PRIMORDIAL — Nature's optimization algorithm. Evolve solutions through mutation and selection.">
+    <title>PRIMORDIAL — Nature's Optimization Algorithm</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300;0,400;0,500;1,400&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="primordialCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">← Constellation</a>
+        <div class="nav-brand"><span class="brand-symbol">🧬</span> PRIMORDIAL</div>
+        <a href="#evolve" class="nav-cta">Start Evolution</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.6 The Genetic Evolver</div>
+            <h1 class="hero-title">Nature's<br><span class="title-accent">Optimization</span><br>Algorithm</h1>
+            <p class="hero-essence">Don't design the perfect solution. Evolve it. PRIMORDIAL applies genetic algorithms to your problems.</p>
+            <a href="#evolve" class="btn-primordial">🧬 Begin Evolution</a>
+        </div>
+        <div class="hero-visual">
+            <div class="dna-helix" id="dnaHelix"></div>
+        </div>
+    </section>
+    
+    <section class="section-process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">EVOLUTIONARY PROCESS</span>
+                <h2 class="section-title">How Solutions Evolve</h2>
+            </div>
+            <div class="evolution-steps">
+                <div class="evo-step"><div class="step-num">1</div><h3>Generate</h3><p>Create diverse solution variants</p></div>
+                <div class="evo-step"><div class="step-num">2</div><h3>Test</h3><p>Evaluate fitness against criteria</p></div>
+                <div class="evo-step"><div class="step-num">3</div><h3>Select</h3><p>Keep the fittest variants</p></div>
+                <div class="evo-step"><div class="step-num">4</div><h3>Mutate</h3><p>Introduce random variations</p></div>
+                <div class="evo-step"><div class="step-num">5</div><h3>Combine</h3><p>Cross-breed best traits</p></div>
+                <div class="evo-step"><div class="step-num">6</div><h3>Repeat</h3><p>Iterate until optimal</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-evolve" id="evolve">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">EVOLUTION CHAMBER</span>
+                <h2 class="section-title">Evolve Your Solution</h2>
+            </div>
+            <div class="evolve-interface">
+                <div class="problem-input">
+                    <label>What needs to evolve?</label>
+                    <textarea id="problemInput" placeholder="Describe the solution space you want to explore..."></textarea>
+                </div>
+                <div class="fitness-criteria">
+                    <label>Fitness Criteria (what makes a good solution?)</label>
+                    <input type="text" id="criteriaInput" placeholder="e.g., speed, cost, simplicity, impact...">
+                </div>
+                <button class="evolve-btn" id="evolveBtn">🧬 Run 10 Generations</button>
+                <div class="evolve-output" id="evolveOutput">
+                    <div class="generation-tracker">
+                        <span>Generation</span>
+                        <span class="gen-number" id="genNumber">10</span>
+                    </div>
+                    <div class="output-variants">
+                        <h4>Fittest Variants</h4>
+                        <div id="variants"></div>
+                    </div>
+                    <div class="output-insight">
+                        <h4>Evolutionary Insight</h4>
+                        <p id="insight">—</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">Let Solutions Evolve</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join PRIMORDIAL</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Related Lineages</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="footer-brand">🧬 PRIMORDIAL</div>
+        <p class="footer-tagline">Transcendence Collection</p>
+        <a href="../" class="footer-back">Back to Constellation</a>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+

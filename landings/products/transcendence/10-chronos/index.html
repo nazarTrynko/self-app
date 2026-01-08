@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CHRONOS — Time as one continuous field. Past, present, and future collapsed into single comprehension.">
+    <title>CHRONOS — Time As One Continuous Field</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,400&family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="chronosCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">← Constellation</a>
+        <div class="nav-brand"><span class="brand-symbol">⧖</span> CHRONOS</div>
+        <a href="#temporal" class="nav-cta">Traverse Time</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.10 The Temporal Reasoner</div>
+            <h1 class="hero-title">
+                <span class="title-line">Time As One</span>
+                <span class="title-line title-accent">Continuous Field</span>
+            </h1>
+            <p class="hero-essence">Past, present, future—not separate, but one. CHRONOS lets you reason across time as a single landscape.</p>
+            <a href="#temporal" class="btn-chronos">⧖ Enter Temporal View</a>
+        </div>
+        <div class="hero-visual">
+            <div class="timeline-spiral">
+                <div class="spiral-ring past">Past</div>
+                <div class="spiral-ring present">Now</div>
+                <div class="spiral-ring future">Future</div>
+                <div class="spiral-core">⧖</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-concept">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">TEMPORAL REASONING</span>
+                <h2 class="section-title">See Time Differently</h2>
+            </div>
+            <div class="time-views">
+                <div class="view-card">
+                    <h3>Linear View</h3>
+                    <p>Past → Present → Future</p>
+                    <span class="view-label">Limited</span>
+                </div>
+                <div class="view-card active">
+                    <h3>Temporal Field View</h3>
+                    <p>All time, simultaneously accessible</p>
+                    <span class="view-label">CHRONOS</span>
+                </div>
+            </div>
+            <p class="concept-text">When you see time as a field rather than a line, patterns emerge. Causes connect to effects across decades. Future possibilities inform present choices.</p>
+        </div>
+    </section>
+    
+    <section class="section-temporal" id="temporal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">TEMPORAL INTERFACE</span>
+                <h2 class="section-title">Traverse Your Timeline</h2>
+            </div>
+            <div class="temporal-interface">
+                <div class="context-input">
+                    <label>What situation are you examining across time?</label>
+                    <textarea id="contextInput" placeholder="Describe the decision, pattern, or situation..."></textarea>
+                </div>
+                <div class="time-selectors">
+                    <div class="time-range">
+                        <label>Past Depth</label>
+                        <select id="pastRange">
+                            <option value="1">1 year</option>
+                            <option value="5" selected>5 years</option>
+                            <option value="10">10 years</option>
+                            <option value="life">Lifetime</option>
+                        </select>
+                    </div>
+                    <div class="time-range">
+                        <label>Future Horizon</label>
+                        <select id="futureRange">
+                            <option value="1">1 year</option>
+                            <option value="5" selected>5 years</option>
+                            <option value="10">10 years</option>
+                            <option value="legacy">Legacy</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="traverse-btn" id="traverseBtn">⧖ Traverse Timeline</button>
+                <div class="temporal-output" id="temporalOutput">
+                    <div class="output-past">
+                        <h4>Past Patterns</h4>
+                        <p id="pastPatterns">—</p>
+                    </div>
+                    <div class="output-present">
+                        <h4>Present Moment</h4>
+                        <p id="presentMoment">—</p>
+                    </div>
+                    <div class="output-future">
+                        <h4>Future Trajectories</h4>
+                        <p id="futureTrajectories">—</p>
+                    </div>
+                    <div class="output-synthesis">
+                        <h4>Temporal Synthesis</h4>
+                        <blockquote id="temporalSynthesis">—</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">Master Time</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join CHRONOS</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Temporal Connections</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="footer-brand">⧖ CHRONOS</div>
+        <p class="footer-tagline">Transcendence Collection</p>
+        <a href="../" class="footer-back">Back to Constellation</a>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+

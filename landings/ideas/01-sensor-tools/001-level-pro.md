@@ -89,3 +89,7 @@ No cloud sync required. Optional export to files. All data stays on device unles
 **Timeline:** 4-6 weeks
 **Key Challenges:** Sensor calibration accuracy, AR overlay performance, handling different device sensor qualities
 
+
+
+
+

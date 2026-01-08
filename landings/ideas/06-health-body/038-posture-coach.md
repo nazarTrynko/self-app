@@ -101,3 +101,7 @@ Posture scores stored locally. No personal data collected beyond posture metrics
 **Timeline:** 5-6 weeks
 **Key Challenges:** Accurate posture detection from sensor data, handling different phone positions, false positive reduction
 
+
+
+
+

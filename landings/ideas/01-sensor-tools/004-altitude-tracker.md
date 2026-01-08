@@ -95,3 +95,7 @@ GPS used only for calibration. No continuous tracking unless user starts recordi
 **Timeline:** 3-4 weeks
 **Key Challenges:** Barometric altitude formula accuracy, handling pressure changes (weather vs altitude), calibration UX
 
+
+
+
+

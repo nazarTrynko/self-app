@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MORPHEUS — Access unconscious insights. Extract what you know but don't know you know through dream-like synthesis.">
+    <title>MORPHEUS — Access Unconscious Insights</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="dreamCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Constellation
+        </a>
+        <div class="nav-brand">
+            <span class="brand-symbol">◐</span>
+            <span class="brand-name">MORPHEUS</span>
+        </div>
+        <a href="#dream" class="nav-cta">Enter Dream State</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.2 The Dream Synthesizer</div>
+            <h1 class="hero-title">
+                <span class="title-line">Access</span>
+                <span class="title-line title-accent">Unconscious</span>
+                <span class="title-line">Insights</span>
+            </h1>
+            <p class="hero-essence">
+                You know more than you think you know. MORPHEUS extracts 
+                what's hidden in the depths of your unconscious mind.
+            </p>
+            <div class="hero-cta">
+                <a href="#dream" class="btn-morpheus btn-primary">
+                    <span>Begin Dream Synthesis</span>
+                    <span class="btn-icon">◐</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="dream-orb">
+                <div class="orb-layer layer-1"></div>
+                <div class="orb-layer layer-2"></div>
+                <div class="orb-layer layer-3"></div>
+                <div class="orb-core"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-what" id="what">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">DEEP KNOWLEDGE</span>
+                <h2 class="section-title">What You Know But Don't Know You Know</h2>
+            </div>
+            
+            <div class="knowledge-layers">
+                <div class="layer-card">
+                    <div class="layer-depth">Surface</div>
+                    <h3>Conscious Knowledge</h3>
+                    <p>What you can immediately recall and articulate</p>
+                </div>
+                <div class="layer-card">
+                    <div class="layer-depth">Middle</div>
+                    <h3>Implicit Patterns</h3>
+                    <p>Skills and intuitions you've developed but can't explain</p>
+                </div>
+                <div class="layer-card active">
+                    <div class="layer-depth">Deep</div>
+                    <h3>Unconscious Synthesis</h3>
+                    <p>Connections and insights your mind made while you weren't looking</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-how" id="how">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">THE PROCESS</span>
+                <h2 class="section-title">Dream State Protocol</h2>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">🌑</div>
+                    <h3>1. Descend</h3>
+                    <p>Let go of logical constraints. Allow fragmented thoughts to surface without judgment.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">🌓</div>
+                    <h3>2. Drift</h3>
+                    <p>Follow associative chains. What connects to what? Where does your mind naturally go?</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">🌕</div>
+                    <h3>3. Synthesize</h3>
+                    <p>In this twilight state, disparate fragments coalesce into unexpected wholes.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">☀️</div>
+                    <h3>4. Surface</h3>
+                    <p>Bring the insight into consciousness. Name it. The unconscious has spoken.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-dream" id="dream">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">EXPERIENCE</span>
+                <h2 class="section-title">Enter The Dream</h2>
+            </div>
+            
+            <div class="dream-interface">
+                <div class="dream-prompt">
+                    <label>What are you seeking to understand?</label>
+                    <textarea id="dreamInput" placeholder="Enter your question, problem, or area of exploration..."></textarea>
+                </div>
+                
+                <div class="dream-fragments">
+                    <h4>Dream Fragments (add associations)</h4>
+                    <div class="fragments-list" id="fragmentsList">
+                        <div class="fragment-placeholder">Type and press Enter to add fragments...</div>
+                    </div>
+                    <input type="text" class="fragment-input" id="fragmentInput" placeholder="Add a thought, image, or association...">
+                </div>
+                
+                <button class="dream-btn" id="dreamBtn">
+                    <span class="btn-text">Synthesize Dream</span>
+                    <span class="btn-icon">◐</span>
+                </button>
+                
+                <div class="dream-output" id="dreamOutput">
+                    <div class="output-emergence">
+                        <h4>What Emerges</h4>
+                        <p id="emergence">—</p>
+                    </div>
+                    <div class="output-hidden">
+                        <h4>The Hidden Connection</h4>
+                        <p id="hidden">—</p>
+                    </div>
+                    <div class="output-insight">
+                        <h4>The Unconscious Speaks</h4>
+                        <blockquote id="insight">—</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">Ready to Access Your Depths?</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Enter The Dream</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Connected Dreams</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="container">
+            <div class="footer-brand">
+                <span class="brand-symbol">◐</span>
+                <span>MORPHEUS</span>
+            </div>
+            <p class="footer-tagline">Part of the Transcendence Collection</p>
+            <a href="../" class="footer-back">Back to Constellation</a>
+        </div>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
+
+

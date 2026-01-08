@@ -97,3 +97,7 @@ Maximum privacy. No data leaves device. No bank connections. User exports only.
 **Timeline:** 5-6 weeks
 **Key Challenges:** Receipt OCR accuracy, smart categorization, useful budget insights
 
+
+
+
+

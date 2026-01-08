@@ -100,3 +100,7 @@ Text never leaves device. Documents stored encrypted locally. No analytics or lo
 **Timeline:** 12-14 weeks
 **Key Challenges:** Grammar model accuracy, on-device inference speed, rewriting quality
 
+
+
+
+

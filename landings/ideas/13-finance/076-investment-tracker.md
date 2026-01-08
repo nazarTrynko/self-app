@@ -95,3 +95,7 @@ Prices updated manually or via periodic user-triggered refresh. All data local.
 **Timeline:** 6-8 weeks
 **Key Challenges:** Price data handling (manual update UX), gain calculations accuracy, tax lot tracking
 
+
+
+
+

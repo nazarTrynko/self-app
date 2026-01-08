@@ -98,3 +98,7 @@ Favorites and collections stored locally. No personal data collected.
 **Timeline:** 4-5 weeks
 **Key Challenges:** Font subsetting for size, pairing algorithm, smooth preview rendering
 
+
+
+
+

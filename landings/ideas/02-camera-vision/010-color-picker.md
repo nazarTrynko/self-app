@@ -96,3 +96,7 @@ Color history stored locally. No tracking. Camera feed never saved unless user c
 **Timeline:** 2-3 weeks
 **Key Challenges:** Accurate color under different lighting, white balance algorithm, Pantone matching accuracy
 
+
+
+
+

@@ -96,3 +96,7 @@ All data stored locally. Export available for backup.
 **Timeline:** 3-4 weeks
 **Key Challenges:** Visual calendar performance, streak logic with skip days, satisfying completion UX
 
+
+
+
+

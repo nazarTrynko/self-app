@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DIALECTIC — Both/And instead of Either/Or. Resolve contradictions through synthesis, not choice.">
+    <title>DIALECTIC — Both/And Instead of Either/Or</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../shared/styles/variables.css">
+    <link rel="stylesheet" href="../shared/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="dialecticCanvas"></canvas>
+    
+    <nav class="product-nav">
+        <a href="../" class="nav-back">← Constellation</a>
+        <div class="nav-brand"><span class="brand-symbol">☯</span> DIALECTIC</div>
+        <a href="#resolver" class="nav-cta">Resolve Paradox</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">6.13 The Paradox Resolver</div>
+            <h1 class="hero-title">
+                Both/And<br>
+                <span class="title-accent">Instead of</span><br>
+                Either/Or
+            </h1>
+            <p class="hero-essence">Contradictions aren't problems to solve—they're tensions to hold. DIALECTIC finds the synthesis.</p>
+            <a href="#resolver" class="btn-dialectic">☯ Enter Synthesis</a>
+        </div>
+        <div class="hero-visual">
+            <div class="yin-yang">
+                <div class="yang"><div class="yang-dot"></div></div>
+                <div class="yin"><div class="yin-dot"></div></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-paradox">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">PARADOX RESOLUTION</span>
+                <h2 class="section-title">The Third Way</h2>
+            </div>
+            <div class="paradox-visual">
+                <div class="thesis-box">
+                    <span class="label">THESIS</span>
+                    <p>One truth</p>
+                </div>
+                <div class="vs-indicator">vs</div>
+                <div class="antithesis-box">
+                    <span class="label">ANTITHESIS</span>
+                    <p>Opposite truth</p>
+                </div>
+                <div class="arrow-down">↓</div>
+                <div class="synthesis-box">
+                    <span class="label">SYNTHESIS</span>
+                    <p>Higher truth containing both</p>
+                </div>
+            </div>
+            <p class="paradox-insight">The resolution of a paradox is never choosing a side. It's transcending the frame that made them seem opposed.</p>
+        </div>
+    </section>
+    
+    <section class="section-resolver" id="resolver">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">RESOLUTION INTERFACE</span>
+                <h2 class="section-title">Dissolve Your Paradox</h2>
+            </div>
+            <div class="resolver-interface">
+                <div class="contradiction-input">
+                    <div class="thesis-input">
+                        <label>Thesis (One side of the contradiction)</label>
+                        <textarea id="thesisInput" placeholder="e.g., I need to prioritize my career..."></textarea>
+                    </div>
+                    <div class="antithesis-input">
+                        <label>Antithesis (The opposing truth)</label>
+                        <textarea id="antithesisInput" placeholder="e.g., I need to be present for my family..."></textarea>
+                    </div>
+                </div>
+                <button class="resolve-btn" id="resolveBtn">☯ Find Synthesis</button>
+                <div class="resolver-output" id="resolverOutput">
+                    <div class="output-frame">
+                        <h4>The Hidden Frame</h4>
+                        <p id="frame">—</p>
+                    </div>
+                    <div class="output-reframe">
+                        <h4>The Reframe</h4>
+                        <p id="reframe">—</p>
+                    </div>
+                    <div class="output-synthesis">
+                        <h4>The Synthesis</h4>
+                        <blockquote id="synthesis">—</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-cta">
+        <div class="container">
+            <h2 class="cta-title">Hold The Tension</h2>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join DIALECTIC</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section-connected">
+        <div class="container">
+            <h3 class="connected-title">Connected Syntheses</h3>
+            <div class="connected-grid" id="connectedProducts"></div>
+        </div>
+    </section>
+    
+    <footer class="product-footer">
+        <div class="footer-brand">☯ DIALECTIC</div>
+        <p class="footer-tagline">Transcendence Collection</p>
+        <a href="../" class="footer-back">Back to Constellation</a>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+

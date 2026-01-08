@@ -100,3 +100,7 @@ Maximum privacy. Decoy PIN shows fake journal. Real journal only accessible with
 **Timeline:** 6-8 weeks
 **Key Challenges:** Encryption UX (no perceptible delay), decoy mode implementation, search within encrypted content
 
+
+
+
+
