@@ -1,0 +1,258 @@
+/* ============================================
+   Shared Styles & CSS Variables
+   The Prompt Library Portal
+   ============================================ */
+
+/* CSS Custom Properties - Observatory Theme */
+:root {
+    /* Observatory Hub Colors */
+    --obs-bg-deep: #0a0a0f;
+    --obs-bg-space: #1a1a2e;
+    --obs-dome-silver: #c0c0c0;
+    --obs-dome-dark: #808080;
+    --obs-starlight: #d4af37;
+    --obs-starlight-bright: #f4d03f;
+    --obs-text: #f5f5f5;
+    --obs-text-muted: #a0a0a0;
+    
+    /* Chamber Color Hints */
+    --chamber-decisions: #4a6760;
+    --chamber-content: #d4574a;
+    --chamber-reflection: #d4a574;
+    --chamber-healing: #8baa9d;
+    --chamber-creation: #3d7ea6;
+    
+    /* Typography */
+    --font-display: 'Exo 2', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.6s ease;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--obs-bg-deep);
+    color: var(--obs-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    background: transparent;
+    border: 2px solid var(--obs-starlight);
+    border-radius: 8px;
+    color: var(--obs-starlight);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: var(--obs-starlight);
+    color: var(--obs-bg-deep);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Copy Button */
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--obs-starlight);
+    border-radius: 6px;
+    color: var(--obs-starlight);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.copy-btn:hover {
+    background: rgba(212, 175, 55, 0.2);
+    transform: translateY(-1px);
+}
+
+.copy-btn.copied {
+    background: var(--obs-starlight);
+    color: var(--obs-bg-deep);
+    border-color: var(--obs-starlight);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: var(--space-xl);
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--obs-bg-space);
+    border: 1px solid var(--obs-starlight);
+    border-radius: 8px;
+    color: var(--obs-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-icon {
+    color: var(--obs-starlight);
+    font-weight: 700;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    color: var(--obs-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+}
+
+.back-btn:hover {
+    color: var(--obs-starlight);
+    transform: translateX(-4px);
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(212, 175, 55, 0.2);
+    border-top-color: var(--obs-starlight);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Utility Classes */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-lg {
+    margin-top: var(--space-lg);
+}
+
+.mb-lg {
+    margin-bottom: var(--space-lg);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .btn {
+        padding: var(--space-xs) var(--space-md);
+        font-size: 0.875rem;
+    }
+}
+

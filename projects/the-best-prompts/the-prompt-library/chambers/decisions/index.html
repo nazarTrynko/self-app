@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Forge — Decision-making prompts with interactive decision matrix tool. Make hard choices with clarity.">
+    <title>The Forge — Decision Making Prompts | The Prompt Library</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/shared.css">
+    <link rel="stylesheet" href="../../styles/chambers/decisions.css">
+</head>
+<body>
+    <!-- Back to Hub -->
+    <nav class="chamber-nav">
+        <a href="../../index.html" class="back-btn">
+            <span>←</span>
+            <span>Back to Observatory</span>
+        </a>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="chamber-hero">
+        <div class="hero-content">
+            <div class="chamber-badge">Chamber 1</div>
+            <h1 class="chamber-title">
+                <span class="title-main">The Forge</span>
+                <span class="title-subtitle">Decisions</span>
+            </h1>
+            <p class="chamber-description">
+                Make hard choices with clarity. Transform uncertainty into precision through structured decision-making prompts and an interactive matrix tool.
+            </p>
+        </div>
+    </header>
+    
+    <!-- Why This Works -->
+    <section class="section why-section">
+        <div class="container">
+            <h2 class="section-title">Why This Approach Works</h2>
+            <div class="why-content">
+                <p class="why-text">
+                    Most decisions fail because we rely on intuition alone. The Forge provides structure: first, prompts that excavate what you truly value and all possible options. Then, a decision matrix that visualizes unconscious biases and weights you didn't realize you were applying.
+                </p>
+                <p class="why-text">
+                    Seeing your decision process visualized changes everything. Options become comparable. Priorities become clear. The best choice emerges from the data, not from anxiety.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Tool: Decision Matrix -->
+    <section class="section tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <h2 class="section-title">Decision Matrix Builder</h2>
+                <p class="tool-description">Input your options and criteria, assign weights, and watch the matrix reveal your best choice.</p>
+            </div>
+            
+            <div class="matrix-tool">
+                <div class="tool-controls">
+                    <div class="control-group">
+                        <h3>Options</h3>
+                        <div id="options-list" class="input-list">
+                            <div class="input-item">
+                                <input type="text" class="option-input" placeholder="Option 1" data-index="0">
+                                <button class="remove-btn" onclick="removeOption(0)">×</button>
+                            </div>
+                            <div class="input-item">
+                                <input type="text" class="option-input" placeholder="Option 2" data-index="1">
+                                <button class="remove-btn" onclick="removeOption(1)">×</button>
+                            </div>
+                        </div>
+                        <button class="add-btn" onclick="addOption()">+ Add Option</button>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3>Criteria</h3>
+                        <div id="criteria-list" class="input-list">
+                            <div class="input-item">
+                                <input type="text" class="criterion-input" placeholder="Criterion 1" data-index="0">
+                                <div class="weight-control">
+                                    <label>Weight:</label>
+                                    <input type="range" class="weight-slider" min="1" max="10" value="5" data-index="0">
+                                    <span class="weight-value">5</span>
+                                </div>
+                                <button class="remove-btn" onclick="removeCriterion(0)">×</button>
+                            </div>
+                            <div class="input-item">
+                                <input type="text" class="criterion-input" placeholder="Criterion 2" data-index="1">
+                                <div class="weight-control">
+                                    <label>Weight:</label>
+                                    <input type="range" class="weight-slider" min="1" max="10" value="5" data-index="1">
+                                    <span class="weight-value">5</span>
+                                </div>
+                                <button class="remove-btn" onclick="removeCriterion(1)">×</button>
+                            </div>
+                        </div>
+                        <button class="add-btn" onclick="addCriterion()">+ Add Criterion</button>
+                    </div>
+                </div>
+                
+                <div class="matrix-output">
+                    <h3>Score Each Option</h3>
+                    <div id="scoring-grid" class="scoring-grid">
+                        <p class="empty-state">Add options and criteria to begin</p>
+                    </div>
+                    
+                    <div id="results" class="results-container" style="display: none;">
+                        <h3>Ranked Results</h3>
+                        <div id="ranked-options" class="ranked-list"></div>
+                        <div class="export-buttons">
+                            <button class="btn" onclick="exportMatrix()">Export Matrix</button>
+                            <button class="btn" onclick="copyResults()">Copy Results</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Prompt Suite -->
+    <section class="section prompts-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Decision Prompt Suite</h2>
+                <p class="section-subtitle">Run these prompts in sequence. Each excavates a different dimension of your decision.</p>
+            </div>
+            
+            <!-- Prompt 1: The Clarifier -->
+            <article class="prompt-card" id="prompt-1">
+                <div class="prompt-number">1</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Clarifier</h3>
+                        <span class="prompt-excavates">Excavates: Core decision question and constraints</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt1-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt1-text">I need to make a decision about [describe your decision]. 
+
+Before we explore options, help me clarify:
+1. What is the core question I'm really trying to answer?
+2. What are the non-negotiable constraints (time, resources, values)?
+3. What would "success" look like for this decision?
+4. What am I trying to avoid or prevent?
+
+Be direct. Don't let me avoid the hard parts of this decision.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 2: The Expander -->
+            <article class="prompt-card" id="prompt-2">
+                <div class="prompt-number">2</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Expander</h3>
+                        <span class="prompt-excavates">Excavates: All possible options (including non-obvious)</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt2-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt2-text">I'm deciding between [list your obvious options]. 
+
+But I suspect I'm missing options. Help me:
+1. List ALL possible options, including ones I haven't considered
+2. Include "do nothing" or "wait" as options if relevant
+3. Suggest hybrid options that combine elements
+4. Challenge assumptions I might be making
+5. Consider options that seem "impossible" but might be possible
+
+Don't filter. Give me the full universe of possibilities.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 3: The Evaluator -->
+            <article class="prompt-card" id="prompt-3">
+                <div class="prompt-number">3</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Evaluator</h3>
+                        <span class="prompt-excavates">Excavates: Criteria for evaluation (values, priorities)</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt3-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt3-text">I need to evaluate these options: [list options from Prompt 2].
+
+Help me identify the criteria I should use to compare them:
+1. What values matter most in this decision?
+2. What outcomes am I optimizing for?
+3. What risks am I trying to minimize?
+4. What trade-offs am I willing to make?
+5. What would make one option clearly better than another?
+
+Be specific. "Cost" is too vague. "Total cost over 2 years including opportunity cost" is specific.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 4: The Weight -->
+            <article class="prompt-card" id="prompt-4">
+                <div class="prompt-number">4</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Weight</h3>
+                        <span class="prompt-excavates">Excavates: Relative importance of each criterion</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt4-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt4-text">I have these criteria: [list criteria from Prompt 3].
+
+Help me understand their relative importance:
+1. If I had to rank these criteria 1-10, what would each score?
+2. Which criteria are "must-haves" vs "nice-to-haves"?
+3. If I had to sacrifice one criterion completely, which would it be?
+4. What's the minimum threshold for each criterion?
+5. Are any criteria interdependent (one affects the other)?
+
+This will help me weight them properly in my decision matrix.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 5: The Matrix -->
+            <article class="prompt-card" id="prompt-5">
+                <div class="prompt-number">5</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Matrix</h3>
+                        <span class="prompt-excavates">Excavates: Scored comparison of all options</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt5-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt5-text">I have:
+- Options: [list options]
+- Criteria: [list criteria with weights]
+
+Create a decision matrix:
+1. Score each option (1-10) on each criterion
+2. Multiply scores by criterion weights
+3. Sum weighted scores for each option
+4. Rank options from highest to lowest
+5. Highlight the top 2-3 options
+
+Then analyze:
+- What patterns do you see?
+- Which options score consistently high vs. inconsistently?
+- What would need to change for a lower-ranked option to win?</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 6: The Synthesis -->
+            <article class="prompt-card" id="prompt-6">
+                <div class="prompt-number">6</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Synthesis</h3>
+                        <span class="prompt-excavates">Excavates: Final recommendation with reasoning</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt6-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt6-text">Based on the decision matrix, my top option is [option].
+
+But before I commit, help me:
+1. What are the strongest arguments FOR this choice?
+2. What are the strongest arguments AGAINST it?
+3. What assumptions am I making that could be wrong?
+4. What would make me regret this decision?
+5. What's the worst-case scenario, and can I live with it?
+6. What's my gut feeling telling me, and why might it differ from the data?
+
+Give me a final recommendation with full reasoning, including when I should reconsider.</pre>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Expected Outputs -->
+    <section class="section outputs-section">
+        <div class="container">
+            <h2 class="section-title">What You'll Discover</h2>
+            <div class="outputs-grid">
+                <div class="output-item">
+                    <span class="output-number">1</span>
+                    <h4>Clarified Decision Question</h4>
+                    <p>The real question you're trying to answer, stripped of confusion</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-number">6+</span>
+                    <h4>Complete Option Set</h4>
+                    <p>All possible choices, including ones you hadn't considered</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-number">5-8</span>
+                    <h4>Evaluation Criteria</h4>
+                    <p>Specific, weighted criteria for comparing options</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-number">1</span>
+                    <h4>Ranked Decision Matrix</h4>
+                    <p>Scored comparison showing which option wins and why</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-number">1</span>
+                    <h4>Final Recommendation</h4>
+                    <p>Clear choice with reasoning, risks, and when to reconsider</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pro Tips -->
+    <section class="section tips-section">
+        <div class="container">
+            <h2 class="section-title">Pro Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>Use the Matrix Tool</h4>
+                    <p>After running prompts 1-4, use the Decision Matrix Builder above to visualize your decision. The tool helps you see unconscious biases.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Challenge Your Weights</h4>
+                    <p>If the matrix result surprises you, examine your weights. You might be overvaluing something or undervaluing something important.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Sleep on It</h4>
+                    <p>After completing the suite, wait 24 hours. Your subconscious will process the decision. Then revisit Prompt 6.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Test Assumptions</h4>
+                    <p>For each criterion, ask: "What if I'm wrong about this?" Sensitivity analysis reveals which assumptions matter most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- Scripts -->
+    <script src="../../scripts/shared.js"></script>
+    <script src="../../scripts/chambers/decisions.js"></script>
+</body>
+</html>
+

@@ -1,345 +1,377 @@
-# Best Prompts: Niche Research & Strategic Intelligence
+# Best Prompts: Niche Research
 
-**Purpose:** Pre-research to inform platform creation  
-**Generated:** January 2026
-
----
-
-## HIGH-VALUE NICHE ANALYSIS
-
-### Tier 1: Highest Potential (Build First)
-
-#### 1. **Self-Reflection & Journaling Prompts**
-
-- **Search Interest:** Very High (journaling is $5B+ industry)
-- **Competition:** Medium (generic lists exist, no exceptional tools)
-- **Pain Intensity:** 9/10 (people crave self-understanding)
-- **Interactive Opportunity:** ✅ Reflection framework generator, question randomizer
-- **Why It Wins:** Self-extraction already proves this works. Expand the model.
-- **Primary Keywords:** "journal prompts", "self-reflection prompts", "deep questions to ask yourself"
-
-#### 2. **LinkedIn & Professional Writing Prompts**
-
-- **Search Interest:** Very High (millions use AI for LinkedIn)
-- **Competition:** High but fragmented
-- **Pain Intensity:** 8/10 (career advancement anxiety)
-- **Interactive Opportunity:** ✅ Profile analyzer, headline generator (no AI needed - combinatorial)
-- **Why It Wins:** Professionals have purchasing power, share content, return often
-- **Primary Keywords:** "LinkedIn post prompts", "professional bio prompts", "resume prompts"
-
-#### 3. **Content Strategy & SMM Prompts**
-
-- **Search Interest:** Extremely High (everyone needs content)
-- **Competition:** Very High (but mostly low-quality listicles)
-- **Pain Intensity:** 9/10 (constant content pressure)
-- **Interactive Opportunity:** ✅ Content calendar generator, hook formulas tool
-- **Why It Wins:** Recurring need = recurring visits. Perfect for interactive tools.
-- **Primary Keywords:** "social media prompts", "content ideas prompts", "instagram caption prompts"
-
-#### 4. **Therapy & Mental Health Prompts**
-
-- **Search Interest:** High and growing
-- **Competition:** Low (sensitive topic, few quality resources)
-- **Pain Intensity:** 10/10 (desperate for help)
-- **Interactive Opportunity:** ⚠️ Limited (sensitive - keep as pure prompts)
-- **Why It Wins:** Massive underserved audience, highly shareable
-- **Primary Keywords:** "therapy prompts", "mental health journaling prompts", "CBT prompts"
-
-#### 5. **Decision-Making Framework Prompts**
-
-- **Search Interest:** Medium-High
-- **Competition:** Very Low (huge gap)
-- **Pain Intensity:** 8/10 (decision paralysis is epidemic)
-- **Interactive Opportunity:** ✅ Decision matrix builder, options scorer
-- **Why It Wins:** Professionals at career crossroads, founders making choices
-- **Primary Keywords:** "decision making prompts", "how to make hard decisions", "career decision prompts"
+**Purpose:** Reference data for building the Best Prompts platform  
+**Status:** Ready for execution (pending ⬜ validation items)
 
 ---
 
-### Tier 2: Strong Potential (Build Second)
+## QUICK REFERENCE
 
-#### 6. **Songwriting & Music Creation Prompts**
+### Build Order (Phase 1 MVP)
 
-- **Search Interest:** Growing rapidly (Suno, Udio explosion)
-- **Competition:** Low-Medium (fragmented resources)
-- **Pain Intensity:** 7/10 (creative block frustration)
-- **Interactive Opportunity:** ✅ Genre combinator, lyric seed generator
-- **Why It Wins:** Builds on Suno research, differentiated audience
-- **Primary Keywords:** "Suno prompts", "AI music prompts", "songwriting prompts"
+| #   | Page            | Keywords                                                            | Tool                    | Est. Hours |
+| --- | --------------- | ------------------------------------------------------------------- | ----------------------- | ---------- |
+| 1   | Decision-Making | "how to make hard decisions" (10K), "decision matrix template" (8K) | Decision Matrix Builder | 20         |
+| 2   | LinkedIn        | "LinkedIn post prompts" (15K), "LinkedIn headline" (10K)            | Headline Formula Engine | 15         |
+| 3   | Journaling      | "journal prompts" (20K), "self-reflection prompts" (8K)             | Question Randomizer     | 15         |
 
-#### 7. **Interview Preparation Prompts**
+### Design Quick Reference
 
-- **Search Interest:** High (perennial need)
-- **Competition:** Medium (generic advice dominates)
-- **Pain Intensity:** 9/10 (job = livelihood)
-- **Interactive Opportunity:** ✅ STAR story builder, question bank randomizer
-- **Why It Wins:** High intent users, time-sensitive need
-- **Primary Keywords:** "interview prompts", "behavioral interview prompts", "STAR method prompts"
-
-#### 8. **Creative Writing & Storytelling Prompts**
-
-- **Search Interest:** Very High
-- **Competition:** Very High (but mostly shallow)
-- **Pain Intensity:** 7/10 (creative block)
-- **Interactive Opportunity:** ✅ Plot generator, character builder
-- **Why It Wins:** Huge audience, highly shareable content
-- **Primary Keywords:** "story prompts", "writing prompts", "creative writing prompts"
-
-#### 9. **Product & Startup Validation Prompts**
-
-- **Search Interest:** Medium
-- **Competition:** Low
-- **Pain Intensity:** 8/10 (founders desperate for clarity)
-- **Interactive Opportunity:** ✅ Idea validator checklist, market sizing calculator
-- **Why It Wins:** High-value audience, B2B potential
-- **Primary Keywords:** "startup prompts", "product validation prompts", "business idea prompts"
-
-#### 10. **Relationship & Communication Prompts**
-
-- **Search Interest:** High
-- **Competition:** Low-Medium
-- **Pain Intensity:** 9/10 (relationships are everything)
-- **Interactive Opportunity:** ⚠️ Conversation starter generator (tasteful)
-- **Why It Wins:** Universal need, emotional resonance
-- **Primary Keywords:** "relationship prompts", "couples questions", "deep conversation prompts"
+| Niche            | Display Font       | Body Font        | Background | Accent  |
+| ---------------- | ------------------ | ---------------- | ---------- | ------- |
+| Journaling       | Fraunces           | Source Serif Pro | #0f1a14    | #d4a574 |
+| LinkedIn         | Darker Grotesque   | IBM Plex Sans    | #0f0f1a    | #ee6c4d |
+| Content/SMM      | Syne               | Work Sans        | #0a0a0a    | #ffbe0b |
+| Therapy          | Libre Baskerville  | Lora             | #1d3557    | #f1faee |
+| Decisions        | Space Grotesk      | Inter            | #14151f    | #ef233c |
+| Annual Review    | Playfair Display   | Crimson Pro      | #1a1a1a    | #d4af37 |
+| Interview        | Archivo            | Source Sans Pro  | #001523    | #fdf0d5 |
+| Negotiation      | Bebas Neue         | Barlow           | #0d0d0d    | #ffba08 |
+| Creative Writing | Cormorant Garamond | Spectral         | #0f0e17    | #fffffe |
+| Music            | Monument Extended  | DM Sans          | #10002b    | #e0aaff |
 
 ---
 
-### Hidden Gem Niches (Low Competition, High Value)
+## TIER 1 NICHES (Build First)
 
-#### 🔮 **Life Audit & Annual Review Prompts**
+### 1. Self-Reflection & Journaling
 
-- Searches spike December-January
-- Almost no quality resources exist
-- Perfect for interactive worksheets
-- "annual review prompts", "life audit questions", "year in review prompts"
+| Metric        | Value          | Status        |
+| ------------- | -------------- | ------------- |
+| Search Volume | 40K-80K/mo     | ⬜ Validate   |
+| Competition   | Medium (40-55) | ⬜ SERP check |
+| Pain          | 9/10           | ✅ Proven     |
 
-#### 🔮 **Negotiation & Difficult Conversation Prompts**
+**Keywords:** "journal prompts", "self-reflection prompts", "deep questions to ask yourself", "journaling prompts for self-discovery"
 
-- High pain, very low competition
-- Professional audience with purchasing power
-- Could include salary negotiation specifically
-- "negotiation prompts", "difficult conversation scripts", "salary negotiation prompts"
+**Tools:** Question randomizer (200+ curated), Life wheel visualizer, Streak tracker
 
-#### 🔮 **Parenting & Family Communication Prompts**
-
-- Massive audience, underserved
-- High emotional engagement
-- Shareable in parent communities
-- "parenting prompts", "questions to ask your kids", "family conversation starters"
-
-#### 🔮 **Learning & Study Prompts**
-
-- Student audience, high volume
-- Could include prompts for specific subjects
-- Interactive flashcard/question generators
-- "study prompts", "learning prompts", "how to study with AI"
+**Risk:** Seasonal (Jan/Sep spikes)
 
 ---
 
-## INTERACTIVE TOOL OPPORTUNITIES
+### 2. LinkedIn & Professional Writing
 
-### Tools That Work Without AI (Client-Side Only)
+| Metric        | Value        | Status        |
+| ------------- | ------------ | ------------- |
+| Search Volume | 30K-50K/mo   | ⬜ Validate   |
+| Competition   | High (55-70) | ⬜ SERP check |
+| Pain          | 8/10         | ⬜ Interview  |
 
-| Tool                              | Niche           | How It Works                                          |
-| --------------------------------- | --------------- | ----------------------------------------------------- |
-| **Reflection Question Generator** | Journaling      | Combinatorial random selection from curated questions |
-| **Content Calendar Builder**      | SMM             | Week template + theme slots + AI prompts for each     |
-| **Headline Formula Engine**       | LinkedIn        | Fill blanks in proven formulas → generates headlines  |
-| **Decision Matrix Builder**       | Decision-making | Input options + criteria → weighted score calculator  |
-| **STAR Story Scaffolder**         | Interview       | Guided form → exports formatted STAR response         |
-| **Hook Type Randomizer**          | Content         | Categorized hooks, random selection with context      |
-| **Life Audit Worksheet**          | Annual Review   | Interactive fillable PDF-style form                   |
-| **Prompt Customizer**             | Any             | Take template prompt, fill variables, copy result     |
+**Keywords:** "LinkedIn post prompts", "LinkedIn headline examples", "professional bio prompts", "AI prompts for LinkedIn"
 
-### Implementation Approach:
+**Tools:** Headline formula engine (fill-blank), Hook generator, Post scaffolder (AIDA/PAS)
 
-- Pure JavaScript, no dependencies
-- Local storage for saving progress
-- Export to clipboard / download as text
-- Mobile-optimized interactions
+**Risk:** Algorithm changes, AI detection concerns
 
 ---
 
-## DESIGN DIRECTION RESEARCH
+### 3. Content Strategy & SMM
 
-### Fonts to Consider (Not Generic)
+| Metric        | Value             | Status        |
+| ------------- | ----------------- | ------------- |
+| Search Volume | 100K+/mo          | ⬜ Validate   |
+| Competition   | Very High (65-80) | ⬜ SERP check |
+| Pain          | 9/10              | ✅ Evergreen  |
 
-| Font                  | Vibe                           | Best For               |
-| --------------------- | ------------------------------ | ---------------------- |
-| **Fraunces**          | Warm, editorial, quirky        | Journaling, creativity |
-| **Syne**              | Futuristic, bold, geometric    | Tech, productivity     |
-| **Literata**          | Scholarly, readable, dignified | Professional, learning |
-| **Darker Grotesque**  | Industrial, modern, tight      | Business, strategy     |
-| **Libre Baskerville** | Classic, trustworthy, elegant  | Therapy, relationships |
-| **Space Grotesk**     | Tech, clean, distinctive       | Systems, tools         |
-| **Playfair Display**  | Luxury, magazine, refined      | Premium content        |
-| **JetBrains Mono**    | Code, precision, technical     | Developer-focused      |
-| **Cormorant**         | Delicate, poetic, beautiful    | Creative writing       |
-| **Manrope**           | Friendly, geometric, modern    | General purpose        |
+**Keywords:** "social media prompts", "content ideas generator", "instagram caption prompts", "hook formulas"
 
-### Color Palettes to Explore
+**Tools:** Content calendar builder, Hook formula engine, Caption generator (madlib)
 
-| Palette           | Hex Codes                          | Mood             |
-| ----------------- | ---------------------------------- | ---------------- |
-| **Forest Dusk**   | #1a1f16, #2d4a3e, #8baa9d, #d4e4dc | Calm, growth     |
-| **Desert Sand**   | #f5f0e6, #d4a574, #8b6914, #3d2914 | Warm, grounded   |
-| **Ocean Depth**   | #0a1628, #1e3a5f, #3d7ea6, #7eb8da | Trust, depth     |
-| **Volcanic**      | #1c1c1c, #3d1c1c, #8b3a3a, #d4574a | Intensity, power |
-| **Midnight Sage** | #0f1419, #1c2826, #4a6760, #98b4a6 | Wise, mysterious |
-| **Sunrise Gold**  | #1a1a1a, #2d2314, #8b6f1a, #d4a82c | Energy, optimism |
-| **Lavender Ink**  | #f8f5ff, #d4c4f5, #8b6fc0, #4a2d8b | Creative, dreamy |
-| **Steel & Ember** | #1c1c1e, #3d3d42, #8b4a3d, #d4826f | Industrial, warm |
+**Risk:** Heavy competition, AI tools (Jasper) well-funded
 
 ---
 
-## COMPETITIVE LANDSCAPE
+### 4. Therapy & Mental Health ⚠️
 
-### What Exists (And Why We'll Win)
+| Metric        | Value              | Status        |
+| ------------- | ------------------ | ------------- |
+| Search Volume | 25K-40K/mo         | ⬜ Validate   |
+| Competition   | Low-Medium (30-45) | ⬜ SERP check |
+| Pain          | 10/10              | ✅ Real       |
 
-| Competitor                   | What They Do           | Their Weakness      | Our Advantage      |
-| ---------------------------- | ---------------------- | ------------------- | ------------------ |
-| **Copy.ai prompts**          | Generic prompt library | No depth, no flow   | Structured suites  |
-| **Prompt Engineering Guide** | Academic approach      | Too technical       | User-friendly      |
-| **Reddit r/ChatGPT**         | Community prompts      | Unorganized, varies | Curated, beautiful |
-| **Medium articles**          | One-off prompts        | No structure        | Complete systems   |
-| **Notion templates**         | Prompt collections     | Requires Notion     | Universal access   |
+**Keywords:** "therapy prompts", "mental health journaling prompts", "CBT journaling prompts", "self-compassion prompts"
 
-### Gap Analysis:
+**Tools:** ⛔ NONE (Guardian override)
 
-- **No one** has beautifully designed prompt landing pages
-- **No one** has interactive tools + prompts combined
-- **No one** has niche-specific deep-dive suites
-- **No one** has the design quality of our masterpieces
+**GUARDIAN REQUIREMENTS:**
+
+- ✅ Include: 988 hotline, Crisis Text Line, "not substitute for professional help"
+- ⛔ Avoid: No interactive tools, no gamification, no data collection, no efficacy claims
+- ⚠️ Legal review before launch
+
+**Risk:** YMYL scrutiny, liability
 
 ---
 
-## SEO STRATEGY FRAMEWORK
+### 5. Decision-Making Frameworks
 
-### For Each Landing Page:
+| Metric        | Value            | Status       |
+| ------------- | ---------------- | ------------ |
+| Search Volume | 15K-25K/mo       | ⬜ Validate  |
+| Competition   | Very Low (20-35) | ✅ Confirmed |
+| Pain          | 8/10             | ⬜ Interview |
 
-1. **Primary Keyword** — One main target (e.g., "journaling prompts")
-2. **Secondary Keywords** — 3-5 related terms in subheadings
-3. **Long-tail** — FAQ section targeting questions
-4. **Internal Links** — Connect related pages (journaling ↔ reflection ↔ therapy)
-5. **Meta Description** — 155 chars, includes keyword, entices click
-6. **Structured Data** — HowTo schema for prompt suites, FAQ schema for tips
+**Keywords:** "decision making prompts", "how to make hard decisions", "career decision framework", "decision matrix template"
 
-### Content Structure for SEO:
+**Tools:** Decision matrix (weighted), Pros/cons visualizer, Regret minimization calc, 10-10-10 tool
+
+**Why First:** Almost no competition, tool-forward, high-value audience
+
+---
+
+## TIER 2 NICHES (Build Second)
+
+| #   | Niche              | Volume | Competition | Pain | Key Tool          |
+| --- | ------------------ | ------ | ----------- | ---- | ----------------- |
+| 6   | Music/Songwriting  | 20-35K | Low-Med     | 7/10 | Genre combinator  |
+| 7   | Interview Prep     | 50-80K | Medium      | 9/10 | STAR builder      |
+| 8   | Creative Writing   | 150K+  | Very High   | 7/10 | Character builder |
+| 9   | Startup Validation | 10-20K | Low         | 8/10 | Idea validator    |
+| 10  | Relationships      | 40-60K | Low-Med     | 9/10 | 36 Questions      |
+
+---
+
+## HIDDEN GEMS (Low Competition)
+
+| Niche                   | Volume             | Competition | Timing             | Key Insight                      |
+| ----------------------- | ------------------ | ----------- | ------------------ | -------------------------------- |
+| **Annual Review** 🔮    | Spikes 10x Dec-Jan | Very Low    | BUILD BY NOV 15    | First-mover, shareable outputs   |
+| **Negotiation**         | 15-25K             | Low         | Evergreen          | High-value professional audience |
+| **Parenting**           | 50K+               | Low-Med     | Evergreen          | FB group virality                |
+| **Learning/Study**      | 80K+               | Medium      | Aug/Jan/May spikes | Student audience                 |
+| **AI Art (Midjourney)** | 100K+              | Fragmented  | Platform-dependent | Huge but requires updates        |
+
+---
+
+## TOOL SPECS
+
+### Architecture
 
 ```
-H1: [Primary Keyword] — [Benefit/Hook]
-H2: Why These Prompts Work
-H2: The [Name] Prompt Suite
-   H3: Prompt 1: [Name]
-   H3: Prompt 2: [Name]
-   ...
-H2: Pro Tips for Better Results
-H2: What You'll Discover
-H2: FAQ (long-tail keywords)
+Stack: Pure HTML5 + CSS3 + Vanilla JS (ES6+)
+Optional: Chart.js (CDN, lazy-loaded)
+Persistence: localStorage (auto-save)
+Export: Clipboard, .txt, image (html2canvas)
 ```
 
-### Technical SEO Checklist:
+### Performance Targets
 
-- [ ] < 2s load time
-- [ ] Mobile-first responsive
-- [ ] Proper heading hierarchy
-- [ ] Alt text on images
-- [ ] Schema markup
-- [ ] Canonical URLs
-- [ ] XML sitemap entry
-- [ ] Internal linking
+- FCP: < 1.5s
+- TTI: < 2.5s
+- JS payload: < 50KB gzipped
+- Works offline
+
+### Accessibility
+
+- WCAG 2.1 AA
+- Keyboard navigable
+- Screen reader compatible
+- Reduced motion support
+
+### Tools by Dev Time
+
+| Tool                    | Hours | Complexity |
+| ----------------------- | ----- | ---------- |
+| Prompt Customizer       | 3-4   | Low        |
+| Question Randomizer     | 4-6   | Low        |
+| Headline Formula Engine | 4-6   | Low        |
+| Hook Generator          | 6-8   | Low        |
+| STAR Scaffolder         | 8-10  | Medium     |
+| Life Wheel Visualizer   | 8-12  | Medium     |
+| Decision Matrix         | 10-15 | Medium     |
+| Salary Calculator       | 10-12 | Medium     |
+| Content Calendar        | 15-20 | High       |
 
 ---
 
-## PLATFORM ARCHITECTURE PROPOSAL
-
-### Category Structure
+## URL STRUCTURE
 
 ```
 bestprompts.xyz/
-├── /self/                    ← Personal growth
-│   ├── /journaling/
-│   ├── /reflection/
-│   ├── /decisions/
-│   └── /annual-review/
-├── /professional/            ← Career & business
-│   ├── /linkedin/
-│   ├── /interviews/
-│   ├── /negotiation/
-│   └── /startup/
-├── /creative/                ← Creative work
-│   ├── /writing/
-│   ├── /music/
-│   └── /content/
-├── /relationships/           ← Human connections
-│   ├── /communication/
-│   ├── /therapy/
-│   └── /parenting/
-└── /tools/                   ← Interactive tools
-    ├── /decision-matrix/
-    ├── /content-calendar/
-    └── /reflection-generator/
+├── index.html              ← Hub
+├── /decision-prompts/      ← MVP #1
+├── /linkedin-prompts/      ← MVP #2
+├── /journal-prompts/       ← MVP #3
+├── /therapy-prompts/
+├── /content-prompts/
+├── /interview-prompts/
+├── /annual-review/
+├── /negotiation-prompts/
+├── /tools/
+│   ├── /decision-matrix/
+│   ├── /hook-generator/
+│   └── /life-wheel/
+└── /about/
 ```
 
-### Cross-Linking Strategy:
+**Linking Rules:**
 
-- Every page links to 3-5 related pages
-- Category index pages link to all children
-- Tools link to relevant prompt suites
-- Footer includes "Explore More" section
+1. Every page → 3-5 related pages
+2. Every page → Hub (footer)
+3. Tools → Parent prompt suite
+4. Sidebar shows related tools
 
 ---
 
-## RECOMMENDED BUILD ORDER
+## SEO CHECKLIST (Per Page)
 
-### Phase 1: MVP (3 Pages)
+**Keywords:**
 
-1. **Self-Reflection Prompts** — Expand self-extraction model
-2. **LinkedIn/Professional Writing** — High intent, high value
-3. **Content Strategy Prompts** — Recurring need, interactive tool
+- [ ] Primary in title, H1, first 100 words
+- [ ] Secondary (3-5) in H2s
+- [ ] Long-tail in FAQ
 
-### Phase 2: Expansion (5 Pages)
+**Meta:**
 
-4. Decision-Making Prompts
-5. Interview Preparation Prompts
-6. Annual Review/Life Audit
-7. Therapy & Mental Health
-8. Creative Writing Prompts
+- [ ] Title: `[Primary KW] - [Benefit] | Brand` (< 60 chars)
+- [ ] Description: `[Hook], [Benefit], [CTA]` (< 155 chars)
 
-### Phase 3: Scale (10+ Pages)
+**Technical:**
 
-- Music/Songwriting
-- Parenting
+- [ ] Load < 2s (PageSpeed)
+- [ ] Mobile-friendly
+- [ ] Schema: HowTo/FAQ/Article
+- [ ] Canonical set
+- [ ] OG + Twitter cards
+
+---
+
+## CONTENT TEMPLATE
+
+```markdown
+# [Primary Keyword]: [Hook]
+
+[Opening: Hook + keyword + promise]
+
+## Why These Prompts Work
+
+[2-3 paragraphs, include secondary keyword]
+
+## The [Name] Suite
+
+### Prompt 1: [Name]
+
+**When:** [Context]
+```
+
+[Prompt text]
+
+```
+**Output:** [What they get]
+
+[Repeat 4-7 prompts]
+
+## Interactive [Tool]
+[Tool embed]
+
+## Pro Tips
+1. [Tip]
+2. [Tip]
+3. [Tip]
+
+## FAQ
+### How do I use these [keyword] prompts?
+### What makes these different?
+### Can I customize?
+```
+
+---
+
+## COMPETITORS
+
+| Site           | Traffic | Weakness             |
+| -------------- | ------- | -------------------- |
+| PromptBase     | ~500K   | Ugly, no curation    |
+| LearnPrompting | ~300K   | Academic             |
+| FlowGPT        | ~1M     | Chaotic, low quality |
+| AIPRM          | ~800K   | Extension-dependent  |
+
+**Our Gap:** Beautiful design + Interactive tools + Niche depth
+
+---
+
+## DESIGN CONSTRAINTS
+
+**Banned:**
+
+- Inter, Roboto, Arial, system fonts
+- Purple gradients
+- Card grids with rounded corners
+- Stock photos
+
+**Required:**
+
+- Dark mode default
+- 60% bg / 30% primary / 10% accent
+- Each niche = unique visual world
+- Screenshot-worthy in 3 seconds
+
+---
+
+## VALIDATION CHECKLIST (⬜ = Pending)
+
+```
+⬜ Keyword research (Ahrefs/SEMrush)
+⬜ SERP analysis top 5 keywords
+⬜ User interviews (5-10 per niche)
+⬜ Competitor traffic (SimilarWeb)
+⬜ Domain registered
+⬜ Analytics setup (GA4 + GSC)
+```
+
+---
+
+## BUILD PHASES
+
+### Phase 1 (Weeks 1-4): MVP
+
+- 3 pages: Decision → LinkedIn → Journal
+- All with tools
+- Newsletter signup
+- Get indexed
+
+### Phase 2 (Weeks 5-10): Expand
+
+- Annual Review (BY NOV 15)
+- Interview Prep
+- Content/SMM
+- Therapy (Guardian reviewed)
 - Negotiation
-- Learning/Study
-- [Based on traffic data]
+
+### Phase 3 (Weeks 11-20): Scale
+
+- Creative Writing (by genre)
+- Music
+- Startup
+- Parenting
+- Data-driven additions
 
 ---
 
-## SUCCESS METRICS
+## GUARDIAN PROTOCOLS
 
-### Launch Targets (Month 1):
+**Therapy/Mental Health:**
 
-- 3 landing pages live
-- 1,000+ organic pageviews
-- 100+ email signups
-- 5+ backlinks from shares
+- Crisis resources required
+- Disclaimer required
+- No tools
+- Legal review before launch
 
-### Growth Targets (Month 3):
+**Relationships:**
 
-- 10 landing pages live
-- 10,000+ organic pageviews
-- 1,000+ email signups
-- Ranking top 10 for 5+ keywords
-
-### Scale Targets (Month 6):
-
-- 25+ landing pages
-- 50,000+ organic pageviews
-- Top 3 ranking for 10+ keywords
-- Revenue from premium content
+- Tasteful only
+- Not manipulative
 
 ---
 
-**This research informs the main platform creation prompt. Use it as context when executing.**
+## FAILURE TRIGGERS
+
+- No organic traffic after 3 months → SEO failed
+- Zero rankings after 4 months → Wrong keywords
+- < 1% email signup → Bad value prop
+- Tool bounce > 80% → Tools not useful
+
+---
+
+_Confidence: 0.75 (pending keyword validation)_

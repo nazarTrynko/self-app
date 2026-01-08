@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ink — Creative Writing Prompts | The Prompt Library</title>
+    <meta name="description" content="Story seeds that grow into novels. Five prompts for fiction writers to generate first lines, premises, characters, and endings that resonate.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ══════════════════════════════════════════
+           THE INK — Creation Chamber
+           ══════════════════════════════════════════ */
+        
+        :root {
+            /* Ink Palette — Literary Night */
+            --bg-night: #0f0a1a;
+            --bg-page: #14101f;
+            --bg-parchment: #1a1428;
+            --bg-card: #1f1830;
+            
+            --ink: #a080d0;
+            --ink-bright: #c0a0f0;
+            --ink-dim: #7060a0;
+            --quill: #d4c4f5;
+            --parchment: #f8f5ff;
+            --star: #ffe8a0;
+            
+            --text-primary: #f0e8ff;
+            --text-secondary: #b0a0c8;
+            --text-muted: #7a6a98;
+            
+            /* Typography */
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'EB Garamond', Georgia, serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+        }
+        
+        /* Reset */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-night);
+            color: var(--text-primary);
+            line-height: 1.9;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* ══════════════════════════════════════════
+           AMBIENT — STARS & INK
+           ══════════════════════════════════════════ */
+        
+        .ambient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        /* Stars */
+        .star {
+            position: absolute;
+            background: var(--star);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        .star-1 { top: 10%; left: 15%; width: 2px; height: 2px; animation-delay: 0s; }
+        .star-2 { top: 20%; right: 20%; width: 3px; height: 3px; animation-delay: 0.5s; }
+        .star-3 { top: 35%; left: 30%; width: 2px; height: 2px; animation-delay: 1s; }
+        .star-4 { top: 15%; right: 35%; width: 2px; height: 2px; animation-delay: 1.5s; }
+        .star-5 { top: 45%; left: 10%; width: 3px; height: 3px; animation-delay: 2s; }
+        .star-6 { top: 60%; right: 15%; width: 2px; height: 2px; animation-delay: 0.3s; }
+        .star-7 { top: 75%; left: 25%; width: 2px; height: 2px; animation-delay: 0.8s; }
+        .star-8 { top: 85%; right: 30%; width: 3px; height: 3px; animation-delay: 1.3s; }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Ink splatter */
+        .ink-splatter {
+            position: absolute;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(160, 128, 208, 0.1) 0%,
+                transparent 70%
+            );
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+        
+        .ink-1 {
+            top: 20%;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            animation: inkFloat 15s ease-in-out infinite;
+        }
+        
+        .ink-2 {
+            bottom: 10%;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            animation: inkFloat 20s ease-in-out infinite reverse;
+        }
+        
+        @keyframes inkFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -20px); }
+        }
+        
+        /* ══════════════════════════════════════════
+           NAV
+           ══════════════════════════════════════════ */
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(15, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(160, 128, 208, 0.1);
+        }
+        
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-back:hover {
+            color: var(--ink);
+        }
+        
+        .nav-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--ink);
+        }
+        
+        /* ══════════════════════════════════════════
+           HERO
+           ══════════════════════════════════════════ */
+        
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: calc(80px + var(--space-xl)) var(--space-md) var(--space-xl);
+            text-align: center;
+        }
+        
+        .hero-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+            color: var(--parchment);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto var(--space-md);
+        }
+        
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .meta-icon {
+            color: var(--ink);
+        }
+        
+        /* ══════════════════════════════════════════
+           INTRODUCTION — TYPEWRITER EFFECT
+           ══════════════════════════════════════════ */
+        
+        .intro-section {
+            position: relative;
+            z-index: 1;
+            padding: var(--space-lg) var(--space-md);
+        }
+        
+        .intro-card {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            background: var(--bg-page);
+            border: 1px solid rgba(160, 128, 208, 0.1);
+            border-radius: 4px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .intro-text {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.8;
+        }
+        
+        .typewriter {
+            display: inline;
+            border-right: 2px solid var(--ink);
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        
+        /* ══════════════════════════════════════════
+           PROMPTS SECTION
+           ══════════════════════════════════════════ */
+        
+        .prompts-section {
+            position: relative;
+            z-index: 1;
+            padding: var(--space-lg) var(--space-md) var(--space-xl);
+        }
+        
+        .section-container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--parchment);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Prompt Cards — Manuscript Style */
+        .prompt-card {
+            margin-bottom: var(--space-lg);
+            background: var(--bg-parchment);
+            border: 1px solid rgba(160, 128, 208, 0.15);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .prompt-card:hover {
+            border-color: var(--ink-dim);
+            box-shadow: 0 8px 40px rgba(160, 128, 208, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .prompt-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border-bottom: 1px solid rgba(160, 128, 208, 0.1);
+        }
+        
+        .prompt-number {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(160, 128, 208, 0.1);
+            border: 1px solid var(--ink-dim);
+            border-radius: 50%;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--ink);
+            flex-shrink: 0;
+        }
+        
+        .prompt-info {
+            flex: 1;
+            padding-top: 4px;
+        }
+        
+        .prompt-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--parchment);
+            margin-bottom: 4px;
+        }
+        
+        .prompt-excavates {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--ink);
+        }
+        
+        .prompt-body {
+            padding: var(--space-md);
+        }
+        
+        .prompt-content {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            margin: 0;
+        }
+        
+        .prompt-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-card);
+            border-top: 1px solid rgba(160, 128, 208, 0.1);
+        }
+        
+        .prompt-output {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        
+        .prompt-output strong {
+            color: var(--ink);
+        }
+        
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--ink-dim);
+            border-radius: 4px;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--bg-night);
+        }
+        
+        /* ══════════════════════════════════════════
+           EXPANSION PROMPTS
+           ══════════════════════════════════════════ */
+        
+        .expansion-section {
+            position: relative;
+            z-index: 1;
+            padding: var(--space-lg) var(--space-md);
+            background: var(--bg-page);
+        }
+        
+        .expansion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-md);
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        
+        .expansion-card {
+            padding: var(--space-md);
+            background: var(--bg-parchment);
+            border: 1px solid rgba(160, 128, 208, 0.1);
+            border-radius: 4px;
+        }
+        
+        .expansion-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--ink);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .expansion-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        
+        /* ══════════════════════════════════════════
+           FOOTER
+           ══════════════════════════════════════════ */
+        
+        .footer {
+            position: relative;
+            z-index: 1;
+            padding: var(--space-lg) var(--space-md);
+            text-align: center;
+            border-top: 1px solid rgba(160, 128, 208, 0.1);
+        }
+        
+        .footer-quote {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto var(--space-md);
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--ink);
+        }
+        
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 14px 24px;
+            background: var(--ink);
+            color: var(--bg-night);
+            border-radius: 4px;
+            font-family: var(--font-display);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        /* ══════════════════════════════════════════
+           RESPONSIVE
+           ══════════════════════════════════════════ */
+        
+        @media (max-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+            
+            .prompt-header {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            
+            .expansion-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient">
+        <div class="star star-1"></div>
+        <div class="star star-2"></div>
+        <div class="star star-3"></div>
+        <div class="star star-4"></div>
+        <div class="star star-5"></div>
+        <div class="star star-6"></div>
+        <div class="star star-7"></div>
+        <div class="star star-8"></div>
+        <div class="ink-splatter ink-1"></div>
+        <div class="ink-splatter ink-2"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../../" class="nav-back">
+            <span>←</span>
+            <span>All Chambers</span>
+        </a>
+        <span class="nav-brand">✒️ The Ink</span>
+    </nav>
+    
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-icon">✒️</div>
+        <h1 class="hero-title">The Ink</h1>
+        <p class="hero-subtitle">
+            Story seeds that grow into novels. Prompts for fiction writers, dreamers, and those who believe in the power of "once upon a time."
+        </p>
+        <div class="hero-meta">
+            <span class="meta-item">
+                <span class="meta-icon">📋</span>
+                5 Prompts
+            </span>
+            <span class="meta-item">
+                <span class="meta-icon">✨</span>
+                Pure Suite
+            </span>
+        </div>
+    </header>
+    
+    <!-- Introduction -->
+    <section class="intro-section">
+        <div class="intro-card">
+            <p class="intro-text">
+                "The first sentence can't be written until the final sentence is written."<span class="typewriter"></span>
+                <br><br>
+                — Joyce Carol Oates
+            </p>
+        </div>
+    </section>
+    
+    <!-- Prompts Section -->
+    <section class="prompts-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">The Five Prompts</h2>
+                <p class="section-subtitle">Each one opens a door. Walk through and see what's waiting.</p>
+            </div>
+            
+            <!-- Prompt 1 -->
+            <article class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-number">I</div>
+                    <div class="prompt-info">
+                        <h3 class="prompt-name">The First Line</h3>
+                        <span class="prompt-excavates">Excavates: Opening sentences that hook</span>
+                    </div>
+                </div>
+                <div class="prompt-body">
+                    <pre class="prompt-content" id="prompt1">I need first lines. The kind that make readers cancel plans.
+
+Theme/emotion I want to explore: [describe theme]
+
+Generate 10 first lines using these approaches:
+
+1. **In medias res** — Drop us into action
+2. **The bold declaration** — State something surprising as fact
+3. **The question** — Make us need to know the answer
+4. **The contradiction** — Two truths that shouldn't coexist
+5. **The sensory** — A smell, sound, or touch that sets tone
+6. **The dialogue** — Someone saying something we need context for
+7. **The voice** — A narrator with unmistakable personality
+8. **The time marker** — "The day before" or "Three years after"
+9. **The reversal** — What we expect, inverted
+10. **The secret** — Something the narrator knows but shouldn't
+
+For each line, tell me: What question does this create? What do we NEED to know next?
+
+Then pick your top 3 and tell me why they work.</pre>
+                </div>
+                <div class="prompt-footer">
+                    <span class="prompt-output">You'll get: <strong>10 first lines with analysis</strong></span>
+                    <button class="copy-btn" onclick="copyPrompt('prompt1', this)">
+                        <span>📋</span>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </article>
+            
+            <!-- Prompt 2 -->
+            <article class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-number">II</div>
+                    <div class="prompt-info">
+                        <h3 class="prompt-name">The Strange Door</h3>
+                        <span class="prompt-excavates">Excavates: Unexpected premises</span>
+                    </div>
+                </div>
+                <div class="prompt-body">
+                    <pre class="prompt-content" id="prompt2">I want premises that feel both impossible and inevitable.
+
+Give me 7 "What if" scenarios that break reality in interesting ways:
+
+For each:
+1. **The What If:** State the premise in one sentence
+2. **The World:** How does this change everything?
+3. **The Character:** Who would be most affected/transformed by this reality?
+4. **The Conflict:** What becomes difficult that wasn't before?
+5. **The Resonance:** What human truth does this fantasy explore?
+
+I want premises that are:
+- Specific (not "what if magic existed")
+- Emotional (not just clever)
+- Explorable (could sustain a novel)
+- Strange but not absurd
+
+Avoid: Time travel, zombies, chosen ones, love triangles, dystopian governments. Give me something I haven't seen.</pre>
+                </div>
+                <div class="prompt-footer">
+                    <span class="prompt-output">You'll get: <strong>7 original premises with depth</strong></span>
+                    <button class="copy-btn" onclick="copyPrompt('prompt2', this)">
+                        <span>📋</span>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </article>
+            
+            <!-- Prompt 3 -->
+            <article class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-number">III</div>
+                    <div class="prompt-info">
+                        <h3 class="prompt-name">The Character Ghost</h3>
+                        <span class="prompt-excavates">Excavates: Deep character backstory</span>
+                    </div>
+                </div>
+                <div class="prompt-body">
+                    <pre class="prompt-content" id="prompt3">I have a character. Help me find their ghost—the wound that haunts them.
+
+My character: [describe basics: age, situation, role in story]
+
+Dig deeper:
+
+1. **The Ghost:** What happened to them—the event that shaped everything? (Be specific, not "abandonment issues")
+
+2. **The Lie:** What did this event teach them to believe about themselves or the world? (A belief that protects but limits)
+
+3. **The Mask:** How do they present themselves to hide the wound? What personality do they perform?
+
+4. **The Tell:** What small behavior reveals the truth? (A habit, avoidance, overreaction)
+
+5. **The Want vs. Need:** What do they think will make them whole? What actually will?
+
+6. **The Test:** What situation would crack the mask and force them to confront the ghost?
+
+Give me their ghost in a single image—a memory that could be a flashback, something visual and visceral.</pre>
+                </div>
+                <div class="prompt-footer">
+                    <span class="prompt-output">You'll get: <strong>Complete character wound with visual memory</strong></span>
+                    <button class="copy-btn" onclick="copyPrompt('prompt3', this)">
+                        <span>📋</span>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </article>
+            
+            <!-- Prompt 4 -->
+            <article class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-number">IV</div>
+                    <div class="prompt-info">
+                        <h3 class="prompt-name">The Turning Point</h3>
+                        <span class="prompt-excavates">Excavates: Pivotal scenes</span>
+                    </div>
+                </div>
+                <div class="prompt-body">
+                    <pre class="prompt-content" id="prompt4">I need to write the moment everything changes.
+
+My story context: [describe setup—what's been building]
+
+Help me construct the turning point:
+
+1. **The Setup:** What does the scene look like before? What's the character expecting?
+
+2. **The Disruption:** What happens that shatters expectations? (External event or internal realization)
+
+3. **The Reaction:** What's the first visceral response? (Body first, then mind)
+
+4. **The Choice:** What decision does this force? Why is it impossible?
+
+5. **The Consequence:** What can never be the same after this?
+
+Write me three versions of this turning point:
+- Version A: Loud (dramatic, external, visible)
+- Version B: Quiet (internal, subtle, devastating)
+- Version C: Strange (unexpected angle, subverted expectations)
+
+For each, give me the key line of dialogue or thought that captures the turn.</pre>
+                </div>
+                <div class="prompt-footer">
+                    <span class="prompt-output">You'll get: <strong>3 versions of pivotal scene</strong></span>
+                    <button class="copy-btn" onclick="copyPrompt('prompt4', this)">
+                        <span>📋</span>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </article>
+            
+            <!-- Prompt 5 -->
+            <article class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-number">V</div>
+                    <div class="prompt-info">
+                        <h3 class="prompt-name">The Ending Echo</h3>
+                        <span class="prompt-excavates">Excavates: Last lines that resonate</span>
+                    </div>
+                </div>
+                <div class="prompt-body">
+                    <pre class="prompt-content" id="prompt5">I need an ending. Not just a conclusion—an echo.
+
+My story: [describe the arc—where we started, what happened, what changed]
+
+Create 7 possible last lines using these techniques:
+
+1. **The Return:** Echo the first line, transformed
+2. **The Image:** End on a visual that contains the theme
+3. **The Question:** Leave something open, but satisfying
+4. **The Small Action:** A tiny gesture that means everything
+5. **The Reversal:** What the character would never have done/said at the start
+6. **The Distance:** Pull back, show the larger context
+7. **The Silence:** What's left unsaid that says everything
+
+For each ending:
+- Write the final 2-3 sentences
+- Explain what emotional note it strikes
+- Tell me what it means without saying it
+
+The best endings make us want to start over and read again. Which of these does that?</pre>
+                </div>
+                <div class="prompt-footer">
+                    <span class="prompt-output">You'll get: <strong>7 ending approaches with analysis</strong></span>
+                    <button class="copy-btn" onclick="copyPrompt('prompt5', this)">
+                        <span>📋</span>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Expansion Section -->
+    <section class="expansion-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Expansion Paths</h2>
+                <p class="section-subtitle">After the five prompts, go deeper with these.</p>
+            </div>
+            <div class="expansion-grid">
+                <div class="expansion-card">
+                    <h3 class="expansion-title">Genre Lenses</h3>
+                    <p class="expansion-text">Ask: "Reframe this premise through the lens of [horror/romance/literary fiction/magical realism]"</p>
+                </div>
+                <div class="expansion-card">
+                    <h3 class="expansion-title">Dialogue Only</h3>
+                    <p class="expansion-text">Ask: "Write a scene between two characters using only dialogue—no tags, no action"</p>
+                </div>
+                <div class="expansion-card">
+                    <h3 class="expansion-title">Sensory Draft</h3>
+                    <p class="expansion-text">Ask: "Rewrite this scene focusing only on smell, touch, and sound—no sight"</p>
+                </div>
+                <div class="expansion-card">
+                    <h3 class="expansion-title">The Antagonist</h3>
+                    <p class="expansion-text">Ask: "Give me this story from the villain's perspective. Make me sympathize."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <blockquote class="footer-quote">
+            "We write to taste life twice, in the moment and in retrospect."
+            <br>— Anaïs Nin
+        </blockquote>
+        <nav class="footer-nav">
+            <a href="../healing/" class="footer-link">← The Waters</a>
+            <a href="../../" class="footer-link">All Chambers</a>
+        </nav>
+        <p class="footer-brand">The Prompt Library</p>
+    </footer>
+    
+    <!-- Toast -->
+    <div class="toast" id="toast">Copied to clipboard</div>
+    
+    <script>
+        // ══════════════════════════════════════════
+        // COPY FUNCTIONALITY
+        // ══════════════════════════════════════════
+        
+        function copyPrompt(promptId, btn) {
+            const text = document.getElementById(promptId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.querySelector('span:last-child').textContent = 'Copied';
+                showToast('Prompt copied to clipboard');
+                
+                setTimeout(() => {
+                    btn.querySelector('span:last-child').textContent = 'Copy';
+                }, 2000);
+            });
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        // ══════════════════════════════════════════
+        // TYPEWRITER EFFECT
+        // ══════════════════════════════════════════
+        
+        // The quote is static but the cursor blinks - creating the illusion
+        // of a typewriter without actually animating the text (better performance)
+    </script>
+</body>
+</html>

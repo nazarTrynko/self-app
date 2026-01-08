@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Signal — Content creation prompts with hook formula engine. Create hooks that capture attention.">
+    <title>The Signal — Content Prompts | The Prompt Library</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/shared.css">
+    <link rel="stylesheet" href="../../styles/chambers/content.css">
+</head>
+<body>
+    <!-- Back to Hub -->
+    <nav class="chamber-nav">
+        <a href="../../index.html" class="back-btn">
+            <span>←</span>
+            <span>Back to Observatory</span>
+        </a>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="chamber-hero">
+        <div class="hero-content">
+            <div class="chamber-badge">Chamber 2</div>
+            <h1 class="chamber-title">
+                <span class="title-main">The Signal</span>
+                <span class="title-subtitle">Content</span>
+            </h1>
+            <p class="chamber-description">
+                Create hooks that capture attention. Transform ideas into scroll-stopping content through proven formulas and a hook generator tool.
+            </p>
+        </div>
+    </header>
+    
+    <!-- Why This Works -->
+    <section class="section why-section">
+        <div class="container">
+            <h2 class="section-title">Why This Approach Works</h2>
+            <div class="why-content">
+                <p class="why-text">
+                    Most content fails because it doesn't stop the scroll. The Signal provides structure: first, prompts that excavate what makes your audience pause. Then, a hook formula engine that generates 20+ variations using proven patterns.
+                </p>
+                <p class="why-text">
+                    Seeing your hook's viral potential visualized changes everything. You can compare variations side-by-side. The best hook emerges from the formulas, not from guesswork.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Tool: Hook Generator -->
+    <section class="section tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <h2 class="section-title">Hook Formula Engine</h2>
+                <p class="tool-description">Input your topic and audience, then generate 20+ hook variations using proven formulas.</p>
+            </div>
+            
+            <div class="hook-tool">
+                <div class="tool-inputs">
+                    <div class="input-group">
+                        <label>Topic</label>
+                        <input type="text" id="hook-topic" placeholder="What is your content about?">
+                    </div>
+                    <div class="input-group">
+                        <label>Audience</label>
+                        <input type="text" id="hook-audience" placeholder="Who is this for?">
+                    </div>
+                    <div class="input-group">
+                        <label>Platform</label>
+                        <select id="hook-platform">
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="twitter">Twitter/X</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="general">General</option>
+                        </select>
+                    </div>
+                    <button class="btn generate-btn" onclick="generateHooks()">Generate Hooks</button>
+                </div>
+                
+                <div id="hook-results" class="hook-results" style="display: none;">
+                    <div class="results-header">
+                        <h3>Generated Hooks</h3>
+                        <div class="viral-meter">
+                            <span>Viral Potential</span>
+                            <div class="meter-bar">
+                                <div id="viral-fill" class="meter-fill"></div>
+                            </div>
+                            <span id="viral-score">0%</span>
+                        </div>
+                    </div>
+                    <div id="hooks-list" class="hooks-list"></div>
+                    <div class="export-buttons">
+                        <button class="btn" onclick="exportHooks()">Export All</button>
+                        <button class="btn" onclick="copyBestHook()">Copy Best</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Prompt Suite -->
+    <section class="section prompts-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Content Prompt Suite</h2>
+                <p class="section-subtitle">Run these prompts in sequence. Each excavates a different dimension of compelling content.</p>
+            </div>
+            
+            <!-- Prompt 1: The Hook Hunter -->
+            <article class="prompt-card" id="prompt-1">
+                <div class="prompt-number">1</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Hook Hunter</h3>
+                        <span class="prompt-excavates">Excavates: What makes your audience stop scrolling</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt1-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt1-text">I want to create content about [your topic] for [your audience].
+
+Help me understand what makes them stop scrolling:
+1. What problems are they trying to solve right now?
+2. What questions keep them up at night?
+3. What beliefs do they hold that I can challenge?
+4. What patterns do they recognize that I can interrupt?
+5. What emotions are they feeling that I can amplify or shift?
+6. What do they secretly want but are afraid to admit?
+
+Be specific. "Success" is too vague. "Escaping the 9-to-5 without going broke" is specific.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 2: The Formulator -->
+            <article class="prompt-card" id="prompt-2">
+                <div class="prompt-number">2</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Formulator</h3>
+                        <span class="prompt-excavates">Excavates: Proven hook formulas that work</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt2-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt2-text">Based on what makes my audience stop scrolling [from Prompt 1], help me identify which hook formulas would work best:
+
+1. **Curiosity Gap** — "The [unexpected thing] that [surprising outcome]"
+2. **Pattern Interrupt** — "Everything you know about [topic] is wrong"
+3. **Specificity** — "How I [specific action] and [specific result]"
+4. **Contrarian** — "Why [common belief] is holding you back"
+5. **Story Hook** — "I [did thing] and [unexpected result] happened"
+6. **Question** — "What if [provocative question]?"
+7. **Number** — "[Number] [things] that [outcome]"
+
+For each formula, explain why it would work for my audience and give me a template I can fill in.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 3: The Variator -->
+            <article class="prompt-card" id="prompt-3">
+                <div class="prompt-number">3</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Variator</h3>
+                        <span class="prompt-excavates">Excavates: 20+ hook variations using formulas</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt3-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt3-text">Using the formulas from Prompt 2, generate 20+ hook variations for my content about [topic] for [audience].
+
+Requirements:
+- Use at least 5 different formulas
+- Vary the tone (some bold, some subtle)
+- Include specific numbers/details where relevant
+- Make each hook feel fresh, not templated
+- Optimize for [platform: LinkedIn/Twitter/etc]
+
+Format each hook clearly and explain which formula it uses. Rank them by "stopping power" — which would make someone pause mid-scroll?</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 4: The Tester -->
+            <article class="prompt-card" id="prompt-4">
+                <div class="prompt-number">4</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Tester</h3>
+                        <span class="prompt-excavates">Excavates: A/B test variations with reasoning</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt4-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt4-text">From the 20+ hooks in Prompt 3, help me create 3 A/B test pairs:
+
+For each pair:
+1. Hook A: [variation 1]
+2. Hook B: [variation 2]
+3. What's the key difference between them?
+4. What hypothesis am I testing?
+5. Which do you predict will perform better and why?
+
+Then give me a framework for testing:
+- What metric should I track?
+- How long should I test?
+- What would make me switch to the winner permanently?</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 5: The Optimizer -->
+            <article class="prompt-card" id="prompt-5">
+                <div class="prompt-number">5</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Optimizer</h3>
+                        <span class="prompt-excavates">Excavates: Final optimized hook with explanation</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt5-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt5-text">Based on all the hooks we've generated, give me the FINAL optimized hook for [topic] on [platform].
+
+Requirements:
+- Maximum stopping power
+- Authentic to my voice
+- Optimized for [platform] best practices
+- Includes a clear promise or question
+
+Then explain:
+1. Why this hook will work
+2. What makes it better than the alternatives
+3. What the first sentence of the content should be (to deliver on the hook)
+4. How to adapt it if it doesn't perform
+
+Make it ready to use.</pre>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Expected Outputs -->
+    <section class="section outputs-section">
+        <div class="container">
+            <h2 class="section-title">What You'll Discover</h2>
+            <div class="outputs-grid">
+                <div class="output-item">
+                    <span class="output-number">6+</span>
+                    <h4>Audience Insights</h4>
+                    <p>What makes your audience stop scrolling</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-number">7</span>
+                    <h4>Hook Formulas</h4>
+                    <p>Proven templates that work</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-number">20+</span>
+                    <h4>Hook Variations</h4>
+                    <p>Multiple options to test</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-number">3</span>
+                    <h4>A/B Test Pairs</h4>
+                    <p>Ready-to-test variations</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-number">1</span>
+                    <h4>Optimized Hook</h4>
+                    <p>Final hook ready to use</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pro Tips -->
+    <section class="section tips-section">
+        <div class="container">
+            <h2 class="section-title">Pro Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>Use the Hook Generator</h4>
+                    <p>After running prompts 1-2, use the Hook Formula Engine above to instantly generate 20+ variations. Compare viral potential scores.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Test Everything</h4>
+                    <p>Never assume a hook will work. Test 3-5 variations and let data decide. What works for one audience might fail for another.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Platform Matters</h4>
+                    <p>LinkedIn hooks are different from Twitter hooks. Use the platform selector in the tool to optimize for your channel.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Iterate Fast</h4>
+                    <p>If a hook underperforms, go back to Prompt 3 and generate new variations. Don't stick with a weak hook out of pride.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- Scripts -->
+    <script src="../../scripts/shared.js"></script>
+    <script src="../../scripts/chambers/content.js"></script>
+</body>
+</html>
+
