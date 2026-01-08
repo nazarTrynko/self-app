@@ -1,0 +1,440 @@
+/* ============================================
+   Observatory Hub Styles
+   The Prompt Library Portal
+   ============================================ */
+
+/* Starfield Background */
+.starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Main Hub Container */
+.hub {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hero Section */
+.hero {
+    padding: var(--space-2xl) var(--space-md) var(--space-xl);
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.03em;
+}
+
+.title-line {
+    display: block;
+}
+
+.title-line.accent {
+    color: var(--obs-starlight);
+    background: linear-gradient(135deg, var(--obs-starlight), var(--obs-starlight-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-tagline {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--obs-text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Observatory Section */
+.observatory-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl) var(--space-md);
+    position: relative;
+}
+
+.dome-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+}
+
+/* Dome Structure */
+.dome {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Telescope Styles */
+.telescope {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: all var(--transition-slow);
+    transform-origin: center;
+}
+
+.telescope[data-index="0"] {
+    top: 10%;
+    left: 10%;
+    transform: rotate(-45deg);
+}
+
+.telescope[data-index="1"] {
+    top: 10%;
+    right: 10%;
+    transform: rotate(45deg);
+}
+
+.telescope[data-index="2"] {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+}
+
+.telescope[data-index="3"] {
+    bottom: 10%;
+    left: 10%;
+    transform: rotate(45deg);
+}
+
+.telescope[data-index="4"] {
+    bottom: 10%;
+    right: 10%;
+    transform: rotate(-45deg);
+}
+
+.telescope-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.telescope-lens {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.1));
+    border: 3px solid var(--obs-starlight);
+    position: relative;
+    transition: all var(--transition-normal);
+}
+
+.telescope-lens::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.5), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.telescope-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--chamber-color), transparent);
+    opacity: 0;
+    filter: blur(20px);
+    transition: opacity var(--transition-normal);
+    pointer-events: none;
+}
+
+.telescope-label {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0.7;
+    transition: opacity var(--transition-normal);
+}
+
+.label-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--obs-starlight);
+    margin-bottom: 2px;
+}
+
+.label-domain {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--obs-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.telescope-preview {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 300px;
+    padding: var(--space-lg);
+    background: rgba(26, 26, 46, 0.95);
+    border: 1px solid var(--obs-starlight);
+    border-radius: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    pointer-events: none;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.telescope-preview::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--obs-starlight);
+}
+
+.preview-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--obs-starlight);
+    margin-bottom: var(--space-sm);
+}
+
+.preview-content p {
+    color: var(--obs-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+}
+
+.preview-stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.75rem;
+    color: var(--obs-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Telescope Hover States */
+.telescope:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.telescope:hover .telescope-lens {
+    border-color: var(--chamber-color);
+    box-shadow: 0 0 30px var(--chamber-color);
+}
+
+.telescope:hover .telescope-lens::before {
+    opacity: 1;
+}
+
+.telescope:hover .telescope-glow {
+    opacity: 0.6;
+}
+
+.telescope:hover .telescope-label {
+    opacity: 1;
+}
+
+.telescope:hover .telescope-preview {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.telescope:active {
+    transform: scale(1.05);
+}
+
+/* Constellation Map */
+.constellation-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.constellation-lines {
+    width: 100%;
+    height: 100%;
+}
+
+.constellation-line {
+    stroke: var(--obs-starlight);
+    stroke-width: 1;
+    stroke-opacity: 0.3;
+    transition: stroke-opacity var(--transition-normal);
+}
+
+.telescope:hover ~ .constellation-map .constellation-line[data-chamber] {
+    stroke-opacity: 0.6;
+}
+
+/* Navigation Hints */
+.nav-hints {
+    margin-top: var(--space-xl);
+    text-align: center;
+}
+
+.hint-text {
+    color: var(--obs-text-muted);
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+
+.hint-text.mobile {
+    display: none;
+}
+
+/* Footer */
+.hub-footer {
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-text {
+    color: var(--obs-text-muted);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+}
+
+.footer-icon {
+    color: var(--obs-starlight);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--space-xl) var(--space-sm) var(--space-lg);
+    }
+    
+    .observatory-section {
+        padding: var(--space-lg) var(--space-sm);
+    }
+    
+    .dome-container {
+        max-width: 100%;
+        aspect-ratio: 1;
+    }
+    
+    .telescope {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .telescope-lens {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .telescope-lens::before {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .telescope-glow {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .telescope-label {
+        bottom: -30px;
+    }
+    
+    .label-name {
+        font-size: 0.75rem;
+    }
+    
+    .label-domain {
+        font-size: 0.625rem;
+    }
+    
+    .telescope-preview {
+        width: 250px;
+        padding: var(--space-md);
+    }
+    
+    .hint-text {
+        display: none;
+    }
+    
+    .hint-text.mobile {
+        display: block;
+    }
+    
+    .telescope[data-index="0"],
+    .telescope[data-index="1"],
+    .telescope[data-index="2"],
+    .telescope[data-index="3"],
+    .telescope[data-index="4"] {
+        transform: none;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .telescope-preview {
+        display: none;
+    }
+    
+    .telescope:active {
+        transform: scale(0.95);
+    }
+}
+

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Mirror — Annual review and life audit prompts with interactive workbook. Reflect on your year and plan ahead.">
+    <title>The Mirror — Reflection Prompts | The Prompt Library</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/shared.css">
+    <link rel="stylesheet" href="../../styles/chambers/reflection.css">
+</head>
+<body>
+    <!-- Back to Hub -->
+    <nav class="chamber-nav">
+        <a href="../../index.html" class="back-btn">
+            <span>←</span>
+            <span>Back to Observatory</span>
+        </a>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="chamber-hero">
+        <div class="hero-content">
+            <div class="chamber-badge">Chamber 3</div>
+            <h1 class="chamber-title">
+                <span class="title-main">The Mirror</span>
+                <span class="title-subtitle">Reflection</span>
+            </h1>
+            <p class="chamber-description">
+                Annual review and life audit. See your entire year synthesized into patterns you can use to plan ahead.
+            </p>
+        </div>
+    </header>
+    
+    <!-- Why This Works -->
+    <section class="section why-section">
+        <div class="container">
+            <h2 class="section-title">Why This Approach Works</h2>
+            <div class="why-content">
+                <p class="why-text">
+                    Most people never truly reflect. They move from year to year without understanding what worked, what didn't, and why. The Mirror provides structure: prompts that excavate your actual year (not your memory of it), then a life audit workbook that visualizes your balance across domains.
+                </p>
+                <p class="why-text">
+                    Seeing your year as a radar chart changes everything. Patterns emerge that were invisible day-to-day. You can see which life domains need attention and which are thriving.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Tool: Life Audit Workbook -->
+    <section class="section tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <h2 class="section-title">Life Audit Workbook</h2>
+                <p class="tool-description">Score each life domain and visualize your balance with an interactive radar chart.</p>
+            </div>
+            
+            <div class="audit-tool">
+                <div class="domains-grid" id="domains-grid">
+                    <!-- Domains will be populated by JS -->
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="radar-chart" width="400" height="400"></canvas>
+                </div>
+                
+                <div class="export-buttons">
+                    <button class="btn" onclick="exportAudit()">Export Audit</button>
+                    <button class="btn" onclick="resetAudit()">Reset</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Prompt Suite -->
+    <section class="section prompts-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Reflection Prompt Suite</h2>
+                <p class="section-subtitle">Run these prompts in sequence. Each excavates a different dimension of your year.</p>
+            </div>
+            
+            <!-- Prompt 1: The Archivist -->
+            <article class="prompt-card" id="prompt-1">
+                <div class="prompt-number">1</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Archivist</h3>
+                        <span class="prompt-excavates">Excavates: What actually happened this year</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt1-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt1-text">I want to do an annual review of [year]. Help me remember what actually happened:
+
+1. What were the major events, decisions, and changes?
+2. What projects did I start, complete, or abandon?
+3. What relationships changed (new, deepened, ended)?
+4. What did I learn (skills, insights, lessons)?
+5. What were my biggest wins and losses?
+6. What patterns do you see across the year?
+
+Be specific. Use dates if possible. Don't let me romanticize or forget the hard parts.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 2: The Evaluator -->
+            <article class="prompt-card" id="prompt-2">
+                <div class="prompt-number">2</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Evaluator</h3>
+                        <span class="prompt-excavates">Excavates: What worked, what didn't, why</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt2-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt2-text">Based on what happened this year [from Prompt 1], help me evaluate:
+
+1. What worked really well? Why did it work?
+2. What didn't work? Why did it fail?
+3. What surprised me (positively or negatively)?
+4. What did I think would happen vs. what actually happened?
+5. What habits, systems, or approaches made the biggest difference?
+6. What should I stop doing? What should I start doing?
+
+Be honest. Don't let me make excuses. Help me see the patterns.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 3: The Learner -->
+            <article class="prompt-card" id="prompt-3">
+                <div class="prompt-number">3</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Learner</h3>
+                        <span class="prompt-excavates">Excavates: Key lessons and insights</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt3-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt3-text">From this year's experiences, help me extract the key lessons:
+
+1. What are the 3-5 most important things I learned?
+2. What beliefs did I change or strengthen?
+3. What skills did I develop that matter?
+4. What do I understand now that I didn't before?
+5. What would I tell my past self at the start of the year?
+6. What patterns keep showing up that I should pay attention to?
+
+Make these actionable. Not just "I learned resilience" but "I learned that [specific situation] requires [specific approach]."</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 4: The Visionary -->
+            <article class="prompt-card" id="prompt-4">
+                <div class="prompt-number">4</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Visionary</h3>
+                        <span class="prompt-excavates">Excavates: What you want next year</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt4-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt4-text">Based on what I learned this year [from Prompt 3], help me envision next year:
+
+1. What do I want to achieve? (Be specific: not "success" but "launch X, earn Y, learn Z")
+2. What do I want to feel? (What emotions, states of being?)
+3. What do I want to become? (What kind of person, what capabilities?)
+4. What do I want to let go of? (Habits, beliefs, commitments that don't serve me)
+5. What would make next year feel like a success?
+6. What's the one thing that would change everything?
+
+Make it vivid. Help me see it clearly.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 5: The Strategist -->
+            <article class="prompt-card" id="prompt-5">
+                <div class="prompt-number">5</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Strategist</h3>
+                        <span class="prompt-excavates">Excavates: How to get there</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt5-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt5-text">I want to achieve [vision from Prompt 4]. Help me create a strategy:
+
+1. What are the 3-5 key milestones or goals?
+2. What systems, habits, or processes do I need to build?
+3. What skills do I need to develop?
+4. What resources do I need (time, money, people, tools)?
+5. What obstacles will I face, and how will I overcome them?
+6. What should I do in Q1 to set myself up for success?
+
+Make it practical. Break big goals into actionable steps.</pre>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Prompt 6: The Synthesizer -->
+            <article class="prompt-card" id="prompt-6">
+                <div class="prompt-number">6</div>
+                <div class="prompt-content">
+                    <div class="prompt-header">
+                        <h3>The Synthesizer</h3>
+                        <span class="prompt-excavates">Excavates: Complete annual review narrative</span>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-block-header">
+                            <span class="prompt-label">Prompt</span>
+                            <button class="copy-btn" data-target="prompt6-text">Copy</button>
+                        </div>
+                        <pre class="prompt-text" id="prompt6-text">Synthesize everything from prompts 1-5 into a complete annual review narrative:
+
+1. **The Year That Was** — What happened (from Prompt 1)
+2. **What Worked, What Didn't** — Evaluation (from Prompt 2)
+3. **Key Learnings** — Lessons extracted (from Prompt 3)
+4. **The Year Ahead** — Vision for next year (from Prompt 4)
+5. **The Path Forward** — Strategy to get there (from Prompt 5)
+
+Write it as a cohesive story. Make it something I can return to throughout the year. Include specific dates, numbers, and commitments.</pre>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Expected Outputs -->
+    <section class="section outputs-section">
+        <div class="container">
+            <h2 class="section-title">What You'll Discover</h2>
+            <div class="outputs-grid">
+                <div class="output-item">
+                    <span class="output-icon">📚</span>
+                    <h4>Complete Year Archive</h4>
+                    <p>What actually happened, stripped of memory bias</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-icon">🔍</span>
+                    <h4>Honest Evaluation</h4>
+                    <p>What worked, what didn't, and why</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-icon">💡</span>
+                    <h4>Key Lessons</h4>
+                    <p>3-5 actionable insights you can use</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-icon">🔭</span>
+                    <h4>Clear Vision</h4>
+                    <p>What you want next year, specifically</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-icon">🗓️</span>
+                    <h4>Action Plan</h4>
+                    <p>Strategy to achieve your vision</p>
+                </div>
+                <div class="output-item">
+                    <span class="output-icon">📖</span>
+                    <h4>Complete Narrative</h4>
+                    <p>Synthesized annual review document</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pro Tips -->
+    <section class="section tips-section">
+        <div class="container">
+            <h2 class="section-title">Pro Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>Use the Life Audit Tool</h4>
+                    <p>After running prompts 1-2, use the Life Audit Workbook above to score your life domains and see your balance visualized.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Be Brutally Honest</h4>
+                    <p>Don't sugarcoat failures. The prompts will help you see patterns, but only if you're honest about what didn't work.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Review Quarterly</h4>
+                    <p>Don't wait a full year. Run prompts 1-3 every quarter to catch patterns early and adjust course.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Share Your Review</h4>
+                    <p>After Prompt 6, share your synthesized review with someone you trust. Accountability helps you follow through.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- Scripts -->
+    <script src="../../scripts/shared.js"></script>
+    <script src="../../scripts/chambers/reflection.js"></script>
+</body>
+</html>
+
