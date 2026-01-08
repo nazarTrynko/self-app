@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold-glow: 0 0 60px rgba(251, 191, 36, 0.3);
+  --arcane-glow: 0 0 60px rgba(168, 85, 247, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-obsidian-950 text-obsidian-100 antialiased;
+  background-image: 
+    radial-gradient(ellipse at top, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-obsidian-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-obsidian-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-obsidian-500;
+}
+
+/* Selection */
+::selection {
+  @apply bg-arcane-500/30 text-white;
+}
+
+/* Focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-arcane-500/50 ring-offset-2 ring-offset-obsidian-950;
+}
+
+@layer components {
+  /* Glass morphism card */
+  .glass-card {
+    @apply bg-obsidian-900/50 backdrop-blur-xl border border-obsidian-700/50 rounded-2xl;
+    box-shadow: 
+      0 4px 24px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Glowing border effect */
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(251, 191, 36, 0.5));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-obsidian-950 bg-gradient-to-r from-gold-400 to-gold-500 rounded-xl transition-all duration-300;
+    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+  }
+
+  .btn-primary:hover {
+    @apply from-gold-300 to-gold-400 scale-105;
+    box-shadow: 0 6px 30px rgba(251, 191, 36, 0.4);
+  }
+
+  .btn-primary:active {
+    @apply scale-100;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-obsidian-100 bg-obsidian-800/50 border border-obsidian-600 rounded-xl transition-all duration-300;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-obsidian-700/50 border-obsidian-500;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply w-full px-4 py-3 bg-obsidian-900/50 border border-obsidian-700 rounded-xl text-obsidian-100 placeholder:text-obsidian-500 transition-all duration-300;
+  }
+
+  .input-field:focus {
+    @apply border-arcane-500/50 bg-obsidian-900;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-gold-400 via-arcane-400 to-gold-400 bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+
+  .gradient-text-animated {
+    @apply gradient-text animate-shimmer;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Feature card */
+  .feature-card {
+    @apply glass-card p-6 transition-all duration-300;
+  }
+
+  .feature-card:hover {
+    @apply border-arcane-500/30 -translate-y-1;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 0 60px rgba(168, 85, 247, 0.1);
+  }
+
+  /* Alchemist specific */
+  .alchemist-input {
+    @apply w-full min-h-[200px] p-6 bg-obsidian-900/70 border-2 border-dashed border-obsidian-600 rounded-2xl font-mono text-sm resize-none transition-all duration-300;
+  }
+
+  .alchemist-input:focus {
+    @apply border-arcane-500 bg-obsidian-900;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+  }
+
+  .alchemist-output {
+    @apply w-full min-h-[200px] p-6 bg-gradient-to-br from-obsidian-900/90 to-obsidian-800/50 border border-gold-500/30 rounded-2xl font-mono text-sm;
+    box-shadow: inset 0 0 40px rgba(251, 191, 36, 0.05);
+  }
+}
+
+/* Animated background particles */
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.8), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particle-float 8s infinite;
+}

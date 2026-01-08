@@ -1,227 +1,233 @@
-# Books — Self-Transformation Series
+# The Synthesis Universe
 
-Each book is a **synthesized work** that combines multiple source materials into a novel framework, delivered as a complete package: landing page, interactive tools, and manuscript.
+**Transform through integration.** A collection of books that synthesize powerful frameworks into practical protocols.
 
 ---
 
-## Quick Start
+## The Core Philosophy
 
-```bash
-# Preview books locally
-cd books && python3 -m http.server 8000
-# Visit http://localhost:8000/01-transition-rite/
+```
+SOURCE A (Theory/What)  +  SOURCE B (Technique/How)  =  SYNTHESIS (Novel System)
 ```
 
+Each book in this universe combines two proven frameworks to create something neither could achieve alone. The synthesis is greater than the sum of its parts.
+
 ---
 
-## Directory Structure
+## How It Works
+
+### The Production Pipeline
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    SYNTHESIS PIPELINE                            │
+│                                                                  │
+│  1. SELECT      2. EXTRACT      3. SYNTHESIZE    4. VALIDATE    │
+│     Sources        Concepts         Protocols       Landing      │
+│        │              │                │               │         │
+│        ▼              ▼                ▼               ▼         │
+│   Find books     Map concepts     Create 5-7      Build MVP     │
+│   with tension   from each        protocols       test demand   │
+│                                                                  │
+│                              VALIDATION PASSES?                  │
+│                                     │                            │
+│                                     ▼                            │
+│                              5. FULL BUILD                       │
+│                              Landing + Tools + App               │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Validation-First Model
+
+**Never write a book before validating the synthesis.**
+
+1. Build a minimal landing page (1-2 days)
+2. Add one interactive tool demonstrating the concept
+3. Set validation gates (100 signups = proceed)
+4. Drive traffic for 2 weeks
+5. If validated → full build
+
+---
+
+## Project Structure
 
 ```
 books/
-├── _prompts/                    # Prompts for creating/evolving books
-│   ├── 00-genesis-brief.md      # Initial book concept prompt
-│   ├── synthesis-map.md         # Extract primitives → novel framework
-│   ├── chapter-outliner.md      # Convert synthesis → chapter plan
-│   ├── manuscript-style-guide.md # Voice, formatting, no-paraphrase rules
-│   ├── reader-export.md         # Generate book.html with print CSS
-│   ├── series-scaler.md         # Scale to book series
-│   ├── tool-generator.md        # Create reflection tools
-│   ├── conversion-optimizer.md  # A/B testing & conversion
-│   ├── evolution-prompt.md      # Iterate based on data
-│   └── integration-guide.md     # Payment, email, analytics
-├── _shared/                     # Shared assets (when patterns emerge)
+├── _system/                     # Core methodology docs
+│   └── SYNTHESIS-UNIVERSE.md    # Full framework documentation
+│
+├── _prompts/                    # AI prompts for creation
+│   ├── 00-genesis-brief.md      # Initial concept brainstorming
+│   ├── synthesis-engine.md      # Core synthesis workflow
+│   ├── validation-lander.md     # Quick MVP landing pages
+│   ├── tool-generator.md        # Interactive tool patterns
+│   ├── mini-game-designer.md    # Gamification patterns
+│   ├── evolution-prompt.md      # Iteration framework
+│   ├── series-scaler.md         # Multi-book scaling
+│   └── conversion-optimizer.md  # Landing optimization
+│
+├── _templates/                  # Reusable HTML components
+│   ├── landing-validation.html  # Minimal MVP template
+│   ├── tool-mapper.html         # Visualization tool
+│   ├── tool-analyzer.html       # Text analysis tool
+│   └── tool-generator.html      # Output generation tool
+│
+├── _shared/                     # Shared assets
 │   ├── css/
 │   └── js/
-├── _template/                   # Starter template for new books
-│   ├── index.html               # Landing page skeleton
-│   ├── manuscript/
-│   │   ├── 00-meta.md
-│   │   ├── 01-outline.md
-│   │   ├── chapters/
-│   │   │   └── .gitkeep
-│   │   └── references/
-│   │       └── reading-list.md
-│   └── exports/
-│       └── .gitkeep
-├── 01-transition-rite/          # Book 1: The Transition Rite
-│   └── index.html
-└── 02-[book-slug]/              # Book 2: [Your Next Book]
-    ├── index.html               # Single-file landing + tools
-    ├── manuscript/
-    │   ├── 00-meta.md           # Positioning, audience, promises
-    │   ├── 01-outline.md        # Chapter outline
-    │   ├── chapters/
-    │   │   ├── 01-introduction.md
-    │   │   ├── 02-...md
-    │   │   └── ...
-    │   └── references/
-    │       └── reading-list.md  # Influence map (sources)
-    └── exports/
-        ├── book.html            # Generated reader view
-        └── book.pdf             # Print-to-PDF from book.html
+│       ├── tools-framework.js   # Tool base classes
+│       └── games-framework.js   # Game base classes
+│
+├── _hub/                        # Universe hub
+│   ├── index.html               # Series landing page
+│   └── transformation-paths.html # Cross-book journeys
+│
+├── 01-transition-rite/          # Book 1
+│   └── index.html               # Complete landing page
+│
+└── [NN-book-name]/              # Future books
+    ├── validation/              # Start here
+    │   └── index.html           # MVP landing
+    └── index.html               # Full landing (post-validation)
 ```
 
 ---
 
-## Book Package Components
-
-### 1. Landing Page (`index.html`)
-
-A single-file landing page with embedded CSS/JS containing:
-
-| Section | Purpose |
-|---------|---------|
-| Hero | Title, tagline, primary CTA |
-| Synthesis Demo | Interactive "prism" showing the book's core insight |
-| Tools | 3 tabbed reflection tools (30-90 seconds each) |
-| Social Proof | Testimonials, credentials |
-| Offer | Pricing tiers (Essential/Complete/Immersive) |
-| Email Capture | Waitlist or newsletter signup |
-| Disclaimer | Mental health / not-therapy notice |
-
-### 2. Manuscript (`manuscript/`)
-
-Markdown source files for the actual book content:
-
-| File | Contents |
-|------|----------|
-| `00-meta.md` | Positioning statement, target audience, promises |
-| `01-outline.md` | Complete chapter outline with key points |
-| `chapters/*.md` | Individual chapter content |
-| `references/reading-list.md` | Influence map (source books, what they contributed) |
-
-### 3. Exports (`exports/`)
-
-Generated artifacts for distribution:
-
-| File | Generation Method |
-|------|-------------------|
-| `book.html` | Built from manuscript via `scripts/build_book.py` |
-| `book.pdf` | Browser print-to-PDF from `book.html` |
-| `book.epub` | (Optional) Via pandoc if needed |
-
----
-
-## Source Handling Philosophy
-
-We use **"inspired, no quotes"** as the default mode:
-
-- **Synthesize ideas** into your own framework language
-- **Avoid direct quotes** and close paraphrase from copyrighted sources
-- **Keep an Influence Map** (title, author, concept contributed)
-- **Upgrade path**: If a source is public domain or you have permission, enable quotes with attribution
-
----
-
-## Creating a New Book
-
-### Step 1: Copy the template
-
-```bash
-cp -r books/_template books/02-your-book-slug
-```
-
-### Step 2: Run the synthesis process
-
-Use the prompts in order:
-
-1. `_prompts/synthesis-map.md` — Extract primitives from source materials
-2. `_prompts/chapter-outliner.md` — Convert synthesis into chapter plan
-3. `_prompts/series-scaler.md` — Define landing page structure
-4. `_prompts/tool-generator.md` — Design 3 reflection tools
-
-### Step 3: Build the landing page
-
-Use the patterns from `01-transition-rite/index.html`:
-- Tabbed tools (`.tool-tabs`, `.tool-panel`)
-- Forms with results display
-- Email capture modal
-- Analytics tracking hooks
-
-### Step 4: Write the manuscript
-
-Follow `_prompts/manuscript-style-guide.md` for:
-- Voice and tone
-- Chapter structure
-- "No close paraphrase" guardrails
-
-### Step 5: Generate exports
-
-```bash
-python scripts/build_book.py books/02-your-book-slug
-```
-
----
-
-## Pipeline Diagram
-
-```
-Sources (Books, Notes)
-        │
-        ▼
-┌───────────────────┐
-│ Extract Primitives│ ← synthesis-map.md
-└─────────┬─────────┘
-          │
-          ▼
-┌───────────────────┐
-│ Synthesis Framework│
-└─────────┬─────────┘
-          │
-    ┌─────┴─────┐
-    │           │
-    ▼           ▼
-┌────────┐  ┌────────┐
-│ Outline│  │ Tools  │ ← tool-generator.md
-└────┬───┘  └────┬───┘
-     │           │
-     ▼           ▼
-┌────────┐  ┌────────┐
-│Manuscript│ │ Landing│ ← series-scaler.md
-└────┬───┘  └────┬───┘
-     │           │
-     ▼           ▼
-┌────────┐  ┌────────────┐
-│ Exports│  │ Measure &  │ ← evolution-prompt.md
-│ (HTML, │  │ Iterate    │   conversion-optimizer.md
-│  PDF)  │  └────────────┘
-└────────┘
-```
-
----
-
-## Books in This Series
+## Current Books
 
 ### 01 — The Transition Rite
-**Rewrite your state. Rewrite your story. Become who's next.**
+**Synthesis:** Narrative Identity Theory + NLP State-Change Mechanics
 
-A framework for conscious identity transition—not passive change, but intentional metamorphosis. Synthesizes narrative identity theory with NLP techniques.
+**Tagline:** *Rewrite your state. Rewrite your story. Become who's next.*
 
-**Status:** Published landing page
+A framework for conscious identity transition—not passive change, but intentional metamorphosis. For people in career changes, life transitions, or anyone ready to become who they're meant to be.
 
----
+**Six Protocols:**
+1. The Transition Map
+2. The State Anchor
+3. The Story Rewrite
+4. The Redemption Flip
+5. The Identity Bridge
+6. The 60-Second Ritual
 
-## Evolution Loop
-
-Each book should iterate based on data:
-
-1. **Measure** — Track tool completion, scroll depth, CTA clicks
-2. **Analyze** — Use `conversion-optimizer.md` to identify issues
-3. **Evolve** — Use `evolution-prompt.md` to propose changes
-4. **Test** — Run A/B tests on high-impact elements
-5. **Learn** — Update patterns for future books
+**[→ View Landing Page](01-transition-rite/index.html)**
 
 ---
 
-## Integration Checklist
+## Adding a New Book
 
-Before launch, verify:
+### Quick Start
 
-- [ ] Email capture connected (ConvertKit, Buttondown, etc.)
-- [ ] Analytics tracking (scroll depth, tool completion, CTA clicks)
-- [ ] Payment integration (Gumroad, Stripe, LemonSqueezy)
-- [ ] Mobile responsive (test on iOS Safari, Chrome Android)
-- [ ] Page load < 2 seconds
-- [ ] Disclaimer present (mental health notice)
-- [ ] SEO meta tags set
-- [ ] OG image for social sharing
+1. **Validate First:**
+   - Use `_prompts/synthesis-engine.md` to design the synthesis
+   - Create a validation landing with `_templates/landing-validation.html`
+   - Test demand before writing
+
+2. **Create Folder:**
+   ```
+   books/
+   └── 02-book-name/
+       ├── validation/
+       │   └── index.html    # MVP landing
+       └── index.html        # Full landing (after validation)
+   ```
+
+3. **Use Prompts:**
+   - `synthesis-engine.md` for protocol design
+   - `tool-generator.md` for interactive tools
+   - `mini-game-designer.md` for engagement features
+
+4. **Connect to Hub:**
+   - Add to `_hub/index.html`
+   - Update transformation paths if relevant
+
+### Validation Gates
+
+| Metric | Target | Action |
+|--------|--------|--------|
+| Email signups | 100 in 14 days | Proceed if hit |
+| Signup rate | >2% of visitors | Proceed if hit |
+| Tool completion | >60% | Concept resonates |
+| Bounce rate | <70% | Hook is working |
+
+---
+
+## Tool Types
+
+Each book includes three interactive tools:
+
+| Type | Purpose | Time | Pattern |
+|------|---------|------|---------|
+| **Mapper** | Visualize current state | 60-90s | Input → Visual map |
+| **Analyzer** | Analyze text for insights | 45-60s | Text → Scores + patterns |
+| **Generator** | Create personalized output | 30-60s | Selections → Custom script |
+
+Use templates in `_templates/` as starting points.
+
+---
+
+## Three-Layer Architecture
+
+```
+LAYER 1: FREE TOOLS (Acquisition)
+├── Landing page tools
+├── Shareable results
+└── Email capture
+
+LAYER 2: BOOK + EXTENDED TOOLS (Monetization)
+├── Full book content
+├── Advanced tool versions
+└── Saved progress
+
+LAYER 3: UNIVERSE (Retention)
+├── Cross-book paths
+├── Community
+└── Companion apps
+```
+
+---
+
+## Prompts Reference
+
+| Prompt | Use When |
+|--------|----------|
+| `synthesis-engine.md` | Designing a new synthesis |
+| `validation-lander.md` | Creating MVP landing page |
+| `tool-generator.md` | Building interactive tools |
+| `mini-game-designer.md` | Adding gamification |
+| `evolution-prompt.md` | Iterating based on data |
+| `series-scaler.md` | Scaling to multiple books |
+| `conversion-optimizer.md` | Improving conversion |
+
+---
+
+## Transformation Paths
+
+Some transformations require multiple books. See `_hub/transformation-paths.html` for guided journeys:
+
+- **The Identity Path** — For those reinventing themselves
+- **The Inner Work Path** — For those seeking self-understanding
+- **The Vision Path** — For those building something new
+
+---
+
+## Key Principles
+
+1. **Validate before building** — Test demand with minimal landing
+2. **Tools as hooks** — Free interactive value creates paid desire
+3. **Synthesis over summary** — Create something new, not just combined
+4. **State before story** — Transformation requires emotional shift first
+5. **Compound value** — Each book enhances the others
+
+---
+
+## Resources
+
+- **Full Methodology:** `_system/SYNTHESIS-UNIVERSE.md`
+- **Universe Hub:** `_hub/index.html`
+- **JavaScript Frameworks:** `_shared/js/`
+- **HTML Templates:** `_templates/`
+
+---
+
+*The Synthesis Universe — Transform through integration.*

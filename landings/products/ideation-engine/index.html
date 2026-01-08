@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ideation Engine v3.0 — The Ultimate Product Ideation Framework. Find ideas worth building through pain discovery, validation, and positioning.">
+    <title>Ideation Engine — Find Ideas Worth Building</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Canvas Background -->
+    <canvas id="idea-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../" class="nav-back">← Products</a>
+        <span class="nav-title">IDEATION ENGINE</span>
+        <div class="nav-progress">
+            <span class="progress-text">Phase <span id="current-phase-num">0</span> / 5</span>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-label">The Ultimate Product Ideation Framework</p>
+            <h1 class="hero-title">IDEATION ENGINE</h1>
+            <p class="hero-subtitle">
+                Ideas worth building = Specific Pain × Clear Distribution × Emotional Transformation × Weekend Shippable × Defensible Angle
+            </p>
+            <button class="btn-start" id="start-engine">Begin Your Journey</button>
+        </div>
+    </section>
+    
+    <!-- Phase Navigation -->
+    <section class="phase-nav-section" id="phase-nav" style="display: none;">
+        <div class="phase-nav-container">
+            <div class="phase-nav-item" data-phase="0">
+                <span class="phase-number">0</span>
+                <span class="phase-name">Know Thyself</span>
+            </div>
+            <div class="phase-nav-item" data-phase="1">
+                <span class="phase-number">1</span>
+                <span class="phase-name">Pain Discovery</span>
+            </div>
+            <div class="phase-nav-item" data-phase="2">
+                <span class="phase-number">2</span>
+                <span class="phase-name">Pre-Validation</span>
+            </div>
+            <div class="phase-nav-item" data-phase="3">
+                <span class="phase-number">3</span>
+                <span class="phase-name">Positioning</span>
+            </div>
+            <div class="phase-nav-item" data-phase="4">
+                <span class="phase-number">4</span>
+                <span class="phase-name">MVP Scoping</span>
+            </div>
+            <div class="phase-nav-item" data-phase="5">
+                <span class="phase-number">5</span>
+                <span class="phase-name">Launch Strategy</span>
+            </div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </section>
+    
+    <!-- Phase Container -->
+    <main class="phase-container" id="phase-container" style="display: none;">
+        
+        <!-- Phase 0: Know Thyself -->
+        <section class="phase-content" data-phase="0">
+            <div class="phase-header">
+                <h2 class="phase-title">Phase 0: Know Thyself</h2>
+                <p class="phase-description">Before generating ideas, understand your constraints, goals, and unfair advantages.</p>
+            </div>
+            
+            <div class="phase-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">Constraints</h3>
+                    <div class="form-group">
+                        <label>Time Available (hours/week)</label>
+                        <input type="number" id="time-available" min="0" max="168" placeholder="e.g., 20">
+                    </div>
+                    <div class="form-group">
+                        <label>Skills (what can you build without learning?)</label>
+                        <textarea id="skills" rows="3" placeholder="e.g., React, Node.js, Design, Marketing..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Capital Available ($)</label>
+                        <input type="number" id="capital" min="0" placeholder="e.g., 1000">
+                    </div>
+                    <div class="form-group">
+                        <label>Timeline (when do you need revenue?)</label>
+                        <select id="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="1month">1 month</option>
+                            <option value="3months">3 months</option>
+                            <option value="6months">6 months</option>
+                            <option value="1year">1 year</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Goals</h3>
+                    <div class="form-group">
+                        <label>Target Outcome</label>
+                        <select id="target-outcome">
+                            <option value="">Select outcome</option>
+                            <option value="lifestyle">Lifestyle business</option>
+                            <option value="growth">Growth startup</option>
+                            <option value="sellable">Sellable asset</option>
+                            <option value="learning">Learning project</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Revenue Goal</label>
+                        <select id="revenue-goal">
+                            <option value="">Select goal</option>
+                            <option value="1k">$1K MRR</option>
+                            <option value="10k">$10K MRR</option>
+                            <option value="100k">$100K MRR</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Acceptable Schlep Level</label>
+                        <select id="schlep-level">
+                            <option value="">Select level</option>
+                            <option value="low">Low (prefer elegant solutions)</option>
+                            <option value="medium">Medium (some manual work OK)</option>
+                            <option value="high">High (willing to do hard/boring work)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Unfair Advantages</h3>
+                    <div class="form-group">
+                        <label>Communities You're Part Of</label>
+                        <textarea id="communities" rows="2" placeholder="e.g., Indie Hackers, Designer Discord, Local startup meetup..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What Do You Know That Most Don't?</label>
+                        <textarea id="unique-knowledge" rows="3" placeholder="Domain expertise, insider knowledge, unique perspective..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What Annoys YOU That You'd Actually Use?</label>
+                        <textarea id="personal-annoyances" rows="3" placeholder="Problems you face daily that you'd pay to solve..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="phase-actions">
+                    <button class="btn-phase btn-next" data-next-phase="1">Continue to Pain Discovery →</button>
+                    <button class="btn-agi" data-phase="0">Activate AGI Mode</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Phase 1: Pain Discovery -->
+        <section class="phase-content" data-phase="1">
+            <div class="phase-header">
+                <h2 class="phase-title">Phase 1: Pain Discovery</h2>
+                <p class="phase-description">Find problems worth solving through personal annoyance, community listening, and schlep discovery.</p>
+            </div>
+            
+            <div class="phase-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">Personal Annoyance Mine</h3>
+                    <div class="form-group">
+                        <label>What frustrated you in the last 30 days?</label>
+                        <textarea id="recent-frustrations" rows="3" placeholder="List specific frustrations..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What task do you procrastinate because it's annoying?</label>
+                        <textarea id="procrastinated-tasks" rows="2" placeholder="Tasks you avoid..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What do you wish existed but doesn't?</label>
+                        <textarea id="wish-existed" rows="2" placeholder="Products or tools you wish you had..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Community Listening</h3>
+                    <div class="form-group">
+                        <label>Communities to Mine (Reddit, Twitter, Discord, etc.)</label>
+                        <textarea id="communities-to-mine" rows="2" placeholder="r/yourcommunity, @yourniche, Discord servers..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Top Complaints You've Noticed</label>
+                        <textarea id="top-complaints" rows="4" placeholder="What are people complaining about repeatedly?"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Schlep Discovery</h3>
+                    <div class="form-group">
+                        <label>What problem do people acknowledge but no one solves?</label>
+                        <textarea id="acknowledged-problems" rows="2" placeholder="Known problems with no good solutions..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What involves hard/boring work everyone avoids?</label>
+                        <textarea id="avoided-work" rows="2" placeholder="Schleps that create opportunity..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="tarpit-warning">
+                    <h4>⚠️ Tarpit Detection</h4>
+                    <p>Flag and avoid these idea graveyards: Social networks, Dating apps, Todo lists, Generic AI writing assistants, "Uber for X" concepts</p>
+                </div>
+                
+                <div class="phase-actions">
+                    <button class="btn-phase btn-prev" data-prev-phase="0">← Back</button>
+                    <button class="btn-phase btn-next" data-next-phase="2">Continue to Pre-Validation →</button>
+                    <button class="btn-agi" data-phase="1">Activate AGI Mode</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Phase 2: Pre-Validation -->
+        <section class="phase-content" data-phase="2">
+            <div class="phase-header">
+                <h2 class="phase-title">Phase 2: Pre-Validation</h2>
+                <p class="phase-description">Test before building. Can you get 10 people to commit before you build anything?</p>
+            </div>
+            
+            <div class="phase-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">Landing Page Test</h3>
+                    <div class="form-group">
+                        <label>Value Proposition (explain in 5 seconds)</label>
+                        <textarea id="value-prop" rows="2" placeholder="What problem does this solve?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Call to Action</label>
+                        <input type="text" id="cta" placeholder="e.g., 'Join Waitlist', 'Pre-order Now'">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Pre-Sell Test</h3>
+                    <div class="form-group">
+                        <label>Target Price ($/month)</label>
+                        <input type="number" id="target-price" min="0" placeholder="e.g., 29">
+                    </div>
+                    <div class="form-group">
+                        <label>Pre-Sell Script</label>
+                        <textarea id="presell-script" rows="4" placeholder="I'm building [X] that solves [Y]. Would you pay $Z/month? If yes, you can lock in early-bird pricing now."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Pre-Sales / Waitlist Signups</label>
+                        <input type="number" id="presell-count" min="0" placeholder="Target: 10 pre-sales OR 100 waitlist">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Competitive Alternative</h3>
+                    <div class="form-group">
+                        <label>What do they do today if your product doesn't exist?</label>
+                        <textarea id="current-alternative" rows="2" placeholder="Existing solutions or workarounds..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Why is that alternative inadequate?</label>
+                        <textarea id="alternative-gaps" rows="2" placeholder="What's missing or broken?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What would make them switch?</label>
+                        <textarea id="switching-trigger" rows="2" placeholder="Key differentiator..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="kill-criteria">
+                    <h4>Kill Criteria</h4>
+                    <ul>
+                        <li>Can't explain in 5 seconds → KILL</li>
+                        <li>No one pre-pays → KILL</li>
+                        <li>Alternative is "good enough" → KILL</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-actions">
+                    <button class="btn-phase btn-prev" data-prev-phase="1">← Back</button>
+                    <button class="btn-phase btn-next" data-next-phase="3">Continue to Positioning →</button>
+                    <button class="btn-agi" data-phase="2">Activate AGI Mode</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Phase 3: Positioning -->
+        <section class="phase-content" data-phase="3">
+            <div class="phase-header">
+                <h2 class="phase-title">Phase 3: Positioning</h2>
+                <p class="phase-description">Before defining features, define position. Who will love this MOST?</p>
+            </div>
+            
+            <div class="phase-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">Best-Fit Customer</h3>
+                    <div class="form-group">
+                        <label>Who will love this MOST? (Be ultra-specific)</label>
+                        <textarea id="best-fit-customer" rows="2" placeholder="[Specific Role] + [Specific Context] + [Specific Trigger]"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What makes them different from adjacent customers?</label>
+                        <textarea id="customer-differentiation" rows="2" placeholder="Why are THEY underserved?"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Category Decision</h3>
+                    <div class="form-group">
+                        <label>Existing Category or New Category?</label>
+                        <select id="category-type">
+                            <option value="">Select</option>
+                            <option value="existing">Existing Category</option>
+                            <option value="new">New Category</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="existing-category-group" style="display: none;">
+                        <label>What's the established category? Who's the leader?</label>
+                        <textarea id="existing-category" rows="2" placeholder="Category name and leader..."></textarea>
+                    </div>
+                    <div class="form-group" id="new-category-group" style="display: none;">
+                        <label>What frame makes your solution make sense?</label>
+                        <textarea id="new-category" rows="2" placeholder="New category definition..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Positioning Statement</label>
+                        <textarea id="positioning-statement" rows="2" placeholder="For [WHO], [PRODUCT] is [CATEGORY] that [KEY BENEFIT] unlike [ALTERNATIVE]."></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Emotional Positioning</h3>
+                    <div class="form-group">
+                        <label>How do users FEEL before? (frustrated, embarrassed, anxious, overwhelmed)</label>
+                        <input type="text" id="emotion-before" placeholder="e.g., frustrated, overwhelmed">
+                    </div>
+                    <div class="form-group">
+                        <label>How do users FEEL after? (confident, proud, relieved, in control)</label>
+                        <input type="text" id="emotion-after" placeholder="e.g., confident, in control">
+                    </div>
+                    <div class="form-group">
+                        <label>The transformation in one word: From ___ to ___</label>
+                        <input type="text" id="transformation" placeholder="e.g., chaos to clarity">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Status Positioning</h3>
+                    <div class="form-group">
+                        <label>Does using this make someone look successful/smart/professional?</label>
+                        <select id="status-boost">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Would they tell others they use this?</label>
+                        <select id="shareable">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Social Proof Angle</label>
+                        <textarea id="social-proof" rows="2" placeholder="Used by [aspirational group]"></textarea>
+                    </div>
+                </div>
+                
+                <div class="phase-actions">
+                    <button class="btn-phase btn-prev" data-prev-phase="2">← Back</button>
+                    <button class="btn-phase btn-next" data-next-phase="4">Continue to MVP Scoping →</button>
+                    <button class="btn-agi" data-phase="3">Activate AGI Mode</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Phase 4: MVP Scoping -->
+        <section class="phase-content" data-phase="4">
+            <div class="phase-header">
+                <h2 class="phase-title">Phase 4: MVP Scoping</h2>
+                <p class="phase-description">The Weekend Shipping Test. Can you describe the MVP in 3 tweets?</p>
+            </div>
+            
+            <div class="phase-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">Three-Tweet MVP Test</h3>
+                    <div class="form-group">
+                        <label>Tweet 1: The Problem</label>
+                        <textarea id="tweet-problem" rows="2" maxlength="280" placeholder="What problem does this solve?"></textarea>
+                        <span class="char-count"><span id="tweet-problem-count">0</span>/280</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Tweet 2: The Solution</label>
+                        <textarea id="tweet-solution" rows="2" maxlength="280" placeholder="How does it solve it?"></textarea>
+                        <span class="char-count"><span id="tweet-solution-count">0</span>/280</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Tweet 3: How It Works</label>
+                        <textarea id="tweet-how" rows="2" maxlength="280" placeholder="Simple explanation of how it works"></textarea>
+                        <span class="char-count"><span id="tweet-how-count">0</span>/280</span>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Weekend Test</h3>
+                    <div class="form-group">
+                        <label>Could this be built in a weekend by someone with your skills?</label>
+                        <select id="weekend-feasible">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="weekend-no-group" style="display: none;">
+                        <label>What's the smallest version that delivers core value?</label>
+                        <textarea id="minimal-version" rows="2" placeholder="Simplest possible MVP..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What's the "Wizard of Oz" version? (manual behind the scenes)</label>
+                        <textarea id="wizard-version" rows="2" placeholder="How could you fake it until you make it?"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Leverage Check</h3>
+                    <div class="form-group">
+                        <label>Leverage Type</label>
+                        <select id="leverage-type">
+                            <option value="">Select</option>
+                            <option value="code">Code</option>
+                            <option value="media">Media</option>
+                            <option value="labor">Labor</option>
+                            <option value="capital">Capital</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Will this make money while you sleep?</label>
+                        <select id="passive-income">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Does it get easier or harder with scale?</label>
+                        <select id="scale-effect">
+                            <option value="">Select</option>
+                            <option value="easier">Easier</option>
+                            <option value="harder">Harder</option>
+                            <option value="same">Same</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Feature Prison Avoidance</h3>
+                    <div class="form-group">
+                        <label>What's the ONE thing this does?</label>
+                        <textarea id="one-thing" rows="2" placeholder="Core value proposition in one sentence"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What are you explicitly NOT building?</label>
+                        <textarea id="not-building" rows="2" placeholder="Features you will say no to"></textarea>
+                    </div>
+                </div>
+                
+                <div class="phase-actions">
+                    <button class="btn-phase btn-prev" data-prev-phase="3">← Back</button>
+                    <button class="btn-phase btn-next" data-next-phase="5">Continue to Launch Strategy →</button>
+                    <button class="btn-agi" data-phase="4">Activate AGI Mode</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Phase 5: Launch Strategy -->
+        <section class="phase-content" data-phase="5">
+            <div class="phase-header">
+                <h2 class="phase-title">Phase 5: Launch Strategy</h2>
+                <p class="phase-description">The Product Hunt Playbook. Where do your best-fit customers already gather?</p>
+            </div>
+            
+            <div class="phase-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">Launch Narrative</h3>
+                    <div class="form-group">
+                        <label>The Story: "I was frustrated by X, so I built Y"</label>
+                        <textarea id="launch-story" rows="3" placeholder="Your origin story..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>The Hero: The user, not the product</label>
+                        <textarea id="user-hero" rows="2" placeholder="How does the user become the hero?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>The Transformation: Before → After</label>
+                        <textarea id="transformation-story" rows="2" placeholder="User journey from problem to solution"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Shareability Test</h3>
+                    <div class="form-group">
+                        <label>Why would someone share this?</label>
+                        <textarea id="share-reason" rows="2" placeholder="What makes it shareable?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What's the "aha" moment?</label>
+                        <textarea id="aha-moment" rows="2" placeholder="When does the user get it?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Can you create shareable artifacts? (badges, stats, results)</label>
+                        <textarea id="shareable-artifacts" rows="2" placeholder="What can users share?"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Distribution Advantage</h3>
+                    <div class="form-group">
+                        <label>Where do your best-fit customers already gather?</label>
+                        <textarea id="customer-gathering" rows="2" placeholder="Communities, platforms, events..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>What's your unfair distribution channel?</label>
+                        <textarea id="unfair-channel" rows="2" placeholder="Your unique access or advantage..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Day 1 Launch List: Who are your first 100 users?</label>
+                        <textarea id="first-100" rows="3" placeholder="Specific people, communities, or channels..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Metric Definition</h3>
+                    <div class="form-group">
+                        <label>North Star Metric: What's the ONE number that matters?</label>
+                        <input type="text" id="north-star" placeholder="e.g., Daily Active Users, Revenue, Signups">
+                    </div>
+                    <div class="form-group">
+                        <label>Day 1 Goal</label>
+                        <input type="number" id="day1-goal" min="0" placeholder="e.g., 100">
+                    </div>
+                    <div class="form-group">
+                        <label>Week 1 Goal</label>
+                        <input type="number" id="week1-goal" min="0" placeholder="e.g., 500">
+                    </div>
+                    <div class="form-group">
+                        <label>Kill Threshold: If we don't hit X by day 30, pivot or kill</label>
+                        <input type="number" id="kill-threshold" min="0" placeholder="e.g., 1000">
+                    </div>
+                </div>
+                
+                <div class="phase-actions">
+                    <button class="btn-phase btn-prev" data-prev-phase="4">← Back</button>
+                    <button class="btn-phase btn-generate" id="generate-ideas">Generate Ideas →</button>
+                    <button class="btn-agi" data-phase="5">Activate AGI Mode</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Idea Generator Section -->
+    <section class="idea-generator" id="idea-generator" style="display: none;">
+        <div class="generator-header">
+            <h2 class="generator-title">Your Ideas</h2>
+            <p class="generator-subtitle">Ideas generated from your inputs, filtered through the 5 filters</p>
+        </div>
+        
+        <div class="filters-overview">
+            <div class="filter-badge" data-filter="pain">PAIN</div>
+            <div class="filter-badge" data-filter="distribution">DISTRIBUTION</div>
+            <div class="filter-badge" data-filter="emotion">EMOTION</div>
+            <div class="filter-badge" data-filter="scope">SCOPE</div>
+            <div class="filter-badge" data-filter="moat">MOAT</div>
+        </div>
+        
+        <div class="ideas-container" id="ideas-container">
+            <!-- Ideas will be generated here -->
+        </div>
+        
+        <div class="generator-actions">
+            <button class="btn-export" id="export-json">Export as JSON</button>
+            <button class="btn-export" id="export-landing">Generate Landing Page Copy</button>
+            <button class="btn-export" id="export-pitch">Create Pitch Deck Outline</button>
+        </div>
+    </section>
+    
+    <!-- AGI Mode Modal -->
+    <div class="agi-modal" id="agi-modal" style="display: none;">
+        <div class="agi-modal-content">
+            <div class="agi-modal-header">
+                <h3>AGI Mode Analysis</h3>
+                <button class="agi-modal-close" id="agi-close">×</button>
+            </div>
+            <div class="agi-modal-body" id="agi-content">
+                <!-- AGI analysis will appear here -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

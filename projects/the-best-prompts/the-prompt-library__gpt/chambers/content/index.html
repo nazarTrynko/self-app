@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Content — The Prompt Library</title>
+    <meta
+      name="description"
+      content="A content chamber with an offline hook engine, viral potential meter, and a prompt suite for scroll-stopping writing."
+    />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:title" content="Content — The Prompt Library" />
+    <meta property="og:description" content="Generate hooks that stop the scroll." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="./" />
+
+    <link rel="stylesheet" href="../../styles/shared.css" />
+    <link rel="stylesheet" href="../../styles/chambers/content.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Content — The Prompt Library",
+        "description": "Hook generator with viral potential meter plus a prompt suite for scroll-stopping writing."
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="chamber chamberContent">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="chHeader">
+      <a class="btn btnGhost" href="../../index.html">← Hub</a>
+      <div class="chHeaderTitle">
+        <div class="chTag">CHAMBER II</div>
+        <div class="chName">Content</div>
+      </div>
+      <div class="chHeaderRight">
+        <button class="btn btnGhost" id="resetBtn" type="button">Reset</button>
+      </div>
+    </header>
+
+    <main id="main" class="chMain">
+      <section class="chHero" aria-label="Chamber introduction">
+        <h1 class="chH1">Write the first line people can’t ignore.</h1>
+        <p class="chSub">
+          Electric attention. Sharp language. Feed the engine a topic and it spits out hooks—with a
+          “viral potential” meter that reacts.
+        </p>
+        <div class="chBadges">
+          <span class="chip">Hook engine</span>
+          <span class="chip">Viral meter</span>
+          <span class="chip">Share card</span>
+        </div>
+      </section>
+
+      <section class="chGrid">
+        <section class="panel" aria-label="Hook tool">
+          <div class="panelHead">
+            <h2 class="panelTitle">Hook Engine</h2>
+            <div class="panelActions">
+              <button class="btn" id="generateBtn" type="button">Generate</button>
+              <button class="btn btnGhost" id="copyBestBtn" type="button">Copy best</button>
+            </div>
+          </div>
+
+          <div class="toolBody">
+            <div class="fields">
+              <label class="field">
+                <span class="label">Topic</span>
+                <input class="input" id="topic" placeholder="e.g., decision-making, journaling, hiring, ADHD focus" />
+              </label>
+              <label class="field">
+                <span class="label">Audience</span>
+                <input class="input" id="audience" placeholder="e.g., founders, creators, developers, students" />
+              </label>
+              <label class="field">
+                <span class="label">Offer / takeaway</span>
+                <input class="input" id="offer" placeholder="e.g., a framework, a checklist, a tool, a prompt suite" />
+              </label>
+              <label class="field">
+                <span class="label">Tone</span>
+                <select class="input" id="tone">
+                  <option value="sharp">Sharp</option>
+                  <option value="warm">Warm</option>
+                  <option value="provocative">Provocative</option>
+                  <option value="clinical">Clinical</option>
+                  <option value="poetic">Poetic</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="meter" aria-label="Viral potential meter">
+              <div class="meterTop">
+                <div class="meterLabel">Viral potential</div>
+                <div class="meterValue" id="meterValue">—</div>
+              </div>
+              <div class="meterBar">
+                <div class="meterFill" id="meterFill" style="width:0%"></div>
+              </div>
+              <div class="meterHint muted" id="meterHint">Generate hooks to score.</div>
+            </div>
+
+            <div class="hooks" id="hooks" aria-label="Generated hooks"></div>
+          </div>
+
+          <div class="toolFoot">
+            <button class="btn btnGhost" id="downloadPngBtn" type="button">Download PNG</button>
+            <button class="btn btnGhost" id="copyAllBtn" type="button">Copy all</button>
+          </div>
+        </section>
+
+        <section class="panel" aria-label="Prompt suite">
+          <div class="panelHead">
+            <h2 class="panelTitle">Prompt Suite</h2>
+            <div class="panelActions">
+              <button class="btn btnGhost" id="copyAllPromptsBtn" type="button">Copy all</button>
+            </div>
+          </div>
+          <div class="promptList" id="promptList"></div>
+        </section>
+      </section>
+
+      <section class="chFooter">
+        <div class="muted">
+          Next chambers:
+          <a href="../reflection/">Reflection</a>,
+          <a href="../healing/">Healing</a>,
+          <a href="../creation/">Creation</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+      <span class="toastDot" aria-hidden="true"></span>
+      <span class="toastText" id="toastText">Copied</span>
+    </div>
+
+    <script src="../../scripts/shared.js"></script>
+    <script src="../../scripts/chambers/content.js"></script>
+  </body>
+</html>
+
+

@@ -1,0 +1,263 @@
+.hub{
+  overflow:hidden;
+}
+
+#starfield{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hubHeader{
+  position: relative;
+  z-index: 2;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 18px 18px 0;
+}
+
+.hubBrand{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+}
+.hubMark{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.10) 38%, transparent 62%),
+    radial-gradient(circle at 70% 65%, rgba(114,245,199,0.45), transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(120,170,255,0.35), transparent 60%),
+    rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+}
+.hubKicker{
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.hubTitle{
+  font-family: var(--display);
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.hubActions{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+.hubMain{
+  position: relative;
+  z-index: 2;
+  height: calc(100vh - 72px);
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 18px 18px;
+}
+
+.hubIntro{
+  max-width: 980px;
+}
+.hubLead{
+  margin: 0 0 6px;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  letter-spacing: -0.02em;
+}
+.hubHint{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.hubStage{
+  flex:1;
+  min-height: 420px;
+  display:grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 14px;
+}
+
+.hubMap{
+  position: relative;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.22);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.mapSvg{
+  position:absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 22px rgba(120,170,255,0.20));
+}
+
+.mapTargets{
+  position:absolute;
+  inset: 0;
+  padding: 0;
+}
+
+.mapTarget{
+  position:absolute;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  max-width: 42vw;
+  padding: 10px 10px 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.30);
+  backdrop-filter: blur(10px);
+  cursor:pointer;
+  text-align:left;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+.mapTarget:hover{
+  background: rgba(0,0,0,0.40);
+  border-color: rgba(255,255,255,0.22);
+  transform: translate(-50%, -50%) scale(1.02);
+}
+.mapTarget:focus-visible{
+  outline:none;
+  box-shadow: var(--focusGlow);
+  border-color: rgba(255,255,255,0.28);
+}
+.mapTargetSmall{
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+.mapTargetName{
+  font-family: var(--display);
+  font-size: 1.15rem;
+  margin-top: 4px;
+}
+.mapTargetTease{
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.hubPreview{
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.18));
+  box-shadow: var(--shadow);
+  padding: 14px;
+  display:flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.previewTop{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.previewTag{
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+.previewTitle{
+  margin: 10px 0 6px;
+  font-family: var(--display);
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+.previewDesc{
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+.previewMeta{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.chip{
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.80);
+}
+
+.previewCtas{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  margin-top: auto;
+}
+
+.trail{
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+.trailTitle{
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+.trailList{
+  display:flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.trailItem{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+  text-decoration:none;
+}
+.trailItem:hover{
+  background: rgba(255,255,255,0.08);
+}
+
+.hubFooter{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.hubMiniLink{
+  color: rgba(255,255,255,0.78);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+  padding-bottom: 2px;
+}
+.hubMiniLink:hover{
+  border-bottom-color: rgba(255,255,255,0.32);
+}
+
+@media (max-width: 980px){
+  .hubStage{ grid-template-columns: 1fr; }
+  .hubPreview{ min-height: 250px; }
+}
+
+@media (max-width: 520px){
+  .mapTarget{ width: 170px; }
+  .hubFooter{ flex-direction: column; align-items:flex-start; }
+}
+
+

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <title>{{BOOK_TITLE}} — {{TAGLINE}}</title>
+    
+    <!-- Fonts - Replace with your preferred combination -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           VALIDATION LANDING TEMPLATE
+           Minimal, fast, conversion-focused
+           ============================================ */
+        
+        :root {
+            /* Colors - Customize per book */
+            --bg-void: #0a0908;
+            --bg-card: #151311;
+            --bg-input: #0d0c0a;
+            --text-primary: #faf9f7;
+            --text-secondary: #a8a29e;
+            --text-muted: #78716c;
+            --accent-primary: #d4a574;
+            --accent-secondary: #f59e0b;
+            --accent-success: #10b981;
+            --accent-error: #e11d48;
+            --border-subtle: rgba(168, 162, 158, 0.12);
+            --border-active: rgba(212, 165, 116, 0.4);
+            --glow: 0 0 60px rgba(212, 165, 116, 0.15);
+            
+            /* Typography */
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-void);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(212, 165, 116, 0.08);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            color: var(--bg-void);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        .hero-cta svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ============================================
+           INSIGHT SECTION
+           ============================================ */
+        
+        .insight {
+            padding: 5rem 1.5rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 165, 116, 0.03) 50%, transparent 100%);
+        }
+
+        .insight-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .insight-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .insight-text em {
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        /* ============================================
+           TOOL SECTION
+           ============================================ */
+        
+        .tool {
+            padding: 5rem 1.5rem;
+            background: var(--bg-card);
+        }
+
+        .tool-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .tool-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .tool-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+        }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            color: var(--bg-void);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Tool Results */
+        .tool-results {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tool-results.visible {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .results-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+        }
+
+        .results-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .results-insight {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(212, 165, 116, 0.08);
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        .results-insight h4 {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-to-capture {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+
+        .tool-to-capture p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================
+           CAPTURE SECTION
+           ============================================ */
+        
+        .capture {
+            padding: 5rem 1.5rem;
+            text-align: center;
+        }
+
+        .capture-inner {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .capture-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .capture-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .email-form button {
+            padding: 1rem 1.5rem;
+            background: var(--accent-primary);
+            color: var(--bg-void);
+            border: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .email-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        .trust-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Price Validation (Optional) */
+        .price-validation {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .price-question {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .price-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .price-btn {
+            padding: 0.75rem 2rem;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .price-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .price-btn.selected {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: var(--bg-void);
+        }
+
+        /* Success State */
+        .capture-success {
+            display: none;
+            padding: 2rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--accent-success);
+            text-align: center;
+        }
+
+        .capture-success.visible {
+            display: block;
+        }
+
+        .capture-success h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--accent-success);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        
+        .footer {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .disclaimer {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        
+        @media (max-width: 640px) {
+            .email-form {
+                flex-direction: column;
+            }
+            
+            .email-form button {
+                width: 100%;
+            }
+            
+            .price-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* ============================================
+           UTILITIES
+           ============================================ */
+        
+        .hidden { display: none !important; }
+        .visible { display: block !important; }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <header class="hero">
+        <span class="hero-badge">{{BADGE_TEXT}}</span>
+        <h1 class="hero-title">{{HEADLINE}}</h1>
+        <p class="hero-subtitle">{{SUBTITLE}}</p>
+        <a href="#tool" class="hero-cta">
+            {{CTA_TEXT}}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+        <span class="scroll-hint">Scroll to try</span>
+    </header>
+
+    <!-- ============================================
+         INSIGHT SECTION
+         ============================================ -->
+    <section class="insight">
+        <div class="insight-inner">
+            <span class="section-label">{{INSIGHT_LABEL}}</span>
+            <p class="insight-text">{{INSIGHT_TEXT}}</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TOOL SECTION
+         ============================================ -->
+    <section id="tool" class="tool">
+        <div class="tool-inner">
+            <div class="tool-header">
+                <span class="section-label">Try It Now</span>
+                <h2 class="tool-title">{{TOOL_TITLE}}</h2>
+                <p class="tool-subtitle">{{TOOL_SUBTITLE}}</p>
+            </div>
+
+            <form id="toolForm" class="tool-form">
+                <!-- CUSTOMIZE: Add your tool inputs here -->
+                <div class="form-group">
+                    <label class="form-label">{{INPUT_1_LABEL}}</label>
+                    <textarea class="form-textarea" id="input1" placeholder="{{INPUT_1_PLACEHOLDER}}"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">{{INPUT_2_LABEL}}</label>
+                    <input type="text" class="form-input" id="input2" placeholder="{{INPUT_2_PLACEHOLDER}}">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">{{INPUT_3_LABEL}}</label>
+                    <select class="form-select" id="input3">
+                        <option value="">Select...</option>
+                        <option value="option1">{{OPTION_1}}</option>
+                        <option value="option2">{{OPTION_2}}</option>
+                        <option value="option3">{{OPTION_3}}</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">{{TOOL_BUTTON}}</button>
+            </form>
+
+            <div id="toolResults" class="tool-results">
+                <div class="results-header">
+                    <h3 class="results-title">Your Results</h3>
+                </div>
+                <div class="results-content" id="resultsContent">
+                    <!-- Dynamic results inserted here -->
+                </div>
+                <div class="results-insight">
+                    <h4>Key Insight</h4>
+                    <p id="resultsInsight"><!-- Dynamic insight --></p>
+                </div>
+                <div class="tool-to-capture">
+                    <p>{{TOOL_TO_CAPTURE_TEXT}}</p>
+                    <a href="#capture" class="btn-primary" style="display: inline-block; width: auto;">Get the Full System</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CAPTURE SECTION
+         ============================================ -->
+    <section id="capture" class="capture">
+        <div class="capture-inner">
+            <div id="captureForm">
+                <span class="section-label">Coming Soon</span>
+                <h2 class="capture-title">{{CAPTURE_TITLE}}</h2>
+                <p class="capture-subtitle">{{CAPTURE_SUBTITLE}}</p>
+                
+                <form class="email-form" id="emailForm">
+                    <input type="email" placeholder="{{EMAIL_PLACEHOLDER}}" required id="emailInput">
+                    <button type="submit">{{CAPTURE_BUTTON}}</button>
+                </form>
+                <p class="trust-text">{{TRUST_TEXT}}</p>
+
+                <!-- Optional: Price Validation -->
+                <div class="price-validation">
+                    <p class="price-question">Would you pay ${{PRICE}} for this?</p>
+                    <div class="price-buttons">
+                        <button type="button" class="price-btn" data-value="yes">Yes, I would</button>
+                        <button type="button" class="price-btn" data-value="no">Not sure yet</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="captureSuccess" class="capture-success">
+                <h3>You're on the list!</h3>
+                <p>{{SUCCESS_MESSAGE}}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <p class="disclaimer">{{DISCLAIMER}}</p>
+        <p class="footer-text">{{FOOTER_TEXT}}</p>
+    </footer>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <script>
+        // ============================================
+        // ANALYTICS (Replace with your provider)
+        // ============================================
+        function track(event, data = {}) {
+            console.log('Track:', event, data);
+            // Replace with your analytics:
+            // gtag('event', event, data);
+            // plausible(event, { props: data });
+            // posthog.capture(event, data);
+        }
+
+        // Track page view
+        track('page_view');
+
+        // ============================================
+        // TOOL LOGIC
+        // ============================================
+        const toolForm = document.getElementById('toolForm');
+        const toolResults = document.getElementById('toolResults');
+        const resultsContent = document.getElementById('resultsContent');
+        const resultsInsight = document.getElementById('resultsInsight');
+
+        toolForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get inputs
+            const input1 = document.getElementById('input1').value.trim();
+            const input2 = document.getElementById('input2').value.trim();
+            const input3 = document.getElementById('input3').value;
+
+            // Validate
+            if (!input1 || !input2 || !input3) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Track tool start
+            track('tool_start');
+
+            // CUSTOMIZE: Your result generation logic
+            const result = generateResult(input1, input2, input3);
+
+            // Display results
+            resultsContent.innerHTML = result.content;
+            resultsInsight.textContent = result.insight;
+            toolResults.classList.add('visible');
+
+            // Track completion
+            track('tool_complete', { type: result.type });
+
+            // Scroll to results
+            toolResults.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // CUSTOMIZE: Result generation function
+        function generateResult(input1, input2, input3) {
+            // This is placeholder logic - customize for your synthesis
+            const insights = [
+                "This pattern suggests you're ready for deeper transformation work.",
+                "Your responses indicate an opportunity for reframing.",
+                "This is a powerful starting point for the full protocol."
+            ];
+
+            return {
+                content: `
+                    <p><strong>Based on your input:</strong></p>
+                    <p>"${input1.substring(0, 100)}${input1.length > 100 ? '...' : ''}"</p>
+                    <p style="margin-top: 1rem;">Combined with <em>${input2}</em> and your selection of <em>${input3}</em>, 
+                    we can begin mapping your transformation.</p>
+                `,
+                insight: insights[Math.floor(Math.random() * insights.length)],
+                type: input3
+            };
+        }
+
+        // ============================================
+        // EMAIL CAPTURE
+        // ============================================
+        const emailForm = document.getElementById('emailForm');
+        const captureFormDiv = document.getElementById('captureForm');
+        const captureSuccess = document.getElementById('captureSuccess');
+        let selectedPrice = null;
+
+        // Price buttons
+        document.querySelectorAll('.price-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.price-btn').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedPrice = this.dataset.value;
+                track('price_' + selectedPrice);
+            });
+        });
+
+        emailForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('emailInput').value;
+            
+            // Track signup
+            track('email_signup', { 
+                email_domain: email.split('@')[1],
+                price_response: selectedPrice 
+            });
+
+            // CUSTOMIZE: Send to your email provider
+            // fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) });
+
+            // Show success
+            captureFormDiv.style.display = 'none';
+            captureSuccess.classList.add('visible');
+
+            // Store locally for returning visitors
+            localStorage.setItem('subscribed', 'true');
+            localStorage.setItem('email', email);
+        });
+
+        // Check for returning subscribers
+        if (localStorage.getItem('subscribed')) {
+            captureFormDiv.style.display = 'none';
+            captureSuccess.classList.add('visible');
+        }
+    </script>
+</body>
+</html>
+
+

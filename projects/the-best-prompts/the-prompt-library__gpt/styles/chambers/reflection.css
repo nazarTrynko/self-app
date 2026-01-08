@@ -1,0 +1,189 @@
+:root{
+  --rBg:
+    radial-gradient(1000px 760px at 25% 15%, rgba(212,168,44,0.18), transparent 60%),
+    radial-gradient(900px 660px at 78% 20%, rgba(212,165,116,0.14), transparent 55%),
+    radial-gradient(1100px 820px at 55% 95%, rgba(152,180,166,0.12), transparent 55%),
+    #0b0a08;
+  --gold: #d4a82c;
+  --sand: #d4a574;
+  --sage: #98b4a6;
+}
+
+.chamberReflection{
+  background: var(--rBg);
+  font-family: var(--mono);
+}
+.chamberReflection .chName,
+.chamberReflection .chH1,
+.chamberReflection .panelTitle{
+  font-family: "Fraunces", serif;
+}
+
+.chHeader{
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.30);
+  backdrop-filter: blur(12px);
+}
+.chHeaderTitle{ display:flex; flex-direction: column; align-items:center; gap: 2px; }
+.chTag{ font-size: 0.72rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.65); }
+.chName{ font-size: 1.08rem; letter-spacing: -0.02em; }
+
+.chMain{ max-width: 1140px; margin: 0 auto; padding: 18px 14px 50px; }
+.chHero{ padding: 16px 4px 18px; }
+.chH1{ margin: 0 0 8px; font-size: clamp(1.9rem, 3.5vw, 2.75rem); letter-spacing: -0.03em; }
+.chSub{ margin: 0 0 14px; color: rgba(255,255,255,0.72); max-width: 75ch; }
+.chBadges{ display:flex; gap: 8px; flex-wrap: wrap; }
+
+.chGrid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 14px; align-items:start; }
+
+.panel{
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.24);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.panelHead{
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  background: linear-gradient(90deg, rgba(212,168,44,0.12), rgba(212,165,116,0.10), rgba(152,180,166,0.08));
+}
+.panelTitle{ margin:0; font-size: 1.25rem; letter-spacing: -0.02em; }
+.panelActions{ display:flex; gap: 10px; flex-wrap: wrap; justify-content:flex-end; }
+
+.toolBody{ padding: 14px; }
+.toolTop{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.field{ display:flex; flex-direction: column; gap: 8px; }
+.label{ color: rgba(255,255,255,0.70); font-size: 0.85rem; }
+.input{
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.20);
+  padding: 12px 12px;
+}
+.input:focus-visible{ outline:none; box-shadow: var(--focusGlow); border-color: rgba(255,255,255,0.26); }
+.area{ resize: vertical; min-height: 120px; }
+
+.auditGrid{
+  margin-top: 14px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.domain{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.22);
+  padding: 12px;
+}
+.domainTop{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.domainName{
+  font-family: "Fraunces", serif;
+  font-size: 1.05rem;
+}
+.domainScore{
+  color: rgba(255,255,255,0.72);
+}
+.slider{
+  width: 100%;
+  margin-top: 10px;
+}
+.domainHint{
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.62);
+}
+
+.notes{ margin-top: 14px; }
+
+.toolFoot{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 14px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+}
+
+.vizWrap{
+  padding: 14px;
+  display:flex;
+  justify-content:center;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+canvas#radar{
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.promptList{
+  padding: 14px;
+  display:flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.promptCard{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.22);
+  overflow:hidden;
+}
+.promptTop{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+.promptName{ font-family: "Fraunces", serif; font-size: 1.15rem; }
+.tinyBtn{
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor:pointer;
+}
+.tinyBtn:hover{ background: rgba(255,255,255,0.10); }
+.tinyBtn:focus-visible{ outline:none; box-shadow: var(--focusGlow); }
+.promptBody{ padding: 12px; white-space: pre-wrap; color: rgba(255,255,255,0.78); line-height: 1.55; }
+.promptMeta{ padding: 0 12px 12px; color: rgba(255,255,255,0.58); font-size: 0.88rem; }
+
+.chFooter{ margin-top: 16px; color: rgba(255,255,255,0.64); }
+.chFooter a{ color: rgba(255,255,255,0.86); }
+
+@media (max-width: 980px){
+  .chGrid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 720px){
+  .toolTop{ grid-template-columns: 1fr; }
+  .auditGrid{ grid-template-columns: 1fr; }
+}
+
+

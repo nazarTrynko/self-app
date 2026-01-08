@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Healing — The Prompt Library</title>
+    <meta
+      name="description"
+      content="A gentle chamber: therapeutic journaling prompts, inner dialogue, and self-compassion. No tools—just a respectful suite."
+    />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:title" content="Healing — The Prompt Library" />
+    <meta property="og:description" content="Gentle prompts for self-compassion and repair." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="./" />
+
+    <link rel="stylesheet" href="../../styles/shared.css" />
+    <link rel="stylesheet" href="../../styles/chambers/healing.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Healing — The Prompt Library",
+        "description": "Therapeutic journaling prompt suite for inner dialogue, self-compassion, and emotional processing."
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="chamber chamberHealing">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="chHeader">
+      <a class="btn btnGhost" href="../../index.html">← Hub</a>
+      <div class="chHeaderTitle">
+        <div class="chTag">CHAMBER IV</div>
+        <div class="chName">Healing</div>
+      </div>
+      <div class="chHeaderRight">
+        <button class="btn btnGhost" id="copyAllBtn" type="button">Copy all</button>
+      </div>
+    </header>
+
+    <main id="main" class="chMain">
+      <section class="chHero" aria-label="Chamber introduction">
+        <h1 class="chH1">Be kind. Be honest. Be precise.</h1>
+        <p class="chSub">
+          This chamber is intentionally simple. Read slowly. Copy gently. If you’re in crisis or
+          feel unsafe, pause and seek professional support.
+        </p>
+        <div class="chBadges">
+          <span class="chip">Pure suite</span>
+          <span class="chip">Slow reading</span>
+          <span class="chip">Respectful tone</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panelHead">
+          <h2 class="panelTitle">Prompt Suite</h2>
+          <div class="panelActions">
+            <button class="btn btnGhost" id="reduceMotionBtn" type="button" aria-pressed="false">
+              Slow reveal: On
+            </button>
+          </div>
+        </div>
+
+        <div class="promptList" id="promptList"></div>
+      </section>
+
+      <section class="resources" aria-label="Safety note">
+        <div class="resourcesTitle">Safety note</div>
+        <p class="resourcesText">
+          These prompts are not a substitute for medical care. If you’re in immediate danger, call
+          local emergency services. If you can, reach out to a trusted person or a licensed
+          professional.
+        </p>
+      </section>
+
+      <section class="chFooter">
+        <div class="muted">
+          Next chamber: <a href="../creation/">Creation</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+      <span class="toastDot" aria-hidden="true"></span>
+      <span class="toastText" id="toastText">Copied</span>
+    </div>
+
+    <script src="../../scripts/shared.js"></script>
+    <script>
+      (function () {
+        const { copyText } = window.PromptLib || {};
+        const list = document.getElementById("promptList");
+        const copyAllBtn = document.getElementById("copyAllBtn");
+        const reduceBtn = document.getElementById("reduceMotionBtn");
+        const prefersReduced =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let slow = !prefersReduced;
+
+        const prompts = [
+          {
+            name: "The Gentle Inventory",
+            excavates: "What hurts (without drowning in it)",
+            text:
+              "I want to name what I’m carrying—gently.\n\nAsk me 10 short questions (one per line).\nRules:\n- no ‘why’ questions\n- no blame\n- focus on sensations, needs, and boundaries\n\nAfter my answers, summarize:\n- the 3 main needs underneath\n- 1 small act of care I can do today\n- 1 boundary I’m allowed to set",
+          },
+          {
+            name: "The Inner Dialogue",
+            excavates: "The two parts of you that are arguing",
+            text:
+              "I want to do parts work.\n\nCreate a dialogue between two parts:\n- The Protector (trying to keep me safe)\n- The Exile (holding the pain)\n\nFirst ask me 5 questions to identify each part.\nThen write a short dialogue where the Protector softens and agrees to one small experiment.\nTone: compassionate and real.",
+          },
+          {
+            name: "The Self-Compassion Script",
+            excavates: "A sentence you can repeat when you spiral",
+            text:
+              "Write a 6-line self-compassion script for my situation.\n\nConstraints:\n- no clichés\n- no ‘everything happens for a reason’\n- include permission to rest\n- include one concrete next step\n\nMake it sound like a wise friend, not a therapist bot.",
+          },
+          {
+            name: "The Repair Letter",
+            excavates: "A repaired relationship with yourself",
+            text:
+              "Write a letter from ‘Future Me’ (6 months from now) to ‘Current Me’.\n\nInclude:\n- what I stopped punishing myself for\n- what I started doing consistently\n- what I finally forgave\n- one line I should reread on bad days\n\nKeep it under 220 words.",
+          },
+          {
+            name: "The Next Right Thing (Capstone)",
+            excavates: "A plan you can actually do",
+            text:
+              "I need a plan small enough to be real.\n\nGive me:\n- 3 micro-actions (2 minutes each)\n- 1 medium action (15 minutes)\n- 1 reach action (60 minutes)\n\nAll actions must be appropriate if I’m low-energy.\nThen ask me which one I’ll do in the next hour.",
+          },
+        ];
+
+        function escapeHtml(s) {
+          return String(s ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;");
+        }
+
+        function render() {
+          list.innerHTML = "";
+          prompts.forEach((p) => {
+            const card = document.createElement("div");
+            card.className = "promptCard";
+            card.innerHTML = `
+              <div class="promptTop">
+                <div class="promptName">${escapeHtml(p.name)}</div>
+                <button class="tinyBtn" type="button">Copy</button>
+              </div>
+              <div class="promptBody" data-body>${escapeHtml(p.text)}</div>
+              <div class="promptMeta">Excavates: ${escapeHtml(p.excavates)}</div>
+            `;
+            card.querySelector("button").addEventListener("click", () => copyText?.(p.text));
+            list.appendChild(card);
+          });
+          applySlowReveal();
+        }
+
+        function applySlowReveal() {
+          if (!slow) {
+            list.querySelectorAll("[data-body]").forEach((el) => (el.style.opacity = "1"));
+            return;
+          }
+          list.querySelectorAll("[data-body]").forEach((el, idx) => {
+            el.style.opacity = "0";
+            el.style.transition = "opacity 600ms ease";
+            window.setTimeout(() => (el.style.opacity = "1"), 120 + idx * 110);
+          });
+        }
+
+        copyAllBtn.addEventListener("click", () => {
+          const all = prompts
+            .map((p, i) => `PROMPT ${i + 1}: ${p.name}\nExcavates: ${p.excavates}\n\n${p.text}`)
+            .join("\n\n---\n\n");
+          copyText?.(all);
+        });
+
+        reduceBtn.addEventListener("click", () => {
+          slow = !slow;
+          reduceBtn.textContent = slow ? "Slow reveal: On" : "Slow reveal: Off";
+          reduceBtn.setAttribute("aria-pressed", slow ? "true" : "false");
+          applySlowReveal();
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>
+
+

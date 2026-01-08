@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creation — The Prompt Library</title>
+    <meta
+      name="description"
+      content="A creation chamber: fiction prompts, story seeds, and a typewriter reveal. No tools—just a generative suite with export."
+    />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:title" content="Creation — The Prompt Library" />
+    <meta property="og:description" content="Story seeds, scenes, and strange new worlds." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="./" />
+
+    <link rel="stylesheet" href="../../styles/shared.css" />
+    <link rel="stylesheet" href="../../styles/chambers/creation.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Creation — The Prompt Library",
+        "description": "Fiction and story-seed prompt suite with a typewriter reveal."
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="chamber chamberCreation">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="chHeader">
+      <a class="btn btnGhost" href="../../index.html">← Hub</a>
+      <div class="chHeaderTitle">
+        <div class="chTag">CHAMBER V</div>
+        <div class="chName">Creation</div>
+      </div>
+      <div class="chHeaderRight">
+        <button class="btn btnGhost" id="copyAllBtn" type="button">Copy all</button>
+      </div>
+    </header>
+
+    <main id="main" class="chMain">
+      <section class="chHero" aria-label="Chamber introduction">
+        <h1 class="chH1">Summon a world with one sentence.</h1>
+        <p class="chSub">
+          Ink, parchment, starlight. Prompts appear like a letter being written. Use them in order,
+          or steal one and run.
+        </p>
+        <div class="chBadges">
+          <span class="chip">Pure suite</span>
+          <span class="chip">Typewriter reveal</span>
+          <span class="chip">Export</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panelHead">
+          <h2 class="panelTitle">Prompt Suite</h2>
+          <div class="panelActions">
+            <button class="btn btnGhost" id="typeBtn" type="button" aria-pressed="true">
+              Typewriter: On
+            </button>
+          </div>
+        </div>
+        <div class="promptList" id="promptList"></div>
+      </section>
+
+      <section class="chFooter">
+        <div class="muted">
+          Back to hub: <a href="../../index.html">Constellation Map</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+      <span class="toastDot" aria-hidden="true"></span>
+      <span class="toastText" id="toastText">Copied</span>
+    </div>
+
+    <script src="../../scripts/shared.js"></script>
+    <script>
+      (function () {
+        const { copyText } = window.PromptLib || {};
+        const list = document.getElementById("promptList");
+        const copyAllBtn = document.getElementById("copyAllBtn");
+        const typeBtn = document.getElementById("typeBtn");
+        const prefersReduced =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let typeOn = !prefersReduced;
+
+        const prompts = [
+          {
+            name: "The Seed Sentence",
+            excavates: "A premise with tension",
+            text:
+              "Give me 10 seed sentences for a story.\nRules:\n- each sentence contains a contradiction\n- each sentence hints at a cost\n- no fantasy clichés\n\nFormat: 1..10.",
+          },
+          {
+            name: "The Character With a Secret",
+            excavates: "A protagonist who lies for a reason",
+            text:
+              "Create 3 protagonists.\nEach must include:\n- what they want\n- what they fear\n- what they will not admit\n- the lie they tell themselves\n\nThen write one scene where the lie cracks.",
+          },
+          {
+            name: "The Setting as Pressure",
+            excavates: "A world that pushes back",
+            text:
+              "Design a setting that functions like a character.\n\nGive me:\n- 5 sensory details\n- 3 rules the world enforces\n- 1 taboo\n- 1 resource everyone fights over\n\nThen write a 180-word scene where the setting forces a choice.",
+          },
+          {
+            name: "The Dialogue Blade",
+            excavates: "Subtext and conflict",
+            text:
+              "Write a dialogue between two people who want opposite outcomes.\nConstraints:\n- no one says what they mean\n- each line is under 12 words\n- include one ‘polite’ insult\n- end with a question that changes everything",
+          },
+          {
+            name: "The Ending Magnet (Capstone)",
+            excavates: "A climax that feels inevitable",
+            text:
+              "I want an ending that snaps into place.\n\nTake the premise and give me:\n- 3 possible endings (tragic, hopeful, ambiguous)\n- for each: one image that repeats (a motif)\n- for each: the final line (must be memorable)\n\nThen tell me which ending is most honest—and why.",
+          },
+        ];
+
+        function escapeHtml(s) {
+          return String(s ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;");
+        }
+
+        function render() {
+          list.innerHTML = "";
+          prompts.forEach((p, idx) => {
+            const card = document.createElement("div");
+            card.className = "promptCard";
+            card.innerHTML = `
+              <div class="promptTop">
+                <div class="promptName">${escapeHtml(p.name)}</div>
+                <div style="display:flex; gap:8px; align-items:center;">
+                  <button class="tinyBtn" type="button" data-copy="${idx}">Copy</button>
+                </div>
+              </div>
+              <div class="promptBody" data-body="${idx}"></div>
+              <div class="promptMeta">Excavates: ${escapeHtml(p.excavates)}</div>
+            `;
+            card.querySelector(`[data-copy="${idx}"]`).addEventListener("click", () => copyText?.(p.text));
+            list.appendChild(card);
+          });
+          reveal();
+        }
+
+        function reveal() {
+          const bodies = [...list.querySelectorAll("[data-body]")];
+          bodies.forEach((b) => (b.textContent = ""));
+          if (!typeOn) {
+            bodies.forEach((b, idx) => (b.textContent = prompts[idx].text));
+            return;
+          }
+          let cursor = 0;
+          function step() {
+            if (cursor >= prompts.length) return;
+            const el = bodies[cursor];
+            const text = prompts[cursor].text;
+            typeInto(el, text, 10 + cursor * 6, () => {
+              cursor++;
+              step();
+            });
+          }
+          step();
+        }
+
+        function typeInto(el, text, speed, done) {
+          let i = 0;
+          function tick() {
+            i++;
+            el.textContent = text.slice(0, i);
+            if (i >= text.length) return done?.();
+            window.setTimeout(tick, speed);
+          }
+          tick();
+        }
+
+        copyAllBtn.addEventListener("click", () => {
+          const all = prompts
+            .map((p, i) => `PROMPT ${i + 1}: ${p.name}\nExcavates: ${p.excavates}\n\n${p.text}`)
+            .join("\n\n---\n\n");
+          copyText?.(all);
+        });
+
+        typeBtn.addEventListener("click", () => {
+          typeOn = !typeOn;
+          typeBtn.textContent = typeOn ? "Typewriter: On" : "Typewriter: Off";
+          typeBtn.setAttribute("aria-pressed", typeOn ? "true" : "false");
+          render();
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>
+
+

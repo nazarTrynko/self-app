@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Decisions — The Prompt Library</title>
+    <meta
+      name="description"
+      content="A decision chamber with an offline decision matrix tool and a prompt suite for making hard choices with clarity."
+    />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:title" content="Decisions — The Prompt Library" />
+    <meta property="og:description" content="Turn messy tradeoffs into a ranked answer." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="./" />
+
+    <link rel="stylesheet" href="../../styles/shared.css" />
+    <link rel="stylesheet" href="../../styles/chambers/decisions.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Decisions — The Prompt Library",
+        "description": "Decision matrix tool and prompt suite for making hard choices with clarity."
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="chamber chamberDecisions">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="chHeader">
+      <a class="btn btnGhost" href="../../index.html">← Hub</a>
+      <div class="chHeaderTitle">
+        <div class="chTag">CHAMBER I</div>
+        <div class="chName">Decisions</div>
+      </div>
+      <div class="chHeaderRight">
+        <button class="btn btnGhost" id="resetBtn" type="button">Reset</button>
+      </div>
+    </header>
+
+    <main id="main" class="chMain">
+      <section class="chHero" aria-label="Chamber introduction">
+        <h1 class="chH1">Make the hard choice.</h1>
+        <p class="chSub">
+          Industrial clarity. Molten uncertainty. Build a matrix, get a ranked answer, then run the
+          suite to pressure-test it.
+        </p>
+        <div class="chBadges">
+          <span class="chip">Offline tool</span>
+          <span class="chip">Share card</span>
+          <span class="chip">Prompt suite</span>
+        </div>
+      </section>
+
+      <section class="chGrid">
+        <section class="panel" aria-label="Decision matrix tool">
+          <div class="panelHead">
+            <h2 class="panelTitle">Decision Matrix</h2>
+            <div class="panelActions">
+              <button class="btn" id="addOptionBtn" type="button">+ Option</button>
+              <button class="btn" id="addCriterionBtn" type="button">+ Criterion</button>
+            </div>
+          </div>
+
+          <div class="toolBlock">
+            <label class="field">
+              <span class="label">Decision title</span>
+              <input id="decisionTitle" class="input" placeholder="e.g., Take the offer vs stay vs freelance" />
+            </label>
+          </div>
+
+          <div class="matrixWrap" id="matrixWrap" aria-label="Scoring matrix"></div>
+
+          <div class="toolFoot">
+            <button class="btn" id="computeBtn" type="button">Compute ranking</button>
+            <button class="btn btnGhost" id="copyResultBtn" type="button">Copy result</button>
+            <button class="btn btnGhost" id="downloadPngBtn" type="button">Download PNG</button>
+          </div>
+
+          <div class="result" id="result" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" aria-label="Prompt suite">
+          <div class="panelHead">
+            <h2 class="panelTitle">Prompt Suite</h2>
+            <div class="panelActions">
+              <button class="btn btnGhost" id="copyAllPromptsBtn" type="button">Copy all</button>
+            </div>
+          </div>
+
+          <div class="promptList" id="promptList">
+            <!-- injected -->
+          </div>
+        </section>
+      </section>
+
+      <section class="chFooter">
+        <div class="muted">
+          Next chambers:
+          <a href="../content/">Content</a>,
+          <a href="../reflection/">Reflection</a>,
+          <a href="../healing/">Healing</a>,
+          <a href="../creation/">Creation</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+      <span class="toastDot" aria-hidden="true"></span>
+      <span class="toastText" id="toastText">Copied</span>
+    </div>
+
+    <script src="../../scripts/shared.js"></script>
+    <script src="../../scripts/chambers/decisions.js"></script>
+  </body>
+</html>
+
+

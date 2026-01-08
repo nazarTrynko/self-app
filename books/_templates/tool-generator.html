@@ -1,0 +1,445 @@
+<!--
+    TOOL TEMPLATE: GENERATOR
+    Purpose: Create personalized output based on user selections
+    Time: 30-60 seconds
+    Pattern: Selections/inputs → Generated script/ritual/plan
+    
+    Example: State Script (generate personalized 60-second ritual)
+-->
+
+<div class="tool-generator" id="{{TOOL_ID}}">
+    <div class="tool-header">
+        <span class="tool-label">{{TOOL_LABEL}}</span>
+        <h3 class="tool-title">{{TOOL_TITLE}}</h3>
+        <p class="tool-description">{{TOOL_DESCRIPTION}}</p>
+    </div>
+
+    <!-- Input Form -->
+    <form class="generator-form" id="{{TOOL_ID}}Form">
+        <!-- Statement Input -->
+        <div class="generator-input">
+            <label class="input-label">{{STATEMENT_LABEL}}</label>
+            <textarea 
+                class="input-textarea" 
+                id="{{TOOL_ID}}_statement" 
+                placeholder="{{STATEMENT_PLACEHOLDER}}"
+                rows="2"
+            ></textarea>
+        </div>
+
+        <!-- Selection Row -->
+        <div class="generator-selects">
+            <div class="select-group">
+                <label class="input-label">{{SELECT_1_LABEL}}</label>
+                <select class="input-select" id="{{TOOL_ID}}_select1">
+                    <option value="">{{SELECT_1_PLACEHOLDER}}</option>
+                    <option value="{{SELECT_1_OPT1_VALUE}}">{{SELECT_1_OPT1_TEXT}}</option>
+                    <option value="{{SELECT_1_OPT2_VALUE}}">{{SELECT_1_OPT2_TEXT}}</option>
+                    <option value="{{SELECT_1_OPT3_VALUE}}">{{SELECT_1_OPT3_TEXT}}</option>
+                    <option value="{{SELECT_1_OPT4_VALUE}}">{{SELECT_1_OPT4_TEXT}}</option>
+                    <option value="{{SELECT_1_OPT5_VALUE}}">{{SELECT_1_OPT5_TEXT}}</option>
+                    <option value="{{SELECT_1_OPT6_VALUE}}">{{SELECT_1_OPT6_TEXT}}</option>
+                </select>
+            </div>
+
+            <div class="select-group">
+                <label class="input-label">{{SELECT_2_LABEL}}</label>
+                <select class="input-select" id="{{TOOL_ID}}_select2">
+                    <option value="">{{SELECT_2_PLACEHOLDER}}</option>
+                    <option value="{{SELECT_2_OPT1_VALUE}}">{{SELECT_2_OPT1_TEXT}}</option>
+                    <option value="{{SELECT_2_OPT2_VALUE}}">{{SELECT_2_OPT2_TEXT}}</option>
+                    <option value="{{SELECT_2_OPT3_VALUE}}">{{SELECT_2_OPT3_TEXT}}</option>
+                    <option value="{{SELECT_2_OPT4_VALUE}}">{{SELECT_2_OPT4_TEXT}}</option>
+                    <option value="{{SELECT_2_OPT5_VALUE}}">{{SELECT_2_OPT5_TEXT}}</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="tool-submit">{{SUBMIT_TEXT}}</button>
+    </form>
+
+    <!-- Generated Output -->
+    <div class="generator-results hidden" id="{{TOOL_ID}}Results">
+        <div class="results-header">
+            <h4>{{RESULTS_TITLE}}</h4>
+            <div class="results-actions">
+                <button class="action-btn" onclick="copyGeneratorResults('{{TOOL_ID}}')" title="Copy">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Generated Cards -->
+        <div class="generator-output" id="{{TOOL_ID}}Output">
+            <!-- Dynamic content inserted here -->
+        </div>
+    </div>
+</div>
+
+<style>
+    .tool-generator {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .tool-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .tool-label {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent-primary, #d4a574);
+        margin-bottom: 0.5rem;
+    }
+
+    .tool-title {
+        font-family: var(--font-display, Georgia, serif);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .tool-description {
+        color: var(--text-secondary, #a8a29e);
+        font-size: 0.95rem;
+    }
+
+    .generator-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .generator-input {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .input-label {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary, #a8a29e);
+    }
+
+    .input-textarea {
+        padding: 1rem;
+        background: var(--bg-input, #0d0c0a);
+        border: 1px solid var(--border-subtle, rgba(168, 162, 158, 0.12));
+        color: var(--text-primary, #faf9f7);
+        font-family: inherit;
+        font-size: 1rem;
+        resize: vertical;
+        transition: border-color 0.2s;
+    }
+
+    .input-textarea:focus {
+        outline: none;
+        border-color: var(--accent-primary, #d4a574);
+    }
+
+    .generator-selects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+        .generator-selects {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .select-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .input-select {
+        padding: 1rem;
+        background: var(--bg-input, #0d0c0a);
+        border: 1px solid var(--border-subtle, rgba(168, 162, 158, 0.12));
+        color: var(--text-primary, #faf9f7);
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 3rem;
+    }
+
+    .input-select:focus {
+        outline: none;
+        border-color: var(--accent-primary, #d4a574);
+    }
+
+    .tool-submit {
+        padding: 1rem 2rem;
+        background: var(--accent-primary, #d4a574);
+        color: var(--bg-void, #0a0908);
+        font-family: inherit;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .tool-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 40px rgba(212, 165, 116, 0.2);
+    }
+
+    /* Results */
+    .generator-results {
+        margin-top: 2rem;
+        animation: fadeIn 0.4s ease;
+    }
+
+    .generator-results.hidden {
+        display: none;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-subtle, rgba(168, 162, 158, 0.12));
+    }
+
+    .results-header h4 {
+        font-family: var(--font-display, Georgia, serif);
+        font-size: 1.25rem;
+    }
+
+    .action-btn {
+        padding: 0.5rem;
+        background: transparent;
+        border: 1px solid var(--border-subtle, rgba(168, 162, 158, 0.12));
+        color: var(--text-secondary, #a8a29e);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+        border-color: var(--accent-primary, #d4a574);
+        color: var(--accent-primary, #d4a574);
+    }
+
+    /* Generated Output */
+    .generator-output {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .output-card {
+        padding: 1.5rem;
+        background: var(--bg-input, #0d0c0a);
+        border: 1px solid var(--border-subtle, rgba(168, 162, 158, 0.12));
+        border-left: 3px solid var(--card-accent, var(--accent-primary, #d4a574));
+    }
+
+    .output-card.cue { --card-accent: #d4a574; }
+    .output-card.statement { --card-accent: #10b981; }
+    .output-card.steps { --card-accent: #8b5cf6; }
+
+    .output-card h5 {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--card-accent);
+        margin-bottom: 1rem;
+    }
+
+    .output-card p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* Steps List */
+    .output-steps {
+        list-style: none;
+        counter-reset: steps;
+        padding: 0;
+        margin: 0;
+    }
+
+    .output-steps li {
+        counter-increment: steps;
+        padding: 0.75rem 0;
+        padding-left: 2.5rem;
+        position: relative;
+        border-bottom: 1px solid var(--border-subtle, rgba(168, 162, 158, 0.12));
+    }
+
+    .output-steps li:last-child {
+        border-bottom: none;
+    }
+
+    .output-steps li::before {
+        content: counter(steps);
+        position: absolute;
+        left: 0;
+        top: 0.75rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent-primary, #d4a574);
+        color: var(--bg-void, #0a0908);
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .output-steps li strong {
+        color: var(--accent-primary, #d4a574);
+    }
+</style>
+
+<script>
+// Generator Tool Logic
+(function() {
+    const toolId = '{{TOOL_ID}}';
+    const form = document.getElementById(`${toolId}Form`);
+    const results = document.getElementById(`${toolId}Results`);
+
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get inputs
+        const statement = document.getElementById(`${toolId}_statement`).value.trim();
+        const select1 = document.getElementById(`${toolId}_select1`).value;
+        const select2 = document.getElementById(`${toolId}_select2`).value;
+
+        // Validate
+        if (!statement || !select1 || !select2) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // Track
+        if (typeof track === 'function') {
+            track('tool_generator_submit', { tool: toolId });
+        }
+
+        // Generate output
+        const output = generateOutput(statement, select1, select2);
+
+        // Display
+        displayOutput(output);
+
+        // Show results
+        results.classList.remove('hidden');
+
+        // Scroll to results
+        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    function generateOutput(statement, select1, select2) {
+        // CUSTOMIZE: Replace with your synthesis-specific generation logic
+        
+        // Example: State Script Generator (from Transition Rite)
+        const feelingCues = {
+            grounded: { action: 'Press your feet firmly into the floor', word: 'ROOTED' },
+            energized: { action: 'Shake your hands rapidly for 3 seconds', word: 'ALIVE' },
+            calm: { action: 'Place your hand on your heart', word: 'STILL' },
+            powerful: { action: 'Stand tall and expand your chest', word: 'STRONG' },
+            light: { action: 'Take a deep breath and lift your shoulders, then release', word: 'FREE' },
+            warm: { action: 'Wrap your arms around yourself briefly', word: 'HOME' }
+        };
+
+        const bodyFocus = {
+            chest: 'Feel your heart space expand with each breath.',
+            stomach: 'Feel your core strength—your center of gravity.',
+            hands: 'Feel the energy in your palms—ready to create.',
+            head: 'Feel clarity spreading through your mind.',
+            whole: 'Feel this sensation fill every cell of your body.'
+        };
+
+        const cue = feelingCues[select1] || feelingCues.grounded;
+        const body = bodyFocus[select2] || bodyFocus.chest;
+
+        // Clean up statement
+        let cleanStatement = statement;
+        if (!cleanStatement.toLowerCase().startsWith('i am')) {
+            cleanStatement = 'I am ' + cleanStatement;
+        }
+
+        return {
+            cue: `${cue.action}. As you do this, say the word "${cue.word}" silently or aloud.`,
+            statement: cleanStatement,
+            steps: [
+                `<strong>ANCHOR</strong> (10 sec): ${cue.action}. Say "${cue.word}."`,
+                `<strong>BREATHE</strong> (10 sec): Three slow breaths. ${body}`,
+                `<strong>SPEAK</strong> (10 sec): Say aloud: "${cleanStatement}"`,
+                `<strong>FEEL</strong> (20 sec): Close your eyes. Feel what it's like to already BE this person.`,
+                `<strong>MOVE</strong> (10 sec): Take one small action your future self would take.`
+            ]
+        };
+    }
+
+    function displayOutput(output) {
+        const container = document.getElementById(`${toolId}Output`);
+        container.innerHTML = `
+            <div class="output-card cue">
+                <h5>Your State Cue</h5>
+                <p>${output.cue}</p>
+            </div>
+            <div class="output-card statement">
+                <h5>Your Story Statement</h5>
+                <p>"${output.statement}"</p>
+            </div>
+            <div class="output-card steps">
+                <h5>Your 60-Second Ritual</h5>
+                <ol class="output-steps">
+                    ${output.steps.map(step => `<li>${step}</li>`).join('')}
+                </ol>
+            </div>
+        `;
+    }
+
+    // Copy function
+    window.copyGeneratorResults = function(id) {
+        const statement = document.getElementById(`${id}_statement`).value;
+        const output = document.getElementById(`${id}Output`).innerText;
+
+        const text = `MY GENERATED RITUAL
+
+STATEMENT: ${statement}
+
+${output}
+
+---
+Created with The Synthesis Universe`;
+
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Copied to clipboard!');
+        });
+    };
+})();
+</script>
+
+

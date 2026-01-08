@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Prompt Library — A legendary portal of AI prompts. Explore 5 chambers through the Observatory: Decisions, Content, Reflection, Healing, and Creation.">
+    <title>The Prompt Library — Observatory Portal</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/shared.css">
+    <link rel="stylesheet" href="styles/hub.css">
+</head>
+<body>
+    <!-- Starfield Background -->
+    <canvas id="starfield" class="starfield"></canvas>
+    
+    <!-- Main Hub -->
+    <main class="hub">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">The Prompt</span>
+                    <span class="title-line accent">Library</span>
+                </h1>
+                <p class="hero-tagline">
+                    Look inward through different lenses. Each telescope reveals a different truth.
+                </p>
+            </div>
+        </header>
+        
+        <!-- Observatory Dome -->
+        <section class="observatory-section">
+            <div class="dome-container">
+                <!-- Dome Structure -->
+                <div class="dome" id="dome">
+                    <!-- Telescope 1: Decisions -->
+                    <div class="telescope" data-chamber="decisions" data-index="0">
+                        <div class="telescope-body">
+                            <div class="telescope-lens"></div>
+                            <div class="telescope-glow" style="--chamber-color: var(--chamber-decisions);"></div>
+                        </div>
+                        <div class="telescope-label">
+                            <span class="label-name">The Forge</span>
+                            <span class="label-domain">Decisions</span>
+                        </div>
+                        <div class="telescope-preview">
+                            <div class="preview-content">
+                                <h3>The Forge</h3>
+                                <p>Make hard choices with clarity. Interactive decision matrix tool.</p>
+                                <div class="preview-stats">
+                                    <span>6 Prompts</span>
+                                    <span>•</span>
+                                    <span>Matrix Tool</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Telescope 2: Content -->
+                    <div class="telescope" data-chamber="content" data-index="1">
+                        <div class="telescope-body">
+                            <div class="telescope-lens"></div>
+                            <div class="telescope-glow" style="--chamber-color: var(--chamber-content);"></div>
+                        </div>
+                        <div class="telescope-label">
+                            <span class="label-name">The Signal</span>
+                            <span class="label-domain">Content</span>
+                        </div>
+                        <div class="telescope-preview">
+                            <div class="preview-content">
+                                <h3>The Signal</h3>
+                                <p>Create hooks that capture attention. Hook formula engine.</p>
+                                <div class="preview-stats">
+                                    <span>5 Prompts</span>
+                                    <span>•</span>
+                                    <span>Hook Generator</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Telescope 3: Reflection -->
+                    <div class="telescope" data-chamber="reflection" data-index="2">
+                        <div class="telescope-body">
+                            <div class="telescope-lens"></div>
+                            <div class="telescope-glow" style="--chamber-color: var(--chamber-reflection);"></div>
+                        </div>
+                        <div class="telescope-label">
+                            <span class="label-name">The Mirror</span>
+                            <span class="label-domain">Reflection</span>
+                        </div>
+                        <div class="telescope-preview">
+                            <div class="preview-content">
+                                <h3>The Mirror</h3>
+                                <p>Annual review and life audit. Interactive workbook tool.</p>
+                                <div class="preview-stats">
+                                    <span>6 Prompts</span>
+                                    <span>•</span>
+                                    <span>Life Audit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Telescope 4: Healing -->
+                    <div class="telescope" data-chamber="healing" data-index="3">
+                        <div class="telescope-body">
+                            <div class="telescope-lens"></div>
+                            <div class="telescope-glow" style="--chamber-color: var(--chamber-healing);"></div>
+                        </div>
+                        <div class="telescope-label">
+                            <span class="label-name">The Well</span>
+                            <span class="label-domain">Healing</span>
+                        </div>
+                        <div class="telescope-preview">
+                            <div class="preview-content">
+                                <h3>The Well</h3>
+                                <p>Therapeutic journaling and inner dialogue. Safe space for expression.</p>
+                                <div class="preview-stats">
+                                    <span>6 Prompts</span>
+                                    <span>•</span>
+                                    <span>Pure Suite</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Telescope 5: Creation -->
+                    <div class="telescope" data-chamber="creation" data-index="4">
+                        <div class="telescope-body">
+                            <div class="telescope-lens"></div>
+                            <div class="telescope-glow" style="--chamber-color: var(--chamber-creation);"></div>
+                        </div>
+                        <div class="telescope-label">
+                            <span class="label-name">The Inkwell</span>
+                            <span class="label-domain">Creation</span>
+                        </div>
+                        <div class="telescope-preview">
+                            <div class="preview-content">
+                                <h3>The Inkwell</h3>
+                                <p>Fiction writing and story seeds. Complete narrative generation.</p>
+                                <div class="preview-stats">
+                                    <span>7 Prompts</span>
+                                    <span>•</span>
+                                    <span>Pure Suite</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Constellation Map -->
+                <div class="constellation-map">
+                    <svg class="constellation-lines" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                        <line class="constellation-line" x1="500" y1="500" x2="200" y2="200" data-chamber="decisions"/>
+                        <line class="constellation-line" x1="500" y1="500" x2="800" y2="200" data-chamber="content"/>
+                        <line class="constellation-line" x1="500" y1="500" x2="500" y2="100" data-chamber="reflection"/>
+                        <line class="constellation-line" x1="500" y1="500" x2="200" y2="800" data-chamber="healing"/>
+                        <line class="constellation-line" x1="500" y1="500" x2="800" y2="800" data-chamber="creation"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Navigation Hints -->
+            <div class="nav-hints">
+                <p class="hint-text">Hover over telescopes to explore • Click to enter chamber</p>
+                <p class="hint-text mobile">Tap telescopes to explore</p>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="hub-footer">
+            <p class="footer-text">
+                <span class="footer-icon">✦</span>
+                The Prompt Library — A portal to clarity, creativity, and insight
+            </p>
+        </footer>
+    </main>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- Scripts -->
+    <script src="scripts/shared.js"></script>
+    <script src="scripts/hub.js"></script>
+</body>
+</html>
+

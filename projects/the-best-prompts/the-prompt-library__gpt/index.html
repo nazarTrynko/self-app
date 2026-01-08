@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Prompt Library — Constellation Portal</title>
+    <meta
+      name="description"
+      content="Enter a constellation of prompt chambers. Explore Decisions, Content, Reflection, Healing, and Creation—each a distinct world."
+    />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Prompt Library — Constellation Portal" />
+    <meta
+      property="og:description"
+      content="A living portal of prompt chambers. Explore. Craft. Reflect. Heal. Create."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="./" />
+
+    <link rel="stylesheet" href="styles/shared.css" />
+    <link rel="stylesheet" href="styles/hub.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "The Prompt Library",
+        "description": "A constellation portal of prompt chambers and offline tools.",
+        "url": "./"
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="hub">
+    <a class="skip-link" href="#hubMain">Skip to map</a>
+
+    <canvas id="starfield" aria-hidden="true"></canvas>
+
+    <header class="hubHeader">
+      <div class="hubBrand">
+        <div class="hubMark" aria-hidden="true"></div>
+        <div class="hubBrandText">
+          <div class="hubKicker">THE PROMPT LIBRARY</div>
+          <div class="hubTitle">Constellation Portal</div>
+        </div>
+      </div>
+
+      <div class="hubActions">
+        <button class="btn btnGhost" id="discoverBtn" type="button">Discover</button>
+        <button class="btn btnGhost" id="soundBtn" type="button" aria-pressed="false">
+          Sound: Off
+        </button>
+      </div>
+    </header>
+
+    <main id="hubMain" class="hubMain">
+      <section class="hubIntro" aria-label="Introduction">
+        <p class="hubLead">
+          Navigate by light. Each constellation is a chamber. Each chamber is a world.
+        </p>
+        <p class="hubHint">
+          Tip: Use <span class="kbd">Tab</span> to hop constellations, <span class="kbd">Enter</span>
+          to enter, <span class="kbd">Esc</span> to close previews.
+        </p>
+      </section>
+
+      <section class="hubStage" aria-label="Constellation map">
+        <div class="hubMap" role="application" aria-label="Interactive constellation map">
+          <svg
+            class="mapSvg"
+            viewBox="0 0 1000 600"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden="true"
+          >
+            <g id="mapLines"></g>
+            <g id="mapStars"></g>
+          </svg>
+
+          <!-- Focusable constellations overlay -->
+          <div class="mapTargets" id="mapTargets" aria-label="Chambers"></div>
+        </div>
+
+        <aside class="hubPreview" id="preview" aria-live="polite" aria-label="Chamber preview">
+          <div class="previewTop">
+            <div class="previewTag" id="previewTag">—</div>
+            <button class="iconBtn" id="closePreview" type="button" aria-label="Close preview">
+              ×
+            </button>
+          </div>
+          <h2 class="previewTitle" id="previewTitle">Choose a constellation</h2>
+          <p class="previewDesc" id="previewDesc">
+            Hover or focus a constellation to preview. Click to enter a chamber.
+          </p>
+
+          <div class="previewMeta" id="previewMeta"></div>
+
+          <div class="previewCtas">
+            <a class="btn" id="enterBtn" href="#" aria-disabled="true">Enter chamber</a>
+            <button class="btn btnGhost" id="trailBtn" type="button">Your trail</button>
+          </div>
+
+          <div class="trail" id="trail" hidden>
+            <div class="trailTitle">Recent chambers</div>
+            <div class="trailList" id="trailList"></div>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="hubFooter">
+        <div class="hubFooterLeft">
+          <span class="muted">Five chambers:</span>
+          <a class="hubMiniLink" href="chambers/decisions/">Decisions</a>
+          <a class="hubMiniLink" href="chambers/content/">Content</a>
+          <a class="hubMiniLink" href="chambers/reflection/">Reflection</a>
+          <a class="hubMiniLink" href="chambers/healing/">Healing</a>
+          <a class="hubMiniLink" href="chambers/creation/">Creation</a>
+        </div>
+        <div class="hubFooterRight muted">
+          Built to be explored. Built to be shared.
+        </div>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+      <span class="toastDot" aria-hidden="true"></span>
+      <span class="toastText" id="toastText">Copied</span>
+    </div>
+
+    <script src="scripts/shared.js"></script>
+    <script src="scripts/hub.js"></script>
+    <script>
+      // Optional offline cache (safe no-op if SW unsupported)
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+      }
+    </script>
+  </body>
+</html>
+
+

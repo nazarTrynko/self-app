@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Synthesis Universe - A collection of transformational books combining powerful frameworks into practical protocols.">
+    <title>The Synthesis Universe — Transformation Through Integration</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-void: #0a0908;
+            --bg-card: #151311;
+            --bg-card-hover: #1c1917;
+            --bg-input: #0d0c0a;
+            --text-primary: #faf9f7;
+            --text-secondary: #a8a29e;
+            --text-muted: #78716c;
+            --accent-gold: #d4a574;
+            --accent-amber: #f59e0b;
+            --accent-violet: #8b5cf6;
+            --accent-emerald: #10b981;
+            --accent-cyan: #06b6d4;
+            --border-subtle: rgba(168, 162, 158, 0.12);
+            --border-active: rgba(212, 165, 116, 0.4);
+            --glow-gold: 0 0 60px rgba(212, 165, 116, 0.15);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-void);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            background: radial-gradient(ellipse at center top, rgba(212, 165, 116, 0.08) 0%, transparent 60%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(212, 165, 116, 0.08);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Philosophy */
+        .philosophy {
+            padding: 5rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .philosophy-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .philosophy-text em {
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        /* Books Grid */
+        .books-section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .book-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--book-accent, var(--accent-gold));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover {
+            border-color: var(--border-active);
+            transform: translateY(-4px);
+        }
+
+        .book-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .book-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(212, 165, 116, 0.15);
+            margin-bottom: 1rem;
+        }
+
+        .book-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-synthesis {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .book-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .book-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.8rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .book-status.coming-soon {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-violet);
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .book-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        .book-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+
+        .book-card:hover .book-cta svg {
+            transform: translateX(4px);
+        }
+
+        /* Transformation Paths */
+        .paths-section {
+            padding: 5rem 2rem;
+            background: var(--bg-card);
+        }
+
+        .paths-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .paths-intro p {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .path-card {
+            padding: 1.5rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+        }
+
+        .path-card:hover {
+            border-color: var(--border-active);
+        }
+
+        .path-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .path-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .path-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .path-books {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Email Capture */
+        .capture-section {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .capture-inner {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .capture-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .capture-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .email-form button {
+            padding: 1rem 1.5rem;
+            background: var(--accent-gold);
+            color: var(--bg-void);
+            border: none;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .email-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        .trust-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .email-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <header class="hero">
+        <span class="hero-badge">The Synthesis Universe</span>
+        <h1 class="hero-title">Transform Through <em>Integration</em></h1>
+        <p class="hero-subtitle">
+            A collection of books that synthesize powerful frameworks into practical protocols. 
+            Each book combines two sources into something neither could achieve alone.
+        </p>
+    </header>
+
+    <!-- Philosophy -->
+    <section class="philosophy">
+        <div class="philosophy-inner">
+            <span class="section-label">The Core Insight</span>
+            <p class="philosophy-text">
+                The greatest breakthroughs come from <em>synthesis</em>—combining what exists into what's never existed. 
+                Each book in this universe takes two proven frameworks and creates a third way: 
+                <em>more practical than theory, more grounded than technique.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- Books Grid -->
+    <section class="books-section">
+        <div class="section-header">
+            <span class="section-label">The Collection</span>
+            <h2 class="section-title">Choose Your Transformation</h2>
+            <p class="section-subtitle">Each book is complete on its own, yet connects to the others.</p>
+        </div>
+
+        <div class="books-grid">
+            <!-- Book 1: The Transition Rite -->
+            <a href="../01-transition-rite/index.html" class="book-card" style="--book-accent: #d4a574;">
+                <div class="book-number">01</div>
+                <h3 class="book-title">The Transition Rite</h3>
+                <p class="book-synthesis">Narrative Identity + NLP State-Change</p>
+                <p class="book-description">
+                    A framework for conscious identity transition. Rewrite your state, then rewrite your story. 
+                    For people in career changes, life transitions, or intentional transformation.
+                </p>
+                <span class="book-status">Available Now</span>
+                <span class="book-cta">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </a>
+
+            <!-- Book 2: The Voice Council (Coming Soon) -->
+            <div class="book-card" style="--book-accent: #8b5cf6;">
+                <div class="book-number">02</div>
+                <h3 class="book-title">The Voice Council</h3>
+                <p class="book-synthesis">Internal Family Systems + Voice Dialogue</p>
+                <p class="book-description">
+                    Your inner voices aren't fighting you—they're trying to protect you. 
+                    A democratic council model for inner harmony and integrated decision-making.
+                </p>
+                <span class="book-status coming-soon">Coming Soon</span>
+            </div>
+
+            <!-- Book 3: Future placeholder -->
+            <div class="book-card" style="--book-accent: #06b6d4;">
+                <div class="book-number">03</div>
+                <h3 class="book-title">The Future Self</h3>
+                <p class="book-synthesis">Prospection Science + Visualization Techniques</p>
+                <p class="book-description">
+                    Your future self is not a stranger—they're you, waiting. 
+                    Practical protocols for connecting with and becoming who you're meant to be.
+                </p>
+                <span class="book-status coming-soon">In Development</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation Paths -->
+    <section class="paths-section">
+        <div class="paths-intro">
+            <span class="section-label">Transformation Paths</span>
+            <h2 class="section-title">Journey Through Multiple Books</h2>
+            <p>Some transformations require multiple perspectives. These paths guide you through related books in sequence.</p>
+        </div>
+
+        <div class="paths-grid">
+            <a href="transformation-paths.html#identity" class="path-card">
+                <div class="path-icon">🔄</div>
+                <h3 class="path-name">The Identity Path</h3>
+                <p class="path-description">
+                    For those reinventing themselves. Move from who you were to who you're becoming.
+                </p>
+                <p class="path-books">Books: Transition Rite → Voice Council → Future Self</p>
+            </a>
+
+            <a href="transformation-paths.html#inner-work" class="path-card">
+                <div class="path-icon">🧠</div>
+                <h3 class="path-name">The Inner Work Path</h3>
+                <p class="path-description">
+                    For those seeking self-understanding. Integrate your parts and stories into wholeness.
+                </p>
+                <p class="path-books">Books: Voice Council → Transition Rite</p>
+            </a>
+
+            <a href="transformation-paths.html#vision" class="path-card">
+                <div class="path-icon">🔮</div>
+                <h3 class="path-name">The Vision Path</h3>
+                <p class="path-description">
+                    For those building something new. Connect present action to future possibility.
+                </p>
+                <p class="path-books">Books: Future Self → Transition Rite</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="capture-section">
+        <div class="capture-inner">
+            <span class="section-label">Stay Connected</span>
+            <h2 class="capture-title">Get New Book Announcements</h2>
+            <p class="capture-subtitle">Be the first to know when new syntheses are ready.</p>
+            
+            <form class="email-form" id="emailForm">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="trust-text">No spam. Just new book launches and occasional insights.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">
+            The Synthesis Universe — Transform through integration.
+        </p>
+    </footer>
+
+    <script>
+        // Email form handling
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            
+            // Replace with your email provider integration
+            console.log('Subscribe:', email);
+            
+            // Show success
+            this.innerHTML = '<p style="color: var(--accent-emerald);">You\'re subscribed! Watch your inbox.</p>';
+            
+            // Store locally
+            localStorage.setItem('universe_subscribed', 'true');
+        });
+
+        // Check for existing subscription
+        if (localStorage.getItem('universe_subscribed')) {
+            document.getElementById('emailForm').innerHTML = 
+                '<p style="color: var(--accent-emerald);">You\'re already subscribed. Thank you!</p>';
+        }
+    </script>
+</body>
+</html>
+
+

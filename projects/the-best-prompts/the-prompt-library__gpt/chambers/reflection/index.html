@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reflection — The Prompt Library</title>
+    <meta
+      name="description"
+      content="A reflection chamber with an offline life audit workbook, radar chart, and a prompt suite for annual review and self-assessment."
+    />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:title" content="Reflection — The Prompt Library" />
+    <meta property="og:description" content="Audit your life. Visualize the balance." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="./" />
+
+    <link rel="stylesheet" href="../../styles/shared.css" />
+    <link rel="stylesheet" href="../../styles/chambers/reflection.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Reflection — The Prompt Library",
+        "description": "Life audit workbook with radar chart plus a prompt suite for annual review and self-assessment."
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="chamber chamberReflection">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="chHeader">
+      <a class="btn btnGhost" href="../../index.html">← Hub</a>
+      <div class="chHeaderTitle">
+        <div class="chTag">CHAMBER III</div>
+        <div class="chName">Reflection</div>
+      </div>
+      <div class="chHeaderRight">
+        <button class="btn btnGhost" id="resetBtn" type="button">Reset</button>
+      </div>
+    </header>
+
+    <main id="main" class="chMain">
+      <section class="chHero" aria-label="Chamber introduction">
+        <h1 class="chH1">Measure your year. Name what’s missing.</h1>
+        <p class="chSub">
+          Golden-hour calm with sharp edges. Score life domains, write notes, and watch your radar
+          shape change. Export a shareable summary.
+        </p>
+        <div class="chBadges">
+          <span class="chip">Life audit</span>
+          <span class="chip">Radar chart</span>
+          <span class="chip">Export</span>
+        </div>
+      </section>
+
+      <section class="chGrid">
+        <section class="panel" aria-label="Life audit tool">
+          <div class="panelHead">
+            <h2 class="panelTitle">Life Audit Workbook</h2>
+            <div class="panelActions">
+              <button class="btn" id="exportBtn" type="button">Export</button>
+              <button class="btn btnGhost" id="copyBtn" type="button">Copy</button>
+            </div>
+          </div>
+
+          <div class="toolBody">
+            <div class="toolTop">
+              <label class="field">
+                <span class="label">Title</span>
+                <input class="input" id="title" placeholder="e.g., 2026 Q1 audit" />
+              </label>
+              <label class="field">
+                <span class="label">One sentence truth</span>
+                <input class="input" id="truth" placeholder="e.g., I’m winning at work but leaking energy elsewhere." />
+              </label>
+            </div>
+
+            <div class="auditGrid" id="auditGrid" aria-label="Domain scores"></div>
+
+            <div class="notes">
+              <label class="field">
+                <span class="label">Notes (what you learned)</span>
+                <textarea class="input area" id="notes" rows="6" placeholder="Write the pattern. Name the cost."></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="toolFoot">
+            <button class="btn btnGhost" id="downloadChartBtn" type="button">Download chart</button>
+            <button class="btn btnGhost" id="downloadPngBtn" type="button">Download PNG</button>
+          </div>
+        </section>
+
+        <section class="panel" aria-label="Radar chart and prompt suite">
+          <div class="panelHead">
+            <h2 class="panelTitle">Visualization + Prompts</h2>
+            <div class="panelActions">
+              <button class="btn btnGhost" id="copyAllPromptsBtn" type="button">Copy prompts</button>
+            </div>
+          </div>
+
+          <div class="vizWrap">
+            <canvas id="radar" width="560" height="420" aria-label="Life balance radar chart"></canvas>
+          </div>
+
+          <div class="promptList" id="promptList"></div>
+        </section>
+      </section>
+
+      <section class="chFooter">
+        <div class="muted">
+          Next chambers:
+          <a href="../healing/">Healing</a>,
+          <a href="../creation/">Creation</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+      <span class="toastDot" aria-hidden="true"></span>
+      <span class="toastText" id="toastText">Copied</span>
+    </div>
+
+    <script src="../../scripts/shared.js"></script>
+    <script src="../../scripts/chambers/reflection.js"></script>
+  </body>
+</html>
+
+

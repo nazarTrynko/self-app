@@ -1,0 +1,38 @@
+{
+    "books": {
+        "01-transition-rite": {
+            "book_id": "01-transition-rite",
+            "current_version": "1.0.0",
+            "baseline_metrics": {
+                "email_capture_rate": 0,
+                "tool_completion_rate": 0,
+                "avg_time_on_page": 0,
+                "scroll_depth_75": 0,
+                "offer_click_rate": 0,
+                "bounce_rate": 0
+            },
+            "current_fitness": 0.5,
+            "evolution_cycles": [],
+            "patterns_discovered": [],
+            "pending_tests": [],
+            "rejected_changes": [],
+            "last_evolution": null,
+            "created_at": "2026-01-08T00:00:00Z"
+        }
+    },
+    "global_patterns": [],
+    "cross_book_learnings": [],
+    "system_config": {
+        "auto_deploy_threshold": 0.85,
+        "ab_test_min_sample": 500,
+        "ab_test_max_duration_days": 14,
+        "confidence_threshold": 0.95,
+        "rollback_triggers": {
+            "bounce_rate_increase": 0.20,
+            "email_capture_decrease": 0.15,
+            "error_rate_threshold": 0.01
+        }
+    }
+}
+
+

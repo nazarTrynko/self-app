@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transformation Paths - Guided journeys through multiple books in The Synthesis Universe.">
+    <title>Transformation Paths — The Synthesis Universe</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-void: #0a0908;
+            --bg-card: #151311;
+            --bg-input: #0d0c0a;
+            --text-primary: #faf9f7;
+            --text-secondary: #a8a29e;
+            --text-muted: #78716c;
+            --accent-gold: #d4a574;
+            --accent-violet: #8b5cf6;
+            --accent-emerald: #10b981;
+            --accent-cyan: #06b6d4;
+            --accent-rose: #e11d48;
+            --border-subtle: rgba(168, 162, 158, 0.12);
+            --border-active: rgba(212, 165, 116, 0.4);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-void);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, var(--bg-void) 0%, transparent 100%);
+        }
+
+        .nav-brand {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-back {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Header */
+        .header {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .section-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Path Sections */
+        .path-section {
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .path-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .path-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .path-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .path-info h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .path-info .path-for {
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .path-info .path-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Journey Steps */
+        .journey {
+            margin-top: 2rem;
+        }
+
+        .journey-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .journey-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 3rem;
+            bottom: -1rem;
+            width: 2px;
+            background: var(--border-subtle);
+        }
+
+        .step-number {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--bg-card);
+            border: 2px solid var(--step-color, var(--accent-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-bottom: 1rem;
+        }
+
+        .step-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content .step-synthesis {
+            font-size: 0.8rem;
+            color: var(--step-color, var(--accent-gold));
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content .step-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .step-content .step-outcomes {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-left: 3px solid var(--step-color, var(--accent-gold));
+        }
+
+        .step-outcomes h4 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-outcomes ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .step-outcomes li {
+            padding: 0.25rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .step-outcomes li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--step-color, var(--accent-gold));
+        }
+
+        .step-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .step-link:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .step-link.coming-soon {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Path Summary */
+        .path-summary {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .path-summary h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .summary-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .path-header {
+                flex-direction: column;
+            }
+
+            .journey-step {
+                flex-direction: column;
+            }
+
+            .journey-step:not(:last-child)::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-brand">The Synthesis Universe</a>
+        <a href="index.html" class="nav-back">← Back to Hub</a>
+    </nav>
+
+    <header class="header">
+        <span class="section-label">Guided Journeys</span>
+        <h1>Transformation Paths</h1>
+        <p>Some transformations require multiple perspectives. These paths guide you through related books in sequence, building on each other for deeper change.</p>
+    </header>
+
+    <!-- Path 1: The Identity Path -->
+    <section id="identity" class="path-section">
+        <div class="path-container">
+            <div class="path-header">
+                <div class="path-icon">🔄</div>
+                <div class="path-info">
+                    <h2>The Identity Path</h2>
+                    <p class="path-for">For those reinventing themselves</p>
+                    <p class="path-description">
+                        This path takes you from your current identity through integration to your future self. 
+                        It's ideal for career changers, life transitioners, and anyone intentionally becoming someone new.
+                    </p>
+                </div>
+            </div>
+
+            <div class="journey">
+                <!-- Step 1 -->
+                <div class="journey-step" style="--step-color: #d4a574;">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>The Transition Rite</h3>
+                        <p class="step-synthesis">Narrative Identity + NLP State-Change</p>
+                        <p class="step-description">
+                            Begin by mapping your transition: who you were, where you are, who you're becoming. 
+                            Learn to change your state before trying to change your story.
+                        </p>
+                        <div class="step-outcomes">
+                            <h4>What You'll Gain</h4>
+                            <ul>
+                                <li>A clear transition map</li>
+                                <li>State-change techniques</li>
+                                <li>Rewritten personal narrative</li>
+                                <li>Daily transformation ritual</li>
+                            </ul>
+                        </div>
+                        <a href="../01-transition-rite/index.html" class="step-link">Start Here →</a>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="journey-step" style="--step-color: #8b5cf6;">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>The Voice Council</h3>
+                        <p class="step-synthesis">Internal Family Systems + Voice Dialogue</p>
+                        <p class="step-description">
+                            Integrate the inner voices that may be resisting your transition. 
+                            Give each part a seat at the table and create inner alignment for outer change.
+                        </p>
+                        <div class="step-outcomes">
+                            <h4>What You'll Gain</h4>
+                            <ul>
+                                <li>A map of your inner council</li>
+                                <li>Understanding of protective parts</li>
+                                <li>Techniques for inner dialogue</li>
+                                <li>Integration protocols</li>
+                            </ul>
+                        </div>
+                        <span class="step-link coming-soon">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="journey-step" style="--step-color: #06b6d4;">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>The Future Self</h3>
+                        <p class="step-synthesis">Prospection Science + Visualization</p>
+                        <p class="step-description">
+                            Connect with your future self not as a stranger, but as you—waiting. 
+                            Build a bridge between present action and future possibility.
+                        </p>
+                        <div class="step-outcomes">
+                            <h4>What You'll Gain</h4>
+                            <ul>
+                                <li>Vivid future self connection</li>
+                                <li>Decision-making clarity</li>
+                                <li>Long-term motivation</li>
+                                <li>Present-future alignment</li>
+                            </ul>
+                        </div>
+                        <span class="step-link coming-soon">In Development</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="path-summary">
+                <h4>Path Summary</h4>
+                <div class="summary-stats">
+                    <div class="stat">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Books</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">18+</div>
+                        <div class="stat-label">Protocols</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">~3</div>
+                        <div class="stat-label">Months</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Path 2: The Inner Work Path -->
+    <section id="inner-work" class="path-section">
+        <div class="path-container">
+            <div class="path-header">
+                <div class="path-icon">🧠</div>
+                <div class="path-info">
+                    <h2>The Inner Work Path</h2>
+                    <p class="path-for">For those seeking self-understanding</p>
+                    <p class="path-description">
+                        This path focuses on internal integration first, then external expression. 
+                        Understand your parts before changing your story.
+                    </p>
+                </div>
+            </div>
+
+            <div class="journey">
+                <!-- Step 1 -->
+                <div class="journey-step" style="--step-color: #8b5cf6;">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>The Voice Council</h3>
+                        <p class="step-synthesis">Internal Family Systems + Voice Dialogue</p>
+                        <p class="step-description">
+                            Start by mapping your inner landscape. Who are the voices inside? 
+                            What are they trying to protect? Create a council of self-compassion.
+                        </p>
+                        <span class="step-link coming-soon">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="journey-step" style="--step-color: #d4a574;">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>The Transition Rite</h3>
+                        <p class="step-synthesis">Narrative Identity + NLP State-Change</p>
+                        <p class="step-description">
+                            With inner alignment, now rewrite your external story. 
+                            The integrated council can support a unified narrative.
+                        </p>
+                        <a href="../01-transition-rite/index.html" class="step-link">Preview →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="path-summary">
+                <h4>Path Summary</h4>
+                <div class="summary-stats">
+                    <div class="stat">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Books</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">12+</div>
+                        <div class="stat-label">Protocols</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">~2</div>
+                        <div class="stat-label">Months</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Path 3: The Vision Path -->
+    <section id="vision" class="path-section">
+        <div class="path-container">
+            <div class="path-header">
+                <div class="path-icon">🔮</div>
+                <div class="path-info">
+                    <h2>The Vision Path</h2>
+                    <p class="path-for">For those building something new</p>
+                    <p class="path-description">
+                        This path connects future vision to present action. 
+                        See where you're going, then bridge the gap.
+                    </p>
+                </div>
+            </div>
+
+            <div class="journey">
+                <!-- Step 1 -->
+                <div class="journey-step" style="--step-color: #06b6d4;">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>The Future Self</h3>
+                        <p class="step-synthesis">Prospection Science + Visualization</p>
+                        <p class="step-description">
+                            Start with the end. Who are you becoming? What does that person do, feel, create? 
+                            Make your future self vivid and real.
+                        </p>
+                        <span class="step-link coming-soon">In Development</span>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="journey-step" style="--step-color: #d4a574;">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>The Transition Rite</h3>
+                        <p class="step-synthesis">Narrative Identity + NLP State-Change</p>
+                        <p class="step-description">
+                            With vision clear, create the bridge. Map the transition from present self to future self. 
+                            Build the narrative that connects them.
+                        </p>
+                        <a href="../01-transition-rite/index.html" class="step-link">Preview →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="path-summary">
+                <h4>Path Summary</h4>
+                <div class="summary-stats">
+                    <div class="stat">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Books</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">12+</div>
+                        <div class="stat-label">Protocols</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">~2</div>
+                        <div class="stat-label">Months</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-text">
+            The Synthesis Universe — Transform through integration.
+        </p>
+    </footer>
+</body>
+</html>
+
+
