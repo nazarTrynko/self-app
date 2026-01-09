@@ -132,6 +132,10 @@ Multiverse thinking makes consequences vivid. Emotional markers (gratitude/regre
 - Add: `What decision would leave us okay in all universes?`
 - Add: `What can we do to increase odds of Universe [X]?`
 
+**RELATED:**
+
+- **[Multiverse Genius Ideation Engine](../multiverse-genius-ideation.md)** - Extended ideation engine that explores parallel universes of prompt combinations, evolutions, and disruptions to generate breakthrough ideas. Builds on the Multiverse Explorer pattern for comprehensive ideation.
+
 **FITNESS SCORES:**
 | Criterion | Score | Notes |
 |-----------|-------|-------|
@@ -236,6 +240,7 @@ Full activation produces emergent capabilities. "Only chance to speak" creates f
 - **Singularity prompts** for recursive self-improvement
 - **Orchestration prompts** for multi-agent transcendence
 - **Oracle prompts** for grounding transcendent insights
+- **Multiverse Genius Ideation Engine** for exploring parallel universes of ideation
 
 ## Anti-Patterns
 

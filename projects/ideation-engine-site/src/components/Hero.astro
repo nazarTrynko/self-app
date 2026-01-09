@@ -1,0 +1,159 @@
+---
+// Hero component - The forge entrance
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Particle background -->
+  <div class="particles-container" id="particles">
+    <!-- Particles will be generated via JS -->
+  </div>
+  
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-bg-deep)]"></div>
+  
+  <!-- Content -->
+  <div class="relative z-10 container-content text-center py-24">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-bg-surface)] border border-[var(--color-border)] mb-8 animate-on-scroll">
+      <span class="w-2 h-2 rounded-full bg-[var(--color-fire)] animate-pulse"></span>
+      <span class="text-sm text-[var(--color-text-secondary)] font-medium">v3.0 — The Ultimate Framework</span>
+    </div>
+    
+    <!-- Main headline -->
+    <h1 class="mb-6 animate-on-scroll">
+      <span class="block text-[var(--color-text-primary)]">Ideas</span>
+      <span class="block text-fire-animated">Worth Building</span>
+    </h1>
+    
+    <!-- Subheadline -->
+    <p class="text-xl md:text-2xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-12 animate-on-scroll">
+      The difference between a good idea and a genius idea is not intelligence—it's the systematic elimination of everything that isn't genius.
+    </p>
+    
+    <!-- The Formula -->
+    <div class="animate-on-scroll mb-12">
+      <div class="inline-block">
+        <p class="text-sm text-[var(--color-text-muted)] uppercase tracking-wider mb-4 font-mono">The Formula</p>
+        <div class="formula-container p-6 rounded-xl bg-[var(--color-bg-surface)] border border-[var(--color-border)] glow-fire-subtle">
+          <code class="formula text-sm md:text-base lg:text-lg font-mono">
+            <span class="formula-item" style="--delay: 0">Specific Pain</span>
+            <span class="formula-operator">×</span>
+            <span class="formula-item" style="--delay: 1">Clear Distribution</span>
+            <span class="formula-operator">×</span>
+            <span class="formula-item" style="--delay: 2">Emotional Transformation</span>
+            <span class="formula-operator">×</span>
+            <span class="formula-item" style="--delay: 3">Weekend Shippable</span>
+            <span class="formula-operator">×</span>
+            <span class="formula-item" style="--delay: 4">Defensible Angle</span>
+          </code>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CTA -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
+      <a href="#filters" class="px-8 py-4 bg-fire-gradient text-[var(--color-bg-deep)] font-semibold rounded-lg hover:glow-fire transition-all duration-300">
+        Start Filtering Ideas
+      </a>
+      <a href="#philosophy" class="px-8 py-4 bg-[var(--color-bg-surface)] border border-[var(--color-border)] text-[var(--color-text-primary)] font-semibold rounded-lg hover:border-[var(--color-fire)] transition-all duration-300">
+        Learn the Philosophy
+      </a>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-[var(--color-text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .formula {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .formula-item {
+    color: var(--color-fire);
+    opacity: 0;
+    animation: formulaReveal 0.5s ease-out forwards;
+    animation-delay: calc(var(--delay) * 0.2s + 0.5s);
+  }
+  
+  .formula-operator {
+    color: var(--color-text-muted);
+    opacity: 0;
+    animation: formulaReveal 0.3s ease-out forwards;
+    animation-delay: calc(var(--delay, 0) * 0.2s + 0.7s);
+  }
+  
+  @keyframes formulaReveal {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Particle styles */
+  :global(.particle) {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-fire);
+    opacity: 0;
+    animation: particleFloat 8s ease-in-out infinite;
+  }
+  
+  @keyframes particleFloat {
+    0%, 100% {
+      opacity: 0;
+      transform: translateY(100vh) scale(0);
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100vh) scale(1);
+    }
+  }
+</style>
+
+<script>
+  // Generate floating particles
+  const particlesContainer = document.getElementById('particles');
+  
+  if (particlesContainer) {
+    const particleCount = 30;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 8}s`;
+      particle.style.animationDuration = `${6 + Math.random() * 4}s`;
+      
+      // Random colors from fire palette
+      const colors = ['#f59e0b', '#ea580c', '#fbbf24', '#dc2626'];
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.width = `${2 + Math.random() * 4}px`;
+      particle.style.height = particle.style.width;
+      
+      particlesContainer.appendChild(particle);
+    }
+  }
+</script>
+

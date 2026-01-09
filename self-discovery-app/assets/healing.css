@@ -1,0 +1,388 @@
+/* Copied from projects/the-best-prompts/the-prompt-library__cursor/styles/chambers/healing.css */
+
+/* ============================================
+   Chamber 4: The Well (Healing)
+   Soft, water-like, breathing rhythms
+   ============================================ */
+
+:root {
+    --well-bg: #1a1f16;
+    --well-surface: #2d4a3e;
+    --well-accent: #4a6760;
+    --well-light: #8baa9d;
+    --well-blue: #a8d5e2;
+    --well-text: #d4e4dc;
+    --well-text-muted: #8baa9d;
+}
+
+body {
+    background: var(--well-bg);
+    color: var(--well-text);
+    font-family: 'Libre Baskerville', serif;
+}
+
+/* Background Pattern - Breathing Animation */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(168, 213, 226, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+    animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* Navigation */
+.chamber-nav {
+    padding: var(--space-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26, 31, 22, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(168, 213, 226, 0.2);
+}
+
+/* Hero */
+.chamber-hero {
+    padding: var(--space-2xl) var(--space-md);
+    text-align: center;
+    background: linear-gradient(180deg, var(--well-bg) 0%, rgba(45, 74, 62, 0.3) 100%);
+}
+
+.chamber-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    background: rgba(168, 213, 226, 0.2);
+    border: 1px solid var(--well-blue);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--well-blue);
+    margin-bottom: var(--space-md);
+}
+
+.chamber-title {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+    font-style: italic;
+}
+
+.title-main {
+    display: block;
+    color: var(--well-text);
+}
+
+.title-subtitle {
+    display: block;
+    color: var(--well-blue);
+    font-size: 0.5em;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: var(--space-xs);
+}
+
+.chamber-description {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    color: var(--well-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Safety Section */
+.safety-section {
+    background: rgba(168, 213, 226, 0.1);
+    border-top: 1px solid var(--well-blue);
+    border-bottom: 1px solid var(--well-blue);
+}
+
+.safety-notice {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+    background: rgba(26, 31, 22, 0.5);
+    border: 1px solid var(--well-blue);
+    border-radius: 8px;
+}
+
+.safety-notice p {
+    color: var(--well-text);
+    line-height: 1.8;
+    margin-bottom: var(--space-sm);
+}
+
+.safety-resources {
+    margin-top: var(--space-md);
+    font-size: 0.875rem;
+}
+
+.safety-resources a {
+    color: var(--well-blue);
+    text-decoration: underline;
+}
+
+/* Sections */
+.section {
+    padding: var(--space-2xl) 0;
+}
+
+.section-title {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--well-text);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--well-text-muted);
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xl);
+}
+
+/* Why Section */
+.why-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.why-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--well-text-muted);
+    margin-bottom: var(--space-md);
+}
+
+/* Prompt Cards */
+.prompts-section {
+    background: var(--well-surface);
+}
+
+.prompt-card {
+    display: flex;
+    gap: var(--space-lg);
+    background: var(--well-bg);
+    border: 1px solid var(--well-accent);
+    border-radius: 12px;
+    padding: var(--space-xl);
+    margin-bottom: var(--space-lg);
+    transition: all var(--transition-slow);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.prompt-card:hover {
+    border-color: var(--well-blue);
+    box-shadow: 0 8px 32px rgba(168, 213, 226, 0.2);
+}
+
+.prompt-number {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--well-accent), var(--well-blue));
+    border-radius: 50%;
+    font-family: 'Cormorant', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--well-text);
+    flex-shrink: 0;
+}
+
+.prompt-content {
+    flex: 1;
+}
+
+.prompt-header {
+    margin-bottom: var(--space-md);
+}
+
+.prompt-header h3 {
+    font-family: 'Cormorant', serif;
+    font-size: 1.75rem;
+    color: var(--well-text);
+    margin-bottom: var(--space-xs);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.prompt-excavates {
+    font-size: 0.875rem;
+    color: var(--well-text-muted);
+    font-style: italic;
+}
+
+.prompt-block {
+    background: var(--well-surface);
+    border: 1px solid var(--well-accent);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.prompt-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(168, 213, 226, 0.1);
+    border-bottom: 1px solid var(--well-accent);
+}
+
+.prompt-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--well-text-muted);
+}
+
+.prompt-text {
+    padding: var(--space-lg);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--well-text);
+    white-space: pre-wrap;
+    margin: 0;
+    background: transparent;
+    animation: typewriter 1s ease-out;
+}
+
+@keyframes typewriter {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Outputs Section */
+.outputs-section {
+    background: var(--well-bg);
+}
+
+.outputs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.output-item {
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--well-surface);
+    border: 1px solid var(--well-accent);
+    border-radius: 12px;
+}
+
+.output-number {
+    display: block;
+    font-family: 'Cormorant', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--well-blue);
+    margin-bottom: var(--space-sm);
+    font-style: italic;
+}
+
+.output-item h4 {
+    font-family: 'Cormorant', serif;
+    font-size: 1.25rem;
+    color: var(--well-text);
+    margin-bottom: var(--space-xs);
+    font-weight: 400;
+}
+
+.output-item p {
+    color: var(--well-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* Tips Section */
+.tips-section {
+    background: var(--well-surface);
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tip-card {
+    padding: var(--space-lg);
+    background: var(--well-bg);
+    border: 1px solid var(--well-accent);
+    border-radius: 12px;
+}
+
+.tip-card h4 {
+    font-family: 'Cormorant', serif;
+    font-size: 1.25rem;
+    color: var(--well-blue);
+    margin-bottom: var(--space-sm);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.tip-card p {
+    color: var(--well-text-muted);
+    line-height: 1.7;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .prompt-card {
+        flex-direction: column;
+    }
+    
+    .prompt-number {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+    
+    .outputs-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+

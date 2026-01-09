@@ -1,0 +1,170 @@
+---
+// 90% Confidence Checklist - interactive
+const checklistItems = [
+  { id: 'pain', text: 'Pain is active (people searching/complaining NOW)' },
+  { id: 'solution', text: 'Solution is obvious (explainable in 1 sentence)' },
+  { id: 'buildable', text: 'Buildable in < 1 week (landing + core function)' },
+  { id: 'monetization', text: 'Monetization is natural (users expect to pay)' },
+  { id: 'competition', text: 'Competition gap exists (nothing does THIS exactly)' },
+  { id: 'timing', text: 'Timing advantage (why NOW, not 6 months ago)' },
+  { id: 'distribution', text: 'Distribution channel identified (where they already are)' },
+  { id: 'emotion', text: 'Emotional transformation clear (feel X → feel Y)' },
+  { id: 'validation', text: 'Pre-validation signal (interest expressed)' },
+];
+---
+
+<section id="checklist" class="section">
+  <div class="container-content">
+    <div class="text-center mb-16">
+      <h2 class="mb-4 animate-on-scroll">The 90% Confidence Checklist</h2>
+      <p class="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto animate-on-scroll">
+        An idea hits 90% confidence when all boxes are checked.
+      </p>
+    </div>
+    
+    <div class="max-w-2xl mx-auto animate-on-scroll">
+      <!-- Progress bar -->
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm text-[var(--color-text-muted)]">Confidence Level</span>
+          <span id="confidence-percentage" class="text-2xl font-bold text-gradient-fire">0%</span>
+        </div>
+        <div class="h-3 bg-[var(--color-bg-surface)] rounded-full overflow-hidden border border-[var(--color-border)]">
+          <div 
+            id="confidence-bar" 
+            class="h-full bg-gradient-to-r from-[var(--color-fire)] to-[var(--color-gold)] transition-all duration-500 ease-out"
+            style="width: 0%"
+          ></div>
+        </div>
+      </div>
+      
+      <!-- Checklist -->
+      <div class="space-y-3" id="confidence-checklist">
+        {checklistItems.map((item, index) => (
+          <label 
+            class="checklist-item flex items-start gap-4 p-4 rounded-lg bg-[var(--color-bg-surface)] border border-[var(--color-border)] cursor-pointer hover:border-[var(--color-fire)] transition-all duration-200"
+            data-index={index}
+          >
+            <div class="relative mt-0.5">
+              <input 
+                type="checkbox" 
+                class="sr-only peer" 
+                id={`check-${item.id}`}
+                data-item={item.id}
+              />
+              <div class="w-6 h-6 rounded border-2 border-[var(--color-border)] peer-checked:bg-[var(--color-pass)] peer-checked:border-[var(--color-pass)] transition-all duration-200 flex items-center justify-center">
+                <svg class="w-4 h-4 text-[var(--color-bg-deep)] opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+            </div>
+            <span class="text-[var(--color-text-secondary)] peer-checked:text-[var(--color-text-primary)] transition-colors">
+              {item.text}
+            </span>
+          </label>
+        ))}
+      </div>
+      
+      <!-- Celebration message (hidden by default) -->
+      <div id="celebration" class="hidden mt-8 p-6 rounded-xl bg-[var(--color-pass)] bg-opacity-10 border border-[var(--color-pass)] text-center">
+        <span class="text-4xl mb-4 block">🎉</span>
+        <h3 class="text-xl font-bold text-[var(--color-pass)] mb-2">90%+ Confidence Achieved!</h3>
+        <p class="text-[var(--color-text-secondary)]">This idea has passed the confidence threshold. Time to build.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .checklist-item:has(input:checked) {
+    border-color: var(--color-pass);
+    background-color: rgba(34, 197, 94, 0.05);
+  }
+  
+  .checklist-item:has(input:checked) span {
+    color: var(--color-text-primary);
+  }
+  
+  /* Checkmark animation */
+  .checklist-item input:checked + div svg {
+    animation: checkPop 0.3s ease-out;
+  }
+  
+  @keyframes checkPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+</style>
+
+<script>
+  const checklist = document.getElementById('confidence-checklist');
+  const percentageEl = document.getElementById('confidence-percentage');
+  const barEl = document.getElementById('confidence-bar');
+  const celebrationEl = document.getElementById('celebration');
+  const totalItems = 9;
+  
+  // Load saved state from localStorage
+  function loadState() {
+    const saved = localStorage.getItem('ideation-checklist');
+    if (saved) {
+      const checked = JSON.parse(saved);
+      checked.forEach((id: string) => {
+        const input = document.querySelector(`[data-item="${id}"]`) as HTMLInputElement;
+        if (input) input.checked = true;
+      });
+      updateProgress();
+    }
+  }
+  
+  // Save state to localStorage
+  function saveState() {
+    const checked: string[] = [];
+    document.querySelectorAll('[data-item]').forEach((input) => {
+      if ((input as HTMLInputElement).checked) {
+        checked.push(input.getAttribute('data-item') || '');
+      }
+    });
+    localStorage.setItem('ideation-checklist', JSON.stringify(checked));
+  }
+  
+  // Update progress bar
+  function updateProgress() {
+    const checkedCount = document.querySelectorAll('[data-item]:checked').length;
+    const percentage = Math.round((checkedCount / totalItems) * 100);
+    
+    if (percentageEl) percentageEl.textContent = `${percentage}%`;
+    if (barEl) barEl.style.width = `${percentage}%`;
+    
+    // Show celebration at 90%+
+    if (celebrationEl) {
+      if (percentage >= 90) {
+        celebrationEl.classList.remove('hidden');
+        celebrationEl.classList.add('animate-pulse');
+      } else {
+        celebrationEl.classList.add('hidden');
+        celebrationEl.classList.remove('animate-pulse');
+      }
+    }
+    
+    // Update bar color based on progress
+    if (barEl) {
+      if (percentage >= 90) {
+        barEl.className = 'h-full bg-gradient-to-r from-[var(--color-pass)] to-[var(--color-gold)] transition-all duration-500 ease-out';
+      } else if (percentage >= 50) {
+        barEl.className = 'h-full bg-gradient-to-r from-[var(--color-fire)] to-[var(--color-gold)] transition-all duration-500 ease-out';
+      } else {
+        barEl.className = 'h-full bg-gradient-to-r from-[var(--color-kill)] to-[var(--color-fire)] transition-all duration-500 ease-out';
+      }
+    }
+    
+    saveState();
+  }
+  
+  // Event listeners
+  checklist?.addEventListener('change', updateProgress);
+  
+  // Load on page load
+  loadState();
+</script>
+

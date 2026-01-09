@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ideation Engine v3.0 — a simple, ruthless framework for generating ideas worth building.">
+    <title>Ideation Engine v3.0 — Simple. Ruthless. Profound.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="bg-canvas" class="bg-canvas" aria-hidden="true"></div>
+
+    <header class="nav">
+        <a class="nav-brand" href="../_hub/index.html">Synthesis Universe</a>
+        <div class="nav-actions">
+            <a class="nav-cta" href="#run">Run the Engine</a>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="hero" id="top">
+            <div class="hero-inner">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Protocol</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Ideation Engine <em>v3.0</em>
+                </h1>
+
+                <p class="hero-subtitle">
+                    A simple framework for ideas worth building.
+                    Not “creative.” <span class="muted">Profitable, shippable, defensible.</span>
+                </p>
+
+                <div class="equation-card" role="note" aria-label="Core formula">
+                    <div class="equation-label">Core Formula</div>
+                    <div class="equation">
+                        Ideas_worth_building =
+                        <span class="eq-accent">Specific_Pain</span> ×
+                        <span class="eq-accent">Clear_Distribution</span> ×
+                        <span class="eq-accent">Emotional_Transformation</span> ×
+                        <span class="eq-accent">Weekend_Shippable</span> ×
+                        <span class="eq-accent">Defensible_Angle</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a class="primary-btn" href="#run">Start the 6 Phases</a>
+                    <a class="secondary-btn" href="#filters">See the 5 Filters</a>
+                </div>
+
+                <p class="hero-footnote">
+                    Source: <code>.cursor/self/prompts/ideation-engine-v3.md</code>
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="filters">
+            <div class="section-header">
+                <span class="section-label">The Gate</span>
+                <h2 class="section-title">The 5 Filters</h2>
+                <p class="section-subtitle">Each filter is a kill switch. Passing all five is rare. That’s the point.</p>
+            </div>
+
+            <div class="filters-grid">
+                <div class="filter-card">
+                    <div class="filter-name">PAIN</div>
+                    <div class="filter-question">Who hurts and how badly?</div>
+                    <div class="filter-kill">Kill Threshold: <strong>Vague pain = KILL</strong></div>
+                </div>
+                <div class="filter-card">
+                    <div class="filter-name">DISTRIBUTION</div>
+                    <div class="filter-question">Where are they already?</div>
+                    <div class="filter-kill">Kill Threshold: <strong>No channel = KILL</strong></div>
+                </div>
+                <div class="filter-card">
+                    <div class="filter-name">EMOTION</div>
+                    <div class="filter-question">What transformation?</div>
+                    <div class="filter-kill">Kill Threshold: <strong>Weak feeling = KILL</strong></div>
+                </div>
+                <div class="filter-card">
+                    <div class="filter-name">SCOPE</div>
+                    <div class="filter-question">Weekend MVP possible?</div>
+                    <div class="filter-kill">Kill Threshold: <strong>&gt; 5 days = SIMPLIFY</strong></div>
+                </div>
+                <div class="filter-card">
+                    <div class="filter-name">MOAT</div>
+                    <div class="filter-question">Why can’t this be copied in 30 days?</div>
+                    <div class="filter-kill">Kill Threshold: <strong>No answer = RETHINK</strong></div>
+                </div>
+            </div>
+
+            <div class="prose-block">
+                <h3 class="prose-title">Micro‑Niche Formula</h3>
+                <p class="prose-text">Avoid “everyone.” Target a micro‑niche with a trigger.</p>
+                <pre class="mono-block">[Specific Role] + [Specific Context] + [Specific Trigger]</pre>
+            </div>
+        </section>
+
+        <section class="section" id="run">
+            <div class="section-header">
+                <span class="section-label">The Instrument</span>
+                <h2 class="section-title">Run the Engine</h2>
+                <p class="section-subtitle">Six phases. Copy the prompt. Execute. Decide.</p>
+            </div>
+
+            <div class="guided-layout">
+                <aside class="side-panel" aria-label="Progress">
+                    <div class="side-card">
+                        <div class="side-title">Progress</div>
+                        <div class="side-metric">
+                            <span class="side-metric-label">Checklist</span>
+                            <span class="side-metric-value" id="checklistProgress">0/0</span>
+                        </div>
+                        <div class="side-metric">
+                            <span class="side-metric-label">Current Phase</span>
+                            <span class="side-metric-value" id="currentPhaseLabel">Phase 0</span>
+                        </div>
+                        <button class="side-btn" id="resetProgressBtn" type="button">Reset local progress</button>
+                    </div>
+
+                    <div class="side-card">
+                        <div class="side-title">Kill Gates</div>
+                        <p class="side-subtitle">A “no” here is a gift. It saves weeks.</p>
+
+                        <div class="checklist">
+                            <label class="check-item">
+                                <input type="checkbox" data-check="presell" />
+                                <span>Pre-sell signal exists (10 pays or 100 waitlist)</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-check="explain5s" />
+                                <span>Explainable in 5 seconds</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-check="channel" />
+                                <span>Distribution channel identified</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-check="weekend" />
+                                <span>Weekend scope passes (or simplified)</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-check="moat" />
+                                <span>Defensible angle exists</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-check="emotion" />
+                                <span>Clear emotional transformation</span>
+                            </label>
+                        </div>
+
+                        <div class="side-divider"></div>
+
+                        <div class="side-note">
+                            <div class="side-note-title">Red flags</div>
+                            <ul class="side-list">
+                                <li>“Nice to have”</li>
+                                <li>Requires behavior change</li>
+                                <li>Needs network effects</li>
+                                <li>Competes with free, good-enough</li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="tool-container engine" aria-label="Phase navigator">
+                    <div class="tool-header">
+                        <div class="tool-icon">⚙️</div>
+                        <h3 class="tool-title">Ideation Engine v3.0</h3>
+                        <p class="tool-description">
+                            Pick a phase, copy the prompt block, run it in your model. Save your place locally.
+                        </p>
+                    </div>
+
+                    <div class="tool-tabs" role="tablist" aria-label="Phases">
+                        <button class="tool-tab" type="button" role="tab" data-phase="phase-0">Phase 0</button>
+                        <button class="tool-tab" type="button" role="tab" data-phase="phase-1">Phase 1</button>
+                        <button class="tool-tab" type="button" role="tab" data-phase="phase-2">Phase 2</button>
+                        <button class="tool-tab" type="button" role="tab" data-phase="phase-3">Phase 3</button>
+                        <button class="tool-tab" type="button" role="tab" data-phase="phase-4">Phase 4</button>
+                        <button class="tool-tab" type="button" role="tab" data-phase="phase-5">Phase 5</button>
+                        <button class="tool-tab" type="button" role="tab" data-phase="quick-tests">Quick Tests</button>
+                    </div>
+
+                    <div class="tool-panel" role="tabpanel" id="phase-0">
+                        <div class="panel-head">
+                            <h4 class="panel-title">Phase 0: Know Thyself</h4>
+                            <p class="panel-subtitle">Set constraints. Set goals. Name your unfair advantages.</p>
+                        </div>
+                        <div class="prompt-block" data-block="phase-0">
+                            <div class="prompt-head">
+                                <span class="prompt-label">Prompt</span>
+                                <button class="copy-btn" type="button" data-copy-target="phase0Prompt">Copy</button>
+                            </div>
+                            <pre class="prompt-content" id="phase0Prompt">/oracle
+
+Before generating ideas, answer honestly:
+
+## CONSTRAINTS
+- Time available: ___ hours/week
+- Skills: What can I build without learning?
+- Capital: $ available to bootstrap
+- Timeline: When do I need revenue?
+
+## GOALS
+- Target outcome: [Lifestyle business | Growth startup | Sellable asset | Learning]
+- Revenue goal: [$1K MRR | $10K MRR | $100K MRR]
+- Acceptable schlep level: [Low | Medium | High]
+
+## UNFAIR ADVANTAGES
+- What communities am I already part of?
+- What do I know that most people don't?
+- What annoys ME that I'd actually use?
+
+OUTPUT: My constraint profile for filtering ideas.</pre>
+                        </div>
+                        <div class="panel-nav">
+                            <button class="nav-btn" type="button" data-nav="next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="tool-panel" role="tabpanel" id="phase-1">
+                        <div class="panel-head">
+                            <h4 class="panel-title">Phase 1: Pain Discovery</h4>
+                            <p class="panel-subtitle">Mine pain. Mine schlep. Avoid tarpits.</p>
+                        </div>
+                        <div class="prompt-block" data-block="phase-1">
+                            <div class="prompt-head">
+                                <span class="prompt-label">Prompt</span>
+                                <button class="copy-btn" type="button" data-copy-target="phase1Prompt">Copy</button>
+                            </div>
+                            <pre class="prompt-content" id="phase1Prompt">/oracle /creator
+
+Find problems worth solving:
+
+## 1. PERSONAL ANNOYANCE MINE
+- What frustrated me in the last 30 days?
+- What task do I procrastinate because it's annoying?
+- What do I wish existed but doesn't?
+
+## 2. COMMUNITY LISTENING
+Pick your communities and mine for pain:
+- r/[your_community] - Top complaints this month
+- Twitter/X - What are practitioners complaining about?
+- Indie Hackers - What problems keep recurring?
+
+## 3. SCHLEP DISCOVERY (Paul Graham)
+- What problem do people acknowledge but no one solves?
+- What involves hard/boring work everyone avoids?
+- What would be embarrassing to work on but valuable?
+
+## 4. TARPIT DETECTION
+Flag and avoid these idea graveyards:
+- Social networks
+- Dating apps
+- Todo lists
+- Generic AI writing assistants
+- \"Uber for X\" concepts
+
+OUTPUT:
+- 10 pain points with schlep analysis
+- Tarpit warnings where applicable
+- My personal connection to each pain</pre>
+                        </div>
+                        <div class="panel-nav">
+                            <button class="nav-btn" type="button" data-nav="prev">Prev</button>
+                            <button class="nav-btn" type="button" data-nav="next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="tool-panel" role="tabpanel" id="phase-2">
+                        <div class="panel-head">
+                            <h4 class="panel-title">Phase 2: Pre‑Validation</h4>
+                            <p class="panel-subtitle">Do not build first. Prove demand first.</p>
+                        </div>
+                        <div class="prompt-block" data-block="phase-2">
+                            <div class="prompt-head">
+                                <span class="prompt-label">Prompt</span>
+                                <button class="copy-btn" type="button" data-copy-target="phase2Prompt">Copy</button>
+                            </div>
+                            <pre class="prompt-content" id="phase2Prompt">/critic /guardian
+
+The Pre-Sale Test:
+
+## 1. LANDING PAGE TEST
+- Can I write a compelling landing page in 1 hour?
+- Is the value proposition obvious in 5 seconds?
+- What's the call to action?
+
+## 2. PRE-SELL TEST (Critical!)
+- Can I get 10 people to commit $X before I build?
+- Script: \"I'm building [X] that solves [Y]. Would you pay $Z/month?
+  If yes, you can lock in early-bird pricing now.\"
+- Target: 10 pre-sales OR 100 waitlist signups
+
+## 3. COMPETITIVE ALTERNATIVE (April Dunford)
+- If my product doesn't exist, what do they do today?
+- Why is that alternative inadequate?
+- What would make them switch?
+
+KILL CRITERIA:
+- Can't explain in 5 seconds → KILL
+- No one pre-pays → KILL
+- Alternative is \"good enough\" → KILL
+
+OUTPUT: Survived ideas with pre-validation evidence</pre>
+                        </div>
+                        <div class="panel-nav">
+                            <button class="nav-btn" type="button" data-nav="prev">Prev</button>
+                            <button class="nav-btn" type="button" data-nav="next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="tool-panel" role="tabpanel" id="phase-3">
+                        <div class="panel-head">
+                            <h4 class="panel-title">Phase 3: Positioning First</h4>
+                            <p class="panel-subtitle">Define position before features.</p>
+                        </div>
+                        <div class="prompt-block" data-block="phase-3">
+                            <div class="prompt-head">
+                                <span class="prompt-label">Prompt</span>
+                                <button class="copy-btn" type="button" data-copy-target="phase3Prompt">Copy</button>
+                            </div>
+                            <pre class="prompt-content" id="phase3Prompt">/oracle /creator
+
+Before defining features, define position:
+
+## 1. BEST-FIT CUSTOMER
+- Who will love this MOST? (Be ultra-specific)
+- What makes them different from adjacent customers?
+- Why are THEY underserved?
+
+## 2. CATEGORY DECISION
+- Existing category: What's the established category? Who's the leader?
+- OR New category: What frame makes my solution make sense?
+- Positioning statement:
+  \"For [WHO], [PRODUCT] is [CATEGORY] that [KEY BENEFIT] unlike [ALTERNATIVE].\"
+
+## 3. EMOTIONAL POSITIONING (Julie Zhuo)
+- How do users FEEL before? (frustrated, embarrassed, anxious, overwhelmed)
+- How do users FEEL after? (confident, proud, relieved, in control)
+- The transformation in one word: From ___ to ___
+
+## 4. STATUS POSITIONING (Sahil)
+- Does using this make someone look successful/smart/professional?
+- Would they tell others they use this?
+- Social proof angle: \"Used by [aspirational group]\"
+
+OUTPUT: Complete positioning document BEFORE features</pre>
+                        </div>
+                        <div class="panel-nav">
+                            <button class="nav-btn" type="button" data-nav="prev">Prev</button>
+                            <button class="nav-btn" type="button" data-nav="next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="tool-panel" role="tabpanel" id="phase-4">
+                        <div class="panel-head">
+                            <h4 class="panel-title">Phase 4: MVP Scoping (Ruthless)</h4>
+                            <p class="panel-subtitle">Your best feature is what you don’t build.</p>
+                        </div>
+                        <div class="prompt-block" data-block="phase-4">
+                            <div class="prompt-head">
+                                <span class="prompt-label">Prompt</span>
+                                <button class="copy-btn" type="button" data-copy-target="phase4Prompt">Copy</button>
+                            </div>
+                            <pre class="prompt-content" id="phase4Prompt">/architect /guardian
+
+The Weekend Shipping Test:
+
+## 1. THREE-TWEET MVP
+Can you describe the MVP in 3 tweets?
+- Tweet 1: The problem
+- Tweet 2: The solution
+- Tweet 3: How it works
+If no, scope is too big. CUT.
+
+## 2. WEEKEND TEST
+Could this be built in a weekend by someone with my skills?
+- If no, what's the smallest version that delivers core value?
+- What's the \"Wizard of Oz\" version (manual behind the scenes)?
+
+## 3. LEVERAGE CHECK (Naval)
+- Leverage type: [Code | Media | Labor | Capital]
+- Will this make money while I sleep?
+- Does it get easier or harder with scale?
+
+## 4. FEATURE PRISON AVOIDANCE
+- What's the ONE thing this does?
+- What are you explicitly NOT building?
+- What feature requests will you say no to?
+
+OUTPUT: Ruthlessly scoped MVP with time estimate</pre>
+                        </div>
+                        <div class="panel-nav">
+                            <button class="nav-btn" type="button" data-nav="prev">Prev</button>
+                            <button class="nav-btn" type="button" data-nav="next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="tool-panel" role="tabpanel" id="phase-5">
+                        <div class="panel-head">
+                            <h4 class="panel-title">Phase 5: Launch Strategy</h4>
+                            <p class="panel-subtitle">Narrative, distribution, metrics. Then ship.</p>
+                        </div>
+                        <div class="prompt-block" data-block="phase-5">
+                            <div class="prompt-head">
+                                <span class="prompt-label">Prompt</span>
+                                <button class="copy-btn" type="button" data-copy-target="phase5Prompt">Copy</button>
+                            </div>
+                            <pre class="prompt-content" id="phase5Prompt">/creator /oracle
+
+The Product Hunt Playbook:
+
+## 1. LAUNCH NARRATIVE (Julie Zhuo)
+- The story: \"I was frustrated by X, so I built Y\"
+- The hero: The user, not the product
+- The transformation: Before → After
+
+## 2. SHAREABILITY TEST
+- Why would someone share this?
+- What's the \"aha\" moment?
+- Can you create shareable artifacts? (badges, stats, results)
+
+## 3. DISTRIBUTION ADVANTAGE
+- Where do your best-fit customers already gather?
+- What's your unfair distribution channel?
+- Day 1 launch list: Who are your first 100 users?
+
+## 4. METRIC DEFINITION
+- North star metric: What's the ONE number that matters?
+- Day 1 goal: ___
+- Week 1 goal: ___
+- Kill threshold: If we don't hit X by day 30, pivot or kill
+
+OUTPUT: Launch plan with specific channels and metrics</pre>
+                        </div>
+                        <div class="panel-nav">
+                            <button class="nav-btn" type="button" data-nav="prev">Prev</button>
+                            <button class="nav-btn" type="button" data-nav="next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="tool-panel" role="tabpanel" id="quick-tests">
+                        <div class="panel-head">
+                            <h4 class="panel-title">Quick Tests & Checklists</h4>
+                            <p class="panel-subtitle">Fast gates to kill bad ideas early.</p>
+                        </div>
+
+                        <div class="prompt-block" data-block="quick-tests">
+                            <div class="prompt-head">
+                                <span class="prompt-label">Quick Test Prompts</span>
+                                <button class="copy-btn" type="button" data-copy-target="quickTestsPrompt">Copy</button>
+                            </div>
+                            <pre class="prompt-content" id="quickTestsPrompt">### The Levels Test (30 seconds)
+Idea: [X]
+1. Can I ship this weekend?
+2. Will 10 people pre-pay $20?
+3. Does it solve MY problem?
+If not 3/3: KILL or SIMPLIFY
+
+### The Graham Test (Schlep Check)
+Idea: [X]
+1. What's the hard/boring part everyone avoids?
+2. Is this a tarpit idea (sexy but deadly)?
+3. Would a Stanford CS grad be embarrassed to work on this?
+If #1 is empty and #3 is No: KILL (too obvious)
+
+### The Dunford Test (Positioning)
+Idea: [X]
+Complete: \"For [WHO], [PRODUCT] is [CATEGORY] that [BENEFIT] unlike [ALTERNATIVE].\"
+If you can't complete this clearly: NOT READY
+
+### The Naval Test (Leverage)
+Idea: [X]
+1. Leverage type? (Code/Media/Labor/Capital)
+2. Makes money while sleeping?
+3. Gets easier with scale?
+If not Code/Media + #2 No: RECONSIDER
+
+### The Zhuo Test (Emotion)
+Idea: [X]
+1. User feels ___ before, ___ after
+2. What's the delight moment?
+3. Shareable in one sentence?
+If #1 is weak emotion: ADD EMOTIONAL ANGLE</pre>
+                        </div>
+
+                        <div class="prose-block tight">
+                            <h3 class="prose-title">90% Confidence Checklist</h3>
+                            <pre class="mono-block">- [ ] Pain is active (people searching/complaining NOW)
+- [ ] Solution is obvious (explainable in 1 sentence)
+- [ ] Buildable in &lt; 1 week (landing + core function)
+- [ ] Monetization is natural (users expect to pay)
+- [ ] Competition gap exists (nothing does THIS exactly)
+- [ ] Timing advantage (why NOW, not 6 months ago)
+- [ ] Distribution channel identified (where they already are)
+- [ ] Emotional transformation clear (feel X → feel Y)
+- [ ] Pre-validation signal (interest expressed)</pre>
+                        </div>
+
+                        <div class="prose-block tight">
+                            <h3 class="prose-title">Framework Visual</h3>
+                            <pre class="mono-block">┌─────────────────────────────────────────────────────────────────────┐
+│                    IDEATION ENGINE v3.0                              │
+│                                                                      │
+│  ┌─────────────┐                                                     │
+│  │ KNOW THYSELF│  Constraints, goals, unfair advantages             │
+│  └──────┬──────┘                                                     │
+│         ▼                                                            │
+│  ┌─────────────┐                                                     │
+│  │ FIND PAIN   │  Personal annoyance + Community + Schlep discovery │
+│  └──────┬──────┘                                                     │
+│         ▼                                                            │
+│  ┌─────────────┐                                                     │
+│  │ PRE-VALIDATE│  Landing page + Pre-sell (10 pays before build)    │
+│  └──────┬──────┘                                                     │
+│         ▼                                                            │
+│  ┌─────────────┐                                                     │
+│  │ POSITION    │  Who + Category + Emotion + Status                 │
+│  └──────┬──────┘                                                     │
+│         ▼                                                            │
+│  ┌─────────────┐                                                     │
+│  │ SCOPE MVP   │  3-tweet test + Weekend build + Leverage check     │
+│  └──────┬──────┘                                                     │
+│         ▼                                                            │
+│  ┌─────────────┐                                                     │
+│  │ LAUNCH      │  Narrative + Distribution + Metrics                │
+│  └─────────────┘                                                     │
+│                                                                      │
+│  KILL GATES: Pre-sell fails → KILL | Can't position → KILL          │
+│              Weekend scope fails → SIMPLIFY | No leverage → REVIEW   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘</pre>
+                        </div>
+
+                        <div class="panel-nav">
+                            <button class="nav-btn" type="button" data-nav="prev">Prev</button>
+                            <button class="nav-btn" type="button" data-nav="next">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a class="footer-link" href="../_hub/index.html">Back to Hub</a>
+            <span class="footer-sep">·</span>
+            <a class="footer-link" href="#top">Top</a>
+        </div>
+    </footer>
+
+    <script src="../_shared/js/particle-bg.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

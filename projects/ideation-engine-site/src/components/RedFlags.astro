@@ -1,0 +1,82 @@
+---
+// Red Flags - Automatic Disqualification
+const redFlags = [
+  '"Nice to have" vs "must have"',
+  'Requires behavior change from users',
+  'Legal/scraping dependencies',
+  'Enterprise sales cycle for indie product',
+  'API-only differentiation (easily copied)',
+  'Needs network effects to work (cold start problem)',
+  'Competes with free, good-enough alternatives',
+];
+---
+
+<section id="red-flags" class="section bg-[var(--color-bg-surface)]">
+  <div class="container-content">
+    <div class="max-w-3xl mx-auto">
+      <!-- Warning header -->
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[var(--color-kill)] bg-opacity-10 border border-[var(--color-kill)] mb-6 animate-on-scroll">
+          <span class="text-2xl">⚠️</span>
+          <span class="text-[var(--color-kill)] font-semibold uppercase tracking-wider text-sm">Danger Zone</span>
+        </div>
+        <h2 class="mb-4 animate-on-scroll">Red Flags</h2>
+        <p class="text-[var(--color-text-secondary)] text-lg animate-on-scroll">
+          Automatic disqualification. If any of these apply, stop immediately.
+        </p>
+      </div>
+      
+      <!-- Red flags list -->
+      <div class="space-y-4">
+        {redFlags.map((flag, index) => (
+          <div 
+            class="red-flag-item flex items-center gap-4 p-5 rounded-lg bg-[var(--color-bg-deep)] border border-[var(--color-kill)] border-opacity-30 hover:border-opacity-100 transition-all duration-300 animate-on-scroll"
+            style={`--index: ${index}`}
+          >
+            <div class="w-10 h-10 rounded-full bg-[var(--color-kill)] bg-opacity-20 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-[var(--color-kill)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+            <span class="text-[var(--color-text-primary)]">{flag}</span>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Bottom warning -->
+      <div class="mt-12 text-center animate-on-scroll">
+        <p class="text-[var(--color-text-muted)] text-sm">
+          These patterns have killed countless ideas. Don't be another statistic.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .red-flag-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .red-flag-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--color-kill);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .red-flag-item:hover::before {
+    transform: scaleY(1);
+  }
+  
+  .red-flag-item:hover {
+    transform: translateX(4px);
+  }
+</style>
+

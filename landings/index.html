@@ -465,6 +465,63 @@
                     <span>Collections</span>
                     <span class="self-nav-link-count">164</span>
                 </a>
+                <div class="self-nav-dropdown" id="selfProductsDropdown">
+                    <button class="self-nav-link self-nav-dropdown-trigger" type="button" data-collection="ph" aria-haspopup="true" aria-expanded="false">
+                        <span class="self-nav-link-indicator"></span>
+                        <span>Products</span>
+                        <span class="self-nav-dropdown-caret" aria-hidden="true"></span>
+                    </button>
+                    <div class="self-nav-dropdown-menu" role="menu" aria-label="Products menu">
+                        <div class="self-nav-dropdown-grid">
+                            <div class="self-nav-dropdown-group">
+                                <div class="self-nav-dropdown-title">Suites</div>
+                                <div class="self-nav-dropdown-items">
+                                    <a class="self-nav-dropdown-item" href="products/transcendence/">
+                                        <span>Transcendence</span>
+                                        <span class="self-nav-dropdown-item-meta">15 experiences</span>
+                                    </a>
+                                    <a class="self-nav-dropdown-item" href="products/ideation-engine/">
+                                        <span>Ideation Engine</span>
+                                        <span class="self-nav-dropdown-item-meta">interactive</span>
+                                    </a>
+                                    <a class="self-nav-dropdown-item" href="docs/self-extraction/">
+                                        <span>Self-Extraction</span>
+                                        <span class="self-nav-dropdown-item-meta">prompt suite</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="self-nav-dropdown-group">
+                                <div class="self-nav-dropdown-title">Tools</div>
+                                <div class="self-nav-dropdown-items">
+                                    <a class="self-nav-dropdown-item" href="products/cursor-cycles/">
+                                        <span>Cursor Cycles</span>
+                                        <span class="self-nav-dropdown-item-meta">workflow</span>
+                                    </a>
+                                    <a class="self-nav-dropdown-item" href="products/carousel-generator/">
+                                        <span>Carousel Generator</span>
+                                        <span class="self-nav-dropdown-item-meta">generator</span>
+                                    </a>
+                                    <a class="self-nav-dropdown-item" href="products/evolved-carousels/">
+                                        <span>Evolved Carousels</span>
+                                        <span class="self-nav-dropdown-item-meta">stories</span>
+                                    </a>
+                                    <a class="self-nav-dropdown-item" href="products/pro-pwas/">
+                                        <span>Pro PWAs</span>
+                                        <span class="self-nav-dropdown-item-meta">field tools</span>
+                                    </a>
+                                    <a class="self-nav-dropdown-item" href="products/aurum/">
+                                        <span>Aurum</span>
+                                        <span class="self-nav-dropdown-item-meta">product</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="ideation-engine/" class="self-nav-link" data-collection="ideas">
+                    <span class="self-nav-link-indicator"></span>
+                    <span>Ideation Engine</span>
+                </a>
                 <a href="docs/self/" class="self-nav-link" data-collection="masters">
                     <span class="self-nav-link-indicator"></span>
                     <span>Documentation</span>
@@ -1224,6 +1281,54 @@
                 nav.classList.remove('hidden');
             }
             lastScroll = currentScroll;
+        });
+
+        // Products dropdown (no framework)
+        const dropdowns = Array.from(document.querySelectorAll('.self-nav-dropdown'));
+
+        function closeAllDropdowns(exceptEl = null) {
+            dropdowns.forEach(dd => {
+                if (exceptEl && dd === exceptEl) return;
+                dd.classList.remove('open');
+                const btn = dd.querySelector('.self-nav-dropdown-trigger');
+                if (btn) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        dropdowns.forEach(dd => {
+            const btn = dd.querySelector('.self-nav-dropdown-trigger');
+            if (!btn) return;
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const willOpen = !dd.classList.contains('open');
+                closeAllDropdowns(dd);
+                dd.classList.toggle('open', willOpen);
+                btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+                btn.classList.toggle('active', willOpen);
+            });
+
+            // Close when any item is clicked
+            dd.addEventListener('click', (e) => {
+                const target = e.target;
+                if (target instanceof Element && target.closest('a.self-nav-dropdown-item')) {
+                    closeAllDropdowns();
+                }
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+            if (!(target instanceof Element)) return;
+            const insideDropdown = target.closest('.self-nav-dropdown');
+            if (!insideDropdown) closeAllDropdowns();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeAllDropdowns();
         });
     </script>
 </body>

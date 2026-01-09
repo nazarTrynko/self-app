@@ -1,0 +1,65 @@
+---
+// Micro-Niche Formula section
+const examples = [
+  {
+    bad: 'Freelancers who need invoicing',
+    good: 'Freelance designers who just finished a project and need to send final invoice before client forgets',
+  },
+  {
+    bad: 'Founders who need landing pages',
+    good: 'Solo founders launching on Product Hunt within 30 days who don\'t know why their page isn\'t converting',
+  },
+];
+---
+
+<section class="section bg-[var(--color-bg-surface)]">
+  <div class="container-content">
+    <div class="text-center mb-16">
+      <h2 class="mb-4 animate-on-scroll">The Micro-Niche Formula</h2>
+      <p class="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto animate-on-scroll">
+        Instead of broad audiences, target with surgical precision.
+      </p>
+    </div>
+    
+    <!-- Formula -->
+    <div class="max-w-3xl mx-auto mb-12 animate-on-scroll">
+      <div class="p-8 rounded-xl bg-[var(--color-bg-deep)] border border-[var(--color-border)] text-center">
+        <code class="text-xl md:text-2xl font-mono">
+          <span class="text-[var(--color-fire)]">[Specific Role]</span>
+          <span class="text-[var(--color-text-muted)]"> + </span>
+          <span class="text-[var(--color-gold)]">[Specific Context]</span>
+          <span class="text-[var(--color-text-muted)]"> + </span>
+          <span class="text-[var(--color-burn)]">[Specific Trigger]</span>
+        </code>
+      </div>
+    </div>
+    
+    <!-- Examples -->
+    <div class="max-w-4xl mx-auto space-y-8">
+      {examples.map((example, index) => (
+        <div class="animate-on-scroll" style={`--index: ${index}`}>
+          <div class="grid md:grid-cols-2 gap-4">
+            <!-- Bad example -->
+            <div class="p-6 rounded-xl bg-[var(--color-bg-deep)] border border-[var(--color-kill)] border-opacity-30">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xl">❌</span>
+                <span class="text-sm font-semibold text-[var(--color-kill)]">TOO BROAD</span>
+              </div>
+              <p class="text-[var(--color-text-secondary)]">"{example.bad}"</p>
+            </div>
+            
+            <!-- Good example -->
+            <div class="p-6 rounded-xl bg-[var(--color-bg-deep)] border border-[var(--color-pass)] border-opacity-30">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xl">✅</span>
+                <span class="text-sm font-semibold text-[var(--color-pass)]">MICRO-NICHE</span>
+              </div>
+              <p class="text-[var(--color-text-secondary)]">"{example.good}"</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+

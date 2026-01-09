@@ -1,0 +1,180 @@
+---
+// Quick Test Prompts - rapid validation
+const tests = [
+  {
+    name: 'The Levels Test',
+    author: 'Pieter Levels',
+    time: '30 seconds',
+    questions: [
+      'Can I ship this weekend?',
+      'Will 10 people pre-pay $20?',
+      'Does it solve MY problem?',
+    ],
+    verdict: 'If not 3/3: KILL or SIMPLIFY',
+    color: 'fire',
+  },
+  {
+    name: 'The Graham Test',
+    author: 'Paul Graham',
+    time: 'Schlep Check',
+    questions: [
+      'What\'s the hard/boring part everyone avoids?',
+      'Is this a tarpit idea (sexy but deadly)?',
+      'Would a Stanford CS grad be embarrassed to work on this?',
+    ],
+    verdict: 'If #1 is empty and #3 is No: KILL (too obvious)',
+    color: 'gold',
+  },
+  {
+    name: 'The Dunford Test',
+    author: 'April Dunford',
+    time: 'Positioning',
+    questions: [
+      'Complete: "For [WHO], [PRODUCT] is [CATEGORY] that [BENEFIT] unlike [ALTERNATIVE]."',
+    ],
+    verdict: 'If you can\'t complete this clearly: NOT READY',
+    color: 'burn',
+  },
+  {
+    name: 'The Naval Test',
+    author: 'Naval Ravikant',
+    time: 'Leverage',
+    questions: [
+      'Leverage type? (Code/Media/Labor/Capital)',
+      'Makes money while sleeping?',
+      'Gets easier with scale?',
+    ],
+    verdict: 'If not Code/Media + #2 No: RECONSIDER',
+    color: 'fire',
+  },
+  {
+    name: 'The Zhuo Test',
+    author: 'Julie Zhuo',
+    time: 'Emotion',
+    questions: [
+      'User feels ___ before, ___ after',
+      'What\'s the delight moment?',
+      'Shareable in one sentence?',
+    ],
+    verdict: 'If #1 is weak emotion: ADD EMOTIONAL ANGLE',
+    color: 'gold',
+  },
+];
+---
+
+<section id="quick-tests" class="section bg-[var(--color-bg-surface)]">
+  <div class="container-content">
+    <div class="text-center mb-16">
+      <h2 class="mb-4 animate-on-scroll">Quick Tests</h2>
+      <p class="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto animate-on-scroll">
+        Rapid validation from the masters. Run these before you build.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {tests.map((test, index) => (
+        <div 
+          class="test-card card animate-on-scroll group cursor-pointer"
+          style={`--index: ${index}`}
+          data-test={test.name}
+        >
+          <!-- Header -->
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-gradient-fire">{test.name}</h3>
+              <p class="text-sm text-[var(--color-text-muted)]">{test.author}</p>
+            </div>
+            <span class="text-xs px-2 py-1 rounded bg-[var(--color-bg-elevated)] text-[var(--color-text-secondary)]">
+              {test.time}
+            </span>
+          </div>
+          
+          <!-- Questions -->
+          <div class="space-y-2 mb-4">
+            {test.questions.map((q, qIndex) => (
+              <div class="flex items-start gap-2">
+                <span class="text-[var(--color-fire)] font-mono text-sm">{qIndex + 1}.</span>
+                <span class="text-sm text-[var(--color-text-secondary)]">{q}</span>
+              </div>
+            ))}
+          </div>
+          
+          <!-- Verdict -->
+          <div class="pt-4 border-t border-[var(--color-border)]">
+            <p class="text-sm font-semibold text-[var(--color-kill)]">
+              {test.verdict}
+            </p>
+          </div>
+          
+          <!-- Copy button (hidden, shown on hover) -->
+          <button 
+            class="copy-test-btn absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded bg-[var(--color-bg-elevated)] hover:bg-[var(--color-fire)] hover:text-[var(--color-bg-deep)]"
+            title="Copy test"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .test-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .test-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-fire), var(--color-gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .test-card:hover::before {
+    transform: scaleX(1);
+  }
+</style>
+
+<script>
+  // Copy test functionality
+  document.querySelectorAll('.copy-test-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = btn.closest('.test-card');
+      const testName = card?.getAttribute('data-test');
+      
+      // Get test content and copy to clipboard
+      const questions = card?.querySelectorAll('.text-sm.text-\\[var\\(--color-text-secondary\\)\\]');
+      let text = `${testName}\n`;
+      questions?.forEach((q, i) => {
+        text += `${i + 1}. ${q.textContent}\n`;
+      });
+      
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        `;
+        setTimeout(() => {
+          btn.innerHTML = `
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          `;
+        }, 2000);
+      });
+    });
+  });
+</script>
+

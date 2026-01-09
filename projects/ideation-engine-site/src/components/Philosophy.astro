@@ -1,0 +1,49 @@
+---
+// Core Philosophy section - wisdom from the masters
+const masters = [
+  { name: 'Pieter Levels', wisdom: 'Ship fast, solve your own problems' },
+  { name: 'Paul Graham', wisdom: 'Find the schleps, avoid the tarpits' },
+  { name: 'April Dunford', wisdom: 'Position before you build' },
+  { name: 'Sahil Lavingia', wisdom: 'Outcomes over features' },
+  { name: 'Julie Zhuo', wisdom: 'Emotion drives adoption' },
+  { name: 'Patrick Collison', wisdom: 'Build what enables' },
+  { name: 'Naval Ravikant', wisdom: 'Leverage creates freedom' },
+];
+---
+
+<section id="philosophy" class="section bg-[var(--color-bg-surface)]">
+  <div class="container-content">
+    <div class="text-center mb-16">
+      <h2 class="mb-4 animate-on-scroll">Core Philosophy</h2>
+      <p class="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto animate-on-scroll">
+        This engine distills wisdom from those who've built and shipped.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {masters.map((master, index) => (
+        <div 
+          class="card group animate-on-scroll"
+          style={`--index: ${index}`}
+        >
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-bg-elevated)] flex items-center justify-center shrink-0 group-hover:bg-[var(--color-fire)] transition-colors duration-300">
+              <span class="text-lg font-bold text-[var(--color-fire)] group-hover:text-[var(--color-bg-deep)]">
+                {master.name.charAt(0)}
+              </span>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold text-[var(--color-text-primary)] mb-1">
+                {master.name}
+              </h3>
+              <p class="text-sm text-[var(--color-text-secondary)] italic">
+                "{master.wisdom}"
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+

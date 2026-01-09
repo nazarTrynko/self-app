@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/assets/:path*", "destination": "/self-discovery-app/assets/:path*" },
+    { "source": "/", "destination": "/self-discovery-app/index.html" },
+    { "source": "/self-extraction", "destination": "/self-discovery-app/self-extraction/index.html" },
+    { "source": "/self-extraction/", "destination": "/self-discovery-app/self-extraction/index.html" },
+    { "source": "/reflection", "destination": "/self-discovery-app/reflection/index.html" },
+    { "source": "/reflection/", "destination": "/self-discovery-app/reflection/index.html" },
+    { "source": "/healing", "destination": "/self-discovery-app/healing/index.html" },
+    { "source": "/healing/", "destination": "/self-discovery-app/healing/index.html" }
+  ]
+}
+
+

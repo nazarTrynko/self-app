@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Ideation Engine v3.0 - Ruthless filtering and rapid validation for product ideas. Ship in a weekend or kill fast.">
+    <title>Ideation Engine v3.0 | Ship Fast or Kill Fast</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">Ideation Engine v3.0</div>
+            <ul class="nav-links">
+                <li><a href="#filters" class="nav-link">Filters</a></li>
+                <li><a href="#tests" class="nav-link">Quick Tests</a></li>
+                <li><a href="#checklist" class="nav-link">Checklist</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <h1 class="hero-title">The Ideation Engine v3.0</h1>
+            <div class="hero-formula" id="formula">
+                <span class="formula-line">Ideas worth building =</span>
+                <span class="formula-part">Specific Pain</span>
+                <span class="formula-operator">×</span>
+                <span class="formula-part">Clear Distribution</span>
+                <span class="formula-operator">×</span>
+                <span class="formula-part">Emotional Transformation</span>
+                <span class="formula-operator">×</span>
+                <span class="formula-part">Weekend Shippable</span>
+                <span class="formula-operator">×</span>
+                <span class="formula-part">Defensible Angle</span>
+            </div>
+            <p class="hero-subtitle">Ship in a weekend or kill fast</p>
+            <div class="hero-credits">
+                Featuring insights from <span class="credit-name">Pieter Levels</span>, <span class="credit-name">Paul Graham</span>, <span class="credit-name">April Dunford</span>, <span class="credit-name">Sahil Lavingia</span>, <span class="credit-name">Julie Zhuo</span>, <span class="credit-name">Patrick Collison</span>, <span class="credit-name">Naval Ravikant</span>
+            </div>
+            <a href="#filters" class="cta-button">Start Filtering Ideas</a>
+        </div>
+    </section>
+
+    <!-- The Promise -->
+    <section class="promise" id="promise">
+        <div class="container">
+            <div class="promise-grid">
+                <div class="promise-card">
+                    <h3 class="promise-title kill">Problem</h3>
+                    <p>Most ideation is fluffy and useless. You waste weeks building something no one wants.</p>
+                </div>
+                <div class="promise-card">
+                    <h3 class="promise-title accent">Solution</h3>
+                    <p>Ruthless filtering + Rapid validation. Kill bad ideas in minutes, not months.</p>
+                </div>
+                <div class="promise-card">
+                    <h3 class="promise-title success">Outcome</h3>
+                    <p>Ship a validated MVP in a weekend or kill the idea before wasting time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The 5 Filters -->
+    <section class="filters" id="filters">
+        <div class="container">
+            <h2 class="section-title">The 5 Filters<span class="section-subtitle">Must Pass ALL</span></h2>
+            <p class="section-intro">Every idea must survive all five filters. Fail one, and you KILL or SIMPLIFY. No exceptions.</p>
+            
+            <div class="filters-grid">
+                <!-- Filter 1: PAIN -->
+                <div class="filter-card">
+                    <div class="filter-header">
+                        <h3 class="filter-name">PAIN</h3>
+                        <div class="filter-status" id="pain-status">—</div>
+                    </div>
+                    <p class="filter-question">Who hurts and how badly?</p>
+                    <div class="filter-criteria">
+                        <div class="criteria-kill">
+                            <strong>KILL:</strong> Vague pain
+                        </div>
+                        <div class="criteria-pass">
+                            <strong>PASS:</strong> Specific, acute pain expressed in user's own words
+                        </div>
+                    </div>
+                    <div class="filter-test">
+                        <label for="pain-input" class="sr-only">Test your idea's pain point</label>
+                        <textarea id="pain-input" class="filter-input" placeholder="Who exactly is experiencing pain? What are they complaining about?"></textarea>
+                    </div>
+                </div>
+
+                <!-- Filter 2: DISTRIBUTION -->
+                <div class="filter-card">
+                    <div class="filter-header">
+                        <h3 class="filter-name">DISTRIBUTION</h3>
+                        <div class="filter-status" id="distribution-status">—</div>
+                    </div>
+                    <p class="filter-question">Where are they already?</p>
+                    <div class="filter-criteria">
+                        <div class="criteria-kill">
+                            <strong>KILL:</strong> No channel
+                        </div>
+                        <div class="criteria-pass">
+                            <strong>PASS:</strong> Clear channel where target users already gather
+                        </div>
+                    </div>
+                    <div class="filter-test">
+                        <label for="distribution-input" class="sr-only">Test your idea's distribution channel</label>
+                        <textarea id="distribution-input" class="filter-input" placeholder="Where do these specific people already hang out? Be specific (e.g., r/freelance, not 'social media')"></textarea>
+                    </div>
+                </div>
+
+                <!-- Filter 3: EMOTION -->
+                <div class="filter-card">
+                    <div class="filter-header">
+                        <h3 class="filter-name">EMOTION</h3>
+                        <div class="filter-status" id="emotion-status">—</div>
+                    </div>
+                    <p class="filter-question">What transformation?</p>
+                    <div class="filter-criteria">
+                        <div class="criteria-kill">
+                            <strong>KILL:</strong> Weak feeling
+                        </div>
+                        <div class="criteria-pass">
+                            <strong>PASS:</strong> Clear before/after emotional state
+                        </div>
+                    </div>
+                    <div class="filter-test">
+                        <label for="emotion-input" class="sr-only">Test your idea's emotional transformation</label>
+                        <input type="text" id="emotion-before" class="filter-input-small" placeholder="Before: frustrated">
+                        <span class="arrow">→</span>
+                        <input type="text" id="emotion-after" class="filter-input-small" placeholder="After: confident">
+                    </div>
+                </div>
+
+                <!-- Filter 4: SCOPE -->
+                <div class="filter-card">
+                    <div class="filter-header">
+                        <h3 class="filter-name">SCOPE</h3>
+                        <div class="filter-status" id="scope-status">—</div>
+                    </div>
+                    <p class="filter-question">Weekend MVP possible?</p>
+                    <div class="filter-criteria">
+                        <div class="criteria-kill">
+                            <strong>SIMPLIFY:</strong> &gt;5 days
+                        </div>
+                        <div class="criteria-pass">
+                            <strong>PASS:</strong> Shippable in 2-3 days
+                        </div>
+                    </div>
+                    <div class="filter-test">
+                        <label for="scope-input" class="sr-only">Estimate build time in days</label>
+                        <input type="number" id="scope-input" class="filter-input" placeholder="Build time estimate (days)" min="0" step="0.5">
+                    </div>
+                </div>
+
+                <!-- Filter 5: MOAT -->
+                <div class="filter-card">
+                    <div class="filter-header">
+                        <h3 class="filter-name">MOAT</h3>
+                        <div class="filter-status" id="moat-status">—</div>
+                    </div>
+                    <p class="filter-question">Why can't this be copied in 30 days?</p>
+                    <div class="filter-criteria">
+                        <div class="criteria-kill">
+                            <strong>RETHINK:</strong> No answer
+                        </div>
+                        <div class="criteria-pass">
+                            <strong>PASS:</strong> Clear positioning, data accumulation, or unique insight
+                        </div>
+                    </div>
+                    <div class="filter-test">
+                        <label for="moat-input" class="sr-only">Test your idea's defensibility</label>
+                        <textarea id="moat-input" class="filter-input" placeholder="What makes this hard to copy? What accumulates over time?"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-summary" id="filter-summary">
+                <div class="summary-score">
+                    <span id="passed-count">0</span> / 5 filters passed
+                </div>
+                <div class="summary-verdict" id="summary-verdict">
+                    Fill in the fields above to test your idea
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Tests -->
+    <section class="quick-tests" id="tests">
+        <div class="container">
+            <h2 class="section-title">Quick Tests<span class="section-subtitle">30-second validations</span></h2>
+            <p class="section-intro">Run your idea through these battle-tested frameworks. Each takes 30 seconds. All must pass.</p>
+
+            <div class="tests-grid">
+                <!-- Levels Test -->
+                <div class="test-card">
+                    <h3 class="test-name">The Levels Test</h3>
+                    <p class="test-author">Pieter Levels</p>
+                    <div class="test-questions">
+                        <div class="test-question">
+                            <label>
+                                <input type="checkbox" id="levels-1" class="test-checkbox">
+                                <span>Can I ship this weekend?</span>
+                            </label>
+                        </div>
+                        <div class="test-question">
+                            <label>
+                                <input type="checkbox" id="levels-2" class="test-checkbox">
+                                <span>Will 10 people pre-pay $20?</span>
+                            </label>
+                        </div>
+                        <div class="test-question">
+                            <label>
+                                <input type="checkbox" id="levels-3" class="test-checkbox">
+                                <span>Does it solve MY problem?</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="test-result" id="levels-result">
+                        <span class="result-text">Check all boxes to evaluate</span>
+                    </div>
+                </div>
+
+                <!-- Graham Test -->
+                <div class="test-card">
+                    <h3 class="test-name">The Graham Test</h3>
+                    <p class="test-author">Paul Graham (Schlep Check)</p>
+                    <div class="test-questions">
+                        <div class="test-question">
+                            <label for="graham-1-input">What's the hard/boring part everyone avoids?</label>
+                            <input type="text" id="graham-1-input" class="test-input" placeholder="The schlep...">
+                        </div>
+                        <div class="test-question">
+                            <label>
+                                <input type="checkbox" id="graham-2" class="test-checkbox">
+                                <span>This is NOT a tarpit idea (social network, dating app, todo list)</span>
+                            </label>
+                        </div>
+                        <div class="test-question">
+                            <label>
+                                <input type="checkbox" id="graham-3" class="test-checkbox">
+                                <span>A Stanford CS grad would be embarrassed to work on this</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="test-result" id="graham-result">
+                        <span class="result-text">Complete to evaluate</span>
+                    </div>
+                </div>
+
+                <!-- Dunford Test -->
+                <div class="test-card">
+                    <h3 class="test-name">The Dunford Test</h3>
+                    <p class="test-author">April Dunford (Positioning)</p>
+                    <div class="test-questions">
+                        <div class="test-question positioning-test">
+                            <p class="positioning-prompt">Complete the positioning statement:</p>
+                            <div class="positioning-inputs">
+                                <span class="positioning-text">For</span>
+                                <input type="text" id="dunford-who" class="positioning-input" placeholder="WHO">
+                                <span class="positioning-text">,</span>
+                                <input type="text" id="dunford-product" class="positioning-input" placeholder="PRODUCT">
+                                <span class="positioning-text">is</span>
+                                <input type="text" id="dunford-category" class="positioning-input" placeholder="CATEGORY">
+                                <span class="positioning-text">that</span>
+                                <input type="text" id="dunford-benefit" class="positioning-input" placeholder="BENEFIT">
+                                <span class="positioning-text">unlike</span>
+                                <input type="text" id="dunford-alternative" class="positioning-input" placeholder="ALTERNATIVE">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="test-result" id="dunford-result">
+                        <span class="result-text">Fill all fields to evaluate</span>
+                    </div>
+                </div>
+
+                <!-- Naval Test -->
+                <div class="test-card">
+                    <h3 class="test-name">The Naval Test</h3>
+                    <p class="test-author">Naval Ravikant (Leverage)</p>
+                    <div class="test-questions">
+                        <div class="test-question">
+                            <label for="naval-1-select">Leverage type?</label>
+                            <select id="naval-1-select" class="test-select">
+                                <option value="">Select...</option>
+                                <option value="code">Code (Software)</option>
+                                <option value="media">Media (Content)</option>
+                                <option value="labor">Labor (People)</option>
+                                <option value="capital">Capital (Money)</option>
+                            </select>
+                        </div>
+                        <div class="test-question">
+                            <label>
+                                <input type="checkbox" id="naval-2" class="test-checkbox">
+                                <span>Makes money while sleeping?</span>
+                            </label>
+                        </div>
+                        <div class="test-question">
+                            <label>
+                                <input type="checkbox" id="naval-3" class="test-checkbox">
+                                <span>Gets easier with scale?</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="test-result" id="naval-result">
+                        <span class="result-text">Complete to evaluate</span>
+                    </div>
+                </div>
+
+                <!-- Zhuo Test -->
+                <div class="test-card">
+                    <h3 class="test-name">The Zhuo Test</h3>
+                    <p class="test-author">Julie Zhuo (Emotion)</p>
+                    <div class="test-questions">
+                        <div class="test-question">
+                            <label>User feels before/after:</label>
+                            <div class="emotion-inputs">
+                                <input type="text" id="zhuo-before" class="test-input-small" placeholder="Before (e.g., anxious)">
+                                <span class="arrow">→</span>
+                                <input type="text" id="zhuo-after" class="test-input-small" placeholder="After (e.g., confident)">
+                            </div>
+                        </div>
+                        <div class="test-question">
+                            <label for="zhuo-delight">What's the delight moment?</label>
+                            <input type="text" id="zhuo-delight" class="test-input" placeholder="The 'wow' moment">
+                        </div>
+                        <div class="test-question">
+                            <label for="zhuo-shareable">Shareable in one sentence?</label>
+                            <input type="text" id="zhuo-shareable" class="test-input" placeholder="The one-liner someone would tell a friend">
+                        </div>
+                    </div>
+                    <div class="test-result" id="zhuo-result">
+                        <span class="result-text">Complete to evaluate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 90% Confidence Checklist -->
+    <section class="checklist" id="checklist">
+        <div class="container">
+            <h2 class="section-title">90% Confidence Checklist<span class="section-subtitle">All boxes must be checked</span></h2>
+            <p class="section-intro">An idea hits 90% confidence when you can check every box below. Don't ship until you can.</p>
+
+            <div class="checklist-progress">
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="checklist-progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="checklist-count">0</span> / 9 criteria met
+                    <span id="checklist-percentage">0%</span>
+                </div>
+            </div>
+
+            <div class="checklist-items">
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-1" class="checklist-checkbox">
+                    <span class="checklist-text">Pain is active (people searching/complaining NOW)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-2" class="checklist-checkbox">
+                    <span class="checklist-text">Solution is obvious (explainable in 1 sentence)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-3" class="checklist-checkbox">
+                    <span class="checklist-text">Buildable in &lt; 1 week (landing + core function)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-4" class="checklist-checkbox">
+                    <span class="checklist-text">Monetization is natural (users expect to pay)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-5" class="checklist-checkbox">
+                    <span class="checklist-text">Competition gap exists (nothing does THIS exactly)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-6" class="checklist-checkbox">
+                    <span class="checklist-text">Timing advantage (why NOW, not 6 months ago)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-7" class="checklist-checkbox">
+                    <span class="checklist-text">Distribution channel identified (where they already are)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-8" class="checklist-checkbox">
+                    <span class="checklist-text">Emotional transformation clear (feel X → feel Y)</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="check-9" class="checklist-checkbox">
+                    <span class="checklist-text">Pre-validation signal (interest expressed)</span>
+                </label>
+            </div>
+
+            <div class="checklist-verdict" id="checklist-verdict">
+                <p class="verdict-text">Check all boxes to reach 90% confidence</p>
+            </div>
+
+            <button class="reset-button" id="reset-checklist">Reset Checklist</button>
+        </div>
+    </section>
+
+    <!-- Red Flags -->
+    <section class="red-flags" id="red-flags">
+        <div class="container">
+            <h2 class="section-title kill">Red Flags<span class="section-subtitle">Automatic disqualification</span></h2>
+            <p class="section-intro">If your idea has ANY of these characteristics, KILL it now. Don't waste another minute.</p>
+
+            <div class="red-flags-grid">
+                <div class="red-flag-card">
+                    <div class="red-flag-icon">⚠️</div>
+                    <p>"Nice to have" vs "must have"</p>
+                </div>
+                <div class="red-flag-card">
+                    <div class="red-flag-icon">⚠️</div>
+                    <p>Requires behavior change from users</p>
+                </div>
+                <div class="red-flag-card">
+                    <div class="red-flag-icon">⚠️</div>
+                    <p>Legal/scraping dependencies</p>
+                </div>
+                <div class="red-flag-card">
+                    <div class="red-flag-icon">⚠️</div>
+                    <p>Enterprise sales cycle for indie product</p>
+                </div>
+                <div class="red-flag-card">
+                    <div class="red-flag-icon">⚠️</div>
+                    <p>API-only differentiation (easily copied)</p>
+                </div>
+                <div class="red-flag-card">
+                    <div class="red-flag-icon">⚠️</div>
+                    <p>Needs network effects to work (cold start problem)</p>
+                </div>
+                <div class="red-flag-card">
+                    <div class="red-flag-icon">⚠️</div>
+                    <p>Competes with free, good-enough alternatives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">Part of <strong>SELF: Synthetic Emergent Learning Framework</strong></p>
+            <p class="footer-version">Ideation Engine v3.0</p>
+            <p class="footer-credits">Built on insights from the builders who shipped</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+
