@@ -106,3 +106,4 @@ Posture scores stored locally. No personal data collected beyond posture metrics
 
 
 
+

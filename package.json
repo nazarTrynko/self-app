@@ -7,7 +7,9 @@
     "dev": "cd landings && python3 -m http.server 8000",
     "start": "cd landings && python3 -m http.server 8000",
     "books": "cd books && python3 -m http.server 8001",
-    "books:dev": "cd books && python3 -m http.server 8001"
+    "books:dev": "cd books && python3 -m http.server 8001",
+    "self-discovery": "cd self-discovery-app && python3 -m http.server 8002",
+    "self-discovery:dev": "cd self-discovery-app && python3 -m http.server 8002"
   },
   "keywords": [
     "self",

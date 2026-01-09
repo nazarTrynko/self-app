@@ -105,3 +105,4 @@ Photos processed and discarded unless saved. Recognized text stored locally. No 
 
 
 
+

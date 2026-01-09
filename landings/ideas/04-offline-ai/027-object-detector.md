@@ -105,3 +105,4 @@ Photos analyzed and discarded. No images stored unless user saves. No cloud comm
 
 
 
+
