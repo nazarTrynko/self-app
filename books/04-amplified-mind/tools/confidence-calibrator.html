@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Confidence Calibrator — The Amplified Mind</title>
+    <style>
+        :root {
+            --accent-primary: #6366f1;
+            --bg-void: #0a0908;
+            --bg-card: #151311;
+            --bg-input: #0d0c0a;
+            --text-primary: #faf9f7;
+            --text-secondary: #a8a29e;
+            --border-subtle: rgba(168, 162, 158, 0.12);
+            --border-active: rgba(99, 102, 241, 0.4);
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-error: #e11d48;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-void);
+            color: var(--text-primary);
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .tool-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-description {
+            color: var(--text-secondary);
+        }
+
+        .tool-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--border-active);
+        }
+
+        .form-submit {
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .form-submit:hover {
+            opacity: 0.9;
+        }
+
+        .tool-results {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border-active);
+            padding: 2rem;
+        }
+
+        .tool-results.visible {
+            display: block;
+        }
+
+        .results-title {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .confidence-score {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-input);
+            border: 2px solid var(--accent-primary);
+            margin-bottom: 2rem;
+        }
+
+        .score-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .score-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .check-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--bg-input);
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        .check-item.pass {
+            border-left-color: var(--accent-success);
+        }
+
+        .check-item.warning {
+            border-left-color: var(--accent-warning);
+        }
+
+        .check-item.fail {
+            border-left-color: var(--accent-error);
+        }
+
+        .check-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .check-answer {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .recommendation {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .recommendation-title {
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="tool-header">
+        <h1 class="tool-title">The Confidence Calibrator</h1>
+        <p class="tool-description">Run your claim or belief through epistemic honesty checks</p>
+    </div>
+
+    <form class="tool-form" id="calibratorForm">
+        <div class="form-group">
+            <label class="form-label">What claim or belief do you want to calibrate?</label>
+            <textarea 
+                class="form-textarea" 
+                id="claimInput" 
+                placeholder="e.g., 'This strategy will increase revenue by 30%' or 'I'm confident this decision is the right one'"
+                required
+            ></textarea>
+        </div>
+        <button type="submit" class="form-submit">Calibrate My Confidence</button>
+    </form>
+
+    <div class="tool-results" id="calibratorResults">
+        <h2 class="results-title">Your Confidence Calibration</h2>
+        <div id="calibrationOutput"></div>
+    </div>
+
+    <script>
+        const EPISTEMIC_CHECKS = [
+            {
+                question: 'What relevant information do you NOT have access to?',
+                weight: 0.25,
+                evaluate: (claim) => {
+                    // Simple heuristic: longer claims might have more unknowns
+                    const complexity = claim.length > 100 ? 'high' : claim.length > 50 ? 'medium' : 'low';
+                    return {
+                        pass: complexity === 'low',
+                        answer: `Consider: Are there data points, perspectives, or context you're missing? Complex claims (${complexity} complexity) often have hidden unknowns.`,
+                        impact: complexity === 'high' ? -0.2 : complexity === 'medium' ? -0.1 : 0
+                    };
+                }
+            },
+            {
+                question: 'What assumptions are you making that could be wrong?',
+                weight: 0.25,
+                evaluate: (claim) => {
+                    const hasAssumptions = claim.toLowerCase().includes('will') || 
+                                         claim.toLowerCase().includes('should') ||
+                                         claim.toLowerCase().includes('must');
+                    return {
+                        pass: !hasAssumptions,
+                        answer: hasAssumptions 
+                            ? 'Your claim contains assumptions (words like "will", "should", "must"). List each assumption and consider: What if it is wrong?'
+                            : 'Good: Your claim seems relatively assumption-free. Still, identify any implicit assumptions.',
+                        impact: hasAssumptions ? -0.15 : 0
+                    };
+                }
+            },
+            {
+                question: 'If you are wrong, what is the likely failure mode?',
+                weight: 0.2,
+                evaluate: (claim) => {
+                    return {
+                        pass: true,
+                        answer: 'Consider: What would failure look like? What are the consequences? Being able to articulate failure modes shows you have considered the risks.',
+                        impact: 0
+                    };
+                }
+            },
+            {
+                question: 'Are you pattern-matching to training data or genuinely reasoning?',
+                weight: 0.3,
+                evaluate: (claim) => {
+                    // Simple heuristic: claims with specific numbers or dates might be more reasoned
+                    const hasSpecifics = /\d+/.test(claim) || claim.includes('%') || claim.includes('$');
+                    return {
+                        pass: hasSpecifics,
+                        answer: hasSpecifics
+                            ? 'Your claim includes specific details, suggesting genuine reasoning rather than pattern-matching.'
+                            : 'Consider: Is this based on actual analysis, or are you matching patterns from past experiences?',
+                        impact: hasSpecifics ? 0.1 : -0.1
+                    };
+                }
+            }
+        ];
+
+        document.getElementById('calibratorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const claim = document.getElementById('claimInput').value.trim();
+            
+            if (!claim) {
+                alert('Please enter a claim or belief');
+                return;
+            }
+
+            const calibration = calibrateConfidence(claim);
+            displayCalibration(calibration);
+            document.getElementById('calibratorResults').classList.add('visible');
+            document.getElementById('calibratorResults').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function calibrateConfidence(claim) {
+            let baseConfidence = 0.7; // Start with moderate confidence
+            const checks = [];
+
+            EPISTEMIC_CHECKS.forEach(check => {
+                const result = check.evaluate(claim);
+                baseConfidence += result.impact * check.weight;
+                checks.push({
+                    question: check.question,
+                    answer: result.answer,
+                    pass: result.pass
+                });
+            });
+
+            // Clamp confidence between 0 and 1
+            baseConfidence = Math.max(0, Math.min(1, baseConfidence));
+
+            // Determine confidence level
+            let level, label, color;
+            if (baseConfidence >= 0.95) {
+                level = '95%+';
+                label = 'I would bet significant money on this';
+                color = 'var(--accent-success)';
+            } else if (baseConfidence >= 0.8) {
+                level = '80-95%';
+                label = 'Strong reasoning, few reasonable objections';
+                color = 'var(--accent-primary)';
+            } else if (baseConfidence >= 0.6) {
+                level = '60-80%';
+                label = 'More likely true than not, notable uncertainty';
+                color = 'var(--accent-warning)';
+            } else {
+                level = '<60%';
+                label = 'Uncertain or speculative - flag explicitly';
+                color = 'var(--accent-error)';
+            }
+
+            return {
+                claim,
+                confidence: baseConfidence,
+                level,
+                label,
+                color,
+                checks
+            };
+        }
+
+        function displayCalibration(calibration) {
+            const output = document.getElementById('calibrationOutput');
+            
+            let html = `
+                <div class="confidence-score" style="border-color: ${calibration.color};">
+                    <div class="score-value" style="color: ${calibration.color};">${calibration.level}</div>
+                    <div class="score-label">${calibration.label}</div>
+                </div>
+                
+                <h3 style="margin-bottom: 1rem;">Epistemic Honesty Checks</h3>
+            `;
+
+            calibration.checks.forEach((check, index) => {
+                const statusClass = check.pass ? 'pass' : 'warning';
+                html += `
+                    <div class="check-item ${statusClass}">
+                        <div class="check-question">${index + 1}. ${check.question}</div>
+                        <div class="check-answer">${check.answer}</div>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div class="recommendation">
+                    <div class="recommendation-title">Recommendation</div>
+                    <p>Based on your confidence level (${calibration.level}), ${
+                        calibration.confidence >= 0.8 
+                            ? 'you can proceed with action, but remain open to updating your confidence as new information emerges.'
+                            : calibration.confidence >= 0.6
+                            ? 'proceed with caution. Gather more information or seek additional perspectives before making high-stakes decisions.'
+                            : 'this claim needs more evidence or reasoning before you can act on it with confidence. Consider it speculative until you can strengthen your reasoning.'
+                    }</p>
+                </div>
+            `;
+
+            output.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
+

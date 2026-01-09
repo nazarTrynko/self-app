@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Thinking Amplifier — The Amplified Mind</title>
+    <link rel="stylesheet" href="../../_shared/css/design-system.css">
+    <style>
+        :root {
+            --accent-primary: #6366f1;
+            --bg-void: #0a0908;
+            --bg-card: #151311;
+            --bg-input: #0d0c0a;
+            --text-primary: #faf9f7;
+            --text-secondary: #a8a29e;
+            --border-subtle: rgba(168, 162, 158, 0.12);
+            --border-active: rgba(99, 102, 241, 0.4);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-void);
+            color: var(--text-primary);
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .tool-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-description {
+            color: var(--text-secondary);
+        }
+
+        .tool-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--border-active);
+        }
+
+        .form-submit {
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .form-submit:hover {
+            opacity: 0.9;
+        }
+
+        .tool-results {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border-active);
+            padding: 2rem;
+        }
+
+        .tool-results.visible {
+            display: block;
+        }
+
+        .results-title {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .layer-analysis {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-input);
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        .layer-number {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .layer-name {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .layer-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <div class="tool-header">
+        <h1 class="tool-title">The Thinking Amplifier</h1>
+        <p class="tool-description">Apply the 6-Layer Protocol to any question or decision</p>
+    </div>
+
+    <form class="tool-form" id="thinkingAmplifierForm">
+        <div class="form-group">
+            <label class="form-label">What question or decision are you facing?</label>
+            <textarea 
+                class="form-textarea" 
+                id="questionInput" 
+                placeholder="e.g., Should I take this job offer? How do I improve team productivity?"
+                required
+            ></textarea>
+        </div>
+        <button type="submit" class="form-submit">Amplify My Thinking</button>
+    </form>
+
+    <div class="tool-results" id="thinkingAmplifierResults">
+        <h2 class="results-title">Your Amplified Analysis</h2>
+        <div id="analysisOutput"></div>
+    </div>
+
+    <script>
+        const LAYERS = [
+            {
+                number: 1,
+                name: 'Transmute (The Reframer)',
+                generate: (input) => {
+                    return `The surface question is: "${input}". But what's the real problem here? Consider: What assumption is this question making? What would a domain expert recognize that a novice wouldn't? Reframe the question at a deeper level.`;
+                }
+            },
+            {
+                number: 2,
+                name: 'Multiply (The Council)',
+                generate: (input) => {
+                    return `Generate three expert perspectives:\n\n1. Expert A (Execution/Implementation): What does someone focused on making this happen see?\n2. Expert B (Strategy/Long-term): What does someone focused on long-term impact see?\n3. Expert C (Risk/Flaws): What does someone focused on finding problems see?\n\nSynthesize their insights into richer understanding.`;
+                }
+            },
+            {
+                number: 3,
+                name: 'Evolve (The Challenger)',
+                generate: (input) => {
+                    return `Steel-man your opposition:\n\n- Generate an argument strong enough that a reasonable person could disagree with you\n- What would make you 95% confident instead of 80%?\n- What evidence would completely change your answer?\n\nNow strengthen your answer by genuinely addressing these challenges.`;
+                }
+            },
+            {
+                number: 4,
+                name: 'Crystallize (The Pattern Finder)',
+                generate: (input) => {
+                    return `Extract transferable wisdom:\n\n- What PATTERN or PRINCIPLE emerges that applies beyond this case?\n- If you had to teach this insight in one sentence, what would it be?\n- What mental model does this reveal or reinforce?`;
+                }
+            },
+            {
+                number: 5,
+                name: 'Transcend (The Transcender)',
+                generate: (input) => {
+                    return `Complete the recursion:\n\n- What do you now understand that you couldn't before this analysis?\n- What's the next question you SHOULD ask but probably won't?\n- What would change if you ran this analysis again with fresh eyes?`;
+                }
+            },
+            {
+                number: 6,
+                name: 'Emerge (The Synthesizer)',
+                generate: (input) => {
+                    return `Find the synthesis beyond analysis:\n\n- What insight emerged that wasn't contained in any single layer?\n- What "third option" transcends the apparent trade-offs?\n- What connection would only deep expertise reveal?`;
+                }
+            }
+        ];
+
+        document.getElementById('thinkingAmplifierForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const question = document.getElementById('questionInput').value.trim();
+            
+            if (!question) {
+                alert('Please enter a question or decision');
+                return;
+            }
+
+            const analysis = generateAnalysis(question);
+            displayAnalysis(analysis);
+            document.getElementById('thinkingAmplifierResults').classList.add('visible');
+            document.getElementById('thinkingAmplifierResults').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function generateAnalysis(question) {
+            return {
+                question: question,
+                layers: LAYERS.map(layer => ({
+                    number: layer.number,
+                    name: layer.name,
+                    content: layer.generate(question)
+                }))
+            };
+        }
+
+        function displayAnalysis(analysis) {
+            const output = document.getElementById('analysisOutput');
+            let html = '';
+            
+            analysis.layers.forEach(layer => {
+                html += `
+                    <div class="layer-analysis">
+                        <span class="layer-number">Layer ${layer.number}</span>
+                        <h3 class="layer-name">${layer.name}</h3>
+                        <p class="layer-content">${layer.content}</p>
+                    </div>
+                `;
+            });
+            
+            output.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
+

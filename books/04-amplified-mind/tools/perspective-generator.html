@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Perspective Generator — The Amplified Mind</title>
+    <style>
+        :root {
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #a78bfa;
+            --bg-void: #0a0908;
+            --bg-card: #151311;
+            --bg-input: #0d0c0a;
+            --text-primary: #faf9f7;
+            --text-secondary: #a8a29e;
+            --border-subtle: rgba(168, 162, 158, 0.12);
+            --border-active: rgba(99, 102, 241, 0.4);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-void);
+            color: var(--text-primary);
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .tool-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-description {
+            color: var(--text-secondary);
+        }
+
+        .tool-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--border-active);
+        }
+
+        .form-submit {
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .form-submit:hover {
+            opacity: 0.9;
+        }
+
+        .tool-results {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border-active);
+            padding: 2rem;
+        }
+
+        .tool-results.visible {
+            display: block;
+        }
+
+        .results-title {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .perspectives-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .perspective-card {
+            padding: 1.5rem;
+            background: var(--bg-input);
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .perspective-card.expert-a {
+            border-left-color: var(--accent-primary);
+        }
+
+        .perspective-card.expert-b {
+            border-left-color: var(--accent-secondary);
+        }
+
+        .perspective-card.expert-c {
+            border-left-color: var(--accent-tertiary);
+        }
+
+        .perspective-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .perspective-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .perspective-card.expert-a .perspective-icon {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .perspective-card.expert-b .perspective-icon {
+            background: var(--accent-secondary);
+            color: white;
+        }
+
+        .perspective-card.expert-c .perspective-icon {
+            background: var(--accent-tertiary);
+            color: white;
+        }
+
+        .perspective-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .perspective-role {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .perspective-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+
+        .synthesis {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .synthesis-title {
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .synthesis-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="tool-header">
+        <h1 class="tool-title">The Perspective Generator</h1>
+        <p class="tool-description">Generate three expert perspectives on any problem or situation</p>
+    </div>
+
+    <form class="tool-form" id="perspectiveForm">
+        <div class="form-group">
+            <label class="form-label">Describe a problem or situation you're facing</label>
+            <textarea 
+                class="form-textarea" 
+                id="situationInput" 
+                placeholder="e.g., 'Our team productivity has been declining for the past quarter' or 'I need to decide whether to expand into a new market'"
+                required
+            ></textarea>
+        </div>
+        <button type="submit" class="form-submit">Generate Perspectives</button>
+    </form>
+
+    <div class="tool-results" id="perspectiveResults">
+        <h2 class="results-title">Three Expert Perspectives</h2>
+        <div id="perspectivesOutput"></div>
+    </div>
+
+    <script>
+        const EXPERT_ROLES = [
+            {
+                id: 'expert-a',
+                name: 'Expert A',
+                role: 'Execution / Implementation',
+                icon: '⚡',
+                color: 'var(--accent-primary)',
+                focus: 'making this happen',
+                generate: (situation) => {
+                    return `As someone focused on execution and implementation, I see this situation through a practical lens:
+
+• What are the immediate action steps needed?
+• What resources (time, money, people) are required?
+• What are the quick wins we can achieve?
+• What obstacles will we face in implementation?
+• How do we break this down into manageable steps?
+
+My perspective: Focus on what can be done NOW. Identify the lowest-hanging fruit and the critical path to results.`;
+                }
+            },
+            {
+                id: 'expert-b',
+                name: 'Expert B',
+                role: 'Strategy / Long-term Impact',
+                icon: '🎯',
+                color: 'var(--accent-secondary)',
+                focus: 'long-term impact',
+                generate: (situation) => {
+                    return `As someone focused on strategy and long-term impact, I see this situation through a systemic lens:
+
+• What are the long-term implications of this situation?
+• How does this connect to broader goals and vision?
+• What patterns or trends does this reveal?
+• What are the second and third-order effects?
+• How does this fit into the bigger picture?
+
+My perspective: Step back and see the forest, not just the trees. Consider how today's decisions shape tomorrow's outcomes.`;
+                }
+            },
+            {
+                id: 'expert-c',
+                name: 'Expert C',
+                role: 'Risk / Flaws',
+                icon: '🛡️',
+                color: 'var(--accent-tertiary)',
+                focus: 'finding problems',
+                generate: (situation) => {
+                    return `As someone focused on risk and finding flaws, I see this situation through a critical lens:
+
+• What could go wrong?
+• What assumptions are we making that might be false?
+• What are the potential failure modes?
+• What risks are we not seeing?
+• What would a skeptic challenge about this?
+
+My perspective: Hope for the best, but prepare for the worst. Identify blind spots and potential pitfalls before they become problems.`;
+                }
+            }
+        ];
+
+        document.getElementById('perspectiveForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const situation = document.getElementById('situationInput').value.trim();
+            
+            if (!situation) {
+                alert('Please describe a problem or situation');
+                return;
+            }
+
+            const perspectives = generatePerspectives(situation);
+            displayPerspectives(situation, perspectives);
+            document.getElementById('perspectiveResults').classList.add('visible');
+            document.getElementById('perspectiveResults').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function generatePerspectives(situation) {
+            return EXPERT_ROLES.map(expert => ({
+                ...expert,
+                content: expert.generate(situation)
+            }));
+        }
+
+        function displayPerspectives(situation, perspectives) {
+            const output = document.getElementById('perspectivesOutput');
+            
+            let html = `
+                <div style="margin-bottom: 2rem; padding: 1rem; background: var(--bg-input); border: 1px solid var(--border-subtle);">
+                    <strong>Situation:</strong> ${situation}
+                </div>
+                <div class="perspectives-grid">
+            `;
+
+            perspectives.forEach(perspective => {
+                html += `
+                    <div class="perspective-card ${perspective.id}">
+                        <div class="perspective-header">
+                            <div class="perspective-icon">${perspective.icon}</div>
+                            <div>
+                                <div class="perspective-name">${perspective.name}</div>
+                                <div class="perspective-role">${perspective.role}</div>
+                            </div>
+                        </div>
+                        <div class="perspective-content">${perspective.content}</div>
+                    </div>
+                `;
+            });
+
+            html += `
+                </div>
+                <div class="synthesis">
+                    <div class="synthesis-title">Synthesis: What Do All Three Perspectives Reveal?</div>
+                    <div class="synthesis-content">
+                        Notice how the same situation looks different from each expert's angle. Expert A sees immediate actions, Expert B sees long-term implications, and Expert C sees potential risks.
+
+The power comes from synthesizing all three perspectives:
+• Use Expert A's view to identify what to do NOW
+• Use Expert B's view to ensure actions align with long-term goals
+• Use Expert C's view to anticipate and mitigate risks
+
+Together, these perspectives create a richer, more complete understanding than any single viewpoint could provide.
+                    </div>
+                </div>
+            `;
+
+            output.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
+

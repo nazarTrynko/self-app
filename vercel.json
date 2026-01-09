@@ -1,14 +1,257 @@
 {
   "rewrites": [
-    { "source": "/assets/:path*", "destination": "/self-discovery-app/assets/:path*" },
-    { "source": "/", "destination": "/self-discovery-app/index.html" },
-    { "source": "/self-extraction", "destination": "/self-discovery-app/self-extraction/index.html" },
-    { "source": "/self-extraction/", "destination": "/self-discovery-app/self-extraction/index.html" },
-    { "source": "/reflection", "destination": "/self-discovery-app/reflection/index.html" },
-    { "source": "/reflection/", "destination": "/self-discovery-app/reflection/index.html" },
-    { "source": "/healing", "destination": "/self-discovery-app/healing/index.html" },
-    { "source": "/healing/", "destination": "/self-discovery-app/healing/index.html" }
-  ]
+    {
+      "source": "/assets/:path*",
+      "destination": "/self-discovery-app/assets/:path*"
+    },
+    {
+      "source": "/_shared/:path*",
+      "destination": "/landings/_shared/:path*"
+    },
+    {
+      "source": "/",
+      "destination": "/self-discovery-app/index.html"
+    },
+    {
+      "source": "/self-extraction",
+      "destination": "/self-discovery-app/self-extraction/index.html"
+    },
+    {
+      "source": "/self-extraction/",
+      "destination": "/self-discovery-app/self-extraction/index.html"
+    },
+    {
+      "source": "/reflection",
+      "destination": "/self-discovery-app/reflection/index.html"
+    },
+    {
+      "source": "/reflection/",
+      "destination": "/self-discovery-app/reflection/index.html"
+    },
+    {
+      "source": "/healing",
+      "destination": "/self-discovery-app/healing/index.html"
+    },
+    {
+      "source": "/healing/",
+      "destination": "/self-discovery-app/healing/index.html"
+    },
+    {
+      "source": "/books",
+      "destination": "/books/_hub/index.html"
+    },
+    {
+      "source": "/books/",
+      "destination": "/books/_hub/index.html"
+    },
+    {
+      "source": "/books/transition-rite",
+      "destination": "/books/01-transition-rite/index.html"
+    },
+    {
+      "source": "/books/synthesis-starter",
+      "destination": "/books/02-synthesis-starter/index.html"
+    },
+    {
+      "source": "/books/03",
+      "destination": "/books/03/index.html"
+    },
+    {
+      "source": "/books/ideation-engine",
+      "destination": "/books/ideation-engine/index.html"
+    },
+    {
+      "source": "/explore",
+      "destination": "/landings/index.html"
+    },
+    {
+      "source": "/explore/",
+      "destination": "/landings/index.html"
+    },
+    {
+      "source": "/explore/masterpieces",
+      "destination": "/landings/showcases/masterpieces/index.html"
+    },
+    {
+      "source": "/explore/masterpieces/:path*",
+      "destination": "/landings/showcases/masterpieces/:path*/index.html"
+    },
+    {
+      "source": "/explore/revelations",
+      "destination": "/landings/showcases/revelations/index.html"
+    },
+    {
+      "source": "/explore/revelations/:path*",
+      "destination": "/landings/showcases/revelations/:path*/index.html"
+    },
+    {
+      "source": "/explore/self-variants/:path*",
+      "destination": "/landings/showcases/self-variants/:path*/index.html"
+    },
+    {
+      "source": "/explore/perspectives",
+      "destination": "/landings/perspectives/index.html"
+    },
+    {
+      "source": "/explore/perspectives/:path*",
+      "destination": "/landings/perspectives/:path*/index.html"
+    },
+    {
+      "source": "/explore/product-hunt",
+      "destination": "/landings/product-hunt/index.html"
+    },
+    {
+      "source": "/explore/product-hunt/:path*",
+      "destination": "/landings/product-hunt/:path*/index.html"
+    },
+    {
+      "source": "/explore/products/transcendence",
+      "destination": "/landings/products/transcendence/index.html"
+    },
+    {
+      "source": "/explore/products/transcendence/:path*",
+      "destination": "/landings/products/transcendence/:path*/index.html"
+    },
+    {
+      "source": "/explore/products/pro-pwas",
+      "destination": "/landings/products/pro-pwas/index.html"
+    },
+    {
+      "source": "/explore/products/pro-pwas/:path*",
+      "destination": "/landings/products/pro-pwas/:path*/index.html"
+    },
+    {
+      "source": "/explore/products/evolved-carousels",
+      "destination": "/landings/products/evolved-carousels/index.html"
+    },
+    {
+      "source": "/explore/products/evolved-carousels/:path*",
+      "destination": "/landings/products/evolved-carousels/stories/:path*/index.html"
+    },
+    {
+      "source": "/explore/products/aurum",
+      "destination": "/landings/products/aurum/index.html"
+    },
+    {
+      "source": "/explore/products/carousel-generator",
+      "destination": "/landings/products/carousel-generator/index.html"
+    },
+    {
+      "source": "/explore/products/cursor-cycles",
+      "destination": "/landings/products/cursor-cycles/index.html"
+    },
+    {
+      "source": "/explore/products/ideation-engine",
+      "destination": "/landings/products/ideation-engine/index.html"
+    },
+    {
+      "source": "/explore/blueprints/mobile-apps",
+      "destination": "/landings/blueprints/mobile-apps/index.html"
+    },
+    {
+      "source": "/explore/blueprints/mobile-apps/:path*",
+      "destination": "/landings/blueprints/mobile-apps/:path*/index.html"
+    },
+    {
+      "source": "/explore/blueprints/stealth-business",
+      "destination": "/landings/blueprints/stealth-business/index.html"
+    },
+    {
+      "source": "/explore/blueprints/stealth-business/:path*",
+      "destination": "/landings/blueprints/stealth-business/:path*/index.html"
+    },
+    {
+      "source": "/explore/masterpiece-projects",
+      "destination": "/landings/masterpiece-projects/index.html"
+    },
+    {
+      "source": "/explore/masterpiece-projects/:path*",
+      "destination": "/landings/masterpiece-projects/:path*/index.html"
+    },
+    {
+      "source": "/explore/docs/self",
+      "destination": "/landings/docs/self/index.html"
+    },
+    {
+      "source": "/explore/docs/agent-mastery",
+      "destination": "/landings/docs/agent-mastery/index.html"
+    },
+    {
+      "source": "/explore/docs/emergent-properties",
+      "destination": "/landings/docs/emergent-properties/index.html"
+    },
+    {
+      "source": "/explore/docs/self-command-center",
+      "destination": "/landings/docs/self-command-center/index.html"
+    },
+    {
+      "source": "/explore/docs/self-extraction",
+      "destination": "/landings/docs/self-extraction/index.html"
+    },
+    {
+      "source": "/explore/ideation-engine",
+      "destination": "/landings/ideation-engine/index.html"
+    },
+    {
+      "source": "/explore/sitemap",
+      "destination": "/landings/meta/sitemap/index.html"
+    },
+    {
+      "source": "/transcendence",
+      "destination": "/landings/products/transcendence/index.html"
+    },
+    {
+      "source": "/masterpieces",
+      "destination": "/landings/showcases/masterpieces/index.html"
+    },
+    {
+      "source": "/ideation",
+      "destination": "/landings/ideation-engine/index.html"
+    },
+    {
+      "source": "/revelations",
+      "destination": "/landings/showcases/revelations/index.html"
+    },
+    {
+      "source": "/projects/prompt-library",
+      "destination": "/projects/the-best-prompts/the-prompt-library/index.html"
+    },
+    {
+      "source": "/projects/prompt-library/:path*",
+      "destination": "/projects/the-best-prompts/the-prompt-library/chambers/:path*/index.html"
+    },
+    {
+      "source": "/projects/prompt-library-cursor",
+      "destination": "/projects/the-best-prompts/the-prompt-library__cursor/index.html"
+    },
+    {
+      "source": "/projects/prompt-library-cursor/:path*",
+      "destination": "/projects/the-best-prompts/the-prompt-library__cursor/chambers/:path*/index.html"
+    },
+    {
+      "source": "/projects/prompt-library-gpt",
+      "destination": "/projects/the-best-prompts/the-prompt-library__gpt/index.html"
+    },
+    {
+      "source": "/projects/prompt-library-gpt/:path*",
+      "destination": "/projects/the-best-prompts/the-prompt-library__gpt/chambers/:path*/index.html"
+    },
+    {
+      "source": "/projects/prompt-library-opus",
+      "destination": "/projects/the-best-prompts/the-prompt-library__opus/index.html"
+    },
+    {
+      "source": "/projects/prompt-library-opus/:path*",
+      "destination": "/projects/the-best-prompts/the-prompt-library__opus/chambers/:path*/index.html"
+    },
+    {
+      "source": "/landings/:path*",
+      "destination": "/landings/:path*"
+    },
+    {
+      "source": "/books/:path*",
+      "destination": "/books/:path*"
+    }
+  ],
+  "trailingSlash": false
 }
-
-

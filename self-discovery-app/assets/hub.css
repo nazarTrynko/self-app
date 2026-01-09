@@ -200,15 +200,70 @@ h1 {
 .card-blue .icon { border-color: rgba(125, 211, 252, 0.35); }
 
 .footer {
-  padding: 10px 0 70px;
+  padding: 10px 0 40px;
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.7;
 }
 
+.explore-more {
+  padding: 40px 0 70px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+.explore-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.explore-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.explore-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.explore-link:hover {
+  background: var(--panel-2);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.explore-icon {
+  font-size: 1.1rem;
+}
+
 @media (max-width: 920px) {
   .grid { grid-template-columns: 1fr; }
   .hero { padding-top: 56px; }
+  .explore-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .explore-link {
+    justify-content: center;
+  }
 }
 
 
